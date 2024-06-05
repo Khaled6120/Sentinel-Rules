@@ -10,4 +10,4 @@ Updated Sigma2KQL script written by CodeByHarri
 ### - Create a folder named "KQL"
 
 ### output format
-![image](https://github.com/Khaled6120/Sigma2KQL-v2/assets/86200305/5621500a-ac52-4388-b162-d037495fbb71)
+![image](https://github.com/Khaled6120/Sigma2KQL-v2/assets/86200305/f83c97ea-8ed3-427f-b3b3-26116ad62cd0)
