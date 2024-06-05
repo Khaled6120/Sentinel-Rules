@@ -52,6 +52,7 @@ for yml in file_list_a:
 
             with open('KQL/' + sigma_rule.title.replace(' ', '_') + '.kql', 'w') as kql_file:
                 kql_file.write(f'// Title: {yaml_contents.get("title", "")}\n')
+                kql_file.write(f'// ID: {yaml_contents.get("id", "")}\n')
                 kql_file.write(f'// Author: {yaml_contents.get("author", "")}\n')
                 kql_file.write(f'// Date: {yaml_contents.get("date", "")}\n')
                 kql_file.write(f'// Level: {yaml_contents.get("level", "")}\n')
