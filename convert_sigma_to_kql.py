@@ -39,6 +39,7 @@ for yml in file_list_a:
         try:
             yaml_contents = yaml.safe_load(yaml_file)
             sigma_rule = SigmaRule.from_yaml(convert_to_string(yaml_contents))
+            print(yaml_contents)
             m365def_backend = Microsoft365DefenderBackend()
 
             pipeline = microsoft_365_defender_pipeline()
@@ -54,6 +55,11 @@ for yml in file_list_a:
                 kql_file.write(f'// Date: {yaml_contents.get("date", "")}\n')
                 kql_file.write(f'// Level: {yaml_contents.get("level", "")}\n')
                 kql_file.write(f'// Description: {yaml_contents.get("description", "")}\n')
+                kql_file.write(f'// Status: {yaml_contents.get("status", "")}\n')
+                kql_file.write(f'// Date: {yaml_contents.get("date", "")}\n')
+                kql_file.write(f'// Modified: {yaml_contents.get("modified", "")}\n')
+                kql_file.write(f'// Logsource Category: {yaml_contents.get("logsource", {}).get("category", "")}\n')
+                kql_file.write(f'// Logsource Product: {yaml_contents.get("logsource", {}).get("product", "")}\n')
                 tags = yaml_contents.get("tags", [])
                 kql_file.write(f'// Tags: {", ".join(tags) if tags else ""}\n')
                 kql_file.write(kql_query)
