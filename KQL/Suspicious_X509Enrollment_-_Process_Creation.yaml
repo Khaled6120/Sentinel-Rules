@@ -1,0 +1,19 @@
+name: Suspicious X509Enrollment - Process Creation
+id: 114de787-4eb2-48cc-abdb-c0b449f93ea4
+author: frack113
+date: 2022/12/23
+level: medium
+description: Detect use of X509Enrollment
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1553.004
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "X509Enrollment.CBinaryConverter" or ProcessCommandLine
+  contains "884e2002-217d-11da-b2a4-000e7bbb2b09"'

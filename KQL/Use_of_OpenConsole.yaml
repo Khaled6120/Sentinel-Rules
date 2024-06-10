@@ -1,0 +1,20 @@
+name: Use of OpenConsole
+id: 814c95cc-8192-4378-a70a-f1aafd877af1
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/06/16
+level: medium
+description: Detects usage of OpenConsole binary as a LOLBIN to launch other binaries
+  to bypass application Whitelisting
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where (ProcessVersionInfoOriginalFileName =~ "OpenConsole.exe" or FolderPath endswith
+  "\\OpenConsole.exe") and (not(FolderPath startswith "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal"))'

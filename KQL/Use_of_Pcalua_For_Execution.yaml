@@ -1,0 +1,21 @@
+name: Use of Pcalua For Execution
+id: 0955e4e1-c281-4fb9-9ee1-5ee7b4b754d2
+author: Nasreddine Bencherchali (Nextron Systems), E.M. Anhaus (originally from Atomic
+  Blue Detections, Endgame), oscd.community
+date: 2022/06/14
+level: medium
+description: Detects execition of commands and binaries from the context of The program
+  compatibility assistant (Pcalua.exe). This can be used as a LOLBIN in order to bypass
+  application whitelisting.
+status: test
+modified: 2023/01/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " -a" and FolderPath endswith "\\pcalua.exe"'

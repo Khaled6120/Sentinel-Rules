@@ -1,0 +1,30 @@
+name: Potentially Suspicious Usage Of Qemu
+id: 5fc297ae-25b6-488a-8f25-cc12ac29b744
+author: Muhammad Faisal (@faisalusuf), Hunter Juhan (@threatHNTR)
+date: 2024/06/03
+level: medium
+description: 'Detects potentially suspicious execution of the Qemu utility in a Windows
+  environment.
+
+  Threat actors have leveraged this utility and this technique for achieving network
+  access as reported by Kaspersky.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1090
+- t1572
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "-m 1M" or ProcessCommandLine contains "-m
+  2M" or ProcessCommandLine contains "-m 3M") and (ProcessCommandLine contains "restrict=off"
+  and ProcessCommandLine contains "-netdev " and ProcessCommandLine contains "connect="
+  and ProcessCommandLine contains "-nographic")) and (not((ProcessCommandLine contains
+  " -cdrom " or ProcessCommandLine contains " type=virt " or ProcessCommandLine contains
+  " -blockdev ")))'

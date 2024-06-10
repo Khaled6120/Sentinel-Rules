@@ -1,0 +1,23 @@
+name: Potential Register_App.Vbs LOLScript Abuse
+id: 28c8f68b-098d-45af-8d43-8089f3e35403
+author: Austin Songer @austinsonger
+date: 2021/11/05
+level: medium
+description: Detects potential abuse of the "register_app.vbs" script that is part
+  of the Windows SDK. The script offers the capability to register new VSS/VDS Provider
+  as a COM+ application. Attackers can use this to install malicious DLLs for persistence
+  and execution.
+status: test
+modified: 2022/07/07
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains ".vbs -register " and ((FolderPath endswith
+  "\\cscript.exe" or FolderPath endswith "\\wscript.exe") or (ProcessVersionInfoOriginalFileName
+  in~ ("cscript.exe", "wscript.exe")))'

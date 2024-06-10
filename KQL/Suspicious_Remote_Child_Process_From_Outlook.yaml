@@ -1,0 +1,20 @@
+name: Suspicious Remote Child Process From Outlook
+id: e212d415-0e93-435f-9e1a-f29005bb4723
+author: Markus Neis, Nasreddine Bencherchali (Nextron Systems)
+date: 2018/12/27
+level: high
+description: Detects a suspicious child process spawning from Outlook where the image
+  is located in a remote location (SMB/WebDav shares).
+status: test
+modified: 2023/02/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059
+- t1202
+query: 'DeviceProcessEvents
+
+  | where FolderPath startswith "\\\\" and InitiatingProcessFolderPath endswith "\\outlook.exe"'

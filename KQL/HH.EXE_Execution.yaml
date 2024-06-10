@@ -1,0 +1,19 @@
+name: HH.EXE Execution
+id: 68c8acb4-1b60-4890-8e82-3ddf7a6dba84
+author: E.M. Anhaus (originally from Atomic Blue Detections, Dan Beavin), oscd.community
+date: 2019/10/24
+level: low
+description: Detects the execution of "hh.exe" to open ".chm" files.
+status: test
+modified: 2023/12/11
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains ".chm" and (ProcessVersionInfoOriginalFileName
+  =~ "HH.exe" or FolderPath endswith "\\hh.exe")'

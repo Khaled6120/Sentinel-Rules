@@ -1,0 +1,21 @@
+name: Arbitrary Binary Execution Using GUP Utility
+id: d65aee4d-2292-4cea-b832-83accd6cfa43
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/06/10
+level: medium
+description: Detects execution of the Notepad++ updater (gup) to launch other commands
+  or executables
+status: test
+modified: 2023/03/02
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\explorer.exe" and InitiatingProcessFolderPath endswith
+  "\\gup.exe") and (not(((ProcessCommandLine contains "\\Notepad++\\notepad++.exe"
+  and FolderPath endswith "\\explorer.exe") or isnull(ProcessCommandLine) or InitiatingProcessFolderPath
+  contains "\\Notepad++\\updater\\")))'

@@ -1,0 +1,18 @@
+name: Remote DLL Load Via Rundll32.EXE
+id: f40017b3-cb2e-4335-ab5d-3babf679c1de
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/09/18
+level: medium
+description: Detects a remote DLL load event via "rundll32.exe".
+status: experimental
+modified: ''
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1204.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath startswith "\\\\" and InitiatingProcessFolderPath endswith "\\rundll32.exe"'

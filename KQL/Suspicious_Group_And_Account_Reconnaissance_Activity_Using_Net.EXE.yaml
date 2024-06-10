@@ -1,0 +1,35 @@
+name: Suspicious Group And Account Reconnaissance Activity Using Net.EXE
+id: d95de845-b83c-4a9a-8a6a-4fc802ebf6c0
+author: Florian Roth (Nextron Systems), omkar72, @svch0st, Nasreddine Bencherchali
+  (Nextron Systems)
+date: 2019/01/16
+level: medium
+description: 'Detects suspicious reconnaissance command line activity on Windows systems
+  using Net.EXE
+
+  Check if the user that executed the commands is suspicious (e.g. service accounts,
+  LOCAL_SYSTEM)
+
+  '
+status: test
+modified: 2023/03/02
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1087.001
+- t1087.002
+query: "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\net.exe\" or FolderPath\
+  \ endswith \"\\\\net1.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"net.exe\"\
+  , \"net1.exe\"))) and ((((ProcessCommandLine contains \"domain admins\" or ProcessCommandLine\
+  \ contains \" administrator\" or ProcessCommandLine contains \" administrateur\"\
+  \ or ProcessCommandLine contains \"enterprise admins\" or ProcessCommandLine contains\
+  \ \"Exchange Trusted Subsystem\" or ProcessCommandLine contains \"Remote Desktop\
+  \ Users\" or ProcessCommandLine contains \"Utilisateurs du Bureau \xC3\_ distance\"\
+  \ or ProcessCommandLine contains \"Usuarios de escritorio remoto\" or ProcessCommandLine\
+  \ contains \" /do\") and (ProcessCommandLine contains \" group \" or ProcessCommandLine\
+  \ contains \" localgroup \")) and (not(ProcessCommandLine contains \" /add\")))\
+  \ or (ProcessCommandLine contains \" /do\" and ProcessCommandLine contains \" accounts\
+  \ \"))"

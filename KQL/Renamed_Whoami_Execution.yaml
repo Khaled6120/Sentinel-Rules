@@ -1,0 +1,20 @@
+name: Renamed Whoami Execution
+id: f1086bf7-a0c4-4a37-9102-01e573caf4a0
+author: Florian Roth (Nextron Systems)
+date: 2021/08/12
+level: critical
+description: Detects the execution of whoami that has been renamed to a different
+  name to avoid detection
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1033
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoOriginalFileName =~ "whoami.exe" and (not(FolderPath endswith
+  "\\whoami.exe"))'

@@ -1,0 +1,22 @@
+name: Suspicious Scheduled Task Name As GUID
+id: ff2fff64-4cd6-4a2b-ba7d-e28a30bbe66b
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/10/31
+level: medium
+description: Detects creation of a scheduled task with a GUID like name
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1053.005
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "}\"" or ProcessCommandLine contains "}''"
+  or ProcessCommandLine contains "} ") and (ProcessCommandLine contains "/Create "
+  and FolderPath endswith "\\schtasks.exe") and (ProcessCommandLine contains "/TN
+  \"{" or ProcessCommandLine contains "/TN ''{" or ProcessCommandLine contains "/TN
+  {")'

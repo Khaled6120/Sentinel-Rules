@@ -1,0 +1,20 @@
+name: Stop Windows Service Via Net.EXE
+id: 88872991-7445-4a22-90b2-a3adadb0e827
+author: Jakob Weinzettl, oscd.community, Nasreddine Bencherchali (Nextron Systems)
+date: 2023/03/05
+level: low
+description: Detects the stopping of a Windows service via the "net" utility.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- impact
+relevantTechniques:
+- t1489
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " stop " and ((ProcessVersionInfoOriginalFileName
+  in~ ("net.exe", "net1.exe")) or (FolderPath endswith "\\net.exe" or FolderPath endswith
+  "\\net1.exe"))'

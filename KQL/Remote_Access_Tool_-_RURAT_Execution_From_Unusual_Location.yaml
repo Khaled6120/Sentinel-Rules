@@ -1,0 +1,21 @@
+name: Remote Access Tool - RURAT Execution From Unusual Location
+id: e01fa958-6893-41d4-ae03-182477c5e77d
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/09/19
+level: medium
+description: Detects execution of Remote Utilities RAT (RURAT) from an unusual location
+  (outside of 'C:\Program Files')
+status: test
+modified: 2023/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\rutserv.exe" or FolderPath endswith "\\rfusclient.exe")
+  or ProcessVersionInfoProductName =~ "Remote Utilities") and (not((FolderPath startswith
+  "C:\\Program Files\\Remote Utilities" or FolderPath startswith "C:\\Program Files
+  (x86)\\Remote Utilities")))'

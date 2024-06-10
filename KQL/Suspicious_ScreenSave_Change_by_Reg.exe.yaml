@@ -1,0 +1,34 @@
+name: Suspicious ScreenSave Change by Reg.exe
+id: 0fc35fc3-efe6-4898-8a37-0b233339524f
+author: frack113
+date: 2021/08/19
+level: medium
+description: 'Adversaries may establish persistence by executing malicious content
+  triggered by user inactivity.
+
+  Screensavers are programs that execute after a configurable time of user inactivity
+  and consist of Portable Executable (PE) files with a .scr file extension
+
+  '
+status: test
+modified: 2022/06/02
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- privilege_escalation
+relevantTechniques:
+- t1546.002
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "HKEY_CURRENT_USER\\Control Panel\\Desktop"
+  or ProcessCommandLine contains "HKCU\\Control Panel\\Desktop") and FolderPath endswith
+  "\\reg.exe") and ((ProcessCommandLine contains "/v ScreenSaveActive" and ProcessCommandLine
+  contains "/t REG_SZ" and ProcessCommandLine contains "/d 1" and ProcessCommandLine
+  contains "/f") or (ProcessCommandLine contains "/v ScreenSaveTimeout" and ProcessCommandLine
+  contains "/t REG_SZ" and ProcessCommandLine contains "/d " and ProcessCommandLine
+  contains "/f") or (ProcessCommandLine contains "/v ScreenSaverIsSecure" and ProcessCommandLine
+  contains "/t REG_SZ" and ProcessCommandLine contains "/d 0" and ProcessCommandLine
+  contains "/f") or (ProcessCommandLine contains "/v SCRNSAVE.EXE" and ProcessCommandLine
+  contains "/t REG_SZ" and ProcessCommandLine contains "/d " and ProcessCommandLine
+  contains ".scr" and ProcessCommandLine contains "/f"))'

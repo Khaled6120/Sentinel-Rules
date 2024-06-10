@@ -1,0 +1,23 @@
+name: Rundll32 UNC Path Execution
+id: 5cdb711b-5740-4fb2-ba88-f7945027afac
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/10
+level: high
+description: Detects rundll32 execution where the DLL is located on a remote location
+  (share)
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1021.002
+- t1218.011
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " \\\\" and (FolderPath endswith "\\rundll32.exe"
+  or ProcessVersionInfoOriginalFileName =~ "RUNDLL32.EXE" or ProcessCommandLine contains
+  "rundll32")'

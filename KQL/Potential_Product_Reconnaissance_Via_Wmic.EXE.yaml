@@ -1,0 +1,20 @@
+name: Potential Product Reconnaissance Via Wmic.EXE
+id: 15434e33-5027-4914-88d5-3d4145ec25a9
+author: Nasreddine Bencherchali
+date: 2023/02/14
+level: medium
+description: Detects the execution of WMIC in order to get a list of firewall and
+  antivirus products
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1047
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "Product" and (FolderPath endswith "\\wmic.exe"
+  or ProcessVersionInfoOriginalFileName =~ "wmic.exe")'

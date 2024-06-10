@@ -1,0 +1,21 @@
+name: WMIC Loading Scripting Libraries
+id: 06ce37c2-61ab-4f05-9ff5-b1a96d18ae32
+author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+date: 2020/10/17
+level: medium
+description: Detects threat actors proxy executing code and bypassing application
+  controls by leveraging wmic and the `/FORMAT` argument switch to download and execute
+  an XSL file (i.e js, vbs, etc).
+status: test
+modified: 2022/10/13
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1220
+query: 'DeviceImageLoadEvents
+
+  | where (FolderPath endswith "\\jscript.dll" or FolderPath endswith "\\vbscript.dll")
+  and InitiatingProcessFolderPath endswith "\\wmic.exe"'

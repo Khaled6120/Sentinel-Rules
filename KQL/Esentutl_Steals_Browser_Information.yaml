@@ -1,0 +1,21 @@
+name: Esentutl Steals Browser Information
+id: 6a69f62d-ce75-4b57-8dce-6351eb55b362
+author: frack113
+date: 2022/02/13
+level: medium
+description: One way Qbot steals sensitive information is by extracting browser data
+  from Internet Explorer and Microsoft Edge by using the built-in utility esentutl.exe
+status: test
+modified: 2024/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- collection
+relevantTechniques:
+- t1005
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "-r" or ProcessCommandLine contains "/r") and
+  (FolderPath endswith "\\esentutl.exe" or ProcessVersionInfoOriginalFileName =~ "esentutl.exe")
+  and ProcessCommandLine contains "\\Windows\\WebCache"'

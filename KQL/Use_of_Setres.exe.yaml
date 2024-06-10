@@ -1,0 +1,22 @@
+name: Use of Setres.exe
+id: 835e75bf-4bfd-47a4-b8a6-b766cac8bcb7
+author: '@gott_cyber'
+date: 2022/12/11
+level: medium
+description: Detects the use of Setres.exe to set the screen resolution and then potentially
+  launch a file named "choice" (with any executable extension such as ".cmd" or ".exe")
+  from the current execution path
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1202
+- t1218
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\choice" and InitiatingProcessFolderPath endswith
+  "\\setres.exe"'

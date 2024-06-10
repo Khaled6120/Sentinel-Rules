@@ -1,0 +1,22 @@
+name: Suspicious Msbuild Execution By Uncommon Parent Process
+id: 33be4333-2c6b-44f4-ae28-102cdbde0a31
+author: frack113
+date: 2022/11/17
+level: medium
+description: Detects suspicious execution of 'Msbuild.exe' by a uncommon parent process
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\MSBuild.exe" or ProcessVersionInfoOriginalFileName
+  =~ "MSBuild.exe") and (not((InitiatingProcessFolderPath endswith "\\devenv.exe"
+  or InitiatingProcessFolderPath endswith "\\cmd.exe" or InitiatingProcessFolderPath
+  endswith "\\msbuild.exe" or InitiatingProcessFolderPath endswith "\\python.exe"
+  or InitiatingProcessFolderPath endswith "\\explorer.exe" or InitiatingProcessFolderPath
+  endswith "\\nuget.exe")))'

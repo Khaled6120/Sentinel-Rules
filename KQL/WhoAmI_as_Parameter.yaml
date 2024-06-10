@@ -1,0 +1,19 @@
+name: WhoAmI as Parameter
+id: e9142d84-fbe0-401d-ac50-3e519fb00c89
+author: Florian Roth (Nextron Systems)
+date: 2021/11/29
+level: high
+description: Detects a suspicious process command line that uses whoami as first parameter
+  (as e.g. used by EfsPotato)
+status: test
+modified: 2022/12/25
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1033
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains ".exe whoami"'

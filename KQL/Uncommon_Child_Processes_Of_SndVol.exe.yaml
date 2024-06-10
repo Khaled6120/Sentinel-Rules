@@ -1,0 +1,19 @@
+name: Uncommon Child Processes Of SndVol.exe
+id: ba42babc-0666-4393-a4f7-ceaf5a69191e
+author: X__Junior (Nextron Systems)
+date: 2023/06/09
+level: medium
+description: Detects potentially uncommon child processes of SndVol.exe (the Windows
+  volume mixer)
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\SndVol.exe" and (not((ProcessCommandLine
+  contains " shell32.dll,Control_RunDLL " and FolderPath endswith "\\rundll32.exe")))'

@@ -1,0 +1,20 @@
+name: UAC Bypass WSReset
+id: 89a9a0e0-f61a-42e5-8957-b1479565a658
+author: Christian Burkard (Nextron Systems)
+date: 2021/08/23
+level: high
+description: Detects the pattern of UAC Bypass via WSReset usable by default sysmon-config
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1548.002
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\wsreset.exe" and (ProcessIntegrityLevel in~ ("High",
+  "System"))'

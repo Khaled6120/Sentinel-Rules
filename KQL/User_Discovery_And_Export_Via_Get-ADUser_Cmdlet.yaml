@@ -1,0 +1,24 @@
+name: User Discovery And Export Via Get-ADUser Cmdlet
+id: 1114e048-b69c-4f41-bc20-657245ae6e3f
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/09/09
+level: medium
+description: Detects usage of the Get-ADUser cmdlet to collect user information and
+  output it to a file
+status: test
+modified: 2022/11/17
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1033
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains " > " or ProcessCommandLine contains " | Select
+  " or ProcessCommandLine contains "Out-File" or ProcessCommandLine contains "Set-Content"
+  or ProcessCommandLine contains "Add-Content") and (ProcessCommandLine contains "Get-ADUser
+  " and ProcessCommandLine contains " -Filter *")) and ((FolderPath endswith "\\powershell.exe"
+  or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~
+  ("PowerShell.EXE", "pwsh.dll")))'

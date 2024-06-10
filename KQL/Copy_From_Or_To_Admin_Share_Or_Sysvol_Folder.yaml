@@ -1,0 +1,34 @@
+name: Copy From Or To Admin Share Or Sysvol Folder
+id: 855bc8b5-2ae8-402e-a9ed-b889e6df1900
+author: Florian Roth (Nextron Systems), oscd.community, Teymur Kheirkhabarov @HeirhabarovT,
+  Zach Stanford @svch0st, Nasreddine Bencherchali
+date: 2019/12/30
+level: medium
+description: Detects a copy command or a copy utility execution to or from an Admin
+  share or remote
+status: test
+modified: 2023/11/15
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- collection
+- exfiltration
+- lateral_movement
+relevantTechniques:
+- t1021.002
+- t1039
+- t1048
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "\\" and ProcessCommandLine contains "$")
+  or ProcessCommandLine contains "\\Sysvol\\") and (((FolderPath endswith "\\robocopy.exe"
+  or FolderPath endswith "\\xcopy.exe") or (ProcessVersionInfoOriginalFileName in~
+  ("robocopy.exe", "XCOPY.EXE"))) or (ProcessCommandLine contains "copy" and (FolderPath
+  endswith "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe")) or ((ProcessCommandLine
+  contains "copy-item" or ProcessCommandLine contains "copy " or ProcessCommandLine
+  contains "cpi " or ProcessCommandLine contains " cp " or ProcessCommandLine contains
+  "move " or ProcessCommandLine contains "move-item" or ProcessCommandLine contains
+  " mi " or ProcessCommandLine contains " mv ") and ((FolderPath contains "\\powershell.exe"
+  or FolderPath contains "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~
+  ("PowerShell.EXE", "pwsh.dll")))))'

@@ -1,0 +1,26 @@
+name: Control Panel Items
+id: 0ba863e6-def5-4e50-9cea-4dd8c7dc46a4
+author: Kyaw Min Thein, Furkan Caliskan (@caliskanfurkan_)
+date: 2020/06/22
+level: high
+description: Detects the malicious use of a control panel item
+status: test
+modified: 2023/10/11
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+- persistence
+relevantTechniques:
+- t1218.002
+- t1546
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "add" and ProcessCommandLine contains "CurrentVersion\\Control
+  Panel\\CPLs") and (FolderPath endswith "\\reg.exe" or ProcessVersionInfoOriginalFileName
+  =~ "reg.exe")) or (ProcessCommandLine endswith ".cpl" and (not(((ProcessCommandLine
+  contains "regsvr32 " and ProcessCommandLine contains " /s " and ProcessCommandLine
+  contains "igfxCPL.cpl") or (ProcessCommandLine contains "\\System32\\" or ProcessCommandLine
+  contains "%System%" or ProcessCommandLine contains "|C:\\Windows\\system32|")))))'

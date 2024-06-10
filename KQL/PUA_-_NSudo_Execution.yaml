@@ -1,0 +1,27 @@
+name: PUA - NSudo Execution
+id: 771d1eb5-9587-4568-95fb-9ec44153a012
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali
+date: 2022/01/24
+level: high
+description: Detects the use of NSudo tool for command execution
+status: test
+modified: 2023/02/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+- s0029
+relevantTechniques:
+- t1569.002
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "-U:S " or ProcessCommandLine contains "-U:T
+  " or ProcessCommandLine contains "-U:E " or ProcessCommandLine contains "-P:E "
+  or ProcessCommandLine contains "-M:S " or ProcessCommandLine contains "-M:H " or
+  ProcessCommandLine contains "-U=S " or ProcessCommandLine contains "-U=T " or ProcessCommandLine
+  contains "-U=E " or ProcessCommandLine contains "-P=E " or ProcessCommandLine contains
+  "-M=S " or ProcessCommandLine contains "-M=H " or ProcessCommandLine contains "-ShowWindowMode:Hide")
+  and ((FolderPath endswith "\\NSudo.exe" or FolderPath endswith "\\NSudoLC.exe" or
+  FolderPath endswith "\\NSudoLG.exe") or (ProcessVersionInfoOriginalFileName in~
+  ("NSudo.exe", "NSudoLC.exe", "NSudoLG.exe")))'

@@ -1,0 +1,36 @@
+name: Communication To Ngrok Tunneling Service Initiated
+id: 1d08ac94-400d-4469-a82f-daee9a908849
+author: Florian Roth (Nextron Systems)
+date: 2022/11/03
+level: high
+description: 'Detects an executable initiating a network connection to "ngrok" tunneling
+  domains.
+
+  Attackers were seen using this "ngrok" in order to store their second stage payloads
+  and malware.
+
+  While communication with such domains can be legitimate, often times is a sign of
+  either data exfiltration by malicious actors or additional download.
+
+  '
+status: test
+modified: 2024/02/02
+logsource:
+  category: network_connection
+  product: windows
+tactics:
+- command_and_control
+- exfiltration
+- s0508
+relevantTechniques:
+- t1090
+- t1102
+- t1567
+- t1568.002
+- t1572
+query: 'DeviceNetworkEvents
+
+  | where RemoteUrl contains "tunnel.us.ngrok.com" or RemoteUrl contains "tunnel.eu.ngrok.com"
+  or RemoteUrl contains "tunnel.ap.ngrok.com" or RemoteUrl contains "tunnel.au.ngrok.com"
+  or RemoteUrl contains "tunnel.sa.ngrok.com" or RemoteUrl contains "tunnel.jp.ngrok.com"
+  or RemoteUrl contains "tunnel.in.ngrok.com"'

@@ -1,0 +1,18 @@
+name: MSExchange Transport Agent Installation
+id: 83809e84-4475-4b69-bc3e-4aad8568612f
+author: Tobias Michalski (Nextron Systems)
+date: 2021/06/08
+level: medium
+description: Detects the Installation of a Exchange Transport Agent
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+relevantTechniques:
+- t1505.002
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "Install-TransportAgent"'

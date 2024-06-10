@@ -1,0 +1,24 @@
+name: Phishing Pattern ISO in Archive
+id: fcdf69e5-a3d3-452a-9724-26f2308bf2b1
+author: Florian Roth (Nextron Systems)
+date: 2022/06/07
+level: high
+description: Detects cases in which an ISO files is opend within an archiver like
+  7Zip or Winrar, which is a sign of phishing as threat actors put small ISO files
+  in archives as email attachments to bypass certain filters and protective measures
+  (mark of web)
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- initial_access
+relevantTechniques:
+- t1566
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\isoburn.exe" or FolderPath endswith "\\PowerISO.exe"
+  or FolderPath endswith "\\ImgBurn.exe") and (InitiatingProcessFolderPath endswith
+  "\\Winrar.exe" or InitiatingProcessFolderPath endswith "\\7zFM.exe" or InitiatingProcessFolderPath
+  endswith "\\peazip.exe")'

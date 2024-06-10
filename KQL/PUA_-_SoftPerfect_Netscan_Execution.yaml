@@ -1,0 +1,26 @@
+name: PUA - SoftPerfect Netscan Execution
+id: ca387a8e-1c84-4da3-9993-028b45342d30
+author: '@d4ns4n_ (Wuerth-Phoenix)'
+date: 2024/04/25
+level: medium
+description: 'Detects usage of SoftPerfect''s "netscan.exe". An application for scanning
+  networks.
+
+  It is actively used in-the-wild by threat actors to inspect and understand the network
+  architecture of a victim.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1046
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\netscan.exe" or ProcessVersionInfoProductName =~
+  "Network Scanner" or ProcessVersionInfoFileDescription =~ "Application for scanning
+  networks"'

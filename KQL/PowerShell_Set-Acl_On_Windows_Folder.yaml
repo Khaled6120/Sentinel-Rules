@@ -1,0 +1,23 @@
+name: PowerShell Set-Acl On Windows Folder
+id: 0944e002-e3f6-4eb5-bf69-3a3067b53d73
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/10/18
+level: high
+description: Detects PowerShell scripts to set the ACL to a file in the Windows folder
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "Set-Acl " and ProcessCommandLine contains
+  "-AclObject ") and ((ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll"))
+  or (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"))
+  and (ProcessCommandLine contains "-Path \"C:\\Windows" or ProcessCommandLine contains
+  "-Path ''C:\\Windows" or ProcessCommandLine contains "-Path %windir%" or ProcessCommandLine
+  contains "-Path $env:windir") and (ProcessCommandLine contains "FullControl" or
+  ProcessCommandLine contains "Allow")'

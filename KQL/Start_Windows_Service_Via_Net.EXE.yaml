@@ -1,0 +1,21 @@
+name: Start Windows Service Via Net.EXE
+id: 2a072a96-a086-49fa-bcb5-15cc5a619093
+author: Timur Zinniatullin, Daniil Yugoslavskiy, oscd.community
+date: 2019/10/21
+level: low
+description: Detects the usage of the "net.exe" command to start a service using the
+  "start" flag
+status: test
+modified: 2023/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1569.002
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " start " and ((FolderPath endswith "\\net.exe"
+  or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName in~
+  ("net.exe", "net1.exe")))'

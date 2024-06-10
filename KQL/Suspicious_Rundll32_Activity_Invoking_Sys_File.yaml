@@ -1,0 +1,20 @@
+name: Suspicious Rundll32 Activity Invoking Sys File
+id: 731231b9-0b5d-4219-94dd-abb6959aa7ea
+author: Florian Roth (Nextron Systems)
+date: 2021/03/05
+level: high
+description: Detects suspicious process related to rundll32 based on command line
+  that includes a *.sys file as seen being used by UNC2452
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218.011
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "rundll32.exe" and (ProcessCommandLine contains
+  ".sys," or ProcessCommandLine contains ".sys ")'

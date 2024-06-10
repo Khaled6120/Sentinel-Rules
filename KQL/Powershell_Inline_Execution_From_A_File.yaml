@@ -1,0 +1,22 @@
+name: Powershell Inline Execution From A File
+id: ee218c12-627a-4d27-9e30-d6fb2fe22ed2
+author: frack113
+date: 2022/12/25
+level: medium
+description: Detects inline execution of PowerShell code from a file
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "iex " or ProcessCommandLine contains "Invoke-Expression
+  " or ProcessCommandLine contains "Invoke-Command " or ProcessCommandLine contains
+  "icm ") and ProcessCommandLine contains " -raw" and (ProcessCommandLine contains
+  "cat " or ProcessCommandLine contains "get-content " or ProcessCommandLine contains
+  "type ")'

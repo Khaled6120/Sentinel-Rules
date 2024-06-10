@@ -1,0 +1,23 @@
+name: RDP Port Forwarding Rule Added Via Netsh.EXE
+id: 782d6f3e-4c5d-4b8c-92a3-1d05fed72e63
+author: Florian Roth (Nextron Systems), oscd.community
+date: 2019/01/29
+level: high
+description: Detects the execution of netsh to configure a port forwarding of port
+  3389 (RDP) rule
+status: test
+modified: 2023/02/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+- defense_evasion
+- lateral_movement
+relevantTechniques:
+- t1090
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " i" and ProcessCommandLine contains " p" and
+  ProcessCommandLine contains "=3389" and ProcessCommandLine contains " c") and (FolderPath
+  endswith "\\netsh.exe" or ProcessVersionInfoOriginalFileName =~ "netsh.exe")'

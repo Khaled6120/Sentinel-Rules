@@ -1,0 +1,20 @@
+name: Uncommon Child Process Of Defaultpack.EXE
+id: b2309017-4235-44fe-b5af-b15363011957
+author: frack113
+date: 2022/12/31
+level: medium
+description: Detects uncommon child processes of "DefaultPack.EXE" binary as a proxy
+  to launch other programs
+status: test
+modified: 2024/04/22
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\DefaultPack.exe"'

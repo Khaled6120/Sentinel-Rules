@@ -1,0 +1,21 @@
+name: Binary Proxy Execution Via Dotnet-Trace.EXE
+id: 9257c05b-4a4a-48e5-a670-b7b073cf401b
+author: Jimmy Bayne (@bohops)
+date: 2024/01/02
+level: medium
+description: Detects commandline arguments for executing a child process via dotnet-trace.exe
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "-- " and ProcessCommandLine contains "collect")
+  and (FolderPath endswith "\\dotnet-trace.exe" or ProcessVersionInfoOriginalFileName
+  =~ "dotnet-trace.dll")'

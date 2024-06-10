@@ -1,0 +1,21 @@
+name: Python Spawning Pretty TTY on Windows
+id: 480e7e51-e797-47e3-8d72-ebfce65b6d8d
+author: Nextron Systems
+date: 2022/06/03
+level: high
+description: Detects python spawning a pretty tty
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "python.exe" or FolderPath endswith "python3.exe" or
+  FolderPath endswith "python2.exe") and ((ProcessCommandLine contains "import pty"
+  and ProcessCommandLine contains ".spawn(") or ProcessCommandLine contains "from
+  pty import spawn")'

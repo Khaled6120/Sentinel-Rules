@@ -1,0 +1,23 @@
+name: Potential DLL Sideloading Of Libcurl.DLL Via GUP.EXE
+id: e49b5745-1064-4ac1-9a2e-f687bc2dd37e
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/05
+level: medium
+description: Detects potential DLL sideloading of "libcurl.dll" by the "gup.exe" process
+  from an uncommon location
+status: test
+modified: ''
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where (FolderPath endswith "\\libcurl.dll" and InitiatingProcessFolderPath endswith
+  "\\gup.exe") and (not(InitiatingProcessFolderPath endswith "\\Notepad++\\updater\\GUP.exe"))'

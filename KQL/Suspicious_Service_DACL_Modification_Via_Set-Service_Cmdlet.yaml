@@ -1,0 +1,25 @@
+name: Suspicious Service DACL Modification Via Set-Service Cmdlet
+id: a95b9b42-1308-4735-a1af-abb1c5e6f5ac
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/10/18
+level: high
+description: Detects suspicious DACL modifications via the "Set-Service" cmdlet using
+  the "SecurityDescriptorSddl" flag (Only available with PowerShell 7) that can be
+  used to hide services or make them unstopable
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+relevantTechniques:
+- t1543.003
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\pwsh.exe" or ProcessVersionInfoOriginalFileName
+  =~ "pwsh.dll") and (ProcessCommandLine contains "-SecurityDescriptorSddl " or ProcessCommandLine
+  contains "-sd ") and ((ProcessCommandLine contains ";;;IU" or ProcessCommandLine
+  contains ";;;SU" or ProcessCommandLine contains ";;;BA" or ProcessCommandLine contains
+  ";;;SY" or ProcessCommandLine contains ";;;WD") and (ProcessCommandLine contains
+  "Set-Service " and ProcessCommandLine contains "D;;"))'

@@ -1,0 +1,24 @@
+name: File In Suspicious Location Encoded To Base64 Via Certutil.EXE
+id: 82a6714f-4899-4f16-9c1e-9a333544d4c3
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/15
+level: high
+description: Detects the execution of certutil with the "encode" flag to encode a
+  file to base64 where the files are located in potentially suspicious locations
+status: experimental
+modified: 2024/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1027
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "-encode" or ProcessCommandLine contains "/encode")
+  and (ProcessCommandLine contains "\\AppData\\Roaming\\" or ProcessCommandLine contains
+  "\\Desktop\\" or ProcessCommandLine contains "\\Local\\Temp\\" or ProcessCommandLine
+  contains "\\PerfLogs\\" or ProcessCommandLine contains "\\Users\\Public\\" or ProcessCommandLine
+  contains "\\Windows\\Temp\\" or ProcessCommandLine contains "$Recycle.Bin") and
+  (FolderPath endswith "\\certutil.exe" or ProcessVersionInfoOriginalFileName =~ "CertUtil.exe")'

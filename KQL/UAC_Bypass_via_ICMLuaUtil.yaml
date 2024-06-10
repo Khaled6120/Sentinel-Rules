@@ -1,0 +1,22 @@
+name: UAC Bypass via ICMLuaUtil
+id: 49f2f17b-b4c8-4172-a68b-d5bf95d05130
+author: Florian Roth (Nextron Systems), Elastic (idea)
+date: 2022/09/13
+level: high
+description: Detects the pattern of UAC Bypass using ICMLuaUtil Elevated COM interface
+status: test
+modified: 2022/09/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1548.002
+query: 'DeviceProcessEvents
+
+  | where ((InitiatingProcessCommandLine contains "/Processid:{3E5FC7F9-9A51-4367-9063-A120244FBEC7}"
+  or InitiatingProcessCommandLine contains "/Processid:{D2E7041B-2927-42FB-8E9F-7CE93B6DC937}")
+  and InitiatingProcessFolderPath endswith "\\dllhost.exe") and (not((FolderPath endswith
+  "\\WerFault.exe" or ProcessVersionInfoOriginalFileName =~ "WerFault.exe")))'

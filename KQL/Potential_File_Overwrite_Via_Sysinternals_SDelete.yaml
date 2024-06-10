@@ -1,0 +1,20 @@
+name: Potential File Overwrite Via Sysinternals SDelete
+id: a4824fca-976f-4964-b334-0621379e84c4
+author: frack113
+date: 2021/06/03
+level: high
+description: Detects the use of SDelete to erase a file not the free space
+status: test
+modified: 2023/02/28
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- impact
+relevantTechniques:
+- t1485
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoOriginalFileName =~ "sdelete.exe" and (not((ProcessCommandLine
+  contains " -h" or ProcessCommandLine contains " -c" or ProcessCommandLine contains
+  " -z" or ProcessCommandLine contains " /?")))'

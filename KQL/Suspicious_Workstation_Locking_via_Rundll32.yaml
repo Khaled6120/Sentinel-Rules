@@ -1,0 +1,20 @@
+name: Suspicious Workstation Locking via Rundll32
+id: 3b5b0213-0460-4e3f-8937-3abf98ff7dcc
+author: frack113
+date: 2022/06/04
+level: medium
+description: Detects a suspicious call to the user32.dll function that locks the user
+  workstation
+status: test
+modified: 2023/02/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "user32.dll," and (FolderPath endswith "\\rundll32.exe"
+  or ProcessVersionInfoOriginalFileName =~ "RUNDLL32.EXE") and InitiatingProcessFolderPath
+  endswith "\\cmd.exe" and ProcessCommandLine contains "LockWorkStation"'

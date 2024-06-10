@@ -1,0 +1,20 @@
+name: Enumerate All Information With Whoami.EXE
+id: c248c896-e412-4279-8c15-1c558067b6fa
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2023/12/04
+level: medium
+description: Detects the execution of "whoami.exe" with the "/all" flag
+status: experimental
+modified: 2024/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1033
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -all" or ProcessCommandLine contains " /all")
+  and (FolderPath endswith "\\whoami.exe" or ProcessVersionInfoOriginalFileName =~
+  "whoami.exe")'

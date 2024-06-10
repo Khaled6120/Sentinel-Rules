@@ -1,0 +1,20 @@
+name: Suspicious Dropbox API Usage
+id: 25eabf56-22f0-4915-a1ed-056b8dae0a68
+author: Florian Roth (Nextron Systems)
+date: 2022/04/20
+level: high
+description: Detects an executable that isn't dropbox but communicates with the Dropbox
+  API
+status: test
+modified: ''
+logsource:
+  category: network_connection
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1105
+query: 'DeviceNetworkEvents
+
+  | where (RemoteUrl endswith "api.dropboxapi.com" or RemoteUrl endswith "content.dropboxapi.com")
+  and (not(InitiatingProcessFolderPath contains "\\Dropbox"))'

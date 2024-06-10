@@ -1,0 +1,19 @@
+name: PktMon.EXE Execution
+id: f956c7c1-0f60-4bc5-b7d7-b39ab3c08908
+author: frack113
+date: 2022/03/17
+level: medium
+description: Detects execution of PktMon, a tool that captures network packets.
+status: test
+modified: 2023/06/23
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1040
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\pktmon.exe" or ProcessVersionInfoOriginalFileName
+  =~ "PktMon.exe"'

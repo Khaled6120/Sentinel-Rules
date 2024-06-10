@@ -1,0 +1,20 @@
+name: Invoke-Obfuscation Via Use Clip
+id: e1561947-b4e3-4a74-9bdd-83baed21bdb5
+author: Nikita Nazarov, oscd.community
+date: 2020/10/09
+level: high
+description: Detects Obfuscated Powershell via use Clip.exe in Scripts
+status: test
+modified: 2024/04/15
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1027
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine matches regex "(?i)echo.*clip.*&&.*(Clipboard|i`?n`?v`?o`?k`?e`?)"'

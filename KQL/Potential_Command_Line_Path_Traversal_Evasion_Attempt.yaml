@@ -1,0 +1,23 @@
+name: Potential Command Line Path Traversal Evasion Attempt
+id: 1327381e-6ab0-4f38-b583-4c1b8346a56b
+author: Christian Burkard (Nextron Systems)
+date: 2021/10/26
+level: medium
+description: Detects potential evasion or obfuscation attempts using bogus path traversal
+  via the commandline
+status: test
+modified: 2023/03/29
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1036
+query: 'DeviceProcessEvents
+
+  | where (((ProcessCommandLine contains "\\..\\Windows\\" or ProcessCommandLine contains
+  "\\..\\System32\\" or ProcessCommandLine contains "\\..\\..\\") and FolderPath contains
+  "\\Windows\\") or ProcessCommandLine contains ".exe\\..\\") and (not((ProcessCommandLine
+  contains "\\Citrix\\Virtual Smart Card\\Citrix.Authentication.VirtualSmartcard.Launcher.exe\\..\\"
+  or ProcessCommandLine contains "\\Google\\Drive\\googledrivesync.exe\\..\\")))'

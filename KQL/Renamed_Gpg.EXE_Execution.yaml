@@ -1,0 +1,20 @@
+name: Renamed Gpg.EXE Execution
+id: ec0722a3-eb5c-4a56-8ab2-bf6f20708592
+author: Nasreddine Bencherchali (Nextron Systems), frack113
+date: 2023/08/09
+level: high
+description: Detects the execution of a renamed "gpg.exe". Often used by ransomware
+  and loaders to decrypt/encrypt data.
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- impact
+relevantTechniques:
+- t1486
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoOriginalFileName =~ "gpg.exe" and (not((FolderPath endswith
+  "\\gpg.exe" or FolderPath endswith "\\gpg2.exe")))'

@@ -1,0 +1,23 @@
+name: UAC Bypass Using Iscsicpl - ImageLoad
+id: 9ed5959a-c43c-4c59-84e3-d28628429456
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/07/17
+level: high
+description: Detects the "iscsicpl.exe" UAC bypass technique that leverages a DLL
+  Search Order hijacking technique to load a custom DLL's from temp or a any user
+  controlled location in the users %PATH%
+status: test
+modified: 2022/07/25
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1548.002
+query: 'DeviceImageLoadEvents
+
+  | where (InitiatingProcessFolderPath =~ "C:\\Windows\\SysWOW64\\iscsicpl.exe" and
+  FolderPath endswith "\\iscsiexe.dll") and (not((FolderPath contains "C:\\Windows\\"
+  and FolderPath contains "iscsiexe.dll")))'

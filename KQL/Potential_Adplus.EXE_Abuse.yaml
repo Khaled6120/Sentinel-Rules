@@ -1,0 +1,25 @@
+name: Potential Adplus.EXE Abuse
+id: 2f869d59-7f6a-4931-992c-cce556ff2d53
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/06/09
+level: high
+description: Detects execution of "AdPlus.exe", a binary that is part of the Windows
+  SDK that can be used as a LOLBIN in order to dump process memory and execute arbitrary
+  commands.
+status: test
+modified: 2023/06/23
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1003.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -hang " or ProcessCommandLine contains "
+  -pn " or ProcessCommandLine contains " -pmn " or ProcessCommandLine contains " -p
+  " or ProcessCommandLine contains " -po " or ProcessCommandLine contains " -c " or
+  ProcessCommandLine contains " -sc ") and (FolderPath endswith "\\adplus.exe" or
+  ProcessVersionInfoOriginalFileName =~ "Adplus.exe")'

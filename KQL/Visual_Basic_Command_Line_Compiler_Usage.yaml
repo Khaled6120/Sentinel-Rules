@@ -1,0 +1,20 @@
+name: Visual Basic Command Line Compiler Usage
+id: 7b10f171-7f04-47c7-9fa2-5be43c76e535
+author: "Ensar \xC5\u017Eamil, @sblmsrsn, @oscd_initiative"
+date: 2020/10/07
+level: high
+description: Detects successful code compilation via Visual Basic Command Line Compiler
+  that utilizes Windows Resource to Object Converter.
+status: test
+modified: 2021/11/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1027.004
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\cvtres.exe" and InitiatingProcessFolderPath endswith
+  "\\vbc.exe"'

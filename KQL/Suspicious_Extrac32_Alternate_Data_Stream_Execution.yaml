@@ -1,0 +1,19 @@
+name: Suspicious Extrac32 Alternate Data Stream Execution
+id: 4b13db67-0c45-40f1-aba8-66a1a7198a1e
+author: frack113
+date: 2021/11/26
+level: medium
+description: Extract data from cab file and hide it in an alternate data stream
+status: test
+modified: 2022/12/30
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1564.004
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "extrac32.exe" and ProcessCommandLine contains
+  ".cab") and ProcessCommandLine matches regex ":[^\\\\]"'

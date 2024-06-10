@@ -1,0 +1,24 @@
+name: HackTool - RedMimicry Winnti Playbook Execution
+id: 95022b85-ff2a-49fa-939a-d7b8f56eeb9b
+author: Alexander Rausch
+date: 2020/06/24
+level: high
+description: Detects actions caused by the RedMimicry Winnti playbook a automated
+  breach emulations utility
+status: test
+modified: 2023/03/01
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1059.003
+- t1106
+- t1218.011
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "gthread-3.6.dll" or ProcessCommandLine contains
+  "\\Windows\\Temp\\tmp.bat" or ProcessCommandLine contains "sigcmm-2.4.dll") and
+  (FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\cmd.exe")'

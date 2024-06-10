@@ -1,0 +1,20 @@
+name: Suspicious Execution of InstallUtil Without Log
+id: d042284c-a296-4988-9be5-f424fadcc28c
+author: frack113
+date: 2022/01/23
+level: medium
+description: Uses the .NET InstallUtil.exe application in order to execute image without
+  log
+status: test
+modified: 2022/02/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "/logfile= " and ProcessCommandLine contains
+  "/LogToConsole=false") and FolderPath contains "Microsoft.NET\\Framework" and FolderPath
+  endswith "\\InstallUtil.exe"'

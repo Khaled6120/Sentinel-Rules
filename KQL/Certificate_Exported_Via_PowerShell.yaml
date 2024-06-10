@@ -1,0 +1,23 @@
+name: Certificate Exported Via PowerShell
+id: 9e716b33-63b2-46da-86a4-bd3c3b9b5dfb
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/18
+level: medium
+description: Detects calls to cmdlets that are used to export certificates from the
+  local certificate store. Threat actors were seen abusing this to steal private keys
+  from compromised machines.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+- execution
+relevantTechniques:
+- t1059.001
+- t1552.004
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "Export-PfxCertificate " or ProcessCommandLine
+  contains "Export-Certificate "'

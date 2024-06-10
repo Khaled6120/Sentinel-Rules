@@ -1,0 +1,24 @@
+name: LSASS Process Reconnaissance Via Findstr.EXE
+id: fe63010f-8823-4864-a96b-a7b4a0f7b929
+author: Florian Roth (Nextron Systems)
+date: 2022/08/12
+level: high
+description: Detects findstring commands that include the keyword lsass, which indicates
+  recon actviity for the LSASS process PID
+status: experimental
+modified: 2023/11/11
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1552.006
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "lsass" and ((FolderPath endswith "\\find.exe"
+  or FolderPath endswith "\\findstr.exe") or (ProcessVersionInfoOriginalFileName in~
+  ("FIND.EXE", "FINDSTR.EXE")))) or (ProcessCommandLine contains " /i \"lsass" or
+  ProcessCommandLine contains " /i lsass.exe" or ProcessCommandLine contains "findstr
+  \"lsass" or ProcessCommandLine contains "findstr lsass" or ProcessCommandLine contains
+  "findstr.exe \"lsass" or ProcessCommandLine contains "findstr.exe lsass")'

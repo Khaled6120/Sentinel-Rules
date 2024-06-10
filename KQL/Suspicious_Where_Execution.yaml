@@ -1,0 +1,32 @@
+name: Suspicious Where Execution
+id: 725a9768-0f5e-4cb3-aec2-bc5719c6831a
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: 2021/12/13
+level: low
+description: 'Adversaries may enumerate browser bookmarks to learn more about compromised
+  hosts.
+
+  Browser bookmarks may reveal personal information about users (ex: banking sites,
+  interests, social media, etc.) as well as details about
+
+  internal network resources such as servers, tools/dashboards, or other related infrastructure.
+
+  '
+status: test
+modified: 2022/06/29
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1217
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\where.exe" or ProcessVersionInfoOriginalFileName
+  =~ "where.exe") and (ProcessCommandLine contains "places.sqlite" or ProcessCommandLine
+  contains "cookies.sqlite" or ProcessCommandLine contains "formhistory.sqlite" or
+  ProcessCommandLine contains "logins.json" or ProcessCommandLine contains "key4.db"
+  or ProcessCommandLine contains "key3.db" or ProcessCommandLine contains "sessionstore.jsonlz4"
+  or ProcessCommandLine contains "History" or ProcessCommandLine contains "Bookmarks"
+  or ProcessCommandLine contains "Cookies" or ProcessCommandLine contains "Login Data")'

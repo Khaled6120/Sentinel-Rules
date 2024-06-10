@@ -1,0 +1,20 @@
+name: WMIC Remote Command Execution
+id: 7773b877-5abb-4a3e-b9c9-fd0369b59b00
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: 2023/02/14
+level: medium
+description: Detects the execution of WMIC to query information on a remote system
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1047
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "/node:" and (FolderPath endswith "\\WMIC.exe"
+  or ProcessVersionInfoOriginalFileName =~ "wmic.exe")) and (not((ProcessCommandLine
+  contains "/node:127.0.0.1 " or ProcessCommandLine contains "/node:localhost ")))'

@@ -1,0 +1,25 @@
+name: PUA- IOX Tunneling Tool Execution
+id: d7654f02-e04b-4934-9838-65c46f187ebc
+author: Florian Roth (Nextron Systems)
+date: 2022/10/08
+level: high
+description: Detects the use of IOX - a tool for port forwarding and intranet proxy
+  purposes
+status: test
+modified: 2023/02/08
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1090
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\iox.exe" or (ProcessCommandLine contains ".exe fwd
+  -l " or ProcessCommandLine contains ".exe fwd -r " or ProcessCommandLine contains
+  ".exe proxy -l " or ProcessCommandLine contains ".exe proxy -r ") or ((MD5 startswith
+  "9DB2D314DD3F704A02051EF5EA210993" or SHA1 startswith "039130337E28A6623ECF9A0A3DA7D92C5964D8DD"
+  or SHA256 startswith "C6CF82919B809967D9D90EA73772A8AA1C1EB3BC59252D977500F64F1A0D6731")
+  or MD5 =~ "9db2d314dd3f704a02051ef5ea210993" or SHA1 =~ "039130337e28a6623ecf9a0a3da7d92c5964d8dd"
+  or SHA256 =~ "c6cf82919b809967d9d90ea73772a8aa1c1eb3bc59252d977500f64f1a0d6731")'

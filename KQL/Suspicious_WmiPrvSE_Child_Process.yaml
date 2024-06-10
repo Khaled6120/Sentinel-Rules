@@ -1,0 +1,31 @@
+name: Suspicious WmiPrvSE Child Process
+id: 8a582fe2-0882-4b89-a82a-da6b2dc32937
+author: Vadim Khrykov (ThreatIntel), Cyb3rEng, Florian Roth (Nextron Systems)
+date: 2021/08/23
+level: high
+description: Detects suspicious and uncommon child processes of WmiPrvSE
+status: test
+modified: 2023/11/10
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1047
+- t1204.002
+- t1218.010
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\wbem\\WmiPrvSE.exe" and ((FolderPath
+  endswith "\\certutil.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith
+  "\\mshta.exe" or FolderPath endswith "\\msiexec.exe" or FolderPath endswith "\\regsvr32.exe"
+  or FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\verclsid.exe"
+  or FolderPath endswith "\\wscript.exe") or ((ProcessCommandLine contains "cscript"
+  or ProcessCommandLine contains "mshta" or ProcessCommandLine contains "powershell"
+  or ProcessCommandLine contains "pwsh" or ProcessCommandLine contains "regsvr32"
+  or ProcessCommandLine contains "rundll32" or ProcessCommandLine contains "wscript")
+  and FolderPath endswith "\\cmd.exe")) and (not(((ProcessCommandLine contains "/i
+  " and FolderPath endswith "\\msiexec.exe") or FolderPath endswith "\\WerFault.exe"
+  or FolderPath endswith "\\WmiPrvSE.exe")))'

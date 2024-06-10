@@ -1,0 +1,30 @@
+name: Insensitive Subfolder Search Via Findstr.EXE
+id: 04936b66-3915-43ad-a8e5-809eadfd1141
+author: Furkan CALISKAN, @caliskanfurkan_, @oscd_initiative, Nasreddine Bencherchali
+  (Nextron Systems)
+date: 2020/10/05
+level: low
+description: 'Detects execution of findstr with the "s" and "i" flags for a "subfolder"
+  and "insensitive" search respectively. Attackers sometimes leverage this built-in
+  utility to search the system for interesting files or filter through results of
+  commands.
+
+  '
+status: experimental
+modified: 2024/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1105
+- t1218
+- t1552.001
+- t1564.004
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "findstr" or FolderPath endswith "findstr.exe"
+  or ProcessVersionInfoOriginalFileName =~ "FINDSTR.EXE") and ((ProcessCommandLine
+  contains " -i " or ProcessCommandLine contains " /i ") and (ProcessCommandLine contains
+  " -s " or ProcessCommandLine contains " /s "))'

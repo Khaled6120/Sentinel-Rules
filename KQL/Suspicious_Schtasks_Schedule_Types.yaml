@@ -1,0 +1,23 @@
+name: Suspicious Schtasks Schedule Types
+id: 24c8392b-aa3c-46b7-a545-43f71657fe98
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/09/09
+level: high
+description: Detects scheduled task creations or modification on a suspicious schedule
+  type
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1053.005
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\schtasks.exe" or ProcessVersionInfoOriginalFileName
+  =~ "schtasks.exe") and (ProcessCommandLine contains " ONLOGON " or ProcessCommandLine
+  contains " ONSTART " or ProcessCommandLine contains " ONCE " or ProcessCommandLine
+  contains " ONIDLE ")) and (not((ProcessCommandLine contains "NT AUT" or ProcessCommandLine
+  contains " SYSTEM" or ProcessCommandLine contains "HIGHEST")))'

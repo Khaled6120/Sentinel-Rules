@@ -1,0 +1,21 @@
+name: Chromium Browser Instance Executed With Custom Extension
+id: 88d6e60c-759d-4ac1-a447-c0f1466c2d21
+author: Aedan Russell, frack113, X__Junior (Nextron Systems)
+date: 2022/06/19
+level: medium
+description: Detects a Chromium based browser process with the 'load-extension' flag
+  to start a instance with a custom extension
+status: experimental
+modified: 2023/11/28
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+relevantTechniques:
+- t1176
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "--load-extension=" and (FolderPath endswith
+  "\\brave.exe" or FolderPath endswith "\\chrome.exe" or FolderPath endswith "\\msedge.exe"
+  or FolderPath endswith "\\opera.exe" or FolderPath endswith "\\vivaldi.exe")'

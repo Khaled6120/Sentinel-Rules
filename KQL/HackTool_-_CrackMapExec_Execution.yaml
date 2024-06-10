@@ -1,0 +1,42 @@
+name: HackTool - CrackMapExec Execution
+id: 42a993dd-bb3e-48c8-b372-4d6684c4106c
+author: Florian Roth (Nextron Systems)
+date: 2022/02/25
+level: high
+description: This rule detect common flag combinations used by CrackMapExec in order
+  to detect its use even if the binary has been replaced.
+status: test
+modified: 2023/03/08
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+- discovery
+- execution
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1047
+- t1053
+- t1059.001
+- t1059.003
+- t1110
+- t1201
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\crackmapexec.exe" or (ProcessCommandLine contains
+  " --local-auth" and ProcessCommandLine contains " -u " and ProcessCommandLine contains
+  " -x ") or (ProcessCommandLine contains " --local-auth" and ProcessCommandLine contains
+  " -u " and ProcessCommandLine contains " -p " and ProcessCommandLine contains "
+  -H ''NTHASH''") or (ProcessCommandLine contains " mssql " and ProcessCommandLine
+  contains " -u " and ProcessCommandLine contains " -p " and ProcessCommandLine contains
+  " -M " and ProcessCommandLine contains " -d ") or (ProcessCommandLine contains "
+  smb " and ProcessCommandLine contains " -u " and ProcessCommandLine contains " -H
+  " and ProcessCommandLine contains " -M " and ProcessCommandLine contains " -o ")
+  or (ProcessCommandLine contains " smb " and ProcessCommandLine contains " -u " and
+  ProcessCommandLine contains " -p " and ProcessCommandLine contains " --local-auth")
+  or ProcessCommandLine contains " -M pe_inject ") or ((ProcessCommandLine contains
+  " --local-auth" and ProcessCommandLine contains " -u " and ProcessCommandLine contains
+  " -p ") and (ProcessCommandLine contains " 10." and ProcessCommandLine contains
+  " 192.168." and ProcessCommandLine contains "/24 "))'

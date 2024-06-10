@@ -1,0 +1,32 @@
+name: Suspicious Process Created Via Wmic.EXE
+id: 3c89a1e8-0fba-449e-8f1b-8409d6267ec8
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2020/10/12
+level: high
+description: Detects WMIC executing "process call create" with suspicious calls to
+  processes such as "rundll32", "regsrv32", etc.
+status: test
+modified: 2023/02/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1047
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "rundll32" or ProcessCommandLine contains "bitsadmin"
+  or ProcessCommandLine contains "regsvr32" or ProcessCommandLine contains "cmd.exe
+  /c " or ProcessCommandLine contains "cmd.exe /k " or ProcessCommandLine contains
+  "cmd.exe /r " or ProcessCommandLine contains "cmd /c " or ProcessCommandLine contains
+  "cmd /k " or ProcessCommandLine contains "cmd /r " or ProcessCommandLine contains
+  "powershell" or ProcessCommandLine contains "pwsh" or ProcessCommandLine contains
+  "certutil" or ProcessCommandLine contains "cscript" or ProcessCommandLine contains
+  "wscript" or ProcessCommandLine contains "mshta" or ProcessCommandLine contains
+  "\\Users\\Public\\" or ProcessCommandLine contains "\\Windows\\Temp\\" or ProcessCommandLine
+  contains "\\AppData\\Local\\" or ProcessCommandLine contains "%temp%" or ProcessCommandLine
+  contains "%tmp%" or ProcessCommandLine contains "%ProgramData%" or ProcessCommandLine
+  contains "%appdata%" or ProcessCommandLine contains "%comspec%" or ProcessCommandLine
+  contains "%localappdata%") and (ProcessCommandLine contains "process " and ProcessCommandLine
+  contains "call " and ProcessCommandLine contains "create ")'

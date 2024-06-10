@@ -1,0 +1,24 @@
+name: Uncommon FileSystem Load Attempt By Format.com
+id: 9fb6b26e-7f9e-4517-a48b-8cac4a1b6c60
+author: Florian Roth (Nextron Systems)
+date: 2022/01/04
+level: high
+description: 'Detects the execution of format.com with an uncommon filesystem selection
+  that could indicate a defense evasion activity in which "format.com" is used to
+  load malicious DLL files or other programs.
+
+  '
+status: test
+modified: 2024/05/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "/fs:" and FolderPath endswith "\\format.com")
+  and (not((ProcessCommandLine contains "/fs:exFAT" or ProcessCommandLine contains
+  "/fs:FAT" or ProcessCommandLine contains "/fs:NTFS" or ProcessCommandLine contains
+  "/fs:ReFS" or ProcessCommandLine contains "/fs:UDF")))'

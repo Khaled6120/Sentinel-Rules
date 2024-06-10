@@ -1,0 +1,30 @@
+name: Install New Package Via Winget Local Manifest
+id: 313d6012-51a0-4d93-8dfc-de8553239e25
+author: Sreeman, Florian Roth (Nextron Systems), frack113
+date: 2020/04/21
+level: medium
+description: 'Detects usage of winget to install applications via manifest file. Adversaries
+  can abuse winget to download payloads remotely and execute them.
+
+  The manifest option enables you to install an application by passing in a YAML file
+  directly to the client.
+
+  Winget can be used to download and install exe, msi or msix files later.
+
+  '
+status: test
+modified: 2023/04/17
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\winget.exe" or ProcessVersionInfoOriginalFileName
+  =~ "winget.exe") and (ProcessCommandLine contains "install" or ProcessCommandLine
+  contains " add ") and (ProcessCommandLine contains "-m " or ProcessCommandLine contains
+  "--manifest")'

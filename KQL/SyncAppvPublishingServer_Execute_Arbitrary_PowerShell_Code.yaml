@@ -1,0 +1,19 @@
+name: SyncAppvPublishingServer Execute Arbitrary PowerShell Code
+id: fbd7c32d-db2a-4418-b92c-566eb8911133
+author: frack113
+date: 2021/07/12
+level: medium
+description: Executes arbitrary PowerShell code using SyncAppvPublishingServer.exe.
+status: test
+modified: 2022/10/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "\"n; " and (FolderPath endswith "\\SyncAppvPublishingServer.exe"
+  or ProcessVersionInfoOriginalFileName =~ "syncappvpublishingserver.exe")'

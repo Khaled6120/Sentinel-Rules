@@ -1,0 +1,22 @@
+name: PowerShell Web Download
+id: 6e897651-f157-4d8f-aaeb-df8151488385
+author: Florian Roth (Nextron Systems)
+date: 2022/03/24
+level: medium
+description: Detects suspicious ways to download files or content using PowerShell
+status: test
+modified: 2023/01/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+- execution
+relevantTechniques:
+- t1059.001
+- t1105
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains ".DownloadString(" or ProcessCommandLine contains
+  ".DownloadFile(" or ProcessCommandLine contains "Invoke-WebRequest " or ProcessCommandLine
+  contains "iwr "'

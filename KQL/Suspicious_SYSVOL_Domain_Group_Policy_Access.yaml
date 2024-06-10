@@ -1,0 +1,19 @@
+name: Suspicious SYSVOL Domain Group Policy Access
+id: 05f3c945-dcc8-4393-9f3d-af65077a8f86
+author: Markus Neis, Jonhnathan Ribeiro, oscd.community
+date: 2018/04/09
+level: medium
+description: Detects Access to Domain Group Policies stored in SYSVOL
+status: test
+modified: 2022/01/07
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1552.006
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "\\SYSVOL\\" and ProcessCommandLine contains
+  "\\policies\\"'

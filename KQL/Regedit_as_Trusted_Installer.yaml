@@ -1,0 +1,19 @@
+name: Regedit as Trusted Installer
+id: 883835a7-df45-43e4-bf1d-4268768afda4
+author: Florian Roth (Nextron Systems)
+date: 2021/05/27
+level: high
+description: Detects a regedit started with TrustedInstaller privileges or by ProcessHacker.exe
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- privilege_escalation
+relevantTechniques:
+- t1548
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\regedit.exe" and (InitiatingProcessFolderPath endswith
+  "\\TrustedInstaller.exe" or InitiatingProcessFolderPath endswith "\\ProcessHacker.exe")'

@@ -1,0 +1,23 @@
+name: Potential EACore.DLL Sideloading
+id: edd3ddc3-386f-4ba5-9ada-4376b2cfa7b5
+author: X__Junior (Nextron Systems)
+date: 2023/08/03
+level: high
+description: Detects potential DLL sideloading of "EACore.dll"
+status: test
+modified: ''
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\EACore.dll" and (not((FolderPath startswith "C:\\Program
+  Files\\Electronic Arts\\EA Desktop\\" and (InitiatingProcessFolderPath contains
+  "C:\\Program Files\\Electronic Arts\\EA Desktop\\" and InitiatingProcessFolderPath
+  contains "\\EACoreServer.exe"))))'

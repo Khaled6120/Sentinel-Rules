@@ -1,0 +1,28 @@
+name: Malicious PE Execution by Microsoft Visual Studio Debugger
+id: 15c7904e-6ad1-4a45-9b46-5fb25df37fd2
+author: "Agro (@agro_sev), Ensar \xC5\u017Eamil (@sblmsrsn), oscd.community"
+date: 2020/10/14
+level: medium
+description: 'There is an option for a MS VS Just-In-Time Debugger "vsjitdebugger.exe"
+  to launch specified executable and attach a debugger.
+
+  This option may be used adversaries to execute malicious code by signed verified
+  binary.
+
+  The debugger is installed alongside with Microsoft Visual Studio package.
+
+  '
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\vsjitdebugger.exe" and (not(((FolderPath
+  contains "\\vsimmersiveactivatehelper" and FolderPath contains ".exe") or FolderPath
+  endswith "\\devenv.exe")))'

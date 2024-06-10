@@ -1,0 +1,34 @@
+name: PUA - Seatbelt Execution
+id: 38646daa-e78f-4ace-9de0-55547b2d30da
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/10/18
+level: high
+description: Detects the execution of the PUA/Recon tool Seatbelt via PE information
+  of command line parameters
+status: test
+modified: 2023/02/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1083
+- t1087
+- t1526
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\Seatbelt.exe" or ProcessVersionInfoOriginalFileName
+  =~ "Seatbelt.exe" or ProcessVersionInfoFileDescription =~ "Seatbelt" or (ProcessCommandLine
+  contains " DpapiMasterKeys" or ProcessCommandLine contains " InterestingProcesses"
+  or ProcessCommandLine contains " InterestingFiles" or ProcessCommandLine contains
+  " CertificateThumbprints" or ProcessCommandLine contains " ChromiumBookmarks" or
+  ProcessCommandLine contains " ChromiumHistory" or ProcessCommandLine contains "
+  ChromiumPresence" or ProcessCommandLine contains " CloudCredentials" or ProcessCommandLine
+  contains " CredEnum" or ProcessCommandLine contains " CredGuard" or ProcessCommandLine
+  contains " FirefoxHistory" or ProcessCommandLine contains " ProcessCreationEvents"))
+  or ((ProcessCommandLine contains " -group=misc" or ProcessCommandLine contains "
+  -group=remote" or ProcessCommandLine contains " -group=chromium" or ProcessCommandLine
+  contains " -group=slack" or ProcessCommandLine contains " -group=system" or ProcessCommandLine
+  contains " -group=user" or ProcessCommandLine contains " -group=all") and ProcessCommandLine
+  contains " -outputfile=")'

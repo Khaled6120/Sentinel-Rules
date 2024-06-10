@@ -1,0 +1,21 @@
+name: Rundll32 Execution Without CommandLine Parameters
+id: 1775e15e-b61b-4d14-a1a3-80981298085a
+author: Florian Roth (Nextron Systems)
+date: 2021/05/27
+level: high
+description: Detects suspicious start of rundll32.exe without any parameters as found
+  in CobaltStrike beacon activity
+status: experimental
+modified: 2023/08/31
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1202
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine endswith "\\rundll32.exe" or ProcessCommandLine endswith
+  "\\rundll32.exe\"" or ProcessCommandLine endswith "\\rundll32") and (not((InitiatingProcessFolderPath
+  contains "\\AppData\\Local\\" or InitiatingProcessFolderPath contains "\\Microsoft\\Edge\\")))'

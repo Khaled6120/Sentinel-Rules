@@ -1,0 +1,21 @@
+name: Lolbin Ssh.exe Use As Proxy
+id: 7d6d30b8-5b91-4b90-a891-46cccaf29598
+author: frack113, Nasreddine Bencherchali
+date: 2022/12/29
+level: medium
+description: Detect usage of the "ssh.exe" binary as a proxy to launch other programs
+status: test
+modified: 2023/01/25
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1202
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\OpenSSH\\sshd.exe"
+  or ((ProcessCommandLine contains "ProxyCommand=" or (ProcessCommandLine contains
+  "PermitLocalCommand" and ProcessCommandLine contains "LocalCommand")) and FolderPath
+  endswith "\\ssh.exe")'

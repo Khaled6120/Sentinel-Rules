@@ -1,0 +1,23 @@
+name: Potential Iviewers.DLL Sideloading
+id: 4c21b805-4dd7-469f-b47d-7383a8fcb437
+author: X__Junior (Nextron Systems)
+date: 2023/03/21
+level: high
+description: Detects potential DLL sideloading of "iviewers.dll" (OLE/COM Object Interface
+  Viewer)
+status: test
+modified: ''
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\iviewers.dll" and (not((FolderPath startswith "C:\\Program
+  Files (x86)\\Windows Kits\\" or FolderPath startswith "C:\\Program Files\\Windows
+  Kits\\")))'

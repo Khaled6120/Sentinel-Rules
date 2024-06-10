@@ -1,0 +1,23 @@
+name: Portable Gpg.EXE Execution
+id: 77df53a5-1d78-4f32-bc5a-0e7465bd8f41
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: 2023/08/06
+level: medium
+description: Detects the execution of "gpg.exe" from uncommon location. Often used
+  by ransomware and loaders to decrypt/encrypt data.
+status: experimental
+modified: 2023/11/10
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- impact
+relevantTechniques:
+- t1486
+query: "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\gpg.exe\" or FolderPath\
+  \ endswith \"\\\\gpg2.exe\") or ProcessVersionInfoOriginalFileName =~ \"gpg.exe\"\
+  \ or ProcessVersionInfoFileDescription =~ \"GnuPG\xE2\u20AC\u2122s OpenPGP tool\"\
+  ) and (not((FolderPath contains \":\\\\Program Files (x86)\\\\GNU\\\\GnuPG\\\\bin\\\
+  \\\" or FolderPath contains \":\\\\Program Files (x86)\\\\GnuPG VS-Desktop\\\\\"\
+  \ or FolderPath contains \":\\\\Program Files (x86)\\\\GnuPG\\\\bin\\\\\" or FolderPath\
+  \ contains \":\\\\Program Files (x86)\\\\Gpg4win\\\\bin\\\\\")))"

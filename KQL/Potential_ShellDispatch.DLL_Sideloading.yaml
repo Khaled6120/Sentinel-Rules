@@ -1,0 +1,22 @@
+name: Potential ShellDispatch.DLL Sideloading
+id: 844f8eb2-610b-42c8-89a4-47596e089663
+author: X__Junior (Nextron Systems)
+date: 2023/06/20
+level: medium
+description: Detects potential DLL sideloading of "ShellDispatch.dll"
+status: test
+modified: ''
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\ShellDispatch.dll" and (not(((FolderPath contains
+  ":\\Users\\" and FolderPath contains "\\AppData\\Local\\Temp\\") or FolderPath contains
+  ":\\Windows\\Temp\\")))'

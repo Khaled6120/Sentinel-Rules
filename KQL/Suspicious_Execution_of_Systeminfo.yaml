@@ -1,0 +1,19 @@
+name: Suspicious Execution of Systeminfo
+id: 0ef56343-059e-4cb6-adc1-4c3c967c5e46
+author: frack113
+date: 2022/01/01
+level: low
+description: Detects usage of the "systeminfo" command to retrieve information
+status: test
+modified: 2022/07/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1082
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\systeminfo.exe" or ProcessVersionInfoOriginalFileName
+  =~ "sysinfo.exe"'

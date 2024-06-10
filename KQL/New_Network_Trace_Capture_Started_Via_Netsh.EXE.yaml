@@ -1,0 +1,22 @@
+name: New Network Trace Capture Started Via Netsh.EXE
+id: d3c3861d-c504-4c77-ba55-224ba82d0118
+author: Kutepov Anton, oscd.community
+date: 2019/10/24
+level: medium
+description: Detects the execution of netsh with the "trace" flag in order to start
+  a network capture
+status: test
+modified: 2023/02/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+- discovery
+relevantTechniques:
+- t1040
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "trace" and ProcessCommandLine contains "start")
+  and (FolderPath endswith "\\netsh.exe" or ProcessVersionInfoOriginalFileName =~
+  "netsh.exe")'

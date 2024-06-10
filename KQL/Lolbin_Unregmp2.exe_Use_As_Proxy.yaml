@@ -1,0 +1,20 @@
+name: Lolbin Unregmp2.exe Use As Proxy
+id: 727454c0-d851-48b0-8b89-385611ab0704
+author: frack113
+date: 2022/12/29
+level: medium
+description: Detect usage of the "unregmp2.exe" binary as a proxy to launch a custom
+  version of "wmpnscfg.exe"
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " /HideWMP" and (FolderPath endswith "\\unregmp2.exe"
+  or ProcessVersionInfoOriginalFileName =~ "unregmp2.exe")'

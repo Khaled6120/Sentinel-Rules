@@ -1,0 +1,22 @@
+name: Tamper Windows Defender Remove-MpPreference
+id: 07e3cb2c-0608-410d-be4b-1511cb1a0448
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/05
+level: high
+description: Detects attempts to remove Windows Defender configurations using the
+  'MpPreference' cmdlet
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1562.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "Remove-MpPreference" and (ProcessCommandLine
+  contains "-ControlledFolderAccessProtectedFolders " or ProcessCommandLine contains
+  "-AttackSurfaceReductionRules_Ids " or ProcessCommandLine contains "-AttackSurfaceReductionRules_Actions
+  " or ProcessCommandLine contains "-CheckForSignaturesBeforeRunningScan ")'

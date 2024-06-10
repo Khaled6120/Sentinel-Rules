@@ -1,0 +1,29 @@
+name: Suspicious Download From Direct IP Via Bitsadmin
+id: 99c840f2-2012-46fd-9141-c761987550ef
+author: Florian Roth (Nextron Systems)
+date: 2022/06/28
+level: high
+description: Detects usage of bitsadmin downloading a file using an URL that contains
+  an IP
+status: test
+modified: 2023/02/15
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- s0190
+relevantTechniques:
+- t1036.003
+- t1197
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "://1" or ProcessCommandLine contains "://2"
+  or ProcessCommandLine contains "://3" or ProcessCommandLine contains "://4" or ProcessCommandLine
+  contains "://5" or ProcessCommandLine contains "://6" or ProcessCommandLine contains
+  "://7" or ProcessCommandLine contains "://8" or ProcessCommandLine contains "://9")
+  and (ProcessCommandLine contains " /transfer " or ProcessCommandLine contains "
+  /create " or ProcessCommandLine contains " /addfile ") and (FolderPath endswith
+  "\\bitsadmin.exe" or ProcessVersionInfoOriginalFileName =~ "bitsadmin.exe")) and
+  (not(ProcessCommandLine contains "://7-"))'

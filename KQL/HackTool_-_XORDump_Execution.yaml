@@ -1,0 +1,21 @@
+name: HackTool - XORDump Execution
+id: 66e563f9-1cbd-4a22-a957-d8b7c0f44372
+author: Florian Roth (Nextron Systems)
+date: 2022/01/28
+level: high
+description: Detects suspicious use of XORDump process memory dumping utility
+status: test
+modified: 2023/02/08
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1003.001
+- t1036
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\xordump.exe" or (ProcessCommandLine contains " -process
+  lsass.exe " or ProcessCommandLine contains " -m comsvcs " or ProcessCommandLine
+  contains " -m dbghelp " or ProcessCommandLine contains " -m dbgcore ")'

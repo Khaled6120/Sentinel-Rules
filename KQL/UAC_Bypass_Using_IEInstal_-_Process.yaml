@@ -1,0 +1,21 @@
+name: UAC Bypass Using IEInstal - Process
+id: 80fc36aa-945e-4181-89f2-2f907ab6775d
+author: Christian Burkard (Nextron Systems)
+date: 2021/08/30
+level: high
+description: Detects the pattern of UAC Bypass using IEInstal.exe (UACMe 64)
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1548.002
+query: 'DeviceProcessEvents
+
+  | where FolderPath contains "\\AppData\\Local\\Temp\\" and FolderPath endswith "consent.exe"
+  and (ProcessIntegrityLevel in~ ("High", "System")) and InitiatingProcessFolderPath
+  endswith "\\ieinstal.exe"'

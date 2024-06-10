@@ -1,0 +1,28 @@
+name: HackTool - Potential Impacket Lateral Movement Activity
+id: 10c14723-61c7-4c75-92ca-9af245723ad2
+author: Ecco, oscd.community, Jonhnathan Ribeiro, Tim Rauch
+date: 2019/09/03
+level: high
+description: Detects wmiexec/dcomexec/atexec/smbexec from Impacket framework
+status: stable
+modified: 2023/02/21
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+- lateral_movement
+relevantTechniques:
+- t1021.003
+- t1047
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "cmd.exe" and ProcessCommandLine contains
+  "/C" and ProcessCommandLine contains "Windows\\Temp\\" and ProcessCommandLine contains
+  "&1") and (InitiatingProcessCommandLine contains "svchost.exe -k netsvcs" or InitiatingProcessCommandLine
+  contains "taskeng.exe")) or ((ProcessCommandLine contains "cmd.exe" and ProcessCommandLine
+  contains "/Q" and ProcessCommandLine contains "/c" and ProcessCommandLine contains
+  "\\\\127.0.0.1\\" and ProcessCommandLine contains "&1") and (InitiatingProcessFolderPath
+  endswith "\\wmiprvse.exe" or InitiatingProcessFolderPath endswith "\\mmc.exe" or
+  InitiatingProcessFolderPath endswith "\\explorer.exe" or InitiatingProcessFolderPath
+  endswith "\\services.exe"))'

@@ -1,0 +1,22 @@
+name: Active Directory Structure Export Via Csvde.EXE
+id: e5d36acd-acb4-4c6f-a13f-9eb203d50099
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/03/14
+level: medium
+description: Detects the execution of "csvde.exe" in order to export organizational
+  Active Directory structure.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+- exfiltration
+relevantTechniques:
+- t1087.002
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\csvde.exe" or ProcessVersionInfoOriginalFileName
+  =~ "csvde.exe") and ProcessCommandLine contains " -f") and (not(ProcessCommandLine
+  contains " -i"))'

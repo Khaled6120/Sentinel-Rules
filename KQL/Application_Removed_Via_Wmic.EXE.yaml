@@ -1,0 +1,19 @@
+name: Application Removed Via Wmic.EXE
+id: b53317a0-8acf-4fd1-8de8-a5401e776b96
+author: frack113
+date: 2022/01/28
+level: medium
+description: Uninstall an application with wmic
+status: test
+modified: 2023/02/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1047
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "call" or ProcessCommandLine contains "uninstall")
+  and (FolderPath endswith "\\WMIC.exe" or ProcessVersionInfoOriginalFileName =~ "wmic.exe")'

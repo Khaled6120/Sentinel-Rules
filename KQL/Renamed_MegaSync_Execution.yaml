@@ -1,0 +1,20 @@
+name: Renamed MegaSync Execution
+id: 643bdcac-8b82-49f4-9fd9-25a90b929f3b
+author: Sittikorn S
+date: 2021/06/22
+level: high
+description: Detects the execution of a renamed MegaSync.exe as seen used by ransomware
+  families like Nefilim, Sodinokibi, Pysa, and Conti.
+status: test
+modified: 2023/02/03
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoOriginalFileName =~ "megasync.exe" and (not(FolderPath
+  endswith "\\megasync.exe"))'

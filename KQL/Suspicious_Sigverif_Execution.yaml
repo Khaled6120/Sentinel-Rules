@@ -1,0 +1,19 @@
+name: Suspicious Sigverif Execution
+id: 7d4aaec2-08ed-4430-8b96-28420e030e04
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/19
+level: medium
+description: Detects the execution of sigverif binary as a parent process which could
+  indicate it being used as a LOLBIN to proxy execution
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1216
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\sigverif.exe"'

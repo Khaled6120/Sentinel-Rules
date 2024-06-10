@@ -1,0 +1,26 @@
+name: Potentially Suspicious Child Process Of Regsvr32
+id: 6f0947a4-1c5e-4e0d-8ac7-53159b8f23ca
+author: elhoim, Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2022/05/05
+level: high
+description: Detects potentially suspicious child processes of "regsvr32.exe".
+status: test
+modified: 2023/05/26
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218.010
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\calc.exe" or FolderPath endswith "\\cscript.exe"
+  or FolderPath endswith "\\explorer.exe" or FolderPath endswith "\\mshta.exe" or
+  FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe" or FolderPath
+  endswith "\\nltest.exe" or FolderPath endswith "\\notepad.exe" or FolderPath endswith
+  "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\reg.exe"
+  or FolderPath endswith "\\schtasks.exe" or FolderPath endswith "\\werfault.exe"
+  or FolderPath endswith "\\wscript.exe") and InitiatingProcessFolderPath endswith
+  "\\regsvr32.exe") and (not((ProcessCommandLine contains " -u -p " and FolderPath
+  endswith "\\werfault.exe")))'

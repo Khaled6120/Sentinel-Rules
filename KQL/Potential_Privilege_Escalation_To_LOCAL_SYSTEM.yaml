@@ -1,0 +1,36 @@
+name: Potential Privilege Escalation To LOCAL SYSTEM
+id: 207b0396-3689-42d9-8399-4222658efc99
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2021/05/22
+level: high
+description: Detects unknown program using commandline flags usually used by tools
+  such as PsExec and PAExec to start programs with SYSTEM Privileges
+status: test
+modified: 2024/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- resource_development
+relevantTechniques:
+- t1587.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -s cmd" or ProcessCommandLine contains "
+  /s cmd" or ProcessCommandLine contains " -s -i cmd" or ProcessCommandLine contains
+  " -s /i cmd" or ProcessCommandLine contains " /s -i cmd" or ProcessCommandLine contains
+  " /s /i cmd" or ProcessCommandLine contains " -i -s cmd" or ProcessCommandLine contains
+  " -i /s cmd" or ProcessCommandLine contains " /i -s cmd" or ProcessCommandLine contains
+  " /i /s cmd" or ProcessCommandLine contains " -s pwsh" or ProcessCommandLine contains
+  " /s pwsh" or ProcessCommandLine contains " -s -i pwsh" or ProcessCommandLine contains
+  " -s /i pwsh" or ProcessCommandLine contains " /s -i pwsh" or ProcessCommandLine
+  contains " /s /i pwsh" or ProcessCommandLine contains " -i -s pwsh" or ProcessCommandLine
+  contains " -i /s pwsh" or ProcessCommandLine contains " /i -s pwsh" or ProcessCommandLine
+  contains " /i /s pwsh" or ProcessCommandLine contains " -s powershell" or ProcessCommandLine
+  contains " /s powershell" or ProcessCommandLine contains " -s -i powershell" or
+  ProcessCommandLine contains " -s /i powershell" or ProcessCommandLine contains "
+  /s -i powershell" or ProcessCommandLine contains " /s /i powershell" or ProcessCommandLine
+  contains " -i -s powershell" or ProcessCommandLine contains " -i /s powershell"
+  or ProcessCommandLine contains " /i -s powershell" or ProcessCommandLine contains
+  " /i /s powershell") and (not((ProcessCommandLine contains "paexec" or ProcessCommandLine
+  contains "PsExec" or ProcessCommandLine contains "accepteula")))'

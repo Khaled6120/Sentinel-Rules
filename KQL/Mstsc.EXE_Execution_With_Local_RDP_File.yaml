@@ -1,0 +1,21 @@
+name: Mstsc.EXE Execution With Local RDP File
+id: 5fdce3ac-e7f9-4ecd-a3aa-a4d78ebbf0af
+author: Nasreddine Bencherchali (Nextron Systems), Christopher Peacock @securepeacock
+date: 2023/04/18
+level: low
+description: Detects potential RDP connection via Mstsc using a local ".rdp" file
+status: test
+modified: 2023/04/30
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1219
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine endswith ".rdp" or ProcessCommandLine endswith ".rdp\"")
+  and (FolderPath endswith "\\mstsc.exe" or ProcessVersionInfoOriginalFileName =~
+  "mstsc.exe")) and (not((ProcessCommandLine contains "C:\\ProgramData\\Microsoft\\WSL\\wslg.rdp"
+  and InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\lxss\\wslhost.exe")))'

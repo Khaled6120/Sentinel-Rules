@@ -1,0 +1,24 @@
+name: Execute MSDT Via Answer File
+id: 9c8c7000-3065-44a8-a555-79bcba5d9955
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/06/13
+level: high
+description: Detects execution of "msdt.exe" using an answer file which is simulating
+  the legitimate way of calling msdt via "pcwrun.exe" (For example from the compatibility
+  tab)
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains " -af " or ProcessCommandLine contains " /af
+  ") and (ProcessCommandLine contains "\\WINDOWS\\diagnostics\\index\\PCWDiagnostic.xml"
+  and FolderPath endswith "\\msdt.exe")) and (not(InitiatingProcessFolderPath endswith
+  "\\pcwrun.exe"))'

@@ -1,0 +1,21 @@
+name: Use Of The SFTP.EXE Binary As A LOLBIN
+id: a85ffc3a-e8fd-4040-93bf-78aff284d801
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/11/10
+level: medium
+description: Detects the usage of the "sftp.exe" binary as a LOLBIN by abusing the
+  "-D" flag
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -D .." or ProcessCommandLine contains " -D
+  C:\\") and FolderPath endswith "\\sftp.exe"'

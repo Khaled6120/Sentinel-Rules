@@ -1,0 +1,25 @@
+name: Permission Misconfiguration Reconnaissance Via Findstr.EXE
+id: 47e4bab7-c626-47dc-967b-255608c9a920
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/12
+level: medium
+description: Detects usage of findstr with the "EVERYONE" or "BUILTIN" keywords. This
+  is seen being used in combination with "icacls" to look for misconfigured files
+  or folders permissions
+status: experimental
+modified: 2023/11/11
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1552.006
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "\"Everyone\"" or ProcessCommandLine contains
+  "''Everyone''" or ProcessCommandLine contains "\"BUILTIN\\\"" or ProcessCommandLine
+  contains "''BUILTIN\\''") and ((FolderPath endswith "\\find.exe" or FolderPath endswith
+  "\\findstr.exe") or (ProcessVersionInfoOriginalFileName in~ ("FIND.EXE", "FINDSTR.EXE"))))
+  or (ProcessCommandLine contains "icacls " and ProcessCommandLine contains "findstr
+  " and ProcessCommandLine contains "Everyone")'

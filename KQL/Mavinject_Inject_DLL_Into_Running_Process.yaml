@@ -1,0 +1,22 @@
+name: Mavinject Inject DLL Into Running Process
+id: 4f73421b-5a0b-4bbf-a892-5a7fb99bea66
+author: frack113, Florian Roth
+date: 2021/07/12
+level: high
+description: Detects process injection using the signed Windows tool "Mavinject" via
+  the "INJECTRUNNING" flag
+status: test
+modified: 2022/12/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1055.001
+- t1218.013
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " /INJECTRUNNING " and (not(InitiatingProcessFolderPath
+  =~ "C:\\Windows\\System32\\AppVClient.exe"))'

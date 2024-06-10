@@ -1,0 +1,21 @@
+name: Potential SPN Enumeration Via Setspn.EXE
+id: 1eeed653-dbc8-4187-ad0c-eeebb20e6599
+author: Markus Neis, keepwatch
+date: 2018/11/14
+level: medium
+description: Detects service principal name (SPN) enumeration used for Kerberoasting
+status: test
+modified: 2023/10/23
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1558.003
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -q " or ProcessCommandLine contains " /q
+  ") and (FolderPath endswith "\\setspn.exe" or ProcessVersionInfoOriginalFileName
+  =~ "setspn.exe" or (ProcessVersionInfoFileDescription contains "Query or reset the
+  computer" and ProcessVersionInfoFileDescription contains "SPN attribute"))'

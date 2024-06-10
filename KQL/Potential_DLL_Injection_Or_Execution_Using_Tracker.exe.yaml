@@ -1,0 +1,22 @@
+name: Potential DLL Injection Or Execution Using Tracker.exe
+id: 148431ce-4b70-403d-8525-fcc2993f29ea
+author: Avneet Singh @v3t0_, oscd.community
+date: 2020/10/18
+level: medium
+description: Detects potential DLL injection and execution using "Tracker.exe"
+status: test
+modified: 2023/01/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1055.001
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains " /d " or ProcessCommandLine contains " /c
+  ") and (FolderPath endswith "\\tracker.exe" or ProcessVersionInfoFileDescription
+  =~ "Tracker")) and (not((ProcessCommandLine contains " /ERRORREPORT:PROMPT " or
+  (InitiatingProcessFolderPath endswith "\\Msbuild\\Current\\Bin\\MSBuild.exe" or
+  InitiatingProcessFolderPath endswith "\\Msbuild\\Current\\Bin\\amd64\\MSBuild.exe"))))'

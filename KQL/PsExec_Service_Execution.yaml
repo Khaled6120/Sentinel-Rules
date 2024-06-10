@@ -1,0 +1,19 @@
+name: PsExec Service Execution
+id: fdfcbd78-48f1-4a4b-90ac-d82241e368c5
+author: Thomas Patzke, Romaissa Adjailia, Florian Roth (Nextron Systems)
+date: 2017/06/12
+level: medium
+description: Detects launch of the PSEXESVC service, which means that this system
+  was the target of a psexec remote execution
+status: test
+modified: 2023/02/28
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where FolderPath =~ "C:\\Windows\\PSEXESVC.exe" or ProcessVersionInfoOriginalFileName
+  =~ "psexesvc.exe"'

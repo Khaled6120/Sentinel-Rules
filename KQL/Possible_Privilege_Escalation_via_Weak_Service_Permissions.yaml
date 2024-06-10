@@ -1,0 +1,23 @@
+name: Possible Privilege Escalation via Weak Service Permissions
+id: d937b75f-a665-4480-88a5-2f20e9f9b22a
+author: Teymur Kheirkhabarov
+date: 2019/10/26
+level: high
+description: Detection of sc.exe utility spawning by user with Medium integrity level
+  to change service ImagePath or FailureCommand
+status: test
+modified: 2022/07/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1574.011
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\sc.exe" and ProcessIntegrityLevel =~ "Medium") and
+  ((ProcessCommandLine contains "config" and ProcessCommandLine contains "binPath")
+  or (ProcessCommandLine contains "failure" and ProcessCommandLine contains "command"))'

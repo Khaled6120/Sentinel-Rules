@@ -1,0 +1,19 @@
+name: Dumping Process via Sqldumper.exe
+id: 23ceaf5c-b6f1-4a32-8559-f2ff734be516
+author: Kirill Kiryanov, oscd.community
+date: 2020/10/08
+level: medium
+description: Detects process dump via legitimate sqldumper.exe binary
+status: test
+modified: 2021/11/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1003.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "0x0110" or ProcessCommandLine contains "0x01100:40")
+  and FolderPath endswith "\\sqldumper.exe"'

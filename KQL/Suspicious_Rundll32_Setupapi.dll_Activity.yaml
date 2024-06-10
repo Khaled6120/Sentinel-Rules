@@ -1,0 +1,25 @@
+name: Suspicious Rundll32 Setupapi.dll Activity
+id: 285b85b1-a555-4095-8652-a8a4106af63f
+author: Konstantin Grishchenko, oscd.community
+date: 2020/10/07
+level: medium
+description: setupapi.dll library provide InstallHinfSection function for processing
+  INF files. INF file may contain instructions allowing to create values in the registry,
+  modify files and install drivers. This technique could be used to obtain persistence
+  via modifying one of Run or RunOnce registry keys, run process or use other DLLs
+  chain calls (see references) InstallHinfSection function in setupapi.dll calls runonce.exe
+  executable regardless of actual content of INF file.
+status: test
+modified: 2021/11/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218.011
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\runonce.exe" and (InitiatingProcessCommandLine contains
+  "setupapi.dll" and InitiatingProcessCommandLine contains "InstallHinfSection") and
+  InitiatingProcessFolderPath endswith "\\rundll32.exe"'

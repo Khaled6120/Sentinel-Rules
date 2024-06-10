@@ -1,0 +1,24 @@
+name: Suspicious Execution of Powershell with Base64
+id: fb843269-508c-4b76-8b8d-88679db22ce7
+author: frack113
+date: 2022/01/02
+level: medium
+description: Commandline to launch powershell with a base64 payload
+status: test
+modified: 2023/01/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains " -e " or ProcessCommandLine contains " -en
+  " or ProcessCommandLine contains " -enc " or ProcessCommandLine contains " -enco"
+  or ProcessCommandLine contains " -ec ") and (FolderPath endswith "\\powershell.exe"
+  or FolderPath endswith "\\pwsh.exe")) and (not(((InitiatingProcessFolderPath contains
+  "C:\\Packages\\Plugins\\Microsoft.GuestConfiguration.ConfigurationforWindows\\"
+  or InitiatingProcessFolderPath contains "\\gc_worker.exe") or ProcessCommandLine
+  contains " -Encoding ")))'

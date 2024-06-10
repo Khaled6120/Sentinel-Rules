@@ -1,0 +1,21 @@
+name: Run Once Task Execution as Configured in Registry
+id: 198effb6-6c98-4d0c-9ea3-451fa143c45c
+author: Avneet Singh @v3t0_, oscd.community, Christopher Peacock @SecurePeacock (updated)
+date: 2020/10/18
+level: low
+description: This rule detects the execution of Run Once task as configured in the
+  registry
+status: test
+modified: 2022/12/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1112
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "/AlternateShellStartup" or ProcessCommandLine
+  endswith "/r") and (FolderPath endswith "\\runonce.exe" or ProcessVersionInfoFileDescription
+  =~ "Run Once Wrapper")'

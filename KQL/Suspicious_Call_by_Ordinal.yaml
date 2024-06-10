@@ -1,0 +1,26 @@
+name: Suspicious Call by Ordinal
+id: e79a9e79-eb72-4e78-a628-0e7e8f59e89c
+author: Florian Roth (Nextron Systems)
+date: 2019/10/22
+level: high
+description: Detects suspicious calls of DLLs in rundll32.dll exports by ordinal
+status: stable
+modified: 2023/02/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218.011
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains ",#" or ProcessCommandLine contains ", #"
+  or ProcessCommandLine contains ".dll #" or ProcessCommandLine contains ".ocx #")
+  and (FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName
+  =~ "RUNDLL32.EXE")) and (not(((ProcessCommandLine contains "EDGEHTML.dll" and ProcessCommandLine
+  contains "#141") or ((ProcessCommandLine contains "\\FileTracker32.dll,#1" or ProcessCommandLine
+  contains "\\FileTracker32.dll\",#1" or ProcessCommandLine contains "\\FileTracker64.dll,#1"
+  or ProcessCommandLine contains "\\FileTracker64.dll\",#1") and (InitiatingProcessFolderPath
+  contains "\\Msbuild\\Current\\Bin\\" or InitiatingProcessFolderPath contains "\\VC\\Tools\\MSVC\\"
+  or InitiatingProcessFolderPath contains "\\Tracker.exe")))))'

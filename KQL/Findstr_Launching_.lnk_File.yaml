@@ -1,0 +1,24 @@
+name: Findstr Launching .lnk File
+id: 33339be3-148b-4e16-af56-ad16ec6c7e7b
+author: Trent Liffick
+date: 2020/05/01
+level: medium
+description: Detects usage of findstr to identify and execute a lnk file as seen within
+  the HHS redirect attack
+status: test
+modified: 2024/01/15
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1027.003
+- t1036
+- t1202
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine endswith ".lnk" or ProcessCommandLine endswith ".lnk\""
+  or ProcessCommandLine endswith ".lnk''") and ((FolderPath endswith "\\find.exe"
+  or FolderPath endswith "\\findstr.exe") or (ProcessVersionInfoOriginalFileName in~
+  ("FIND.EXE", "FINDSTR.EXE")))'

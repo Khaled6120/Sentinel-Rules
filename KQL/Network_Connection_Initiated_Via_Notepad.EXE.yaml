@@ -1,0 +1,29 @@
+name: Network Connection Initiated Via Notepad.EXE
+id: e81528db-fc02-45e8-8e98-4e84aba1f10b
+author: EagleEye Team
+date: 2020/05/14
+level: high
+description: 'Detects a network connection that is initiated by the "notepad.exe"
+  process.
+
+  This might be a sign of process injection from a beacon process or something similar.
+
+  Notepad rarely initiates a network communication except when printing documents
+  for example.
+
+  '
+status: test
+modified: 2024/02/02
+logsource:
+  category: network_connection
+  product: windows
+tactics:
+- command_and_control
+- defense_evasion
+- execution
+relevantTechniques:
+- t1055
+query: 'DeviceNetworkEvents
+
+  | where InitiatingProcessFolderPath endswith "\\notepad.exe" and (not(RemotePort
+  == 9100))'

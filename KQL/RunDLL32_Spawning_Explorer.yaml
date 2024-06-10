@@ -1,0 +1,20 @@
+name: RunDLL32 Spawning Explorer
+id: caa06de8-fdef-4c91-826a-7f9e163eef4b
+author: elhoim, CD_ROM_
+date: 2022/04/27
+level: high
+description: Detects RunDLL32.exe spawning explorer.exe as child, which is very uncommon,
+  often observes Gamarue spawning the explorer.exe process in an unusual way
+status: test
+modified: 2022/05/25
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218.011
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\explorer.exe" and InitiatingProcessFolderPath endswith
+  "\\rundll32.exe") and (not(InitiatingProcessCommandLine contains "\\shell32.dll,Control_RunDLL"))'

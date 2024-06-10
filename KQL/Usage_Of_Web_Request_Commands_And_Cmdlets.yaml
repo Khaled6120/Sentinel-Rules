@@ -1,0 +1,25 @@
+name: Usage Of Web Request Commands And Cmdlets
+id: 9fc51a3c-81b3-4fa7-b35f-7c02cf10fd2d
+author: James Pemberton / @4A616D6573, Endgame, JHasenbusch, oscd.community, Austin
+  Songer @austinsonger
+date: 2019/10/24
+level: medium
+description: Detects the use of various web request commands with commandline tools
+  and Windows PowerShell cmdlets (including aliases) via CommandLine
+status: test
+modified: 2023/01/10
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "[System.Net.WebRequest]::create" or ProcessCommandLine
+  contains "curl " or ProcessCommandLine contains "Invoke-RestMethod" or ProcessCommandLine
+  contains "Invoke-WebRequest" or ProcessCommandLine contains "iwr " or ProcessCommandLine
+  contains "Net.WebClient" or ProcessCommandLine contains "Resume-BitsTransfer" or
+  ProcessCommandLine contains "Start-BitsTransfer" or ProcessCommandLine contains
+  "wget " or ProcessCommandLine contains "WinHttp.WinHttpRequest"'

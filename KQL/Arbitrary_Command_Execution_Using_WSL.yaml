@@ -1,0 +1,27 @@
+name: Arbitrary Command Execution Using WSL
+id: dec44ca7-61ad-493c-bfd7-8819c5faa09b
+author: oscd.community, Zach Stanford @svch0st, Nasreddine Bencherchali (Nextron Systems)
+date: 2020/10/05
+level: medium
+description: Detects potential abuse of Windows Subsystem for Linux (WSL) binary as
+  a LOLBIN to execute arbitrary Linux or Windows commands
+status: test
+modified: 2023/04/12
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1202
+- t1218
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains " -e " or ProcessCommandLine contains " --exec"
+  or ProcessCommandLine contains " --system" or ProcessCommandLine contains " --shell-type
+  " or ProcessCommandLine contains " /mnt/c" or ProcessCommandLine contains " --user
+  root" or ProcessCommandLine contains " -u root" or ProcessCommandLine contains "--debug-shell")
+  and (FolderPath endswith "\\wsl.exe" or ProcessVersionInfoOriginalFileName =~ "wsl.exe"))
+  and (not(((ProcessCommandLine contains " -d " and ProcessCommandLine contains "
+  -e kill ") and InitiatingProcessFolderPath endswith "\\cmd.exe")))'

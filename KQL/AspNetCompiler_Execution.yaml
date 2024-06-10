@@ -1,0 +1,20 @@
+name: AspNetCompiler Execution
+id: a01b8329-5953-4f73-ae2d-aa01e1f35f00
+author: frack113
+date: 2021/11/24
+level: medium
+description: Detects execution of "aspnet_compiler.exe" which can be abused to compile
+  and execute C# code.
+status: test
+modified: 2023/08/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1127
+query: 'DeviceProcessEvents
+
+  | where (FolderPath contains "C:\\Windows\\Microsoft.NET\\Framework\\" or FolderPath
+  contains "C:\\Windows\\Microsoft.NET\\Framework64\\") and FolderPath endswith "\\aspnet_compiler.exe"'

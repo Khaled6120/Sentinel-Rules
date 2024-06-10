@@ -1,0 +1,23 @@
+name: MMC Spawning Windows Shell
+id: 05a2ab7e-ce11-4b63-86db-ab32e763e11d
+author: Karneades, Swisscom CSIRT
+date: 2019/08/05
+level: high
+description: Detects a Windows command line executable started from MMC
+status: test
+modified: 2022/07/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- lateral_movement
+relevantTechniques:
+- t1021.003
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\mmc.exe" and ((FolderPath endswith
+  "\\cmd.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"
+  or FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\cscript.exe" or
+  FolderPath endswith "\\sh.exe" or FolderPath endswith "\\bash.exe" or FolderPath
+  endswith "\\reg.exe" or FolderPath endswith "\\regsvr32.exe") or FolderPath contains
+  "\\BITSADMIN")'

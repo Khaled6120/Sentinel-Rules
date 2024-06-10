@@ -1,0 +1,22 @@
+name: Disabled IE Security Features
+id: fb50eb7a-5ab1-43ae-bcc9-091818cb8424
+author: Florian Roth (Nextron Systems)
+date: 2020/06/19
+level: high
+description: Detects command lines that indicate unwanted modifications to registry
+  keys that disable important Internet Explorer security features
+status: test
+modified: 2021/11/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1562.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -name IEHarden " and ProcessCommandLine contains
+  " -value 0 ") or (ProcessCommandLine contains " -name DEPOff " and ProcessCommandLine
+  contains " -value 1 ") or (ProcessCommandLine contains " -name DisableFirstRunCustomize
+  " and ProcessCommandLine contains " -value 2 ")'

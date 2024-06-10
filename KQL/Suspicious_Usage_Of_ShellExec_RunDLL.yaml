@@ -1,0 +1,23 @@
+name: Suspicious Usage Of ShellExec_RunDLL
+id: d87bd452-6da1-456e-8155-7dc988157b7d
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/09/01
+level: high
+description: Detects suspicious usage of the ShellExec_RunDLL function to launch other
+  commands as seen in the the raspberry-robin attack
+status: test
+modified: 2022/12/30
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "ShellExec_RunDLL" and (ProcessCommandLine contains
+  "regsvr32" or ProcessCommandLine contains "msiexec" or ProcessCommandLine contains
+  "\\Users\\Public\\" or ProcessCommandLine contains "odbcconf" or ProcessCommandLine
+  contains "\\Desktop\\" or ProcessCommandLine contains "\\Temp\\" or ProcessCommandLine
+  contains "Invoke-" or ProcessCommandLine contains "iex" or ProcessCommandLine contains
+  "comspec")'

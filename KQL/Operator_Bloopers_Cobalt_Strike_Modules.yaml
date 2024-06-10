@@ -1,0 +1,22 @@
+name: Operator Bloopers Cobalt Strike Modules
+id: 4f154fb6-27d1-4813-a759-78b93e0b9c48
+author: _pete_0, TheDFIRReport
+date: 2022/05/06
+level: high
+description: Detects Cobalt Strike module/commands accidentally entered in CMD shell
+status: test
+modified: 2023/01/30
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059.003
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "Invoke-UserHunter" or ProcessCommandLine contains
+  "Invoke-ShareFinder" or ProcessCommandLine contains "Invoke-Kerberoast" or ProcessCommandLine
+  contains "Invoke-SMBAutoBrute" or ProcessCommandLine contains "Invoke-Nightmare"
+  or ProcessCommandLine contains "zerologon" or ProcessCommandLine contains "av_query")
+  and (ProcessVersionInfoOriginalFileName =~ "Cmd.Exe" or FolderPath endswith "\\cmd.exe")'

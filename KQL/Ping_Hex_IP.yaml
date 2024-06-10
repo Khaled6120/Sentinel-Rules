@@ -1,0 +1,19 @@
+name: Ping Hex IP
+id: 1a0d4aba-7668-4365-9ce4-6d79ab088dfd
+author: Florian Roth (Nextron Systems)
+date: 2018/03/23
+level: high
+description: Detects a ping command that uses a hex encoded IP address
+status: test
+modified: 2022/01/07
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1027
+- t1140
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "0x" and FolderPath endswith "\\ping.exe"'

@@ -1,0 +1,21 @@
+name: Potential Product Class Reconnaissance Via Wmic.EXE
+id: e568650b-5dcd-4658-8f34-ded0b1e13992
+author: Michael Haag, Florian Roth (Nextron Systems), juju4, oscd.community
+date: 2023/02/14
+level: medium
+description: Detects the execution of WMIC in order to get a list of firewall and
+  antivirus products
+status: test
+modified: 2023/03/07
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1047
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "AntiVirusProduct" or ProcessCommandLine contains
+  "FirewallProduct") and (FolderPath endswith "\\wmic.exe" or ProcessVersionInfoOriginalFileName
+  =~ "wmic.exe")'

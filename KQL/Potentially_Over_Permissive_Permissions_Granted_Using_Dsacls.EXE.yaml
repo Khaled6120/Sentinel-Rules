@@ -1,0 +1,22 @@
+name: Potentially Over Permissive Permissions Granted Using Dsacls.EXE
+id: 01c42d3c-242d-4655-85b2-34f1739632f7
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/06/20
+level: medium
+description: Detects usage of Dsacls to grant over permissive permissions
+status: test
+modified: 2023/02/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " /G " and (FolderPath endswith "\\dsacls.exe"
+  or ProcessVersionInfoOriginalFileName =~ "DSACLS.EXE") and (ProcessCommandLine contains
+  "GR" or ProcessCommandLine contains "GE" or ProcessCommandLine contains "GW" or
+  ProcessCommandLine contains "GA" or ProcessCommandLine contains "WP" or ProcessCommandLine
+  contains "WD")'

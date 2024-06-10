@@ -1,0 +1,24 @@
+name: Potential Recon Activity Using DriverQuery.EXE
+id: 9fc3072c-dc8f-4bf7-b231-18950000fadd
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/01/19
+level: high
+description: Detect usage of the "driverquery" utility to perform reconnaissance on
+  installed drivers
+status: experimental
+modified: 2023/09/29
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "driverquery.exe" or ProcessVersionInfoOriginalFileName
+  =~ "drvqry.exe") and ((InitiatingProcessFolderPath endswith "\\cscript.exe" or InitiatingProcessFolderPath
+  endswith "\\mshta.exe" or InitiatingProcessFolderPath endswith "\\regsvr32.exe"
+  or InitiatingProcessFolderPath endswith "\\rundll32.exe" or InitiatingProcessFolderPath
+  endswith "\\wscript.exe") or (InitiatingProcessFolderPath contains "\\AppData\\Local\\"
+  or InitiatingProcessFolderPath contains "\\Users\\Public\\" or InitiatingProcessFolderPath
+  contains "\\Windows\\Temp\\"))'

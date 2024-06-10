@@ -1,0 +1,22 @@
+name: Windows Spooler Service Suspicious Binary Load
+id: 02fb90de-c321-4e63-a6b9-25f4b03dfd14
+author: FPT.EagleEye, Thomas Patzke (improvements)
+date: 2021/06/29
+level: informational
+description: Detect DLL Load from Spooler Service backup folder
+status: test
+modified: 2022/06/02
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1574
+query: 'DeviceImageLoadEvents
+
+  | where (FolderPath contains "\\Windows\\System32\\spool\\drivers\\x64\\3\\" or
+  FolderPath contains "\\Windows\\System32\\spool\\drivers\\x64\\4\\") and FolderPath
+  endswith ".dll" and InitiatingProcessFolderPath endswith "\\spoolsv.exe"'

@@ -1,0 +1,26 @@
+name: Renamed AutoHotkey.EXE Execution
+id: 0f16d9cf-0616-45c8-8fad-becc11b5a41c
+author: Nasreddine Bencherchali
+date: 2023/02/07
+level: medium
+description: Detects execution of a renamed autohotkey.exe binary based on PE metadata
+  fields
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessVersionInfoProductName contains "AutoHotkey" or ProcessVersionInfoFileDescription
+  contains "AutoHotkey" or (ProcessVersionInfoOriginalFileName in~ ("AutoHotkey.exe",
+  "AutoHotkey.rc"))) and (not(((FolderPath endswith "\\AutoHotkey.exe" or FolderPath
+  endswith "\\AutoHotkey32.exe" or FolderPath endswith "\\AutoHotkey32_UIA.exe" or
+  FolderPath endswith "\\AutoHotkey64.exe" or FolderPath endswith "\\AutoHotkey64_UIA.exe"
+  or FolderPath endswith "\\AutoHotkeyA32.exe" or FolderPath endswith "\\AutoHotkeyA32_UIA.exe"
+  or FolderPath endswith "\\AutoHotkeyU32.exe" or FolderPath endswith "\\AutoHotkeyU32_UIA.exe"
+  or FolderPath endswith "\\AutoHotkeyU64.exe" or FolderPath endswith "\\AutoHotkeyU64_UIA.exe")
+  or FolderPath contains "\\AutoHotkey")))'

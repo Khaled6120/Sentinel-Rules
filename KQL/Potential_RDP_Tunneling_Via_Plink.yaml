@@ -1,0 +1,20 @@
+name: Potential RDP Tunneling Via Plink
+id: f38ce0b9-5e97-4b47-a211-7dc8d8b871da
+author: Florian Roth (Nextron Systems)
+date: 2022/08/04
+level: high
+description: Execution of plink to perform data exfiltration and tunneling
+status: test
+modified: 2023/01/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1572
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains ":127.0.0.1:3389" and FolderPath endswith "\\plink.exe")
+  or ((ProcessCommandLine contains ":3389" and FolderPath endswith "\\plink.exe")
+  and (ProcessCommandLine contains " -P 443" or ProcessCommandLine contains " -P 22"))'

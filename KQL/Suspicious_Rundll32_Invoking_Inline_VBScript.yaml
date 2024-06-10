@@ -1,0 +1,21 @@
+name: Suspicious Rundll32 Invoking Inline VBScript
+id: 1cc50f3f-1fc8-4acf-b2e9-6f172e1fdebd
+author: Florian Roth (Nextron Systems)
+date: 2021/03/05
+level: high
+description: Detects suspicious process related to rundll32 based on command line
+  that invokes inline VBScript as seen being used by UNC2452
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1055
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "rundll32.exe" and ProcessCommandLine contains
+  "Execute" and ProcessCommandLine contains "RegRead" and ProcessCommandLine contains
+  "window.close"'

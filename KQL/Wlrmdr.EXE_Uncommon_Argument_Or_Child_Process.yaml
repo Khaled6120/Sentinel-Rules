@@ -1,0 +1,33 @@
+name: Wlrmdr.EXE Uncommon Argument Or Child Process
+id: 9cfc00b6-bfb7-49ce-9781-ef78503154bb
+author: frack113, manasmbellani
+date: 2022/02/16
+level: medium
+description: 'Detects the execution of "Wlrmdr.exe" with the "-u" command line flag
+  which allows anything passed to it to be an argument of the ShellExecute API, which
+  would allow an attacker to execute arbitrary binaries.
+
+  This detection also focuses on any uncommon child processes spawned from "Wlrmdr.exe"
+  as a supplement for those that posses "ParentImage" telemetry.
+
+  '
+status: test
+modified: 2024/03/06
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\wlrmdr.exe" or ((((ProcessCommandLine
+  contains "-s " or ProcessCommandLine contains "/s ") and (ProcessCommandLine contains
+  "-f " or ProcessCommandLine contains "/f ") and (ProcessCommandLine contains "-t
+  " or ProcessCommandLine contains "/t ") and (ProcessCommandLine contains "-m " or
+  ProcessCommandLine contains "/m ") and (ProcessCommandLine contains "-a " or ProcessCommandLine
+  contains "/a ") and (ProcessCommandLine contains "-u " or ProcessCommandLine contains
+  "/u ")) and (FolderPath endswith "\\wlrmdr.exe" or ProcessVersionInfoOriginalFileName
+  =~ "WLRMNDR.EXE")) and (not(((InitiatingProcessFolderPath in~ ("", "-")) or isnull(InitiatingProcessFolderPath)
+  or InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\winlogon.exe"))))'

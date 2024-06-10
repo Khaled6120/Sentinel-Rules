@@ -1,0 +1,31 @@
+name: HackTool - Rubeus Execution
+id: 7ec2c172-dceb-4c10-92c9-87c1881b7e18
+author: Florian Roth (Nextron Systems)
+date: 2018/12/19
+level: critical
+description: Detects the execution of the hacktool Rubeus via PE information of command
+  line parameters
+status: stable
+modified: 2023/04/20
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+- lateral_movement
+relevantTechniques:
+- t1003
+- t1550.003
+- t1558.003
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\Rubeus.exe" or ProcessVersionInfoOriginalFileName
+  =~ "Rubeus.exe" or ProcessVersionInfoFileDescription =~ "Rubeus" or (ProcessCommandLine
+  contains "asreproast " or ProcessCommandLine contains "dump /service:krbtgt " or
+  ProcessCommandLine contains "dump /luid:0x" or ProcessCommandLine contains "kerberoast
+  " or ProcessCommandLine contains "createnetonly /program:" or ProcessCommandLine
+  contains "ptt /ticket:" or ProcessCommandLine contains "/impersonateuser:" or ProcessCommandLine
+  contains "renew /ticket:" or ProcessCommandLine contains "asktgt /user:" or ProcessCommandLine
+  contains "harvest /interval:" or ProcessCommandLine contains "s4u /user:" or ProcessCommandLine
+  contains "s4u /ticket:" or ProcessCommandLine contains "hash /password:" or ProcessCommandLine
+  contains "golden /aes256:" or ProcessCommandLine contains "silver /user:")'

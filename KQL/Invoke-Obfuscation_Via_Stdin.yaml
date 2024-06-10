@@ -1,0 +1,20 @@
+name: Invoke-Obfuscation Via Stdin
+id: 9c14c9fa-1a63-4a64-8e57-d19280559490
+author: Nikita Nazarov, oscd.community
+date: 2020/10/12
+level: high
+description: Detects Obfuscated Powershell via Stdin in Scripts
+status: test
+modified: 2024/04/16
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1027
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine matches regex "(?i)(set).*&&\\s?set.*(environment|invoke|\\$\\{?input).*&&.*""'

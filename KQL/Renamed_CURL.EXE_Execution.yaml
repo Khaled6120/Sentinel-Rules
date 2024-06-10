@@ -1,0 +1,22 @@
+name: Renamed CURL.EXE Execution
+id: 7530cd3d-7671-43e3-b209-976966f6ea48
+author: X__Junior (Nextron Systems)
+date: 2023/09/11
+level: medium
+description: Detects the execution of a renamed "CURL.exe" binary based on the PE
+  metadata fields
+status: experimental
+modified: 2023/10/12
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1059
+- t1202
+query: 'DeviceProcessEvents
+
+  | where (ProcessVersionInfoOriginalFileName =~ "curl.exe" or ProcessVersionInfoFileDescription
+  =~ "The curl executable") and (not(FolderPath contains "\\curl"))'

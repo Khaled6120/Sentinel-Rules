@@ -1,0 +1,28 @@
+name: PowerShell Execution With Potential Decryption Capabilities
+id: 434c08ba-8406-4d15-8b24-782cb071a691
+author: X__Junior (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2023/06/30
+level: high
+description: Detects PowerShell commands that decrypt an ".LNK" "file to drop the
+  next stage of the malware.
+status: experimental
+modified: 2023/12/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "Get-ChildItem " or ProcessCommandLine contains
+  "dir " or ProcessCommandLine contains "gci " or ProcessCommandLine contains "ls
+  ") and (ProcessCommandLine contains "Get-Content " or ProcessCommandLine contains
+  "gc " or ProcessCommandLine contains "cat " or ProcessCommandLine contains "type
+  " or ProcessCommandLine contains "ReadAllBytes") and ((ProcessCommandLine contains
+  " ^| " and ProcessCommandLine contains "*.lnk" and ProcessCommandLine contains "-Recurse"
+  and ProcessCommandLine contains "-Skip ") or (ProcessCommandLine contains " -ExpandProperty
+  " and ProcessCommandLine contains "*.lnk" and ProcessCommandLine contains "WriteAllBytes"
+  and ProcessCommandLine contains " .length ")) and ((FolderPath endswith "\\powershell.exe"
+  or FolderPath endswith "\\pwsh.exe") and (ProcessVersionInfoOriginalFileName in~
+  ("PowerShell.EXE", "pwsh.dll")))'

@@ -1,0 +1,25 @@
+name: Suspicious DumpMinitool Execution
+id: eb1c4225-1c23-4241-8dd4-051389fde4ce
+author: Florian Roth (Nextron Systems)
+date: 2022/04/06
+level: high
+description: Detects suspicious ways to use the "DumpMinitool.exe" binary
+status: test
+modified: 2023/04/12
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1003.001
+- t1036
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\DumpMinitool.exe" or FolderPath endswith "\\DumpMinitool.x86.exe"
+  or FolderPath endswith "\\DumpMinitool.arm64.exe") or (ProcessVersionInfoOriginalFileName
+  in~ ("DumpMinitool.exe", "DumpMinitool.x86.exe", "DumpMinitool.arm64.exe"))) and
+  ((not((FolderPath contains "\\Microsoft Visual Studio\\" or FolderPath contains
+  "\\Extensions\\"))) or ProcessCommandLine contains ".txt" or ((ProcessCommandLine
+  contains " Full" or ProcessCommandLine contains " Mini" or ProcessCommandLine contains
+  " WithHeap") and (not(ProcessCommandLine contains "--dumpType"))))'

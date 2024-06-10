@@ -1,0 +1,22 @@
+name: Use of W32tm as Timer
+id: 6da2c9f5-7c53-401b-aacb-92c040ce1215
+author: frack113
+date: 2022/09/25
+level: high
+description: When configured with suitable command line arguments, w32tm can act as
+  a delay mechanism
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1124
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "/stripchart" and ProcessCommandLine contains
+  "/computer:" and ProcessCommandLine contains "/period:" and ProcessCommandLine contains
+  "/dataonly" and ProcessCommandLine contains "/samples:") and (FolderPath endswith
+  "\\w32tm.exe" or ProcessVersionInfoOriginalFileName =~ "w32time.dll")'

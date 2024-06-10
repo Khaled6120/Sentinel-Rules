@@ -1,0 +1,21 @@
+name: New Process Created Via Taskmgr.EXE
+id: 3d7679bd-0c00-440c-97b0-3f204273e6c7
+author: Florian Roth (Nextron Systems)
+date: 2018/03/13
+level: low
+description: Detects the creation of a process via the Windows task manager. This
+  might be an attempt to bypass UAC
+status: test
+modified: 2024/01/18
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1036
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\taskmgr.exe" and (not((FolderPath
+  endswith ":\\Windows\\System32\\mmc.exe" or FolderPath endswith ":\\Windows\\System32\\resmon.exe"
+  or FolderPath endswith ":\\Windows\\System32\\Taskmgr.exe")))'

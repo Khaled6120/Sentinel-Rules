@@ -1,0 +1,23 @@
+name: Potential Arbitrary Command Execution Via FTP.EXE
+id: 06b401f4-107c-4ff9-947f-9ec1e7649f1e
+author: Victor Sergeev, oscd.community
+date: 2020/10/09
+level: medium
+description: Detects execution of "ftp.exe" script with the "-s" or "/s" flag and
+  any child processes ran by "ftp.exe".
+status: test
+modified: 2024/04/23
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1059
+- t1202
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\ftp.exe" or ((ProcessCommandLine
+  contains "-s:" or ProcessCommandLine contains "/s:") and (FolderPath endswith "\\ftp.exe"
+  or ProcessVersionInfoOriginalFileName =~ "ftp.exe"))'

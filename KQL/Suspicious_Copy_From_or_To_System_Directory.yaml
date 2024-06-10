@@ -1,0 +1,32 @@
+name: Suspicious Copy From or To System Directory
+id: fff9d2b7-e11c-4a69-93d3-40ef66189767
+author: Florian Roth (Nextron Systems), Markus Neis, Tim Shelton (HAWK.IO), Nasreddine
+  Bencherchali (Nextron Systems)
+date: 2020/07/03
+level: medium
+description: 'Detects a suspicious copy operation that tries to copy a program from
+  system (System32, SysWOW64, WinSxS) directories to another on disk.
+
+  Often used to move LOLBINs such as ''certutil'' or ''desktopimgdownldr'' to a different
+  location with a different name in order to bypass detections based on locations.
+
+  '
+status: test
+modified: 2023/08/29
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1036.003
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "copy " and FolderPath endswith "\\cmd.exe")
+  or ((FolderPath endswith "\\robocopy.exe" or FolderPath endswith "\\xcopy.exe")
+  or (ProcessVersionInfoOriginalFileName in~ ("robocopy.exe", "XCOPY.EXE"))) or ((ProcessCommandLine
+  contains "copy-item" or ProcessCommandLine contains " copy " or ProcessCommandLine
+  contains "cpi " or ProcessCommandLine contains " cp ") and (FolderPath endswith
+  "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"))) and (ProcessCommandLine
+  contains "\\System32" or ProcessCommandLine contains "\\SysWOW64" or ProcessCommandLine
+  contains "\\WinSxS")'

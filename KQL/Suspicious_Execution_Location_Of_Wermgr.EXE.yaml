@@ -1,0 +1,19 @@
+name: Suspicious Execution Location Of Wermgr.EXE
+id: 5394fcc7-aeb2-43b5-9a09-cac9fc5edcd5
+author: Florian Roth (Nextron Systems)
+date: 2022/10/14
+level: high
+description: Detects suspicious Windows Error Reporting manager (wermgr.exe) execution
+  location.
+status: experimental
+modified: 2023/08/23
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\wermgr.exe" and (not((FolderPath startswith "C:\\Windows\\System32\\"
+  or FolderPath startswith "C:\\Windows\\SysWOW64\\" or FolderPath startswith "C:\\Windows\\WinSxS\\")))'

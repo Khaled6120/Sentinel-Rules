@@ -1,0 +1,19 @@
+name: Renamed PsExec Service Execution
+id: 51ae86a2-e2e1-4097-ad85-c46cb6851de4
+author: Florian Roth (Nextron Systems)
+date: 2022/07/21
+level: high
+description: Detects suspicious launch of a renamed version of the PSEXESVC service
+  with, which is not often used by legitimate administrators
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoOriginalFileName =~ "psexesvc.exe" and (not(FolderPath
+  =~ "C:\\Windows\\PSEXESVC.exe"))'

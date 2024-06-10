@@ -1,0 +1,21 @@
+name: Add Potential Suspicious New Download Source To Winget
+id: c15a46a0-07d4-4c87-b4b6-89207835a83b
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/04/17
+level: medium
+description: Detects usage of winget to add new potentially suspicious download sources
+status: experimental
+modified: 2023/12/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "source " and ProcessCommandLine contains "add
+  ") and (FolderPath endswith "\\winget.exe" or ProcessVersionInfoOriginalFileName
+  =~ "winget.exe") and ProcessCommandLine matches regex "://\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}"'

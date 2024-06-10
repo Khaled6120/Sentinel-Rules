@@ -1,0 +1,23 @@
+name: Renamed Remote Utilities RAT (RURAT) Execution
+id: 9ef27c24-4903-4192-881a-3adde7ff92a5
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/09/19
+level: medium
+description: Detects execution of renamed Remote Utilities (RURAT) via Product PE
+  header field
+status: test
+modified: 2023/02/03
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- collection
+- command_and_control
+- defense_evasion
+- discovery
+- s0592
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoProductName =~ "Remote Utilities" and (not((FolderPath
+  endswith "\\rutserv.exe" or FolderPath endswith "\\rfusclient.exe")))'

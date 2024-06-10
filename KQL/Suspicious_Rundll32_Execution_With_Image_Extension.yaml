@@ -1,0 +1,26 @@
+name: Suspicious Rundll32 Execution With Image Extension
+id: 4aa6040b-3f28-44e3-a769-9208e5feb5ec
+author: Hieu Tran
+date: 2023/03/13
+level: high
+description: Detects the execution of Rundll32.exe with DLL files masquerading as
+  image files
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218.011
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains ".bmp" or ProcessCommandLine contains ".cr2"
+  or ProcessCommandLine contains ".eps" or ProcessCommandLine contains ".gif" or ProcessCommandLine
+  contains ".ico" or ProcessCommandLine contains ".jpeg" or ProcessCommandLine contains
+  ".jpg" or ProcessCommandLine contains ".nef" or ProcessCommandLine contains ".orf"
+  or ProcessCommandLine contains ".png" or ProcessCommandLine contains ".raw" or ProcessCommandLine
+  contains ".sr2" or ProcessCommandLine contains ".tif" or ProcessCommandLine contains
+  ".tiff") and (FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName
+  =~ "RUNDLL32.exe")'

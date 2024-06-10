@@ -1,0 +1,21 @@
+name: Use of VSIISExeLauncher.exe
+id: 18749301-f1c5-4efc-a4c3-276ff1f5b6f8
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/06/09
+level: medium
+description: The "VSIISExeLauncher.exe" binary part of the Visual Studio/VS Code can
+  be used to execute arbitrary binaries
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1127
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -p " or ProcessCommandLine contains " -a
+  ") and (FolderPath endswith "\\VSIISExeLauncher.exe" or ProcessVersionInfoOriginalFileName
+  =~ "VSIISExeLauncher.exe")'

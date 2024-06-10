@@ -1,0 +1,21 @@
+name: Potential Rundll32 Execution With DLL Stored In ADS
+id: 9248c7e1-2bf3-4661-a22c-600a8040b446
+author: Harjot Singh, '@cyb3rjy0t'
+date: 2023/01/21
+level: high
+description: Detects execution of rundll32 where the DLL being called is stored in
+  an Alternate Data Stream (ADS).
+status: test
+modified: 2023/02/08
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1564.004
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine matches regex "[Rr][Uu][Nn][Dd][Ll][Ll]32(\\.[Ee][Xx][Ee])?
+  \\S+?\\w:\\S+?:" and (FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName
+  =~ "RUNDLL32.EXE")'

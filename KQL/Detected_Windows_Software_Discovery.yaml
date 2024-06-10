@@ -1,0 +1,22 @@
+name: Detected Windows Software Discovery
+id: e13f668e-7f95-443d-98d2-1816a7648a7b
+author: Nikita Nazarov, oscd.community
+date: 2020/10/16
+level: medium
+description: Adversaries may attempt to enumerate software for a variety of reasons,
+  such as figuring out what security measures are present or if the compromised system
+  has a version of software that is vulnerable.
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1518
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "query" and ProcessCommandLine contains "\\software\\"
+  and ProcessCommandLine contains "/v" and ProcessCommandLine contains "svcversion")
+  and FolderPath endswith "\\reg.exe"'

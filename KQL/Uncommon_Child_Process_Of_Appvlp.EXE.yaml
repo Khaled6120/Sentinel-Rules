@@ -1,0 +1,34 @@
+name: Uncommon Child Process Of Appvlp.EXE
+id: 9c7e131a-0f2c-4ae0-9d43-b04f4e266d43
+author: Sreeman
+date: 2020/03/13
+level: medium
+description: 'Detects uncommon child processes of Appvlp.EXE
+
+  Appvlp or the Application Virtualization Utility is included with Microsoft Office.
+  Attackers are able to abuse "AppVLP" to execute shell commands.
+
+  Normally, this binary is used for Application Virtualization, but it can also be
+  abused to circumvent the ASR file path rule folder
+
+  or to mark a file as a system file.
+
+  '
+status: test
+modified: 2023/11/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\appvlp.exe" and (not((FolderPath
+  endswith ":\\Windows\\SysWOW64\\rundll32.exe" or FolderPath endswith ":\\Windows\\System32\\rundll32.exe")))
+  and (not(((FolderPath contains ":\\Program Files\\Microsoft Office" and FolderPath
+  endswith "\\msoasb.exe") or (FolderPath contains ":\\Program Files\\Microsoft Office"
+  and FolderPath endswith "\\MSOUC.EXE") or ((FolderPath contains ":\\Program Files\\Microsoft
+  Office" and FolderPath contains "\\SkypeSrv\\") and FolderPath endswith "\\SKYPESERVER.EXE"))))'

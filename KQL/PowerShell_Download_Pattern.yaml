@@ -1,0 +1,23 @@
+name: PowerShell Download Pattern
+id: 3b6ab547-8ec2-4991-b9d2-2b06702a48d7
+author: Florian Roth (Nextron Systems), oscd.community, Jonhnathan Ribeiro
+date: 2019/01/16
+level: medium
+description: Detects a Powershell process that contains download commands in its command
+  line string
+status: test
+modified: 2023/01/26
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "string(" or ProcessCommandLine contains "file(")
+  and (ProcessCommandLine contains "new-object" and ProcessCommandLine contains "net.webclient)."
+  and ProcessCommandLine contains "download")) and ((FolderPath endswith "\\powershell.exe"
+  or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~
+  ("PowerShell.EXE", "pwsh.dll")))'

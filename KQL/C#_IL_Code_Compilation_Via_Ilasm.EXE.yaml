@@ -1,0 +1,21 @@
+name: C# IL Code Compilation Via Ilasm.EXE
+id: 850d55f9-6eeb-4492-ad69-a72338f65ba4
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: 2022/05/07
+level: medium
+description: Detects the use of "Ilasm.EXE" in order to compile C# intermediate (IL)
+  code to EXE or DLL.
+status: test
+modified: 2022/05/16
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1127
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " /dll" or ProcessCommandLine contains " /exe")
+  and (FolderPath endswith "\\ilasm.exe" or ProcessVersionInfoOriginalFileName =~
+  "ilasm.exe")'

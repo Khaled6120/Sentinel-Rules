@@ -1,0 +1,20 @@
+name: Uninstall Crowdstrike Falcon Sensor
+id: f0f7be61-9cf5-43be-9836-99d6ef448a18
+author: frack113
+date: 2021/07/12
+level: high
+description: Adversaries may disable security tools to avoid possible detection of
+  their tools and activities by uninstalling Crowdstrike Falcon
+status: test
+modified: 2023/03/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1562.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "\\WindowsSensor.exe" and ProcessCommandLine
+  contains " /uninstall" and ProcessCommandLine contains " /quiet"'

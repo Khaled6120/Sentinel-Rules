@@ -1,0 +1,22 @@
+name: Winrar Execution in Non-Standard Folder
+id: 4ede543c-e098-43d9-a28f-dd784a13132f
+author: Florian Roth (Nextron Systems), Tigzy
+date: 2021/11/17
+level: medium
+description: Detects a suspicious winrar execution in a folder which is not the default
+  installation folder
+status: test
+modified: 2023/08/31
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- collection
+relevantTechniques:
+- t1560.001
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\rar.exe" or FolderPath endswith "\\winrar.exe")
+  or ProcessVersionInfoFileDescription =~ "Command line RAR") and (not(((FolderPath
+  contains ":\\Program Files (x86)\\WinRAR\\" or FolderPath contains ":\\Program Files\\WinRAR\\")
+  or FolderPath endswith "\\UnRAR.exe"))) and (not(FolderPath contains ":\\Windows\\Temp\\"))'

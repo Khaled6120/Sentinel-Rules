@@ -1,0 +1,20 @@
+name: PowerShell Script Change Permission Via Set-Acl
+id: bdeb2cff-af74-4094-8426-724dc937f20a
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/10/18
+level: high
+description: Detects PowerShell execution to set the ACL of a file or a folder
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "Set-Acl " and ProcessCommandLine contains
+  "-AclObject " and ProcessCommandLine contains "-Path ") and ((ProcessVersionInfoOriginalFileName
+  in~ ("PowerShell.EXE", "pwsh.dll")) or (FolderPath endswith "\\powershell.exe" or
+  FolderPath endswith "\\pwsh.exe"))'

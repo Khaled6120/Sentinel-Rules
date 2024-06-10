@@ -1,0 +1,21 @@
+name: Suspicious Extrac32 Execution
+id: aa8e035d-7be4-48d3-a944-102aec04400d
+author: frack113
+date: 2021/11/26
+level: medium
+description: Download or Copy file with Extrac32
+status: test
+modified: 2022/08/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1105
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains ".cab" and (ProcessCommandLine contains "extrac32.exe"
+  or FolderPath endswith "\\extrac32.exe" or ProcessVersionInfoOriginalFileName =~
+  "extrac32.exe") and (ProcessCommandLine contains "/C" or ProcessCommandLine contains
+  "/Y" or ProcessCommandLine contains " \\\\")'

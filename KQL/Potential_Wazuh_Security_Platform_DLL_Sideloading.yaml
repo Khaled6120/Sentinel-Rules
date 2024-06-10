@@ -1,0 +1,25 @@
+name: Potential Wazuh Security Platform DLL Sideloading
+id: db77ce78-7e28-4188-9337-cf30e2b3ba9f
+author: X__Junior (Nextron Systems)
+date: 2023/03/13
+level: medium
+description: Detects potential DLL side loading of DLLs that are part of the Wazuh
+  security platform
+status: test
+modified: 2023/05/12
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where (FolderPath endswith "\\libwazuhshared.dll" or FolderPath endswith "\\libwinpthread-1.dll")
+  and (not((FolderPath startswith "C:\\Program Files\\" or FolderPath startswith "C:\\Program
+  Files (x86)\\"))) and (not(((FolderPath contains "\\AppData\\Local\\" or FolderPath
+  contains "\\ProgramData\\") and FolderPath endswith "\\mingw64\\bin\\libwinpthread-1.dll")))'

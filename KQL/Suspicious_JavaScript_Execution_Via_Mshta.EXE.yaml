@@ -1,0 +1,19 @@
+name: Suspicious JavaScript Execution Via Mshta.EXE
+id: 67f113fa-e23d-4271-befa-30113b3e08b1
+author: E.M. Anhaus (originally from Atomic Blue Detections, Endgame), oscd.community
+date: 2019/10/24
+level: high
+description: Detects execution of javascript code using "mshta.exe".
+status: test
+modified: 2023/02/07
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218.005
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "javascript" and (FolderPath endswith "\\mshta.exe"
+  or ProcessVersionInfoOriginalFileName =~ "MSHTA.EXE")'

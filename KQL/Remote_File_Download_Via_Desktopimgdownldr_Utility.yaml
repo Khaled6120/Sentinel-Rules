@@ -1,0 +1,21 @@
+name: Remote File Download Via Desktopimgdownldr Utility
+id: 214641c2-c579-4ecb-8427-0cf19df6842e
+author: Tim Rauch, Elastic (idea)
+date: 2022/09/27
+level: medium
+description: Detects the desktopimgdownldr utility being used to download a remote
+  file. An adversary may use desktopimgdownldr to download arbitrary files as an alternative
+  to certutil.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1105
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "/lockscreenurl:http" and FolderPath endswith
+  "\\desktopimgdownldr.exe" and InitiatingProcessFolderPath endswith "\\desktopimgdownldr.exe"'

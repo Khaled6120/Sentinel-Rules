@@ -1,0 +1,22 @@
+name: Rundll32 Spawned Via Explorer.EXE
+id: 1723e720-616d-4ddc-ab02-f7e3685a4713
+author: CD_ROM_
+date: 2022/05/21
+level: medium
+description: Detects execution of "rundll32.exe" with a parent process of Explorer.exe.
+  This has been observed by variants of Raspberry Robin, as first reported by Red
+  Canary.
+status: experimental
+modified: 2023/08/31
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName
+  =~ "RUNDLL32.EXE") and InitiatingProcessFolderPath endswith "\\explorer.exe") and
+  (not((ProcessCommandLine contains " C:\\Windows\\System32\\" or ProcessCommandLine
+  endswith " -localserver 22d8c27b-47a1-48d1-ad08-7da7abd79617")))'

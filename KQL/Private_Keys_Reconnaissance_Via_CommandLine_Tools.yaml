@@ -1,0 +1,28 @@
+name: Private Keys Reconnaissance Via CommandLine Tools
+id: 213d6a77-3d55-4ce8-ba74-fcfef741974e
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: 2021/07/20
+level: medium
+description: Adversaries may search for private key certificate files on compromised
+  systems for insecurely stored credential
+status: test
+modified: 2023/03/06
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1552.004
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains ".key" or ProcessCommandLine contains ".pgp"
+  or ProcessCommandLine contains ".gpg" or ProcessCommandLine contains ".ppk" or ProcessCommandLine
+  contains ".p12" or ProcessCommandLine contains ".pem" or ProcessCommandLine contains
+  ".pfx" or ProcessCommandLine contains ".cer" or ProcessCommandLine contains ".p7b"
+  or ProcessCommandLine contains ".asc") and ((ProcessCommandLine contains "dir "
+  and (FolderPath endswith "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe"))
+  or (ProcessCommandLine contains "Get-ChildItem " and ((FolderPath endswith "\\powershell.exe"
+  or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~
+  ("PowerShell.EXE", "pwsh.dll")))) or (FolderPath endswith "\\findstr.exe" or ProcessVersionInfoOriginalFileName
+  =~ "FINDSTR.EXE"))'

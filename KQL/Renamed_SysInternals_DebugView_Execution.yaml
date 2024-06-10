@@ -1,0 +1,19 @@
+name: Renamed SysInternals DebugView Execution
+id: cd764533-2e07-40d6-a718-cfeec7f2da7f
+author: Florian Roth (Nextron Systems)
+date: 2020/05/28
+level: high
+description: Detects suspicious renamed SysInternals DebugView execution
+status: test
+modified: 2023/02/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- resource_development
+relevantTechniques:
+- t1588.002
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoProductName =~ "Sysinternals DebugView" and (not((FolderPath
+  endswith "\\Dbgview.exe" and ProcessVersionInfoOriginalFileName =~ "Dbgview.exe")))'

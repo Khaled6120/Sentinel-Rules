@@ -1,0 +1,19 @@
+name: HackTool - Sliver C2 Implant Activity Pattern
+id: 42333b2c-b425-441c-b70e-99404a17170f
+author: Nasreddine Bencherchali (Nextron Systems), Florian Roth (Nextron Systems)
+date: 2022/08/25
+level: critical
+description: Detects process activity patterns as seen being used by Sliver C2 framework
+  implants
+status: test
+modified: 2023/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "-NoExit -Command [Console]::OutputEncoding=[Text.UTF8Encoding]::UTF8"'

@@ -1,0 +1,20 @@
+name: HackTool - SafetyKatz Execution
+id: b1876533-4ed5-4a83-90f3-b8645840a413
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/10/20
+level: critical
+description: Detects the execution of the hacktool SafetyKatz via PE information and
+  default Image name
+status: test
+modified: 2023/02/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1003.001
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\SafetyKatz.exe" or ProcessVersionInfoOriginalFileName
+  =~ "SafetyKatz.exe" or ProcessVersionInfoFileDescription =~ "SafetyKatz"'

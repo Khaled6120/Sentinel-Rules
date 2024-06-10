@@ -1,0 +1,24 @@
+name: Veeam Backup Database Suspicious Query
+id: 696bfb54-227e-4602-ac5b-30d9d2053312
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/04
+level: medium
+description: Detects potentially suspicious SQL queries using SQLCmd targeting the
+  Veeam backup databases in order to steal information.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- collection
+relevantTechniques:
+- t1005
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "BackupRepositories" or ProcessCommandLine
+  contains "Backups" or ProcessCommandLine contains "Credentials" or ProcessCommandLine
+  contains "HostCreds" or ProcessCommandLine contains "SmbFileShares" or ProcessCommandLine
+  contains "Ssh_creds" or ProcessCommandLine contains "VSphereInfo") and ((ProcessCommandLine
+  contains "VeeamBackup" and ProcessCommandLine contains "From ") and FolderPath endswith
+  "\\sqlcmd.exe")'

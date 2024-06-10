@@ -1,0 +1,21 @@
+name: HackTool - Empire PowerShell UAC Bypass
+id: 3268b746-88d8-4cd3-bffc-30077d02c787
+author: Ecco
+date: 2019/08/30
+level: critical
+description: Detects some Empire PowerShell UAC bypass methods
+status: stable
+modified: 2023/02/21
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1548.002
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " -NoP -NonI -w Hidden -c $x=$((gp HKCU:Software\\Microsoft\\Windows
+  Update).Update)" or ProcessCommandLine contains " -NoP -NonI -c $x=$((gp HKCU:Software\\Microsoft\\Windows
+  Update).Update);"'

@@ -1,0 +1,24 @@
+name: Diskshadow Script Mode - Execution From Potential Suspicious Location
+id: fa1a7e52-3d02-435b-81b8-00da14dd66c1
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/09/15
+level: medium
+description: Detects execution of "Diskshadow.exe" in script mode using the "/s" flag
+  where the script is located in a potentially suspicious location.
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "-s " or ProcessCommandLine contains "/s ")
+  and (ProcessVersionInfoOriginalFileName =~ "diskshadow.exe" or FolderPath endswith
+  "\\diskshadow.exe") and (ProcessCommandLine contains ":\\Temp\\" or ProcessCommandLine
+  contains ":\\Windows\\Temp\\" or ProcessCommandLine contains "\\AppData\\Local\\"
+  or ProcessCommandLine contains "\\AppData\\Roaming\\" or ProcessCommandLine contains
+  "\\ProgramData\\" or ProcessCommandLine contains "\\Users\\Public\\")'

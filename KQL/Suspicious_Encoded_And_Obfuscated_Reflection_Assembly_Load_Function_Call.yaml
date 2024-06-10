@@ -1,0 +1,32 @@
+name: Suspicious Encoded And Obfuscated Reflection Assembly Load Function Call
+id: 9c0295ce-d60d-40bd-bd74-84673b7592b1
+author: pH-T (Nextron Systems)
+date: 2022/03/01
+level: high
+description: Detects suspicious base64 encoded and obfuscated "LOAD" keyword used
+  in .NET "reflection.assembly"
+status: test
+modified: 2023/04/06
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1027
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "OgA6ACgAIgBMACIAKwAiAG8AYQBkACIAKQ" or ProcessCommandLine
+  contains "oAOgAoACIATAAiACsAIgBvAGEAZAAiACkA" or ProcessCommandLine contains "6ADoAKAAiAEwAIgArACIAbwBhAGQAIgApA"
+  or ProcessCommandLine contains "OgA6ACgAIgBMAG8AIgArACIAYQBkACIAKQ" or ProcessCommandLine
+  contains "oAOgAoACIATABvACIAKwAiAGEAZAAiACkA" or ProcessCommandLine contains "6ADoAKAAiAEwAbwAiACsAIgBhAGQAIgApA"
+  or ProcessCommandLine contains "OgA6ACgAIgBMAG8AYQAiACsAIgBkACIAKQ" or ProcessCommandLine
+  contains "oAOgAoACIATABvAGEAIgArACIAZAAiACkA" or ProcessCommandLine contains "6ADoAKAAiAEwAbwBhACIAKwAiAGQAIgApA"
+  or ProcessCommandLine contains "OgA6ACgAJwBMACcAKwAnAG8AYQBkACcAKQ" or ProcessCommandLine
+  contains "oAOgAoACcATAAnACsAJwBvAGEAZAAnACkA" or ProcessCommandLine contains "6ADoAKAAnAEwAJwArACcAbwBhAGQAJwApA"
+  or ProcessCommandLine contains "OgA6ACgAJwBMAG8AJwArACcAYQBkACcAKQ" or ProcessCommandLine
+  contains "oAOgAoACcATABvACcAKwAnAGEAZAAnACkA" or ProcessCommandLine contains "6ADoAKAAnAEwAbwAnACsAJwBhAGQAJwApA"
+  or ProcessCommandLine contains "OgA6ACgAJwBMAG8AYQAnACsAJwBkACcAKQ" or ProcessCommandLine
+  contains "oAOgAoACcATABvAGEAJwArACcAZAAnACkA" or ProcessCommandLine contains "6ADoAKAAnAEwAbwBhACcAKwAnAGQAJwApA"'

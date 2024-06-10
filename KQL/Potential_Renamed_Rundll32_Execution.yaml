@@ -1,0 +1,20 @@
+name: Potential Renamed Rundll32 Execution
+id: 2569ed8c-1147-498a-9b8c-2ad3656b10ed
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/22
+level: high
+description: Detects when 'DllRegisterServer' is called in the commandline and the
+  image is not rundll32. This could mean that the 'rundll32' utility has been renamed
+  in order to avoid detection
+status: test
+modified: 2023/02/03
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "DllRegisterServer" and (not(FolderPath endswith
+  "\\rundll32.exe"))'

@@ -1,0 +1,22 @@
+name: PUA - CsExec Execution
+id: d08a2711-ee8b-4323-bdec-b7d85e892b31
+author: Florian Roth (Nextron Systems)
+date: 2022/08/22
+level: high
+description: Detects the use of the lesser known remote execution tool named CsExec
+  a PsExec alternative
+status: test
+modified: 2023/02/21
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+- resource_development
+relevantTechniques:
+- t1569.002
+- t1587.001
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\csexec.exe" or ProcessVersionInfoFileDescription
+  =~ "csexec"'

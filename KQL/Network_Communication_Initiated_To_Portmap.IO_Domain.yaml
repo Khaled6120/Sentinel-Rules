@@ -1,0 +1,21 @@
+name: Network Communication Initiated To Portmap.IO Domain
+id: 07837ab9-60e1-481f-a74d-c31fb496a94c
+author: Florian Roth (Nextron Systems)
+date: 2024/05/31
+level: medium
+description: Detects an executable accessing the portmap.io domain, which could be
+  a sign of forbidden C2 traffic or data exfiltration by malicious actors
+status: experimental
+modified: ''
+logsource:
+  category: network_connection
+  product: windows
+tactics:
+- command_and_control
+- exfiltration
+relevantTechniques:
+- t1041
+- t1090.002
+query: 'DeviceNetworkEvents
+
+  | where RemoteUrl endswith ".portmap.io"'

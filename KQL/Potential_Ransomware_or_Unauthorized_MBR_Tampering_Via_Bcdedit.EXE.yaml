@@ -1,0 +1,23 @@
+name: Potential Ransomware or Unauthorized MBR Tampering Via Bcdedit.EXE
+id: c9fbe8e9-119d-40a6-9b59-dd58a5d84429
+author: '@neu5ron'
+date: 2019/02/07
+level: medium
+description: Detects potential malicious and unauthorized usage of bcdedit.exe
+status: test
+modified: 2023/02/15
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+relevantTechniques:
+- t1070
+- t1542.003
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "delete" or ProcessCommandLine contains "deletevalue"
+  or ProcessCommandLine contains "import" or ProcessCommandLine contains "safeboot"
+  or ProcessCommandLine contains "network") and (FolderPath endswith "\\bcdedit.exe"
+  or ProcessVersionInfoOriginalFileName =~ "bcdedit.exe")'

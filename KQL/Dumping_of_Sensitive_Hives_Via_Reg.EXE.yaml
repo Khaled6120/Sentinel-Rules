@@ -1,0 +1,32 @@
+name: Dumping of Sensitive Hives Via Reg.EXE
+id: fd877b94-9bb5-4191-bb25-d79cbd93c167
+author: Teymur Kheirkhabarov, Endgame, JHasenbusch, Daniil Yugoslavskiy, oscd.community,
+  frack113
+date: 2019/10/22
+level: high
+description: Detects the usage of "reg.exe" in order to dump sensitive registry hives.
+  This includes SAM, SYSTEM and SECURITY hives.
+status: test
+modified: 2023/12/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1003.002
+- t1003.004
+- t1003.005
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" save \" or ProcessCommandLine\
+  \ contains \" export \" or ProcessCommandLine contains \" \xCB\xA2ave \" or ProcessCommandLine\
+  \ contains \" e\xCB\xA3port \") and (ProcessCommandLine contains \"\\\\system\"\
+  \ or ProcessCommandLine contains \"\\\\sam\" or ProcessCommandLine contains \"\\\
+  \\security\" or ProcessCommandLine contains \"\\\\\xCB\xA2ystem\" or ProcessCommandLine\
+  \ contains \"\\\\sy\xCB\xA2tem\" or ProcessCommandLine contains \"\\\\\xCB\xA2y\xCB\
+  \xA2tem\" or ProcessCommandLine contains \"\\\\\xCB\xA2am\" or ProcessCommandLine\
+  \ contains \"\\\\\xCB\xA2ecurity\") and (ProcessCommandLine contains \"hklm\" or\
+  \ ProcessCommandLine contains \"hk\xCB\xAAm\" or ProcessCommandLine contains \"\
+  hkey_local_machine\" or ProcessCommandLine contains \"hkey_\xCB\xAAocal_machine\"\
+  \ or ProcessCommandLine contains \"hkey_loca\xCB\xAA_machine\" or ProcessCommandLine\
+  \ contains \"hkey_\xCB\xAAoca\xCB\xAA_machine\") and (FolderPath endswith \"\\\\\
+  reg.exe\" or ProcessVersionInfoOriginalFileName =~ \"reg.exe\")"

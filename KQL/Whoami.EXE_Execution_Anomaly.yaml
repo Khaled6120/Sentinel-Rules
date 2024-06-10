@@ -1,0 +1,24 @@
+name: Whoami.EXE Execution Anomaly
+id: 8de1cbe8-d6f5-496d-8237-5f44a721c7a0
+author: Florian Roth (Nextron Systems)
+date: 2021/08/12
+level: medium
+description: Detects the execution of whoami.exe with suspicious parent processes.
+status: experimental
+modified: 2023/12/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1033
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\whoami.exe" or ProcessVersionInfoOriginalFileName
+  =~ "whoami.exe") and (not(((InitiatingProcessFolderPath endswith "\\cmd.exe" or
+  InitiatingProcessFolderPath endswith "\\powershell_ise.exe" or InitiatingProcessFolderPath
+  endswith "\\powershell.exe" or InitiatingProcessFolderPath endswith "\\pwsh.exe")
+  or InitiatingProcessFolderPath =~ "" or isnull(InitiatingProcessFolderPath)))) and
+  (not(InitiatingProcessFolderPath endswith ":\\Program Files\\Microsoft Monitoring
+  Agent\\Agent\\MonitoringHost.exe"))'

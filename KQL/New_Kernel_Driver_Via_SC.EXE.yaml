@@ -1,0 +1,21 @@
+name: New Kernel Driver Via SC.EXE
+id: 431a1fdb-4799-4f3b-91c3-a683b003fc49
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/07/14
+level: medium
+description: Detects creation of a new service (kernel driver) with the type "kernel"
+status: test
+modified: 2022/08/08
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1543.003
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "create" or ProcessCommandLine contains "config")
+  and (ProcessCommandLine contains "binPath" and ProcessCommandLine contains "type"
+  and ProcessCommandLine contains "kernel") and FolderPath endswith "\\sc.exe"'

@@ -1,0 +1,21 @@
+name: Nslookup PowerShell Download Cradle - ProcessCreation
+id: 1b3b01c7-84e9-4072-86e5-fc285a41ff23
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/09/05
+level: medium
+description: Detects suspicious powershell download cradle using nslookup. This cradle
+  uses nslookup to extract payloads from DNS records
+status: test
+modified: 2022/12/19
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains " -q=txt " or ProcessCommandLine contains
+  " -querytype=txt ") and (InitiatingProcessFolderPath endswith "\\powershell.exe"
+  or InitiatingProcessFolderPath endswith "\\pwsh.exe")) and (FolderPath contains
+  "\\nslookup.exe" or ProcessVersionInfoOriginalFileName =~ "\\nslookup.exe")'

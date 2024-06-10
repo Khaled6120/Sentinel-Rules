@@ -1,0 +1,30 @@
+name: WSL Child Process Anomaly
+id: 2267fe65-0681-42ad-9a6d-46553d3f3480
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/01/23
+level: medium
+description: Detects uncommon or suspicious child processes spawning from a WSL process.
+  This could indicate an attempt to evade parent/child relationship detections or
+  persistence attempts via cron using WSL
+status: experimental
+modified: 2023/08/15
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1202
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (InitiatingProcessFolderPath endswith "\\wsl.exe" or InitiatingProcessFolderPath
+  endswith "\\wslhost.exe") and ((FolderPath endswith "\\calc.exe" or FolderPath endswith
+  "\\cmd.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\mshta.exe"
+  or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or
+  FolderPath endswith "\\regsvr32.exe" or FolderPath endswith "\\rundll32.exe" or
+  FolderPath endswith "\\wscript.exe") or (FolderPath contains "\\AppData\\Local\\Temp\\"
+  or FolderPath contains "C:\\Users\\Public\\" or FolderPath contains "C:\\Windows\\Temp\\"
+  or FolderPath contains "C:\\Temp\\" or FolderPath contains "\\Downloads\\" or FolderPath
+  contains "\\Desktop\\"))'

@@ -1,0 +1,26 @@
+name: Suspicious Download from Office Domain
+id: 00d49ed5-4491-4271-a8db-650a4ef6f8c1
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2021/12/27
+level: high
+description: Detects suspicious ways to download files from Microsoft domains that
+  are used to store attachments in Emails or OneNote documents
+status: test
+modified: 2022/08/02
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1105
+- t1608
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "https://attachment.outlook.live.net/owa/"
+  or ProcessCommandLine contains "https://onenoteonlinesync.onenote.com/onenoteonlinesync/")
+  and ((FolderPath endswith "\\curl.exe" or FolderPath endswith "\\wget.exe") or (ProcessCommandLine
+  contains "Invoke-WebRequest" or ProcessCommandLine contains "iwr " or ProcessCommandLine
+  contains "curl " or ProcessCommandLine contains "wget " or ProcessCommandLine contains
+  "Start-BitsTransfer" or ProcessCommandLine contains ".DownloadFile(" or ProcessCommandLine
+  contains ".DownloadString("))'

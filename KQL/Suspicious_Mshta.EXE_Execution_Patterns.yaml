@@ -1,0 +1,30 @@
+name: Suspicious Mshta.EXE Execution Patterns
+id: e32f92d1-523e-49c3-9374-bdb13b46a3ba
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2021/07/17
+level: high
+description: Detects suspicious mshta process execution patterns
+status: test
+modified: 2023/02/21
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1106
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\mshta.exe" or ProcessVersionInfoOriginalFileName
+  =~ "MSHTA.EXE") and ((ProcessCommandLine contains "\\AppData\\Local\\" or ProcessCommandLine
+  contains "C:\\ProgramData\\" or ProcessCommandLine contains "C:\\Users\\Public\\"
+  or ProcessCommandLine contains "C:\\Windows\\Temp\\") and (InitiatingProcessFolderPath
+  endswith "\\cmd.exe" or InitiatingProcessFolderPath endswith "\\cscript.exe" or
+  InitiatingProcessFolderPath endswith "\\powershell.exe" or InitiatingProcessFolderPath
+  endswith "\\pwsh.exe" or InitiatingProcessFolderPath endswith "\\regsvr32.exe" or
+  InitiatingProcessFolderPath endswith "\\rundll32.exe" or InitiatingProcessFolderPath
+  endswith "\\wscript.exe"))) or ((FolderPath endswith "\\mshta.exe" or ProcessVersionInfoOriginalFileName
+  =~ "MSHTA.EXE") and (not(((FolderPath startswith "C:\\Windows\\System32\\" or FolderPath
+  startswith "C:\\Windows\\SysWOW64\\") or (ProcessCommandLine contains ".htm" or
+  ProcessCommandLine contains ".hta") or (ProcessCommandLine endswith "mshta.exe"
+  or ProcessCommandLine endswith "mshta")))))'

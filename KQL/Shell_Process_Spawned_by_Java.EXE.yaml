@@ -1,0 +1,23 @@
+name: Shell Process Spawned by Java.EXE
+id: dff1e1cc-d3fd-47c8-bfc2-aeb878a754c0
+author: Andreas Hunkeler (@Karneades), Nasreddine Bencherchali
+date: 2021/12/17
+level: medium
+description: Detects shell spawned from Java host process, which could be a sign of
+  exploitation (e.g. log4j exploitation)
+status: test
+modified: 2024/01/18
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- initial_access
+- persistence
+- privilege_escalation
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\bash.exe" or FolderPath endswith "\\cmd.exe" or
+  FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") and
+  InitiatingProcessFolderPath endswith "\\java.exe") and (not((ProcessCommandLine
+  contains "build" and InitiatingProcessFolderPath contains "build")))'

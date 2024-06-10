@@ -1,0 +1,25 @@
+name: Potential DLL Sideloading Via comctl32.dll
+id: 6360757a-d460-456c-8b13-74cf0e60cceb
+author: Nasreddine Bencherchali (Nextron Systems), Subhash Popuri (@pbssubhash)
+date: 2022/12/16
+level: high
+description: Detects potential DLL sideloading using comctl32.dll to obtain system
+  privileges
+status: test
+modified: 2022/12/19
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\comctl32.dll" and (FolderPath startswith "C:\\Windows\\System32\\logonUI.exe.local\\"
+  or FolderPath startswith "C:\\Windows\\System32\\werFault.exe.local\\" or FolderPath
+  startswith "C:\\Windows\\System32\\consent.exe.local\\" or FolderPath startswith
+  "C:\\Windows\\System32\\narrator.exe.local\\" or FolderPath startswith "C:\\windows\\system32\\wermgr.exe.local\\")'

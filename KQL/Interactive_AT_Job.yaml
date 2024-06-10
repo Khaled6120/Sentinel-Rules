@@ -1,0 +1,19 @@
+name: Interactive AT Job
+id: 60fc936d-2eb0-4543-8a13-911c750a1dfc
+author: E.M. Anhaus (originally from Atomic Blue Detections, Endgame), oscd.community
+date: 2019/10/24
+level: high
+description: Detects an interactive AT job, which may be used as a form of privilege
+  escalation.
+status: test
+modified: 2021/11/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- privilege_escalation
+relevantTechniques:
+- t1053.002
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "interactive" and FolderPath endswith "\\at.exe"'

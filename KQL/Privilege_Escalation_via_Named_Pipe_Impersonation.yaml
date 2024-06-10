@@ -1,0 +1,22 @@
+name: Privilege Escalation via Named Pipe Impersonation
+id: 9bd04a79-dabe-4f1f-a5ff-92430265c96b
+author: Tim Rauch, Elastic (idea)
+date: 2022/09/27
+level: high
+description: Detects a remote file copy attempt to a hidden network share. This may
+  indicate lateral movement or data staging activity.
+status: test
+modified: 2022/12/30
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- lateral_movement
+relevantTechniques:
+- t1021
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "echo" and ProcessCommandLine contains ">"
+  and ProcessCommandLine contains "\\\\.\\pipe\\") and ((FolderPath endswith "\\cmd.exe"
+  or FolderPath endswith "\\powershell.exe") or (ProcessVersionInfoOriginalFileName
+  in~ ("Cmd.Exe", "PowerShell.EXE")))'

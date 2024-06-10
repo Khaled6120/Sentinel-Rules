@@ -1,0 +1,27 @@
+name: Fsutil Suspicious Invocation
+id: add64136-62e5-48ea-807e-88638d02df1e
+author: Ecco, E.M. Anhaus, oscd.community
+date: 2019/09/26
+level: high
+description: 'Detects suspicious parameters of fsutil (deleting USN journal, configuring
+  it with small size, etc).
+
+  Might be used by ransomwares during the attack (seen by NotPetya and others).
+
+  '
+status: stable
+modified: 2023/09/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- impact
+relevantTechniques:
+- t1070
+- t1485
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "deletejournal" or ProcessCommandLine contains
+  "createjournal" or ProcessCommandLine contains "setZeroData") and (FolderPath endswith
+  "\\fsutil.exe" or ProcessVersionInfoOriginalFileName =~ "fsutil.exe")'

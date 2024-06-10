@@ -1,0 +1,28 @@
+name: Suspicious Use of PsLogList
+id: aae1243f-d8af-40d8-ab20-33fc6d0c55bc
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2021/12/18
+level: medium
+description: Detects usage of the PsLogList utility to dump event log in order to
+  extract admin accounts and perform account discovery or delete events logs
+status: test
+modified: 2024/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1087
+- t1087.001
+- t1087.002
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " security" or ProcessCommandLine contains
+  " application" or ProcessCommandLine contains " system") and (ProcessCommandLine
+  contains " -d" or ProcessCommandLine contains " /d" or ProcessCommandLine contains
+  " -x" or ProcessCommandLine contains " /x" or ProcessCommandLine contains " -s"
+  or ProcessCommandLine contains " /s" or ProcessCommandLine contains " -c" or ProcessCommandLine
+  contains " /c" or ProcessCommandLine contains " -g" or ProcessCommandLine contains
+  " /g") and (ProcessVersionInfoOriginalFileName =~ "psloglist.exe" or (FolderPath
+  endswith "\\psloglist.exe" or FolderPath endswith "\\psloglist64.exe"))'

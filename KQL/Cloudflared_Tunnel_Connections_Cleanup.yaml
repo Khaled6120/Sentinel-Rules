@@ -1,0 +1,23 @@
+name: Cloudflared Tunnel Connections Cleanup
+id: 7050bba1-1aed-454e-8f73-3f46f09ce56a
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/17
+level: medium
+description: Detects execution of the "cloudflared" tool with the tunnel "cleanup"
+  flag in order to cleanup tunnel connections.
+status: experimental
+modified: 2023/12/21
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1090
+- t1102
+- t1572
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "-config " or ProcessCommandLine contains "-connector-id
+  ") and (ProcessCommandLine contains " tunnel " and ProcessCommandLine contains "cleanup
+  ")'

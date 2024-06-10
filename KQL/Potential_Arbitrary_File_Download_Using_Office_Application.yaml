@@ -1,0 +1,21 @@
+name: Potential Arbitrary File Download Using Office Application
+id: 4ae3e30b-b03f-43aa-87e3-b622f4048eed
+author: Nasreddine Bencherchali (Nextron Systems), Beyu Denis, oscd.community
+date: 2022/05/17
+level: high
+description: Detects potential arbitrary file download using a Microsoft Office application
+status: test
+modified: 2023/06/22
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1202
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "http://" or ProcessCommandLine contains "https://")
+  and ((FolderPath endswith "\\EXCEL.EXE" or FolderPath endswith "\\POWERPNT.EXE"
+  or FolderPath endswith "\\WINWORD.exe") or (ProcessVersionInfoOriginalFileName in~
+  ("Excel.exe", "POWERPNT.EXE", "WinWord.exe")))'

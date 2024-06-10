@@ -1,0 +1,21 @@
+name: Sysinternals PsSuspend Suspicious Execution
+id: 4beb6ae0-f85b-41e2-8f18-8668abc8af78
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/03/23
+level: high
+description: Detects suspicious execution of Sysinternals PsSuspend, where the utility
+  is used to suspend critical processes such as AV or EDR to bypass defenses
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1562.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "msmpeng.exe" and (ProcessVersionInfoOriginalFileName
+  =~ "pssuspend.exe" or (FolderPath endswith "\\pssuspend.exe" or FolderPath endswith
+  "\\pssuspend64.exe"))'

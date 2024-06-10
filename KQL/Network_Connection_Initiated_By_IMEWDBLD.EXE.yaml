@@ -1,0 +1,22 @@
+name: Network Connection Initiated By IMEWDBLD.EXE
+id: 8d7e392e-9b28-49e1-831d-5949c6281228
+author: frack113
+date: 2022/01/22
+level: high
+description: 'Detects a network connection initiated by IMEWDBLD.EXE. This might indicate
+  potential abuse of the utility as a LOLBIN in order to download arbitrary files
+  or additional payloads.
+
+  '
+status: test
+modified: 2023/11/09
+logsource:
+  category: network_connection
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1105
+query: 'DeviceNetworkEvents
+
+  | where InitiatingProcessFolderPath endswith "\\IMEWDBLD.exe"'

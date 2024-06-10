@@ -1,0 +1,26 @@
+name: Suspicious PowerShell IEX Execution Patterns
+id: 09576804-7a05-458e-a817-eb718ca91f54
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2022/03/24
+level: high
+description: Detects suspicious ways to run Invoke-Execution using IEX alias
+status: test
+modified: 2022/11/28
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where (((ProcessCommandLine contains " | iex;" or ProcessCommandLine contains
+  " | iex " or ProcessCommandLine contains " | iex}" or ProcessCommandLine contains
+  " | IEX ;" or ProcessCommandLine contains " | IEX -Error" or ProcessCommandLine
+  contains " | IEX (new" or ProcessCommandLine contains ");IEX ") and (FolderPath
+  endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe")) and (ProcessCommandLine
+  contains "::FromBase64String" or ProcessCommandLine contains ".GetString([System.Convert]::"))
+  or (ProcessCommandLine contains ")|iex;$" or ProcessCommandLine contains ");iex($"
+  or ProcessCommandLine contains ");iex $" or ProcessCommandLine contains " | IEX
+  | " or ProcessCommandLine contains " | iex\\\"")'

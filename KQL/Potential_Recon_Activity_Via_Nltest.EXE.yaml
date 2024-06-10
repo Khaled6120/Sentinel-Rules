@@ -1,0 +1,25 @@
+name: Potential Recon Activity Via Nltest.EXE
+id: 5cc90652-4cbd-4241-aa3b-4b462fa5a248
+author: Craig Young, oscd.community, Georg Lauenstein
+date: 2021/07/24
+level: medium
+description: Detects nltest commands that can be used for information discovery
+status: test
+modified: 2023/12/15
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1016
+- t1482
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\nltest.exe" or ProcessVersionInfoOriginalFileName
+  =~ "nltestrk.exe") and ((ProcessCommandLine contains "server" and ProcessCommandLine
+  contains "query") or (ProcessCommandLine contains "/user" or ProcessCommandLine
+  contains "all_trusts" or ProcessCommandLine contains "dclist:" or ProcessCommandLine
+  contains "dnsgetdc:" or ProcessCommandLine contains "domain_trusts" or ProcessCommandLine
+  contains "dsgetdc:" or ProcessCommandLine contains "parentdomain" or ProcessCommandLine
+  contains "trusted_domains"))'

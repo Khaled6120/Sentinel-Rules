@@ -1,0 +1,22 @@
+name: Invoke-Obfuscation COMPRESS OBFUSCATION
+id: 7eedcc9d-9fdb-4d94-9c54-474e8affc0c7
+author: Timur Zinniatullin, oscd.community
+date: 2020/10/18
+level: medium
+description: Detects Obfuscated Powershell via COMPRESS OBFUSCATION
+status: test
+modified: 2022/12/29
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1027
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "system.io.compression.deflatestream" or ProcessCommandLine
+  contains "system.io.streamreader" or ProcessCommandLine contains "readtoend(") and
+  (ProcessCommandLine contains "new-object" and ProcessCommandLine contains "text.encoding]::ascii")'

@@ -1,0 +1,20 @@
+name: Kernel Memory Dump Via LiveKD
+id: c7746f1c-47d3-43d6-8c45-cd1e54b6b0a2
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/16
+level: high
+description: Detects execution of LiveKD with the "-m" flag to potentially dump the
+  kernel memory
+status: experimental
+modified: 2024/03/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -m" or ProcessCommandLine contains " /m")
+  and ((FolderPath endswith "\\livekd.exe" or FolderPath endswith "\\livekd64.exe")
+  or ProcessVersionInfoOriginalFileName =~ "livekd.exe")'

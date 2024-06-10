@@ -1,0 +1,22 @@
+name: UAC Bypass Tools Using ComputerDefaults
+id: 3c05e90d-7eba-4324-9972-5d7f711a60a8
+author: Christian Burkard (Nextron Systems)
+date: 2021/08/31
+level: high
+description: Detects tools such as UACMe used to bypass UAC with computerdefaults.exe
+  (UACMe 59)
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1548.002
+query: 'DeviceProcessEvents
+
+  | where (FolderPath =~ "C:\\Windows\\System32\\ComputerDefaults.exe" and (ProcessIntegrityLevel
+  in~ ("High", "System"))) and (not((InitiatingProcessFolderPath contains ":\\Windows\\System32"
+  or InitiatingProcessFolderPath contains ":\\Program Files")))'

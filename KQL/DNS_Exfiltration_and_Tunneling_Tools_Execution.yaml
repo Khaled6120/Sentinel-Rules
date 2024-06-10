@@ -1,0 +1,21 @@
+name: DNS Exfiltration and Tunneling Tools Execution
+id: 98a96a5a-64a0-4c42-92c5-489da3866cb0
+author: Daniil Yugoslavskiy, oscd.community
+date: 2019/10/24
+level: high
+description: Well-known DNS Exfiltration tools execution
+status: test
+modified: 2021/11/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+- exfiltration
+relevantTechniques:
+- t1048.001
+- t1071.004
+- t1132.001
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\iodine.exe" or FolderPath contains "\\dnscat2"'

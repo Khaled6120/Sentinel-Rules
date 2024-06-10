@@ -1,0 +1,30 @@
+name: HackTool - Certipy Execution
+id: 6938366d-8954-4ddc-baff-c830b3ba8fcd
+author: pH-T (Nextron Systems)
+date: 2023/04/17
+level: high
+description: Detects Certipy a tool for Active Directory Certificate Services enumeration
+  and abuse based on PE metadata characteristics and common command line arguments.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+- discovery
+relevantTechniques:
+- t1649
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\Certipy.exe" or ProcessVersionInfoOriginalFileName
+  =~ "Certipy.exe" or ProcessVersionInfoFileDescription contains "Certipy") or ((ProcessCommandLine
+  contains " auth " or ProcessCommandLine contains " find " or ProcessCommandLine
+  contains " forge " or ProcessCommandLine contains " relay " or ProcessCommandLine
+  contains " req " or ProcessCommandLine contains " shadow ") and (ProcessCommandLine
+  contains " -bloodhound" or ProcessCommandLine contains " -ca-pfx " or ProcessCommandLine
+  contains " -dc-ip " or ProcessCommandLine contains " -kirbi" or ProcessCommandLine
+  contains " -old-bloodhound" or ProcessCommandLine contains " -pfx " or ProcessCommandLine
+  contains " -target" or ProcessCommandLine contains " -username " or ProcessCommandLine
+  contains " -vulnerable" or ProcessCommandLine contains "auth -pfx" or ProcessCommandLine
+  contains "shadow auto" or ProcessCommandLine contains "shadow list"))'

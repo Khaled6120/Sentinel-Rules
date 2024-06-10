@@ -1,0 +1,23 @@
+name: Potential Chrome Frame Helper DLL Sideloading
+id: 72ca7c75-bf85-45cd-aca7-255d360e423c
+author: Nasreddine Bencherchali (Nextron Systems), Wietze Beukema (project and research)
+date: 2022/08/17
+level: medium
+description: Detects potential DLL sideloading of "chrome_frame_helper.dll"
+status: test
+modified: 2023/05/15
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\chrome_frame_helper.dll" and (not((FolderPath startswith
+  "C:\\Program Files\\Google\\Chrome\\Application\\" or FolderPath startswith "C:\\Program
+  Files (x86)\\Google\\Chrome\\Application\\"))) and (not(FolderPath contains "\\AppData\\local\\Google\\Chrome\\Application\\"))'

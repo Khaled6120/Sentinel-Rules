@@ -1,0 +1,25 @@
+name: Compressed File Extraction Via Tar.EXE
+id: bf361876-6620-407a-812f-bfe11e51e924
+author: AdmU3
+date: 2023/12/19
+level: low
+description: 'Detects execution of "tar.exe" in order to extract compressed file.
+
+  Adversaries may abuse various utilities in order to decompress data to avoid detection.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- collection
+- exfiltration
+relevantTechniques:
+- t1560
+- t1560.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "-x" and (FolderPath endswith "\\tar.exe" or
+  ProcessVersionInfoOriginalFileName =~ "bsdtar")'

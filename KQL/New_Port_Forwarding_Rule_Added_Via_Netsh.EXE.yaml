@@ -1,0 +1,28 @@
+name: New Port Forwarding Rule Added Via Netsh.EXE
+id: 322ed9ec-fcab-4f67-9a34-e7c6aef43614
+author: Florian Roth (Nextron Systems), omkar72, oscd.community, Swachchhanda Shrawan
+  Poudel
+date: 2019/01/29
+level: medium
+description: Detects the execution of netsh commands that configure a new port forwarding
+  (PortProxy) rule
+status: test
+modified: 2023/09/01
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+- defense_evasion
+- lateral_movement
+relevantTechniques:
+- t1090
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\netsh.exe" or ProcessVersionInfoOriginalFileName
+  =~ "netsh.exe") and ((ProcessCommandLine contains "interface" and ProcessCommandLine
+  contains "portproxy" and ProcessCommandLine contains "add" and ProcessCommandLine
+  contains "v4tov4") or (ProcessCommandLine contains "i " and ProcessCommandLine contains
+  "p " and ProcessCommandLine contains "a " and ProcessCommandLine contains "v ")
+  or (ProcessCommandLine contains "connectp" and ProcessCommandLine contains "listena"
+  and ProcessCommandLine contains "c="))'

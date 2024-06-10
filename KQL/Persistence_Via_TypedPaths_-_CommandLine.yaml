@@ -1,0 +1,18 @@
+name: Persistence Via TypedPaths - CommandLine
+id: ec88289a-7e1a-4cc3-8d18-bd1f60e4b9ba
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/22
+level: medium
+description: Detects modification addition to the 'TypedPaths' key in the user or
+  admin registry via the commandline. Which might indicate persistence attempt
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\TypedPaths"'

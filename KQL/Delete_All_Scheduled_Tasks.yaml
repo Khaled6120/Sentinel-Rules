@@ -1,0 +1,21 @@
+name: Delete All Scheduled Tasks
+id: 220457c1-1c9f-4c2e-afe6-9598926222c1
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/09/09
+level: high
+description: Detects the usage of schtasks with the delete flag and the asterisk symbol
+  to delete all tasks from the schedule of the local computer, including tasks scheduled
+  by other users.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- impact
+relevantTechniques:
+- t1489
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " /delete " and ProcessCommandLine contains
+  "/tn *" and ProcessCommandLine contains " /f") and FolderPath endswith "\\schtasks.exe"'

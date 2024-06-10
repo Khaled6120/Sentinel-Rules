@@ -1,0 +1,22 @@
+name: Time Travel Debugging Utility Usage - Image
+id: e76c8240-d68f-4773-8880-5c6f63595aaf
+author: "Ensar \xC5\u017Eamil, @sblmsrsn, @oscd_initiative"
+date: 2020/10/06
+level: high
+description: Detects usage of Time Travel Debugging Utility. Adversaries can execute
+  malicious processes and dump processes, such as lsass.exe, via tttracer.exe.
+status: test
+modified: 2022/12/02
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- credential_access
+- defense_evasion
+relevantTechniques:
+- t1003.001
+- t1218
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\ttdrecord.dll" or FolderPath endswith "\\ttdwriter.dll"
+  or FolderPath endswith "\\ttdloader.dll"'

@@ -1,0 +1,20 @@
+name: Rundll32 InstallScreenSaver Execution
+id: 15bd98ea-55f4-4d37-b09a-e7caa0fa2221
+author: Christopher Peacock @securepeacock, SCYTHE @scythe_io, TactiKoolSec
+date: 2022/04/28
+level: medium
+description: An attacker may execute an application as a SCR File using rundll32.exe
+  desk.cpl,InstallScreenSaver
+status: test
+modified: 2023/02/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218.011
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "InstallScreenSaver" and (FolderPath endswith
+  "\\rundll32.exe" or ProcessVersionInfoOriginalFileName =~ "RUNDLL32.EXE")'

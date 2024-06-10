@@ -1,0 +1,20 @@
+name: Launch-VsDevShell.PS1 Proxy Execution
+id: 45d3a03d-f441-458c-8883-df101a3bb146
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/19
+level: medium
+description: Detects the use of the 'Launch-VsDevShell.ps1' Microsoft signed script
+  to execute commands.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1216.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "VsWherePath " or ProcessCommandLine contains
+  "VsInstallationPath ") and ProcessCommandLine contains "Launch-VsDevShell.ps1"'

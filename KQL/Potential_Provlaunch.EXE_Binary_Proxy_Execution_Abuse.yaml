@@ -1,0 +1,27 @@
+name: Potential Provlaunch.EXE Binary Proxy Execution Abuse
+id: 7f5d1c9a-3e83-48df-95a7-2b98aae6c13c
+author: Nasreddine Bencherchali (Nextron Systems), Swachchhanda Shrawan Poudel
+date: 2023/08/08
+level: medium
+description: Detects child processes of "provlaunch.exe" which might indicate potential
+  abuse to proxy execution.
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\provlaunch.exe" and (not(((FolderPath
+  endswith "\\calc.exe" or FolderPath endswith "\\cmd.exe" or FolderPath endswith
+  "\\cscript.exe" or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\notepad.exe"
+  or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or
+  FolderPath endswith "\\regsvr32.exe" or FolderPath endswith "\\rundll32.exe" or
+  FolderPath endswith "\\wscript.exe") or (FolderPath contains ":\\PerfLogs\\" or
+  FolderPath contains ":\\Temp\\" or FolderPath contains ":\\Users\\Public\\" or FolderPath
+  contains "\\AppData\\Temp\\" or FolderPath contains "\\Windows\\System32\\Tasks\\"
+  or FolderPath contains "\\Windows\\Tasks\\" or FolderPath contains "\\Windows\\Temp\\"))))'

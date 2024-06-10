@@ -1,0 +1,27 @@
+name: Process Access via TrolleyExpress Exclusion
+id: 4c0aaedc-154c-4427-ada0-d80ef9c9deb6
+author: Florian Roth (Nextron Systems)
+date: 2022/02/10
+level: high
+description: Detects a possible process memory dump that uses the white-listed Citrix
+  TrolleyExpress.exe filename as a way to dump the lsass process memory
+status: test
+modified: 2022/05/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+- defense_evasion
+relevantTechniques:
+- t1003.001
+- t1218.011
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "\\TrolleyExpress 7" or ProcessCommandLine
+  contains "\\TrolleyExpress 8" or ProcessCommandLine contains "\\TrolleyExpress 9"
+  or ProcessCommandLine contains "\\TrolleyExpress.exe 7" or ProcessCommandLine contains
+  "\\TrolleyExpress.exe 8" or ProcessCommandLine contains "\\TrolleyExpress.exe 9"
+  or ProcessCommandLine contains "\\TrolleyExpress.exe -ma ") or (FolderPath endswith
+  "\\TrolleyExpress.exe" and (not((isnull(ProcessVersionInfoOriginalFileName) or ProcessVersionInfoOriginalFileName
+  contains "CtxInstall"))))'

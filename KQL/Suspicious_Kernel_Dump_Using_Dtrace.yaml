@@ -1,0 +1,20 @@
+name: Suspicious Kernel Dump Using Dtrace
+id: 7124aebe-4cd7-4ccb-8df0-6d6b93c96795
+author: Florian Roth (Nextron Systems)
+date: 2021/12/28
+level: high
+description: Detects suspicious way to dump the kernel on Windows systems using dtrace.exe,
+  which is available on Windows systems since Windows 10 19H1
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1082
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "syscall:::return" and ProcessCommandLine contains
+  "lkd(") or (ProcessCommandLine contains "lkd(0)" and FolderPath endswith "\\dtrace.exe")'

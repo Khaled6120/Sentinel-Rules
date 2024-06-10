@@ -1,0 +1,26 @@
+name: Scheduled Task Executing Payload from Registry
+id: 86588b36-c6d3-465f-9cee-8f9093e07798
+author: X__Junior (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2023/07/18
+level: medium
+description: Detects the creation of a schtasks that potentially executes a payload
+  stored in the Windows Registry using PowerShell.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+- persistence
+relevantTechniques:
+- t1053.005
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "/Create" and (ProcessCommandLine contains
+  "Get-ItemProperty" or ProcessCommandLine contains " gp ") and (ProcessCommandLine
+  contains "HKCU:" or ProcessCommandLine contains "HKLM:" or ProcessCommandLine contains
+  "registry::" or ProcessCommandLine contains "HKEY_") and (FolderPath endswith "\\schtasks.exe"
+  or ProcessVersionInfoOriginalFileName =~ "schtasks.exe")) and (not((ProcessCommandLine
+  contains "FromBase64String" or ProcessCommandLine contains "encodedcommand")))'

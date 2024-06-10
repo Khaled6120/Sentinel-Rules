@@ -1,0 +1,21 @@
+name: Arbitrary File Download Via GfxDownloadWrapper.EXE
+id: eee00933-a761-4cd0-be70-c42fe91731e7
+author: Victor Sergeev, oscd.community
+date: 2020/10/09
+level: medium
+description: Detects execution of GfxDownloadWrapper.exe with a URL as an argument
+  to download file.
+status: test
+modified: 2023/10/18
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1105
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "http://" or ProcessCommandLine contains "https://")
+  and FolderPath endswith "\\GfxDownloadWrapper.exe") and (not(ProcessCommandLine
+  contains "https://gameplayapi.intel.com/"))'

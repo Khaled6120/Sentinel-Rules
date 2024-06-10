@@ -1,0 +1,21 @@
+name: Unusual Child Process of dns.exe
+id: a4e3d776-f12e-42c2-8510-9e6ed1f43ec3
+author: Tim Rauch, Elastic (idea)
+date: 2022/09/27
+level: high
+description: Detects an unexpected process spawning from dns.exe which may indicate
+  activity related to remote code execution or other forms of exploitation as seen
+  in CVE-2020-1350 (SigRed)
+status: test
+modified: 2023/02/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- initial_access
+relevantTechniques:
+- t1133
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\dns.exe" and (not(FolderPath endswith
+  "\\conhost.exe"))'

@@ -1,0 +1,20 @@
+name: Suspicious LOLBIN AccCheckConsole
+id: 0f6da907-5854-4be6-859a-e9958747b0aa
+author: Florian Roth (Nextron Systems)
+date: 2022/01/06
+level: high
+description: Detects suspicious LOLBIN AccCheckConsole execution with parameters as
+  used to load an arbitrary DLL
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -window " and ProcessCommandLine contains
+  ".dll") and (FolderPath endswith "\\AccCheckConsole.exe" or ProcessVersionInfoOriginalFileName
+  =~ "AccCheckConsole.exe")'

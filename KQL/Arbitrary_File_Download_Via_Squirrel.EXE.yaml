@@ -1,0 +1,27 @@
+name: Arbitrary File Download Via Squirrel.EXE
+id: 1e75c1cc-c5d4-42aa-ac3d-91b0b68b3b4c
+author: Nasreddine Bencherchali (Nextron Systems), Karneades / Markus Neis, Jonhnathan
+  Ribeiro, oscd.community
+date: 2022/06/09
+level: medium
+description: 'Detects the usage of the "Squirrel.exe" to download arbitrary files.
+  This binary is part of multiple Electron based software installations (Slack, Teams,
+  Discord, etc.)
+
+  '
+status: experimental
+modified: 2023/11/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " --download " or ProcessCommandLine contains
+  " --update " or ProcessCommandLine contains " --updateRollback=") and ProcessCommandLine
+  contains "http" and (FolderPath endswith "\\squirrel.exe" or FolderPath endswith
+  "\\update.exe")'

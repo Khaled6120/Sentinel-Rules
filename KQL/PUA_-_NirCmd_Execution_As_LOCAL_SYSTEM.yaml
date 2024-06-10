@@ -1,0 +1,19 @@
+name: PUA - NirCmd Execution As LOCAL SYSTEM
+id: d9047477-0359-48c9-b8c7-792cedcdc9c4
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2022/01/24
+level: high
+description: Detects the use of NirCmd tool for command execution as SYSTEM user
+status: test
+modified: 2023/02/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+- s0029
+relevantTechniques:
+- t1569.002
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " runassystem "'

@@ -1,0 +1,27 @@
+name: Execution of Powershell Script in Public Folder
+id: fb9d3ff7-7348-46ab-af8c-b55f5fbf39b4
+author: Max Altgelt (Nextron Systems)
+date: 2022/04/06
+level: high
+description: This rule detects execution of PowerShell scripts located in the "C:\Users\Public"
+  folder
+status: test
+modified: 2022/07/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "-f C:\\Users\\Public" or ProcessCommandLine
+  contains "-f \"C:\\Users\\Public" or ProcessCommandLine contains "-f %Public%" or
+  ProcessCommandLine contains "-fi C:\\Users\\Public" or ProcessCommandLine contains
+  "-fi \"C:\\Users\\Public" or ProcessCommandLine contains "-fi %Public%" or ProcessCommandLine
+  contains "-fil C:\\Users\\Public" or ProcessCommandLine contains "-fil \"C:\\Users\\Public"
+  or ProcessCommandLine contains "-fil %Public%" or ProcessCommandLine contains "-file
+  C:\\Users\\Public" or ProcessCommandLine contains "-file \"C:\\Users\\Public" or
+  ProcessCommandLine contains "-file %Public%") and (FolderPath endswith "\\powershell.exe"
+  or FolderPath endswith "\\pwsh.exe")'

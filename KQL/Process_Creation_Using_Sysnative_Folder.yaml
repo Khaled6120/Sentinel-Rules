@@ -1,0 +1,21 @@
+name: Process Creation Using Sysnative Folder
+id: 3c1b5fb0-c72f-45ba-abd1-4d4c353144ab
+author: Max Altgelt (Nextron Systems)
+date: 2022/08/23
+level: medium
+description: Detects process creation events that use the Sysnative folder (common
+  for CobaltStrike spawns)
+status: test
+modified: 2023/12/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1055
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains ":\\Windows\\Sysnative\\" or FolderPath contains
+  ":\\Windows\\Sysnative\\"'

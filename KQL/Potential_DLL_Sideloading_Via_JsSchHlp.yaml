@@ -1,0 +1,22 @@
+name: Potential DLL Sideloading Via JsSchHlp
+id: 68654bf0-4412-43d5-bfe8-5eaa393cd939
+author: frack113
+date: 2022/12/14
+level: medium
+description: Detects potential DLL sideloading using JUSTSYSTEMS Japanese word processor
+status: test
+modified: ''
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\JSESPR.dll" and (not(FolderPath startswith "C:\\Program
+  Files\\Common Files\\Justsystem\\JsSchHlp\\"))'

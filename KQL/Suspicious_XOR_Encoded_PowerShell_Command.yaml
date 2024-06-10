@@ -1,0 +1,29 @@
+name: Suspicious XOR Encoded PowerShell Command
+id: bb780e0c-16cf-4383-8383-1e5471db6cf9
+author: Sami Ruohonen, Harish Segar, Tim Shelton, Teymur Kheirkhabarov, Vasiliy Burov,
+  oscd.community, Nasreddine Bencherchali
+date: 2018/09/05
+level: medium
+description: Detects presence of a potentially xor encoded powershell command
+status: test
+modified: 2023/01/30
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1027
+- t1059.001
+- t1140
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "ForEach" or ProcessCommandLine contains "for("
+  or ProcessCommandLine contains "for " or ProcessCommandLine contains "-join " or
+  ProcessCommandLine contains "-join''" or ProcessCommandLine contains "-join\"" or
+  ProcessCommandLine contains "-join`" or ProcessCommandLine contains "::Join" or
+  ProcessCommandLine contains "[char]") and ProcessCommandLine contains "bxor" and
+  ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or
+  (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll")) or ProcessVersionInfoFileDescription
+  =~ "Windows PowerShell" or ProcessVersionInfoProductName =~ "PowerShell Core 6")'

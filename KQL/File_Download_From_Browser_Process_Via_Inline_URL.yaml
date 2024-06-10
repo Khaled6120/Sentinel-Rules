@@ -1,0 +1,28 @@
+name: File Download From Browser Process Via Inline URL
+id: 94771a71-ba41-4b6e-a757-b531372eaab6
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2022/01/11
+level: medium
+description: Detects execution of a browser process with a URL argument pointing to
+  a file with a potentially interesting extension. This can be abused to download
+  arbitrary files or to hide from the user for example by launching the browser in
+  a minimized state.
+status: test
+modified: 2023/11/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1105
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine endswith ".7z" or ProcessCommandLine endswith ".dat"
+  or ProcessCommandLine endswith ".dll" or ProcessCommandLine endswith ".exe" or ProcessCommandLine
+  endswith ".hta" or ProcessCommandLine endswith ".ps1" or ProcessCommandLine endswith
+  ".psm1" or ProcessCommandLine endswith ".txt" or ProcessCommandLine endswith ".vbe"
+  or ProcessCommandLine endswith ".vbs" or ProcessCommandLine endswith ".zip") and
+  ProcessCommandLine contains "http" and (FolderPath endswith "\\brave.exe" or FolderPath
+  endswith "\\chrome.exe" or FolderPath endswith "\\msedge.exe" or FolderPath endswith
+  "\\opera.exe" or FolderPath endswith "\\vivaldi.exe")'

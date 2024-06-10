@@ -1,0 +1,37 @@
+name: File With Suspicious Extension Downloaded Via Bitsadmin
+id: 5b80a791-ad9b-4b75-bcc1-ad4e1e89c200
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2022/06/28
+level: high
+description: Detects usage of bitsadmin downloading a file with a suspicious extension
+status: test
+modified: 2023/05/30
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- s0190
+relevantTechniques:
+- t1036.003
+- t1197
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains ".7z" or ProcessCommandLine contains ".asax"
+  or ProcessCommandLine contains ".ashx" or ProcessCommandLine contains ".asmx" or
+  ProcessCommandLine contains ".asp" or ProcessCommandLine contains ".aspx" or ProcessCommandLine
+  contains ".bat" or ProcessCommandLine contains ".cfm" or ProcessCommandLine contains
+  ".cgi" or ProcessCommandLine contains ".chm" or ProcessCommandLine contains ".cmd"
+  or ProcessCommandLine contains ".dll" or ProcessCommandLine contains ".gif" or ProcessCommandLine
+  contains ".jpeg" or ProcessCommandLine contains ".jpg" or ProcessCommandLine contains
+  ".jsp" or ProcessCommandLine contains ".jspx" or ProcessCommandLine contains ".log"
+  or ProcessCommandLine contains ".png" or ProcessCommandLine contains ".ps1" or ProcessCommandLine
+  contains ".psm1" or ProcessCommandLine contains ".rar" or ProcessCommandLine contains
+  ".scf" or ProcessCommandLine contains ".sct" or ProcessCommandLine contains ".txt"
+  or ProcessCommandLine contains ".vbe" or ProcessCommandLine contains ".vbs" or ProcessCommandLine
+  contains ".war" or ProcessCommandLine contains ".wsf" or ProcessCommandLine contains
+  ".wsh" or ProcessCommandLine contains ".xll" or ProcessCommandLine contains ".zip")
+  and (ProcessCommandLine contains " /transfer " or ProcessCommandLine contains "
+  /create " or ProcessCommandLine contains " /addfile ") and (FolderPath endswith
+  "\\bitsadmin.exe" or ProcessVersionInfoOriginalFileName =~ "bitsadmin.exe")'

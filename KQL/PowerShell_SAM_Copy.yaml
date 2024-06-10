@@ -1,0 +1,21 @@
+name: PowerShell SAM Copy
+id: 1af57a4b-460a-4738-9034-db68b880c665
+author: Florian Roth (Nextron Systems)
+date: 2021/07/29
+level: high
+description: Detects suspicious PowerShell scripts accessing SAM hives
+status: test
+modified: 2023/01/06
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1003.002
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "\\HarddiskVolumeShadowCopy" and ProcessCommandLine
+  contains "System32\\config\\sam") and (ProcessCommandLine contains "Copy-Item" or
+  ProcessCommandLine contains "cp $_." or ProcessCommandLine contains "cpi $_." or
+  ProcessCommandLine contains "copy $_." or ProcessCommandLine contains ".File]::Copy(")'

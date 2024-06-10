@@ -1,0 +1,22 @@
+name: Arbitrary File Download Via MSPUB.EXE
+id: 3b3c7f55-f771-4dd6-8a6e-08d057a17caf
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/19
+level: medium
+description: Detects usage of "MSPUB" (Microsoft Publisher) to download arbitrary
+  files
+status: test
+modified: 2023/02/08
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "ftp://" or ProcessCommandLine contains "http://"
+  or ProcessCommandLine contains "https://") and (FolderPath endswith "\\MSPUB.exe"
+  or ProcessVersionInfoOriginalFileName =~ "MSPUB.exe")'

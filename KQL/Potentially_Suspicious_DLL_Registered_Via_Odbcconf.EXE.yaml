@@ -1,0 +1,22 @@
+name: Potentially Suspicious DLL Registered Via Odbcconf.EXE
+id: ba4cfc11-d0fa-4d94-bf20-7c332c412e76
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/22
+level: high
+description: Detects execution of "odbcconf" with the "REGSVR" action where the DLL
+  in question doesn't contain a ".dll" extension. Which is often used as a method
+  to evade defenses.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218.008
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "REGSVR " and (FolderPath endswith "\\odbcconf.exe"
+  or ProcessVersionInfoOriginalFileName =~ "odbcconf.exe")) and (not(ProcessCommandLine
+  contains ".dll"))'

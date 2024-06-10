@@ -1,0 +1,20 @@
+name: Invoke-Obfuscation VAR+ Launcher
+id: 27aec9c9-dbb0-4939-8422-1742242471d0
+author: Jonathan Cheong, oscd.community
+date: 2020/10/15
+level: high
+description: Detects Obfuscated use of Environment Variables to execute PowerShell
+status: test
+modified: 2024/04/15
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1027
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine matches regex "cmd.{0,5}(?:/c|/r)(?:\\s|)\\"set\\s[a-zA-Z]{3,6}.*(?:\\{\\d\\}){1,}\\\\\\"\\s+?\\-f(?:.*\\)){1,}.*\\""'

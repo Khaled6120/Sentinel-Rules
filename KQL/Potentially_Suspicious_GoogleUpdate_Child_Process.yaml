@@ -1,0 +1,19 @@
+name: Potentially Suspicious GoogleUpdate Child Process
+id: 84b1ecf9-6eff-4004-bafb-bae5c0e251b2
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/15
+level: high
+description: Detects potentially suspicious child processes of "GoogleUpdate.exe"
+status: test
+modified: 2023/05/22
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\GoogleUpdate.exe" and (not((isnull(FolderPath)
+  or (FolderPath contains "\\Google" or (FolderPath endswith "\\setup.exe" or FolderPath
+  endswith "chrome_updater.exe" or FolderPath endswith "chrome_installer.exe")))))'

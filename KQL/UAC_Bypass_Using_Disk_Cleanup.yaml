@@ -1,0 +1,22 @@
+name: UAC Bypass Using Disk Cleanup
+id: b697e69c-746f-4a86-9f59-7bfff8eab881
+author: Christian Burkard (Nextron Systems)
+date: 2021/08/30
+level: high
+description: Detects the pattern of UAC Bypass using scheduled tasks and variable
+  expansion of cleanmgr.exe (UACMe 34)
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1548.002
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine endswith "\"\\system32\\cleanmgr.exe /autoclean /d C:"
+  and (ProcessIntegrityLevel in~ ("High", "System")) and InitiatingProcessCommandLine
+  =~ "C:\\Windows\\system32\\svchost.exe -k netsvcs -p -s Schedule"'

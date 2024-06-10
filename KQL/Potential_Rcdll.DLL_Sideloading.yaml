@@ -1,0 +1,22 @@
+name: Potential Rcdll.DLL Sideloading
+id: 6e78b74f-c762-4800-82ad-f66787f10c8a
+author: X__Junior (Nextron Systems)
+date: 2023/03/13
+level: high
+description: Detects potential DLL sideloading of rcdll.dll
+status: test
+modified: 2023/03/15
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\rcdll.dll" and (not((FolderPath startswith "C:\\Program
+  Files (x86)\\Microsoft Visual Studio\\" or FolderPath startswith "C:\\Program Files
+  (x86)\\Windows Kits\\")))'

@@ -1,0 +1,21 @@
+name: DLL Loaded via CertOC.EXE
+id: 242301bc-f92f-4476-8718-78004a6efd9f
+author: Austin Songer @austinsonger
+date: 2021/10/23
+level: medium
+description: Detects when a user installs certificates by using CertOC.exe to loads
+  the target DLL file.
+status: test
+modified: 2024/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -LoadDLL " or ProcessCommandLine contains
+  " /LoadDLL ") and (FolderPath endswith "\\certoc.exe" or ProcessVersionInfoOriginalFileName
+  =~ "CertOC.exe")'

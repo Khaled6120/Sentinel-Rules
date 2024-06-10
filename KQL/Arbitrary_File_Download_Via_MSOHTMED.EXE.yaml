@@ -1,0 +1,21 @@
+name: Arbitrary File Download Via MSOHTMED.EXE
+id: 459f2f98-397b-4a4a-9f47-6a5ec2f1c69d
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/19
+level: medium
+description: Detects usage of "MSOHTMED" to download arbitrary files
+status: test
+modified: 2023/11/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "ftp://" or ProcessCommandLine contains "http://"
+  or ProcessCommandLine contains "https://") and (FolderPath endswith "\\MSOHTMED.exe"
+  or ProcessVersionInfoOriginalFileName =~ "MsoHtmEd.exe")'

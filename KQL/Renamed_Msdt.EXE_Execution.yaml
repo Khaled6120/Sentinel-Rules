@@ -1,0 +1,19 @@
+name: Renamed Msdt.EXE Execution
+id: bd1c6866-65fc-44b2-be51-5588fcff82b9
+author: pH-T (Nextron Systems)
+date: 2022/06/03
+level: high
+description: Detects the execution of a renamed "Msdt.exe" binary
+status: test
+modified: 2023/02/03
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1036.003
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoOriginalFileName =~ "msdt.exe" and (not(FolderPath endswith
+  "\\msdt.exe"))'

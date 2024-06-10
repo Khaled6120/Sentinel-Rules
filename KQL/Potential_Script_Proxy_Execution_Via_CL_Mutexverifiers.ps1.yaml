@@ -1,0 +1,23 @@
+name: Potential Script Proxy Execution Via CL_Mutexverifiers.ps1
+id: 1e0e1a81-e79b-44bc-935b-ddb9c8006b3d
+author: Nasreddine Bencherchali (Nextron Systems), oscd.community, Natalia Shornikova,
+  frack113
+date: 2022/05/21
+level: medium
+description: Detects the use of the Microsoft signed script "CL_mutexverifiers" to
+  proxy the execution of additional PowerShell script commands
+status: experimental
+modified: 2023/08/17
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1216
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -nologo -windowstyle minimized -file " and
+  FolderPath endswith "\\powershell.exe" and (InitiatingProcessFolderPath endswith
+  "\\powershell.exe" or InitiatingProcessFolderPath endswith "\\pwsh.exe")) and (ProcessCommandLine
+  contains "\\AppData\\Local\\Temp\\" or ProcessCommandLine contains "\\Windows\\Temp\\")'

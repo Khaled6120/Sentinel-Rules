@@ -1,0 +1,25 @@
+name: Delete Important Scheduled Task
+id: dbc1f800-0fe0-4bc0-9c66-292c2abe3f78
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/09/09
+level: high
+description: Detects when adversaries stop services or processes by deleting their
+  respective scheduled tasks in order to conduct data destructive activities
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- impact
+relevantTechniques:
+- t1489
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "\\Windows\\BitLocker" or ProcessCommandLine
+  contains "\\Windows\\ExploitGuard" or ProcessCommandLine contains "\\Windows\\SystemRestore\\SR"
+  or ProcessCommandLine contains "\\Windows\\UpdateOrchestrator\\" or ProcessCommandLine
+  contains "\\Windows\\Windows Defender\\" or ProcessCommandLine contains "\\Windows\\WindowsBackup\\"
+  or ProcessCommandLine contains "\\Windows\\WindowsUpdate\\") and (ProcessCommandLine
+  contains "/delete" and ProcessCommandLine contains "/tn") and FolderPath endswith
+  "\\schtasks.exe"'

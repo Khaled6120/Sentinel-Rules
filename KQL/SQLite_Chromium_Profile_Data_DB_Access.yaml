@@ -1,0 +1,27 @@
+name: SQLite Chromium Profile Data DB Access
+id: 24c77512-782b-448a-8950-eddb0785fc71
+author: TropChaud
+date: 2022/12/19
+level: high
+description: Detect usage of the "sqlite" binary to query databases in Chromium-based
+  browsers for potential data stealing.
+status: test
+modified: 2023/01/19
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- collection
+- credential_access
+relevantTechniques:
+- t1005
+- t1539
+- t1555.003
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "\\User Data\\" or ProcessCommandLine contains
+  "\\Opera Software\\" or ProcessCommandLine contains "\\ChromiumViewer\\") and (ProcessCommandLine
+  contains "Login Data" or ProcessCommandLine contains "Cookies" or ProcessCommandLine
+  contains "Web Data" or ProcessCommandLine contains "History" or ProcessCommandLine
+  contains "Bookmarks") and (ProcessVersionInfoProductName =~ "SQLite" or (FolderPath
+  endswith "\\sqlite.exe" or FolderPath endswith "\\sqlite3.exe"))'

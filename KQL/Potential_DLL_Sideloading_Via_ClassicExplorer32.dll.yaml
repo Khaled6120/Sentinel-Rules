@@ -1,0 +1,23 @@
+name: Potential DLL Sideloading Via ClassicExplorer32.dll
+id: caa02837-f659-466f-bca6-48bde2826ab4
+author: frack113
+date: 2022/12/13
+level: medium
+description: Detects potential DLL sideloading using ClassicExplorer32.dll from the
+  Classic Shell software
+status: test
+modified: ''
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\ClassicExplorer32.dll" and (not(FolderPath startswith
+  "C:\\Program Files\\Classic Shell\\"))'

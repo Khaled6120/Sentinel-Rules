@@ -1,0 +1,20 @@
+name: Verclsid.exe Runs COM Object
+id: d06be4b9-8045-428b-a567-740a26d9db25
+author: Victor Sergeev, oscd.community
+date: 2020/10/09
+level: medium
+description: Detects when verclsid.exe is used to run COM object via GUID
+status: test
+modified: 2022/07/11
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "/S" and ProcessCommandLine contains "/C")
+  and (FolderPath endswith "\\verclsid.exe" or ProcessVersionInfoOriginalFileName
+  =~ "verclsid.exe")'

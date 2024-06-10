@@ -1,0 +1,25 @@
+name: Potential Process Injection Via Msra.EXE
+id: 744a188b-0415-4792-896f-11ddb0588dbc
+author: Alexander McDonald
+date: 2022/06/24
+level: high
+description: Detects potential process injection via Microsoft Remote Asssistance
+  (Msra.exe) by looking at suspicious child processes spawned from the aforementioned
+  process. It has been a target used by many threat actors and used for discovery
+  and persistence tactics
+status: test
+modified: 2023/02/03
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1055
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\arp.exe" or FolderPath endswith "\\cmd.exe" or FolderPath
+  endswith "\\net.exe" or FolderPath endswith "\\netstat.exe" or FolderPath endswith
+  "\\nslookup.exe" or FolderPath endswith "\\route.exe" or FolderPath endswith "\\schtasks.exe"
+  or FolderPath endswith "\\whoami.exe") and InitiatingProcessCommandLine endswith
+  "msra.exe" and InitiatingProcessFolderPath endswith "\\msra.exe"'

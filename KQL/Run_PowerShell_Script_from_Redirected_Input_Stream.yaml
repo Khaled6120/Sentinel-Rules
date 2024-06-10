@@ -1,0 +1,20 @@
+name: Run PowerShell Script from Redirected Input Stream
+id: c83bf4b5-cdf0-437c-90fa-43d734f7c476
+author: Moriarty Meng (idea), Anton Kutepov (rule), oscd.community
+date: 2020/10/17
+level: high
+description: Detects PowerShell script execution via input stream redirect
+status: test
+modified: 2021/11/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine matches regex "\\s-\\s*<" and (FolderPath endswith "\\powershell.exe"
+  or FolderPath endswith "\\pwsh.exe")'

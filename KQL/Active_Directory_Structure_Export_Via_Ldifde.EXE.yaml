@@ -1,0 +1,20 @@
+name: Active Directory Structure Export Via Ldifde.EXE
+id: 4f7a6757-ff79-46db-9687-66501a02d9ec
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/03/14
+level: medium
+description: Detects the execution of "ldifde.exe" in order to export organizational
+  Active Directory structure.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- exfiltration
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "-f" and (FolderPath endswith "\\ldifde.exe"
+  or ProcessVersionInfoOriginalFileName =~ "ldifde.exe")) and (not(ProcessCommandLine
+  contains " -i"))'

@@ -1,0 +1,20 @@
+name: Suspicious Recursive Takeown
+id: 554601fb-9b71-4bcc-abf4-21a611be4fde
+author: frack113
+date: 2022/01/30
+level: medium
+description: Adversaries can interact with the DACLs using built-in Windows commands
+  takeown which can grant adversaries higher permissions on specific files and folders
+status: test
+modified: 2022/11/21
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1222.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "/f " and ProcessCommandLine contains "/r")
+  and FolderPath endswith "\\takeown.exe"'

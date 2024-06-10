@@ -1,0 +1,22 @@
+name: Audio Capture via PowerShell
+id: 932fb0d8-692b-4b0f-a26e-5643a50fe7d6
+author: E.M. Anhaus (originally from Atomic Blue Detections, Endgame), oscd.community,
+  Nasreddine Bencherchali (Nextron Systems)
+date: 2019/10/24
+level: medium
+description: Detects audio capture via PowerShell Cmdlet.
+status: test
+modified: 2023/04/06
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- collection
+relevantTechniques:
+- t1123
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "WindowsAudioDevice-Powershell-Cmdlet" or ProcessCommandLine
+  contains "Toggle-AudioDevice" or ProcessCommandLine contains "Get-AudioDevice "
+  or ProcessCommandLine contains "Set-AudioDevice " or ProcessCommandLine contains
+  "Write-AudioDevice "'

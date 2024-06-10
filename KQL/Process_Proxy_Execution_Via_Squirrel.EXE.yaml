@@ -1,0 +1,38 @@
+name: Process Proxy Execution Via Squirrel.EXE
+id: 45239e6a-b035-4aaf-b339-8ad379fcb67e
+author: Nasreddine Bencherchali (Nextron Systems), Karneades / Markus Neis, Jonhnathan
+  Ribeiro, oscd.community
+date: 2022/06/09
+level: medium
+description: 'Detects the usage of the "Squirrel.exe" binary to execute arbitrary
+  processes. This binary is part of multiple Electron based software installations
+  (Slack, Teams, Discord, etc.)
+
+  '
+status: experimental
+modified: 2023/11/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "--processStart" or ProcessCommandLine contains
+  "--processStartAndWait" or ProcessCommandLine contains "--createShortcut") and (FolderPath
+  endswith "\\squirrel.exe" or FolderPath endswith "\\update.exe")) and (not(((ProcessCommandLine
+  contains ":\\Users\\" and ProcessCommandLine contains "\\AppData\\Local\\Discord\\Update.exe"
+  and ProcessCommandLine contains " --processStart" and ProcessCommandLine contains
+  "Discord.exe") or ((ProcessCommandLine contains "--createShortcut" or ProcessCommandLine
+  contains "--processStartAndWait") and (ProcessCommandLine contains ":\\Users\\"
+  and ProcessCommandLine contains "\\AppData\\Local\\GitHubDesktop\\Update.exe" and
+  ProcessCommandLine contains "GitHubDesktop.exe")) or ((ProcessCommandLine contains
+  "--processStart" or ProcessCommandLine contains "--createShortcut") and (ProcessCommandLine
+  contains ":\\Users\\" and ProcessCommandLine contains "\\AppData\\Local\\Microsoft\\Teams\\Update.exe"
+  and ProcessCommandLine contains "Teams.exe")) or ((ProcessCommandLine contains "--processStart"
+  or ProcessCommandLine contains "--createShortcut") and (ProcessCommandLine contains
+  ":\\Users\\" and ProcessCommandLine contains "\\AppData\\Local\\yammerdesktop\\Update.exe"
+  and ProcessCommandLine contains "Yammer.exe")))))'

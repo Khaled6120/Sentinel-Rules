@@ -1,0 +1,33 @@
+name: File Deletion Via Del
+id: 379fa130-190e-4c3f-b7bc-6c8e834485f3
+author: frack113
+date: 2022/01/15
+level: low
+description: 'Detects execution of the builtin "del"/"erase" commands in order to
+  delete files.
+
+  Adversaries may delete files left behind by the actions of their intrusion activity.
+
+  Malware, tools, or other non-native files dropped or created on a system by an adversary
+  may leave traces to indicate to what was done within a network and how.
+
+  Removal of these files can occur during an intrusion, or as part of a post-intrusion
+  process to minimize the adversary''s footprint.
+
+  '
+status: test
+modified: 2024/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1070.004
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "del " or ProcessCommandLine contains "erase
+  ") and (ProcessCommandLine contains " -f" or ProcessCommandLine contains " /f" or
+  ProcessCommandLine contains " -s" or ProcessCommandLine contains " /s" or ProcessCommandLine
+  contains " -q" or ProcessCommandLine contains " /q") and (FolderPath endswith "\\cmd.exe"
+  or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe")'

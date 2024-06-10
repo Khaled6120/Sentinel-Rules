@@ -1,0 +1,20 @@
+name: Indirect Command Execution By Program Compatibility Wizard
+id: b97cd4b1-30b8-4a9d-bd72-6293928d52bc
+author: A. Sungurov , oscd.community
+date: 2020/10/12
+level: low
+description: Detect indirect command execution via Program Compatibility Assistant
+  pcwrun.exe
+status: test
+modified: 2021/11/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\pcwrun.exe"'

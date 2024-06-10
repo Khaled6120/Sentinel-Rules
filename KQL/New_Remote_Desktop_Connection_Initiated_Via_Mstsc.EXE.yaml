@@ -1,0 +1,27 @@
+name: New Remote Desktop Connection Initiated Via Mstsc.EXE
+id: 954f0af7-62dd-418f-b3df-a84bc2c7a774
+author: frack113
+date: 2022/01/07
+level: medium
+description: 'Detects the usage of "mstsc.exe" with the "/v" flag to initiate a connection
+  to a remote server.
+
+  Adversaries may use valid accounts to log into a computer using the Remote Desktop
+  Protocol (RDP). The adversary may then perform actions as the logged-on user.
+
+  '
+status: test
+modified: 2023/02/03
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- lateral_movement
+relevantTechniques:
+- t1021.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " /v:" and (FolderPath endswith "\\mstsc.exe"
+  or ProcessVersionInfoOriginalFileName =~ "mstsc.exe")) and (not((ProcessCommandLine
+  contains "C:\\ProgramData\\Microsoft\\WSL\\wslg.rdp" and InitiatingProcessFolderPath
+  =~ "C:\\Windows\\System32\\lxss\\wslhost.exe")))'

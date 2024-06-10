@@ -1,0 +1,31 @@
+name: VMToolsd Suspicious Child Process
+id: 5687f942-867b-4578-ade7-1e341c46e99a
+author: bohops, Bhabesh Raj
+date: 2021/10/08
+level: high
+description: Detects suspicious child process creations of VMware Tools process which
+  may indicate persistence setup
+status: test
+modified: 2023/07/25
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+- persistence
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where (((FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\cscript.exe"
+  or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\powershell.exe" or
+  FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath
+  endswith "\\rundll32.exe" or FolderPath endswith "\\wscript.exe") or (ProcessVersionInfoOriginalFileName
+  in~ ("Cmd.Exe", "cscript.exe", "MSHTA.EXE", "PowerShell.EXE", "pwsh.dll", "REGSVR32.EXE",
+  "RUNDLL32.EXE", "wscript.exe"))) and InitiatingProcessFolderPath endswith "\\vmtoolsd.exe")
+  and (not(((ProcessCommandLine =~ "" and FolderPath endswith "\\cmd.exe") or (isnull(ProcessCommandLine)
+  and FolderPath endswith "\\cmd.exe") or ((ProcessCommandLine contains "\\VMware\\VMware
+  Tools\\poweron-vm-default.bat" or ProcessCommandLine contains "\\VMware\\VMware
+  Tools\\poweroff-vm-default.bat" or ProcessCommandLine contains "\\VMware\\VMware
+  Tools\\resume-vm-default.bat" or ProcessCommandLine contains "\\VMware\\VMware Tools\\suspend-vm-default.bat")
+  and FolderPath endswith "\\cmd.exe"))))'

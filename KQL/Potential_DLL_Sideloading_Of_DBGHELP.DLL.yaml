@@ -1,0 +1,29 @@
+name: Potential DLL Sideloading Of DBGHELP.DLL
+id: 6414b5cd-b19d-447e-bb5e-9f03940b5784
+author: Nasreddine Bencherchali (Nextron Systems), Wietze Beukema (project and research)
+date: 2022/10/25
+level: medium
+description: Detects DLL sideloading of "dbghelp.dll"
+status: test
+modified: 2023/05/05
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\dbghelp.dll" and (not((FolderPath startswith "C:\\Program
+  Files (x86)\\" or FolderPath startswith "C:\\Program Files\\" or FolderPath startswith
+  "C:\\Windows\\SoftwareDistribution\\" or FolderPath startswith "C:\\Windows\\System32\\"
+  or FolderPath startswith "C:\\Windows\\SystemTemp\\" or FolderPath startswith "C:\\Windows\\SysWOW64\\"
+  or FolderPath startswith "C:\\Windows\\WinSxS\\"))) and (not(((FolderPath endswith
+  "\\Anaconda3\\Lib\\site-packages\\vtrace\\platforms\\windll\\amd64\\dbghelp.dll"
+  or FolderPath endswith "\\Anaconda3\\Lib\\site-packages\\vtrace\\platforms\\windll\\i386\\dbghelp.dll")
+  or (FolderPath endswith "\\Epic Games\\Launcher\\Engine\\Binaries\\ThirdParty\\DbgHelp\\dbghelp.dll"
+  or FolderPath endswith "\\Epic Games\\MagicLegends\\x86\\dbghelp.dll"))))'

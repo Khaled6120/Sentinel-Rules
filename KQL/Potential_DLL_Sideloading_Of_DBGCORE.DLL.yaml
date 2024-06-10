@@ -1,0 +1,26 @@
+name: Potential DLL Sideloading Of DBGCORE.DLL
+id: 9ca2bf31-0570-44d8-a543-534c47c33ed7
+author: Nasreddine Bencherchali (Nextron Systems), Wietze Beukema (project and research)
+date: 2022/10/25
+level: medium
+description: Detects DLL sideloading of "dbgcore.dll"
+status: test
+modified: 2023/05/05
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\dbgcore.dll" and (not((FolderPath startswith "C:\\Program
+  Files (x86)\\" or FolderPath startswith "C:\\Program Files\\" or FolderPath startswith
+  "C:\\Windows\\SoftwareDistribution\\" or FolderPath startswith "C:\\Windows\\System32\\"
+  or FolderPath startswith "C:\\Windows\\SystemTemp\\" or FolderPath startswith "C:\\Windows\\SysWOW64\\"
+  or FolderPath startswith "C:\\Windows\\WinSxS\\"))) and (not(FolderPath endswith
+  "\\Steam\\bin\\cef\\cef.win7x64\\dbgcore.dll"))'

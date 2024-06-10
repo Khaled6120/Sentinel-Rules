@@ -1,0 +1,23 @@
+name: Potential Libvlc.DLL Sideloading
+id: bf9808c4-d24f-44a2-8398-b65227d406b6
+author: X__Junior
+date: 2023/04/17
+level: medium
+description: Detects potential DLL sideloading of "libvlc.dll", a DLL that is legitimately
+  used by "VLC.exe"
+status: test
+modified: ''
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\libvlc.dll" and (not((FolderPath startswith "C:\\Program
+  Files (x86)\\VideoLAN\\VLC\\" or FolderPath startswith "C:\\Program Files\\VideoLAN\\VLC\\")))'

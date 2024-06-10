@@ -1,0 +1,22 @@
+name: Fax Service DLL Search Order Hijack
+id: 828af599-4c53-4ed2-ba4a-a9f835c434ea
+author: NVISO
+date: 2020/05/04
+level: high
+description: The Fax service attempts to load ualapi.dll, which is non-existent. An
+  attacker can then (side)load their own malicious DLL using this service.
+status: test
+modified: 2022/06/02
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where (FolderPath endswith "ualapi.dll" and InitiatingProcessFolderPath endswith
+  "\\fxssvc.exe") and (not(FolderPath startswith "C:\\Windows\\WinSxS\\"))'

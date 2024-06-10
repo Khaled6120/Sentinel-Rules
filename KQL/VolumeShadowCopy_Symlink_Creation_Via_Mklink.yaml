@@ -1,0 +1,20 @@
+name: VolumeShadowCopy Symlink Creation Via Mklink
+id: 40b19fa6-d835-400c-b301-41f3a2baacaf
+author: Teymur Kheirkhabarov, oscd.community
+date: 2019/10/22
+level: high
+description: Shadow Copies storage symbolic link creation using operating systems
+  utilities
+status: stable
+modified: 2023/03/06
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1003.002
+- t1003.003
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "mklink" and ProcessCommandLine contains "HarddiskVolumeShadowCopy"'

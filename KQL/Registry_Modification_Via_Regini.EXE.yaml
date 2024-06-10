@@ -1,0 +1,20 @@
+name: Registry Modification Via Regini.EXE
+id: 5f60740a-f57b-4e76-82a1-15b6ff2cb134
+author: Eli Salem, Sander Wiebing, oscd.community
+date: 2020/10/08
+level: low
+description: Detects the execution of regini.exe which can be used to modify registry
+  keys, the changes are imported from one or more text files.
+status: test
+modified: 2023/02/08
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1112
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\regini.exe" or ProcessVersionInfoOriginalFileName
+  =~ "REGINI.EXE") and (not(ProcessCommandLine matches regex ":[^ \\\\]"))'

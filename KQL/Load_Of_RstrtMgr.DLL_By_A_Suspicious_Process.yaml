@@ -1,0 +1,35 @@
+name: Load Of RstrtMgr.DLL By A Suspicious Process
+id: b48492dc-c5ef-4572-8dff-32bc241c15c8
+author: "Luc G\xC3\xA9naux"
+date: 2023/11/28
+level: high
+description: 'Detects the load of RstrtMgr DLL (Restart Manager) by a suspicious process.
+
+  This library has been used during ransomware campaigns to kill processes that would
+  prevent file encryption by locking them (e.g. Conti ransomware, Cactus ransomware).
+  It has also recently been seen used by the BiBi wiper for Windows.
+
+  It could also be used for anti-analysis purposes by shut downing specific processes.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- impact
+relevantTechniques:
+- t1486
+- t1562.001
+query: 'DeviceImageLoadEvents
+
+  | where (FolderPath endswith "\\RstrtMgr.dll" or InitiatingProcessVersionInfoOriginalFileName
+  =~ "RstrtMgr.dll") and ((InitiatingProcessFolderPath contains ":\\Perflogs\\" or
+  InitiatingProcessFolderPath contains ":\\Users\\Public\\" or InitiatingProcessFolderPath
+  contains "\\Temporary Internet") or ((InitiatingProcessFolderPath contains ":\\Users\\"
+  and InitiatingProcessFolderPath contains "\\Favorites\\") or (InitiatingProcessFolderPath
+  contains ":\\Users\\" and InitiatingProcessFolderPath contains "\\Favourites\\")
+  or (InitiatingProcessFolderPath contains ":\\Users\\" and InitiatingProcessFolderPath
+  contains "\\Contacts\\")))'

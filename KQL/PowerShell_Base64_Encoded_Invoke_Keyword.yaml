@@ -1,0 +1,25 @@
+name: PowerShell Base64 Encoded Invoke Keyword
+id: 6385697e-9f1b-40bd-8817-f4a91f40508e
+author: pH-T (Nextron Systems), Harjot Singh, @cyb3rjy0t
+date: 2022/05/20
+level: high
+description: Detects UTF-8 and UTF-16 Base64 encoded powershell 'Invoke-' calls
+status: test
+modified: 2023/04/06
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1027
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " -e" and (ProcessCommandLine contains "SQBuAHYAbwBrAGUALQ"
+  or ProcessCommandLine contains "kAbgB2AG8AawBlAC0A" or ProcessCommandLine contains
+  "JAG4AdgBvAGsAZQAtA" or ProcessCommandLine contains "SW52b2tlL" or ProcessCommandLine
+  contains "ludm9rZS" or ProcessCommandLine contains "JbnZva2Ut") and ((FolderPath
+  endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName
+  in~ ("PowerShell.EXE", "pwsh.dll")))'

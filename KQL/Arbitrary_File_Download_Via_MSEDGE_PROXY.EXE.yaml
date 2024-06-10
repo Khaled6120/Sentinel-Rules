@@ -1,0 +1,21 @@
+name: Arbitrary File Download Via MSEDGE_PROXY.EXE
+id: e84d89c4-f544-41ca-a6af-4b92fd38b023
+author: Swachchhanda Shrawan Poudel
+date: 2023/11/09
+level: medium
+description: Detects usage of "msedge_proxy.exe" to download arbitrary files
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "http://" or ProcessCommandLine contains "https://")
+  and (FolderPath endswith "\\msedge_proxy.exe" or ProcessVersionInfoOriginalFileName
+  =~ "msedge_proxy.exe")'

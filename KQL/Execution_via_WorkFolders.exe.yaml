@@ -1,0 +1,19 @@
+name: Execution via WorkFolders.exe
+id: 0bbc6369-43e3-453d-9944-cae58821c173
+author: Maxime Thiebaut (@0xThiebaut)
+date: 2021/10/21
+level: high
+description: Detects using WorkFolders.exe to execute an arbitrary control.exe
+status: test
+modified: 2022/12/25
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\control.exe" and InitiatingProcessFolderPath endswith
+  "\\WorkFolders.exe") and (not(FolderPath =~ "C:\\Windows\\System32\\control.exe"))'

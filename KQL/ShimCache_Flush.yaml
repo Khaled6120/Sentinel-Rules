@@ -1,0 +1,22 @@
+name: ShimCache Flush
+id: b0524451-19af-4efa-a46f-562a977f792e
+author: Florian Roth (Nextron Systems)
+date: 2021/02/01
+level: high
+description: Detects actions that clear the local ShimCache and remove forensic evidence
+status: stable
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1112
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "rundll32" and ProcessCommandLine contains
+  "apphelp.dll") and (ProcessCommandLine contains "ShimFlushCache" or ProcessCommandLine
+  contains "#250")) or ((ProcessCommandLine contains "rundll32" and ProcessCommandLine
+  contains "kernel32.dll") and (ProcessCommandLine contains "BaseFlushAppcompatCache"
+  or ProcessCommandLine contains "#46"))'

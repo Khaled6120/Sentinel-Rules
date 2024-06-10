@@ -1,0 +1,26 @@
+name: Process Memory Dump via RdrLeakDiag.EXE
+id: edadb1e5-5919-4e4c-8462-a9e643b02c4b
+author: Cedric MAURUGEON, Florian Roth (Nextron Systems), Swachchhanda Shrawan Poudel,
+  Nasreddine Bencherchali (Nextron Systems)
+date: 2021/09/24
+level: high
+description: Detects the use of the Microsoft Windows Resource Leak Diagnostic tool
+  "rdrleakdiag.exe" to dump process memory
+status: test
+modified: 2023/04/24
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1003.001
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "fullmemdmp" or ProcessCommandLine contains
+  "/memdmp" or ProcessCommandLine contains "-memdmp") and (ProcessCommandLine contains
+  " -o " or ProcessCommandLine contains " /o ") and (ProcessCommandLine contains "
+  -p " or ProcessCommandLine contains " /p ")) or ((FolderPath endswith "\\rdrleakdiag.exe"
+  or ProcessVersionInfoOriginalFileName =~ "RdrLeakDiag.exe") and (ProcessCommandLine
+  contains "fullmemdmp" or ProcessCommandLine contains "/memdmp" or ProcessCommandLine
+  contains "-memdmp"))'

@@ -1,0 +1,19 @@
+name: Powershell Token Obfuscation - Process Creation
+id: deb9b646-a508-44ee-b7c9-d8965921c6b6
+author: frack113
+date: 2022/12/27
+level: high
+description: Detects TOKEN OBFUSCATION technique from Invoke-Obfuscation
+status: test
+modified: 2022/12/30
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1027.009
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine matches regex "\\w+`(\\w+|-|.)`[\\w+|\\s]" or ProcessCommandLine
+  matches regex ""(\\{\\d\\})+"\\s*-f" or ProcessCommandLine matches regex "\\$\\{((e|n|v)*`(e|n|v)*)+:path\\}|\\$\\{((e|n|v)*`(e|n|v)*)+:((p|a|t|h)*`(p|a|t|h)*)+\\}|\\$\\{env:((p|a|t|h)*`(p|a|t|h)*)+\\}"'

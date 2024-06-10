@@ -1,0 +1,19 @@
+name: HackTool - SecurityXploded Execution
+id: 7679d464-4f74-45e2-9e01-ac66c5eb041a
+author: Florian Roth (Nextron Systems)
+date: 2018/12/19
+level: critical
+description: Detects the execution of SecurityXploded Tools
+status: stable
+modified: 2023/02/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1555
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoCompanyName =~ "SecurityXploded" or FolderPath endswith
+  "PasswordDump.exe" or ProcessVersionInfoOriginalFileName endswith "PasswordDump.exe"'

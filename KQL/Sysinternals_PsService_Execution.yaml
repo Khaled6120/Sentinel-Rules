@@ -1,0 +1,21 @@
+name: Sysinternals PsService Execution
+id: 3371f518-5fe3-4cf6-a14b-2a0ae3fd8a4f
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/06/16
+level: medium
+description: Detects usage of Sysinternals PsService which can be abused for service
+  reconnaissance and tampering
+status: test
+modified: 2023/02/24
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+- persistence
+relevantTechniques:
+- t1543.003
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoOriginalFileName =~ "psservice.exe" or (FolderPath endswith
+  "\\PsService.exe" or FolderPath endswith "\\PsService64.exe")'

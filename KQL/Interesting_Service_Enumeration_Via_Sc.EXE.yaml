@@ -1,0 +1,24 @@
+name: Interesting Service Enumeration Via Sc.EXE
+id: e83e8899-c9b2-483b-b355-5decc942b959
+author: Swachchhanda Shrawan Poudel
+date: 2024/02/12
+level: low
+description: 'Detects the enumeration and query of interesting and in some cases sensitive
+  services on the system via "sc.exe".
+
+  Attackers often try to enumerate the services currently running on a system in order
+  to find different attack vectors.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics: []
+relevantTechniques:
+- t1003
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "query" and ProcessCommandLine contains "termservice"
+  and (FolderPath endswith "\\sc.exe" or ProcessVersionInfoOriginalFileName =~ "sc.exe")'

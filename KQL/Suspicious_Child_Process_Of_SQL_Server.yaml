@@ -1,0 +1,32 @@
+name: Suspicious Child Process Of SQL Server
+id: 869b9ca7-9ea2-4a5a-8325-e80e62f75445
+author: FPT.EagleEye Team, wagga
+date: 2020/12/11
+level: high
+description: Detects suspicious child processes of the SQLServer process. This could
+  indicate potential RCE or SQL Injection.
+status: test
+modified: 2023/05/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- initial_access
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1190
+- t1505.003
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\bash.exe" or FolderPath endswith "\\bitsadmin.exe"
+  or FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\netstat.exe" or FolderPath
+  endswith "\\nltest.exe" or FolderPath endswith "\\ping.exe" or FolderPath endswith
+  "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\regsvr32.exe"
+  or FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\sh.exe" or FolderPath
+  endswith "\\systeminfo.exe" or FolderPath endswith "\\tasklist.exe" or FolderPath
+  endswith "\\wsl.exe") and InitiatingProcessFolderPath endswith "\\sqlservr.exe")
+  and (not((ProcessCommandLine startswith "\"C:\\Windows\\system32\\cmd.exe\" " and
+  FolderPath =~ "C:\\Windows\\System32\\cmd.exe" and InitiatingProcessFolderPath endswith
+  "DATEV_DBENGINE\\MSSQL\\Binn\\sqlservr.exe" and InitiatingProcessFolderPath startswith
+  "C:\\Program Files\\Microsoft SQL Server\\")))'

@@ -1,0 +1,26 @@
+name: Potentially Suspicious Command Targeting Teams Sensitive Files
+id: d2eb17db-1d39-41dc-b57f-301f6512fa75
+author: '@SerkinValery'
+date: 2022/09/16
+level: medium
+description: 'Detects a commandline containing references to the Microsoft Teams database
+  or cookies files from a process other than Teams.
+
+  The database might contain authentication tokens and other sensitive information
+  about the logged in accounts.
+
+  '
+status: experimental
+modified: 2023/12/18
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1528
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "\\Microsoft\\Teams\\Cookies" or ProcessCommandLine
+  contains "\\Microsoft\\Teams\\Local Storage\\leveldb") and (not(FolderPath endswith
+  "\\Microsoft\\Teams\\current\\Teams.exe"))'

@@ -1,0 +1,31 @@
+name: Suspicious Shells Spawn by Java Utility Keytool
+id: 90fb5e62-ca1f-4e22-b42e-cc521874c938
+author: Andreas Hunkeler (@Karneades)
+date: 2021/12/22
+level: high
+description: Detects suspicious shell spawn from Java utility keytool process (e.g.
+  adselfservice plus exploitation)
+status: test
+modified: 2023/01/21
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- initial_access
+- persistence
+- privilege_escalation
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\sh.exe" or FolderPath
+  endswith "\\bash.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith
+  "\\pwsh.exe" or FolderPath endswith "\\schtasks.exe" or FolderPath endswith "\\certutil.exe"
+  or FolderPath endswith "\\whoami.exe" or FolderPath endswith "\\bitsadmin.exe" or
+  FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\cscript.exe" or FolderPath
+  endswith "\\scrcons.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith
+  "\\hh.exe" or FolderPath endswith "\\wmic.exe" or FolderPath endswith "\\mshta.exe"
+  or FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\forfiles.exe"
+  or FolderPath endswith "\\scriptrunner.exe" or FolderPath endswith "\\mftrace.exe"
+  or FolderPath endswith "\\AppVLP.exe" or FolderPath endswith "\\systeminfo.exe"
+  or FolderPath endswith "\\reg.exe" or FolderPath endswith "\\query.exe") and InitiatingProcessFolderPath
+  endswith "\\keytool.exe"'

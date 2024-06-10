@@ -1,0 +1,21 @@
+name: Execution Of Non-Existing File
+id: 71158e3f-df67-472b-930e-7d287acaa3e1
+author: Max Altgelt (Nextron Systems)
+date: 2021/12/09
+level: high
+description: Checks whether the image specified in a process creation event is not
+  a full, absolute path (caused by process ghosting or other unorthodox methods to
+  start a process)
+status: test
+modified: 2022/12/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (not(FolderPath contains "\\")) and (not((((FolderPath in~ ("System", "Registry",
+  "MemCompression", "vmmem")) or (ProcessCommandLine in~ ("Registry", "MemCompression",
+  "vmmem"))) or (FolderPath in~ ("-", "")) or isnull(FolderPath))))'

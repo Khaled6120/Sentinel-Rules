@@ -1,0 +1,26 @@
+name: Potential Persistence Via Microsoft Compatibility Appraiser
+id: f548a603-c9f2-4c89-b511-b089f7e94549
+author: Sreeman
+date: 2020/09/29
+level: medium
+description: 'Detects manual execution of the "Microsoft Compatibility Appraiser"
+  task via schtasks.
+
+  In order to trigger persistence stored in the "\AppCompatFlags\TelemetryController"
+  registry key.
+
+  '
+status: test
+modified: 2023/02/10
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+relevantTechniques:
+- t1053.005
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "run " and ProcessCommandLine contains "\\Application
+  Experience\\Microsoft Compatibility Appraiser") and (FolderPath endswith "\\schtasks.exe"
+  or ProcessVersionInfoOriginalFileName =~ "schtasks.exe")'

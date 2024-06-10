@@ -1,0 +1,21 @@
+name: Renamed Jusched.EXE Execution
+id: edd8a48c-1b9f-4ba1-83aa-490338cd1ccb
+author: Markus Neis, Swisscom
+date: 2019/06/04
+level: high
+description: Detects the execution of a renamed "jusched.exe" as seen used by the
+  cobalt group
+status: test
+modified: 2023/02/03
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1036.003
+query: 'DeviceProcessEvents
+
+  | where (ProcessVersionInfoFileDescription in~ ("Java Update Scheduler", "Java(TM)
+  Update Scheduler")) and (not(FolderPath endswith "\\jusched.exe"))'

@@ -1,0 +1,30 @@
+name: COM Object Execution via Xwizard.EXE
+id: 53d4bb30-3f36-4e8a-b078-69d36c4a79ff
+author: "Ensar \xC5\u017Eamil, @sblmsrsn, @oscd_initiative, Nasreddine Bencherchali\
+  \ (Nextron Systems)"
+date: 2020/10/07
+level: medium
+description: 'Detects the execution of Xwizard tool with the "RunWizard" flag and
+  a GUID like argument.
+
+  This utility can be abused in order to run custom COM object created in the registry.
+
+  '
+status: test
+modified: 2024/04/22
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine =~ "RunWizard" and ProcessCommandLine matches regex
+  "\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}")
+  and (FolderPath endswith "\\xwizard.exe" or ProcessVersionInfoOriginalFileName =~
+  "xwizard.exe")) or ((ProcessCommandLine =~ "RunWizard" and ProcessCommandLine matches
+  regex "\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}")
+  and (not((FolderPath endswith "\\xwizard.exe" or ProcessVersionInfoOriginalFileName
+  =~ "xwizard.exe"))))'

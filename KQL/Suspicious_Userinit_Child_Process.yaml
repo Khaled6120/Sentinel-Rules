@@ -1,0 +1,20 @@
+name: Suspicious Userinit Child Process
+id: b655a06a-31c0-477a-95c2-3726b83d649d
+author: Florian Roth (Nextron Systems), Samir Bousseaden (idea)
+date: 2019/06/17
+level: medium
+description: Detects a suspicious child process of userinit
+status: test
+modified: 2022/12/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1055
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\userinit.exe" and (not((ProcessCommandLine
+  contains "\\netlogon\\" or (FolderPath endswith "\\explorer.exe" or ProcessVersionInfoOriginalFileName
+  =~ "explorer.exe"))))'

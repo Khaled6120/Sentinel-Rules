@@ -1,0 +1,23 @@
+name: Imports Registry Key From an ADS
+id: 0b80ade5-6997-4b1d-99a1-71701778ea61
+author: Oddvar Moe, Sander Wiebing, oscd.community
+date: 2020/10/12
+level: high
+description: Detects the import of a alternate datastream to the registry with regedit.exe.
+status: test
+modified: 2024/03/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1112
+query: 'DeviceProcessEvents
+
+  | where (((ProcessCommandLine contains " /i " or ProcessCommandLine contains ".reg")
+  and ProcessCommandLine matches regex ":[^ \\\\]") and (FolderPath endswith "\\regedit.exe"
+  or ProcessVersionInfoOriginalFileName =~ "REGEDIT.EXE")) and (not((ProcessCommandLine
+  contains " -e " or ProcessCommandLine contains " /e " or ProcessCommandLine contains
+  " -a " or ProcessCommandLine contains " /a " or ProcessCommandLine contains " -c
+  " or ProcessCommandLine contains " /c ")))'

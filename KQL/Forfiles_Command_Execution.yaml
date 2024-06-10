@@ -1,0 +1,28 @@
+name: Forfiles Command Execution
+id: 9aa5106d-bce3-4b13-86df-3a20f1d5cf0b
+author: Tim Rauch, Elastic, E.M. Anhaus (originally from Atomic Blue Detections, Endgame),
+  oscd.community
+date: 2022/06/14
+level: medium
+description: 'Detects the execution of "forfiles" with the "/c" flag.
+
+  While this is an expected behavior of the tool, it can be abused in order to proxy
+  execution through it with any binary.
+
+  Can be used to bypass application whitelisting.
+
+  '
+status: test
+modified: 2024/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -c " or ProcessCommandLine contains " /c
+  ") and (FolderPath endswith "\\forfiles.exe" or ProcessVersionInfoOriginalFileName
+  =~ "forfiles.exe")'

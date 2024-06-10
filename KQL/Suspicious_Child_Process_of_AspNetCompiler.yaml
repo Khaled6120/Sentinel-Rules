@@ -1,0 +1,23 @@
+name: Suspicious Child Process of AspNetCompiler
+id: 9ccba514-7cb6-4c5c-b377-700758f2f120
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/08/14
+level: high
+description: Detects potentially suspicious child processes of "aspnet_compiler.exe".
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1127
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\calc.exe" or FolderPath endswith "\\notepad.exe")
+  or (FolderPath contains "\\Users\\Public\\" or FolderPath contains "\\AppData\\Local\\Temp\\"
+  or FolderPath contains "\\AppData\\Local\\Roaming\\" or FolderPath contains ":\\Temp\\"
+  or FolderPath contains ":\\Windows\\Temp\\" or FolderPath contains ":\\Windows\\System32\\Tasks\\"
+  or FolderPath contains ":\\Windows\\Tasks\\")) and InitiatingProcessFolderPath endswith
+  "\\aspnet_compiler.exe"'

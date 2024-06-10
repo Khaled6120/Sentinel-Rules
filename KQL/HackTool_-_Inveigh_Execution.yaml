@@ -1,0 +1,23 @@
+name: HackTool - Inveigh Execution
+id: b99a1518-1ad5-4f65-bc95-1ffff97a8fd0
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/10/24
+level: critical
+description: Detects the use of Inveigh a cross-platform .NET IPv4/IPv6 machine-in-the-middle
+  tool
+status: test
+modified: 2023/02/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1003.001
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\Inveigh.exe" or (ProcessVersionInfoOriginalFileName
+  in~ ("\\Inveigh.exe", "\\Inveigh.dll")) or ProcessVersionInfoFileDescription =~
+  "Inveigh" or (ProcessCommandLine contains " -SpooferIP" or ProcessCommandLine contains
+  " -ReplyToIPs " or ProcessCommandLine contains " -ReplyToDomains " or ProcessCommandLine
+  contains " -ReplyToMACs " or ProcessCommandLine contains " -SnifferIP")'

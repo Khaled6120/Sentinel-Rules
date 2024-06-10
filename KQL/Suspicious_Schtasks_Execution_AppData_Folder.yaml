@@ -1,0 +1,26 @@
+name: Suspicious Schtasks Execution AppData Folder
+id: c5c00f49-b3f9-45a6-997e-cfdecc6e1967
+author: pH-T (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2022/03/15
+level: high
+description: Detects the creation of a schtask that executes a file from C:\Users\<USER>\AppData\Local
+status: test
+modified: 2022/07/28
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+- persistence
+relevantTechniques:
+- t1053.005
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "NT AUT" or ProcessCommandLine contains "
+  SYSTEM ") and (ProcessCommandLine contains "/Create" and ProcessCommandLine contains
+  "/RU" and ProcessCommandLine contains "/TR" and ProcessCommandLine contains "C:\\Users\\"
+  and ProcessCommandLine contains "\\AppData\\Local\\") and FolderPath endswith "\\schtasks.exe")
+  and (not((ProcessCommandLine contains "/TN TVInstallRestore" and FolderPath endswith
+  "\\schtasks.exe" and (InitiatingProcessFolderPath contains "\\AppData\\Local\\Temp\\"
+  and InitiatingProcessFolderPath contains "TeamViewer_.exe"))))'

@@ -1,0 +1,31 @@
+name: Suspicious Child Process Of Veeam Dabatase
+id: d55b793d-f847-4eea-b59a-5ab09908ac90
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/04
+level: critical
+description: Detects suspicious child processes of the Veeam service process. This
+  could indicate potential RCE or SQL Injection.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- initial_access
+- persistence
+- privilege_escalation
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (InitiatingProcessCommandLine contains "VEEAMSQL" and InitiatingProcessFolderPath
+  endswith "\\sqlservr.exe") and (((ProcessCommandLine contains "-ex " or ProcessCommandLine
+  contains "bypass" or ProcessCommandLine contains "cscript" or ProcessCommandLine
+  contains "DownloadString" or ProcessCommandLine contains "http://" or ProcessCommandLine
+  contains "https://" or ProcessCommandLine contains "mshta" or ProcessCommandLine
+  contains "regsvr32" or ProcessCommandLine contains "rundll32" or ProcessCommandLine
+  contains "wscript" or ProcessCommandLine contains "copy ") and (FolderPath endswith
+  "\\cmd.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"
+  or FolderPath endswith "\\wsl.exe" or FolderPath endswith "\\wt.exe")) or (FolderPath
+  endswith "\\net.exe" or FolderPath endswith "\\net1.exe" or FolderPath endswith
+  "\\netstat.exe" or FolderPath endswith "\\nltest.exe" or FolderPath endswith "\\ping.exe"
+  or FolderPath endswith "\\tasklist.exe" or FolderPath endswith "\\whoami.exe"))'

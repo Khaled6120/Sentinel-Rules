@@ -1,0 +1,22 @@
+name: Add SafeBoot Keys Via Reg Utility
+id: d7662ff6-9e97-4596-a61d-9839e32dee8d
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/09/02
+level: high
+description: Detects execution of "reg.exe" commands with the "add" or "copy" flags
+  on safe boot registry keys. Often used by attacker to allow the ransomware to work
+  in safe mode as some security products do not
+status: test
+modified: 2024/03/19
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1562.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " copy " or ProcessCommandLine contains " add
+  ") and (FolderPath endswith "\\reg.exe" or ProcessVersionInfoOriginalFileName =~
+  "reg.exe") and ProcessCommandLine contains "\\SYSTEM\\CurrentControlSet\\Control\\SafeBoot"'

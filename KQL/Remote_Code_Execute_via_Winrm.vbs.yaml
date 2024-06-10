@@ -1,0 +1,21 @@
+name: Remote Code Execute via Winrm.vbs
+id: 9df0dd3a-1a5c-47e3-a2bc-30ed177646a0
+author: Julia Fomina, oscd.community
+date: 2020/10/07
+level: medium
+description: Detects an attempt to execute code or create service on remote host via
+  winrm.vbs.
+status: test
+modified: 2023/03/03
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1216
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "winrm" and ProcessCommandLine contains "invoke
+  Create wmicimv2/Win32_" and ProcessCommandLine contains "-r:http") and (FolderPath
+  endswith "\\cscript.exe" or ProcessVersionInfoOriginalFileName =~ "cscript.exe")'

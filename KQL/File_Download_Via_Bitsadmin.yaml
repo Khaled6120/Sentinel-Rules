@@ -1,0 +1,24 @@
+name: File Download Via Bitsadmin
+id: d059842b-6b9d-4ed1-b5c3-5b89143c6ede
+author: Michael Haag, FPT.EagleEye
+date: 2017/03/09
+level: medium
+description: Detects usage of bitsadmin downloading a file
+status: test
+modified: 2023/02/15
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- s0190
+relevantTechniques:
+- t1036.003
+- t1197
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\bitsadmin.exe" or ProcessVersionInfoOriginalFileName
+  =~ "bitsadmin.exe") and (ProcessCommandLine contains " /transfer " or ((ProcessCommandLine
+  contains " /create " or ProcessCommandLine contains " /addfile ") and ProcessCommandLine
+  contains "http"))'

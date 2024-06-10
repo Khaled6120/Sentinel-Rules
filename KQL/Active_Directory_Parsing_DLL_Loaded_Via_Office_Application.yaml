@@ -1,0 +1,22 @@
+name: Active Directory Parsing DLL Loaded Via Office Application
+id: a2a3b925-7bb0-433b-b508-db9003263cc4
+author: Antonlovesdnb
+date: 2020/02/19
+level: medium
+description: Detects DSParse DLL being loaded by an Office Product
+status: test
+modified: 2023/03/28
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1204.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath contains "\\dsparse.dll" and (InitiatingProcessFolderPath endswith
+  "\\excel.exe" or InitiatingProcessFolderPath endswith "\\mspub.exe" or InitiatingProcessFolderPath
+  endswith "\\onenote.exe" or InitiatingProcessFolderPath endswith "\\onenoteim.exe"
+  or InitiatingProcessFolderPath endswith "\\outlook.exe" or InitiatingProcessFolderPath
+  endswith "\\powerpnt.exe" or InitiatingProcessFolderPath endswith "\\winword.exe")'

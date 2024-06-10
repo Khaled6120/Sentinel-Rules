@@ -1,0 +1,22 @@
+name: Port Forwarding Activity Via SSH.EXE
+id: 327f48c1-a6db-4eb8-875a-f6981f1b0183
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/10/12
+level: medium
+description: Detects port forwarding activity via SSH.exe
+status: experimental
+modified: 2024/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+- lateral_movement
+relevantTechniques:
+- t1021.001
+- t1021.004
+- t1572
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -R " or ProcessCommandLine contains " /R
+  ") and FolderPath endswith "\\ssh.exe"'

@@ -1,0 +1,22 @@
+name: AddinUtil.EXE Execution From Uncommon Directory
+id: 6120ac2a-a34b-42c0-a9bd-1fb9f459f348
+author: Michael McKinley (@McKinleyMike), Tony Latteri (@TheLatteri)
+date: 2023/09/18
+level: medium
+description: Detects execution of the Add-In deployment cache updating utility (AddInutil.exe)
+  from a non-standard directory.
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\addinutil.exe" or ProcessVersionInfoOriginalFileName
+  =~ "AddInUtil.exe") and (not((FolderPath contains ":\\Windows\\Microsoft.NET\\Framework\\"
+  or FolderPath contains ":\\Windows\\Microsoft.NET\\Framework64\\" or FolderPath
+  contains ":\\Windows\\WinSxS\\")))'

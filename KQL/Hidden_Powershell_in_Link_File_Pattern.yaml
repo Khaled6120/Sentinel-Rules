@@ -1,0 +1,21 @@
+name: Hidden Powershell in Link File Pattern
+id: 30e92f50-bb5a-4884-98b5-d20aa80f3d7a
+author: frack113
+date: 2022/02/06
+level: medium
+description: Detects events that appear when a user click on a link file with a powershell
+  command in it
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "powershell" and ProcessCommandLine contains
+  ".lnk") and FolderPath =~ "C:\\Windows\\System32\\cmd.exe" and InitiatingProcessFolderPath
+  =~ "C:\\Windows\\explorer.exe"'

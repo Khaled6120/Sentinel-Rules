@@ -1,0 +1,18 @@
+name: PCRE.NET Package Image Load
+id: 84b0a8f3-680b-4096-a45b-e9a89221727c
+author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+date: 2020/10/29
+level: high
+description: Detects processes loading modules related to PCRE.NET package
+status: test
+modified: 2022/10/09
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath contains "\\AppData\\Local\\Temp\\ba9ea7344a4a5f591d6e5dc32a13494b\\"'

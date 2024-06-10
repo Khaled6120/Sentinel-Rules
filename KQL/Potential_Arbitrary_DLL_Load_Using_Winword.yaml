@@ -1,0 +1,21 @@
+name: Potential Arbitrary DLL Load Using Winword
+id: f7375e28-5c14-432f-b8d1-1db26c832df3
+author: Victor Sergeev, oscd.community
+date: 2020/10/09
+level: medium
+description: Detects potential DLL sideloading using the Microsoft Office winword
+  process via the '/l' flag.
+status: test
+modified: 2023/03/29
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1202
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "/l " and ProcessCommandLine contains ".dll")
+  and (FolderPath endswith "\\WINWORD.exe" or ProcessVersionInfoOriginalFileName =~
+  "WinWord.exe")'

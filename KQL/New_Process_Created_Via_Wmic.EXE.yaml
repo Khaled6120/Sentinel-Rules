@@ -1,0 +1,21 @@
+name: New Process Created Via Wmic.EXE
+id: 526be59f-a573-4eea-b5f7-f0973207634d
+author: Michael Haag, Florian Roth (Nextron Systems), juju4, oscd.community
+date: 2019/01/16
+level: medium
+description: Detects new process creation using WMIC via the "process call create"
+  flag
+status: test
+modified: 2023/02/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1047
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "process" and ProcessCommandLine contains "call"
+  and ProcessCommandLine contains "create") and (FolderPath endswith "\\wmic.exe"
+  or ProcessVersionInfoOriginalFileName =~ "wmic.exe")'

@@ -1,0 +1,25 @@
+name: Abuse of Service Permissions to Hide Services Via Set-Service
+id: 514e4c3a-c77d-4cde-a00f-046425e2301e
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/10/17
+level: high
+description: Detects usage of the "Set-Service" powershell cmdlet to configure a new
+  SecurityDescriptor that allows a service to be hidden from other utilities such
+  as "sc.exe", "Get-Service"...etc. (Works only in powershell 7)
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1574.011
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "-SecurityDescriptorSddl " or ProcessCommandLine
+  contains "-sd ") and (FolderPath endswith "\\pwsh.exe" or ProcessVersionInfoOriginalFileName
+  =~ "pwsh.dll") and (ProcessCommandLine contains "Set-Service " and ProcessCommandLine
+  contains "DCLCWPDTSD")'

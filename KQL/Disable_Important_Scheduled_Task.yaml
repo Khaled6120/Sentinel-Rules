@@ -1,0 +1,25 @@
+name: Disable Important Scheduled Task
+id: 9ac94dc8-9042-493c-ba45-3b5e7c86b980
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: 2021/12/26
+level: high
+description: Detects when adversaries stop services or processes by disabling their
+  respective scheduled tasks in order to conduct data destructive activities
+status: test
+modified: 2022/09/02
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- impact
+relevantTechniques:
+- t1489
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "\\Windows\\BitLocker" or ProcessCommandLine
+  contains "\\Windows\\ExploitGuard" or ProcessCommandLine contains "\\Windows\\SystemRestore\\SR"
+  or ProcessCommandLine contains "\\Windows\\UpdateOrchestrator\\" or ProcessCommandLine
+  contains "\\Windows\\Windows Defender\\" or ProcessCommandLine contains "\\Windows\\WindowsBackup\\"
+  or ProcessCommandLine contains "\\Windows\\WindowsUpdate\\") and (ProcessCommandLine
+  contains "/Change" and ProcessCommandLine contains "/TN" and ProcessCommandLine
+  contains "/disable") and FolderPath endswith "\\schtasks.exe"'

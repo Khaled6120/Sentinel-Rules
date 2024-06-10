@@ -1,0 +1,26 @@
+name: Suspicious Invoke-WebRequest Execution With DirectIP
+id: 1edff897-9146-48d2-9066-52e8d8f80a2f
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/04/21
+level: medium
+description: Detects calls to PowerShell with Invoke-WebRequest cmdlet using direct
+  IP access
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1105
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "curl " or ProcessCommandLine contains "Invoke-WebRequest"
+  or ProcessCommandLine contains "iwr " or ProcessCommandLine contains "wget ") and
+  ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or
+  (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll"))) and (ProcessCommandLine
+  contains "://1" or ProcessCommandLine contains "://2" or ProcessCommandLine contains
+  "://3" or ProcessCommandLine contains "://4" or ProcessCommandLine contains "://5"
+  or ProcessCommandLine contains "://6" or ProcessCommandLine contains "://7" or ProcessCommandLine
+  contains "://8" or ProcessCommandLine contains "://9")'

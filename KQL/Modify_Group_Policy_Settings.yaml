@@ -1,0 +1,25 @@
+name: Modify Group Policy Settings
+id: ada4b0c4-758b-46ac-9033-9004613a150d
+author: frack113
+date: 2022/08/19
+level: medium
+description: Detect malicious GPO modifications can be used to implement many other
+  malicious behaviors.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1484.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "GroupPolicyRefreshTimeDC" or ProcessCommandLine
+  contains "GroupPolicyRefreshTimeOffsetDC" or ProcessCommandLine contains "GroupPolicyRefreshTime"
+  or ProcessCommandLine contains "GroupPolicyRefreshTimeOffset" or ProcessCommandLine
+  contains "EnableSmartScreen" or ProcessCommandLine contains "ShellSmartScreenLevel")
+  and ProcessCommandLine contains "\\SOFTWARE\\Policies\\Microsoft\\Windows\\System"
+  and (FolderPath endswith "\\reg.exe" or ProcessVersionInfoOriginalFileName =~ "reg.exe")'

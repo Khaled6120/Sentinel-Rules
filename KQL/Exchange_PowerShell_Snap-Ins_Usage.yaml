@@ -1,0 +1,26 @@
+name: Exchange PowerShell Snap-Ins Usage
+id: 25676e10-2121-446e-80a4-71ff8506af47
+author: FPT.EagleEye, Nasreddine Bencherchali (Nextron Systems)
+date: 2021/03/03
+level: high
+description: Detects adding and using Exchange PowerShell snap-ins to export mailbox
+  data. As seen used by HAFNIUM and APT27
+status: test
+modified: 2023/03/24
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- collection
+- execution
+relevantTechniques:
+- t1059.001
+- t1114
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "Add-PSSnapin" and ((FolderPath endswith "\\powershell.exe"
+  or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~
+  ("PowerShell.EXE", "pwsh.dll"))) and (ProcessCommandLine contains "Microsoft.Exchange.Powershell.Snapin"
+  or ProcessCommandLine contains "Microsoft.Exchange.Management.PowerShell.SnapIn"))
+  and (not((ProcessCommandLine contains "$exserver=Get-ExchangeServer ([Environment]::MachineName)
+  -ErrorVariable exerr 2> $null" and InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\msiexec.exe")))'

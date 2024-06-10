@@ -1,0 +1,23 @@
+name: Potential Manage-bde.wsf Abuse To Proxy Execution
+id: c363385c-f75d-4753-a108-c1a8e28bdbda
+author: oscd.community, Natalia Shornikova, Nasreddine Bencherchali (Nextron Systems)
+date: 2020/10/13
+level: high
+description: Detects potential abuse of the "manage-bde.wsf" script as a LOLBIN to
+  proxy execution
+status: test
+modified: 2023/02/03
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1216
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "manage-bde.wsf" and (FolderPath endswith "\\wscript.exe"
+  or ProcessVersionInfoOriginalFileName =~ "wscript.exe")) or ((InitiatingProcessCommandLine
+  contains "manage-bde.wsf" and (InitiatingProcessFolderPath endswith "\\cscript.exe"
+  or InitiatingProcessFolderPath endswith "\\wscript.exe")) and (not(FolderPath endswith
+  "\\cmd.exe")))'

@@ -1,0 +1,25 @@
+name: Execute From Alternate Data Streams
+id: 7f43c430-5001-4f8b-aaa9-c3b88f18fa5c
+author: frack113
+date: 2021/09/01
+level: medium
+description: Detects execution from an Alternate Data Stream (ADS). Adversaries may
+  use NTFS file attributes to hide their malicious data in order to evade detection
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1564.004
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "txt:" and ((ProcessCommandLine contains "esentutl
+  " and ProcessCommandLine contains " /y " and ProcessCommandLine contains " /d "
+  and ProcessCommandLine contains " /o ") or (ProcessCommandLine contains "makecab
+  " and ProcessCommandLine contains ".cab") or (ProcessCommandLine contains "reg "
+  and ProcessCommandLine contains " export ") or (ProcessCommandLine contains "regedit
+  " and ProcessCommandLine contains " /E ") or (ProcessCommandLine contains "type
+  " and ProcessCommandLine contains " > "))'

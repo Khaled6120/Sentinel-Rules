@@ -1,0 +1,26 @@
+name: Suspicious Mstsc.EXE Execution With Local RDP File
+id: 6e22722b-dfb1-4508-a911-49ac840b40f8
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/04/18
+level: high
+description: Detects potential RDP connection via Mstsc using a local ".rdp" file
+  located in suspicious locations.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1219
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine endswith ".rdp" or ProcessCommandLine endswith ".rdp\"")
+  and (FolderPath endswith "\\mstsc.exe" or ProcessVersionInfoOriginalFileName =~
+  "mstsc.exe") and (ProcessCommandLine contains ":\\Users\\Public\\" or ProcessCommandLine
+  contains ":\\Windows\\System32\\spool\\drivers\\color" or ProcessCommandLine contains
+  ":\\Windows\\System32\\Tasks_Migrated " or ProcessCommandLine contains ":\\Windows\\Tasks\\"
+  or ProcessCommandLine contains ":\\Windows\\Temp\\" or ProcessCommandLine contains
+  ":\\Windows\\Tracing\\" or ProcessCommandLine contains "\\AppData\\Local\\Temp\\"
+  or ProcessCommandLine contains "\\Downloads\\")'

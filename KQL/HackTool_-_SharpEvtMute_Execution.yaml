@@ -1,0 +1,21 @@
+name: HackTool - SharpEvtMute Execution
+id: bedfc8ad-d1c7-4e37-a20e-e2b0dbee759c
+author: Florian Roth (Nextron Systems)
+date: 2022/09/07
+level: high
+description: Detects the use of SharpEvtHook, a tool that tampers with the Windows
+  event logs
+status: test
+modified: 2023/02/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1562.002
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\SharpEvtMute.exe" or ProcessVersionInfoFileDescription
+  =~ "SharpEvtMute" or (ProcessCommandLine contains "--Filter \"rule " or ProcessCommandLine
+  contains "--Encoded --Filter \\\"")'

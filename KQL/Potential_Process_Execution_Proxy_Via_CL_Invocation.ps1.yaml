@@ -1,0 +1,19 @@
+name: Potential Process Execution Proxy Via CL_Invocation.ps1
+id: a0459f02-ac51-4c09-b511-b8c9203fc429
+author: Nasreddine Bencherchali (Nextron Systems), oscd.community, Natalia Shornikova
+date: 2020/10/14
+level: medium
+description: Detects calls to "SyncInvoke" that is part of the "CL_Invocation.ps1"
+  script to proxy execution using "System.Diagnostics.Process"
+status: test
+modified: 2023/08/17
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1216
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "SyncInvoke "'

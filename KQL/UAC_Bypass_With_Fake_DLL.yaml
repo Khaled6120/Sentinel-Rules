@@ -1,0 +1,22 @@
+name: UAC Bypass With Fake DLL
+id: a5ea83a7-05a5-44c1-be2e-addccbbd8c03
+author: oscd.community, Dmitry Uchakin
+date: 2020/10/06
+level: high
+description: Attempts to load dismcore.dll after dropping it
+status: test
+modified: 2022/12/25
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1548.002
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where (FolderPath endswith "\\dismcore.dll" and InitiatingProcessFolderPath endswith
+  "\\dism.exe") and (not(FolderPath =~ "C:\\Windows\\System32\\Dism\\dismcore.dll"))'

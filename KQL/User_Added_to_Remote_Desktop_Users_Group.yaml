@@ -1,0 +1,25 @@
+name: User Added to Remote Desktop Users Group
+id: ffa28e60-bdb1-46e0-9f82-05f7a61cc06e
+author: Florian Roth (Nextron Systems)
+date: 2021/12/06
+level: high
+description: Detects addition of users to the local Remote Desktop Users group via
+  "Net" or "Add-LocalGroupMember".
+status: test
+modified: 2022/09/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- lateral_movement
+- persistence
+relevantTechniques:
+- t1021.001
+- t1133
+- t1136.001
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"Remote Desktop\
+  \ Users\" or ProcessCommandLine contains \"Utilisateurs du Bureau \xC3\_ distance\"\
+  \ or ProcessCommandLine contains \"Usuarios de escritorio remoto\") and ((ProcessCommandLine\
+  \ contains \"localgroup \" and ProcessCommandLine contains \" /add\") or (ProcessCommandLine\
+  \ contains \"Add-LocalGroupMember \" and ProcessCommandLine contains \" -Group \"\
+  ))"

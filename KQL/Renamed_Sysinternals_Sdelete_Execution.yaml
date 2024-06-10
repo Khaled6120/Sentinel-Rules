@@ -1,0 +1,20 @@
+name: Renamed Sysinternals Sdelete Execution
+id: c1d867fe-8d95-4487-aab4-e53f2d339f90
+author: Florian Roth (Nextron Systems)
+date: 2022/09/06
+level: high
+description: Detects the use of a renamed SysInternals Sdelete, which is something
+  an administrator shouldn't do (the renaming)
+status: test
+modified: 2023/02/03
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- impact
+relevantTechniques:
+- t1485
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoOriginalFileName =~ "sdelete.exe" and (not((FolderPath
+  endswith "\\sdelete.exe" or FolderPath endswith "\\sdelete64.exe")))'

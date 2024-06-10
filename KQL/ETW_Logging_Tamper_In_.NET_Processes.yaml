@@ -1,0 +1,21 @@
+name: ETW Logging Tamper In .NET Processes
+id: 41421f44-58f9-455d-838a-c398859841d4
+author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+date: 2020/05/02
+level: high
+description: Detects changes to environment variables related to ETW logging. This
+  could indicate potential adversaries stopping ETW providers recording loaded .NET
+  assemblies.
+status: test
+modified: 2022/12/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1562
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "COMPlus_ETWEnabled" or ProcessCommandLine contains
+  "COMPlus_ETWFlags"'

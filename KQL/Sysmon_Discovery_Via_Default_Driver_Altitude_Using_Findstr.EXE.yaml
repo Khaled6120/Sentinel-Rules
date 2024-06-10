@@ -1,0 +1,22 @@
+name: Sysmon Discovery Via Default Driver Altitude Using Findstr.EXE
+id: 37db85d1-b089-490a-a59a-c7b6f984f480
+author: frack113
+date: 2021/12/16
+level: high
+description: Detects usage of "findstr" with the argument "385201". Which could indicate
+  potential discovery of an installed Sysinternals Sysmon service using the default
+  driver altitude (even if the name is changed).
+status: test
+modified: 2023/11/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1518.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " 385201" and ((FolderPath endswith "\\find.exe"
+  or FolderPath endswith "\\findstr.exe") or (ProcessVersionInfoOriginalFileName in~
+  ("FIND.EXE", "FINDSTR.EXE")))'

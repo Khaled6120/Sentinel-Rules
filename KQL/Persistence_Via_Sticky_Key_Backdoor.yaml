@@ -1,0 +1,25 @@
+name: Persistence Via Sticky Key Backdoor
+id: 1070db9a-3e5d-412e-8e7b-7183b616e1b3
+author: Sreeman
+date: 2020/02/18
+level: critical
+description: 'By replacing the sticky keys executable with the local admins CMD executable,
+  an attacker is able to access a privileged windows console session without authenticating
+  to the system.
+
+  When the sticky keys are "activated" the privilleged shell is launched.
+
+  '
+status: test
+modified: 2023/03/07
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- privilege_escalation
+relevantTechniques:
+- t1546.008
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "copy " and ProcessCommandLine contains "/y
+  " and ProcessCommandLine contains "C:\\windows\\system32\\cmd.exe C:\\windows\\system32\\sethc.exe"'

@@ -1,0 +1,22 @@
+name: Dism Remove Online Package
+id: 43e32da2-fdd0-4156-90de-50dfd62636f9
+author: frack113
+date: 2022/01/16
+level: medium
+description: Deployment Image Servicing and Management tool. DISM is used to enumerate,
+  install, uninstall, configure, and update features and packages in Windows images
+status: test
+modified: 2022/08/26
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1562.001
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "/Online" and ProcessCommandLine contains
+  "/Disable-Feature") and FolderPath endswith "\\Dism.exe") or (FolderPath endswith
+  "\\DismHost.exe" and (InitiatingProcessCommandLine contains "/Online" and InitiatingProcessCommandLine
+  contains "/Disable-Feature"))'

@@ -1,0 +1,32 @@
+name: XSL Script Execution Via WMIC.EXE
+id: 05c36dd6-79d6-4a9a-97da-3db20298ab2d
+author: Timur Zinniatullin, oscd.community, Swachchhanda Shrawan Poudel
+date: 2019/10/21
+level: medium
+description: 'Detects the execution of WMIC with the "format" flag to potentially
+  load XSL files.
+
+  Adversaries abuse this functionality to execute arbitrary files while potentially
+  bypassing application whitelisting defenses.
+
+  Extensible Stylesheet Language (XSL) files are commonly used to describe the processing
+  and rendering of data within XML files.
+
+  '
+status: test
+modified: 2024/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1220
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "-format" or ProcessCommandLine contains "/format")
+  and FolderPath endswith "\\wmic.exe") and (not((ProcessCommandLine contains "Format:List"
+  or ProcessCommandLine contains "Format:htable" or ProcessCommandLine contains "Format:hform"
+  or ProcessCommandLine contains "Format:table" or ProcessCommandLine contains "Format:mof"
+  or ProcessCommandLine contains "Format:value" or ProcessCommandLine contains "Format:rawxml"
+  or ProcessCommandLine contains "Format:xml" or ProcessCommandLine contains "Format:csv")))'

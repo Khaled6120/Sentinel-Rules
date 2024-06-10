@@ -1,0 +1,23 @@
+name: Deny Service Access Using Security Descriptor Tampering Via Sc.EXE
+id: 99cf1e02-00fb-4c0d-8375-563f978dfd37
+author: Jonhnathan Ribeiro, oscd.community
+date: 2020/10/16
+level: high
+description: Detects suspicious DACL modifications to deny access to a service that
+  affects critical trustees. This can be used to hide services or make them unstoppable.
+status: test
+modified: 2023/02/28
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+relevantTechniques:
+- t1543.003
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\sc.exe" or ProcessVersionInfoOriginalFileName =~
+  "sc.exe") and (ProcessCommandLine contains "sdset" and ProcessCommandLine contains
+  "D;") and (ProcessCommandLine contains ";IU" or ProcessCommandLine contains ";SU"
+  or ProcessCommandLine contains ";BA" or ProcessCommandLine contains ";SY" or ProcessCommandLine
+  contains ";WD")'

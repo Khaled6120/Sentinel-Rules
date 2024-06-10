@@ -1,0 +1,25 @@
+name: Potential Dosfuscation Activity
+id: a77c1610-fc73-4019-8e29-0f51efc04a51
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: 2022/02/15
+level: medium
+description: Detects possible payload obfuscation via the commandline
+status: test
+modified: 2023/03/06
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "^^" or ProcessCommandLine contains "^|^" or
+  ProcessCommandLine contains ",;," or ProcessCommandLine contains ";;;;" or ProcessCommandLine
+  contains ";; ;;" or ProcessCommandLine contains "(,(," or ProcessCommandLine contains
+  "%COMSPEC:~" or ProcessCommandLine contains " c^m^d" or ProcessCommandLine contains
+  "^c^m^d" or ProcessCommandLine contains " c^md" or ProcessCommandLine contains "
+  cm^d" or ProcessCommandLine contains "^cm^d" or ProcessCommandLine contains " s^et
+  " or ProcessCommandLine contains " s^e^t " or ProcessCommandLine contains " se^t
+  "'

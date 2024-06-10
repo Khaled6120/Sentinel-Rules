@@ -1,0 +1,22 @@
+name: Filter Driver Unloaded Via Fltmc.EXE
+id: 4931188c-178e-4ee7-a348-39e8a7a56821
+author: Nasreddine Bencherchali
+date: 2023/02/13
+level: high
+description: Detect filter driver unloading activity via fltmc.exe
+status: test
+modified: 2023/03/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1070
+- t1562
+- t1562.002
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "unload" and (FolderPath endswith "\\fltMC.exe"
+  or ProcessVersionInfoOriginalFileName =~ "fltMC.exe")) and (not(ProcessCommandLine
+  endswith "unload rtp_filesystem_filter"))'

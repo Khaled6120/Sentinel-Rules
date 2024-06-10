@@ -1,0 +1,24 @@
+name: Firewall Disabled via Netsh.EXE
+id: 57c4bf16-227f-4394-8ec7-1b745ee061c3
+author: Fatih Sirin
+date: 2019/11/01
+level: medium
+description: Detects netsh commands that turns off the Windows firewall
+status: test
+modified: 2023/02/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- s0108
+relevantTechniques:
+- t1562.004
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\netsh.exe" or ProcessVersionInfoOriginalFileName
+  =~ "netsh.exe") and ((ProcessCommandLine contains "firewall" and ProcessCommandLine
+  contains "set" and ProcessCommandLine contains "opmode" and ProcessCommandLine contains
+  "disable") or (ProcessCommandLine contains "advfirewall" and ProcessCommandLine
+  contains "set" and ProcessCommandLine contains "state" and ProcessCommandLine contains
+  "off"))'

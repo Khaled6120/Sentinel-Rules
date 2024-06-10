@@ -1,0 +1,20 @@
+name: Potential UAC Bypass Via Sdclt.EXE
+id: 40f9af16-589d-4984-b78d-8c2aec023197
+author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+date: 2020/05/02
+level: medium
+description: A General detection for sdclt being spawned as an elevated process. This
+  could be an indicator of sdclt being used for bypass UAC techniques.
+status: test
+modified: 2023/02/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1548.002
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "sdclt.exe" and ProcessIntegrityLevel =~ "High"'

@@ -1,0 +1,24 @@
+name: Potential PowerShell Downgrade Attack
+id: b3512211-c67e-4707-bedc-66efc7848863
+author: Harish Segar (rule)
+date: 2020/03/20
+level: medium
+description: Detects PowerShell downgrade attack by comparing the host versions with
+  the actually used engine version 2.0
+status: test
+modified: 2023/01/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -version 2 " or ProcessCommandLine contains
+  " -versio 2 " or ProcessCommandLine contains " -versi 2 " or ProcessCommandLine
+  contains " -vers 2 " or ProcessCommandLine contains " -ver 2 " or ProcessCommandLine
+  contains " -ve 2 " or ProcessCommandLine contains " -v 2 ") and FolderPath endswith
+  "\\powershell.exe"'

@@ -1,0 +1,24 @@
+name: Script Event Consumer Spawning Process
+id: f6d1dd2f-b8ce-40ca-bc23-062efb686b34
+author: Sittikorn S
+date: 2021/06/21
+level: high
+description: Detects a suspicious child process of Script Event Consumer (scrcons.exe).
+status: test
+modified: 2022/07/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1047
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\svchost.exe" or FolderPath endswith "\\dllhost.exe"
+  or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or
+  FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\cscript.exe" or FolderPath
+  endswith "\\schtasks.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath
+  endswith "\\mshta.exe" or FolderPath endswith "\\rundll32.exe" or FolderPath endswith
+  "\\msiexec.exe" or FolderPath endswith "\\msbuild.exe") and InitiatingProcessFolderPath
+  endswith "\\scrcons.exe"'

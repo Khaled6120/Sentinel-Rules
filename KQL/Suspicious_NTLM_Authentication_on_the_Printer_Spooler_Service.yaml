@@ -1,0 +1,24 @@
+name: Suspicious NTLM Authentication on the Printer Spooler Service
+id: bb76d96b-821c-47cf-944b-7ce377864492
+author: Elastic (idea), Tobias Michalski (Nextron Systems)
+date: 2022/05/04
+level: high
+description: Detects a privilege elevation attempt by coercing NTLM authentication
+  on the Printer Spooler service
+status: test
+modified: 2023/02/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+- privilege_escalation
+relevantTechniques:
+- t1212
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "spoolss" or ProcessCommandLine contains "srvsvc"
+  or ProcessCommandLine contains "/print/pipe/") and (ProcessCommandLine contains
+  "C:\\windows\\system32\\davclnt.dll,DavSetCookie" and ProcessCommandLine contains
+  "http")) and (FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName
+  =~ "RUNDLL32.EXE")'

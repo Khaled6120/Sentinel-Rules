@@ -1,0 +1,25 @@
+name: Shadow Copies Creation Using Operating Systems Utilities
+id: b17ea6f7-6e90-447e-a799-e6c0a493d6ce
+author: Teymur Kheirkhabarov, Daniil Yugoslavskiy, oscd.community
+date: 2019/10/22
+level: medium
+description: Shadow Copies creation using operating systems utilities, possible credential
+  access
+status: test
+modified: 2022/11/10
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1003
+- t1003.002
+- t1003.003
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "shadow" and ProcessCommandLine contains "create")
+  and ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"
+  or FolderPath endswith "\\wmic.exe" or FolderPath endswith "\\vssadmin.exe") or
+  (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll", "wmic.exe",
+  "VSSADMIN.EXE")))'

@@ -1,0 +1,28 @@
+name: Sticky Key Like Backdoor Execution
+id: 2fdefcb3-dbda-401e-ae23-f0db027628bc
+author: Florian Roth (Nextron Systems), @twjackomo, Jonhnathan Ribeiro, oscd.community
+date: 2018/03/15
+level: critical
+description: Detects the usage and installation of a backdoor that uses an option
+  to register a malicious debugger for built-in tools that are accessible in the login
+  screen
+status: test
+modified: 2023/03/07
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1546.008
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "sethc.exe" or ProcessCommandLine contains
+  "utilman.exe" or ProcessCommandLine contains "osk.exe" or ProcessCommandLine contains
+  "Magnify.exe" or ProcessCommandLine contains "Narrator.exe" or ProcessCommandLine
+  contains "DisplaySwitch.exe") and (FolderPath endswith "\\cmd.exe" or FolderPath
+  endswith "\\cscript.exe" or FolderPath endswith "\\mshta.exe" or FolderPath endswith
+  "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\regsvr32.exe"
+  or FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\wscript.exe" or
+  FolderPath endswith "\\wt.exe") and InitiatingProcessFolderPath endswith "\\winlogon.exe"'

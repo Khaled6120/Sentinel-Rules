@@ -1,0 +1,25 @@
+name: PUA - NPS Tunneling Tool Execution
+id: 68d37776-61db-42f5-bf54-27e87072d17e
+author: Florian Roth (Nextron Systems)
+date: 2022/10/08
+level: high
+description: Detects the use of NPS, a port forwarding and intranet penetration proxy
+  server
+status: test
+modified: 2023/02/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1090
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -server=" and ProcessCommandLine contains
+  " -vkey=" and ProcessCommandLine contains " -password=") or ProcessCommandLine contains
+  " -config=npc" or ((MD5 startswith "AE8ACF66BFE3A44148964048B826D005" or SHA1 startswith
+  "CEA49E9B9B67F3A13AD0BE1C2655293EA3C18181" or SHA256 startswith "5A456283392FFCEEEACA3D3426C306EB470304637520D72FED1CC1FEBBBD6856")
+  or MD5 =~ "ae8acf66bfe3a44148964048b826d005" or SHA1 =~ "cea49e9b9b67f3a13ad0be1c2655293ea3c18181"
+  or SHA256 =~ "5a456283392ffceeeaca3d3426c306eb470304637520d72fed1cc1febbbd6856")
+  or FolderPath endswith "\\npc.exe"'

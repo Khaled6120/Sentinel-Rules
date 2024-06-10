@@ -1,0 +1,21 @@
+name: PsExec Service Child Process Execution as LOCAL SYSTEM
+id: 7c0dcd3d-acf8-4f71-9570-f448b0034f94
+author: Florian Roth (Nextron Systems)
+date: 2022/07/21
+level: high
+description: Detects suspicious launch of the PSEXESVC service on this system and
+  a sub process run as LOCAL_SYSTEM (-s), which means that someone remotely started
+  a command on this system running it with highest privileges and not only the privileges
+  of the login user account (e.g. the administrator account)
+status: test
+modified: 2023/02/28
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath =~ "C:\\Windows\\PSEXESVC.exe" and (AccountName
+  contains "AUTHORI" or AccountName contains "AUTORI")'

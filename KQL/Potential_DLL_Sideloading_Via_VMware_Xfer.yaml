@@ -1,0 +1,20 @@
+name: Potential DLL Sideloading Via VMware Xfer
+id: 9313dc13-d04c-46d8-af4a-a930cc55d93b
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/02
+level: high
+description: Detects loading of a DLL by the VMware Xfer utility from the non-default
+  directory which may be an attempt to sideload arbitrary DLL
+status: test
+modified: 2023/02/17
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where (FolderPath endswith "\\glib-2.0.dll" and InitiatingProcessFolderPath endswith
+  "\\VMwareXferlogs.exe") and (not(FolderPath startswith "C:\\Program Files\\VMware\\"))'

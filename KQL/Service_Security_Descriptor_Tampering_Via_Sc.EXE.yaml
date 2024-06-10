@@ -1,0 +1,22 @@
+name: Service Security Descriptor Tampering Via Sc.EXE
+id: 98c5aeef-32d5-492f-b174-64a691896d25
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/02/28
+level: medium
+description: Detection of sc.exe utility adding a new service with special permission
+  which hides that service.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1574.011
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "sdset" and (FolderPath endswith "\\sc.exe"
+  or ProcessVersionInfoOriginalFileName =~ "sc.exe")'

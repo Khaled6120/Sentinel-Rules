@@ -1,0 +1,22 @@
+name: Potential Persistence Via VMwareToolBoxCmd.EXE VM State Change Script
+id: 7aa4e81a-a65c-4e10-9f81-b200eb229d7d
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/06/14
+level: medium
+description: Detects execution of the "VMwareToolBoxCmd.exe" with the "script" and
+  "set" flag to setup a specific script to run for a specific VM state
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+- persistence
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " script " and ProcessCommandLine contains
+  " set ") and (FolderPath endswith "\\VMwareToolBoxCmd.exe" or ProcessVersionInfoOriginalFileName
+  =~ "toolbox-cmd.exe")'

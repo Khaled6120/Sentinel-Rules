@@ -1,0 +1,24 @@
+name: PowerShell Download and Execution Cradles
+id: 85b0b087-eddf-4a2b-b033-d771fa2b9775
+author: Florian Roth (Nextron Systems)
+date: 2022/03/24
+level: high
+description: Detects PowerShell download and execution cradles.
+status: test
+modified: 2023/05/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains ".DownloadString(" or ProcessCommandLine contains
+  ".DownloadFile(" or ProcessCommandLine contains "Invoke-WebRequest " or ProcessCommandLine
+  contains "iwr ") and (ProcessCommandLine contains ";iex $" or ProcessCommandLine
+  contains "| IEX" or ProcessCommandLine contains "|IEX " or ProcessCommandLine contains
+  "I`E`X" or ProcessCommandLine contains "I`EX" or ProcessCommandLine contains "IE`X"
+  or ProcessCommandLine contains "iex " or ProcessCommandLine contains "IEX (" or
+  ProcessCommandLine contains "IEX(" or ProcessCommandLine contains "Invoke-Expression")'

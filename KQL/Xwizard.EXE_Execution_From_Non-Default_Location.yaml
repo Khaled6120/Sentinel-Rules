@@ -1,0 +1,25 @@
+name: Xwizard.EXE Execution From Non-Default Location
+id: 193d5ccd-6f59-40c6-b5b0-8e32d5ddd3d1
+author: Christian Burkard (Nextron Systems)
+date: 2021/09/20
+level: high
+description: 'Detects the execution of Xwizard tool from a non-default directory.
+
+  When executed from a non-default directory, this utility can be abused in order
+  to side load a custom version of "xwizards.dll".
+
+  '
+status: test
+modified: 2024/04/22
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1574.002
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\xwizard.exe" or ProcessVersionInfoOriginalFileName
+  =~ "xwizard.exe") and (not((FolderPath startswith "C:\\Windows\\System32\\" or FolderPath
+  startswith "C:\\Windows\\SysWOW64\\")))'

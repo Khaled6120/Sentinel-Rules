@@ -1,0 +1,20 @@
+name: Execute Files with Msdeploy.exe
+id: 646bc99f-6682-4b47-a73a-17b1b64c9d34
+author: Beyu Denis, oscd.community
+date: 2020/10/18
+level: medium
+description: Detects file execution using the msdeploy.exe lolbin
+status: test
+modified: 2021/11/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "verb:sync" and ProcessCommandLine contains
+  "-source:RunCommand" and ProcessCommandLine contains "-dest:runCommand") and FolderPath
+  endswith "\\msdeploy.exe"'

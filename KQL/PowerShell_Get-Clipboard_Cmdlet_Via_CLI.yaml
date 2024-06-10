@@ -1,0 +1,18 @@
+name: PowerShell Get-Clipboard Cmdlet Via CLI
+id: b9aeac14-2ffd-4ad3-b967-1354a4e628c3
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2020/05/02
+level: medium
+description: Detects usage of the 'Get-Clipboard' cmdlet via CLI
+status: test
+modified: 2022/12/25
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- collection
+relevantTechniques:
+- t1115
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "Get-Clipboard"'

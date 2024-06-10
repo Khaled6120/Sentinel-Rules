@@ -1,0 +1,20 @@
+name: Windows Share Mount Via Net.EXE
+id: f117933c-980c-4f78-b384-e3d838111165
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/02/02
+level: low
+description: Detects when a share is mounted using the "net.exe" utility
+status: test
+modified: 2023/02/21
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- lateral_movement
+relevantTechniques:
+- t1021.002
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " use " or ProcessCommandLine contains " \\\\")
+  and ((FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName
+  in~ ("net.exe", "net1.exe")))'

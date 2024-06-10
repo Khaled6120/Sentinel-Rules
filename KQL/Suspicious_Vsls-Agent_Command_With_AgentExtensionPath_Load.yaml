@@ -1,0 +1,20 @@
+name: Suspicious Vsls-Agent Command With AgentExtensionPath Load
+id: 43103702-5886-11ed-9b6a-0242ac120002
+author: bohops
+date: 2022/10/30
+level: medium
+description: Detects Microsoft Visual Studio vsls-agent.exe lolbin execution with
+  a suspicious library load using the --agentExtensionPath parameter
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "--agentExtensionPath" and FolderPath endswith
+  "\\vsls-agent.exe") and (not(ProcessCommandLine contains "Microsoft.VisualStudio.LiveShare.Agent."))'

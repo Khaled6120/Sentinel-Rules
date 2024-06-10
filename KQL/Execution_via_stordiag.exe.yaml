@@ -1,0 +1,22 @@
+name: Execution via stordiag.exe
+id: 961e0abb-1b1e-4c84-a453-aafe56ad0d34
+author: Austin Songer (@austinsonger)
+date: 2021/10/21
+level: high
+description: Detects the use of stordiag.exe to execute schtasks.exe systeminfo.exe
+  and fltmc.exe
+status: test
+modified: 2022/12/25
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\schtasks.exe" or FolderPath endswith "\\systeminfo.exe"
+  or FolderPath endswith "\\fltmc.exe") and InitiatingProcessFolderPath endswith "\\stordiag.exe")
+  and (not((InitiatingProcessFolderPath startswith "c:\\windows\\system32\\" or InitiatingProcessFolderPath
+  startswith "c:\\windows\\syswow64\\")))'

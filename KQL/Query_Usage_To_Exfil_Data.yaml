@@ -1,0 +1,19 @@
+name: Query Usage To Exfil Data
+id: 53ef0cef-fa24-4f25-a34a-6c72dfa2e6e2
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/01
+level: medium
+description: Detects usage of "query.exe" a system binary to exfil information such
+  as "sessions" and "processes" for later use
+status: test
+modified: 2023/01/19
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "session >" or ProcessCommandLine contains
+  "process >") and FolderPath endswith ":\\Windows\\System32\\query.exe"'

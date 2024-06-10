@@ -1,0 +1,22 @@
+name: Always Install Elevated MSI Spawned Cmd And Powershell
+id: 1e53dd56-8d83-4eb4-a43e-b790a05510aa
+author: Teymur Kheirkhabarov (idea), Mangatas Tondang (rule), oscd.community
+date: 2020/10/13
+level: medium
+description: Detects Windows Installer service (msiexec.exe) spawning "cmd" or "powershell"
+status: test
+modified: 2022/10/20
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- privilege_escalation
+relevantTechniques:
+- t1548.002
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\powershell.exe"
+  or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~
+  ("Cmd.Exe", "PowerShell.EXE", "pwsh.dll"))) and ((InitiatingProcessFolderPath contains
+  "\\Windows\\Installer\\" and InitiatingProcessFolderPath contains "msi") and InitiatingProcessFolderPath
+  endswith "tmp")'

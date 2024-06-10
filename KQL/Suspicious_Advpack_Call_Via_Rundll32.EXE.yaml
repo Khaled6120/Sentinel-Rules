@@ -1,0 +1,21 @@
+name: Suspicious Advpack Call Via Rundll32.EXE
+id: a1473adb-5338-4a20-b4c3-126763e2d3d3
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/17
+level: high
+description: Detects execution of "rundll32" calling "advpack.dll" with potential
+  obfuscated ordinal calls in order to leverage the "RegisterOCX" function
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "advpack" and ((ProcessCommandLine contains
+  "#+" and ProcessCommandLine contains "12") or ProcessCommandLine contains "#-")
+  and (FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName
+  =~ "RUNDLL32.EXE" or ProcessCommandLine contains "rundll32")'

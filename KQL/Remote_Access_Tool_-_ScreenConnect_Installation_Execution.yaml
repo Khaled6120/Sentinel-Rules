@@ -1,0 +1,21 @@
+name: Remote Access Tool - ScreenConnect Installation Execution
+id: 75bfe6e6-cd8e-429e-91d3-03921e1d7962
+author: Florian Roth (Nextron Systems)
+date: 2021/02/11
+level: medium
+description: Detects ScreenConnect program starts that establish a remote access to
+  a system.
+status: test
+modified: 2024/02/26
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- initial_access
+relevantTechniques:
+- t1133
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "e=Access&" and ProcessCommandLine contains
+  "y=Guest&" and ProcessCommandLine contains "&p=" and ProcessCommandLine contains
+  "&c=" and ProcessCommandLine contains "&k="'

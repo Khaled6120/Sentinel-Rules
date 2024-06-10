@@ -1,0 +1,25 @@
+name: HackTool - SharpImpersonation Execution
+id: f89b08d0-77ad-4728-817b-9b16c5a69c7a
+author: Sai Prashanth Pulisetti @pulisettis, Nasreddine Bencherchali (Nextron Systems)
+date: 2022/12/27
+level: high
+description: Detects execution of the SharpImpersonation tool. Which can be used to
+  manipulate tokens on a Windows computers remotely (PsExec/WmiExec) or interactively
+status: test
+modified: 2023/02/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1134.001
+- t1134.003
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains " user:" and ProcessCommandLine contains "
+  binary:") or (ProcessCommandLine contains " user:" and ProcessCommandLine contains
+  " shellcode:") or (ProcessCommandLine contains " technique:CreateProcessAsUserW"
+  or ProcessCommandLine contains " technique:ImpersonateLoggedOnuser")) or (FolderPath
+  endswith "\\SharpImpersonation.exe" or ProcessVersionInfoOriginalFileName =~ "SharpImpersonation.exe")'

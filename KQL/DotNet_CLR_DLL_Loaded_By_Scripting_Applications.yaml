@@ -1,0 +1,25 @@
+name: DotNet CLR DLL Loaded By Scripting Applications
+id: 4508a70e-97ef-4300-b62b-ff27992990ea
+author: omkar72, oscd.community
+date: 2020/10/14
+level: high
+description: Detects .NET CLR DLLs being loaded by scripting applications such as
+  wscript or cscript. This could be an indication of potential suspicious execution.
+status: test
+modified: 2023/02/23
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- execution
+- privilege_escalation
+relevantTechniques:
+- t1055
+query: 'DeviceImageLoadEvents
+
+  | where (FolderPath endswith "\\clr.dll" or FolderPath endswith "\\mscoree.dll"
+  or FolderPath endswith "\\mscorlib.dll") and (InitiatingProcessFolderPath endswith
+  "\\cmstp.exe" or InitiatingProcessFolderPath endswith "\\cscript.exe" or InitiatingProcessFolderPath
+  endswith "\\mshta.exe" or InitiatingProcessFolderPath endswith "\\msxsl.exe" or
+  InitiatingProcessFolderPath endswith "\\regsvr32.exe" or InitiatingProcessFolderPath
+  endswith "\\wmic.exe" or InitiatingProcessFolderPath endswith "\\wscript.exe")'

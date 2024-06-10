@@ -1,0 +1,21 @@
+name: Dllhost.EXE Execution Anomaly
+id: e7888eb1-13b0-4616-bd99-4bc0c2b054b9
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/06/27
+level: high
+description: Detects a "dllhost" process spawning with no commandline arguments which
+  is very rare to happen and could indicate process injection activity or malware
+  mimicking similar system processes.
+status: test
+modified: 2023/05/15
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1055
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine in~ ("dllhost.exe", "dllhost")) and FolderPath endswith
+  "\\dllhost.exe") and (not(isnull(ProcessCommandLine)))'

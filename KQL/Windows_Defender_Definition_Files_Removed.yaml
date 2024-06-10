@@ -1,0 +1,21 @@
+name: Windows Defender Definition Files Removed
+id: 9719a8aa-401c-41af-8108-ced7ec9cd75c
+author: frack113
+date: 2021/07/07
+level: high
+description: Adversaries may disable security tools to avoid possible detection of
+  their tools and activities by removing Windows Defender Definition Files
+status: test
+modified: 2023/07/18
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1562.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -RemoveDefinitions" and ProcessCommandLine
+  contains " -All") and (FolderPath endswith "\\MpCmdRun.exe" or ProcessVersionInfoOriginalFileName
+  =~ "MpCmdRun.exe")'

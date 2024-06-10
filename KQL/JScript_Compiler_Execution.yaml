@@ -1,0 +1,24 @@
+name: JScript Compiler Execution
+id: 52788a70-f1da-40dd-8fbd-73b5865d6568
+author: frack113
+date: 2022/05/02
+level: low
+description: 'Detects the execution of the "jsc.exe" (JScript Compiler).
+
+  Attacker might abuse this in order to compile JScript files on the fly and bypassing
+  application whitelisting.
+
+  '
+status: test
+modified: 2024/04/24
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1127
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\jsc.exe" or ProcessVersionInfoOriginalFileName =~
+  "jsc.exe"'

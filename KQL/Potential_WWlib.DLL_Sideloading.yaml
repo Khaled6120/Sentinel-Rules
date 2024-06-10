@@ -1,0 +1,24 @@
+name: Potential WWlib.DLL Sideloading
+id: e2e01011-5910-4267-9c3b-4149ed5479cf
+author: X__Junior (Nextron Systems)
+date: 2023/05/18
+level: medium
+description: Detects potential DLL sideloading of "wwlib.dll"
+status: test
+modified: ''
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1574.001
+- t1574.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\wwlib.dll" and (not(((FolderPath startswith "C:\\Program
+  Files (x86)\\Microsoft Office\\" or FolderPath startswith "C:\\Program Files\\Microsoft
+  Office\\") and InitiatingProcessFolderPath endswith "\\winword.exe" and (InitiatingProcessFolderPath
+  startswith "C:\\Program Files (x86)\\Microsoft Office\\" or InitiatingProcessFolderPath
+  startswith "C:\\Program Files\\Microsoft Office\\"))))'

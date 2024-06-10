@@ -1,0 +1,20 @@
+name: WMI Persistence - Script Event Consumer
+id: ec1d5e28-8f3b-4188-a6f8-6e8df81dc28e
+author: Thomas Patzke
+date: 2018/03/07
+level: medium
+description: Detects WMI script event consumers
+status: test
+modified: 2022/10/11
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1546.003
+query: 'DeviceProcessEvents
+
+  | where FolderPath =~ "C:\\WINDOWS\\system32\\wbem\\scrcons.exe" and InitiatingProcessFolderPath
+  =~ "C:\\Windows\\System32\\svchost.exe"'

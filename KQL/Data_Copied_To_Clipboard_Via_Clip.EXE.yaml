@@ -1,0 +1,21 @@
+name: Data Copied To Clipboard Via Clip.EXE
+id: ddeff553-5233-4ae9-bbab-d64d2bd634be
+author: frack113
+date: 2021/07/27
+level: low
+description: Detects the execution of clip.exe in order to copy data to the clipboard.
+  Adversaries may collect data stored in the clipboard from users copying information
+  within or between applications.
+status: test
+modified: 2023/02/21
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- collection
+relevantTechniques:
+- t1115
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\clip.exe" or ProcessVersionInfoOriginalFileName =~
+  "clip.exe"'

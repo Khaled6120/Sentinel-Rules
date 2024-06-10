@@ -1,0 +1,21 @@
+name: NtdllPipe Like Activity Execution
+id: bbc865e4-7fcd-45a6-8ff1-95ced28ec5b2
+author: Florian Roth (Nextron Systems)
+date: 2022/03/05
+level: high
+description: Detects command that type the content of ntdll.dll to a different file
+  or a pipe in order to evade AV / EDR detection. As seen being used in the POC NtdllPipe
+status: test
+modified: 2023/03/07
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "type %windir%\\system32\\ntdll.dll" or ProcessCommandLine
+  contains "type %systemroot%\\system32\\ntdll.dll" or ProcessCommandLine contains
+  "type c:\\windows\\system32\\ntdll.dll" or ProcessCommandLine contains "\\ntdll.dll
+  > \\\\.\\pipe\\"'

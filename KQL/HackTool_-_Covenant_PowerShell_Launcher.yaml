@@ -1,0 +1,25 @@
+name: HackTool - Covenant PowerShell Launcher
+id: c260b6db-48ba-4b4a-a76f-2f67644e99d2
+author: Florian Roth (Nextron Systems), Jonhnathan Ribeiro, oscd.community
+date: 2020/06/04
+level: high
+description: Detects suspicious command lines used in Covenant luanchers
+status: test
+modified: 2023/02/21
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1059.001
+- t1564.003
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "-Command" or ProcessCommandLine contains
+  "-EncodedCommand") and (ProcessCommandLine contains "-Sta" and ProcessCommandLine
+  contains "-Nop" and ProcessCommandLine contains "-Window" and ProcessCommandLine
+  contains "Hidden")) or (ProcessCommandLine contains "sv o (New-Object IO.MemorySteam);sv
+  d " or ProcessCommandLine contains "mshta file.hta" or ProcessCommandLine contains
+  "GruntHTTP" or ProcessCommandLine contains "-EncodedCommand cwB2ACAAbwAgA")'

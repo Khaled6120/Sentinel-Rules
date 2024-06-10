@@ -1,0 +1,22 @@
+name: Certificate Exported Via Certutil.EXE
+id: 3ffd6f51-e6c1-47b7-94b4-c1e61d4117c5
+author: Florian Roth (Nextron Systems), Jonhnathan Ribeiro, oscd.community, Nasreddine
+  Bencherchali (Nextron Systems)
+date: 2023/02/15
+level: medium
+description: Detects the execution of the certutil with the "exportPFX" flag which
+  allows the utility to export certificates.
+status: test
+modified: 2024/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1027
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "-exportPFX " or ProcessCommandLine contains
+  "/exportPFX ") and (FolderPath endswith "\\certutil.exe" or ProcessVersionInfoOriginalFileName
+  =~ "CertUtil.exe")'

@@ -1,0 +1,49 @@
+name: Suspicious File Download From File Sharing Domain Via Wget.EXE
+id: a0d7e4d2-bede-4141-8896-bc6e237e977c
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/05
+level: high
+description: Detects potentially suspicious file downloads from file sharing domains
+  using wget.exe
+status: experimental
+modified: 2024/02/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine endswith ".ps1" or ProcessCommandLine endswith ".ps1''"
+  or ProcessCommandLine endswith ".ps1\"" or ProcessCommandLine endswith ".dat" or
+  ProcessCommandLine endswith ".dat''" or ProcessCommandLine endswith ".dat\"" or
+  ProcessCommandLine endswith ".msi" or ProcessCommandLine endswith ".msi''" or ProcessCommandLine
+  endswith ".msi\"" or ProcessCommandLine endswith ".bat" or ProcessCommandLine endswith
+  ".bat''" or ProcessCommandLine endswith ".bat\"" or ProcessCommandLine endswith
+  ".exe" or ProcessCommandLine endswith ".exe''" or ProcessCommandLine endswith ".exe\""
+  or ProcessCommandLine endswith ".vbs" or ProcessCommandLine endswith ".vbs''" or
+  ProcessCommandLine endswith ".vbs\"" or ProcessCommandLine endswith ".vbe" or ProcessCommandLine
+  endswith ".vbe''" or ProcessCommandLine endswith ".vbe\"" or ProcessCommandLine
+  endswith ".hta" or ProcessCommandLine endswith ".hta''" or ProcessCommandLine endswith
+  ".hta\"" or ProcessCommandLine endswith ".dll" or ProcessCommandLine endswith ".dll''"
+  or ProcessCommandLine endswith ".dll\"" or ProcessCommandLine endswith ".psm1" or
+  ProcessCommandLine endswith ".psm1''" or ProcessCommandLine endswith ".psm1\"")
+  and (ProcessCommandLine matches regex "\\s-O\\s" or ProcessCommandLine contains
+  "--output-document") and ProcessCommandLine contains "http" and (FolderPath endswith
+  "\\wget.exe" or ProcessVersionInfoOriginalFileName =~ "wget.exe") and (ProcessCommandLine
+  contains ".githubusercontent.com" or ProcessCommandLine contains "anonfiles.com"
+  or ProcessCommandLine contains "cdn.discordapp.com" or ProcessCommandLine contains
+  "cdn.discordapp.com/attachments/" or ProcessCommandLine contains "ddns.net" or ProcessCommandLine
+  contains "dl.dropboxusercontent.com" or ProcessCommandLine contains "ghostbin.co"
+  or ProcessCommandLine contains "glitch.me" or ProcessCommandLine contains "gofile.io"
+  or ProcessCommandLine contains "hastebin.com" or ProcessCommandLine contains "mediafire.com"
+  or ProcessCommandLine contains "mega.nz" or ProcessCommandLine contains "onrender.com"
+  or ProcessCommandLine contains "paste.ee" or ProcessCommandLine contains "pastebin.com"
+  or ProcessCommandLine contains "pastebin.pl" or ProcessCommandLine contains "pastetext.net"
+  or ProcessCommandLine contains "privatlab.com" or ProcessCommandLine contains "privatlab.net"
+  or ProcessCommandLine contains "send.exploit.in" or ProcessCommandLine contains
+  "sendspace.com" or ProcessCommandLine contains "storage.googleapis.com" or ProcessCommandLine
+  contains "storjshare.io" or ProcessCommandLine contains "supabase.co" or ProcessCommandLine
+  contains "temp.sh" or ProcessCommandLine contains "transfer.sh" or ProcessCommandLine
+  contains "ufile.io")'

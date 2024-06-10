@@ -1,0 +1,27 @@
+name: Import PowerShell Modules From Suspicious Directories - ProcCreation
+id: c31364f7-8be6-4b77-8483-dd2b5a7b69a3
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/01/10
+level: medium
+description: Detects powershell scripts that import modules from suspicious directories
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "Import-Module \"$Env:Temp\\" or ProcessCommandLine
+  contains "Import-Module ''$Env:Temp\\" or ProcessCommandLine contains "Import-Module
+  $Env:Temp\\" or ProcessCommandLine contains "Import-Module \"$Env:Appdata\\" or
+  ProcessCommandLine contains "Import-Module ''$Env:Appdata\\" or ProcessCommandLine
+  contains "Import-Module $Env:Appdata\\" or ProcessCommandLine contains "Import-Module
+  C:\\Users\\Public\\" or ProcessCommandLine contains "ipmo \"$Env:Temp\\" or ProcessCommandLine
+  contains "ipmo ''$Env:Temp\\" or ProcessCommandLine contains "ipmo $Env:Temp\\"
+  or ProcessCommandLine contains "ipmo \"$Env:Appdata\\" or ProcessCommandLine contains
+  "ipmo ''$Env:Appdata\\" or ProcessCommandLine contains "ipmo $Env:Appdata\\" or
+  ProcessCommandLine contains "ipmo C:\\Users\\Public\\"'

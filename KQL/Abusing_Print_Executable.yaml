@@ -1,0 +1,20 @@
+name: Abusing Print Executable
+id: bafac3d6-7de9-4dd9-8874-4a1194b493ed
+author: Furkan CALISKAN, @caliskanfurkan_, @oscd_initiative
+date: 2020/10/05
+level: medium
+description: Attackers can use print.exe for remote file copy
+status: test
+modified: 2022/07/07
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "/D" and ProcessCommandLine contains ".exe")
+  and ProcessCommandLine startswith "print" and FolderPath endswith "\\print.exe")
+  and (not(ProcessCommandLine contains "print.exe"))'

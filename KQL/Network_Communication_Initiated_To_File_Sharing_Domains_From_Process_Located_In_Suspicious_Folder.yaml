@@ -1,0 +1,41 @@
+name: Network Communication Initiated To File Sharing Domains From Process Located
+  In Suspicious Folder
+id: e0f8ab85-0ac9-423b-a73a-81b3c7b1aa97
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2018/08/30
+level: high
+description: Detects executables located in potentially suspicious directories initiating
+  network connections towards file sharing domains.
+status: test
+modified: 2024/05/31
+logsource:
+  category: network_connection
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1105
+query: 'DeviceNetworkEvents
+
+  | where (RemoteUrl endswith ".githubusercontent.com" or RemoteUrl endswith "anonfiles.com"
+  or RemoteUrl endswith "cdn.discordapp.com" or RemoteUrl endswith "cdn.discordapp.com/attachments/"
+  or RemoteUrl endswith "ddns.net" or RemoteUrl endswith "dl.dropboxusercontent.com"
+  or RemoteUrl endswith "ghostbin.co" or RemoteUrl endswith "glitch.me" or RemoteUrl
+  endswith "gofile.io" or RemoteUrl endswith "hastebin.com" or RemoteUrl endswith
+  "mediafire.com" or RemoteUrl endswith "mega.co.nz" or RemoteUrl endswith "mega.nz"
+  or RemoteUrl endswith "onrender.com" or RemoteUrl endswith "paste.ee" or RemoteUrl
+  endswith "pastebin.com" or RemoteUrl endswith "pastebin.pl" or RemoteUrl endswith
+  "pastetext.net" or RemoteUrl endswith "privatlab.com" or RemoteUrl endswith "privatlab.net"
+  or RemoteUrl endswith "send.exploit.in" or RemoteUrl endswith "sendspace.com" or
+  RemoteUrl endswith "storage.googleapis.com" or RemoteUrl endswith "storjshare.io"
+  or RemoteUrl endswith "supabase.co" or RemoteUrl endswith "temp.sh" or RemoteUrl
+  endswith "transfer.sh" or RemoteUrl endswith "ufile.io") and (InitiatingProcessFolderPath
+  contains ":\\$Recycle.bin" or InitiatingProcessFolderPath contains ":\\Perflogs\\"
+  or InitiatingProcessFolderPath contains ":\\Temp\\" or InitiatingProcessFolderPath
+  contains ":\\Users\\Default\\" or InitiatingProcessFolderPath contains ":\\Users\\Public\\"
+  or InitiatingProcessFolderPath contains ":\\Windows\\Fonts\\" or InitiatingProcessFolderPath
+  contains ":\\Windows\\IME\\" or InitiatingProcessFolderPath contains ":\\Windows\\System32\\Tasks\\"
+  or InitiatingProcessFolderPath contains ":\\Windows\\Tasks\\" or InitiatingProcessFolderPath
+  contains ":\\Windows\\Temp\\" or InitiatingProcessFolderPath contains "\\AppData\\Temp\\"
+  or InitiatingProcessFolderPath contains "\\config\\systemprofile\\" or InitiatingProcessFolderPath
+  contains "\\Windows\\addins\\")'

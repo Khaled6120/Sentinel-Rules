@@ -1,0 +1,21 @@
+name: Suspicious Plink Port Forwarding
+id: 48a61b29-389f-4032-b317-b30de6b95314
+author: Florian Roth (Nextron Systems)
+date: 2021/01/19
+level: high
+description: Detects suspicious Plink tunnel port forwarding to a local port
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+- lateral_movement
+relevantTechniques:
+- t1021.001
+- t1572
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " -R " and ProcessVersionInfoFileDescription
+  =~ "Command-line SSH, Telnet, and Rlogin client"'

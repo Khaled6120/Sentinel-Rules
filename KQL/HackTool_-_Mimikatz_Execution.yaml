@@ -1,0 +1,34 @@
+name: HackTool - Mimikatz Execution
+id: a642964e-bead-4bed-8910-1bb4d63e3b4d
+author: Teymur Kheirkhabarov, oscd.community, David ANDRE (additional keywords), Tim
+  Shelton
+date: 2019/10/22
+level: high
+description: Detection well-known mimikatz command line arguments
+status: test
+modified: 2023/02/21
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1003.001
+- t1003.002
+- t1003.004
+- t1003.005
+- t1003.006
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "::aadcookie" or ProcessCommandLine contains
+  "::detours" or ProcessCommandLine contains "::memssp" or ProcessCommandLine contains
+  "::mflt" or ProcessCommandLine contains "::ncroutemon" or ProcessCommandLine contains
+  "::ngcsign" or ProcessCommandLine contains "::printnightmare" or ProcessCommandLine
+  contains "::skeleton" or ProcessCommandLine contains "::preshutdown" or ProcessCommandLine
+  contains "::mstsc" or ProcessCommandLine contains "::multirdp") or (ProcessCommandLine
+  contains "rpc::" or ProcessCommandLine contains "token::" or ProcessCommandLine
+  contains "crypto::" or ProcessCommandLine contains "dpapi::" or ProcessCommandLine
+  contains "sekurlsa::" or ProcessCommandLine contains "kerberos::" or ProcessCommandLine
+  contains "lsadump::" or ProcessCommandLine contains "privilege::" or ProcessCommandLine
+  contains "process::" or ProcessCommandLine contains "vault::") or (ProcessCommandLine
+  contains "DumpCreds" or ProcessCommandLine contains "mimikatz")'

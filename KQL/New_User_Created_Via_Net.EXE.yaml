@@ -1,0 +1,20 @@
+name: New User Created Via Net.EXE
+id: cd219ff3-fa99-45d4-8380-a7d15116c6dc
+author: Endgame, JHasenbusch (adapted to Sigma for oscd.community)
+date: 2018/10/30
+level: medium
+description: Identifies the creation of local users via the net.exe command.
+status: test
+modified: 2023/02/21
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+relevantTechniques:
+- t1136.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "user" and ProcessCommandLine contains "add")
+  and ((FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName
+  in~ ("net.exe", "net1.exe")))'

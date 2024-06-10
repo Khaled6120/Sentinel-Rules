@@ -1,0 +1,18 @@
+name: Potential Memory Dumping Activity Via LiveKD
+id: a85f7765-698a-4088-afa0-ecfbf8d01fa4
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/15
+level: medium
+description: Detects execution of LiveKD based on PE metadata or image name
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\livekd.exe" or FolderPath endswith "\\livekd64.exe")
+  or ProcessVersionInfoOriginalFileName =~ "livekd.exe"'

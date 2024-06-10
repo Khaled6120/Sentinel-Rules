@@ -1,0 +1,34 @@
+name: Suspicious WMIC Execution Via Office Process
+id: e1693bc8-7168-4eab-8718-cdcaa68a1738
+author: Vadim Khrykov, Cyb3rEng
+date: 2021/08/23
+level: high
+description: Office application called wmic to proxye execution through a LOLBIN process.
+  This is often used to break suspicious parent-child chain (Office app spawns LOLBin).
+status: test
+modified: 2023/02/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1047
+- t1204.002
+- t1218.010
+query: 'DeviceProcessEvents
+
+  | where (InitiatingProcessFolderPath endswith "\\WINWORD.EXE" or InitiatingProcessFolderPath
+  endswith "\\EXCEL.EXE" or InitiatingProcessFolderPath endswith "\\POWERPNT.exe"
+  or InitiatingProcessFolderPath endswith "\\MSPUB.exe" or InitiatingProcessFolderPath
+  endswith "\\VISIO.exe" or InitiatingProcessFolderPath endswith "\\MSACCESS.EXE"
+  or InitiatingProcessFolderPath endswith "\\EQNEDT32.EXE" or InitiatingProcessFolderPath
+  endswith "\\ONENOTE.EXE" or InitiatingProcessFolderPath endswith "\\wordpad.exe"
+  or InitiatingProcessFolderPath endswith "\\wordview.exe") and ((ProcessCommandLine
+  contains "regsvr32" or ProcessCommandLine contains "rundll32" or ProcessCommandLine
+  contains "msiexec" or ProcessCommandLine contains "mshta" or ProcessCommandLine
+  contains "verclsid" or ProcessCommandLine contains "wscript" or ProcessCommandLine
+  contains "cscript") and (ProcessCommandLine contains "process" and ProcessCommandLine
+  contains "create" and ProcessCommandLine contains "call")) and (FolderPath endswith
+  "\\wbem\\WMIC.exe" or ProcessVersionInfoOriginalFileName =~ "wmic.exe")'

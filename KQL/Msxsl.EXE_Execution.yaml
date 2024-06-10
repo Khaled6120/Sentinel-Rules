@@ -1,0 +1,25 @@
+name: Msxsl.EXE Execution
+id: 9e50a8b3-dd05-4eb8-9153-bdb6b79d50b0
+author: Timur Zinniatullin, oscd.community
+date: 2019/10/21
+level: medium
+description: 'Detects the execution of the MSXSL utility. This can be used to execute
+  Extensible Stylesheet Language (XSL) files. These files are commonly used to describe
+  the processing and rendering of data within XML files.
+
+  Adversaries can abuse this functionality to execute arbitrary files while potentially
+  bypassing application whitelisting defenses.
+
+  '
+status: test
+modified: 2023/11/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1220
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\msxsl.exe"'

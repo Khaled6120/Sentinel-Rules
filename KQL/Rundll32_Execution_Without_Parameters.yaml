@@ -1,0 +1,22 @@
+name: Rundll32 Execution Without Parameters
+id: 5bb68627-3198-40ca-b458-49f973db8752
+author: Bartlomiej Czyz, Relativity
+date: 2021/01/31
+level: high
+description: Detects rundll32 execution without parameters as observed when running
+  Metasploit windows/smb/psexec exploit module
+status: test
+modified: 2023/02/28
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+- lateral_movement
+relevantTechniques:
+- t1021.002
+- t1569.002
+- t1570
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine in~ ("rundll32.exe", "rundll32")'

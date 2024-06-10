@@ -1,0 +1,29 @@
+name: Potential PowerShell Command Line Obfuscation
+id: d7bcd677-645d-4691-a8d4-7a5602b780d1
+author: Teymur Kheirkhabarov (idea), Vasiliy Burov (rule), oscd.community, Tim Shelton
+  (fp)
+date: 2020/10/15
+level: high
+description: Detects the PowerShell command lines with special characters
+status: test
+modified: 2024/04/15
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1027
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where (((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe")
+  or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll"))) and
+  (ProcessCommandLine matches regex "\\+.*\\+.*\\+.*\\+.*\\+.*\\+.*\\+.*\\+.*\\+.*\\+.*\\+.*\\+.*\\+.*\\+"
+  or ProcessCommandLine matches regex "\\{.*\\{.*\\{.*\\{.*\\{.*\\{.*\\{.*\\{.*\\{.*\\{"
+  or ProcessCommandLine matches regex "\\^.*\\^.*\\^.*\\^.*\\^" or ProcessCommandLine
+  matches regex "`.*`.*`.*`.*`")) and (not((InitiatingProcessFolderPath =~ "C:\\Program
+  Files\\Amazon\\SSM\\ssm-document-worker.exe" or (ProcessCommandLine contains "new
+  EventSource(\"Microsoft.Windows.Sense.Client.Management\"" or ProcessCommandLine
+  contains "public static extern bool InstallELAMCertificateInfo(SafeFileHandle handle);"))))'

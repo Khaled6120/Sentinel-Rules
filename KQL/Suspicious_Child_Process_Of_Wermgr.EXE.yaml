@@ -1,0 +1,29 @@
+name: Suspicious Child Process Of Wermgr.EXE
+id: 396f6630-f3ac-44e3-bfc8-1b161bc00c4e
+author: Florian Roth (Nextron Systems)
+date: 2022/10/14
+level: high
+description: Detects suspicious Windows Error Reporting manager (wermgr.exe) child
+  process
+status: experimental
+modified: 2023/08/23
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1036
+- t1055
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\cscript.exe"
+  or FolderPath endswith "\\ipconfig.exe" or FolderPath endswith "\\mshta.exe" or
+  FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe" or FolderPath
+  endswith "\\netstat.exe" or FolderPath endswith "\\nslookup.exe" or FolderPath endswith
+  "\\powershell_ise.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith
+  "\\pwsh.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith "\\rundll32.exe"
+  or FolderPath endswith "\\systeminfo.exe" or FolderPath endswith "\\whoami.exe"
+  or FolderPath endswith "\\wscript.exe") and InitiatingProcessFolderPath endswith
+  "\\wermgr.exe"'

@@ -1,0 +1,20 @@
+name: Replace.exe Usage
+id: 9292293b-8496-4715-9db6-37028dcda4b3
+author: frack113
+date: 2022/03/06
+level: medium
+description: Detects the use of Replace.exe which can be used to replace file with
+  another file
+status: test
+modified: 2024/03/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1105
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\replace.exe" and (ProcessCommandLine contains "-a"
+  or ProcessCommandLine contains "/a")'

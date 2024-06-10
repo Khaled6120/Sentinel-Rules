@@ -1,0 +1,29 @@
+name: Use NTFS Short Name in Image
+id: 3ef5605c-9eb9-47b0-9a71-b727e6aa5c3b
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/06
+level: medium
+description: Detect use of the Windows 8.3 short name. Which could be used as a method
+  to avoid Image based detection
+status: test
+modified: 2023/07/20
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1564.004
+query: 'DeviceProcessEvents
+
+  | where (FolderPath contains "~1.bat" or FolderPath contains "~1.dll" or FolderPath
+  contains "~1.exe" or FolderPath contains "~1.hta" or FolderPath contains "~1.js"
+  or FolderPath contains "~1.msi" or FolderPath contains "~1.ps1" or FolderPath contains
+  "~1.tmp" or FolderPath contains "~1.vbe" or FolderPath contains "~1.vbs" or FolderPath
+  contains "~2.bat" or FolderPath contains "~2.dll" or FolderPath contains "~2.exe"
+  or FolderPath contains "~2.hta" or FolderPath contains "~2.js" or FolderPath contains
+  "~2.msi" or FolderPath contains "~2.ps1" or FolderPath contains "~2.tmp" or FolderPath
+  contains "~2.vbe" or FolderPath contains "~2.vbs") and (not(InitiatingProcessFolderPath
+  =~ "C:\\Windows\\explorer.exe")) and (not((InitiatingProcessFolderPath endswith
+  "\\thor\\thor64.exe" or FolderPath endswith "\\VCREDI~1.EXE" or InitiatingProcessFolderPath
+  endswith "\\WebEx\\WebexHost.exe" or FolderPath =~ "C:\\PROGRA~1\\WinZip\\WZPREL~1.EXE")))'

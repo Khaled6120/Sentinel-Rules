@@ -1,0 +1,19 @@
+name: Sdclt Child Processes
+id: da2738f2-fadb-4394-afa7-0a0674885afa
+author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+date: 2020/05/02
+level: medium
+description: A General detection for sdclt spawning new processes. This could be an
+  indicator of sdclt being used for bypass UAC techniques.
+status: test
+modified: 2021/11/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- privilege_escalation
+relevantTechniques:
+- t1548.002
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\sdclt.exe"'

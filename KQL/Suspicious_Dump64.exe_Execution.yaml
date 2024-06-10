@@ -1,0 +1,21 @@
+name: Suspicious Dump64.exe Execution
+id: 129966c9-de17-4334-a123-8b58172e664d
+author: Austin Songer @austinsonger, Florian Roth
+date: 2021/11/26
+level: high
+description: Detects when a user bypasses Defender by renaming a tool to dump64.exe
+  and placing it in a Visual Studio folder
+status: test
+modified: 2023/03/24
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1003.001
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\dump64.exe" and (not(FolderPath contains "\\Installer\\Feedback\\dump64.exe")))
+  or (FolderPath endswith "\\dump64.exe" and (ProcessCommandLine contains " -ma "
+  or ProcessCommandLine contains "accepteula"))'

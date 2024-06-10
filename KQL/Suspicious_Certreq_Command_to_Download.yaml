@@ -1,0 +1,22 @@
+name: Suspicious Certreq Command to Download
+id: 4480827a-9799-4232-b2c4-ccc6c4e9e12b
+author: Christian Burkard (Nextron Systems)
+date: 2021/11/24
+level: high
+description: Detects a suspicious certreq execution taken from the LOLBAS examples,
+  which can be abused to download (small) files
+status: test
+modified: 2022/06/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1105
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -Post " and ProcessCommandLine contains "
+  -config " and ProcessCommandLine contains " http" and ProcessCommandLine contains
+  " C:\\windows\\win.ini ") and (FolderPath endswith "\\certreq.exe" or ProcessVersionInfoOriginalFileName
+  =~ "CertReq.exe")'

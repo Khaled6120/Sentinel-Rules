@@ -1,0 +1,18 @@
+name: Suspicious Execution of Hostname
+id: 7be5fb68-f9ef-476d-8b51-0256ebece19e
+author: frack113
+date: 2022/01/01
+level: low
+description: Use of hostname to get information
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1082
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\HOSTNAME.EXE"'

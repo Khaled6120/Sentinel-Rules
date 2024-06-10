@@ -1,0 +1,20 @@
+name: Potential Persistence Attempt Via Run Keys Using Reg.EXE
+id: de587dce-915e-4218-aac4-835ca6af6f70
+author: Florian Roth (Nextron Systems)
+date: 2021/06/28
+level: medium
+description: Detects suspicious command line reg.exe tool adding key to RUN key in
+  Registry
+status: test
+modified: 2023/01/30
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+relevantTechniques:
+- t1547.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "reg" and ProcessCommandLine contains " ADD
+  " and ProcessCommandLine contains "Software\\Microsoft\\Windows\\CurrentVersion\\Run"'

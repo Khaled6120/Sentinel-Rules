@@ -1,0 +1,20 @@
+name: Suspicious Query of MachineGUID
+id: f5240972-3938-4e56-8e4b-e33893176c1f
+author: frack113
+date: 2022/01/01
+level: low
+description: Use of reg to get MachineGuid information
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1082
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "SOFTWARE\\Microsoft\\Cryptography" and ProcessCommandLine
+  contains "/v " and ProcessCommandLine contains "MachineGuid") and FolderPath endswith
+  "\\reg.exe"'

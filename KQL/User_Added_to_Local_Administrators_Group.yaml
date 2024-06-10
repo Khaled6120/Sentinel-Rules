@@ -1,0 +1,22 @@
+name: User Added to Local Administrators Group
+id: ad720b90-25ad-43ff-9b5e-5c841facc8e5
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/12
+level: medium
+description: Detects addition of users to the local administrator group via "Net"
+  or "Add-LocalGroupMember".
+status: test
+modified: 2023/03/02
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+relevantTechniques:
+- t1098
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " administrators " or ProcessCommandLine contains
+  " administrateur") and ((ProcessCommandLine contains "localgroup " and ProcessCommandLine
+  contains " /add") or (ProcessCommandLine contains "Add-LocalGroupMember " and ProcessCommandLine
+  contains " -Group "))'

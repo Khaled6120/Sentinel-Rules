@@ -1,0 +1,23 @@
+name: GAC DLL Loaded Via Office Applications
+id: 90217a70-13fc-48e4-b3db-0d836c5824ac
+author: Antonlovesdnb
+date: 2020/02/19
+level: high
+description: Detects any GAC DLL being loaded by an Office Product
+status: test
+modified: 2023/02/10
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1204.002
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath startswith "C:\\Windows\\Microsoft.NET\\assembly\\GAC_MSIL" and
+  (InitiatingProcessFolderPath endswith "\\excel.exe" or InitiatingProcessFolderPath
+  endswith "\\mspub.exe" or InitiatingProcessFolderPath endswith "\\onenote.exe" or
+  InitiatingProcessFolderPath endswith "\\onenoteim.exe" or InitiatingProcessFolderPath
+  endswith "\\outlook.exe" or InitiatingProcessFolderPath endswith "\\powerpnt.exe"
+  or InitiatingProcessFolderPath endswith "\\winword.exe")'

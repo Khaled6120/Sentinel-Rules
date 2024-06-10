@@ -1,0 +1,23 @@
+name: Greedy File Deletion Using Del
+id: 204b17ae-4007-471b-917b-b917b315c5db
+author: frack113 , X__Junior (Nextron Systems)
+date: 2021/12/02
+level: medium
+description: Detects execution of the "del" builtin command to remove files using
+  greedy/wildcard expression. This is often used by malware to delete content of folders
+  that perhaps contains the initial malware infection or to delete evidence.
+status: experimental
+modified: 2023/09/11
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1070.004
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "del " or ProcessCommandLine contains "erase
+  ") and (ProcessCommandLine contains "\\*.au3" or ProcessCommandLine contains "\\*.dll"
+  or ProcessCommandLine contains "\\*.exe" or ProcessCommandLine contains "\\*.js")
+  and (FolderPath endswith "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe")'

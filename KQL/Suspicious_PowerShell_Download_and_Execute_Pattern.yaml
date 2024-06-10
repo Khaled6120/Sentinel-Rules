@@ -1,0 +1,25 @@
+name: Suspicious PowerShell Download and Execute Pattern
+id: e6c54d94-498c-4562-a37c-b469d8e9a275
+author: Florian Roth (Nextron Systems)
+date: 2022/02/28
+level: high
+description: Detects suspicious PowerShell download patterns that are often used in
+  malicious scripts, stagers or downloaders (make sure that your backend applies the
+  strings case-insensitive)
+status: test
+modified: 2022/03/01
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "IEX ((New-Object Net.WebClient).DownloadString"
+  or ProcessCommandLine contains "IEX (New-Object Net.WebClient).DownloadString" or
+  ProcessCommandLine contains "IEX((New-Object Net.WebClient).DownloadString" or ProcessCommandLine
+  contains "IEX(New-Object Net.WebClient).DownloadString" or ProcessCommandLine contains
+  " -command (New-Object System.Net.WebClient).DownloadFile(" or ProcessCommandLine
+  contains " -c (New-Object System.Net.WebClient).DownloadFile("'

@@ -1,0 +1,27 @@
+name: Security Service Disabled Via Reg.EXE
+id: 5e95028c-5229-4214-afae-d653d573d0ec
+author: Florian Roth (Nextron Systems), John Lambert (idea), elhoim
+date: 2021/07/14
+level: high
+description: Detects execution of "reg.exe" to disable security services such as Windows
+  Defender.
+status: test
+modified: 2023/06/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1562.001
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "\\AppIDSvc" or ProcessCommandLine contains
+  "\\MsMpSvc" or ProcessCommandLine contains "\\NisSrv" or ProcessCommandLine contains
+  "\\SecurityHealthService" or ProcessCommandLine contains "\\Sense" or ProcessCommandLine
+  contains "\\UsoSvc" or ProcessCommandLine contains "\\WdBoot" or ProcessCommandLine
+  contains "\\WdFilter" or ProcessCommandLine contains "\\WdNisDrv" or ProcessCommandLine
+  contains "\\WdNisSvc" or ProcessCommandLine contains "\\WinDefend" or ProcessCommandLine
+  contains "\\wscsvc" or ProcessCommandLine contains "\\wuauserv") and (ProcessCommandLine
+  contains "d 4" and ProcessCommandLine contains "v Start")) and (ProcessCommandLine
+  contains "reg" and ProcessCommandLine contains "add")'

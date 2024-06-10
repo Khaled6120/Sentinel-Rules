@@ -1,0 +1,20 @@
+name: Potential MsiExec Masquerading
+id: e22a6eb2-f8a5-44b5-8b44-a2dbd47b1144
+author: Florian Roth (Nextron Systems)
+date: 2019/11/14
+level: high
+description: Detects the execution of msiexec.exe from an uncommon directory
+status: test
+modified: 2023/02/21
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1036.005
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\msiexec.exe" or ProcessVersionInfoOriginalFileName
+  =~ "\\msiexec.exe") and (not((FolderPath startswith "C:\\Windows\\System32\\" or
+  FolderPath startswith "C:\\Windows\\SysWOW64\\" or FolderPath startswith "C:\\Windows\\WinSxS\\")))'

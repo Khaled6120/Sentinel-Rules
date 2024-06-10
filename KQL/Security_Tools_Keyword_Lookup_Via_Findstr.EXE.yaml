@@ -1,0 +1,36 @@
+name: Security Tools Keyword Lookup Via Findstr.EXE
+id: 4fe074b4-b833-4081-8f24-7dcfeca72b42
+author: Nasreddine Bencherchali (Nextron Systems), frack113
+date: 2023/10/20
+level: medium
+description: 'Detects execution of "findstr" to search for common names of security
+  tools. Attackers often pipe the results of recon commands such as "tasklist" or
+  "whoami" to "findstr" in order to filter out the results.
+
+  This detection focuses on the keywords that the attacker might use as a filter.
+
+  '
+status: experimental
+modified: 2023/11/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1518.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine endswith " avira" or ProcessCommandLine endswith " avira\""
+  or ProcessCommandLine endswith " cb" or ProcessCommandLine endswith " cb\"" or ProcessCommandLine
+  endswith " cylance" or ProcessCommandLine endswith " cylance\"" or ProcessCommandLine
+  endswith " defender" or ProcessCommandLine endswith " defender\"" or ProcessCommandLine
+  endswith " kaspersky" or ProcessCommandLine endswith " kaspersky\"" or ProcessCommandLine
+  endswith " kes" or ProcessCommandLine endswith " kes\"" or ProcessCommandLine endswith
+  " mc" or ProcessCommandLine endswith " mc\"" or ProcessCommandLine endswith " sec"
+  or ProcessCommandLine endswith " sec\"" or ProcessCommandLine endswith " sentinel"
+  or ProcessCommandLine endswith " sentinel\"" or ProcessCommandLine endswith " symantec"
+  or ProcessCommandLine endswith " symantec\"" or ProcessCommandLine endswith " virus"
+  or ProcessCommandLine endswith " virus\"") and ((FolderPath endswith "\\find.exe"
+  or FolderPath endswith "\\findstr.exe") or (ProcessVersionInfoOriginalFileName in~
+  ("FIND.EXE", "FINDSTR.EXE")))'

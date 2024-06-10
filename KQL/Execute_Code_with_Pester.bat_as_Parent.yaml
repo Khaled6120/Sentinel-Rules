@@ -1,0 +1,24 @@
+name: Execute Code with Pester.bat as Parent
+id: 18988e1b-9087-4f8a-82fe-0414dce49878
+author: frack113, Nasreddine Bencherchali
+date: 2022/08/20
+level: medium
+description: Detects code execution via Pester.bat (Pester - Powershell Modulte for
+  testing)
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1059.001
+- t1216
+query: 'DeviceProcessEvents
+
+  | where (InitiatingProcessCommandLine contains "{ Invoke-Pester -EnableExit ;" or
+  InitiatingProcessCommandLine contains "{ Get-Help \"") and (InitiatingProcessCommandLine
+  contains "\\WindowsPowerShell\\Modules\\Pester\\" and (InitiatingProcessFolderPath
+  endswith "\\powershell.exe" or InitiatingProcessFolderPath endswith "\\pwsh.exe"))'

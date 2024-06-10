@@ -1,0 +1,21 @@
+name: Potential DCOM InternetExplorer.Application DLL Hijack - Image Load
+id: f354eba5-623b-450f-b073-0b5b2773b6aa
+author: Roberto Rodriguez @Cyb3rWard0g, Open Threat Research (OTR), wagga
+date: 2020/10/12
+level: critical
+description: Detects potential DLL hijack of "iertutil.dll" found in the DCOM InternetExplorer.Application
+  Class
+status: test
+modified: 2022/12/18
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- lateral_movement
+relevantTechniques:
+- t1021.002
+- t1021.003
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\Internet Explorer\\iertutil.dll" and InitiatingProcessFolderPath
+  endswith "\\Internet Explorer\\iexplore.exe"'

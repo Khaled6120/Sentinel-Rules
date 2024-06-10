@@ -1,0 +1,19 @@
+name: Suspicious RASdial Activity
+id: 6bba49bf-7f8c-47d6-a1bb-6b4dece4640e
+author: juju4
+date: 2019/01/16
+level: medium
+description: Detects suspicious process related to rasdial.exe
+status: test
+modified: 2021/11/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "rasdial.exe"'

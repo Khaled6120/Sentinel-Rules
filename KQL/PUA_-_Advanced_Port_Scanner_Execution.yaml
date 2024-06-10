@@ -1,0 +1,22 @@
+name: PUA - Advanced Port Scanner Execution
+id: 54773c5f-f1cc-4703-9126-2f797d96a69d
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2021/12/18
+level: medium
+description: Detects the use of Advanced Port Scanner.
+status: test
+modified: 2023/02/07
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1046
+- t1135
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "/portable" and ProcessCommandLine contains
+  "/lng") or (FolderPath contains "\\advanced_port_scanner" or ProcessVersionInfoOriginalFileName
+  contains "advanced_port_scanner" or ProcessVersionInfoFileDescription contains "Advanced
+  Port Scanner")'

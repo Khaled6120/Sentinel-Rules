@@ -1,0 +1,27 @@
+name: Remote Access Tool - ScreenConnect Potential Suspicious Remote Command Execution
+id: 7b582f1a-b318-4c6a-bf4e-66fe49bf55a5
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems),
+  @Kostastsale
+date: 2022/02/25
+level: medium
+description: 'Detects potentially suspicious child processes launched via the ScreenConnect
+  client service.
+
+  '
+status: test
+modified: 2024/02/28
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1219
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\bitsadmin.exe" or FolderPath endswith "\\cmd.exe"
+  or FolderPath endswith "\\curl.exe" or FolderPath endswith "\\dllhost.exe" or FolderPath
+  endswith "\\net.exe" or FolderPath endswith "\\nltest.exe" or FolderPath endswith
+  "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\rundll32.exe"
+  or FolderPath endswith "\\wevtutil.exe") and (InitiatingProcessCommandLine contains
+  ":\\Windows\\TEMP\\ScreenConnect\\" and InitiatingProcessCommandLine contains "run.cmd")'

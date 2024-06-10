@@ -1,0 +1,22 @@
+name: Powershell Defender Exclusion
+id: 17769c90-230e-488b-a463-e05c08e9d48f
+author: Florian Roth (Nextron Systems)
+date: 2021/04/29
+level: medium
+description: Detects requests to exclude files, folders or processes from Antivirus
+  scanning using PowerShell cmdlets
+status: test
+modified: 2022/05/12
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1562.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "Add-MpPreference " or ProcessCommandLine contains
+  "Set-MpPreference ") and (ProcessCommandLine contains " -ExclusionPath " or ProcessCommandLine
+  contains " -ExclusionExtension " or ProcessCommandLine contains " -ExclusionProcess
+  " or ProcessCommandLine contains " -ExclusionIpAddress ")'

@@ -1,0 +1,24 @@
+name: Outbound Network Connection Initiated By Script Interpreter
+id: 992a6cae-db6a-43c8-9cec-76d7195c96fc
+author: frack113, Florian Roth (Nextron Systems)
+date: 2022/08/28
+level: high
+description: Detects a script interpreter wscript/cscript opening a network connection
+  to a non-local network. Adversaries may use script to download malicious payloads.
+status: test
+modified: 2024/03/13
+logsource:
+  category: network_connection
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1105
+query: 'DeviceNetworkEvents
+
+  | where (InitiatingProcessFolderPath endswith "\\wscript.exe" or InitiatingProcessFolderPath
+  endswith "\\cscript.exe") and (not(((ipv4_is_in_range(RemoteIP, "127.0.0.0/8") or
+  ipv4_is_in_range(RemoteIP, "10.0.0.0/8") or ipv4_is_in_range(RemoteIP, "172.16.0.0/12")
+  or ipv4_is_in_range(RemoteIP, "192.168.0.0/16") or ipv4_is_in_range(RemoteIP, "169.254.0.0/16")
+  or ipv4_is_in_range(RemoteIP, "::1/128") or ipv4_is_in_range(RemoteIP, "fe80::/10")
+  or ipv4_is_in_range(RemoteIP, "fc00::/7")) or ipv4_is_in_range(RemoteIP, "20.0.0.0/11"))))'

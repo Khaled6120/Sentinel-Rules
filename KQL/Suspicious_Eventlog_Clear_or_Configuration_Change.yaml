@@ -1,0 +1,29 @@
+name: Suspicious Eventlog Clear or Configuration Change
+id: cc36992a-4671-4f21-a91d-6c2b72a2edf5
+author: Ecco, Daniil Yugoslavskiy, oscd.community, D3F7A5105
+date: 2019/09/26
+level: high
+description: Detects clearing or configuration of eventlogs using wevtutil, powershell
+  and wmic. Might be used by ransomwares during the attack (seen by NotPetya and others).
+status: stable
+modified: 2023/07/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1070.001
+- t1562.002
+query: 'DeviceProcessEvents
+
+  | where (((ProcessCommandLine contains "Clear-EventLog " or ProcessCommandLine contains
+  "Remove-EventLog " or ProcessCommandLine contains "Limit-EventLog " or ProcessCommandLine
+  contains "Clear-WinEvent ") and (FolderPath endswith "\\powershell.exe" or FolderPath
+  endswith "\\pwsh.exe")) or (ProcessCommandLine contains "ClearEventLog" and (FolderPath
+  endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith
+  "\\wmic.exe")) or ((ProcessCommandLine contains "clear-log " or ProcessCommandLine
+  contains " cl " or ProcessCommandLine contains "set-log " or ProcessCommandLine
+  contains " sl " or ProcessCommandLine contains "lfn:") and FolderPath endswith "\\wevtutil.exe"))
+  and (not((ProcessCommandLine contains " sl " and (InitiatingProcessFolderPath in~
+  ("C:\\Windows\\SysWOW64\\msiexec.exe", "C:\\Windows\\System32\\msiexec.exe")))))'

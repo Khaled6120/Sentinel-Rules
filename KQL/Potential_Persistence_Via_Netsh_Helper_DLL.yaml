@@ -1,0 +1,25 @@
+name: Potential Persistence Via Netsh Helper DLL
+id: 56321594-9087-49d9-bf10-524fe8479452
+author: Victor Sergeev, oscd.community
+date: 2019/10/25
+level: medium
+description: 'Detects the execution of netsh with "add helper" flag in order to add
+  a custom helper DLL. This technique can be abused to add a malicious helper DLL
+  that can be used as a persistence proxy that gets called when netsh.exe is executed.
+
+  '
+status: test
+modified: 2023/11/28
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+- privilege_escalation
+- s0108
+relevantTechniques:
+- t1546.007
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "add" and ProcessCommandLine contains "helper")
+  and (ProcessVersionInfoOriginalFileName =~ "netsh.exe" or FolderPath endswith "\\netsh.exe")'

@@ -1,0 +1,19 @@
+name: Uncommon Child Process Spawned By Odbcconf.EXE
+id: 8e3c7994-131e-4ba5-b6ea-804d49113a26
+author: Harjot Singh @cyb3rjy0t
+date: 2023/05/22
+level: medium
+description: Detects an uncommon child process of "odbcconf.exe" binary which normally
+  shouldn't have any child processes.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218.008
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\odbcconf.exe"'

@@ -1,0 +1,26 @@
+name: Suspicious Serv-U Process Pattern
+id: 58f4ea09-0fc2-4520-ba18-b85c540b0eaf
+author: Florian Roth (Nextron Systems)
+date: 2021/07/14
+level: high
+description: Detects a suspicious process pattern which could be a sign of an exploited
+  Serv-U service
+status: test
+modified: 2022/07/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1555
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\powershell.exe"
+  or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\wscript.exe" or FolderPath
+  endswith "\\cscript.exe" or FolderPath endswith "\\sh.exe" or FolderPath endswith
+  "\\bash.exe" or FolderPath endswith "\\schtasks.exe" or FolderPath endswith "\\regsvr32.exe"
+  or FolderPath endswith "\\wmic.exe" or FolderPath endswith "\\mshta.exe" or FolderPath
+  endswith "\\rundll32.exe" or FolderPath endswith "\\msiexec.exe" or FolderPath endswith
+  "\\forfiles.exe" or FolderPath endswith "\\scriptrunner.exe") and InitiatingProcessFolderPath
+  endswith "\\Serv-U.exe"'

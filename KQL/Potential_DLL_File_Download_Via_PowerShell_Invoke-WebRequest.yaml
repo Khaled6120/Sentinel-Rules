@@ -1,0 +1,23 @@
+name: Potential DLL File Download Via PowerShell Invoke-WebRequest
+id: 0f0450f3-8b47-441e-a31b-15a91dc243e2
+author: Florian Roth (Nextron Systems), Hieu Tran
+date: 2023/03/13
+level: medium
+description: Detects potential DLL files being downloaded using the PowerShell Invoke-WebRequest
+  cmdlet
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+- execution
+relevantTechniques:
+- t1059.001
+- t1105
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "Invoke-WebRequest " or ProcessCommandLine
+  contains "IWR ") and (ProcessCommandLine contains "http" and ProcessCommandLine
+  contains "OutFile" and ProcessCommandLine contains ".dll")'

@@ -1,0 +1,22 @@
+name: UAC Bypass Abusing Winsat Path Parsing - Process
+id: 7a01183d-71a2-46ad-ad5c-acd989ac1793
+author: Christian Burkard (Nextron Systems)
+date: 2021/08/30
+level: high
+description: Detects the pattern of UAC Bypass using a path parsing issue in winsat.exe
+  (UACMe 52)
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1548.002
+query: 'DeviceProcessEvents
+
+  | where (ProcessIntegrityLevel in~ ("High", "System")) and InitiatingProcessCommandLine
+  contains "C:\\Windows \\system32\\winsat.exe" and InitiatingProcessFolderPath endswith
+  "\\AppData\\Local\\Temp\\system32\\winsat.exe"'

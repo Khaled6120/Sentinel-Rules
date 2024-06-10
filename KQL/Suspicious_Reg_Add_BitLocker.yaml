@@ -1,0 +1,25 @@
+name: Suspicious Reg Add BitLocker
+id: 0e0255bf-2548-47b8-9582-c0955c9283f5
+author: frack113
+date: 2021/11/15
+level: high
+description: Detects suspicious addition to BitLocker related registry keys via the
+  reg.exe utility
+status: test
+modified: 2022/09/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- impact
+relevantTechniques:
+- t1486
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "EnableBDEWithNoTPM" or ProcessCommandLine
+  contains "UseAdvancedStartup" or ProcessCommandLine contains "UseTPM" or ProcessCommandLine
+  contains "UseTPMKey" or ProcessCommandLine contains "UseTPMKeyPIN" or ProcessCommandLine
+  contains "RecoveryKeyMessageSource" or ProcessCommandLine contains "UseTPMPIN" or
+  ProcessCommandLine contains "RecoveryKeyMessage") and (ProcessCommandLine contains
+  "REG" and ProcessCommandLine contains "ADD" and ProcessCommandLine contains "\\SOFTWARE\\Policies\\Microsoft\\FVE"
+  and ProcessCommandLine contains "/v" and ProcessCommandLine contains "/f")'

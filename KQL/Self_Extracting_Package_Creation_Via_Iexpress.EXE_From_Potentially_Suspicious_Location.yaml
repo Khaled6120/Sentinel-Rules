@@ -1,0 +1,29 @@
+name: Self Extracting Package Creation Via Iexpress.EXE From Potentially Suspicious
+  Location
+id: b2b048b0-7857-4380-b0fb-d3f0ab820b71
+author: Joseliyo Sanchez, @Joseliyo_Jstnk, Nasreddine Bencherchali (Nextron Systems)
+date: 2024/02/05
+level: high
+description: 'Detects the use of iexpress.exe to create binaries via Self Extraction
+  Directive (SED) files located in potentially suspicious locations.
+
+  This behavior has been observed in-the-wild by different threat actors.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " /n " and (FolderPath endswith "\\iexpress.exe"
+  or ProcessVersionInfoOriginalFileName =~ "IEXPRESS.exe") and (ProcessCommandLine
+  contains ":\\ProgramData\\" or ProcessCommandLine contains ":\\Temp\\" or ProcessCommandLine
+  contains ":\\Windows\\System32\\Tasks\\" or ProcessCommandLine contains ":\\Windows\\Tasks\\"
+  or ProcessCommandLine contains ":\\Windows\\Temp\\" or ProcessCommandLine contains
+  "\\AppData\\Local\\Temp\\")'

@@ -1,0 +1,39 @@
+name: Potential Suspicious Activity Using SeCEdit
+id: c2c76b77-32be-4d1f-82c9-7e544bdfe0eb
+author: Janantha Marasinghe
+date: 2022/11/18
+level: medium
+description: Detects potential suspicious behaviour using secedit.exe. Such as exporting
+  or modifying the security policy
+status: test
+modified: 2022/12/30
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+- defense_evasion
+- discovery
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1082
+- t1505.005
+- t1546.007
+- t1546.008
+- t1547.001
+- t1547.002
+- t1547.010
+- t1547.014
+- t1556.002
+- t1557
+- t1562
+- t1562.002
+- t1564.002
+- t1574.007
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\secedit.exe" or ProcessVersionInfoOriginalFileName
+  =~ "SeCEdit") and ((ProcessCommandLine contains "/configure" and ProcessCommandLine
+  contains "/db") or (ProcessCommandLine contains "/export" and ProcessCommandLine
+  contains "/cfg"))'

@@ -1,0 +1,19 @@
+name: WMI Persistence - Command Line Event Consumer
+id: 05936ce2-ee05-4dae-9d03-9a391cf2d2c6
+author: Thomas Patzke
+date: 2018/03/07
+level: high
+description: Detects WMI command line event consumers
+status: test
+modified: 2021/11/27
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- persistence
+relevantTechniques:
+- t1546.003
+query: 'DeviceImageLoadEvents
+
+  | where InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\wbem\\WmiPrvSE.exe"
+  and FolderPath endswith "\\wbemcons.dll"'

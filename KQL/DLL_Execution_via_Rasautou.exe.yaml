@@ -1,0 +1,21 @@
+name: DLL Execution via Rasautou.exe
+id: cd3d1298-eb3b-476c-ac67-12847de55813
+author: Julia Fomina, oscd.community
+date: 2020/10/09
+level: medium
+description: Detects using Rasautou.exe for loading arbitrary .DLL specified in -d
+  option and executes the export specified in -p.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -d " and ProcessCommandLine contains " -p
+  ") and (FolderPath endswith "\\rasautou.exe" or ProcessVersionInfoOriginalFileName
+  =~ "rasdlui.exe")'

@@ -1,0 +1,24 @@
+name: Visual Studio Code Tunnel Shell Execution
+id: f4a623c2-4ef5-4c33-b811-0642f702c9f1
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/10/25
+level: medium
+description: Detects the execution of a shell (powershell, bash, wsl...) via Visual
+  Studio Code tunnel. Attackers can abuse this functionality to establish a C2 channel
+  and execute arbitrary commands on the system.
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1071.001
+query: 'DeviceProcessEvents
+
+  | where (InitiatingProcessCommandLine contains ".vscode-server" and InitiatingProcessFolderPath
+  contains "\\servers\\Stable-" and InitiatingProcessFolderPath endswith "\\server\\node.exe")
+  and ((ProcessCommandLine contains "\\terminal\\browser\\media\\shellIntegration.ps1"
+  and (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"))
+  or (FolderPath endswith "\\wsl.exe" or FolderPath endswith "\\bash.exe"))'

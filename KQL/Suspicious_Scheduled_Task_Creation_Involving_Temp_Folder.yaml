@@ -1,0 +1,22 @@
+name: Suspicious Scheduled Task Creation Involving Temp Folder
+id: 39019a4e-317f-4ce3-ae63-309a8c6b53c5
+author: Florian Roth (Nextron Systems)
+date: 2021/03/11
+level: high
+description: Detects the creation of scheduled tasks that involves a temporary folder
+  and runs only once
+status: test
+modified: 2022/10/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+- persistence
+relevantTechniques:
+- t1053.005
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " /create " and ProcessCommandLine contains
+  " /sc once " and ProcessCommandLine contains "\\Temp\\") and FolderPath endswith
+  "\\schtasks.exe"'

@@ -1,0 +1,21 @@
+name: Sysinternals PsSuspend Execution
+id: 48bbc537-b652-4b4e-bd1d-281172df448f
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/03/23
+level: medium
+description: Detects usage of Sysinternals PsSuspend which can be abused to suspend
+  critical processes
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+- persistence
+relevantTechniques:
+- t1543.003
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoOriginalFileName =~ "pssuspend.exe" or (FolderPath endswith
+  "\\pssuspend.exe" or FolderPath endswith "\\pssuspend64.exe")'

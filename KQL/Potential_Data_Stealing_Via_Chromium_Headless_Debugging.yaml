@@ -1,0 +1,21 @@
+name: Potential Data Stealing Via Chromium Headless Debugging
+id: 3e8207c5-fcd2-4ea6-9418-15d45b4890e4
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/12/23
+level: high
+description: Detects chromium based browsers starting in headless and debugging mode
+  and pointing to a user profile. This could be a sign of data stealing or remote
+  control
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1185
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "--remote-debugging-" and ProcessCommandLine
+  contains "--user-data-dir" and ProcessCommandLine contains "--headless"'

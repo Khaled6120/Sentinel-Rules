@@ -1,0 +1,19 @@
+name: Read Contents From Stdin Via Cmd.EXE
+id: 241e802a-b65e-484f-88cd-c2dc10f9206d
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: 2023/03/07
+level: medium
+description: Detect the use of "<" to read and potentially execute a file via cmd.exe
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059.003
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "<" and (ProcessVersionInfoOriginalFileName
+  =~ "Cmd.Exe" or FolderPath endswith "\\cmd.exe")'

@@ -1,0 +1,23 @@
+name: Suspect Svchost Activity
+id: 16c37b52-b141-42a5-a3ea-bbe098444397
+author: David Burkett, @signalblur
+date: 2019/12/28
+level: high
+description: It is extremely abnormal for svchost.exe to spawn without any CLI arguments
+  and is normally observed when a malicious process spawns the process and injects
+  code into the process memory space.
+status: test
+modified: 2022/06/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- privilege_escalation
+relevantTechniques:
+- t1055
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine endswith "svchost.exe" and FolderPath endswith "\\svchost.exe")
+  and (not(((InitiatingProcessFolderPath endswith "\\rpcnet.exe" or InitiatingProcessFolderPath
+  endswith "\\rpcnetp.exe") or isnull(ProcessCommandLine))))'

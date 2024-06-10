@@ -1,0 +1,22 @@
+name: CreateDump Process Dump
+id: 515c8be5-e5df-4c5e-8f6d-a4a2f05e4b48
+author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2022/01/04
+level: high
+description: Detects uses of the createdump.exe LOLOBIN utility to dump process memory
+status: test
+modified: 2022/08/19
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1003.001
+- t1036
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -u " or ProcessCommandLine contains " --full
+  " or ProcessCommandLine contains " -f " or ProcessCommandLine contains " --name
+  " or ProcessCommandLine contains ".dmp ") and (FolderPath endswith "\\createdump.exe"
+  or ProcessVersionInfoOriginalFileName =~ "FX_VER_INTERNALNAME_STR")'

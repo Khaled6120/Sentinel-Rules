@@ -1,0 +1,21 @@
+name: Kavremover Dropped Binary LOLBIN Usage
+id: d047726b-c71c-4048-a99b-2e2f50dc107d
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/11/01
+level: high
+description: Detects the execution of a signed binary dropped by Kaspersky Lab Products
+  Remover (kavremover) which can be abused as a LOLBIN to execute arbitrary commands
+  and binaries.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1127
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " run run-cmd " and (not((InitiatingProcessFolderPath
+  endswith "\\kavremover.exe" or InitiatingProcessFolderPath endswith "\\cleanapi.exe")))'

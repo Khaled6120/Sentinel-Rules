@@ -1,0 +1,27 @@
+name: Suspicious Provlaunch.EXE Child Process
+id: f9999590-1f94-4a34-a91e-951e47bedefd
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/08/08
+level: high
+description: Detects suspicious child processes of "provlaunch.exe" which might indicate
+  potential abuse to proxy execution.
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\calc.exe" or FolderPath endswith "\\cmd.exe" or
+  FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\mshta.exe" or FolderPath
+  endswith "\\notepad.exe" or FolderPath endswith "\\powershell.exe" or FolderPath
+  endswith "\\pwsh.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith
+  "\\rundll32.exe" or FolderPath endswith "\\wscript.exe") or (FolderPath contains
+  ":\\PerfLogs\\" or FolderPath contains ":\\Temp\\" or FolderPath contains ":\\Users\\Public\\"
+  or FolderPath contains "\\AppData\\Temp\\" or FolderPath contains "\\Windows\\System32\\Tasks\\"
+  or FolderPath contains "\\Windows\\Tasks\\" or FolderPath contains "\\Windows\\Temp\\"))
+  and InitiatingProcessFolderPath endswith "\\provlaunch.exe"'

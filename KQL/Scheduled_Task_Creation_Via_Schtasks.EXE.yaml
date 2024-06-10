@@ -1,0 +1,23 @@
+name: Scheduled Task Creation Via Schtasks.EXE
+id: 92626ddd-662c-49e3-ac59-f6535f12d189
+author: Florian Roth (Nextron Systems)
+date: 2019/01/16
+level: low
+description: Detects the creation of scheduled tasks by user accounts via the "schtasks"
+  utility.
+status: test
+modified: 2024/01/18
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+- persistence
+- privilege_escalation
+- s0111
+relevantTechniques:
+- t1053.005
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " /create " and FolderPath endswith "\\schtasks.exe")
+  and (not((AccountName contains "AUTHORI" or AccountName contains "AUTORI")))'

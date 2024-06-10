@@ -1,0 +1,21 @@
+name: Run PowerShell Script from ADS
+id: 45a594aa-1fbd-4972-a809-ff5a99dd81b8
+author: Sergey Soldatov, Kaspersky Lab, oscd.community
+date: 2019/10/30
+level: high
+description: Detects PowerShell script execution from Alternate Data Stream (ADS)
+status: test
+modified: 2022/07/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1564.004
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "Get-Content" and ProcessCommandLine contains
+  "-Stream") and (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe")
+  and (InitiatingProcessFolderPath endswith "\\powershell.exe" or InitiatingProcessFolderPath
+  endswith "\\pwsh.exe")'

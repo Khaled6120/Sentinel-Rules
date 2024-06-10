@@ -1,0 +1,19 @@
+name: Domain Trust Discovery Via Dsquery
+id: 3bad990e-4848-4a78-9530-b427d854aac0
+author: E.M. Anhaus, Tony Lambert, oscd.community, omkar72
+date: 2019/10/24
+level: medium
+description: Detects execution of "dsquery.exe" for domain trust discovery
+status: test
+modified: 2023/02/02
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1482
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "trustedDomain" and (FolderPath endswith "\\dsquery.exe"
+  or ProcessVersionInfoOriginalFileName =~ "dsquery.exe")'

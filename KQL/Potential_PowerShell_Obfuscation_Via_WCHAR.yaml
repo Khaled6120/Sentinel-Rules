@@ -1,0 +1,20 @@
+name: Potential PowerShell Obfuscation Via WCHAR
+id: e312efd0-35a1-407f-8439-b8d434b438a6
+author: Florian Roth (Nextron Systems)
+date: 2020/07/09
+level: high
+description: Detects suspicious encoded character syntax often used for defense evasion
+status: test
+modified: 2023/01/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1027
+- t1059.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "(WCHAR)0x"'

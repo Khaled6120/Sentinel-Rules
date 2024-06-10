@@ -1,0 +1,29 @@
+name: Suspicious Greedy Compression Using Rar.EXE
+id: afe52666-401e-4a02-b4ff-5d128990b8cb
+author: X__Junior (Nextron Systems), Florian Roth (Nextron Systems)
+date: 2022/12/15
+level: high
+description: Detects RAR usage that creates an archive from a suspicious folder, either
+  a system folder or one of the folders often used by attackers for staging purposes
+status: experimental
+modified: 2024/01/02
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\rar.exe" or ProcessVersionInfoFileDescription =~
+  "Command line RAR") or (ProcessCommandLine contains ".exe a " or ProcessCommandLine
+  contains " a -m")) and ((ProcessCommandLine contains " -hp" and ProcessCommandLine
+  contains " -r ") and ((ProcessCommandLine contains " " and ProcessCommandLine contains
+  ":*.") or (ProcessCommandLine contains " " and ProcessCommandLine contains ":\*.")
+  or (ProcessCommandLine contains " " and ProcessCommandLine contains ":\\$Recycle.bin\\")
+  or (ProcessCommandLine contains " " and ProcessCommandLine contains ":\\PerfLogs\\")
+  or (ProcessCommandLine contains " " and ProcessCommandLine contains ":\\Temp") or
+  (ProcessCommandLine contains " " and ProcessCommandLine contains ":\\Users\\Public\\")
+  or (ProcessCommandLine contains " " and ProcessCommandLine contains ":\\Windows\\")
+  or ProcessCommandLine contains " %public%"))'

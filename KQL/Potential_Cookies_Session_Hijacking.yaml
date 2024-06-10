@@ -1,0 +1,20 @@
+name: Potential Cookies Session Hijacking
+id: 5a6e1e16-07de-48d8-8aae-faa766c05e88
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/07/27
+level: medium
+description: Detects execution of "curl.exe" with the "-c" flag in order to save cookie
+  data.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine matches regex "\\s-c\\s" or ProcessCommandLine contains
+  "--cookie-jar") and (FolderPath endswith "\\curl.exe" or ProcessVersionInfoOriginalFileName
+  =~ "curl.exe")'

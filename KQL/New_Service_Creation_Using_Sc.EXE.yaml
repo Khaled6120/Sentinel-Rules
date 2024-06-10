@@ -1,0 +1,20 @@
+name: New Service Creation Using Sc.EXE
+id: 85ff530b-261d-48c6-a441-facaa2e81e48
+author: Timur Zinniatullin, Daniil Yugoslavskiy, oscd.community
+date: 2023/02/20
+level: low
+description: Detects the creation of a new service using the "sc.exe" utility.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+- privilege_escalation
+relevantTechniques:
+- t1543.003
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "create" and ProcessCommandLine contains "binPath")
+  and FolderPath endswith "\\sc.exe"'

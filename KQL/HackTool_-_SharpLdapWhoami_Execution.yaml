@@ -1,0 +1,23 @@
+name: HackTool - SharpLdapWhoami Execution
+id: d9367cbb-c2e0-47ce-bdc0-128cb6da898d
+author: Florian Roth (Nextron Systems)
+date: 2022/08/29
+level: high
+description: Detects SharpLdapWhoami, a whoami alternative that queries the LDAP service
+  on a domain controller
+status: test
+modified: 2023/02/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1033
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine endswith " /method:ntlm" or ProcessCommandLine endswith
+  " /method:kerb" or ProcessCommandLine endswith " /method:nego" or ProcessCommandLine
+  endswith " /m:nego" or ProcessCommandLine endswith " /m:ntlm" or ProcessCommandLine
+  endswith " /m:kerb") or FolderPath endswith "\\SharpLdapWhoami.exe" or (ProcessVersionInfoOriginalFileName
+  contains "SharpLdapWhoami" or ProcessVersionInfoProductName =~ "SharpLdapWhoami")'

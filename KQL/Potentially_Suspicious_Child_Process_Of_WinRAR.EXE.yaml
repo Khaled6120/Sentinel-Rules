@@ -1,0 +1,23 @@
+name: Potentially Suspicious Child Process Of WinRAR.EXE
+id: 146aace8-9bd6-42ba-be7a-0070d8027b76
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/08/31
+level: medium
+description: Detects potentially suspicious child processes of WinRAR.exe.
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1203
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\cscript.exe"
+  or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\powershell.exe" or
+  FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath
+  endswith "\\rundll32.exe" or FolderPath endswith "\\wscript.exe") or (ProcessVersionInfoOriginalFileName
+  in~ ("Cmd.Exe", "cscript.exe", "mshta.exe", "PowerShell.EXE", "pwsh.dll", "regsvr32.exe",
+  "RUNDLL32.EXE", "wscript.exe"))) and InitiatingProcessFolderPath endswith "\\WinRAR.exe"'

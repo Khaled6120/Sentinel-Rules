@@ -1,0 +1,24 @@
+name: Imports Registry Key From a File
+id: 73bba97f-a82d-42ce-b315-9182e76c57b1
+author: Oddvar Moe, Sander Wiebing, oscd.community
+date: 2020/10/07
+level: medium
+description: Detects the import of the specified file to the registry with regedit.exe.
+status: test
+modified: 2024/03/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1112
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains " /i " or ProcessCommandLine contains " /s
+  " or ProcessCommandLine contains ".reg") and (FolderPath endswith "\\regedit.exe"
+  or ProcessVersionInfoOriginalFileName =~ "REGEDIT.EXE")) and (not(((ProcessCommandLine
+  contains " -e " or ProcessCommandLine contains " /e " or ProcessCommandLine contains
+  " -a " or ProcessCommandLine contains " /a " or ProcessCommandLine contains " -c
+  " or ProcessCommandLine contains " /c ") and ProcessCommandLine matches regex ":[^
+  \\\\]")))'

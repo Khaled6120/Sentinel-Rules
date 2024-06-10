@@ -1,0 +1,21 @@
+name: Base64 Encoded PowerShell Command Detected
+id: e32d4572-9826-4738-b651-95fa63747e8a
+author: Florian Roth (Nextron Systems)
+date: 2020/01/29
+level: high
+description: Detects usage of the "FromBase64String" function in the commandline which
+  is used to decode a base64 encoded string
+status: test
+modified: 2023/01/26
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1027
+- t1059.001
+- t1140
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "::FromBase64String("'

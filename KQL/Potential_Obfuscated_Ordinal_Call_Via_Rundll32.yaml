@@ -1,0 +1,19 @@
+name: Potential Obfuscated Ordinal Call Via Rundll32
+id: 43fa5350-db63-4b8f-9a01-789a427074e1
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/17
+level: medium
+description: Detects execution of "rundll32" with potential obfuscated ordinal calls
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "#+" or ProcessCommandLine contains "#-") and
+  (FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName =~ "RUNDLL32.EXE"
+  or ProcessCommandLine contains "rundll32")'

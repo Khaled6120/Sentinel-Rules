@@ -1,0 +1,30 @@
+name: Potential Network Sniffing Activity Using Network Tools
+id: ba1f7802-adc7-48b4-9ecb-81e227fddfd5
+author: Timur Zinniatullin, oscd.community, Nasreddine Bencherchali (Nextron Systems)
+date: 2019/10/21
+level: medium
+description: 'Detects potential network sniffing via use of network tools such as
+  "tshark", "windump".
+
+  Network sniffing refers to using the network interface on a system to monitor or
+  capture information sent over a wired or wireless connection.
+
+  An adversary may place a network interface into promiscuous mode to passively access
+  data in transit over the network, or use span ports to capture a larger amount of
+  data.
+
+  '
+status: test
+modified: 2023/02/20
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+- discovery
+relevantTechniques:
+- t1040
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "-i" and FolderPath endswith "\\tshark.exe")
+  or FolderPath endswith "\\windump.exe"'

@@ -1,0 +1,21 @@
+name: IIS Native-Code Module Command Line Installation
+id: 9465ddf4-f9e4-4ebd-8d98-702df3a93239
+author: Florian Roth (Nextron Systems)
+date: 2019/12/11
+level: medium
+description: Detects suspicious IIS native-code module installations via command line
+status: test
+modified: 2024/03/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+relevantTechniques:
+- t1505.003
+query: 'DeviceProcessEvents
+
+  | where (((ProcessCommandLine contains "install" and ProcessCommandLine contains
+  "module") and (ProcessCommandLine contains "-name:" or ProcessCommandLine contains
+  "/name:")) and (FolderPath endswith "\\appcmd.exe" or ProcessVersionInfoOriginalFileName
+  =~ "appcmd.exe")) and (not(InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\inetsrv\\iissetup.exe"))'

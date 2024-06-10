@@ -1,0 +1,25 @@
+name: Reg Add Suspicious Paths
+id: b7e2a8d4-74bb-4b78-adc9-3f92af2d4829
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/19
+level: high
+description: Detects when an adversary uses the reg.exe utility to add or modify new
+  keys or subkeys
+status: test
+modified: 2022/10/10
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1112
+- t1562.001
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "\\AppDataLow\\Software\\Microsoft\\" or ProcessCommandLine
+  contains "\\Policies\\Microsoft\\Windows\\OOBE" or ProcessCommandLine contains "\\Policies\\Microsoft\\Windows
+  NT\\CurrentVersion\\Winlogon" or ProcessCommandLine contains "\\SOFTWARE\\Microsoft\\Windows
+  NT\\Currentversion\\Winlogon" or ProcessCommandLine contains "\\CurrentControlSet\\Control\\SecurityProviders\\WDigest"
+  or ProcessCommandLine contains "\\Microsoft\\Windows Defender\\") and (FolderPath
+  endswith "\\reg.exe" or ProcessVersionInfoOriginalFileName =~ "reg.exe")'

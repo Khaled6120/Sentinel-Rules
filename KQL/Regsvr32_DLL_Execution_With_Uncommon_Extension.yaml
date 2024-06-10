@@ -1,0 +1,24 @@
+name: Regsvr32 DLL Execution With Uncommon Extension
+id: 50919691-7302-437f-8e10-1fe088afa145
+author: Florian Roth (Nextron Systems)
+date: 2019/07/17
+level: medium
+description: Detects a "regsvr32" execution where the DLL doesn't contain a common
+  file extension.
+status: test
+modified: 2023/05/24
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+- execution
+relevantTechniques:
+- t1574
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\regsvr32.exe" or ProcessVersionInfoOriginalFileName
+  =~ "REGSVR32.EXE") and (not((ProcessCommandLine =~ "" or (ProcessCommandLine contains
+  ".ax" or ProcessCommandLine contains ".cpl" or ProcessCommandLine contains ".dll"
+  or ProcessCommandLine contains ".ocx") or isnull(ProcessCommandLine)))) and (not((ProcessCommandLine
+  contains ".bav" or ProcessCommandLine contains ".ppl")))'

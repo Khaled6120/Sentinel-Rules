@@ -1,0 +1,22 @@
+name: Suspicious Network Command
+id: a29c1813-ab1f-4dde-b489-330b952e91ae
+author: frack113, Christopher Peacock '@securepeacock', SCYTHE '@scythe_io'
+date: 2021/12/07
+level: low
+description: Adversaries may look for details about the network configuration and
+  settings of systems they access or through information discovery of remote systems
+status: test
+modified: 2022/04/11
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1016
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "ipconfig /all" or ProcessCommandLine contains
+  "netsh interface show interface" or ProcessCommandLine contains "arp -a" or ProcessCommandLine
+  contains "nbtstat -n" or ProcessCommandLine contains "net config" or ProcessCommandLine
+  contains "route print"'

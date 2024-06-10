@@ -1,0 +1,20 @@
+name: Finger.exe Suspicious Invocation
+id: af491bca-e752-4b44-9c86-df5680533dbc
+author: Florian Roth (Nextron Systems), omkar72, oscd.community
+date: 2021/02/24
+level: high
+description: Detects suspicious aged finger.exe tool execution often used in malware
+  attacks nowadays
+status: test
+modified: 2022/08/16
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1105
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoOriginalFileName =~ "finger.exe" or FolderPath endswith
+  "\\finger.exe"'

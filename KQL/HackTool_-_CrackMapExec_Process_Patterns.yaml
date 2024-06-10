@@ -1,0 +1,27 @@
+name: HackTool - CrackMapExec Process Patterns
+id: f26307d8-14cd-47e3-a26b-4b4769f24af6
+author: Florian Roth (Nextron Systems)
+date: 2022/03/12
+level: high
+description: Detects suspicious process patterns found in logs when CrackMapExec is
+  used
+status: test
+modified: 2023/02/13
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1003.001
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "cmd.exe /c " or ProcessCommandLine contains
+  "cmd.exe /r " or ProcessCommandLine contains "cmd.exe /k " or ProcessCommandLine
+  contains "cmd /c " or ProcessCommandLine contains "cmd /r " or ProcessCommandLine
+  contains "cmd /k ") and (ProcessCommandLine contains "tasklist /fi " and ProcessCommandLine
+  contains "Imagename eq lsass.exe") and (AccountName contains "AUTHORI" or AccountName
+  contains "AUTORI")) or (ProcessCommandLine contains "do rundll32.exe C:\\windows\\System32\\comsvcs.dll,
+  MiniDump" and ProcessCommandLine contains "\\Windows\\Temp\\" and ProcessCommandLine
+  contains " full" and ProcessCommandLine contains "%%B") or (ProcessCommandLine contains
+  "tasklist /v /fo csv" and ProcessCommandLine contains "findstr /i \"lsass\"")'

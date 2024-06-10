@@ -1,0 +1,27 @@
+name: Uncommon Outbound Kerberos Connection
+id: e54979bd-c5f9-4d6c-967b-a04b19ac4c74
+author: Ilyas Ochkov, oscd.community
+date: 2019/10/24
+level: medium
+description: 'Detects uncommon outbound network activity via Kerberos default port
+  indicating possible lateral movement or first stage PrivEsc via delegation.
+
+  '
+status: test
+modified: 2024/03/15
+logsource:
+  category: network_connection
+  product: windows
+tactics:
+- credential_access
+- lateral_movement
+relevantTechniques:
+- t1550.003
+- t1558
+query: 'DeviceNetworkEvents
+
+  | where RemotePort == 88 and (not(InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\lsass.exe"))
+  and (not(((InitiatingProcessFolderPath in~ ("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe")) or (InitiatingProcessFolderPath
+  in~ ("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe", "C:\\Program Files\\Mozilla
+  Firefox\\firefox.exe")) or InitiatingProcessFolderPath endswith "\\tomcat\\bin\\tomcat8.exe")))'

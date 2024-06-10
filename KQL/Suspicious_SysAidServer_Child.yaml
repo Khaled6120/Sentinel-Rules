@@ -1,0 +1,20 @@
+name: Suspicious SysAidServer Child
+id: 60bfeac3-0d35-4302-8efb-1dd16f715bc6
+author: Florian Roth (Nextron Systems)
+date: 2022/08/26
+level: medium
+description: Detects suspicious child processes of SysAidServer (as seen in MERCURY
+  threat actor intrusions)
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- lateral_movement
+relevantTechniques:
+- t1210
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessCommandLine contains "SysAidServer" and (InitiatingProcessFolderPath
+  endswith "\\java.exe" or InitiatingProcessFolderPath endswith "\\javaw.exe")'

@@ -1,0 +1,19 @@
+name: Application Whitelisting Bypass via Dxcap.exe
+id: 60f16a96-db70-42eb-8f76-16763e333590
+author: Beyu Denis, oscd.community, Nasreddine Bencherchali (Nextron Systems)
+date: 2019/10/26
+level: medium
+description: Detects execution of of Dxcap.exe
+status: test
+modified: 2022/06/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " -c " and (FolderPath endswith "\\DXCap.exe"
+  or ProcessVersionInfoOriginalFileName =~ "DXCap.exe")'

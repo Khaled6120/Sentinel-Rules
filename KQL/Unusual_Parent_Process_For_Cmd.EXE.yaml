@@ -1,0 +1,34 @@
+name: Unusual Parent Process For Cmd.EXE
+id: 4b991083-3d0e-44ce-8fc4-b254025d8d4b
+author: Tim Rauch, Elastic (idea)
+date: 2022/09/21
+level: medium
+description: Detects suspicious parent process for cmd.exe
+status: experimental
+modified: 2023/12/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\cmd.exe" and (InitiatingProcessFolderPath endswith
+  "\\csrss.exe" or InitiatingProcessFolderPath endswith "\\ctfmon.exe" or InitiatingProcessFolderPath
+  endswith "\\dllhost.exe" or InitiatingProcessFolderPath endswith "\\epad.exe" or
+  InitiatingProcessFolderPath endswith "\\FlashPlayerUpdateService.exe" or InitiatingProcessFolderPath
+  endswith "\\GoogleUpdate.exe" or InitiatingProcessFolderPath endswith "\\jucheck.exe"
+  or InitiatingProcessFolderPath endswith "\\jusched.exe" or InitiatingProcessFolderPath
+  endswith "\\LogonUI.exe" or InitiatingProcessFolderPath endswith "\\lsass.exe" or
+  InitiatingProcessFolderPath endswith "\\regsvr32.exe" or InitiatingProcessFolderPath
+  endswith "\\SearchIndexer.exe" or InitiatingProcessFolderPath endswith "\\SearchProtocolHost.exe"
+  or InitiatingProcessFolderPath endswith "\\SIHClient.exe" or InitiatingProcessFolderPath
+  endswith "\\sihost.exe" or InitiatingProcessFolderPath endswith "\\slui.exe" or
+  InitiatingProcessFolderPath endswith "\\spoolsv.exe" or InitiatingProcessFolderPath
+  endswith "\\sppsvc.exe" or InitiatingProcessFolderPath endswith "\\taskhostw.exe"
+  or InitiatingProcessFolderPath endswith "\\unsecapp.exe" or InitiatingProcessFolderPath
+  endswith "\\WerFault.exe" or InitiatingProcessFolderPath endswith "\\wermgr.exe"
+  or InitiatingProcessFolderPath endswith "\\wlanext.exe" or InitiatingProcessFolderPath
+  endswith "\\WUDFHost.exe")'

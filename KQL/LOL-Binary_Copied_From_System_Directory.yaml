@@ -1,0 +1,33 @@
+name: LOL-Binary Copied From System Directory
+id: f5d19838-41b5-476c-98d8-ba8af4929ee2
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/08/29
+level: high
+description: 'Detects a suspicious copy operation that tries to copy a known LOLBIN
+  from system (System32, SysWOW64, WinSxS) directories to another on disk in order
+  to bypass detections based on locations.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1036.003
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "copy " and FolderPath endswith "\\cmd.exe")
+  or ((FolderPath endswith "\\robocopy.exe" or FolderPath endswith "\\xcopy.exe")
+  or (ProcessVersionInfoOriginalFileName in~ ("robocopy.exe", "XCOPY.EXE"))) or ((ProcessCommandLine
+  contains "copy-item" or ProcessCommandLine contains " copy " or ProcessCommandLine
+  contains "cpi " or ProcessCommandLine contains " cp ") and (FolderPath endswith
+  "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"))) and ((ProcessCommandLine
+  contains "\\bitsadmin.exe" or ProcessCommandLine contains "\\calc.exe" or ProcessCommandLine
+  contains "\\certutil.exe" or ProcessCommandLine contains "\\cmdl32.exe" or ProcessCommandLine
+  contains "\\cscript.exe" or ProcessCommandLine contains "\\mshta.exe" or ProcessCommandLine
+  contains "\\rundll32.exe" or ProcessCommandLine contains "\\wscript.exe") and (ProcessCommandLine
+  contains "\\System32" or ProcessCommandLine contains "\\SysWOW64" or ProcessCommandLine
+  contains "\\WinSxS"))'

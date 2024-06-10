@@ -1,0 +1,20 @@
+name: Browser Started with Remote Debugging
+id: b3d34dc5-2efd-4ae3-845f-8ec14921f449
+author: pH-T (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2022/07/27
+level: medium
+description: Detects browsers starting with the remote debugging flags. Which is a
+  technique often used to perform browser injection attacks
+status: test
+modified: 2022/12/23
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- credential_access
+relevantTechniques:
+- t1185
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " --remote-debugging-" or (ProcessCommandLine
+  contains " -start-debugger-server" and FolderPath endswith "\\firefox.exe")'

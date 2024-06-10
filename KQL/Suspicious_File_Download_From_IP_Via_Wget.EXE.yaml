@@ -1,0 +1,35 @@
+name: Suspicious File Download From IP Via Wget.EXE
+id: 17f0c0a8-8bd5-4ee0-8c5f-a342c0199f35
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/07/27
+level: high
+description: Detects potentially suspicious file downloads directly from IP addresses
+  using Wget.exe
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine endswith ".ps1" or ProcessCommandLine endswith ".ps1''"
+  or ProcessCommandLine endswith ".ps1\"" or ProcessCommandLine endswith ".dat" or
+  ProcessCommandLine endswith ".dat''" or ProcessCommandLine endswith ".dat\"" or
+  ProcessCommandLine endswith ".msi" or ProcessCommandLine endswith ".msi''" or ProcessCommandLine
+  endswith ".msi\"" or ProcessCommandLine endswith ".bat" or ProcessCommandLine endswith
+  ".bat''" or ProcessCommandLine endswith ".bat\"" or ProcessCommandLine endswith
+  ".exe" or ProcessCommandLine endswith ".exe''" or ProcessCommandLine endswith ".exe\""
+  or ProcessCommandLine endswith ".vbs" or ProcessCommandLine endswith ".vbs''" or
+  ProcessCommandLine endswith ".vbs\"" or ProcessCommandLine endswith ".vbe" or ProcessCommandLine
+  endswith ".vbe''" or ProcessCommandLine endswith ".vbe\"" or ProcessCommandLine
+  endswith ".hta" or ProcessCommandLine endswith ".hta''" or ProcessCommandLine endswith
+  ".hta\"" or ProcessCommandLine endswith ".dll" or ProcessCommandLine endswith ".dll''"
+  or ProcessCommandLine endswith ".dll\"" or ProcessCommandLine endswith ".psm1" or
+  ProcessCommandLine endswith ".psm1''" or ProcessCommandLine endswith ".psm1\"")
+  and (ProcessCommandLine matches regex "\\s-O\\s" or ProcessCommandLine contains
+  "--output-document") and ProcessCommandLine contains "http" and (FolderPath endswith
+  "\\wget.exe" or ProcessVersionInfoOriginalFileName =~ "wget.exe") and ProcessCommandLine
+  matches regex "://[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}"'

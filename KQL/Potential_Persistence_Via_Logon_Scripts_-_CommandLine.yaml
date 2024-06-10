@@ -1,0 +1,19 @@
+name: Potential Persistence Via Logon Scripts - CommandLine
+id: 21d856f9-9281-4ded-9377-51a1a6e2a432
+author: Tom Ueltschi (@c_APT_ure)
+date: 2019/01/12
+level: high
+description: Detects the addition of a new LogonScript to the registry value "UserInitMprLogonScript"
+  for potential persistence
+status: test
+modified: 2023/06/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- persistence
+relevantTechniques:
+- t1037.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "UserInitMprLogonScript"'

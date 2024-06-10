@@ -1,0 +1,19 @@
+name: Suspicious Execution of Shutdown
+id: 34ebb878-1b15-4895-b352-ca2eeb99b274
+author: frack113
+date: 2022/01/01
+level: medium
+description: Use of the commandline to shutdown or reboot windows
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- impact
+relevantTechniques:
+- t1529
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "/r " or ProcessCommandLine contains "/s ")
+  and FolderPath endswith "\\shutdown.exe"'

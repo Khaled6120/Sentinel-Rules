@@ -1,0 +1,29 @@
+name: Wusa.EXE Executed By Parent Process Located In Suspicious Location
+id: ef64fc9c-a45e-43cc-8fd8-7d75d73b4c99
+author: X__Junior (Nextron Systems)
+date: 2023/11/26
+level: high
+description: 'Detects execution of the "wusa.exe" (Windows Update Standalone Installer)
+  utility by a parent process that is located in a suspicious location.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\wusa.exe" and ((InitiatingProcessFolderPath contains
+  ":\\Perflogs\\" or InitiatingProcessFolderPath contains ":\\Users\\Public\\" or
+  InitiatingProcessFolderPath contains ":\\Windows\\Temp\\" or InitiatingProcessFolderPath
+  contains "\\Appdata\\Local\\Temp\\" or InitiatingProcessFolderPath contains "\\Temporary
+  Internet") or ((InitiatingProcessFolderPath contains ":\\Users\\" and InitiatingProcessFolderPath
+  contains "\\Favorites\\") or (InitiatingProcessFolderPath contains ":\\Users\\"
+  and InitiatingProcessFolderPath contains "\\Favourites\\") or (InitiatingProcessFolderPath
+  contains ":\\Users\\" and InitiatingProcessFolderPath contains "\\Contacts\\") or
+  (InitiatingProcessFolderPath contains ":\\Users\\" and InitiatingProcessFolderPath
+  contains "\\Pictures\\")))'

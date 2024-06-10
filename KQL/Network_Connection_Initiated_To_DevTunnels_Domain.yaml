@@ -1,0 +1,22 @@
+name: Network Connection Initiated To DevTunnels Domain
+id: 9501f8e6-8e3d-48fc-a8a6-1089dd5d7ef4
+author: Kamran Saifullah
+date: 2023/11/20
+level: medium
+description: 'Detects network connections to Devtunnels domains initiated by a process
+  on a system. Attackers can abuse that feature to establish a reverse shell or persistence
+  on a machine.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: network_connection
+  product: windows
+tactics:
+- exfiltration
+relevantTechniques:
+- t1567.001
+query: 'DeviceNetworkEvents
+
+  | where RemoteUrl endswith ".devtunnels.ms"'

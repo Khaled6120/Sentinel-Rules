@@ -1,0 +1,23 @@
+name: Arbitrary DLL or Csproj Code Execution Via Dotnet.EXE
+id: d80d5c81-04ba-45b4-84e4-92eba40e0ad3
+author: Beyu Denis, oscd.community
+date: 2020/10/18
+level: medium
+description: Detects execution of arbitrary DLLs or unsigned code via a ".csproj"
+  files via Dotnet.EXE.
+status: test
+modified: 2024/04/24
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine endswith ".csproj" or ProcessCommandLine endswith ".csproj\""
+  or ProcessCommandLine endswith ".dll" or ProcessCommandLine endswith ".dll\"" or
+  ProcessCommandLine endswith ".csproj''" or ProcessCommandLine endswith ".dll''")
+  and (FolderPath endswith "\\dotnet.exe" or ProcessVersionInfoOriginalFileName =~
+  ".NET Host")'

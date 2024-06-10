@@ -1,0 +1,26 @@
+name: Suspicious Script Execution From Temp Folder
+id: a6a39bdb-935c-4f0a-ab77-35f4bbf44d33
+author: Florian Roth (Nextron Systems), Max Altgelt (Nextron Systems), Tim Shelton
+date: 2021/07/14
+level: high
+description: Detects a suspicious script executions from temporary folder
+status: test
+modified: 2022/10/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1059
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "\\Windows\\Temp" or ProcessCommandLine contains
+  "\\Temporary Internet" or ProcessCommandLine contains "\\AppData\\Local\\Temp" or
+  ProcessCommandLine contains "\\AppData\\Roaming\\Temp" or ProcessCommandLine contains
+  "%TEMP%" or ProcessCommandLine contains "%TMP%" or ProcessCommandLine contains "%LocalAppData%\\Temp")
+  and (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"
+  or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\wscript.exe" or FolderPath
+  endswith "\\cscript.exe")) and (not((ProcessCommandLine contains " >" or ProcessCommandLine
+  contains "Out-File" or ProcessCommandLine contains "ConvertTo-Json" or ProcessCommandLine
+  contains "-WindowStyle hidden -Verb runAs" or ProcessCommandLine contains "\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Temp\\Amazon\\EC2-Windows\\")))'

@@ -1,0 +1,19 @@
+name: Suspicious PowerShell Mailbox Export to Share
+id: 889719ef-dd62-43df-86c3-768fb08dc7c0
+author: Florian Roth (Nextron Systems)
+date: 2021/08/07
+level: critical
+description: Detects usage of the powerShell New-MailboxExportRequest Cmdlet to exports
+  a mailbox to a remote or local share, as used in ProxyShell exploitations
+status: test
+modified: 2022/10/26
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- exfiltration
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "New-MailboxExportRequest" and ProcessCommandLine
+  contains " -Mailbox " and ProcessCommandLine contains " -FilePath \\\\"'

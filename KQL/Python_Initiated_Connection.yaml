@@ -1,0 +1,25 @@
+name: Python Initiated Connection
+id: bef0bc5a-b9ae-425d-85c6-7b2d705980c6
+author: frack113
+date: 2021/12/10
+level: medium
+description: Detects a Python process initiating a network connection. While this
+  often relates to package installation, it can also indicate a potential malicious
+  script communicating with a C&C server.
+status: experimental
+modified: 2023/09/07
+logsource:
+  category: network_connection
+  product: windows
+tactics:
+- discovery
+relevantTechniques:
+- t1046
+query: 'DeviceNetworkEvents
+
+  | where InitiatingProcessFolderPath contains "python" and (not((RemoteIP =~ "127.0.0.1"
+  and LocalIP =~ "127.0.0.1"))) and (not((((InitiatingProcessCommandLine contains
+  ":\\ProgramData\\Anaconda3\\Scripts\\conda-script.py" and InitiatingProcessCommandLine
+  contains "update") and InitiatingProcessParentFileName =~ "conda.exe") or (InitiatingProcessCommandLine
+  contains "C:\\ProgramData\\Anaconda3\\Scripts\\jupyter-notebook-script.py" and InitiatingProcessParentFileName
+  =~ "python.exe"))))'

@@ -1,0 +1,23 @@
+name: Curl Download And Execute Combination
+id: 21dd6d38-2b18-4453-9404-a0fe4a0cc288
+author: Sreeman, Nasreddine Bencherchali (Nextron Systems)
+date: 2020/01/13
+level: high
+description: Adversaries can use curl to download payloads remotely and execute them.
+  Curl is included by default in Windows 10 build 17063 and later.
+status: test
+modified: 2024/03/05
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- command_and_control
+- defense_evasion
+relevantTechniques:
+- t1105
+- t1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "curl " and ProcessCommandLine contains "http"
+  and ProcessCommandLine contains "-o" and ProcessCommandLine contains "&") and (ProcessCommandLine
+  contains " -c " or ProcessCommandLine contains " /c ")'

@@ -1,0 +1,26 @@
+name: Local Network Connection Initiated By Script Interpreter
+id: 08249dc0-a28d-4555-8ba5-9255a198e08c
+author: frack113
+date: 2022/08/28
+level: medium
+description: 'Detects a script interpreter (Wscript/Cscript) initiating a local network
+  connection to download or execute a script hosted on a shared folder.
+
+  '
+status: test
+modified: 2024/05/31
+logsource:
+  category: network_connection
+  product: windows
+tactics:
+- command_and_control
+relevantTechniques:
+- t1105
+query: 'DeviceNetworkEvents
+
+  | where (ipv4_is_in_range(RemoteIP, "127.0.0.0/8") or ipv4_is_in_range(RemoteIP,
+  "10.0.0.0/8") or ipv4_is_in_range(RemoteIP, "172.16.0.0/12") or ipv4_is_in_range(RemoteIP,
+  "192.168.0.0/16") or ipv4_is_in_range(RemoteIP, "169.254.0.0/16") or ipv4_is_in_range(RemoteIP,
+  "::1/128") or ipv4_is_in_range(RemoteIP, "fe80::/10") or ipv4_is_in_range(RemoteIP,
+  "fc00::/7")) and (InitiatingProcessFolderPath endswith "\\wscript.exe" or InitiatingProcessFolderPath
+  endswith "\\cscript.exe")'

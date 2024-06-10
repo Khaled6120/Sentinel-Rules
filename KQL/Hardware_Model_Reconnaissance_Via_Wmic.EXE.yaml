@@ -1,0 +1,20 @@
+name: Hardware Model Reconnaissance Via Wmic.EXE
+id: 3e3ceccd-6c06-48b8-b5ff-ab1d25db8c1d
+author: Florian Roth (Nextron Systems)
+date: 2023/02/14
+level: medium
+description: Detects the execution of WMIC with the "csproduct" which is used to obtain
+  information such as hardware models and vendor information
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- execution
+relevantTechniques:
+- t1047
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "csproduct" and (FolderPath endswith "\\wmic.exe"
+  or ProcessVersionInfoOriginalFileName =~ "wmic.exe")'

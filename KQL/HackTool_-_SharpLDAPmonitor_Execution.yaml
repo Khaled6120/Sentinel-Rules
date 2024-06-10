@@ -1,0 +1,20 @@
+name: HackTool - SharpLDAPmonitor Execution
+id: 9f8fc146-1d1a-4dbf-b8fd-dfae15e08541
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/12/30
+level: medium
+description: Detects execution of the SharpLDAPmonitor. Which can monitor the creation,
+  deletion and changes to LDAP objects.
+status: test
+modified: 2023/02/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- discovery
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "/user:" and ProcessCommandLine contains "/pass:"
+  and ProcessCommandLine contains "/dcip:") or (FolderPath endswith "\\SharpLDAPmonitor.exe"
+  or ProcessVersionInfoOriginalFileName =~ "SharpLDAPmonitor.exe")'

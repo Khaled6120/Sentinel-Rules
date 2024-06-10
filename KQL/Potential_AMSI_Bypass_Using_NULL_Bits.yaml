@@ -1,0 +1,20 @@
+name: Potential AMSI Bypass Using NULL Bits
+id: 92a974db-ab84-457f-9ec0-55db83d7a825
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/01/04
+level: medium
+description: Detects usage of special strings/null bits in order to potentially bypass
+  AMSI functionalities
+status: test
+modified: 2023/05/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- defense_evasion
+relevantTechniques:
+- t1562.001
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "if(0){{{0}}}'' -f $(0 -as [char]) +" or ProcessCommandLine
+  contains "#<NULL>"'
