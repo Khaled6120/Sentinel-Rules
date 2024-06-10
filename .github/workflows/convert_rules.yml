@@ -16,12 +16,10 @@ jobs:
     name: Build ARM Analytic Rules
     steps:
       - uses: actions/checkout@v3
-        with:
-          path: Sigma2KQL-v2  # Specify the directory where you want to checkout your repository
       - name: Convert YAML rule to ARM
         run: |
           Install-Module SentinelARConverter -AcceptLicense -Force
-          Get-ChildItem -Path 'Sigma2KQL-v2/KQL' -Filter '*.yaml' | ForEach-Object {
+          Get-ChildItem -Path 'KQL' -Filter '*.yaml' | ForEach-Object {
               Write-Output "Processing file: $($_.Name)"
               Write-Output "Full path: $($_.FullName)"  # Debugging output
               $yamlFilePath = $_.FullName.Replace('.yaml', '.json')
