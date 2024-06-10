@@ -19,7 +19,7 @@ jobs:
       - name: Convert YAML rule to ARM
         run: |
           Install-Module SentinelARConverter -AcceptLicense -Force
-          Get-ChildItem -Path 'KQL' -Filter '*.json' | ForEach-Object {
+          Get-ChildItem -Path 'KQL' -Filter '*.yaml' | ForEach-Object {
               Write-Output "Processing file: $($_.Name)"
               $yamlFilePath = $_.FullName.Replace('.yaml', '.json')
               if (-not (Test-Path $yamlFilePath) -or (Get-Item $yamlFilePath).LastWriteTime -lt $_.LastWriteTime) {
