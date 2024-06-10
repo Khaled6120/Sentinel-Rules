@@ -13,10 +13,9 @@ from sigma.pipelines.microsoft365defender import microsoft_365_defender_pipeline
 # Path to Sigma rules
 # Verify the current directory
 home_dir = os.path.expanduser('~')
-path = os.path.join(home_dir, 'sigma', 'rules', '*', '*')
+path = os.path.join(home_dir, "Desktop", 'sigma', 'rules', '*', '*')
 file_pattern = os.path.join(path, '*.yml')
 file_list_a = glob.glob(file_pattern)
-# print(file_list_a)
 
 # Function to convert YAML dict to string with custom string style
 def convert_to_string(yaml_dict):
@@ -29,10 +28,12 @@ def convert_to_string(yaml_dict):
 
     yaml.add_representer(str, repr_str, Dumper=yaml.SafeDumper)
     yaml_str = yaml.dump(yaml_dict, default_flow_style=False, Dumper=yaml.SafeDumper)
+
     return yaml_str
 
 # Ensure the output directory exists
 os.makedirs('KQL', exist_ok=True)
+
 # Process each YAML file
 for yml in file_list_a:
     with open(yml) as yaml_file:
@@ -45,28 +46,53 @@ for yml in file_list_a:
             pipeline = microsoft_365_defender_pipeline()
             pipeline.apply(sigma_rule)
 
-            # print(sigma_rule.title + " KQL Query: \n")
             kql_query = m365def_backend.convert_rule(sigma_rule)[0]
-            # print(kql_query)
             print("\n \n ")
 
-            with open('KQL/' + sigma_rule.title.replace(' ', '_') + '.kql', 'w') as kql_file:
-                kql_file.write(f'// Title: {yaml_contents.get("title", "")}\n')
-                kql_file.write(f'// ID: {yaml_contents.get("id", "")}\n')
-                kql_file.write(f'// Author: {yaml_contents.get("author", "")}\n')
-                kql_file.write(f'// Date: {yaml_contents.get("date", "")}\n')
-                kql_file.write(f'// Level: {yaml_contents.get("level", "")}\n')
-                kql_file.write(f'// Description: {yaml_contents.get("description", "")}\n')
-                kql_file.write(f'// Status: {yaml_contents.get("status", "")}\n')
-                kql_file.write(f'// Date: {yaml_contents.get("date", "")}\n')
-                kql_file.write(f'// Modified: {yaml_contents.get("modified", "")}\n')
-                kql_file.write(f'// Logsource Category: {yaml_contents.get("logsource", {}).get("category", "")}\n')
-                kql_file.write(f'// Logsource Product: {yaml_contents.get("logsource", {}).get("product", "")}\n')
-                tags = yaml_contents.get("tags", [])
-                kql_file.write(f'// Tags: {", ".join(tags) if tags else ""}\n')
-                kql_file.write(kql_query)
-            print(f'{sigma_rule.title} rule Converted successfully')
-        except Exception as e:
-            print(sigma_rule.title + " KQL Query: \n")
-            print(f'SigmaTransformationError: Rule category not yet supported by the Microsoft 365 Defender Sigma backend. {str(e)}')
+            # Initialize sets to hold unique tactics and techniques
+            tactics = set()
+            techniques = set()
 
+            # Separate tags into tactics and techniques
+            tags = yaml_contents.get('tags', [])
+            for tag in tags:
+                if tag.startswith('attack.'):
+                    parts = tag.split('.')
+                    if len(parts) == 2 and not parts[1].startswith('t'):
+                        tactics.add(parts[1])
+                    elif len(parts) == 3 and parts[1].startswith('t'):
+                        techniques.add(f'{parts[1]}.{parts[2]}')
+                    elif len(parts) == 2 and parts[1].startswith('t'):
+                        techniques.add(parts[1])
+
+            # Convert sets to sorted lists
+            sorted_tactics = sorted(tactics)
+            sorted_techniques = sorted(techniques)
+
+            # Create a dictionary for the YAML content
+            yaml_content = {
+                'name': yaml_contents.get("title", ""),
+                'id': yaml_contents.get("id", ""),
+                'author': yaml_contents.get("author", ""),
+                'date': yaml_contents.get("date", ""),
+                'level': yaml_contents.get("level", ""),
+                'description': yaml_contents.get("description", ""),
+                'status': yaml_contents.get("status", ""),
+                'modified': yaml_contents.get("modified", ""),
+                'logsource': {
+                    'category': yaml_contents.get("logsource", {}).get("category", ""),
+                    'product': yaml_contents.get("logsource", {}).get("product", "")
+                },
+                'tactics': sorted_tactics,
+                'relevantTechniques': sorted_techniques,
+                'query': kql_query
+            }
+
+            # Write the dictionary to a YAML file
+            output_file = f'KQL/{sigma_rule.title.replace(" ", "_")}.yaml'
+            with open(output_file, 'w') as yaml_file:
+                yaml.dump(yaml_content, yaml_file, sort_keys=False, default_flow_style=False)
+            
+            print(f'{sigma_rule.title} rule converted successfully')
+        except Exception as e:
+            print(f'SigmaTransformationError: Rule category not yet supported by the Microsoft 365 Defender Sigma backend. {str(e)}')
