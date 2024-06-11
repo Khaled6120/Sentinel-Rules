@@ -15,8 +15,6 @@ eventGroupingSettings:
 queryFrequency: P1D
 queryPeriod: P1D
 enabled: true
-eventGroupingSettings:
-  aggregationKind: SingleAlert
 entityMappings: null
 sentinelEntitiesMappings: null
 triggerThreshold: 0
