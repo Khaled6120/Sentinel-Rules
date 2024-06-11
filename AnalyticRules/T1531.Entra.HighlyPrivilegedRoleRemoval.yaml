@@ -1,25 +1,27 @@
-id: cd96d5f2-b6ac-46ac-a87e-55954c0c4ea2
-name: Privileged Entra Directory Roles unassigned from multiple accounts
-version: 1.0.0
-kind: Scheduled
-description: Highly privileged Entra directory roles removed from multiple accounts.
-severity: Medium
-queryFrequency: 5m
-queryPeriod: 2h
-triggerOperator: gt
-triggerThreshold: 2
+name: Abused Debug Privilege by Arbitrary Parent Processes
+id: d522eca2-2973-4391-a3e0-ef0374321dae
+author: Semanur Guneysu @semanurtg, oscd.community
+date: 2020/10/28
+level: high
+description: Detection of unusual child processes by different system processes
+status: test
+modified: 2022/11/11
+logsource:
+  category: process_creation
+  product: windows
 tactics:
-- Impact
+- privilege_escalation
 relevantTechniques:
-- T1531
-query:  'DeviceImageLoadEvents
+- t1548
+query: 'DeviceProcessEvents
 
-  | where (FolderPath endswith "\\coreclr.dll" or FolderPath endswith "\\facesdk.dll"
-  or FolderPath endswith "\\HPCustPartUI.dll" or FolderPath endswith "\\libcef.dll"
-  or FolderPath endswith "\\ZIPDLL.dll") and ((FolderPath contains ":\\Perflogs\\"
-  or FolderPath contains ":\\Users\\Public\\" or FolderPath contains "\\Temporary
-  Internet" or FolderPath contains "\\Windows\\Temp\\") or ((FolderPath contains ":\\Users\\"
-  and FolderPath contains "\\Favorites\\") or (FolderPath contains ":\\Users\\" and
-  FolderPath contains "\\Favourites\\") or (FolderPath contains ":\\Users\\" and FolderPath
-  contains "\\Contacts\\") or (FolderPath contains ":\\Users\\" and FolderPath contains
-  "\\Pictures\\")))'
+  | where (((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"
+  or FolderPath endswith "\\cmd.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE",
+  "pwsh.dll", "Cmd.Exe"))) and ((InitiatingProcessFolderPath endswith "\\winlogon.exe"
+  or InitiatingProcessFolderPath endswith "\\services.exe" or InitiatingProcessFolderPath
+  endswith "\\lsass.exe" or InitiatingProcessFolderPath endswith "\\csrss.exe" or
+  InitiatingProcessFolderPath endswith "\\smss.exe" or InitiatingProcessFolderPath
+  endswith "\\wininit.exe" or InitiatingProcessFolderPath endswith "\\spoolsv.exe"
+  or InitiatingProcessFolderPath endswith "\\searchindexer.exe") and (AccountName
+  contains "AUTHORI" or AccountName contains "AUTORI"))) and (not((ProcessCommandLine
+  contains " route " and ProcessCommandLine contains " ADD ")))'
