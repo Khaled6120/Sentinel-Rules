@@ -1,6 +1,5 @@
 id: cd96d5f2-b6ac-46ac-a87e-55954c0c4ea2
 name: Privileged Entra Directory Roles unassigned from multiple accounts
-version: 1.0.0
 kind: Scheduled
 description: Highly privileged Entra directory roles removed from multiple accounts.
 severity: Medium
