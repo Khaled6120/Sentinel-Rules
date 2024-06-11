@@ -16,10 +16,7 @@ jobs:
     name: Build ARM Analytic Rules
     steps:
       - uses: actions/checkout@v3
-        with:
-          path: 'repo'  # Specify a custom directory name for checkout
       - name: Convert YAML rule to ARM
-        working-directory: repo  # Set the working directory to the custom directory
         run: |
           Install-Module SentinelARConverter -AcceptLicense -Force
           Get-ChildItem -Path 'KQL' -Filter '*.yaml' | ForEach-Object {
@@ -33,8 +30,8 @@ jobs:
           }
         shell: pwsh
       - name: Commit and push changes
-        working-directory: repo  # Set the working directory to the custom directory
         run: |
+          cd $GITHUB_WORKSPACE
           git config --global user.name 'Khaled6120'
           git config --global user.email 'khalednaes3@gmail.com'
           git add KQL
