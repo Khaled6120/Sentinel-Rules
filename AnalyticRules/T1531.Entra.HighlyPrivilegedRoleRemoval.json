@@ -1,0 +1,43 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/d522eca2-2973-4391-a3e0-ef0374321dae')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/d522eca2-2973-4391-a3e0-ef0374321dae')]",
+      "properties": {
+        "alertRuleTemplateName": "d522eca2-2973-4391-a3e0-ef0374321dae",
+        "author": "Semanur Guneysu @semanurtg, oscd.community",
+        "customDetails": null,
+        "date": "2020/10/28",
+        "description": "Detection of unusual child processes by different system processes",
+        "displayName": "Abused Debug Privilege by Arbitrary Parent Processes",
+        "enabled": true,
+        "entityMappings": null,
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/11/11",
+        "query": "DeviceProcessEvents\n| where (((FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\cmd.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\", \"pwsh.dll\", \"Cmd.Exe\"))) and ((InitiatingProcessFolderPath endswith \"\\\\winlogon.exe\" or InitiatingProcessFolderPath endswith \"\\\\services.exe\" or InitiatingProcessFolderPath endswith \"\\\\lsass.exe\" or InitiatingProcessFolderPath endswith \"\\\\csrss.exe\" or InitiatingProcessFolderPath endswith \"\\\\smss.exe\" or InitiatingProcessFolderPath endswith \"\\\\wininit.exe\" or InitiatingProcessFolderPath endswith \"\\\\spoolsv.exe\" or InitiatingProcessFolderPath endswith \"\\\\searchindexer.exe\") and (AccountName contains \"AUTHORI\" or AccountName contains \"AUTORI\"))) and (not((ProcessCommandLine contains \" route \" and ProcessCommandLine contains \" ADD \")))",
+        "severity": "Medium",
+        "status": "test",
+        "suppressionDuration": "PT1H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1548"
+        ],
+        "templateVersion": "1.0.0"
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}
