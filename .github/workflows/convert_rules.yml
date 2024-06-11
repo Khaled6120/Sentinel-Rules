@@ -25,6 +25,7 @@ jobs:
                   if (-not (Test-Path $armFilePath) -or (Get-Item $armFilePath).LastWriteTime -lt $_.LastWriteTime) {
                       Write-Host "Converting $($_.FullName) to $armFilePath"
                       Write-Host "FullName: $_.FullName"
+                      $_.FullName = $_.FullName.Replace('.Fullname', '')
                       Convert-SentinelARYamlToArm -Filename $_.FullName -UseOriginalFilename
                   }
               }
