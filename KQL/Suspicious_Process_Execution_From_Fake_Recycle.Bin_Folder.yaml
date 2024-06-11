@@ -2,7 +2,7 @@ name: Suspicious Process Execution From Fake Recycle.Bin Folder
 id: 5ce0f04e-3efc-42af-839d-5b3a543b76c0
 author: X__Junior (Nextron Systems)
 date: 2023/07/12
-level: high
+severity: high
 description: Detects process execution from a fake recycle bin folder, often used
   to avoid security solution.
 status: experimental
@@ -17,3 +17,13 @@ relevantTechniques: []
 query: 'DeviceProcessEvents
 
   | where FolderPath contains "RECYCLERS.BIN\\" or FolderPath contains "RECYCLER.BIN\\"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Import LDAP Data Interchange Format File Via Ldifde.EXE
 id: 6f535e01-ca1f-40be-ab8d-45b19c0c8b7f
 author: '@gott_cyber'
 date: 2022/09/02
-level: medium
+severity: medium
 description: 'Detects the execution of "Ldifde.exe" with the import flag "-i". The
   can be abused to include HTTP-based arguments which will allow the arbitrary download
   of files from a remote server.
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "-i" and ProcessCommandLine contains "-f")
   and (FolderPath endswith "\\ldifde.exe" or ProcessVersionInfoOriginalFileName =~
   "ldifde.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Sticky Key Like Backdoor Execution
 id: 2fdefcb3-dbda-401e-ae23-f0db027628bc
 author: Florian Roth (Nextron Systems), @twjackomo, Jonhnathan Ribeiro, oscd.community
 date: 2018/03/15
-level: critical
+severity: critical
 description: Detects the usage and installation of a backdoor that uses an option
   to register a malicious debugger for built-in tools that are accessible in the login
   screen
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\regsvr32.exe"
   or FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\wscript.exe" or
   FolderPath endswith "\\wt.exe") and InitiatingProcessFolderPath endswith "\\winlogon.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

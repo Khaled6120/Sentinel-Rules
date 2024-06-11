@@ -2,7 +2,7 @@ name: Directory Removal Via Rmdir
 id: 41ca393d-538c-408a-ac27-cf1e038be80c
 author: frack113
 date: 2022/01/15
-level: low
+severity: low
 description: 'Detects execution of the builtin "rmdir" command in order to delete
   directories.
 
@@ -29,3 +29,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "/s" or ProcessCommandLine contains "/q") and
   (FolderPath endswith "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe")
   and ProcessCommandLine contains "rmdir"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

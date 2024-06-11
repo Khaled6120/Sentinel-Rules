@@ -2,7 +2,7 @@ name: Suspicious Splwow64 Without Params
 id: 1f1a8509-2cbb-44f5-8751-8e1571518ce2
 author: Florian Roth (Nextron Systems)
 date: 2021/08/23
-level: high
+severity: high
 description: Detects suspicious Splwow64.exe process without any command line parameters
 status: test
 modified: 2022/12/25
@@ -16,3 +16,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine endswith "splwow64.exe" and FolderPath endswith "\\splwow64.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

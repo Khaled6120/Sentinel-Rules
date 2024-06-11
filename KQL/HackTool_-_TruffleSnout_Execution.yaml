@@ -2,7 +2,7 @@ name: HackTool - TruffleSnout Execution
 id: 69ca006d-b9a9-47f5-80ff-ecd4d25d481a
 author: frack113
 date: 2022/08/20
-level: high
+severity: high
 description: Detects the use of TruffleSnout.exe an iterative AD discovery toolkit
   for offensive operators, situational awareness and targeted low noise enumeration.
 status: test
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessVersionInfoOriginalFileName =~ "TruffleSnout.exe" or FolderPath endswith
   "\\TruffleSnout.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

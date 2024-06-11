@@ -3,7 +3,7 @@ id: 04936b66-3915-43ad-a8e5-809eadfd1141
 author: Furkan CALISKAN, @caliskanfurkan_, @oscd_initiative, Nasreddine Bencherchali
   (Nextron Systems)
 date: 2020/10/05
-level: low
+severity: low
 description: 'Detects execution of findstr with the "s" and "i" flags for a "subfolder"
   and "insensitive" search respectively. Attackers sometimes leverage this built-in
   utility to search the system for interesting files or filter through results of
@@ -28,3 +28,13 @@ query: 'DeviceProcessEvents
   or ProcessVersionInfoOriginalFileName =~ "FINDSTR.EXE") and ((ProcessCommandLine
   contains " -i " or ProcessCommandLine contains " /i ") and (ProcessCommandLine contains
   " -s " or ProcessCommandLine contains " /s "))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

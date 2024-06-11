@@ -2,7 +2,7 @@ name: Outlook EnableUnsafeClientMailRules Setting Enabled
 id: 55f0a3a1-846e-40eb-8273-677371b8d912
 author: Markus Neis, Nasreddine Bencherchali (Nextron Systems)
 date: 2018/12/27
-level: high
+severity: high
 description: Detects an attacker trying to enable the outlook security setting "EnableUnsafeClientMailRules"
   which allows outlook to run applications or execute macros
 status: test
@@ -18,3 +18,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "\\Outlook\\Security\\EnableUnsafeClientMailRules"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

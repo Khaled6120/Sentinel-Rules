@@ -2,7 +2,7 @@ name: Suspicious PowerShell Encoded Command Patterns
 id: b9d9cc83-380b-4ba3-8d8f-60c0e7e2930c
 author: Florian Roth (Nextron Systems)
 date: 2022/05/24
-level: high
+severity: high
 description: Detects PowerShell command line patterns in combincation with encoded
   commands that often appear in malware infection chains
 status: test
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.Exe", "pwsh.dll")))) and
   (not((InitiatingProcessFolderPath contains "C:\\Packages\\Plugins\\Microsoft.GuestConfiguration.ConfigurationforWindows\\"
   or InitiatingProcessFolderPath contains "\\gc_worker.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

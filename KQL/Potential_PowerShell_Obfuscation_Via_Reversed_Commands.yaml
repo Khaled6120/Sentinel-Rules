@@ -2,7 +2,7 @@ name: Potential PowerShell Obfuscation Via Reversed Commands
 id: b6b49cd1-34d6-4ead-b1bf-176e9edba9a4
 author: Teymur Kheirkhabarov (idea), Vasiliy Burov (rule), oscd.community, Tim Shelton
 date: 2020/10/11
-level: high
+severity: high
 description: Detects the presence of reversed PowerShell commands in the CommandLine.
   This is often used as a method of obfuscation by attackers
 status: test
@@ -34,3 +34,13 @@ query: 'DeviceProcessEvents
   or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll")))) and
   (not((ProcessCommandLine contains " -EncodedCommand " or ProcessCommandLine contains
   " -enc ")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

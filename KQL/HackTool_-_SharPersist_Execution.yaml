@@ -2,7 +2,7 @@ name: HackTool - SharPersist Execution
 id: 26488ad0-f9fd-4536-876f-52fea846a2e4
 author: Florian Roth (Nextron Systems)
 date: 2022/09/15
-level: high
+severity: high
 description: Detects the execution of the hacktool SharPersist - used to deploy various
   different kinds of persistence mechanisms
 status: test
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   contains " -m add") or (ProcessCommandLine contains " -t schtask -c " and ProcessCommandLine
   contains " -m add") or (FolderPath endswith "\\SharPersist.exe" or ProcessVersionInfoProductName
   =~ "SharPersist")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

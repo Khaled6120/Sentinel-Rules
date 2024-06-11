@@ -2,7 +2,7 @@ name: HackTool - Rubeus Execution
 id: 7ec2c172-dceb-4c10-92c9-87c1881b7e18
 author: Florian Roth (Nextron Systems)
 date: 2018/12/19
-level: critical
+severity: critical
 description: Detects the execution of the hacktool Rubeus via PE information of command
   line parameters
 status: stable
@@ -29,3 +29,13 @@ query: 'DeviceProcessEvents
   contains "harvest /interval:" or ProcessCommandLine contains "s4u /user:" or ProcessCommandLine
   contains "s4u /ticket:" or ProcessCommandLine contains "hash /password:" or ProcessCommandLine
   contains "golden /aes256:" or ProcessCommandLine contains "silver /user:")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

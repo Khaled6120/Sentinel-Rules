@@ -2,7 +2,7 @@ name: Suspicious Scheduled Task Creation via Masqueraded XML File
 id: dd2a821e-3b07-4d3b-a9ac-929fe4c6ca0c
 author: Swachchhanda Shrawan Poudel, Elastic (idea)
 date: 2023/04/20
-level: medium
+severity: medium
 description: Detects the creation of a scheduled task using the "-XML" flag with a
   file without the '.xml' extension. This behavior could be indicative of potential
   defense evasion attempt during persistence
@@ -32,3 +32,13 @@ query: 'DeviceProcessEvents
   Device Manager\\AdmSetupActions.exe" or InitiatingProcessFolderPath endswith ":\\Program
   Files (x86)\\Zemana\\AntiMalware\\AntiMalware.exe" or InitiatingProcessFolderPath
   endswith ":\\Program Files\\Dell\\SupportAssist\\pcdrcui.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

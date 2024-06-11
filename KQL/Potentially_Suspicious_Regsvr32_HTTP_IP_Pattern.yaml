@@ -2,7 +2,7 @@ name: Potentially Suspicious Regsvr32 HTTP IP Pattern
 id: 2dd2c217-bf68-437a-b57c-fe9fd01d5de8
 author: Florian Roth (Nextron Systems)
 date: 2022/01/11
-level: high
+severity: high
 description: Detects regsvr32 execution to download and install DLLs located remotely
   where the address is an IP address.
 status: test
@@ -36,3 +36,13 @@ query: 'DeviceProcessEvents
   contains " -i:https://5" or ProcessCommandLine contains " -i:https://6" or ProcessCommandLine
   contains " -i:https://7" or ProcessCommandLine contains " -i:https://8" or ProcessCommandLine
   contains " -i:https://9")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

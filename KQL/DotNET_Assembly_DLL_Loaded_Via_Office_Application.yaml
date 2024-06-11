@@ -2,7 +2,7 @@ name: DotNET Assembly DLL Loaded Via Office Application
 id: ff0f2b05-09db-4095-b96d-1b75ca24894a
 author: Antonlovesdnb
 date: 2020/02/19
-level: medium
+severity: medium
 description: Detects any assembly DLL being loaded by an Office Product
 status: test
 modified: 2023/03/29
@@ -21,3 +21,13 @@ query: 'DeviceImageLoadEvents
   endswith "\\onenoteim.exe" or InitiatingProcessFolderPath endswith "\\outlook.exe"
   or InitiatingProcessFolderPath endswith "\\powerpnt.exe" or InitiatingProcessFolderPath
   endswith "\\winword.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Potential CCleanerReactivator.DLL Sideloading
 id: 3735d5ac-d770-4da0-99ff-156b180bc600
 author: X__Junior
 date: 2023/07/13
-level: medium
+severity: medium
 description: Detects potential DLL sideloading of "CCleanerReactivator.dll"
 status: test
 modified: ''
@@ -22,3 +22,13 @@ query: 'DeviceImageLoadEvents
   endswith "\\CCleanerReactivator.exe" and (InitiatingProcessFolderPath startswith
   "C:\\Program Files\\CCleaner\\" or InitiatingProcessFolderPath startswith "C:\\Program
   Files (x86)\\CCleaner\\"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -3,7 +3,7 @@ id: 322ed9ec-fcab-4f67-9a34-e7c6aef43614
 author: Florian Roth (Nextron Systems), omkar72, oscd.community, Swachchhanda Shrawan
   Poudel
 date: 2019/01/29
-level: medium
+severity: medium
 description: Detects the execution of netsh commands that configure a new port forwarding
   (PortProxy) rule
 status: test
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   "p " and ProcessCommandLine contains "a " and ProcessCommandLine contains "v ")
   or (ProcessCommandLine contains "connectp" and ProcessCommandLine contains "listena"
   and ProcessCommandLine contains "c="))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

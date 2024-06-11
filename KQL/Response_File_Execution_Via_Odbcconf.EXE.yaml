@@ -3,7 +3,7 @@ id: 5f03babb-12db-4eec-8c82-7b4cb5580868
 author: Kirill Kiryanov, Beyu Denis, Daniil Yugoslavskiy, oscd.community, Nasreddine
   Bencherchali (Nextron Systems)
 date: 2023/05/22
-level: medium
+severity: medium
 description: Detects execution of "odbcconf" with the "-f" flag in order to load a
   response file which might contain a malicious action.
 status: experimental
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains " -f " or ProcessCommandLine contains " /f
   ") and (FolderPath endswith "\\odbcconf.exe" or ProcessVersionInfoOriginalFileName
   =~ "odbcconf.exe") and ProcessCommandLine contains ".rsp"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

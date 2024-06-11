@@ -2,7 +2,7 @@ name: Wusa.EXE Extracting Cab Files From Suspicious Paths
 id: c74c0390-3e20-41fd-a69a-128f0275a5ea
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/08/05
-level: high
+severity: high
 description: Detects usage of the "wusa.exe" (Windows Update Standalone Installer)
   utility to extract cab using the "/extract" argument from suspicious paths
 status: test
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
   ":\\Users\\Public\\" or ProcessCommandLine contains ":\\Windows\\Temp\\" or ProcessCommandLine
   contains "\\Appdata\\Local\\Temp\\") and (ProcessCommandLine contains "/extract:"
   and FolderPath endswith "\\wusa.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Uncommon Outbound Kerberos Connection
 id: e54979bd-c5f9-4d6c-967b-a04b19ac4c74
 author: Ilyas Ochkov, oscd.community
 date: 2019/10/24
-level: medium
+severity: medium
 description: 'Detects uncommon outbound network activity via Kerberos default port
   indicating possible lateral movement or first stage PrivEsc via delegation.
 
@@ -25,3 +25,13 @@ query: 'DeviceNetworkEvents
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe")) or (InitiatingProcessFolderPath
   in~ ("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe", "C:\\Program Files\\Mozilla
   Firefox\\firefox.exe")) or InitiatingProcessFolderPath endswith "\\tomcat\\bin\\tomcat8.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

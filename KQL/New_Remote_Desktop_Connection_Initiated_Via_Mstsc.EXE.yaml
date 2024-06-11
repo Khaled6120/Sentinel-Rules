@@ -2,7 +2,7 @@ name: New Remote Desktop Connection Initiated Via Mstsc.EXE
 id: 954f0af7-62dd-418f-b3df-a84bc2c7a774
 author: frack113
 date: 2022/01/07
-level: medium
+severity: medium
 description: 'Detects the usage of "mstsc.exe" with the "/v" flag to initiate a connection
   to a remote server.
 
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   or ProcessVersionInfoOriginalFileName =~ "mstsc.exe")) and (not((ProcessCommandLine
   contains "C:\\ProgramData\\Microsoft\\WSL\\wslg.rdp" and InitiatingProcessFolderPath
   =~ "C:\\Windows\\System32\\lxss\\wslhost.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

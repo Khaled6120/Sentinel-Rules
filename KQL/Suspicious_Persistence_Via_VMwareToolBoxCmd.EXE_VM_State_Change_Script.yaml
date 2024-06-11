@@ -2,7 +2,7 @@ name: Suspicious Persistence Via VMwareToolBoxCmd.EXE VM State Change Script
 id: 236d8e89-ed95-4789-a982-36f4643738ba
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/06/14
-level: high
+severity: high
 description: Detects execution of the "VMwareToolBoxCmd.exe" with the "script" and
   "set" flag to setup a specific script that's located in a potentially suspicious
   location to run for a specific VM state
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   contains ":\\Temp\\" or ProcessCommandLine contains ":\\Windows\\System32\\Tasks\\"
   or ProcessCommandLine contains ":\\Windows\\Tasks\\" or ProcessCommandLine contains
   ":\\Windows\\Temp\\" or ProcessCommandLine contains "\\AppData\\Local\\Temp")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

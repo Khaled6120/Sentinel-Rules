@@ -2,7 +2,7 @@ name: Uncommon Child Process Of Defaultpack.EXE
 id: b2309017-4235-44fe-b5af-b15363011957
 author: frack113
 date: 2022/12/31
-level: medium
+severity: medium
 description: Detects uncommon child processes of "DefaultPack.EXE" binary as a proxy
   to launch other programs
 status: test
@@ -18,3 +18,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where InitiatingProcessFolderPath endswith "\\DefaultPack.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

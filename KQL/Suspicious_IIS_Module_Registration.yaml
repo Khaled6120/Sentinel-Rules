@@ -2,7 +2,7 @@ name: Suspicious IIS Module Registration
 id: 043c4b8b-3a54-4780-9682-081cb6b8185c
 author: Florian Roth (Nextron Systems), Microsoft (idea)
 date: 2022/08/04
-level: high
+severity: high
 description: Detects a suspicious IIS module registration as described in Microsoft
   threat report on IIS backdoors
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   contains "appcmd.exe add module" or (ProcessCommandLine contains " system.enterpriseservices.internal.publish"
   and FolderPath endswith "\\powershell.exe") or (ProcessCommandLine contains "gacutil"
   and ProcessCommandLine contains " /I"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

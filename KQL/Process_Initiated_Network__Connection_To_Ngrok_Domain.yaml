@@ -2,7 +2,7 @@ name: Process Initiated Network  Connection To Ngrok Domain
 id: 18249279-932f-45e2-b37a-8925f2597670
 author: Florian Roth (Nextron Systems)
 date: 2022/07/16
-level: high
+severity: high
 description: 'Detects an executable initiating a network connection to "ngrok" domains.
 
   Attackers were seen using this "ngrok" in order to store their second stage payloads
@@ -26,3 +26,13 @@ query: 'DeviceNetworkEvents
   | where RemoteUrl endswith ".ngrok-free.app" or RemoteUrl endswith ".ngrok-free.dev"
   or RemoteUrl endswith ".ngrok.app" or RemoteUrl endswith ".ngrok.dev" or RemoteUrl
   endswith ".ngrok.io"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

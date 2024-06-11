@@ -2,7 +2,7 @@ name: PUA - AdvancedRun Execution
 id: d2b749ee-4225-417e-b20e-a8d2193cbb84
 author: Florian Roth (Nextron Systems)
 date: 2022/01/20
-level: medium
+severity: medium
 description: Detects the execution of AdvancedRun utility
 status: test
 modified: 2023/02/21
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   contains " /EXEFilename " and ProcessCommandLine contains " /Run") or (ProcessCommandLine
   contains " /WindowState 0" and ProcessCommandLine contains " /RunAs " and ProcessCommandLine
   contains " /CommandLine ")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Invoke-Obfuscation Obfuscated IEX Invocation
 id: 4bf943c6-5146-4273-98dd-e958fd1e3abf
 author: Daniel Bohannon (@Mandiant/@FireEye), oscd.community
 date: 2019/11/08
-level: high
+severity: high
 description: Detects all variations of obfuscated powershell IEX invocation code generated
   by Invoke-Obfuscation framework from the following code block
 status: test
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   ProcessCommandLine matches regex "\\*mdr\\*\\W\\s*\\)\\.Name" or ProcessCommandLine
   matches regex "\\$VerbosePreference\\.ToString\\(" or ProcessCommandLine matches
   regex "\\[String\\]\\s*\\$VerbosePreference"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

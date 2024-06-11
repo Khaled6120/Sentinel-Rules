@@ -2,7 +2,7 @@ name: Potential Fake Instance Of Hxtsr.EXE Executed
 id: 4e762605-34a8-406d-b72e-c1a089313320
 author: Sreeman
 date: 2020/04/17
-level: medium
+severity: medium
 description: 'HxTsr.exe is a Microsoft compressed executable file called Microsoft
   Outlook Communications.
 
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   | where FolderPath endswith "\\hxtsr.exe" and (not((FolderPath contains ":\\program
   files\\windowsapps\\microsoft.windowscommunicationsapps_" and FolderPath endswith
   "\\hxtsr.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

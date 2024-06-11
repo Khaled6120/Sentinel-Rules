@@ -2,7 +2,7 @@ name: Potential Recon Activity Via Nltest.EXE
 id: 5cc90652-4cbd-4241-aa3b-4b462fa5a248
 author: Craig Young, oscd.community, Georg Lauenstein
 date: 2021/07/24
-level: medium
+severity: medium
 description: Detects nltest commands that can be used for information discovery
 status: test
 modified: 2023/12/15
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   contains "dnsgetdc:" or ProcessCommandLine contains "domain_trusts" or ProcessCommandLine
   contains "dsgetdc:" or ProcessCommandLine contains "parentdomain" or ProcessCommandLine
   contains "trusted_domains"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

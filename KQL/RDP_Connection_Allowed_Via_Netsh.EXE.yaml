@@ -2,7 +2,7 @@ name: RDP Connection Allowed Via Netsh.EXE
 id: 01aeb693-138d-49d2-9403-c4f52d7d3d62
 author: Sander Wiebing
 date: 2020/05/23
-level: high
+severity: high
 description: Detects usage of the netsh command to open and allow connections to port
   3389 (RDP). As seen used by Sarwent Malware
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   "add " and ProcessCommandLine contains "tcp " and ProcessCommandLine contains "3389"))
   and (FolderPath endswith "\\netsh.exe" or ProcessVersionInfoOriginalFileName =~
   "netsh.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

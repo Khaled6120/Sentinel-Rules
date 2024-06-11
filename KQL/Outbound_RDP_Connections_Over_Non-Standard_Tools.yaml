@@ -2,7 +2,7 @@ name: Outbound RDP Connections Over Non-Standard Tools
 id: ed74fe75-7594-4b4b-ae38-e38e3fd2eb23
 author: Markus Neis
 date: 2019/05/15
-level: high
+severity: high
 description: 'Detects Non-Standard tools initiating a connection over port 3389 indicating
   possible lateral movement.
 
@@ -45,3 +45,13 @@ query: 'DeviceNetworkEvents
   in~ ("C:\\Program Files\\TSplus\\Java\\bin\\HTML5service.exe", "C:\\Program Files
   (x86)\\TSplus\\Java\\bin\\HTML5service.exe")) or InitiatingProcessFolderPath =~
   "<unknown process>")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

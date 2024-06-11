@@ -2,7 +2,7 @@ name: Suspicious Encoded And Obfuscated Reflection Assembly Load Function Call
 id: 9c0295ce-d60d-40bd-bd74-84673b7592b1
 author: pH-T (Nextron Systems)
 date: 2022/03/01
-level: high
+severity: high
 description: Detects suspicious base64 encoded and obfuscated "LOAD" keyword used
   in .NET "reflection.assembly"
 status: test
@@ -30,3 +30,13 @@ query: 'DeviceProcessEvents
   contains "oAOgAoACcATABvACcAKwAnAGEAZAAnACkA" or ProcessCommandLine contains "6ADoAKAAnAEwAbwAnACsAJwBhAGQAJwApA"
   or ProcessCommandLine contains "OgA6ACgAJwBMAG8AYQAnACsAJwBkACcAKQ" or ProcessCommandLine
   contains "oAOgAoACcATABvAGEAJwArACcAZAAnACkA" or ProcessCommandLine contains "6ADoAKAAnAEwAbwBhACcAKwAnAGQAJwApA"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

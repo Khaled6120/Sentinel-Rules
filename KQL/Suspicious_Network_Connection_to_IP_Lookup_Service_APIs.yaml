@@ -2,7 +2,7 @@ name: Suspicious Network Connection to IP Lookup Service APIs
 id: edf3485d-dac4-4d50-90e4-b0e5813f7e60
 author: Janantha Marasinghe, Nasreddine Bencherchali (Nextron Systems)
 date: 2023/04/24
-level: medium
+severity: medium
 description: Detects external IP address lookups by non-browser processes via services
   such as "api.ipify.org". This could be indicative of potential post compromise internet
   test activity.
@@ -54,3 +54,13 @@ query: 'DeviceNetworkEvents
   endswith "\\safari.exe" or InitiatingProcessFolderPath endswith "\\seamonkey.exe"
   or InitiatingProcessFolderPath endswith "\\vivaldi.exe" or InitiatingProcessFolderPath
   endswith "\\whale.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

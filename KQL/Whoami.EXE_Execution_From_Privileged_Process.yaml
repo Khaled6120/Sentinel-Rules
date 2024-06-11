@@ -2,7 +2,7 @@ name: Whoami.EXE Execution From Privileged Process
 id: 79ce34ca-af29-4d0e-b832-fc1b377020db
 author: Florian Roth (Nextron Systems), Teymur Kheirkhabarov
 date: 2022/01/28
-level: high
+severity: high
 description: Detects the execution of "whoami.exe" by privileged accounts that are
   often abused by threat actors
 status: experimental
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   | where (ProcessVersionInfoOriginalFileName =~ "whoami.exe" or FolderPath endswith
   "\\whoami.exe") and (AccountName contains "AUTHORI" or AccountName contains "AUTORI"
   or AccountName contains "TrustedInstaller")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

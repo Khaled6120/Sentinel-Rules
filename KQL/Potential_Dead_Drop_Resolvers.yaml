@@ -2,7 +2,7 @@ name: Potential Dead Drop Resolvers
 id: 297ae038-edc2-4b2e-bb3e-7c5fc94dd5c7
 author: Sorina Ionescu, X__Junior (Nextron Systems)
 date: 2022/08/17
-level: high
+severity: high
 description: 'Detects an executable, which is not an internet browser or known application,
   initiating network connections to legit popular websites, which were seen to be
   used as dead drop resolvers in previous attacks.
@@ -116,3 +116,13 @@ query: 'DeviceNetworkEvents
   and InitiatingProcessFolderPath endswith "\\WhatsApp.exe" and (InitiatingProcessFolderPath
   startswith "C:\\Program Files (x86)\\WindowsApps\\" or InitiatingProcessFolderPath
   startswith "C:\\Program Files\\WindowsApps\\")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Audio Capture via SoundRecorder
 id: 83865853-59aa-449e-9600-74b9d89a6d6e
 author: E.M. Anhaus (originally from Atomic Blue Detections, Endgame), oscd.community
 date: 2019/10/24
-level: medium
+severity: medium
 description: Detect attacker collecting audio via SoundRecorder application.
 status: test
 modified: 2021/11/27
@@ -16,3 +16,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "/FILE" and FolderPath endswith "\\SoundRecorder.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Invocation of Active Directory Diagnostic Tool (ntdsutil.exe)
 id: 2afafd61-6aae-4df4-baed-139fa1f4c345
 author: Thomas Patzke
 date: 2019/01/16
-level: medium
+severity: medium
 description: Detects execution of ntdsutil.exe, which can be used for various attacks
   against the NTDS database (NTDS.DIT)
 status: test
@@ -17,3 +17,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\ntdsutil.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

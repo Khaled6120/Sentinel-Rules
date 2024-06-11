@@ -2,7 +2,7 @@ name: SQL Client Tools PowerShell Session Detection
 id: a746c9b8-a2fb-4ee5-a428-92bee9e99060
 author: Agro (@agro_sev) oscd.communitly
 date: 2020/10/13
-level: medium
+severity: medium
 description: 'This rule detects execution of a PowerShell code through the sqltoolsps.exe
   utility, which is included in the standard set of utilities supplied with the Microsoft
   SQL Server Management studio.
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   | where (FolderPath endswith "\\sqltoolsps.exe" or InitiatingProcessFolderPath endswith
   "\\sqltoolsps.exe" or ProcessVersionInfoOriginalFileName =~ "\\sqltoolsps.exe")
   and (not(InitiatingProcessFolderPath endswith "\\smss.exe"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

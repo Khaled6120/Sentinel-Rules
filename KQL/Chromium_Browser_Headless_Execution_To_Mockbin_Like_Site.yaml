@@ -2,7 +2,7 @@ name: Chromium Browser Headless Execution To Mockbin Like Site
 id: 1c526788-0abe-4713-862f-b520da5e5316
 author: X__Junior (Nextron Systems)
 date: 2023/09/11
-level: high
+severity: high
 description: Detects the execution of a Chromium based browser process with the "headless"
   flag and a URL pointing to the mockbin.org service (which can be used to exfiltrate
   data).
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   or FolderPath endswith "\\chrome.exe" or FolderPath endswith "\\msedge.exe" or FolderPath
   endswith "\\opera.exe" or FolderPath endswith "\\vivaldi.exe") and (ProcessCommandLine
   contains "://run.mocky" or ProcessCommandLine contains "://mockbin")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

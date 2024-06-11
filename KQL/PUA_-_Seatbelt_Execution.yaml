@@ -2,7 +2,7 @@ name: PUA - Seatbelt Execution
 id: 38646daa-e78f-4ace-9de0-55547b2d30da
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/10/18
-level: high
+severity: high
 description: Detects the execution of the PUA/Recon tool Seatbelt via PE information
   of command line parameters
 status: test
@@ -32,3 +32,13 @@ query: 'DeviceProcessEvents
   contains " -group=slack" or ProcessCommandLine contains " -group=system" or ProcessCommandLine
   contains " -group=user" or ProcessCommandLine contains " -group=all") and ProcessCommandLine
   contains " -outputfile=")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

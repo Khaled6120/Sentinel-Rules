@@ -3,7 +3,7 @@ id: d797268e-28a9-49a7-b9a8-2f5039011c5c
 author: E.M. Anhaus (originally from Atomic Blue Detections, Tony Lambert), oscd.community,
   Florian Roth
 date: 2019/10/24
-level: high
+severity: high
 description: Detects use of WSReset.exe to bypass User Account Control (UAC). Adversaries
   use this technique to execute privileged processes.
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
 
   | where InitiatingProcessFolderPath endswith "\\wsreset.exe" and (not((FolderPath
   endswith "\\conhost.exe" or ProcessVersionInfoOriginalFileName =~ "CONHOST.EXE")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

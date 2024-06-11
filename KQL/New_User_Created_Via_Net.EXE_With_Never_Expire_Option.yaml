@@ -2,7 +2,7 @@ name: New User Created Via Net.EXE With Never Expire Option
 id: b9f0e6f5-09b4-4358-bae4-08408705bd5c
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/07/12
-level: high
+severity: high
 description: Detects creation of local users via the net.exe command with the option
   "never expire"
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   and ProcessCommandLine contains "expires:never") and ((FolderPath endswith "\\net.exe"
   or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName in~
   ("net.exe", "net1.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

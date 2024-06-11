@@ -2,7 +2,7 @@ name: UAC Bypass Using PkgMgr and DISM
 id: a743ceba-c771-4d75-97eb-8a90f7f4844c
 author: Christian Burkard (Nextron Systems)
 date: 2021/08/23
-level: high
+severity: high
 description: Detects the pattern of UAC Bypass using pkgmgr.exe and dism.exe (UACMe
   23)
 status: test
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\dism.exe" and (ProcessIntegrityLevel in~ ("High",
   "System")) and InitiatingProcessFolderPath endswith "\\pkgmgr.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

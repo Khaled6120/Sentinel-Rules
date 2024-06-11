@@ -2,7 +2,7 @@ name: HackTool - SILENTTRINITY Stager DLL Load
 id: 75c505b1-711d-4f68-a357-8c3fe37dbf2d
 author: Aleksey Potapov, oscd.community
 date: 2019/10/22
-level: high
+severity: high
 description: Detects SILENTTRINITY stager dll loading activity
 status: test
 modified: 2023/02/17
@@ -16,3 +16,13 @@ relevantTechniques:
 query: 'DeviceImageLoadEvents
 
   | where InitiatingProcessVersionInfoFileDescription contains "st2stager"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: HTML Help HH.EXE Suspicious Child Process
 id: 52cad028-0ff0-4854-8f67-d25dfcbc78b4
 author: Maxim Pavlunin, Nasreddine Bencherchali (Nextron Systems)
 date: 2020/04/01
-level: high
+severity: high
 description: Detects a suspicious child process of a Microsoft HTML Help (HH.exe)
 status: test
 modified: 2023/04/12
@@ -35,3 +35,13 @@ query: 'DeviceProcessEvents
   or FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\schtasks.exe"
   or FolderPath endswith "\\wmic.exe" or FolderPath endswith "\\wscript.exe") and
   InitiatingProcessFolderPath endswith "\\hh.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

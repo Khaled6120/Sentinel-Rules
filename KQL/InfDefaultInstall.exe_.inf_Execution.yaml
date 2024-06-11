@@ -2,7 +2,7 @@ name: InfDefaultInstall.exe .inf Execution
 id: ce7cf472-6fcc-490a-9481-3786840b5d9b
 author: frack113
 date: 2021/07/13
-level: medium
+severity: medium
 description: Executes SCT script using scrobj.dll from a command in entered into a
   specially prepared INF file.
 status: test
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "InfDefaultInstall.exe " and ProcessCommandLine
   contains ".inf"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

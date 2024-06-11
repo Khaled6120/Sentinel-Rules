@@ -2,7 +2,7 @@ name: Suspicious File Downloaded From File-Sharing Website Via Certutil.EXE
 id: 42a5f1e7-9603-4f6d-97ae-3f37d130d794
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/02/15
-level: high
+severity: high
 description: Detects the execution of certutil with certain flags that allow the utility
   to download files from file-sharing websites.
 status: experimental
@@ -33,3 +33,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains "temp.sh" or ProcessCommandLine contains "transfer.sh"
   or ProcessCommandLine contains "ufile.io") and (FolderPath endswith "\\certutil.exe"
   or ProcessVersionInfoOriginalFileName =~ "CertUtil.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

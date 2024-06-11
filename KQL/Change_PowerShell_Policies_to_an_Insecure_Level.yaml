@@ -2,7 +2,7 @@ name: Change PowerShell Policies to an Insecure Level
 id: 87e3c4e8-a6a8-4ad9-bb4f-46e7ff99a180
 author: frack113
 date: 2021/11/01
-level: medium
+severity: medium
 description: Detects changing the PowerShell script execution policy to a potentially
   insecure level using the "-ExecutionPolicy" flag.
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   and (ProcessCommandLine contains "Bypass" or ProcessCommandLine contains "Unrestricted")
   and (ProcessCommandLine contains "-executionpolicy " or ProcessCommandLine contains
   " -ep " or ProcessCommandLine contains " -exec ")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

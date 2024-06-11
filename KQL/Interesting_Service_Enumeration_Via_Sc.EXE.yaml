@@ -2,7 +2,7 @@ name: Interesting Service Enumeration Via Sc.EXE
 id: e83e8899-c9b2-483b-b355-5decc942b959
 author: Swachchhanda Shrawan Poudel
 date: 2024/02/12
-level: low
+severity: low
 description: 'Detects the enumeration and query of interesting and in some cases sensitive
   services on the system via "sc.exe".
 
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "query" and ProcessCommandLine contains "termservice"
   and (FolderPath endswith "\\sc.exe" or ProcessVersionInfoOriginalFileName =~ "sc.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

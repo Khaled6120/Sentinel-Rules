@@ -2,7 +2,7 @@ name: Potentially Suspicious ASP.NET Compilation Via AspNetCompiler
 id: 9f50fe98-fe5c-4a2d-86c7-fad7f63ed622
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/08/14
-level: high
+severity: high
 description: Detects execution of "aspnet_compiler.exe" with potentially suspicious
   paths for compilation.
 status: experimental
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   contains ":\\Windows\\Tasks\\") and (FolderPath contains "C:\\Windows\\Microsoft.NET\\Framework\\"
   or FolderPath contains "C:\\Windows\\Microsoft.NET\\Framework64\\") and FolderPath
   endswith "\\aspnet_compiler.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Suspicious Execution From GUID Like Folder Names
 id: 90b63c33-2b97-4631-a011-ceb0f47b77c3
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/09/01
-level: medium
+severity: medium
 description: Detects potential suspicious execution of a GUID like folder name located
   in a suspicious location such as %TEMP% as seen being used in IcedID attacks
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   contains "\\AppData\\Local\\Temp\\") and (ProcessCommandLine contains "\\{" and
   ProcessCommandLine contains "}\\")) and (not(((FolderPath contains "\\{" and FolderPath
   contains "}\\") or FolderPath =~ "C:\\Windows\\System32\\drvinst.exe" or isnull(FolderPath))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

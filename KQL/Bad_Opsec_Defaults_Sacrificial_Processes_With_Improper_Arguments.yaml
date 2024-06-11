@@ -3,7 +3,7 @@ id: a7c3d773-caef-227e-a7e7-c2f13c622329
 author: Oleg Kolesnikov @securonix invrep_de, oscd.community, Florian Roth (Nextron
   Systems), Christian Burkard (Nextron Systems)
 date: 2020/10/23
-level: high
+severity: high
 description: 'Detects attackers using tooling with bad opsec defaults.
 
   E.g. spawning a sacrificial process to inject a capability into the process without
@@ -36,3 +36,13 @@ query: 'DeviceProcessEvents
   contains "--uninstall --channel=stable" and (InitiatingProcessFolderPath contains
   ":\\Users\\" and InitiatingProcessFolderPath contains "\\AppData\\Local\\Google\\Chrome\\Application\\")
   and InitiatingProcessFolderPath endswith "\\Installer\\setup.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

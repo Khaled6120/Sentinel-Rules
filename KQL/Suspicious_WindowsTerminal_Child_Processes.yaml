@@ -2,7 +2,7 @@ name: Suspicious WindowsTerminal Child Processes
 id: 8de89e52-f6e1-4b5b-afd1-41ecfa300d48
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/07/25
-level: medium
+severity: medium
 description: Detects suspicious children spawned via the Windows Terminal application
   which could be a sign of persistence via WindowsTerminal (see references section)
 status: test
@@ -33,3 +33,13 @@ query: 'DeviceProcessEvents
   and ProcessCommandLine contains "\\LocalState\\settings.json") or (ProcessCommandLine
   contains "C:\\Program Files\\Microsoft Visual Studio\\" and ProcessCommandLine contains
   "\\Common7\\Tools\\VsDevCmd.bat"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

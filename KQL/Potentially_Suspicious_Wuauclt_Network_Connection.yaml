@@ -2,7 +2,7 @@ name: Potentially Suspicious Wuauclt Network Connection
 id: c649a6c7-cd8c-4a78-9c04-000fc76df954
 author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
 date: 2020/10/12
-level: medium
+severity: medium
 description: 'Detects the use of the Windows Update Client binary (wuauclt.exe) to
   proxy execute code and making network connections.
 
@@ -35,3 +35,13 @@ query: 'DeviceNetworkEvents
   or InitiatingProcessCommandLine contains ":\\Windows\\UUS\\amd64\\UpdateDeploy.dll
   /ClassId") or (InitiatingProcessCommandLine contains ":\\Windows\\WinSxS\\" and
   InitiatingProcessCommandLine contains "\\UpdateDeploy.dll /ClassId "))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

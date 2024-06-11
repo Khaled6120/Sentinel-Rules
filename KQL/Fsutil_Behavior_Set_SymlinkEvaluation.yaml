@@ -2,7 +2,7 @@ name: Fsutil Behavior Set SymlinkEvaluation
 id: c0b2768a-dd06-4671-8339-b16ca8d1f27f
 author: frack113
 date: 2022/03/02
-level: medium
+severity: medium
 description: 'A symbolic link is a type of file that contains a reference to another
   file.
 
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "behavior " and ProcessCommandLine contains
   "set " and ProcessCommandLine contains "SymlinkEvaluation") and (FolderPath endswith
   "\\fsutil.exe" or ProcessVersionInfoOriginalFileName =~ "fsutil.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

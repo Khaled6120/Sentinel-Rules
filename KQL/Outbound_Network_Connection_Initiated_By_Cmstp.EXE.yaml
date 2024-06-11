@@ -2,7 +2,7 @@ name: Outbound Network Connection Initiated By Cmstp.EXE
 id: efafe0bf-4238-479e-af8f-797bd3490d2d
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/08/30
-level: high
+severity: high
 description: 'Detects a network connection initiated by Cmstp.EXE
 
   Its uncommon for "cmstp.exe" to initiate an outbound network connection. Investigate
@@ -25,3 +25,13 @@ query: 'DeviceNetworkEvents
   "172.16.0.0/12") or ipv4_is_in_range(RemoteIP, "192.168.0.0/16") or ipv4_is_in_range(RemoteIP,
   "169.254.0.0/16") or ipv4_is_in_range(RemoteIP, "::1/128") or ipv4_is_in_range(RemoteIP,
   "fe80::/10") or ipv4_is_in_range(RemoteIP, "fc00::/7"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

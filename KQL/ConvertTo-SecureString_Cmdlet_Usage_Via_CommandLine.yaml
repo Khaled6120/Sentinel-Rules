@@ -2,7 +2,7 @@ name: ConvertTo-SecureString Cmdlet Usage Via CommandLine
 id: 74403157-20f5-415d-89a7-c505779585cf
 author: Teymur Kheirkhabarov (idea), Vasiliy Burov (rule), oscd.community, Tim Shelton
 date: 2020/10/11
-level: medium
+severity: medium
 description: Detects usage of the "ConvertTo-SecureString" cmdlet via the commandline.
   Which is fairly uncommon and could indicate potential suspicious activity
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   | where ProcessCommandLine contains "ConvertTo-SecureString" and ((FolderPath endswith
   "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName
   in~ ("PowerShell.EXE", "pwsh.dll")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Operator Bloopers Cobalt Strike Commands
 id: 647c7b9e-d784-4fda-b9a0-45c565a7b729
 author: _pete_0, TheDFIRReport
 date: 2022/05/06
-level: high
+severity: high
 description: Detects use of Cobalt Strike commands accidentally entered in the CMD
   shell
 status: test
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   startswith "cmd " or ProcessCommandLine startswith "cmd.exe" or ProcessCommandLine
   startswith "c:\\windows\\system32\\cmd.exe")) and (ProcessVersionInfoOriginalFileName
   =~ "Cmd.Exe" or FolderPath endswith "\\cmd.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

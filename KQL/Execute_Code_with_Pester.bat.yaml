@@ -2,7 +2,7 @@ name: Execute Code with Pester.bat
 id: 59e938ff-0d6d-4dc3-b13f-36cc28734d4e
 author: Julia Fomina, oscd.community
 date: 2020/10/08
-level: medium
+severity: medium
 description: Detects code execution via Pester.bat (Pester - Powershell Modulte for
   testing)
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   or (((ProcessCommandLine contains "pester" and ProcessCommandLine contains ";")
   and FolderPath endswith "\\cmd.exe") and (ProcessCommandLine contains "help" or
   ProcessCommandLine contains "?"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

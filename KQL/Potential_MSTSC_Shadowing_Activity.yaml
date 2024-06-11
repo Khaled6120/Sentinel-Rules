@@ -2,7 +2,7 @@ name: Potential MSTSC Shadowing Activity
 id: 6ba5a05f-b095-4f0a-8654-b825f4f16334
 author: Florian Roth (Nextron Systems)
 date: 2020/01/24
-level: high
+severity: high
 description: Detects RDP session hijacking by using MSTSC shadowing
 status: test
 modified: 2023/02/05
@@ -17,3 +17,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "noconsentprompt" and ProcessCommandLine contains
   "shadow:"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

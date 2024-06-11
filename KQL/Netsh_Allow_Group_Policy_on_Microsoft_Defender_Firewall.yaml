@@ -2,7 +2,7 @@ name: Netsh Allow Group Policy on Microsoft Defender Firewall
 id: 347906f3-e207-4d18-ae5b-a9403d6bcdef
 author: frack113
 date: 2022/01/09
-level: medium
+severity: medium
 description: Adversaries may modify system firewalls in order to bypass controls limiting
   network usage
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   "rule" and ProcessCommandLine contains "group=" and ProcessCommandLine contains
   "new" and ProcessCommandLine contains "enable=Yes") and (FolderPath endswith "\\netsh.exe"
   or ProcessVersionInfoOriginalFileName =~ "netsh.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

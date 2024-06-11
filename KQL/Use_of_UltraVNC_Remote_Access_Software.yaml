@@ -2,7 +2,7 @@ name: Use of UltraVNC Remote Access Software
 id: 145322e4-0fd3-486b-81ca-9addc75736d8
 author: frack113
 date: 2022/10/02
-level: medium
+severity: medium
 description: An adversary may use legitimate desktop support and remote access software,to
   establish an interactive command and control channel to target systems within networks
 status: test
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
   | where ProcessVersionInfoFileDescription =~ "VNCViewer" or ProcessVersionInfoProductName
   =~ "UltraVNC VNCViewer" or ProcessVersionInfoCompanyName =~ "UltraVNC" or ProcessVersionInfoOriginalFileName
   =~ "VNCViewer.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

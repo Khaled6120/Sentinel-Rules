@@ -2,7 +2,7 @@ name: Suspicious Invoke-WebRequest Execution
 id: 5e3cc4d8-3e68-43db-8656-eaaeefdec9cc
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/08/02
-level: high
+severity: high
 description: Detects a suspicious call to Invoke-WebRequest cmdlet where the and output
   is located in a suspicious location
 status: experimental
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains "\\Users\\Public\\" or ProcessCommandLine contains
   "%AppData%" or ProcessCommandLine contains "%Public%" or ProcessCommandLine contains
   "%Temp%" or ProcessCommandLine contains "%tmp%" or ProcessCommandLine contains ":\\Windows\\")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

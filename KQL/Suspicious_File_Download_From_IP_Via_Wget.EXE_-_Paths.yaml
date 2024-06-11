@@ -2,7 +2,7 @@ name: Suspicious File Download From IP Via Wget.EXE - Paths
 id: 40aa399c-7b02-4715-8e5f-73572b493f33
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2024/02/23
-level: high
+severity: high
 description: Detects potentially suspicious file downloads directly from IP addresses
   and stored in suspicious locations using Wget.exe
 status: experimental
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   contains "\\Favourites\\") or (ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine
   contains "\\Contacts\\") or (ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine
   contains "\\Pictures\\"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

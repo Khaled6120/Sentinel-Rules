@@ -2,7 +2,7 @@ name: SyncAppvPublishingServer VBS Execute Arbitrary PowerShell Code
 id: 36475a7d-0f6d-4dce-9b01-6aeb473bbaf1
 author: frack113
 date: 2021/07/16
-level: medium
+severity: medium
 description: Executes arbitrary PowerShell code using SyncAppvPublishingServer.vbs
 status: test
 modified: 2022/06/22
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "\\SyncAppvPublishingServer.vbs" and ProcessCommandLine
   contains ";"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

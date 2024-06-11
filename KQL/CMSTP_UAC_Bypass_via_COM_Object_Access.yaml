@@ -2,7 +2,7 @@ name: CMSTP UAC Bypass via COM Object Access
 id: 4b60e6f2-bf39-47b4-b4ea-398e33cfe253
 author: Nik Seetharaman, Christian Burkard (Nextron Systems)
 date: 2019/07/31
-level: high
+severity: high
 description: Detects UAC Bypass Attempt Using Microsoft Connection Manager Profile
   Installer Autoelevate-capable COM Objects (e.g. UACMe ID of 41, 43, 58 or 65)
 status: stable
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   contains " /Processid:{D2E7041B-2927-42FB-8E9F-7CE93B6DC937}" or InitiatingProcessCommandLine
   contains " /Processid:{E9495B87-D950-4AB5-87A5-FF6D70BF3E90}") and InitiatingProcessFolderPath
   endswith "\\DllHost.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

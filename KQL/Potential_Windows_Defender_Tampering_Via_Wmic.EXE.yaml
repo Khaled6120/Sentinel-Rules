@@ -2,7 +2,7 @@ name: Potential Windows Defender Tampering Via Wmic.EXE
 id: 51cbac1e-eee3-4a90-b1b7-358efb81fa0a
 author: frack113
 date: 2022/12/11
-level: high
+severity: high
 description: Detects potential tampering with Windows Defender settings such as adding
   exclusion using wmic
 status: test
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "/Namespace:\\\\root\\Microsoft\\Windows\\Defender"
   and (ProcessVersionInfoOriginalFileName =~ "wmic.exe" or FolderPath endswith "\\WMIC.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

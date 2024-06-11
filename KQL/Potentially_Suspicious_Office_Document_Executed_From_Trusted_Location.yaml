@@ -2,7 +2,7 @@ name: Potentially Suspicious Office Document Executed From Trusted Location
 id: f99abdf0-6283-4e71-bd2b-b5c048a94743
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/06/21
-level: high
+severity: high
 description: Detects the execution of an Office application that points to a document
   that is located in a trusted location. Attackers often used this to avoid macro
   security and execute their malicious code.
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   contains "\\Microsoft Office\\root\\Templates\\" or ProcessCommandLine contains
   "\\Microsoft Office\\Templates\\")) and (not((ProcessCommandLine endswith ".dotx"
   or ProcessCommandLine endswith ".xltx" or ProcessCommandLine endswith ".potx")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

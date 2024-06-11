@@ -2,7 +2,7 @@ name: Suspicious Chromium Browser Instance Executed With Custom Extension
 id: 27ba3207-dd30-4812-abbf-5d20c57d474e
 author: Aedan Russell, frack113, X__Junior (Nextron Systems)
 date: 2022/06/19
-level: high
+severity: high
 description: Detects a suspicious process spawning a Chromium based browser process
   with the 'load-extension' flag to start an instance with a custom extension
 status: experimental
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   endswith "\\pwsh.exe" or InitiatingProcessFolderPath endswith "\\regsvr32.exe" or
   InitiatingProcessFolderPath endswith "\\rundll32.exe" or InitiatingProcessFolderPath
   endswith "\\wscript.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

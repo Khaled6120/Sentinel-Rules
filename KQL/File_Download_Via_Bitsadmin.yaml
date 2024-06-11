@@ -2,7 +2,7 @@ name: File Download Via Bitsadmin
 id: d059842b-6b9d-4ed1-b5c3-5b89143c6ede
 author: Michael Haag, FPT.EagleEye
 date: 2017/03/09
-level: medium
+severity: medium
 description: Detects usage of bitsadmin downloading a file
 status: test
 modified: 2023/02/15
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   =~ "bitsadmin.exe") and (ProcessCommandLine contains " /transfer " or ((ProcessCommandLine
   contains " /create " or ProcessCommandLine contains " /addfile ") and ProcessCommandLine
   contains "http"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

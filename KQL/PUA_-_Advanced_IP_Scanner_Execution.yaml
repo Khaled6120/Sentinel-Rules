@@ -2,7 +2,7 @@ name: PUA - Advanced IP Scanner Execution
 id: bef37fa2-f205-4a7b-b484-0759bfd5f86f
 author: Nasreddine Bencherchali (Nextron Systems), @ROxPinTeddy
 date: 2020/05/12
-level: medium
+severity: medium
 description: Detects the use of Advanced IP Scanner. Seems to be a popular tool for
   ransomware groups.
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   "/lng") or (FolderPath contains "\\advanced_ip_scanner" or ProcessVersionInfoOriginalFileName
   contains "advanced_ip_scanner" or ProcessVersionInfoFileDescription contains "Advanced
   IP Scanner")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

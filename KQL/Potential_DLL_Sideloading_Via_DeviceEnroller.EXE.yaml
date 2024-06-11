@@ -2,7 +2,7 @@ name: Potential DLL Sideloading Via DeviceEnroller.EXE
 id: e173ad47-4388-4012-ae62-bd13f71c18a8
 author: '@gott_cyber'
 date: 2022/08/29
-level: medium
+severity: medium
 description: 'Detects the use of the PhoneDeepLink parameter to potentially sideload
   a DLL file that does not exist. This non-existent DLL file is named "ShellChromeAPI.dll".
 
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "/PhoneDeepLink" and (FolderPath endswith "\\deviceenroller.exe"
   or ProcessVersionInfoOriginalFileName =~ "deviceenroller.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

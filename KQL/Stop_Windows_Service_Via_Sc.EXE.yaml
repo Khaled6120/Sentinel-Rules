@@ -2,7 +2,7 @@ name: Stop Windows Service Via Sc.EXE
 id: 81bcb81b-5b1f-474b-b373-52c871aaa7b1
 author: Jakob Weinzettl, oscd.community, Nasreddine Bencherchali (Nextron Systems)
 date: 2023/03/05
-level: low
+severity: low
 description: Detects the stopping of a Windows service via the "sc.exe" utility
 status: test
 modified: 2024/01/18
@@ -17,3 +17,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " stop " and (ProcessVersionInfoOriginalFileName
   =~ "sc.exe" or FolderPath endswith "\\sc.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

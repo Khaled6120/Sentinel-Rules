@@ -2,7 +2,7 @@ name: Potential Configuration And Service Reconnaissance Via Reg.EXE
 id: 970007b7-ce32-49d0-a4a4-fbef016950bd
 author: Timur Zinniatullin, oscd.community
 date: 2019/10/21
-level: medium
+severity: medium
 description: Detects the usage of "reg.exe" in order to query reconnaissance information
   from the registry. Adversaries may interact with the Windows registry to gather
   information about credentials, the system, configuration, and installed software.
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   contains "currentVersion\\shellServiceObjectDelayLoad" or ProcessCommandLine contains
   "currentVersion\\run" or ProcessCommandLine contains "currentVersion\\policies\\explorer\\run"
   or ProcessCommandLine contains "currentcontrolset\\services")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

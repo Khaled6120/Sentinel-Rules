@@ -2,7 +2,7 @@ name: Microsoft IIS Connection Strings Decryption
 id: 97dbf6e2-e436-44d8-abee-4261b24d3e41
 author: Tim Rauch, Elastic (idea)
 date: 2022/09/28
-level: high
+severity: high
 description: Detects use of aspnet_regiis to decrypt Microsoft IIS connection strings.
   An attacker with Microsoft IIS web server access via a webshell or alike can decrypt
   and dump any hardcoded connection strings, such as the MSSQL service account password
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "connectionStrings" and ProcessCommandLine
   contains " -pdf") and (FolderPath endswith "\\aspnet_regiis.exe" or ProcessVersionInfoOriginalFileName
   =~ "aspnet_regiis.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

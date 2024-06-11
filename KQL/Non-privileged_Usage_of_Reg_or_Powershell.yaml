@@ -2,7 +2,7 @@ name: Non-privileged Usage of Reg or Powershell
 id: 8f02c935-effe-45b3-8fc9-ef8696a9e41d
 author: Teymur Kheirkhabarov (idea), Ryan Plas (rule), oscd.community
 date: 2020/10/05
-level: high
+severity: high
 description: Search for usage of reg or Powershell by non-privileged users to modify
   service configuration in registry
 status: test
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   and ((ProcessCommandLine contains "ImagePath" or ProcessCommandLine contains "FailureCommand"
   or ProcessCommandLine contains "ServiceDLL") and (ProcessCommandLine contains "ControlSet"
   and ProcessCommandLine contains "Services") and ProcessIntegrityLevel =~ "Medium")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

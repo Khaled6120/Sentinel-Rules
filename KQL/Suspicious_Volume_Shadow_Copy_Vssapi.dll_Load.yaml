@@ -2,7 +2,7 @@ name: Suspicious Volume Shadow Copy Vssapi.dll Load
 id: 37774c23-25a1-4adb-bb6d-8bb9fd59c0f8
 author: frack113
 date: 2022/10/31
-level: high
+severity: high
 description: Detects the image load of VSS DLL by uncommon executables
 status: test
 modified: 2023/05/03
@@ -23,3 +23,13 @@ query: 'DeviceImageLoadEvents
   or (InitiatingProcessFolderPath startswith "C:\\Windows\\System32\\" or InitiatingProcessFolderPath
   startswith "C:\\Windows\\SysWOW64\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\Temp\\{"
   or InitiatingProcessFolderPath startswith "C:\\Windows\\WinSxS\\")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

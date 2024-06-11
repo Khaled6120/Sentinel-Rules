@@ -2,7 +2,7 @@ name: XSL Script Execution Via WMIC.EXE
 id: 05c36dd6-79d6-4a9a-97da-3db20298ab2d
 author: Timur Zinniatullin, oscd.community, Swachchhanda Shrawan Poudel
 date: 2019/10/21
-level: medium
+severity: medium
 description: 'Detects the execution of WMIC with the "format" flag to potentially
   load XSL files.
 
@@ -30,3 +30,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains "Format:table" or ProcessCommandLine contains "Format:mof"
   or ProcessCommandLine contains "Format:value" or ProcessCommandLine contains "Format:rawxml"
   or ProcessCommandLine contains "Format:xml" or ProcessCommandLine contains "Format:csv")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

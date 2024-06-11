@@ -2,7 +2,7 @@ name: Potential LSASS Process Dump Via Procdump
 id: 5afee48e-67dd-4e03-a783-f74259dcf998
 author: Florian Roth (Nextron Systems)
 date: 2018/10/30
-level: high
+severity: high
 description: 'Detects suspicious uses of the SysInternals Procdump utility by using
   a special command line parameter in combination with the lsass.exe process.
 
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " -ma " or ProcessCommandLine contains " /ma
   ") and ProcessCommandLine contains " ls"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

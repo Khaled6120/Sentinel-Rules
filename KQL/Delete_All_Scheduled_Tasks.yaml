@@ -2,7 +2,7 @@ name: Delete All Scheduled Tasks
 id: 220457c1-1c9f-4c2e-afe6-9598926222c1
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/09/09
-level: high
+severity: high
 description: Detects the usage of schtasks with the delete flag and the asterisk symbol
   to delete all tasks from the schedule of the local computer, including tasks scheduled
   by other users.
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " /delete " and ProcessCommandLine contains
   "/tn *" and ProcessCommandLine contains " /f") and FolderPath endswith "\\schtasks.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

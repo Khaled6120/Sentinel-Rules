@@ -2,7 +2,7 @@ name: Wab Execution From Non Default Location
 id: 395907ee-96e5-4666-af2e-2ca91688e151
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/08/12
-level: high
+severity: high
 description: Detects execution of wab.exe (Windows Contacts) and Wabmig.exe (Microsoft
   Address Book Import Tool) from non default locations as seen with bumblebee activity
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   and (not((FolderPath startswith "C:\\Windows\\WinSxS\\" or FolderPath startswith
   "C:\\Program Files\\Windows Mail\\" or FolderPath startswith "C:\\Program Files
   (x86)\\Windows Mail\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

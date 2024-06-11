@@ -2,7 +2,7 @@ name: File Download Via Bitsadmin To A Suspicious Target Folder
 id: 2ddef153-167b-4e89-86b6-757a9e65dcac
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
 date: 2022/06/28
-level: high
+severity: high
 description: Detects usage of bitsadmin downloading a file to a suspicious target
   folder
 status: test
@@ -28,3 +28,13 @@ query: 'DeviceProcessEvents
   "\\Desktop\\" or ProcessCommandLine contains "%ProgramData%" or ProcessCommandLine
   contains "%public%") and (FolderPath endswith "\\bitsadmin.exe" or ProcessVersionInfoOriginalFileName
   =~ "bitsadmin.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: GAC DLL Loaded Via Office Applications
 id: 90217a70-13fc-48e4-b3db-0d836c5824ac
 author: Antonlovesdnb
 date: 2020/02/19
-level: high
+severity: high
 description: Detects any GAC DLL being loaded by an Office Product
 status: test
 modified: 2023/02/10
@@ -21,3 +21,13 @@ query: 'DeviceImageLoadEvents
   InitiatingProcessFolderPath endswith "\\onenoteim.exe" or InitiatingProcessFolderPath
   endswith "\\outlook.exe" or InitiatingProcessFolderPath endswith "\\powerpnt.exe"
   or InitiatingProcessFolderPath endswith "\\winword.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

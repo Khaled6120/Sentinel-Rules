@@ -2,7 +2,7 @@ name: Detection of PowerShell Execution via Sqlps.exe
 id: 0152550d-3a26-4efd-9f0e-54a0b28ae2f3
 author: Agro (@agro_sev) oscd.community
 date: 2020/10/10
-level: medium
+severity: medium
 description: 'This rule detects execution of a PowerShell code through the sqlps.exe
   utility, which is included in the standard set of utilities supplied with the MSSQL
   Server.
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   | where InitiatingProcessFolderPath endswith "\\sqlps.exe" or ((FolderPath endswith
   "\\sqlps.exe" or ProcessVersionInfoOriginalFileName =~ "sqlps.exe") and (not(InitiatingProcessFolderPath
   endswith "\\sqlagent.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Communication To Ngrok Tunneling Service Initiated
 id: 1d08ac94-400d-4469-a82f-daee9a908849
 author: Florian Roth (Nextron Systems)
 date: 2022/11/03
-level: high
+severity: high
 description: 'Detects an executable initiating a network connection to "ngrok" tunneling
   domains.
 
@@ -34,3 +34,13 @@ query: 'DeviceNetworkEvents
   or RemoteUrl contains "tunnel.ap.ngrok.com" or RemoteUrl contains "tunnel.au.ngrok.com"
   or RemoteUrl contains "tunnel.sa.ngrok.com" or RemoteUrl contains "tunnel.jp.ngrok.com"
   or RemoteUrl contains "tunnel.in.ngrok.com"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

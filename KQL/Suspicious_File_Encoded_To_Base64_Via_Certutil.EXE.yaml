@@ -2,7 +2,7 @@ name: Suspicious File Encoded To Base64 Via Certutil.EXE
 id: ea0cdc3e-2239-4f26-a947-4e8f8224e464
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/05/15
-level: high
+severity: high
 description: Detects the execution of certutil with the "encode" flag to encode a
   file to base64 where the extensions of the file is suspicious
 status: experimental
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains ".ppt" or ProcessCommandLine contains ".tmp" or ProcessCommandLine
   contains ".xls" or ProcessCommandLine contains ".xml") and (FolderPath endswith
   "\\certutil.exe" or ProcessVersionInfoOriginalFileName =~ "CertUtil.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

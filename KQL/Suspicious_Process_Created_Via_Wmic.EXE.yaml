@@ -2,7 +2,7 @@ name: Suspicious Process Created Via Wmic.EXE
 id: 3c89a1e8-0fba-449e-8f1b-8409d6267ec8
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
 date: 2020/10/12
-level: high
+severity: high
 description: Detects WMIC executing "process call create" with suspicious calls to
   processes such as "rundll32", "regsrv32", etc.
 status: test
@@ -30,3 +30,13 @@ query: 'DeviceProcessEvents
   contains "%appdata%" or ProcessCommandLine contains "%comspec%" or ProcessCommandLine
   contains "%localappdata%") and (ProcessCommandLine contains "process " and ProcessCommandLine
   contains "call " and ProcessCommandLine contains "create ")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Powershell Base64 Encoded MpPreference Cmdlet
 id: c6fb44c6-71f5-49e6-9462-1425d328aee3
 author: Florian Roth (Nextron Systems)
 date: 2022/03/04
-level: high
+severity: high
 description: Detects base64 encoded "MpPreference" PowerShell cmdlet code that tries
   to modifies or tamper with Windows Defender AV
 status: test
@@ -34,3 +34,13 @@ query: 'DeviceProcessEvents
   contains "hAGQAZAAtAG0AcABwAHIAZQBmAGUAcgBlAG4AYwBlACAA" or ProcessCommandLine contains
   "cwBlAHQALQBtAHAAcAByAGUAZgBlAHIAZQBuAGMAZQAgA" or ProcessCommandLine contains "MAZQB0AC0AbQBwAHAAcgBlAGYAZQByAGUAbgBjAGUAIA"
   or ProcessCommandLine contains "zAGUAdAAtAG0AcABwAHIAZQBmAGUAcgBlAG4AYwBlACAA")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

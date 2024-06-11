@@ -2,7 +2,7 @@ name: Suspicious MsiExec Embedding Parent
 id: 4a2a2c3e-209f-4d01-b513-4155a540b469
 author: frack113
 date: 2022/04/16
-level: medium
+severity: medium
 description: Adversaries may abuse msiexec.exe to proxy the execution of malicious
   payloads
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   ":\\Windows\\System32\\cmd.exe") or (ProcessCommandLine contains "\\DismFoDInstall.cmd"
   or (InitiatingProcessCommandLine contains "\\MsiExec.exe -Embedding " and InitiatingProcessCommandLine
   contains "Global\\MSI0000")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

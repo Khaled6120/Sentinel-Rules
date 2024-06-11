@@ -2,7 +2,7 @@ name: Suspicious Child Process Of Manage Engine ServiceDesk
 id: cea2b7ea-792b-405f-95a1-b903ea06458f
 author: Florian Roth (Nextron Systems)
 date: 2023/01/18
-level: high
+severity: high
 description: Detects suspicious child processes of the "Manage Engine ServiceDesk
   Plus" Java web service
 status: experimental
@@ -30,3 +30,13 @@ query: 'DeviceProcessEvents
   contains "\\ManageEngine\\ServiceDesk\\" and InitiatingProcessFolderPath contains
   "\\java.exe")) and (not((ProcessCommandLine contains " stop" and (FolderPath endswith
   "\\net.exe" or FolderPath endswith "\\net1.exe"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

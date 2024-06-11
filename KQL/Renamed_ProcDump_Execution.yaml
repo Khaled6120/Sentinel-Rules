@@ -2,7 +2,7 @@ name: Renamed ProcDump Execution
 id: 4a0b2c7e-7cb2-495d-8b63-5f268e7bfd67
 author: Florian Roth (Nextron Systems)
 date: 2019/11/18
-level: high
+severity: high
 description: Detects the execution of a renamed ProcDump executable often used by
   attackers or malware
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   contains " -ma " or ProcessCommandLine contains " /ma ") and (ProcessCommandLine
   contains " -accepteula " or ProcessCommandLine contains " /accepteula "))) and (not((FolderPath
   endswith "\\procdump.exe" or FolderPath endswith "\\procdump64.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

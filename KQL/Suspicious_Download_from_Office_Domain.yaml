@@ -2,7 +2,7 @@ name: Suspicious Download from Office Domain
 id: 00d49ed5-4491-4271-a8db-650a4ef6f8c1
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
 date: 2021/12/27
-level: high
+severity: high
 description: Detects suspicious ways to download files from Microsoft domains that
   are used to store attachments in Emails or OneNote documents
 status: test
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   contains "curl " or ProcessCommandLine contains "wget " or ProcessCommandLine contains
   "Start-BitsTransfer" or ProcessCommandLine contains ".DownloadFile(" or ProcessCommandLine
   contains ".DownloadString("))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

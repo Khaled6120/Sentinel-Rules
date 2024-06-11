@@ -2,7 +2,7 @@ name: Suspicious Schtasks From Env Var Folder
 id: 81325ce1-be01-4250-944f-b4789644556f
 author: Florian Roth (Nextron Systems)
 date: 2022/02/21
-level: medium
+severity: medium
 description: Detects Schtask creations that point to a suspicious folder or an environment
   variable often used by malware
 status: experimental
@@ -36,3 +36,13 @@ query: 'DeviceProcessEvents
   \"klcp_update\" /XML " and ProcessCommandLine contains "\\klcp_update_task.xml")
   or ((ProcessCommandLine contains "update_task.xml" or ProcessCommandLine contains
   "/Create /TN TVInstallRestore /TR") or InitiatingProcessCommandLine contains "unattended.ini"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

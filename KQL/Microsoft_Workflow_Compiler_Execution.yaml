@@ -2,7 +2,7 @@ name: Microsoft Workflow Compiler Execution
 id: 419dbf2b-8a9b-4bea-bf99-7544b050ec8d
 author: Nik Seetharaman, frack113
 date: 2019/01/16
-level: medium
+severity: medium
 description: Detects invocation of Microsoft Workflow Compiler, which may permit the
   execution of arbitrary unsigned code.
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\Microsoft.Workflow.Compiler.exe" or ProcessVersionInfoOriginalFileName
   =~ "Microsoft.Workflow.Compiler.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

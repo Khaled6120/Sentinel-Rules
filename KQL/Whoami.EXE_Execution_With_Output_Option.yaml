@@ -2,7 +2,7 @@ name: Whoami.EXE Execution With Output Option
 id: c30fb093-1109-4dc8-88a8-b30d11c95a5d
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
 date: 2023/02/28
-level: medium
+severity: medium
 description: Detects the execution of "whoami.exe" with the "/FO" flag to choose CSV
   as output format or with redirection options to export the results to a file for
   later use.
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   | where ((ProcessCommandLine contains " /FO CSV" or ProcessCommandLine contains
   " -FO CSV") and (FolderPath endswith "\\whoami.exe" or ProcessVersionInfoOriginalFileName
   =~ "whoami.exe")) or ProcessCommandLine =~ "*whoami*>*"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Suspicious Powercfg Execution To Change Lock Screen Timeout
 id: f8d6a15e-4bc8-4c27-8e5d-2b10f0b73e5b
 author: frack113
 date: 2022/11/18
-level: medium
+severity: medium
 description: Detects suspicious execution of 'Powercfg.exe' to change lock screen
   timeout
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   contains "SCHEME_CURRENT" and ProcessCommandLine contains "SUB_VIDEO" and ProcessCommandLine
   contains "VIDEOCONLOCK") or (ProcessCommandLine contains "-change " and ProcessCommandLine
   contains "-standby-timeout-"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

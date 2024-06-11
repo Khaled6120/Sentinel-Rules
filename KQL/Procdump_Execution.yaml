@@ -2,7 +2,7 @@ name: Procdump Execution
 id: 2e65275c-8288-4ab4-aeb7-6274f58b6b20
 author: Florian Roth (Nextron Systems)
 date: 2021/08/16
-level: medium
+severity: medium
 description: Detects usage of the SysInternals Procdump utility
 status: test
 modified: 2023/02/28
@@ -17,3 +17,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\procdump.exe" or FolderPath endswith "\\procdump64.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -3,7 +3,7 @@ id: b730a276-6b63-41b8-bcf8-55930c8fc6ee
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems),
   X__Junior (Nextron Systems)
 date: 2019/02/11
-level: high
+severity: high
 description: Detects a potentially suspicious parent of "csc.exe", which could be
   a sign of payload delivery.
 status: test
@@ -47,3 +47,13 @@ query: 'DeviceProcessEvents
   or InitiatingProcessCommandLine contains "nAHsAIgBmAGEAaQBsAGUAZAAiADoAdAByAHUAZQAsACIAbQBzAGcAIgA6ACIAQQBuAHMAaQBiAGwAZQAgAHIAZQBxAHUAaQByAGUAcwAgAFAAbwB3AGUAcgBTAGgAZQBsAGwAIAB2ADMALgAwACAAbwByACAAbgBlAHcAZQByACIAfQAnA")
   or InitiatingProcessFolderPath =~ "C:\\ProgramData\\chocolatey\\choco.exe" or InitiatingProcessCommandLine
   contains "\\ProgramData\\Microsoft\\Windows Defender Advanced Threat Protection")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

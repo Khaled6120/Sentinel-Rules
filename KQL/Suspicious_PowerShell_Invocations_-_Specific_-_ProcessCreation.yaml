@@ -2,7 +2,7 @@ name: Suspicious PowerShell Invocations - Specific - ProcessCreation
 id: 536e2947-3729-478c-9903-745aaffe60d2
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/01/05
-level: medium
+severity: medium
 description: Detects suspicious PowerShell invocation command parameters
 status: test
 modified: ''
@@ -32,3 +32,13 @@ query: 'DeviceProcessEvents
   contains "system.net.webclient" and ProcessCommandLine contains ".download")) and
   (not((ProcessCommandLine contains "(New-Object System.Net.WebClient).DownloadString(''https://community.chocolatey.org/install.ps1"
   or ProcessCommandLine contains "Write-ChocolateyWarning")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

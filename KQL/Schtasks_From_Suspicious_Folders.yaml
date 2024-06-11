@@ -2,7 +2,7 @@ name: Schtasks From Suspicious Folders
 id: 8a8379b8-780b-4dbf-b1e9-31c8d112fefb
 author: Florian Roth (Nextron Systems)
 date: 2022/04/15
-level: high
+severity: high
 description: Detects scheduled task creations that have suspicious action command
   and folder combinations
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   "cmd.exe /c " or ProcessCommandLine contains "cmd.exe /k " or ProcessCommandLine
   contains "cmd.exe /r ") and ProcessCommandLine contains " /create " and (FolderPath
   endswith "\\schtasks.exe" or ProcessVersionInfoOriginalFileName =~ "schtasks.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

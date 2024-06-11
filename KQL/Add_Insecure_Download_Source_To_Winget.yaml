@@ -2,7 +2,7 @@ name: Add Insecure Download Source To Winget
 id: 81a0ecb5-0a41-4ba1-b2ba-c944eb92bfa2
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/04/17
-level: high
+severity: high
 description: 'Detects usage of winget to add a new insecure (http) download source.
 
   Winget will not allow the addition of insecure sources, hence this could indicate
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "source " and ProcessCommandLine contains "add
   " and ProcessCommandLine contains "http://") and (FolderPath endswith "\\winget.exe"
   or ProcessVersionInfoOriginalFileName =~ "winget.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Load Of RstrtMgr.DLL By A Suspicious Process
 id: b48492dc-c5ef-4572-8dff-32bc241c15c8
 author: "Luc G\xC3\xA9naux"
 date: 2023/11/28
-level: high
+severity: high
 description: 'Detects the load of RstrtMgr DLL (Restart Manager) by a suspicious process.
 
   This library has been used during ransomware campaigns to kill processes that would
@@ -33,3 +33,13 @@ query: 'DeviceImageLoadEvents
   contains ":\\Users\\" and InitiatingProcessFolderPath contains "\\Favourites\\")
   or (InitiatingProcessFolderPath contains ":\\Users\\" and InitiatingProcessFolderPath
   contains "\\Contacts\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

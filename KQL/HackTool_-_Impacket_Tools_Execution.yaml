@@ -2,7 +2,7 @@ name: HackTool - Impacket Tools Execution
 id: 4627c6ae-6899-46e2-aa0c-6ebcb1becd19
 author: Florian Roth (Nextron Systems)
 date: 2021/07/24
-level: high
+severity: high
 description: Detects the execution of different compiled Windows binaries of the impacket
   toolset (based on names or part of their names - could lead to false positives)
 status: test
@@ -33,3 +33,13 @@ query: 'DeviceProcessEvents
   or FolderPath endswith "\\smbclient_windows.exe" or FolderPath endswith "\\smbserver_windows.exe"
   or FolderPath endswith "\\sniff_windows.exe" or FolderPath endswith "\\sniffer_windows.exe"
   or FolderPath endswith "\\split_windows.exe" or FolderPath endswith "\\ticketer_windows.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

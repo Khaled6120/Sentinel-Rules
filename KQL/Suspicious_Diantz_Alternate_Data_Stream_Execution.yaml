@@ -2,7 +2,7 @@ name: Suspicious Diantz Alternate Data Stream Execution
 id: 6b369ced-4b1d-48f1-b427-fdc0de0790bd
 author: frack113
 date: 2021/11/26
-level: medium
+severity: medium
 description: Compress target file into a cab file stored in the Alternate Data Stream
   (ADS) of the target file.
 status: test
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "diantz.exe" and ProcessCommandLine contains
   ".cab") and ProcessCommandLine matches regex ":[^\\\\]"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

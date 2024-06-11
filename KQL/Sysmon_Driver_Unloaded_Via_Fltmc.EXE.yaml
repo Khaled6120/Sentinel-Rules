@@ -2,7 +2,7 @@ name: Sysmon Driver Unloaded Via Fltmc.EXE
 id: 4d7cda18-1b12-4e52-b45c-d28653210df8
 author: Kirill Kiryanov, oscd.community
 date: 2019/10/23
-level: high
+severity: high
 description: Detects possible Sysmon filter driver unloaded via fltmc.exe
 status: test
 modified: 2023/02/13
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "unload" and ProcessCommandLine contains "sysmon")
   and (FolderPath endswith "\\fltMC.exe" or ProcessVersionInfoOriginalFileName =~
   "fltMC.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

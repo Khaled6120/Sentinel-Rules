@@ -2,7 +2,7 @@ name: Suspicious Execution of Shutdown to Log Out
 id: ec290c06-9b6b-4338-8b6b-095c0f284f10
 author: frack113
 date: 2022/10/01
-level: medium
+severity: medium
 description: Detects the rare use of the command line tool shutdown to logoff a user
 status: test
 modified: ''
@@ -16,3 +16,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "/l" and FolderPath endswith "\\shutdown.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

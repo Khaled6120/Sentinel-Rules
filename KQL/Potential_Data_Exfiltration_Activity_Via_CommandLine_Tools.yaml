@@ -2,7 +2,7 @@ name: Potential Data Exfiltration Activity Via CommandLine Tools
 id: 7d1aaf3d-4304-425c-b7c3-162055e0b3ab
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/08/02
-level: high
+severity: high
 description: Detects the use of various CLI utilities exfiltrating data via web requests
 status: test
 modified: 2023/07/27
@@ -33,3 +33,13 @@ query: 'DeviceProcessEvents
   contains "ToBase64String" or ProcessCommandLine contains "whoami") or (ProcessCommandLine
   contains "type " and ProcessCommandLine contains " > " and ProcessCommandLine contains
   " C:\\"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

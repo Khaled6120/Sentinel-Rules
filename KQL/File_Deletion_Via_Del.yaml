@@ -2,7 +2,7 @@ name: File Deletion Via Del
 id: 379fa130-190e-4c3f-b7bc-6c8e834485f3
 author: frack113
 date: 2022/01/15
-level: low
+severity: low
 description: 'Detects execution of the builtin "del"/"erase" commands in order to
   delete files.
 
@@ -31,3 +31,13 @@ query: 'DeviceProcessEvents
   ProcessCommandLine contains " -s" or ProcessCommandLine contains " /s" or ProcessCommandLine
   contains " -q" or ProcessCommandLine contains " /q") and (FolderPath endswith "\\cmd.exe"
   or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

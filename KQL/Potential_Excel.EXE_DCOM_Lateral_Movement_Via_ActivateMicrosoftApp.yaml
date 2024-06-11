@@ -2,7 +2,7 @@ name: Potential Excel.EXE DCOM Lateral Movement Via ActivateMicrosoftApp
 id: 551d9c1f-816c-445b-a7a6-7a3864720d60
 author: Aaron Stratton
 date: 2023/11/13
-level: high
+severity: high
 description: 'Detects suspicious child processes of Excel which could be an indicator
   of lateral movement leveraging the "ActivateMicrosoftApp" Excel DCOM object.
 
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   "winproj.exe")) or (FolderPath endswith "\\foxprow.exe" or FolderPath endswith "\\schdplus.exe"
   or FolderPath endswith "\\winproj.exe")) and InitiatingProcessFolderPath endswith
   "\\excel.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

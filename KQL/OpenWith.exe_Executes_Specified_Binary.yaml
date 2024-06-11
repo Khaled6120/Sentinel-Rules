@@ -2,7 +2,7 @@ name: OpenWith.exe Executes Specified Binary
 id: cec8e918-30f7-4e2d-9bfa-a59cc97ae60f
 author: Beyu Denis, oscd.community (rule), @harr0ey (idea)
 date: 2019/10/12
-level: high
+severity: high
 description: The OpenWith.exe executes other binary
 status: test
 modified: 2021/11/27
@@ -16,3 +16,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "/c" and FolderPath endswith "\\OpenWith.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

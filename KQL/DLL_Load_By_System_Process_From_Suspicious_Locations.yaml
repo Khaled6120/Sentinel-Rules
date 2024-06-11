@@ -2,7 +2,7 @@ name: DLL Load By System Process From Suspicious Locations
 id: 9e9a9002-56c4-40fd-9eff-e4b09bfa5f6c
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/07/17
-level: medium
+severity: medium
 description: Detects when a system process (i.e. located in system32, syswow64, etc.)
   loads a DLL from a suspicious location or a location with permissive permissions
   such as "C:\Users\Public"
@@ -19,3 +19,13 @@ query: 'DeviceImageLoadEvents
 
   | where (FolderPath startswith "C:\\Users\\Public\\" or FolderPath startswith "C:\\PerfLogs\\")
   and InitiatingProcessFolderPath startswith "C:\\Windows\\"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

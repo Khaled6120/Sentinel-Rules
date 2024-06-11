@@ -2,7 +2,7 @@ name: Suspicious Runscripthelper.exe
 id: eca49c87-8a75-4f13-9c73-a5a29e845f03
 author: Victor Sergeev, oscd.community
 date: 2020/10/09
-level: medium
+severity: medium
 description: Detects execution of powershell scripts via Runscripthelper.exe
 status: test
 modified: 2022/07/11
@@ -18,3 +18,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "surfacecheck" and FolderPath endswith "\\Runscripthelper.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

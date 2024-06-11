@@ -2,7 +2,7 @@ name: Potential Crypto Mining Activity
 id: 66c3b204-9f88-4d0a-a7f7-8a57d521ca55
 author: Florian Roth (Nextron Systems)
 date: 2021/10/26
-level: high
+severity: high
 description: Detects command line parameters or strings often used by crypto miners
 status: stable
 modified: 2023/02/13
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains "N0cmF0dW0rdWRwOi8v" or ProcessCommandLine contains
   "zdHJhdHVtK3VkcDovL") and (not((ProcessCommandLine contains " pool.c " or ProcessCommandLine
   contains " pool.o " or ProcessCommandLine contains "gcc -")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

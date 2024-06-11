@@ -3,7 +3,7 @@ id: 53d4bb30-3f36-4e8a-b078-69d36c4a79ff
 author: "Ensar \xC5\u017Eamil, @sblmsrsn, @oscd_initiative, Nasreddine Bencherchali\
   \ (Nextron Systems)"
 date: 2020/10/07
-level: medium
+severity: medium
 description: 'Detects the execution of Xwizard tool with the "RunWizard" flag and
   a GUID like argument.
 
@@ -28,3 +28,13 @@ query: 'DeviceProcessEvents
   regex "\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}")
   and (not((FolderPath endswith "\\xwizard.exe" or ProcessVersionInfoOriginalFileName
   =~ "xwizard.exe"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

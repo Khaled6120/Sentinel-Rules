@@ -2,7 +2,7 @@ name: RemoteFXvGPUDisablement Abuse Via AtomicTestHarnesses
 id: a6fc3c46-23b8-4996-9ea2-573f4c4d88c5
 author: frack113
 date: 2021/07/13
-level: high
+severity: high
 description: Detects calls to the AtomicTestHarnesses "Invoke-ATHRemoteFXvGPUDisablementCommand"
   which is designed to abuse the "RemoteFXvGPUDisablement.exe" binary to run custom
   PowerShell code via module load-order hijacking.
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "Invoke-ATHRemoteFXvGPUDisablementCommand" or
   ProcessCommandLine contains "Invoke-ATHRemoteFXvGPUDisableme"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

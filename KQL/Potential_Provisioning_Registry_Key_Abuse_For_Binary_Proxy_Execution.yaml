@@ -2,7 +2,7 @@ name: Potential Provisioning Registry Key Abuse For Binary Proxy Execution
 id: 2a4b3e61-9d22-4e4a-b60f-6e8f0cde6f25
 author: Nasreddine Bencherchali (Nextron Systems), Swachchhanda Shrawan Poudel
 date: 2023/08/08
-level: high
+severity: high
 description: Detects potential abuse of the provisioning registry key for indirect
   command execution through "Provlaunch.exe".
 status: experimental
@@ -17,3 +17,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "SOFTWARE\\Microsoft\\Provisioning\\Commands\\"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

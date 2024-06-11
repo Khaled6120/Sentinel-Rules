@@ -2,7 +2,7 @@ name: Renamed PingCastle Binary Execution
 id: 2433a154-bb3d-42e4-86c3-a26bdac91c45
 author: Nasreddine Bencherchali (Nextron Systems), X__Junior (Nextron Systems)
 date: 2024/01/11
-level: high
+severity: high
 description: Detects the execution of a renamed "PingCastle" binary based on the PE
   metadata fields.
 status: experimental
@@ -34,3 +34,13 @@ query: 'DeviceProcessEvents
   "--level Full") or (ProcessCommandLine contains "--healthcheck" and ProcessCommandLine
   contains "--server ")) and (not((FolderPath endswith "\\PingCastleReporting.exe"
   or FolderPath endswith "\\PingCastleCloud.exe" or FolderPath endswith "\\PingCastle.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

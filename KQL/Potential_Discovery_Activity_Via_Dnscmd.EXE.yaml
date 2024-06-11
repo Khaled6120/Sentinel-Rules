@@ -2,7 +2,7 @@ name: Potential Discovery Activity Via Dnscmd.EXE
 id: b6457d63-d2a2-4e29-859d-4e7affc153d1
 author: '@gott_cyber'
 date: 2022/07/31
-level: medium
+severity: medium
 description: Detects an attempt to leverage dnscmd.exe to enumerate the DNS zones
   of a domain. DNS zones used to host the DNS records for a particular domain.
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "/enumrecords" or ProcessCommandLine contains
   "/enumzones" or ProcessCommandLine contains "/ZonePrint" or ProcessCommandLine contains
   "/info") and FolderPath endswith "\\dnscmd.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

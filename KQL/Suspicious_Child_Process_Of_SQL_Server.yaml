@@ -2,7 +2,7 @@ name: Suspicious Child Process Of SQL Server
 id: 869b9ca7-9ea2-4a5a-8325-e80e62f75445
 author: FPT.EagleEye Team, wagga
 date: 2020/12/11
-level: high
+severity: high
 description: Detects suspicious child processes of the SQLServer process. This could
   indicate potential RCE or SQL Injection.
 status: test
@@ -30,3 +30,13 @@ query: 'DeviceProcessEvents
   FolderPath =~ "C:\\Windows\\System32\\cmd.exe" and InitiatingProcessFolderPath endswith
   "DATEV_DBENGINE\\MSSQL\\Binn\\sqlservr.exe" and InitiatingProcessFolderPath startswith
   "C:\\Program Files\\Microsoft SQL Server\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

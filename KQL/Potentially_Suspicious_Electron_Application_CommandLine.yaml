@@ -2,7 +2,7 @@ name: Potentially Suspicious Electron Application CommandLine
 id: 378a05d8-963c-46c9-bcce-13c7657eac99
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
 date: 2023/09/05
-level: medium
+severity: medium
 description: Detects potentially suspicious CommandLine of electron apps (teams, discord,
   slack, etc.). This could be a sign of abuse to proxy execution through a signed
   binary.
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   in~ ("chrome.exe", "code.exe", "discord.exe", "GitHubDesktop.exe", "keybase.exe",
   "msedge_proxy.exe", "msedge.exe", "msedgewebview2.exe", "msteams.exe", "slack.exe",
   "Teams.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Local Groups Reconnaissance Via Wmic.EXE
 id: 164eda96-11b2-430b-85ff-6a265c15bf32
 author: frack113
 date: 2021/12/12
-level: low
+severity: low
 description: 'Detects the execution of "wmic" with the "group" flag.
 
   Adversaries may attempt to find local system groups and permission settings.
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " group" and (FolderPath endswith "\\wmic.exe"
   or ProcessVersionInfoOriginalFileName =~ "wmic.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

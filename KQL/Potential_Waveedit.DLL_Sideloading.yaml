@@ -2,7 +2,7 @@ name: Potential Waveedit.DLL Sideloading
 id: 71b31e99-9ad0-47d4-aeb5-c0ca3928eeeb
 author: X__Junior (Nextron Systems)
 date: 2023/06/14
-level: high
+severity: high
 description: Detects potential DLL sideloading of "waveedit.dll", which is part of
   the Nero WaveEditor audio editing software.
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceImageLoadEvents
   "C:\\Program Files\\Nero\\Nero Apps\\Nero WaveEditor\\waveedit.exe")) and (FolderPath
   startswith "C:\\Program Files (x86)\\Nero\\Nero Apps\\Nero WaveEditor\\" or FolderPath
   startswith "C:\\Program Files\\Nero\\Nero Apps\\Nero WaveEditor\\"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

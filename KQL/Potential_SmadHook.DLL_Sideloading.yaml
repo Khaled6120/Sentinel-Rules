@@ -2,7 +2,7 @@ name: Potential SmadHook.DLL Sideloading
 id: 24b6cf51-6122-469e-861a-22974e9c1e5b
 author: X__Junior (Nextron Systems)
 date: 2023/06/01
-level: high
+severity: high
 description: Detects potential DLL sideloading of "SmadHook.dll", a DLL used by SmadAV
   antivirus
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceImageLoadEvents
   "C:\\Program Files (x86)\\SMADAV\\SmadavProtect64.exe", "C:\\Program Files\\SMADAV\\SmadavProtect32.exe",
   "C:\\Program Files\\SMADAV\\SmadavProtect64.exe")) and (FolderPath startswith "C:\\Program
   Files (x86)\\SMADAV\\" or FolderPath startswith "C:\\Program Files\\SMADAV\\"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

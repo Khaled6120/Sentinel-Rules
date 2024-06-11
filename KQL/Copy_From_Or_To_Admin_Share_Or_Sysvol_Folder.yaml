@@ -3,7 +3,7 @@ id: 855bc8b5-2ae8-402e-a9ed-b889e6df1900
 author: Florian Roth (Nextron Systems), oscd.community, Teymur Kheirkhabarov @HeirhabarovT,
   Zach Stanford @svch0st, Nasreddine Bencherchali
 date: 2019/12/30
-level: medium
+severity: medium
 description: Detects a copy command or a copy utility execution to or from an Admin
   share or remote
 status: test
@@ -32,3 +32,13 @@ query: 'DeviceProcessEvents
   " mi " or ProcessCommandLine contains " mv ") and ((FolderPath contains "\\powershell.exe"
   or FolderPath contains "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~
   ("PowerShell.EXE", "pwsh.dll")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

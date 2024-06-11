@@ -2,7 +2,7 @@ name: Suspicious GrpConv Execution
 id: f14e169e-9978-4c69-acb3-1cff8200bc36
 author: Florian Roth (Nextron Systems)
 date: 2022/05/19
-level: high
+severity: high
 description: Detects the suspicious execution of a utility to convert Windows 3.x
   .grp files or for persistence purposes by malicious software or actors
 status: test
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "grpconv.exe -o" or ProcessCommandLine contains
   "grpconv -o"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

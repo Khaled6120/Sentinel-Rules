@@ -2,7 +2,7 @@ name: Suspicious Mshta.EXE Execution Patterns
 id: e32f92d1-523e-49c3-9374-bdb13b46a3ba
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
 date: 2021/07/17
-level: high
+severity: high
 description: Detects suspicious mshta process execution patterns
 status: test
 modified: 2023/02/21
@@ -28,3 +28,13 @@ query: 'DeviceProcessEvents
   startswith "C:\\Windows\\SysWOW64\\") or (ProcessCommandLine contains ".htm" or
   ProcessCommandLine contains ".hta") or (ProcessCommandLine endswith "mshta.exe"
   or ProcessCommandLine endswith "mshta")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

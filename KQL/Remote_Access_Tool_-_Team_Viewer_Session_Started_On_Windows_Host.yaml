@@ -2,7 +2,7 @@ name: Remote Access Tool - Team Viewer Session Started On Windows Host
 id: ab70c354-d9ac-4e11-bbb6-ec8e3b153357
 author: Josh Nickels, Qi Nan
 date: 2024/03/11
-level: low
+severity: low
 description: 'Detects the command line executed when TeamViewer starts a session started
   by a remote host.
 
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   | where ProcessCommandLine endswith "TeamViewer_Desktop.exe --IPCport 5939 --Module
   1" and FolderPath =~ "TeamViewer_Desktop.exe" and InitiatingProcessFolderPath =~
   "TeamViewer_Service.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

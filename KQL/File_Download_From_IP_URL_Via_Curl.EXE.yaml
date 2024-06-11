@@ -2,7 +2,7 @@ name: File Download From IP URL Via Curl.EXE
 id: 9cc85849-3b02-4cb5-b371-3a1ff54f2218
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/10/18
-level: medium
+severity: medium
 description: Detects file downloads directly from IP address URL using curl.exe
 status: experimental
 modified: ''
@@ -38,3 +38,13 @@ query: 'DeviceProcessEvents
   ".msi''" or ProcessCommandLine endswith ".png''" or ProcessCommandLine endswith
   ".ps1''" or ProcessCommandLine endswith ".psm1''" or ProcessCommandLine endswith
   ".vbe''" or ProcessCommandLine endswith ".vbs''")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

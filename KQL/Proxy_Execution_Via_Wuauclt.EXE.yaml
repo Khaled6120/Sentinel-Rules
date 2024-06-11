@@ -3,7 +3,7 @@ id: af77cf95-c469-471c-b6a0-946c685c4798
 author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research), Florian Roth
   (Nextron Systems), Sreeman, FPT.EagleEye Team
 date: 2020/10/12
-level: high
+severity: high
 description: Detects the use of the Windows Update Client binary (wuauclt.exe) for
   proxy execution.
 status: test
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   /ClassId") or (ProcessCommandLine contains ":\\Windows\\WinSxS\\" and ProcessCommandLine
   contains "\\UpdateDeploy.dll /ClassId ") or ProcessCommandLine contains " wuaueng.dll
   ")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

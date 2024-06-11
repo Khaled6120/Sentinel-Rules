@@ -2,7 +2,7 @@ name: Suspicious Processes Spawned by WinRM
 id: 5cc2cda8-f261-4d88-a2de-e9e193c86716
 author: Andreas Hunkeler (@Karneades), Markus Neis
 date: 2021/05/20
-level: high
+severity: high
 description: Detects suspicious processes including shells spawnd from WinRM host
   process
 status: test
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   or FolderPath endswith "\\certutil.exe" or FolderPath endswith "\\whoami.exe" or
   FolderPath endswith "\\bitsadmin.exe") and InitiatingProcessFolderPath endswith
   "\\wsmprovhost.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

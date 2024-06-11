@@ -2,7 +2,7 @@ name: Potential Browser Data Stealing
 id: 47147b5b-9e17-4d76-b8d2-7bac24c5ce1b
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/12/23
-level: medium
+severity: medium
 description: 'Adversaries may acquire credentials from web browsers by reading files
   specific to the target browser.
 
@@ -47,3 +47,13 @@ query: 'DeviceProcessEvents
   "\\QIP Surf\\User Data" or ProcessCommandLine contains "\\Sputnik\\User Data" or
   ProcessCommandLine contains "\\Torch\\User Data" or ProcessCommandLine contains
   "\\uCozMedia\\Uran\\User Data" or ProcessCommandLine contains "\\Vivaldi\\User Data")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

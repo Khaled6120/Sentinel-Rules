@@ -2,7 +2,7 @@ name: Gpscript Execution
 id: 1e59c230-6670-45bf-83b0-98903780607e
 author: frack113
 date: 2022/05/16
-level: medium
+severity: medium
 description: Detects the execution of the LOLBIN gpscript, which executes logon or
   startup scripts configured in Group Policy
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   /startup") and (FolderPath endswith "\\gpscript.exe" or ProcessVersionInfoOriginalFileName
   =~ "GPSCRIPT.EXE")) and (not(InitiatingProcessCommandLine =~ "C:\\windows\\system32\\svchost.exe
   -k netsvcs -p -s gpsvc"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

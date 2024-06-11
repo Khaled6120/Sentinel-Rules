@@ -3,7 +3,7 @@ id: 7b582f1a-b318-4c6a-bf4e-66fe49bf55a5
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems),
   @Kostastsale
 date: 2022/02/25
-level: medium
+severity: medium
 description: 'Detects potentially suspicious child processes launched via the ScreenConnect
   client service.
 
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\rundll32.exe"
   or FolderPath endswith "\\wevtutil.exe") and (InitiatingProcessCommandLine contains
   ":\\Windows\\TEMP\\ScreenConnect\\" and InitiatingProcessCommandLine contains "run.cmd")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

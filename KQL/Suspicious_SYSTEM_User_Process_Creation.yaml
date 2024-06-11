@@ -2,7 +2,7 @@ name: Suspicious SYSTEM User Process Creation
 id: 2617e7ed-adb7-40ba-b0f3-8f9945fe6c09
 author: Florian Roth (Nextron Systems), David ANDRE (additional keywords)
 date: 2021/12/20
-level: high
+severity: high
 description: Detects a suspicious process creation as SYSTEM user (suspicious program
   or command line parameter)
 status: test
@@ -55,3 +55,13 @@ query: 'DeviceProcessEvents
   and InitiatingProcessFolderPath endswith "\\bin\\javaws.exe") or ProcessCommandLine
   =~ "ping 127.0.0.1 -n 5" or (FolderPath endswith "\\PING.EXE" and InitiatingProcessCommandLine
   contains "\\DismFoDInstall.cmd"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

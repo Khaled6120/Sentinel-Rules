@@ -2,7 +2,7 @@ name: Suspicious Redirection to Local Admin Share
 id: ab9e3b40-0c85-4ba1-aede-455d226fd124
 author: Florian Roth (Nextron Systems)
 date: 2022/01/16
-level: high
+severity: high
 description: Detects a suspicious output redirection to the local admins share, this
   technique is often found in malicious scripts or hacktool stagers
 status: test
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains ">" and (ProcessCommandLine contains "\\\\127.0.0.1\\admin$\\"
   or ProcessCommandLine contains "\\\\localhost\\admin$\\")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

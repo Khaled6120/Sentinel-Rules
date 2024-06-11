@@ -2,7 +2,7 @@ name: Suspicious PowerShell Parent Process
 id: 754ed792-634f-40ae-b3bc-e0448d33f695
 author: Teymur Kheirkhabarov, Harish Segar
 date: 2020/03/20
-level: high
+severity: high
 description: Detects a suspicious or uncommon parent processes of PowerShell
 status: test
 modified: 2023/02/04
@@ -36,3 +36,13 @@ query: 'DeviceProcessEvents
   pwsh") or ProcessVersionInfoFileDescription =~ "Windows PowerShell" or ProcessVersionInfoProductName
   =~ "PowerShell Core 6" or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE",
   "pwsh.dll")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

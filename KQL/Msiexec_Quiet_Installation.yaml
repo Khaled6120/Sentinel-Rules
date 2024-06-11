@@ -2,7 +2,7 @@ name: Msiexec Quiet Installation
 id: 79a87aa6-e4bd-42fc-a5bb-5e6fbdcd62f5
 author: frack113
 date: 2022/01/16
-level: medium
+severity: medium
 description: 'Adversaries may abuse msiexec.exe to proxy execution of malicious payloads.
 
   Msiexec.exe is the command-line utility for the Windows Installer and is thus commonly
@@ -29,3 +29,13 @@ query: 'DeviceProcessEvents
   =~ "System" and InitiatingProcessFolderPath =~ "C:\\Windows\\CCM\\Ccm32BitLauncher.exe")
   or InitiatingProcessFolderPath startswith "C:\\Windows\\Temp\\" or (InitiatingProcessFolderPath
   contains "\\AppData\\Local\\Temp\\" and InitiatingProcessFolderPath startswith "C:\\Users\\"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

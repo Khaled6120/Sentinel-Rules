@@ -2,7 +2,7 @@ name: New Root Certificate Installed Via CertMgr.EXE
 id: ff992eac-6449-4c60-8c1d-91c9722a1d48
 author: oscd.community, @redcanary, Zach Stanford @svch0st
 date: 2023/03/05
-level: medium
+severity: medium
 description: 'Detects execution of "certmgr" with the "add" flag in order to install
   a new certificate on the system.
 
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "/add" and ProcessCommandLine contains "root")
   and (FolderPath endswith "\\CertMgr.exe" or ProcessVersionInfoOriginalFileName =~
   "CERTMGT.EXE")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

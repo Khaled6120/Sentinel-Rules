@@ -2,7 +2,7 @@ name: PowerShell Base64 Encoded FromBase64String Cmdlet
 id: fdb62a13-9a81-4e5c-a38f-ea93a16f6d7c
 author: Florian Roth (Nextron Systems)
 date: 2019/08/24
-level: high
+severity: high
 description: Detects usage of a base64 encoded "FromBase64String" cmdlet in a process
   command line
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   or (ProcessCommandLine contains "OgA6AEYAcgBvAG0AQgBhAHMAZQA2ADQAUwB0AHIAaQBuAGcA"
   or ProcessCommandLine contains "oAOgBGAHIAbwBtAEIAYQBzAGUANgA0AFMAdAByAGkAbgBnA"
   or ProcessCommandLine contains "6ADoARgByAG8AbQBCAGEAcwBlADYANABTAHQAcgBpAG4AZw")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

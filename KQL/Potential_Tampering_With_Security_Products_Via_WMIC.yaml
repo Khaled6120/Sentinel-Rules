@@ -2,7 +2,7 @@ name: Potential Tampering With Security Products Via WMIC
 id: 847d5ff3-8a31-4737-a970-aeae8fe21765
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
 date: 2021/01/30
-level: high
+severity: high
 description: Detects uninstallation or termination of security products using the
   WMIC utility
 status: test
@@ -44,3 +44,13 @@ query: 'DeviceProcessEvents
   contains "Sophos Update Manager" or ProcessCommandLine contains "Threat Protection"
   or ProcessCommandLine contains "VirusScan" or ProcessCommandLine contains "Webroot
   SecureAnywhere" or ProcessCommandLine contains "Windows Defender")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

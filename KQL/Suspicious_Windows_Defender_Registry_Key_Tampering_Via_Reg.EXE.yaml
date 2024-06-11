@@ -3,7 +3,7 @@ id: 452bce90-6fb0-43cc-97a5-affc283139b3
 author: Florian Roth (Nextron Systems), Swachchhanda Shrawan Poudel, Nasreddine Bencherchali
   (Nextron Systems)
 date: 2022/03/22
-level: high
+severity: high
 description: Detects the usage of "reg.exe" to tamper with different Windows Defender
   registry keys in order to disable some important features related to protection
   and detection
@@ -41,3 +41,13 @@ query: 'DeviceProcessEvents
   contains "DisableScriptScanning" or ProcessCommandLine contains "Notification_Suppress"
   or ProcessCommandLine contains "SignatureDisableUpdateOnStartupWithoutEngine") and
   (ProcessCommandLine contains " add " and ProcessCommandLine contains "d 1")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

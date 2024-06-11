@@ -2,7 +2,7 @@ name: DLL Loaded From Suspicious Location Via Cmspt.EXE
 id: 75e508f7-932d-4ebc-af77-269237a84ce1
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/08/30
-level: high
+severity: high
 description: Detects cmstp loading "dll" or "ocx" files from suspicious locations
 status: test
 modified: 2023/02/17
@@ -19,3 +19,13 @@ query: 'DeviceImageLoadEvents
   or FolderPath contains "\\Users\\" or FolderPath contains "\\Windows\\Temp\\" or
   FolderPath contains "C:\\Temp\\") and (FolderPath endswith ".dll" or FolderPath
   endswith ".ocx") and InitiatingProcessFolderPath endswith "\\cmstp.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

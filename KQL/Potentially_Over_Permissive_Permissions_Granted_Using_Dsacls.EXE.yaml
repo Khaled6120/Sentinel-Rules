@@ -2,7 +2,7 @@ name: Potentially Over Permissive Permissions Granted Using Dsacls.EXE
 id: 01c42d3c-242d-4655-85b2-34f1739632f7
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/06/20
-level: medium
+severity: medium
 description: Detects usage of Dsacls to grant over permissive permissions
 status: test
 modified: 2023/02/04
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   "GR" or ProcessCommandLine contains "GE" or ProcessCommandLine contains "GW" or
   ProcessCommandLine contains "GA" or ProcessCommandLine contains "WP" or ProcessCommandLine
   contains "WD")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

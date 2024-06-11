@@ -2,7 +2,7 @@ name: Uncommon Svchost Parent Process
 id: 01d2e2a1-5f09-44f7-9fc1-24faa7479b6d
 author: Florian Roth (Nextron Systems)
 date: 2017/08/15
-level: medium
+severity: medium
 description: Detects an uncommon svchost parent process
 status: test
 modified: 2022/06/28
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   endswith "\\rpcnet.exe" or InitiatingProcessFolderPath endswith "\\services.exe"
   or InitiatingProcessFolderPath endswith "\\TiWorker.exe") or (InitiatingProcessFolderPath
   in~ ("-", "")) or isnull(InitiatingProcessFolderPath))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

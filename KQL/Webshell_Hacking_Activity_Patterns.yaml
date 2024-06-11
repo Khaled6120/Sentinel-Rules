@@ -2,7 +2,7 @@ name: Webshell Hacking Activity Patterns
 id: 4ebc877f-4612-45cb-b3a5-8e3834db36c9
 author: Florian Roth (Nextron Systems)
 date: 2022/03/17
-level: high
+severity: high
 description: 'Detects certain parent child patterns found in cases in which a web
   shell is used to perform certain credential dumping or exfiltration activities on
   a compromised system
@@ -47,3 +47,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains ".downloadstring(" or ProcessCommandLine contains
   "FromBase64String" or ProcessCommandLine contains "process call create" or ProcessCommandLine
   contains "reg save " or ProcessCommandLine contains "whoami /priv"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

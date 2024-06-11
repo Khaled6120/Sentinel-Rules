@@ -3,7 +3,7 @@ id: 949f1ffb-6e85-4f00-ae1e-c3c5b190d605
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems),
   @gott_cyber
 date: 2019/06/29
-level: medium
+severity: medium
 description: 'Detects a command line process that uses explorer.exe to launch arbitrary
   commands or binaries,
 
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   | where ProcessCommandLine contains "/factory,{75dff2b7-6936-4c06-a8bb-676a7b00b24b}"
   or (ProcessCommandLine contains "explorer.exe" and ProcessCommandLine contains "
   /root,")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

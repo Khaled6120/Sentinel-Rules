@@ -2,7 +2,7 @@ name: Cloudflared Quick Tunnel Execution
 id: 222129f7-f4dc-4568-b0d2-22440a9639ba
 author: Sajid Nawaz Khan
 date: 2023/12/20
-level: medium
+severity: medium
 description: 'Detects creation of an ad-hoc Cloudflare Quick Tunnel, which can be
   used to tunnel local services such as HTTP, RDP, SSH and SMB.
 
@@ -66,3 +66,13 @@ query: 'DeviceProcessEvents
   contains "-url" and ProcessCommandLine contains "tunnel") or (ProcessCommandLine
   contains ".exe -url" or ProcessCommandLine contains ".exe --url"))) or (ProcessCommandLine
   contains "-url" and ProcessCommandLine contains "-no-autoupdate")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

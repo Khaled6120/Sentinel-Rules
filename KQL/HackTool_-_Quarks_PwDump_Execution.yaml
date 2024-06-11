@@ -2,7 +2,7 @@ name: HackTool - Quarks PwDump Execution
 id: 0685b176-c816-4837-8e7b-1216f346636b
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/09/05
-level: high
+severity: high
 description: Detects usage of the Quarks PwDump tool via commandline arguments
 status: test
 modified: 2023/02/05
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine in~ (" -dhl", " --dump-hash-local", " -dhdc", " --dump-hash-domain-cached",
   " --dump-bitlocker", " -dhd ", " --dump-hash-domain ", "--ntds-file")) or FolderPath
   endswith "\\QuarksPwDump.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Suspicious Windows Update Agent Empty Cmdline
 id: 52d097e2-063e-4c9c-8fbb-855c8948d135
 author: Florian Roth (Nextron Systems)
 date: 2022/02/26
-level: high
+severity: high
 description: 'Detects suspicious Windows Update Agent activity in which a wuauclt.exe
   process command line doesn''t contain any command line flags
 
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine endswith "Wuauclt" or ProcessCommandLine endswith "Wuauclt.exe")
   and (FolderPath endswith "\\Wuauclt.exe" or ProcessVersionInfoOriginalFileName =~
   "Wuauclt.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

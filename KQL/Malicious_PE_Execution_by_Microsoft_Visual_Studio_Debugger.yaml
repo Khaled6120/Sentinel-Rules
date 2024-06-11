@@ -2,7 +2,7 @@ name: Malicious PE Execution by Microsoft Visual Studio Debugger
 id: 15c7904e-6ad1-4a45-9b46-5fb25df37fd2
 author: "Agro (@agro_sev), Ensar \xC5\u017Eamil (@sblmsrsn), oscd.community"
 date: 2020/10/14
-level: medium
+severity: medium
 description: 'There is an option for a MS VS Just-In-Time Debugger "vsjitdebugger.exe"
   to launch specified executable and attach a debugger.
 
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   | where InitiatingProcessFolderPath endswith "\\vsjitdebugger.exe" and (not(((FolderPath
   contains "\\vsimmersiveactivatehelper" and FolderPath contains ".exe") or FolderPath
   endswith "\\devenv.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

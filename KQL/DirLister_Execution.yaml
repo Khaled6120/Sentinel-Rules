@@ -2,7 +2,7 @@ name: DirLister Execution
 id: b4dc61f5-6cce-468e-a608-b48b469feaa2
 author: frack113
 date: 2022/08/20
-level: low
+severity: low
 description: Detect the usage of "DirLister.exe" a utility for quickly listing folder
   or drive contents. It was seen used by BlackCat ransomware to create a list of accessible
   directories and files.
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessVersionInfoOriginalFileName =~ "DirLister.exe" or FolderPath endswith
   "\\dirlister.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

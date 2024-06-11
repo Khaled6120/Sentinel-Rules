@@ -2,7 +2,7 @@ name: VBA DLL Loaded Via Office Application
 id: e6ce8457-68b1-485b-9bdd-3c2b5d679aa9
 author: Antonlovesdnb
 date: 2020/02/19
-level: high
+severity: high
 description: Detects VB DLL's loaded by an office application. Which could indicate
   the presence of VBA Macros.
 status: test
@@ -22,3 +22,13 @@ query: 'DeviceImageLoadEvents
   endswith "\\onenote.exe" or InitiatingProcessFolderPath endswith "\\onenoteim.exe"
   or InitiatingProcessFolderPath endswith "\\outlook.exe" or InitiatingProcessFolderPath
   endswith "\\powerpnt.exe" or InitiatingProcessFolderPath endswith "\\winword.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

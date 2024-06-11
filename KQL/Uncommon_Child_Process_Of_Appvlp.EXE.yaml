@@ -2,7 +2,7 @@ name: Uncommon Child Process Of Appvlp.EXE
 id: 9c7e131a-0f2c-4ae0-9d43-b04f4e266d43
 author: Sreeman
 date: 2020/03/13
-level: medium
+severity: medium
 description: 'Detects uncommon child processes of Appvlp.EXE
 
   Appvlp or the Application Virtualization Utility is included with Microsoft Office.
@@ -32,3 +32,13 @@ query: 'DeviceProcessEvents
   endswith "\\msoasb.exe") or (FolderPath contains ":\\Program Files\\Microsoft Office"
   and FolderPath endswith "\\MSOUC.EXE") or ((FolderPath contains ":\\Program Files\\Microsoft
   Office" and FolderPath contains "\\SkypeSrv\\") and FolderPath endswith "\\SKYPESERVER.EXE"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

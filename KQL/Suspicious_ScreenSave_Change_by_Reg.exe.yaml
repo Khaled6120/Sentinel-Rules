@@ -2,7 +2,7 @@ name: Suspicious ScreenSave Change by Reg.exe
 id: 0fc35fc3-efe6-4898-8a37-0b233339524f
 author: frack113
 date: 2021/08/19
-level: medium
+severity: medium
 description: 'Adversaries may establish persistence by executing malicious content
   triggered by user inactivity.
 
@@ -32,3 +32,13 @@ query: 'DeviceProcessEvents
   contains "/f") or (ProcessCommandLine contains "/v SCRNSAVE.EXE" and ProcessCommandLine
   contains "/t REG_SZ" and ProcessCommandLine contains "/d " and ProcessCommandLine
   contains ".scr" and ProcessCommandLine contains "/f"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

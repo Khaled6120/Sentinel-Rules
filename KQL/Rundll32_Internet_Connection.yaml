@@ -2,7 +2,7 @@ name: Rundll32 Internet Connection
 id: cdc8da7d-c303-42f8-b08c-b4ab47230263
 author: Florian Roth (Nextron Systems)
 date: 2017/11/04
-level: medium
+severity: medium
 description: Detects a rundll32 that communicates with public IP addresses
 status: test
 modified: 2024/03/13
@@ -25,3 +25,13 @@ query: 'DeviceNetworkEvents
   or (ipv4_is_in_range(RemoteIP, "20.0.0.0/8") or ipv4_is_in_range(RemoteIP, "51.103.0.0/16")
   or ipv4_is_in_range(RemoteIP, "51.104.0.0/16") or ipv4_is_in_range(RemoteIP, "51.105.0.0/16"))
   or (RemotePort == 443 and InitiatingProcessParentFileName =~ "svchost.exe"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

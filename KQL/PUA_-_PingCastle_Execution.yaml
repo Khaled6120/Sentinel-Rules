@@ -2,7 +2,7 @@ name: PUA - PingCastle Execution
 id: b1cb4ab6-ac31-43f4-adf1-d9d08957419c
 author: Nasreddine Bencherchali (Nextron Systems), frack113
 date: 2024/01/11
-level: medium
+severity: medium
 description: Detects the execution of PingCastle, a tool designed to quickly assess
   the Active Directory security level.
 status: experimental
@@ -122,3 +122,13 @@ query: 'DeviceProcessEvents
   contains "--no-enum-limit" or (ProcessCommandLine contains "--healthcheck" and ProcessCommandLine
   contains "--level Full") or (ProcessCommandLine contains "--healthcheck" and ProcessCommandLine
   contains "--server ")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Potential Arbitrary Command Execution Using Msdt.EXE
 id: 258fc8ce-8352-443a-9120-8a11e4857fa5
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/05/29
-level: high
+severity: high
 description: Detects processes leveraging the "ms-msdt" handler or the "msdt.exe"
   binary to execute arbitrary commands as seen in the follina (CVE-2022-30190) vulnerability
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   =~ "msdt.exe") and (ProcessCommandLine contains "IT_BrowseForFile=" or (ProcessCommandLine
   contains " PCWDiagnostic" and (ProcessCommandLine contains " -af " or ProcessCommandLine
   contains " /af ")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Potentially Suspicious Cabinet File Expansion
 id: 9f107a84-532c-41af-b005-8d12a607639f
 author: Bhabesh Raj, X__Junior (Nextron Systems)
 date: 2021/07/30
-level: medium
+severity: medium
 description: Detects the expansion or decompression of cabinet files from potentially
   suspicious or uncommon locations, e.g. seen in Iranian MeteorExpress related attacks
 status: test
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   contains ":\\Users\\" and ProcessCommandLine contains "\\Contacts\\"))) and (not((ProcessCommandLine
   contains "C:\\ProgramData\\Dell\\UpdateService\\Temp\\" and InitiatingProcessFolderPath
   =~ "C:\\Program Files (x86)\\Dell\\UpdateService\\ServiceShell.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Renamed Cloudflared.EXE Execution
 id: e0c69ebd-b54f-4aed-8ae3-e3467843f3f0
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/12/20
-level: high
+severity: high
 description: Detects the execution of a renamed "cloudflared" binary.
 status: experimental
 modified: ''
@@ -61,3 +61,13 @@ query: 'DeviceProcessEvents
   "-token ") and (ProcessCommandLine contains " tunnel " and ProcessCommandLine contains
   " run "))) and (not((FolderPath endswith "\\cloudflared.exe" or FolderPath endswith
   "\\cloudflared-windows-386.exe" or FolderPath endswith "\\cloudflared-windows-amd64.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

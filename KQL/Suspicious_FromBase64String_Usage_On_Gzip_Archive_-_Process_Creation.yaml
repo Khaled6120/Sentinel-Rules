@@ -2,7 +2,7 @@ name: Suspicious FromBase64String Usage On Gzip Archive - Process Creation
 id: d75d6b6b-adb9-48f7-824b-ac2e786efe1f
 author: frack113
 date: 2022/12/23
-level: medium
+severity: medium
 description: Detects attempts of decoding a base64 Gzip archive via PowerShell. This
   technique is often used as a method to load malicious content into memory afterward.
 status: test
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "FromBase64String" and ProcessCommandLine contains
   "MemoryStream" and ProcessCommandLine contains "H4sI"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

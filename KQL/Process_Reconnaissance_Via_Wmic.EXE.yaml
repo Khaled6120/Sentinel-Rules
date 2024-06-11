@@ -2,7 +2,7 @@ name: Process Reconnaissance Via Wmic.EXE
 id: 221b251a-357a-49a9-920a-271802777cc0
 author: frack113
 date: 2022/01/01
-level: medium
+severity: medium
 description: Detects the execution of "wmic" with the "process" flag, which adversary
   might use to list processes running on the compromised host or list installed software
   hotfixes and patches.
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "process" and (FolderPath endswith "\\WMIC.exe"
   or ProcessVersionInfoOriginalFileName =~ "wmic.exe")) and (not((ProcessCommandLine
   contains "call" and ProcessCommandLine contains "create")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

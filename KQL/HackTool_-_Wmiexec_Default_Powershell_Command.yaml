@@ -2,7 +2,7 @@ name: HackTool - Wmiexec Default Powershell Command
 id: 022eaba8-f0bf-4dd9-9217-4604b0bb3bb0
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/03/08
-level: high
+severity: high
 description: Detects the execution of PowerShell with a specific flag sequence that
   is used by the Wmiexec script
 status: test
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "-NoP -NoL -sta -NonI -W Hidden -Exec Bypass
   -Enc"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

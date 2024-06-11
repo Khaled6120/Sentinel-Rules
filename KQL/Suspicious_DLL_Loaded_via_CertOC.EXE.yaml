@@ -2,7 +2,7 @@ name: Suspicious DLL Loaded via CertOC.EXE
 id: 84232095-ecca-4015-b0d7-7726507ee793
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/02/15
-level: high
+severity: high
 description: Detects when a user installs certificates by using CertOC.exe to load
   the target DLL file.
 status: test
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   ProcessCommandLine contains "\\Desktop\\" or ProcessCommandLine contains "\\Downloads\\"
   or ProcessCommandLine contains "\\Users\\Public\\" or ProcessCommandLine contains
   "C:\\Windows\\Tasks\\" or ProcessCommandLine contains "C:\\Windows\\Temp\\")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

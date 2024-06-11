@@ -2,7 +2,7 @@ name: MMC20 Lateral Movement
 id: f1f3bf22-deb2-418d-8cce-e1a45e46a5bd
 author: '@2xxeformyshirt (Security Risk Advisors) - rule; Teymur Kheirkhabarov (idea)'
 date: 2020/03/04
-level: high
+severity: high
 description: Detects MMC20.Application Lateral Movement; specifically looks for the
   spawning of the parent MMC.exe with a command line of "-Embedding" as a child of
   svchost.exe
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "-Embedding" and FolderPath endswith "\\mmc.exe"
   and InitiatingProcessFolderPath endswith "\\svchost.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

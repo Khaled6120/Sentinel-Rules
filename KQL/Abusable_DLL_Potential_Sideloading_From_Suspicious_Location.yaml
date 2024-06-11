@@ -2,7 +2,7 @@ name: Abusable DLL Potential Sideloading From Suspicious Location
 id: 799a5f48-0ac1-4e0f-9152-71d137d48c2a
 author: X__Junior (Nextron Systems)
 date: 2023/07/11
-level: high
+severity: high
 description: Detects potential DLL sideloading of DLLs that are known to be abused
   from suspicious locations
 status: test
@@ -25,3 +25,13 @@ query: 'DeviceImageLoadEvents
   FolderPath contains "\\Favourites\\") or (FolderPath contains ":\\Users\\" and FolderPath
   contains "\\Contacts\\") or (FolderPath contains ":\\Users\\" and FolderPath contains
   "\\Pictures\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

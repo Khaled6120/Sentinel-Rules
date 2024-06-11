@@ -2,7 +2,7 @@ name: Disable Windows IIS HTTP Logging
 id: e4ed6030-ffe5-4e6a-8a8a-ab3c1ab9d94e
 author: frack113
 date: 2022/01/09
-level: high
+severity: high
 description: Disables HTTP logging on a Windows IIS web server as seen by Threat Group
   3390 (Bronze Union)
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   and ProcessCommandLine contains "section:httplogging" and ProcessCommandLine contains
   "dontLog:true") and (FolderPath endswith "\\appcmd.exe" or ProcessVersionInfoOriginalFileName
   =~ "appcmd.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

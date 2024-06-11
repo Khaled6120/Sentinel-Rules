@@ -2,7 +2,7 @@ name: Potentially Suspicious Child Process Of ClickOnce Application
 id: 67bc0e75-c0a9-4cfc-8754-84a505b63c04
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/06/12
-level: medium
+severity: medium
 description: Detects potentially suspicious child processes of a ClickOnce deployment
   application
 status: test
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   endswith "\\rundll32.exe" or FolderPath endswith "\\schtasks.exe" or FolderPath
   endswith "\\werfault.exe" or FolderPath endswith "\\wscript.exe") and InitiatingProcessFolderPath
   contains "\\AppData\\Local\\Apps\\2.0\\"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

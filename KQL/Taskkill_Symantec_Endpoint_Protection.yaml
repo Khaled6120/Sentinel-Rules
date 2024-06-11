@@ -2,7 +2,7 @@ name: Taskkill Symantec Endpoint Protection
 id: 4a6713f6-3331-11ed-a261-0242ac120002
 author: Ilya Krestinichev, Florian Roth (Nextron Systems)
 date: 2022/09/13
-level: high
+severity: high
 description: 'Detects one of the possible scenarios for disabling Symantec Endpoint
   Protection.
 
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "taskkill" and ProcessCommandLine contains "
   /F " and ProcessCommandLine contains " /IM " and ProcessCommandLine contains "ccSvcHst.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Potentially Suspicious Child Process Of DiskShadow.EXE
 id: 9f546b25-5f12-4c8d-8532-5893dcb1e4b8
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/09/15
-level: medium
+severity: medium
 description: Detects potentially suspicious child processes of "Diskshadow.exe". This
   could be an attempt to bypass parent/child relationship detection or application
   whitelisting rules.
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath
   endswith "\\rundll32.exe" or FolderPath endswith "\\wscript.exe") and InitiatingProcessFolderPath
   endswith "\\diskshadow.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

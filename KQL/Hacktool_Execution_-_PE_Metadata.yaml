@@ -2,7 +2,7 @@ name: Hacktool Execution - PE Metadata
 id: 37c1333a-a0db-48be-b64b-7393b2386e3b
 author: Florian Roth (Nextron Systems)
 date: 2022/04/27
-level: high
+severity: high
 description: Detects the execution of different Windows based hacktools via PE metadata
   (company, product, etc.) even if the files have been renamed
 status: test
@@ -18,3 +18,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where ProcessVersionInfoCompanyName =~ "Cube0x0"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

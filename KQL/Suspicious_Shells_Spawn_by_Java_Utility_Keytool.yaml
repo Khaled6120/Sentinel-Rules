@@ -2,7 +2,7 @@ name: Suspicious Shells Spawn by Java Utility Keytool
 id: 90fb5e62-ca1f-4e22-b42e-cc521874c938
 author: Andreas Hunkeler (@Karneades)
 date: 2021/12/22
-level: high
+severity: high
 description: Detects suspicious shell spawn from Java utility keytool process (e.g.
   adselfservice plus exploitation)
 status: test
@@ -29,3 +29,13 @@ query: 'DeviceProcessEvents
   or FolderPath endswith "\\AppVLP.exe" or FolderPath endswith "\\systeminfo.exe"
   or FolderPath endswith "\\reg.exe" or FolderPath endswith "\\query.exe") and InitiatingProcessFolderPath
   endswith "\\keytool.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: PUA - NPS Tunneling Tool Execution
 id: 68d37776-61db-42f5-bf54-27e87072d17e
 author: Florian Roth (Nextron Systems)
 date: 2022/10/08
-level: high
+severity: high
 description: Detects the use of NPS, a port forwarding and intranet penetration proxy
   server
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   or MD5 =~ "ae8acf66bfe3a44148964048b826d005" or SHA1 =~ "cea49e9b9b67f3a13ad0be1c2655293ea3c18181"
   or SHA256 =~ "5a456283392ffceeeaca3d3426c306eb470304637520d72fed1cc1febbbd6856")
   or FolderPath endswith "\\npc.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

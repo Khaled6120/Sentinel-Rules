@@ -2,7 +2,7 @@ name: Conhost Spawned By Uncommon Parent Process
 id: cbb9e3d1-2386-4e59-912e-62f1484f7a89
 author: Tim Rauch, Elastic (idea)
 date: 2022/09/28
-level: medium
+severity: medium
 description: Detects when the Console Window Host (conhost.exe) process is spawned
   by an uncommon parent process, which could be indicative of potential code injection
   activity.
@@ -35,3 +35,13 @@ query: 'DeviceProcessEvents
   or InitiatingProcessCommandLine contains "-k wsappx -p -s ClipSVC"))) and (not((InitiatingProcessCommandLine
   contains "C:\\Program Files (x86)\\Dropbox\\Client\\" or InitiatingProcessCommandLine
   contains "C:\\Program Files\\Dropbox\\Client\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

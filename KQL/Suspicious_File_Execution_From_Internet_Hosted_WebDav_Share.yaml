@@ -2,7 +2,7 @@ name: Suspicious File Execution From Internet Hosted WebDav Share
 id: f0507c0f-a3a2-40f5-acc6-7f543c334993
 author: pH-T (Nextron Systems)
 date: 2022/09/01
-level: high
+severity: high
 description: Detects the execution of the "net use" command to mount a WebDAV server
   and then immediately execute some content in it. As seen being used in malicious
   LNK files
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   ".bat " or ProcessCommandLine contains ".vbs " or ProcessCommandLine contains ".ps1
   ") and (FolderPath contains "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~
   "Cmd.EXE")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

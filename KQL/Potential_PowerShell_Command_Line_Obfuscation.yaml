@@ -3,7 +3,7 @@ id: d7bcd677-645d-4691-a8d4-7a5602b780d1
 author: Teymur Kheirkhabarov (idea), Vasiliy Burov (rule), oscd.community, Tim Shelton
   (fp)
 date: 2020/10/15
-level: high
+severity: high
 description: Detects the PowerShell command lines with special characters
 status: test
 modified: 2024/04/15
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   Files\\Amazon\\SSM\\ssm-document-worker.exe" or (ProcessCommandLine contains "new
   EventSource(\"Microsoft.Windows.Sense.Client.Management\"" or ProcessCommandLine
   contains "public static extern bool InstallELAMCertificateInfo(SafeFileHandle handle);"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

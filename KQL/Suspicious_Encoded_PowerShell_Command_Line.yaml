@@ -3,7 +3,7 @@ id: ca2092a1-c273-4878-9b4b-0d60115bf5ea
 author: Florian Roth (Nextron Systems), Markus Neis, Jonhnathan Ribeiro, Daniil Yugoslavskiy,
   Anton Kutepov, oscd.community
 date: 2018/09/03
-level: high
+severity: high
 description: Detects suspicious powershell process starts with base64 encoded commands
   (e.g. Emotet)
 status: test
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   contains " cwB") and ProcessCommandLine contains " -e") or (ProcessCommandLine contains
   ".exe -ENCOD " or ProcessCommandLine contains " BA^J e-")) and (not(ProcessCommandLine
   contains " -ExecutionPolicy remotesigned "))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

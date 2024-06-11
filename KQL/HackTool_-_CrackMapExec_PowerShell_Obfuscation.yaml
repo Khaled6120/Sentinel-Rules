@@ -2,7 +2,7 @@ name: HackTool - CrackMapExec PowerShell Obfuscation
 id: 6f8b3439-a203-45dc-a88b-abf57ea15ccf
 author: Thomas Patzke
 date: 2020/05/22
-level: high
+severity: high
 description: The CrachMapExec pentesting framework implements a PowerShell obfuscation
   with some static strings detected by this rule.
 status: test
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   ",25]-Join'''')") or ProcessCommandLine contains "[1,3]+''x''-Join'''')") and ((FolderPath
   endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName
   in~ ("PowerShell.EXE", "pwsh.dll")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Delete Important Scheduled Task
 id: dbc1f800-0fe0-4bc0-9c66-292c2abe3f78
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/09/09
-level: high
+severity: high
 description: Detects when adversaries stop services or processes by deleting their
   respective scheduled tasks in order to conduct data destructive activities
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains "\\Windows\\WindowsUpdate\\") and (ProcessCommandLine
   contains "/delete" and ProcessCommandLine contains "/tn") and FolderPath endswith
   "\\schtasks.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Security Privileges Enumeration Via Whoami.EXE
 id: 97a80ec7-0e2f-4d05-9ef4-65760e634f6b
 author: Florian Roth (Nextron Systems)
 date: 2021/05/05
-level: high
+severity: high
 description: Detects a whoami.exe executed with the /priv command line flag instructing
   the tool to show all current user privileges. This is often used after a privilege
   escalation attempt.
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains " /priv" or ProcessCommandLine contains " -priv")
   and (FolderPath endswith "\\whoami.exe" or ProcessVersionInfoOriginalFileName =~
   "whoami.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

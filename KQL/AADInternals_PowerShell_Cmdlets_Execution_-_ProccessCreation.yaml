@@ -2,7 +2,7 @@ name: AADInternals PowerShell Cmdlets Execution - ProccessCreation
 id: c86500e9-a645-4680-98d7-f882c70c1ea3
 author: Austin Songer (@austinsonger), Nasreddine Bencherchali (Nextron Systems)
 date: 2022/12/23
-level: high
+severity: high
 description: Detects ADDInternals Cmdlet execution. A tool for administering Azure
   AD and Office 365. Which can be abused by threat actors to attack Azure AD or Office
   365.
@@ -33,3 +33,13 @@ query: 'DeviceProcessEvents
   contains "Start-AADInt" or ProcessCommandLine contains "Update-AADInt") and ((FolderPath
   endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName
   in~ ("PowerShell.Exe", "pwsh.dll")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

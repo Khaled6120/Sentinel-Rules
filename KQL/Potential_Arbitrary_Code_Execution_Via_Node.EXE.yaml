@@ -2,7 +2,7 @@ name: Potential Arbitrary Code Execution Via Node.EXE
 id: 6640f31c-01ad-49b5-beb5-83498a5cd8bd
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/09/09
-level: high
+severity: high
 description: Detects the execution node.exe which is shipped with multiple software
   such as VMware, Adobe...etc. In order to execute arbitrary code. For example to
   establish reverse shell as seen in Log4j attacks...etc
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   ") and FolderPath endswith "\\node.exe") and (ProcessCommandLine contains ".exec("
   and ProcessCommandLine contains "net.socket" and ProcessCommandLine contains ".connect"
   and ProcessCommandLine contains "child_process")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Computer Discovery And Export Via Get-ADComputer Cmdlet
 id: 435e10e4-992a-4281-96f3-38b11106adde
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/11/10
-level: medium
+severity: medium
 description: Detects usage of the Get-ADComputer cmdlet to collect computer information
   and output it to a file
 status: test
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   " and ProcessCommandLine contains " -Filter *")) and ((FolderPath endswith "\\powershell.exe"
   or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~
   ("PowerShell.EXE", "pwsh.dll")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

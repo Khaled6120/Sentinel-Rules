@@ -2,7 +2,7 @@ name: Suspicious Scheduled Task Name As GUID
 id: ff2fff64-4cd6-4a2b-ba7d-e28a30bbe66b
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/10/31
-level: medium
+severity: medium
 description: Detects creation of a scheduled task with a GUID like name
 status: test
 modified: ''
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   and FolderPath endswith "\\schtasks.exe") and (ProcessCommandLine contains "/TN
   \"{" or ProcessCommandLine contains "/TN ''{" or ProcessCommandLine contains "/TN
   {")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

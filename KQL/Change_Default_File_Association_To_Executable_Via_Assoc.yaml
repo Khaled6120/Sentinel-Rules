@@ -2,7 +2,7 @@ name: Change Default File Association To Executable Via Assoc
 id: ae6f14e6-14de-45b0-9f44-c0986f50dc89
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/06/28
-level: high
+severity: high
 description: 'Detects when a program changes the default file association of any extension
   to an executable.
 
@@ -28,3 +28,13 @@ query: 'DeviceProcessEvents
   | where ((ProcessCommandLine contains "assoc " and ProcessCommandLine contains "exefile")
   and (FolderPath endswith "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe"))
   and (not(ProcessCommandLine contains ".exe=exefile"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

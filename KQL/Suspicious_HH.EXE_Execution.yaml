@@ -2,7 +2,7 @@ name: Suspicious HH.EXE Execution
 id: e8a95b5e-c891-46e2-b33a-93937d3abc31
 author: Maxim Pavlunin
 date: 2020/04/01
-level: high
+severity: high
 description: Detects a suspicious execution of a Microsoft HTML Help (HH.exe)
 status: test
 modified: 2023/04/12
@@ -32,3 +32,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains "\\Content.Outlook\\" or ProcessCommandLine contains
   "\\Downloads\\" or ProcessCommandLine contains "\\Users\\Public\\" or ProcessCommandLine
   contains "\\Windows\\Temp\\")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

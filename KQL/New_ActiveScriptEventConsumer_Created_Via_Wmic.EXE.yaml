@@ -2,7 +2,7 @@ name: New ActiveScriptEventConsumer Created Via Wmic.EXE
 id: ebef4391-1a81-4761-a40a-1db446c0e625
 author: Florian Roth (Nextron Systems)
 date: 2021/06/25
-level: high
+severity: high
 description: Detects WMIC executions in which an event consumer gets created. This
   could be used to establish persistence
 status: test
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "ActiveScriptEventConsumer" and ProcessCommandLine
   contains " CREATE "'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Potential CCleanerDU.DLL Sideloading
 id: 1fbc0671-5596-4e17-8682-f020a0b995dc
 author: X__Junior (Nextron Systems)
 date: 2023/07/13
-level: medium
+severity: medium
 description: Detects potential DLL sideloading of "CCleanerDU.dll"
 status: test
 modified: ''
@@ -22,3 +22,13 @@ query: 'DeviceImageLoadEvents
   endswith "\\CCleaner.exe" or InitiatingProcessFolderPath endswith "\\CCleaner64.exe")
   and (InitiatingProcessFolderPath startswith "C:\\Program Files\\CCleaner\\" or InitiatingProcessFolderPath
   startswith "C:\\Program Files (x86)\\CCleaner\\"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

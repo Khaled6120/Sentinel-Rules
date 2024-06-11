@@ -2,7 +2,7 @@ name: Suspicious WMIC Execution Via Office Process
 id: e1693bc8-7168-4eab-8718-cdcaa68a1738
 author: Vadim Khrykov, Cyb3rEng
 date: 2021/08/23
-level: high
+severity: high
 description: Office application called wmic to proxye execution through a LOLBIN process.
   This is often used to break suspicious parent-child chain (Office app spawns LOLBin).
 status: test
@@ -32,3 +32,13 @@ query: 'DeviceProcessEvents
   contains "cscript") and (ProcessCommandLine contains "process" and ProcessCommandLine
   contains "create" and ProcessCommandLine contains "call")) and (FolderPath endswith
   "\\wbem\\WMIC.exe" or ProcessVersionInfoOriginalFileName =~ "wmic.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

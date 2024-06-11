@@ -2,7 +2,7 @@ name: HackTool - WinPwn Execution
 id: d557dc06-62e8-4468-a8e8-7984124908ce
 author: Swachchhanda Shrawan Poudel
 date: 2023/12/04
-level: high
+severity: high
 description: 'Detects commandline keywords indicative of potential usge of the tool
   WinPwn. A tool for Windows and Active Directory reconnaissance and exploitation.
 
@@ -32,3 +32,13 @@ query: 'DeviceProcessEvents
   | where ProcessCommandLine contains "Offline_Winpwn" or ProcessCommandLine contains
   "WinPwn " or ProcessCommandLine contains "WinPwn.exe" or ProcessCommandLine contains
   "WinPwn.ps1"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Potentially Suspicious Usage Of Qemu
 id: 5fc297ae-25b6-488a-8f25-cc12ac29b744
 author: Muhammad Faisal (@faisalusuf), Hunter Juhan (@threatHNTR)
 date: 2024/06/03
-level: medium
+severity: medium
 description: 'Detects potentially suspicious execution of the Qemu utility in a Windows
   environment.
 
@@ -28,3 +28,13 @@ query: 'DeviceProcessEvents
   and ProcessCommandLine contains "-nographic")) and (not((ProcessCommandLine contains
   " -cdrom " or ProcessCommandLine contains " type=virt " or ProcessCommandLine contains
   " -blockdev ")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

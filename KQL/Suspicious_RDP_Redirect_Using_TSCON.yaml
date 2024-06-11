@@ -2,7 +2,7 @@ name: Suspicious RDP Redirect Using TSCON
 id: f72aa3e8-49f9-4c7d-bd74-f8ab84ff9bbb
 author: Florian Roth (Nextron Systems)
 date: 2018/03/17
-level: high
+severity: high
 description: Detects a suspicious RDP session redirect using tscon.exe
 status: test
 modified: 2023/05/16
@@ -17,3 +17,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " /dest:rdp-tcp#"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

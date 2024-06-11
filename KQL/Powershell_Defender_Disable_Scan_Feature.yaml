@@ -2,7 +2,7 @@ name: Powershell Defender Disable Scan Feature
 id: 1ec65a5f-9473-4f12-97da-622044d6df21
 author: Florian Roth (Nextron Systems)
 date: 2022/03/03
-level: high
+severity: high
 description: Detects requests to disable Microsoft Defender features using PowerShell
   commands
 status: test
@@ -78,3 +78,13 @@ query: 'DeviceProcessEvents
   contains "Rpc2FibGVyZWFsdGltZW1vbml0b3Jpbmcg" or ProcessCommandLine contains "kaXNhYmxlcmVhbHRpbWVtb25pdG9yaW5nI"
   or ProcessCommandLine contains "RGlzYWJsZVJlYWx0aW1lTW9uaXRvcmluZy" or ProcessCommandLine
   contains "Rpc2FibGVSZWFsdGltZU1vbml0b3Jpbmcg" or ProcessCommandLine contains "EaXNhYmxlUmVhbHRpbWVNb25pdG9yaW5nI"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

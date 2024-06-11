@@ -2,7 +2,7 @@ name: Potential Binary Impersonating Sysinternals Tools
 id: 7cce6fc8-a07f-4d84-a53e-96e1879843c9
 author: frack113
 date: 2021/12/20
-level: medium
+severity: medium
 description: Detects binaries that use the same name as legitimate sysinternals tools
   to evade detection
 status: test
@@ -90,3 +90,13 @@ query: 'DeviceProcessEvents
   "\\Winobj.exe" or FolderPath endswith "\\Winobj64.exe" or FolderPath endswith "\\ZoomIt.exe"
   or FolderPath endswith "\\ZoomIt64.exe") and (not((isnull(ProcessVersionInfoCompanyName)
   or (ProcessVersionInfoCompanyName in~ ("Sysinternals - www.sysinternals.com", "Sysinternals")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

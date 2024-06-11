@@ -2,7 +2,7 @@ name: New Root Certificate Installed Via Certutil.EXE
 id: d2125259-ddea-4c1c-9c22-977eb5b29cf0
 author: oscd.community, @redcanary, Zach Stanford @svch0st
 date: 2023/03/05
-level: medium
+severity: medium
 description: 'Detects execution of "certutil" with the "addstore" flag in order to
   install a new certificate on the system.
 
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "-addstore" or ProcessCommandLine contains
   "/addstore") and ProcessCommandLine contains "root" and (FolderPath endswith "\\certutil.exe"
   or ProcessVersionInfoOriginalFileName =~ "CertUtil.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

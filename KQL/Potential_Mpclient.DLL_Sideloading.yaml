@@ -2,7 +2,7 @@ name: Potential Mpclient.DLL Sideloading
 id: 418dc89a-9808-4b87-b1d7-e5ae0cb6effc
 author: Bhabesh Raj
 date: 2022/08/02
-level: high
+severity: high
 description: Detects potential sideloading of "mpclient.dll" by Windows Defender processes
   ("MpCmdRun" and "NisSrv") from their non-default directory.
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceImageLoadEvents
   startswith "C:\\Program Files\\Windows Defender\\" or InitiatingProcessFolderPath
   startswith "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\" or InitiatingProcessFolderPath
   startswith "C:\\Windows\\WinSxS\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

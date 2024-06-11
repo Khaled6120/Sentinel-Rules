@@ -2,7 +2,7 @@ name: HackTool - SecurityXploded Execution
 id: 7679d464-4f74-45e2-9e01-ac66c5eb041a
 author: Florian Roth (Nextron Systems)
 date: 2018/12/19
-level: critical
+severity: critical
 description: Detects the execution of SecurityXploded Tools
 status: stable
 modified: 2023/02/04
@@ -17,3 +17,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessVersionInfoCompanyName =~ "SecurityXploded" or FolderPath endswith
   "PasswordDump.exe" or ProcessVersionInfoOriginalFileName endswith "PasswordDump.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

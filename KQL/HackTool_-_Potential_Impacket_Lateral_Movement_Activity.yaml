@@ -2,7 +2,7 @@ name: HackTool - Potential Impacket Lateral Movement Activity
 id: 10c14723-61c7-4c75-92ca-9af245723ad2
 author: Ecco, oscd.community, Jonhnathan Ribeiro, Tim Rauch
 date: 2019/09/03
-level: high
+severity: high
 description: Detects wmiexec/dcomexec/atexec/smbexec from Impacket framework
 status: stable
 modified: 2023/02/21
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   endswith "\\wmiprvse.exe" or InitiatingProcessFolderPath endswith "\\mmc.exe" or
   InitiatingProcessFolderPath endswith "\\explorer.exe" or InitiatingProcessFolderPath
   endswith "\\services.exe"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

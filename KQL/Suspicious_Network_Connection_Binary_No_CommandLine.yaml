@@ -2,7 +2,7 @@ name: Suspicious Network Connection Binary No CommandLine
 id: 20384606-a124-4fec-acbb-8bd373728613
 author: Florian Roth (Nextron Systems)
 date: 2022/07/03
-level: high
+severity: high
 description: Detects suspicious network connections made by a well-known Windows binary
   run with no command line parameters
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceNetworkEvents
   and (InitiatingProcessFolderPath endswith "\\regsvr32.exe" or InitiatingProcessFolderPath
   endswith "\\rundll32.exe" or InitiatingProcessFolderPath endswith "\\dllhost.exe"))
   and (not((InitiatingProcessCommandLine =~ "" or isnull(InitiatingProcessCommandLine))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

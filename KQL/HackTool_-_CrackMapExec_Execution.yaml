@@ -2,7 +2,7 @@ name: HackTool - CrackMapExec Execution
 id: 42a993dd-bb3e-48c8-b372-4d6684c4106c
 author: Florian Roth (Nextron Systems)
 date: 2022/02/25
-level: high
+severity: high
 description: This rule detect common flag combinations used by CrackMapExec in order
   to detect its use even if the binary has been replaced.
 status: test
@@ -40,3 +40,13 @@ query: 'DeviceProcessEvents
   " --local-auth" and ProcessCommandLine contains " -u " and ProcessCommandLine contains
   " -p ") and (ProcessCommandLine contains " 10." and ProcessCommandLine contains
   " 192.168." and ProcessCommandLine contains "/24 "))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

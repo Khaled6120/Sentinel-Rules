@@ -3,7 +3,7 @@ name: Network Connection Initiated From Process Located In Potentially Suspiciou
 id: 7b434893-c57d-4f41-908d-6a17bf1ae98f
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
 date: 2017/03/19
-level: high
+severity: high
 description: 'Detects a network connection initiated by programs or processes running
   from suspicious or uncommon files system locations.
 
@@ -39,3 +39,13 @@ query: 'DeviceNetworkEvents
   RemoteUrl endswith "sendspace.com" or RemoteUrl endswith "storage.googleapis.com"
   or RemoteUrl endswith "storjshare.io" or RemoteUrl endswith "supabase.co" or RemoteUrl
   endswith "temp.sh" or RemoteUrl endswith "transfer.sh" or RemoteUrl endswith "ufile.io")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

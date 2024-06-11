@@ -2,7 +2,7 @@ name: Potentially Suspicious Child Process Of VsCode
 id: 5a3164f2-b373-4152-93cf-090b13c12d27
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/01/26
-level: medium
+severity: medium
 description: Detects uncommon or suspicious child processes spawning from a VsCode
   "code.exe" process. This could indicate an attempt of persistence via VsCode tasks
   or terminal profiles.
@@ -30,3 +30,13 @@ query: 'DeviceProcessEvents
   or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\wscript.exe") or
   (FolderPath contains ":\\Users\\Public\\" or FolderPath contains ":\\Windows\\Temp\\"
   or FolderPath contains ":\\Temp\\"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

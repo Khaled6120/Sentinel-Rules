@@ -2,7 +2,7 @@ name: Suspicious Service Binary Directory
 id: 883faa95-175a-4e22-8181-e5761aeb373c
 author: Florian Roth (Nextron Systems)
 date: 2021/03/09
-level: high
+severity: high
 description: Detects a service binary running in a suspicious directory
 status: test
 modified: 2022/10/09
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   or FolderPath contains "\\Windows\\Fonts\\" or FolderPath contains "\\Windows\\IME\\"
   or FolderPath contains "\\Windows\\addins\\") and (InitiatingProcessFolderPath endswith
   "\\services.exe" or InitiatingProcessFolderPath endswith "\\svchost.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

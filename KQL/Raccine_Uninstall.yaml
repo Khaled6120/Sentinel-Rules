@@ -2,7 +2,7 @@ name: Raccine Uninstall
 id: a31eeaed-3fd5-478e-a8ba-e62c6b3f9ecc
 author: Florian Roth (Nextron Systems)
 date: 2021/01/21
-level: high
+severity: high
 description: Detects commands that indicate a Raccine removal from an end system.
   Raccine is a free ransomware protection tool.
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   contains "delete" and ProcessCommandLine contains "Raccine Tray") or (ProcessCommandLine
   contains "schtasks" and ProcessCommandLine contains "/DELETE" and ProcessCommandLine
   contains "Raccine Rules Updater")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

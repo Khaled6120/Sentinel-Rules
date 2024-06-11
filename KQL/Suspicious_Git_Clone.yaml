@@ -2,7 +2,7 @@ name: Suspicious Git Clone
 id: aef9d1f1-7396-4e92-a927-4567c7a495c1
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/01/03
-level: medium
+severity: medium
 description: Detects execution of "git" in order to clone a remote repository that
   contain suspicious keywords which might be suspicious
 status: test
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   "proxyshell" or ProcessCommandLine contains "log4shell" or ProcessCommandLine contains
   "eternalblue" or ProcessCommandLine contains "eternal-blue" or ProcessCommandLine
   contains "MS17-")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

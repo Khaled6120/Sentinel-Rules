@@ -2,7 +2,7 @@ name: PUA - AdvancedRun Suspicious Execution
 id: fa00b701-44c6-4679-994d-5a18afa8a707
 author: Florian Roth (Nextron Systems)
 date: 2022/01/20
-level: high
+severity: high
 description: Detects the execution of AdvancedRun utility in the context of the TrustedInstaller,
   SYSTEM, Local Service or Network Service accounts
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   contains " /RunAs 11 ") or (ProcessCommandLine endswith "/RunAs 8" or ProcessCommandLine
   endswith "/RunAs 4" or ProcessCommandLine endswith "/RunAs 10" or ProcessCommandLine
   endswith "/RunAs 11"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

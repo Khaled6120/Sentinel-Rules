@@ -2,7 +2,7 @@ name: Audit Policy Tampering Via NT Resource Kit Auditpol
 id: c6c56ada-612b-42d1-9a29-adad3c5c2c1e
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2021/12/18
-level: high
+severity: high
 description: 'Threat actors can use an older version of the auditpol binary available
   inside the NT resource kit to change audit policy configuration to impair detection
   capability.
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   "/system:none" or ProcessCommandLine contains "/sam:none" or ProcessCommandLine
   contains "/privilege:none" or ProcessCommandLine contains "/object:none" or ProcessCommandLine
   contains "/process:none" or ProcessCommandLine contains "/policy:none"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

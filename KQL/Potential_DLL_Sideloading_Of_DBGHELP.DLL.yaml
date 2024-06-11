@@ -2,7 +2,7 @@ name: Potential DLL Sideloading Of DBGHELP.DLL
 id: 6414b5cd-b19d-447e-bb5e-9f03940b5784
 author: Nasreddine Bencherchali (Nextron Systems), Wietze Beukema (project and research)
 date: 2022/10/25
-level: medium
+severity: medium
 description: Detects DLL sideloading of "dbghelp.dll"
 status: test
 modified: 2023/05/05
@@ -27,3 +27,13 @@ query: 'DeviceImageLoadEvents
   or FolderPath endswith "\\Anaconda3\\Lib\\site-packages\\vtrace\\platforms\\windll\\i386\\dbghelp.dll")
   or (FolderPath endswith "\\Epic Games\\Launcher\\Engine\\Binaries\\ThirdParty\\DbgHelp\\dbghelp.dll"
   or FolderPath endswith "\\Epic Games\\MagicLegends\\x86\\dbghelp.dll"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -3,7 +3,7 @@ id: 9fc51a3c-81b3-4fa7-b35f-7c02cf10fd2d
 author: James Pemberton / @4A616D6573, Endgame, JHasenbusch, oscd.community, Austin
   Songer @austinsonger
 date: 2019/10/24
-level: medium
+severity: medium
 description: Detects the use of various web request commands with commandline tools
   and Windows PowerShell cmdlets (including aliases) via CommandLine
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   contains "Net.WebClient" or ProcessCommandLine contains "Resume-BitsTransfer" or
   ProcessCommandLine contains "Start-BitsTransfer" or ProcessCommandLine contains
   "wget " or ProcessCommandLine contains "WinHttp.WinHttpRequest"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

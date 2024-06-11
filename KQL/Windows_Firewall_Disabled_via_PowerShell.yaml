@@ -2,7 +2,7 @@ name: Windows Firewall Disabled via PowerShell
 id: 12f6b752-042d-483e-bf9c-915a6d06ad75
 author: Tim Rauch, Elastic (idea)
 date: 2022/09/14
-level: medium
+severity: medium
 description: Detects attempts to disable the Windows Firewall using PowerShell
 status: test
 modified: 2023/02/13
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   "pwsh.dll"))) and (ProcessCommandLine contains " -All " or ProcessCommandLine contains
   "Public" or ProcessCommandLine contains "Domain" or ProcessCommandLine contains
   "Private")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

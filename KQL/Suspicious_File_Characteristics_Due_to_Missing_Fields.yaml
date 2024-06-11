@@ -2,7 +2,7 @@ name: Suspicious File Characteristics Due to Missing Fields
 id: 9637e8a5-7131-4f7f-bdc7-2b05d8670c43
 author: Markus Neis, Sander Wiebing
 date: 2018/11/22
-level: medium
+severity: medium
 description: Detects Executables in the Downloads folder without FileVersion,Description,Product,Company
   likely created with py2exe
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   =~ "?") or (ProcessVersionInfoFileDescription =~ "?" and ProcessVersionInfoProductName
   =~ "?") or (ProcessVersionInfoCompanyName =~ "?" and ProcessVersionInfoFileDescription
   =~ "?")) and FolderPath contains "\\Downloads\\"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

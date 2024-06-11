@@ -2,7 +2,7 @@ name: UAC Bypass Using IDiagnostic Profile
 id: 4cbef972-f347-4170-b62a-8253f6168e6d
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/07/03
-level: high
+severity: high
 description: Detects the "IDiagnosticProfileUAC" UAC bypass technique
 status: test
 modified: ''
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   | where (ProcessIntegrityLevel in~ ("High", "System")) and InitiatingProcessCommandLine
   contains " /Processid:{12C21EA7-2EB8-4B55-9249-AC243DA8C666}" and InitiatingProcessFolderPath
   endswith "\\DllHost.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

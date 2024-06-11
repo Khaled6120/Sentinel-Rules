@@ -2,7 +2,7 @@ name: Service StartupType Change Via PowerShell Set-Service
 id: 62b20d44-1546-4e61-afce-8e175eb9473c
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/03/04
-level: medium
+severity: medium
 description: Detects the use of the PowerShell "Set-Service" cmdlet to change the
   startup type of a service to "disabled" or "manual"
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   "Manual") and (ProcessCommandLine contains "Set-Service" and ProcessCommandLine
   contains "-StartupType")) and (FolderPath endswith "\\powershell.exe" or ProcessVersionInfoOriginalFileName
   =~ "PowerShell.EXE")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

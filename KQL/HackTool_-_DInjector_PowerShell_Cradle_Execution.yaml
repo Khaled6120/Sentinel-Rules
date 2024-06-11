@@ -2,7 +2,7 @@ name: HackTool - DInjector PowerShell Cradle Execution
 id: d78b5d61-187d-44b6-bf02-93486a80de5a
 author: Florian Roth (Nextron Systems)
 date: 2021/12/07
-level: critical
+severity: critical
 description: Detects the use of the Dinject PowerShell cradle based on the specific
   flags
 status: test
@@ -17,3 +17,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " /am51" and ProcessCommandLine contains " /password"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Potentially Suspicious Desktop Background Change Using Reg.EXE
 id: 8cbc9475-8d05-4e27-9c32-df960716c701
 author: Stephen Lincoln @slincoln-aiq (AttackIQ)
 date: 2023/12/21
-level: medium
+severity: medium
 description: 'Detects the execution of "reg.exe" to alter registry keys that would
   replace the user''s desktop background.
 
@@ -30,3 +30,13 @@ query: 'DeviceProcessEvents
   contains "/v NoChangingWallpaper" and ProcessCommandLine contains "/d 1") or (ProcessCommandLine
   contains "/v Wallpaper" and ProcessCommandLine contains "/t REG_SZ") or (ProcessCommandLine
   contains "/v WallpaperStyle" and ProcessCommandLine contains "/d 2"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

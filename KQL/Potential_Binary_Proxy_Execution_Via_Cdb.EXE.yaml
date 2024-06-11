@@ -2,7 +2,7 @@ name: Potential Binary Proxy Execution Via Cdb.EXE
 id: b5c7395f-e501-4a08-94d4-57fe7a9da9d2
 author: Beyu Denis, oscd.community, Nasreddine Bencherchali (Nextron Systems)
 date: 2019/10/26
-level: medium
+severity: medium
 description: Detects usage of "cdb.exe" to launch arbitrary processes or commands
   from a debugger script file
 status: test
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains " -c " or ProcessCommandLine contains " -cf
   ") and (FolderPath endswith "\\cdb.exe" or ProcessVersionInfoOriginalFileName =~
   "CDB.Exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

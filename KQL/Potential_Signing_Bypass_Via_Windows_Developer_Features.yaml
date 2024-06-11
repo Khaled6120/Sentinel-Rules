@@ -2,7 +2,7 @@ name: Potential Signing Bypass Via Windows Developer Features
 id: a383dec4-deec-4e6e-913b-ed9249670848
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/01/11
-level: high
+severity: high
 description: Detects when a user enable developer features such as "Developer Mode"
   or "Application Sideloading". Which allows the user to install untrusted packages.
 status: test
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
   "\\SystemSettingsAdminFlows.exe" or ProcessVersionInfoOriginalFileName =~ "SystemSettingsAdminFlows.EXE")
   and (ProcessCommandLine contains "DeveloperUnlock" or ProcessCommandLine contains
   "EnableSideloading")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

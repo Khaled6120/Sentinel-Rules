@@ -2,7 +2,7 @@ name: Potential 7za.DLL Sideloading
 id: 4f6edb78-5c21-42ab-a558-fd2a6fc1fd57
 author: X__Junior
 date: 2023/06/09
-level: low
+severity: low
 description: Detects potential DLL sideloading of "7za.dll"
 status: test
 modified: ''
@@ -22,3 +22,13 @@ query: 'DeviceImageLoadEvents
   Files (x86)\\" or FolderPath startswith "C:\\Program Files\\") and (InitiatingProcessFolderPath
   startswith "C:\\Program Files (x86)\\" or InitiatingProcessFolderPath startswith
   "C:\\Program Files\\"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

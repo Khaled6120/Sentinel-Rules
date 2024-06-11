@@ -2,7 +2,7 @@ name: Suspicious Windows Service Tampering
 id: ce72ef99-22f1-43d4-8695-419dcb5d9330
 author: Nasreddine Bencherchali (Nextron Systems), frack113
 date: 2022/09/01
-level: high
+severity: high
 description: Detects the usage of binaries such as 'net', 'sc' or 'powershell' in
   order to stop, pause or delete critical or important Windows services such as AV,
   Backup, etc. As seen being used in some ransomware scripts
@@ -119,3 +119,13 @@ query: 'DeviceProcessEvents
   or ((ProcessCommandLine contains " stop " or ProcessCommandLine contains " delete
   " or ProcessCommandLine contains " pause ") and (ProcessVersionInfoOriginalFileName
   =~ "sc.exe" or FolderPath endswith "\\sc.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Suspicious Modification Of Scheduled Tasks
 id: 1c0e41cd-21bb-4433-9acc-4a2cd6367b9b
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/07/28
-level: high
+severity: high
 description: 'Detects when an attacker tries to modify an already existing scheduled
   tasks to run from a suspicious location
 
@@ -44,3 +44,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains "C:\\Perflogs\\" or ProcessCommandLine contains "%ProgramData%"
   or ProcessCommandLine contains "%appdata%" or ProcessCommandLine contains "%comspec%"
   or ProcessCommandLine contains "%localappdata%")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

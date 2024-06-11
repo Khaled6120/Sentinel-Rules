@@ -2,7 +2,7 @@ name: Suspicious Active Directory Database Snapshot Via ADExplorer
 id: ef61af62-bc74-4f58-b49b-626448227652
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/03/14
-level: high
+severity: high
 description: Detects the execution of Sysinternals ADExplorer with the "-snapshot"
   flag in order to save a local copy of the active directory database to a suspicious
   directory.
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   or ProcessVersionInfoOriginalFileName =~ "AdExp") and (ProcessCommandLine contains
   "\\Downloads\\" or ProcessCommandLine contains "\\Users\\Public\\" or ProcessCommandLine
   contains "\\AppData\\" or ProcessCommandLine contains "\\Windows\\Temp\\")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

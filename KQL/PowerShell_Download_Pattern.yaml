@@ -2,7 +2,7 @@ name: PowerShell Download Pattern
 id: 3b6ab547-8ec2-4991-b9d2-2b06702a48d7
 author: Florian Roth (Nextron Systems), oscd.community, Jonhnathan Ribeiro
 date: 2019/01/16
-level: medium
+severity: medium
 description: Detects a Powershell process that contains download commands in its command
   line string
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   and ProcessCommandLine contains "download")) and ((FolderPath endswith "\\powershell.exe"
   or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~
   ("PowerShell.EXE", "pwsh.dll")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -3,7 +3,7 @@ id: e593cf51-88db-4ee1-b920-37e89012a3c9
 author: juju4, Jonhnathan Ribeiro, oscd.community, Nasreddine Bencherchali (Nextron
   Systems)
 date: 2019/01/16
-level: medium
+severity: medium
 description: Detects suspicious execution of rundll32, with specific calls to some
   DLLs with known LOLBIN functionalities
 status: test
@@ -48,3 +48,13 @@ query: 'DeviceProcessEvents
   or (ProcessCommandLine endswith ".cpl\"," and ProcessCommandLine startswith "\"C:\\Windows\\system32\\rundll32.exe\"
   Shell32.dll,Control_RunDLL \"C:\\Windows\\System32\\" and InitiatingProcessFolderPath
   =~ "C:\\Windows\\System32\\control.exe"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

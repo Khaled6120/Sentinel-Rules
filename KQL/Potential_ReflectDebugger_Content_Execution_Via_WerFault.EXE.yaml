@@ -2,7 +2,7 @@ name: Potential ReflectDebugger Content Execution Via WerFault.EXE
 id: fabfb3a7-3ce1-4445-9c7c-3c27f1051cdd
 author: X__Junior (Nextron Systems)
 date: 2023/06/30
-level: medium
+severity: medium
 description: Detects execution of "WerFault.exe" with the "-pr" commandline flag that
   is used to run files stored in the ReflectDebugger key which could be used to store
   the path to the malware in order to masquerade the execution flow
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " -pr " and (FolderPath endswith "\\WerFault.exe"
   or ProcessVersionInfoOriginalFileName =~ "WerFault.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

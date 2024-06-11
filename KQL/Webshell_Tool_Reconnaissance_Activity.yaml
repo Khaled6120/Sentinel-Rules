@@ -2,7 +2,7 @@ name: Webshell Tool Reconnaissance Activity
 id: f64e5c19-879c-4bae-b471-6d84c8339677
 author: Cian Heasley, Florian Roth (Nextron Systems)
 date: 2020/07/22
-level: high
+severity: high
 description: 'Detects processes spawned from web servers (PHP, Tomcat, IIS, etc.)
   that perform reconnaissance looking for the existence of popular scripting tools
   (perl, python, wget) on the system via the help commands
@@ -32,3 +32,13 @@ query: 'DeviceProcessEvents
   contains "python --help" or ProcessCommandLine contains "python -h" or ProcessCommandLine
   contains "python3 --help" or ProcessCommandLine contains "python3 -h" or ProcessCommandLine
   contains "wget --help")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

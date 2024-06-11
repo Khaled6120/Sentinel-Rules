@@ -2,7 +2,7 @@ name: Potential Suspicious Mofcomp Execution
 id: 1dd05363-104e-4b4a-b963-196a534b03a1
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/07/12
-level: high
+severity: high
 description: 'Detects execution of the "mofcomp" utility as a child of a suspicious
   shell or script running utility or by having a suspicious path in the commandline.
 
@@ -35,3 +35,13 @@ query: 'DeviceProcessEvents
   ProcessCommandLine endswith ".mof" and InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\wbem\\WmiPrvSE.exe")))
   and (not((ProcessCommandLine contains "C:\\Windows\\TEMP\\" and ProcessCommandLine
   endswith ".mof")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

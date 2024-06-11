@@ -2,7 +2,7 @@ name: Root Certificate Installed From Susp Locations
 id: 5f6a601c-2ecb-498b-9c33-660362323afa
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/09/09
-level: high
+severity: high
 description: Adversaries may install a root certificate on a compromised system to
   avoid warnings when connecting to adversary controlled web servers.
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   contains "\\Downloads\\" or ProcessCommandLine contains "\\Perflogs\\" or ProcessCommandLine
   contains ":\\Users\\Public\\") and (ProcessCommandLine contains "Import-Certificate"
   and ProcessCommandLine contains " -FilePath " and ProcessCommandLine contains "Cert:\\LocalMachine\\Root")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

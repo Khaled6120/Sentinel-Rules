@@ -2,7 +2,7 @@ name: Forfiles.EXE Child Process Masquerading
 id: f53714ec-5077-420e-ad20-907ff9bb2958
 author: Nasreddine Bencherchali (Nextron Systems), Anish Bogati
 date: 2024/01/05
-level: high
+severity: high
 description: 'Detects the execution of "forfiles" from a non-default location, in
   order to potentially spawn a custom "cmd.exe" from the current working directory.
 
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   contains ":\\Windows\\SysWOW64\\") and FolderPath endswith "\\cmd.exe" and (InitiatingProcessFolderPath
   contains ":\\Windows\\System32\\" or InitiatingProcessFolderPath contains ":\\Windows\\SysWOW64\\")
   and InitiatingProcessFolderPath endswith "\\forfiles.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

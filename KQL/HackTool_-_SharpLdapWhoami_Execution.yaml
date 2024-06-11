@@ -2,7 +2,7 @@ name: HackTool - SharpLdapWhoami Execution
 id: d9367cbb-c2e0-47ce-bdc0-128cb6da898d
 author: Florian Roth (Nextron Systems)
 date: 2022/08/29
-level: high
+severity: high
 description: Detects SharpLdapWhoami, a whoami alternative that queries the LDAP service
   on a domain controller
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   endswith " /m:nego" or ProcessCommandLine endswith " /m:ntlm" or ProcessCommandLine
   endswith " /m:kerb") or FolderPath endswith "\\SharpLdapWhoami.exe" or (ProcessVersionInfoOriginalFileName
   contains "SharpLdapWhoami" or ProcessVersionInfoProductName =~ "SharpLdapWhoami")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Proxy Execution Via Explorer.exe
 id: 9eb271b9-24ae-4cd4-9465-19cfc1047f3e
 author: Furkan CALISKAN, @caliskanfurkan_, @oscd_initiative
 date: 2020/10/05
-level: low
+severity: low
 description: Attackers can use explorer.exe for evading defense mechanisms
 status: test
 modified: 2021/11/27
@@ -17,3 +17,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "explorer.exe" and FolderPath endswith "\\explorer.exe"
   and InitiatingProcessFolderPath endswith "\\cmd.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

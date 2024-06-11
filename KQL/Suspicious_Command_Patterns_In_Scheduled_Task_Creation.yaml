@@ -2,7 +2,7 @@ name: Suspicious Command Patterns In Scheduled Task Creation
 id: f2c64357-b1d2-41b7-849f-34d2682c0fad
 author: Florian Roth (Nextron Systems)
 date: 2022/02/23
-level: high
+severity: high
 description: Detects scheduled task creation using "schtasks" that contain potentially
   suspicious or uncommon commands
 status: experimental
@@ -34,3 +34,13 @@ query: 'DeviceProcessEvents
   contains "%AppData%" or ProcessCommandLine contains "%Temp%" or ProcessCommandLine
   contains "%tmp%") and (ProcessCommandLine contains "cscript" or ProcessCommandLine
   contains "curl" or ProcessCommandLine contains "wscript")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

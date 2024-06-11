@@ -2,7 +2,7 @@ name: Suspicious Greedy Compression Using Rar.EXE
 id: afe52666-401e-4a02-b4ff-5d128990b8cb
 author: X__Junior (Nextron Systems), Florian Roth (Nextron Systems)
 date: 2022/12/15
-level: high
+severity: high
 description: Detects RAR usage that creates an archive from a suspicious folder, either
   a system folder or one of the folders often used by attackers for staging purposes
 status: experimental
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   (ProcessCommandLine contains " " and ProcessCommandLine contains ":\\Users\\Public\\")
   or (ProcessCommandLine contains " " and ProcessCommandLine contains ":\\Windows\\")
   or ProcessCommandLine contains " %public%"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: HackTool - Certipy Execution
 id: 6938366d-8954-4ddc-baff-c830b3ba8fcd
 author: pH-T (Nextron Systems)
 date: 2023/04/17
-level: high
+severity: high
 description: Detects Certipy a tool for Active Directory Certificate Services enumeration
   and abuse based on PE metadata characteristics and common command line arguments.
 status: test
@@ -28,3 +28,13 @@ query: 'DeviceProcessEvents
   contains " -target" or ProcessCommandLine contains " -username " or ProcessCommandLine
   contains " -vulnerable" or ProcessCommandLine contains "auth -pfx" or ProcessCommandLine
   contains "shadow auto" or ProcessCommandLine contains "shadow list"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

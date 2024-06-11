@@ -2,7 +2,7 @@ name: File Download Using Notepad++ GUP Utility
 id: 44143844-0631-49ab-97a0-96387d6b2d7c
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/06/10
-level: high
+severity: high
 description: Detects execution of the Notepad++ updater (gup) from a process other
   than Notepad++ to download files.
 status: test
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
   | where ((ProcessCommandLine contains " -unzipTo " and ProcessCommandLine contains
   "http") and (FolderPath endswith "\\GUP.exe" or ProcessVersionInfoOriginalFileName
   =~ "gup.exe")) and (not(InitiatingProcessFolderPath endswith "\\notepad++.exe"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

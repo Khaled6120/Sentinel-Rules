@@ -2,7 +2,7 @@ name: Uncommon  Assistive Technology Applications Execution Via AtBroker.EXE
 id: f24bcaea-0cd1-11eb-adc1-0242ac120002
 author: Mateusz Wydra, oscd.community
 date: 2020/10/12
-level: medium
+severity: medium
 description: Detects the start of a non built-in assistive technology applications
   via "Atbroker.EXE".
 status: test
@@ -35,3 +35,13 @@ query: 'DeviceProcessEvents
   contains "windowarranging" or ProcessCommandLine contains "windowtracking" or ProcessCommandLine
   contains "windowtrackingtimeout" or ProcessCommandLine contains "windowtrackingzorder")))
   and (not(ProcessCommandLine contains "Oracle_JavaAccessBridge"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

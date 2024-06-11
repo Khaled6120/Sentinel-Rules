@@ -2,7 +2,7 @@ name: Cloudflared Tunnel Execution
 id: 9a019ffc-3580-4c9d-8d87-079f7e8d3fd4
 author: Janantha Marasinghe, Nasreddine Bencherchali (Nextron Systems)
 date: 2023/05/17
-level: medium
+severity: medium
 description: Detects execution of the "cloudflared" tool to connect back to a tunnel.
   This was seen used by threat actors to maintain persistence and remote access to
   compromised networks.
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   " or ProcessCommandLine contains "-credentials-file " or ProcessCommandLine contains
   "-token ") and (ProcessCommandLine contains " tunnel " and ProcessCommandLine contains
   " run ")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

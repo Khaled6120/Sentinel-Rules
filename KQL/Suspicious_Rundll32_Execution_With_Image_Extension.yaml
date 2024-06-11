@@ -2,7 +2,7 @@ name: Suspicious Rundll32 Execution With Image Extension
 id: 4aa6040b-3f28-44e3-a769-9208e5feb5ec
 author: Hieu Tran
 date: 2023/03/13
-level: high
+severity: high
 description: Detects the execution of Rundll32.exe with DLL files masquerading as
   image files
 status: test
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   contains ".sr2" or ProcessCommandLine contains ".tif" or ProcessCommandLine contains
   ".tiff") and (FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName
   =~ "RUNDLL32.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

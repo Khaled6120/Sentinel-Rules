@@ -2,7 +2,7 @@ name: Suspicious Where Execution
 id: 725a9768-0f5e-4cb3-aec2-bc5719c6831a
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
 date: 2021/12/13
-level: low
+severity: low
 description: 'Adversaries may enumerate browser bookmarks to learn more about compromised
   hosts.
 
@@ -30,3 +30,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains "key3.db" or ProcessCommandLine contains "sessionstore.jsonlz4"
   or ProcessCommandLine contains "History" or ProcessCommandLine contains "Bookmarks"
   or ProcessCommandLine contains "Cookies" or ProcessCommandLine contains "Login Data")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

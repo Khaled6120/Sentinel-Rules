@@ -2,7 +2,7 @@ name: Suspicious WmiPrvSE Child Process
 id: 8a582fe2-0882-4b89-a82a-da6b2dc32937
 author: Vadim Khrykov (ThreatIntel), Cyb3rEng, Florian Roth (Nextron Systems)
 date: 2021/08/23
-level: high
+severity: high
 description: Detects suspicious and uncommon child processes of WmiPrvSE
 status: test
 modified: 2023/11/10
@@ -29,3 +29,13 @@ query: 'DeviceProcessEvents
   and FolderPath endswith "\\cmd.exe")) and (not(((ProcessCommandLine contains "/i
   " and FolderPath endswith "\\msiexec.exe") or FolderPath endswith "\\WerFault.exe"
   or FolderPath endswith "\\WmiPrvSE.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Suspicious Execution of Hostname
 id: 7be5fb68-f9ef-476d-8b51-0256ebece19e
 author: frack113
 date: 2022/01/01
-level: low
+severity: low
 description: Use of hostname to get information
 status: test
 modified: ''
@@ -16,3 +16,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\HOSTNAME.EXE"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

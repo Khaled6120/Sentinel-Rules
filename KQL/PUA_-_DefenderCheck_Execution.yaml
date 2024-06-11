@@ -2,7 +2,7 @@ name: PUA - DefenderCheck Execution
 id: f0ca6c24-3225-47d5-b1f5-352bf07ecfa7
 author: Florian Roth (Nextron Systems)
 date: 2022/08/30
-level: high
+severity: high
 description: Detects the use of DefenderCheck, a tool to evaluate the signatures used
   in Microsoft Defender. It can be used to figure out the strings / byte chains used
   in Microsoft Defender to detect a tool and thus used for AV evasion.
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\DefenderCheck.exe" or ProcessVersionInfoFileDescription
   =~ "DefenderCheck"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

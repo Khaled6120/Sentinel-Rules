@@ -2,7 +2,7 @@ name: Renamed AutoHotkey.EXE Execution
 id: 0f16d9cf-0616-45c8-8fad-becc11b5a41c
 author: Nasreddine Bencherchali
 date: 2023/02/07
-level: medium
+severity: medium
 description: Detects execution of a renamed autohotkey.exe binary based on PE metadata
   fields
 status: test
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   or FolderPath endswith "\\AutoHotkeyU32.exe" or FolderPath endswith "\\AutoHotkeyU32_UIA.exe"
   or FolderPath endswith "\\AutoHotkeyU64.exe" or FolderPath endswith "\\AutoHotkeyU64_UIA.exe")
   or FolderPath contains "\\AutoHotkey")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

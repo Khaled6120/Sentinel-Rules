@@ -2,7 +2,7 @@ name: Net WebClient Casing Anomalies
 id: c86133ad-4725-4bd0-8170-210788e0a7ba
 author: Florian Roth (Nextron Systems)
 date: 2022/05/24
-level: high
+severity: high
 description: Detects PowerShell command line contents that include a suspicious abnormal
   casing in the Net.Webclient (e.g. nEt.WEbCliEnT) string as used in obfuscation techniques
 status: test
@@ -106,3 +106,13 @@ query: 'DeviceProcessEvents
   "uAEUAVAAuAFcARQBCA") and ((FolderPath endswith "\\powershell.exe" or FolderPath
   endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE",
   "pwsh.dll")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

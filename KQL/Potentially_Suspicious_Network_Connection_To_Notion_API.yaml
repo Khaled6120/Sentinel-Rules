@@ -2,7 +2,7 @@ name: Potentially Suspicious Network Connection To Notion API
 id: 7e9cf7b6-e827-11ed-a05b-15959c120003
 author: Gavin Knapp
 date: 2023/05/03
-level: low
+severity: low
 description: Detects a non-browser process communicating with the Notion API. This
   could indicate potential use of a covert C2 channel such as "OffensiveNotion C2"
 status: test
@@ -35,3 +35,13 @@ query: 'DeviceNetworkEvents
   endswith "\\safari.exe" or InitiatingProcessFolderPath endswith "\\seamonkey.exe"
   or InitiatingProcessFolderPath endswith "\\vivaldi.exe" or InitiatingProcessFolderPath
   endswith "\\whale.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

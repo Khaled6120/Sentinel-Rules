@@ -3,7 +3,7 @@ id: c947b146-0abc-4c87-9c64-b17e9d7274a2
 author: Florian Roth (Nextron Systems), Michael Haag, Teymur Kheirkhabarov, Daniil
   Yugoslavskiy, oscd.community, Andreas Hunkeler (@Karneades)
 date: 2019/10/22
-level: high
+severity: high
 description: Shadow Copies deletion using operating systems utilities
 status: stable
 modified: 2022/11/03
@@ -29,3 +29,13 @@ query: 'DeviceProcessEvents
   contains "/MaxSize=") and (ProcessCommandLine contains "resize" and ProcessCommandLine
   contains "shadowstorage")) and (FolderPath endswith "\\vssadmin.exe" or ProcessVersionInfoOriginalFileName
   =~ "VSSADMIN.EXE"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

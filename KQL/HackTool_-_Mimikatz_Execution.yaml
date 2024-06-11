@@ -3,7 +3,7 @@ id: a642964e-bead-4bed-8910-1bb4d63e3b4d
 author: Teymur Kheirkhabarov, oscd.community, David ANDRE (additional keywords), Tim
   Shelton
 date: 2019/10/22
-level: high
+severity: high
 description: Detection well-known mimikatz command line arguments
 status: test
 modified: 2023/02/21
@@ -32,3 +32,13 @@ query: 'DeviceProcessEvents
   contains "lsadump::" or ProcessCommandLine contains "privilege::" or ProcessCommandLine
   contains "process::" or ProcessCommandLine contains "vault::") or (ProcessCommandLine
   contains "DumpCreds" or ProcessCommandLine contains "mimikatz")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

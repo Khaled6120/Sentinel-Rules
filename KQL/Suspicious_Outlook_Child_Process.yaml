@@ -3,7 +3,7 @@ id: 208748f7-881d-47ac-a29c-07ea84bf691d
 author: Michael Haag, Florian Roth (Nextron Systems), Markus Neis, Elastic, FPT.EagleEye
   Team
 date: 2022/02/28
-level: high
+severity: high
 description: Detects a suspicious process spawning from an Outlook process.
 status: test
 modified: 2023/02/04
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   "\\sh.exe" or FolderPath endswith "\\svchost.exe" or FolderPath endswith "\\wmic.exe"
   or FolderPath endswith "\\wscript.exe") and InitiatingProcessFolderPath endswith
   "\\OUTLOOK.EXE"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

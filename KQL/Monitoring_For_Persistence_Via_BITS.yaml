@@ -2,7 +2,7 @@ name: Monitoring For Persistence Via BITS
 id: b9cbbc17-d00d-4e3d-a827-b06d03d2380d
 author: Sreeman
 date: 2020/10/29
-level: medium
+severity: medium
 description: 'BITS will allow you to schedule a command to execute after a successful
   download to notify you that the job is finished.
 
@@ -31,3 +31,13 @@ query: 'DeviceProcessEvents
   contains "regsvr32.exe")) or (ProcessCommandLine contains "/Addfile" and (ProcessCommandLine
   contains "http:" or ProcessCommandLine contains "https:" or ProcessCommandLine contains
   "ftp:" or ProcessCommandLine contains "ftps:")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

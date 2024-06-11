@@ -2,7 +2,7 @@ name: Sensitive File Dump Via Wbadmin.EXE
 id: 8b93a509-1cb8-42e1-97aa-ee24224cdc15
 author: Nasreddine Bencherchali (Nextron Systems), frack113
 date: 2024/05/10
-level: high
+severity: high
 description: 'Detects the dump of highly sensitive files such as "NTDS.DIT" and "SECURITY"
   hive.
 
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   "WBADMIN.EXE") and (ProcessCommandLine contains "\\config\\SAM" or ProcessCommandLine
   contains "\\config\\SECURITY" or ProcessCommandLine contains "\\config\\SYSTEM"
   or ProcessCommandLine contains "\\Windows\\NTDS\\NTDS.dit")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Suspicious Program Location Whitelisted In Firewall Via Netsh.EXE
 id: a35f5a72-f347-4e36-8895-9869b0d5fc6d
 author: Sander Wiebing, Jonhnathan Ribeiro, Daniil Yugoslavskiy, oscd.community
 date: 2020/05/25
-level: high
+severity: high
 description: Detects Netsh command execution that whitelists a program located in
   a suspicious location in the Windows Firewall
 status: test
@@ -37,3 +37,13 @@ query: 'DeviceProcessEvents
   Files\\" or ProcessCommandLine contains "\\Temporary Internet Files\\Content.Outlook\\"
   or ProcessCommandLine contains "%Public%\\" or ProcessCommandLine contains "%TEMP%"
   or ProcessCommandLine contains "%TMP%")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

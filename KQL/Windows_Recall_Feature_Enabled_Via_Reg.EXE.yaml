@@ -2,7 +2,7 @@ name: Windows Recall Feature Enabled Via Reg.EXE
 id: 817f252c-5143-4dae-b418-48c3e9f63728
 author: Sajid Nawaz Khan
 date: 2024/06/02
-level: medium
+severity: medium
 description: 'Detects the enabling of the Windows Recall feature via registry manipulation.
 
   Windows Recall can be enabled by deleting the existing "DisableAIDataAnalysis" value,
@@ -30,3 +30,13 @@ query: 'DeviceProcessEvents
   "reg.exe") and (ProcessCommandLine contains "Microsoft\\Windows\\WindowsAI" and
   ProcessCommandLine contains "DisableAIDataAnalysis") and ((ProcessCommandLine contains
   "add" or ProcessCommandLine contains "0") or ProcessCommandLine contains "delete")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Potential CobaltStrike Process Patterns
 id: f35c5d71-b489-4e22-a115-f003df287317
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
 date: 2021/07/27
-level: high
+severity: high
 description: Detects potential process patterns related to Cobalt Strike beacon activity
 status: test
 modified: 2023/03/29
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   startswith "C:\\Temp\\") or ((ProcessCommandLine contains "cmd.exe /c echo" and
   ProcessCommandLine contains "> \\\\.\\pipe") and (InitiatingProcessFolderPath endswith
   "\\runonce.exe" or InitiatingProcessFolderPath endswith "\\dllhost.exe"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

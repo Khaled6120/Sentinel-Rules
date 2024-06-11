@@ -2,7 +2,7 @@ name: SQLite Chromium Profile Data DB Access
 id: 24c77512-782b-448a-8950-eddb0785fc71
 author: TropChaud
 date: 2022/12/19
-level: high
+severity: high
 description: Detect usage of the "sqlite" binary to query databases in Chromium-based
   browsers for potential data stealing.
 status: test
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   contains "Web Data" or ProcessCommandLine contains "History" or ProcessCommandLine
   contains "Bookmarks") and (ProcessVersionInfoProductName =~ "SQLite" or (FolderPath
   endswith "\\sqlite.exe" or FolderPath endswith "\\sqlite3.exe"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

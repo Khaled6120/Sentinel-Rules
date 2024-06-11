@@ -2,7 +2,7 @@ name: Suspicious MSDT Parent Process
 id: 7a74da6b-ea76-47db-92cc-874ad90df734
 author: Nextron Systems
 date: 2022/06/01
-level: high
+severity: high
 description: Detects msdt.exe executed by a suspicious parent as seen in CVE-2022-30190
   / Follina exploitation
 status: test
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   endswith "\\schtasks.exe" or InitiatingProcessFolderPath endswith "\\wmic.exe" or
   InitiatingProcessFolderPath endswith "\\wscript.exe" or InitiatingProcessFolderPath
   endswith "\\wsl.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

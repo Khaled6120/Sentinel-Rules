@@ -2,7 +2,7 @@ name: Mstsc.EXE Execution From Uncommon Parent
 id: ff3b6b39-e765-42f9-bb2c-ea6761e0e0f6
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/04/18
-level: high
+severity: high
 description: Detects potential RDP connection via Mstsc using a local ".rdp" file
   located in suspicious locations.
 status: test
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   endswith "\\msedge.exe" or InitiatingProcessFolderPath endswith "\\opera.exe" or
   InitiatingProcessFolderPath endswith "\\vivaldi.exe" or InitiatingProcessFolderPath
   endswith "\\whale.exe" or InitiatingProcessFolderPath endswith "\\outlook.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

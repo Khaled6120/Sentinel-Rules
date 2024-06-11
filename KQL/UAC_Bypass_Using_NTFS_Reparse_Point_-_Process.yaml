@@ -2,7 +2,7 @@ name: UAC Bypass Using NTFS Reparse Point - Process
 id: 39ed3c80-e6a1-431b-9df3-911ac53d08a7
 author: Christian Burkard (Nextron Systems)
 date: 2021/08/30
-level: high
+severity: high
 description: Detects the pattern of UAC Bypass using NTFS reparse point and wusa.exe
   DLL hijacking (UACMe 36)
 status: test
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   "System")) and InitiatingProcessCommandLine =~ "\"C:\\Windows\\system32\\dism.exe\"
   /online /quiet /norestart /add-package /packagepath:\"C:\\Windows\\system32\\pe386\"
   /ignorecheck")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

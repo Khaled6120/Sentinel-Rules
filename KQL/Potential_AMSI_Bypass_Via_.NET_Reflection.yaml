@@ -2,7 +2,7 @@ name: Potential AMSI Bypass Via .NET Reflection
 id: 30edb182-aa75-42c0-b0a9-e998bb29067c
 author: Markus Neis, @Kostastsale
 date: 2018/08/17
-level: high
+severity: high
 description: Detects Request to "amsiInitFailed" that can be used to disable AMSI
   Scanning
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   ProcessCommandLine contains "amsiInitFailed") or (ProcessCommandLine contains "[Ref].Assembly.GetType"
   and ProcessCommandLine contains "SetValue($null,$true)" and ProcessCommandLine contains
   "NonPublic,Static")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

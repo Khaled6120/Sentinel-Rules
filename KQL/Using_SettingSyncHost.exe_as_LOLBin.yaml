@@ -2,7 +2,7 @@ name: Using SettingSyncHost.exe as LOLBin
 id: b2ddd389-f676-4ac4-845a-e00781a48e5f
 author: Anton Kutepov, oscd.community
 date: 2020/02/05
-level: high
+severity: high
 description: Detects using SettingSyncHost.exe to run hijacked binary
 status: test
 modified: 2021/11/27
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   "C:\\Windows\\SysWOW64\\"))) and (InitiatingProcessCommandLine contains "cmd.exe
   /c" and InitiatingProcessCommandLine contains "RoamDiag.cmd" and InitiatingProcessCommandLine
   contains "-outputpath")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

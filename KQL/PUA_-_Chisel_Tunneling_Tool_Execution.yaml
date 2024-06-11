@@ -2,7 +2,7 @@ name: PUA - Chisel Tunneling Tool Execution
 id: 8b0e12da-d3c3-49db-bb4f-256703f380e5
 author: Florian Roth (Nextron Systems)
 date: 2022/09/13
-level: high
+severity: high
 description: Detects usage of the Chisel tunneling tool via the commandline arguments
 status: test
 modified: 2023/02/13
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   "-socks5" or ProcessCommandLine contains "-reverse" or ProcessCommandLine contains
   " r:" or ProcessCommandLine contains ":127.0.0.1:" or ProcessCommandLine contains
   "-tls-skip-verify " or ProcessCommandLine contains ":socks"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

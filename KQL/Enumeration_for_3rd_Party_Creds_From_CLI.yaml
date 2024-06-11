@@ -2,7 +2,7 @@ name: Enumeration for 3rd Party Creds From CLI
 id: 87a476dc-0079-4583-a985-dee7a20a03de
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/06/20
-level: medium
+severity: medium
 description: Detects processes that query known 3rd party registry keys that holds
   credentials via commandline
 status: test
@@ -29,3 +29,13 @@ query: 'DeviceProcessEvents
   "\\Software\\OpenSSH\\Agent\\Keys" or ProcessCommandLine contains "\\Software\\TightVNC\\Server"
   or ProcessCommandLine contains "\\Software\\ORL\\WinVNC3\\Password" or ProcessCommandLine
   contains "\\Software\\RealVNC\\WinVNC4"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Firewall Configuration Discovery Via Netsh.EXE
 id: 0e4164da-94bc-450d-a7be-a4b176179f1f
 author: frack113, Christopher Peacock '@securepeacock', SCYTHE '@scythe_io'
 date: 2021/12/07
-level: low
+severity: low
 description: Adversaries may look for details about the network configuration and
   settings of systems they access or through information discovery of remote systems
 status: experimental
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   and (ProcessCommandLine contains "netsh " and ProcessCommandLine contains "show
   " and ProcessCommandLine contains "firewall ")) and (FolderPath endswith "\\netsh.exe"
   or ProcessVersionInfoOriginalFileName =~ "netsh.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

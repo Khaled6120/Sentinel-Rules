@@ -2,7 +2,7 @@ name: PUA - Ngrok Execution
 id: ee37eb7c-a4e7-4cd5-8fa4-efa27f1c3f31
 author: Florian Roth (Nextron Systems)
 date: 2021/05/14
-level: high
+severity: high
 description: 'Detects the use of Ngrok, a utility used for port forwarding and tunneling,
   often used by threat actors to make local protected services publicly available.
 
@@ -28,3 +28,13 @@ query: 'DeviceProcessEvents
   " tcp " or ProcessCommandLine contains " http " or ProcessCommandLine contains "
   authtoken ") and FolderPath endswith "ngrok.exe") or (ProcessCommandLine contains
   ".exe authtoken " or ProcessCommandLine contains ".exe start --all")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

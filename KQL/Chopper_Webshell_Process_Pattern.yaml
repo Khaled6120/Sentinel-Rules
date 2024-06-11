@@ -2,7 +2,7 @@ name: Chopper Webshell Process Pattern
 id: fa3c117a-bc0d-416e-a31b-0c0e80653efb
 author: Florian Roth (Nextron Systems), MSTI (query)
 date: 2022/10/01
-level: high
+severity: high
 description: Detects patterns found in process executions cause by China Chopper like
   tiny (ASPX) webshells
 status: test
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   contains "&dir&echo" or ProcessCommandLine contains "&echo [E]" or ProcessCommandLine
   contains "&echo [S]") and (FolderPath endswith "\\w3wp.exe" or InitiatingProcessFolderPath
   endswith "\\w3wp.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

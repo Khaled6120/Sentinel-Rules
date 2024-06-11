@@ -2,7 +2,7 @@ name: UAC Bypass Using DismHost
 id: 853e74f9-9392-4935-ad3b-2e8c040dae86
 author: Christian Burkard (Nextron Systems)
 date: 2021/08/30
-level: high
+severity: high
 description: Detects the pattern of UAC Bypass using DismHost DLL hijacking (UACMe
   63)
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   | where (ProcessIntegrityLevel in~ ("High", "System")) and (InitiatingProcessFolderPath
   contains "C:\\Users\\" and InitiatingProcessFolderPath contains "\\AppData\\Local\\Temp\\"
   and InitiatingProcessFolderPath contains "\\DismHost.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

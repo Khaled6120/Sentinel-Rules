@@ -2,7 +2,7 @@ name: Suspicious Obfuscated PowerShell Code
 id: 8d01b53f-456f-48ee-90f6-bc28e67d4e35
 author: Florian Roth (Nextron Systems)
 date: 2022/07/11
-level: high
+severity: high
 description: Detects suspicious UTF16 and base64 encoded and often obfuscated PowerShell
   code often used in command lines
 status: test
@@ -31,3 +31,13 @@ query: 'DeviceProcessEvents
   contains "B7ADAAfQB7ADMAfQAnACAALQBmAC" or ProcessCommandLine contains "AewAwAH0AewAzAH0AJwAgAC0AZgAg"
   or ProcessCommandLine contains "AHsAMgB9AHsAMAB9ACcAIAAtAGYAI" or ProcessCommandLine
   contains "B7ADIAfQB7ADAAfQAnACAALQBmAC" or ProcessCommandLine contains "AewAyAH0AewAwAH0AJwAgAC0AZgAg"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

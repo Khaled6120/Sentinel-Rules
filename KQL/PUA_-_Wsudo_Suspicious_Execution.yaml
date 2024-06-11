@@ -2,7 +2,7 @@ name: PUA - Wsudo Suspicious Execution
 id: bdeeabc9-ff2a-4a51-be59-bb253aac7891
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/12/02
-level: high
+severity: high
 description: Detects usage of wsudo (Windows Sudo Utility). Which is a tool that let
   the user execute programs with different permissions (System, Trusted Installer,
   Administrator...etc)
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   contains "-uTrustedInstaller" or ProcessCommandLine contains " --ti ") or (FolderPath
   endswith "\\wsudo.exe" or ProcessVersionInfoOriginalFileName =~ "wsudo.exe" or ProcessVersionInfoFileDescription
   =~ "Windows sudo utility" or InitiatingProcessFolderPath endswith "\\wsudo-bridge.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

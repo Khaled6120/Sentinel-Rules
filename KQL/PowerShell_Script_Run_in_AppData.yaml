@@ -2,7 +2,7 @@ name: PowerShell Script Run in AppData
 id: ac175779-025a-4f12-98b0-acdaeb77ea85
 author: Florian Roth (Nextron Systems), Jonhnathan Ribeiro, oscd.community
 date: 2019/01/09
-level: medium
+severity: medium
 description: Detects a suspicious command line execution that invokes PowerShell with
   reference to an AppData folder
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   "pwsh.exe") and ((ProcessCommandLine contains "Local\\" or ProcessCommandLine contains
   "Roaming\\") and (ProcessCommandLine contains "/c " and ProcessCommandLine contains
   "\\AppData\\"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

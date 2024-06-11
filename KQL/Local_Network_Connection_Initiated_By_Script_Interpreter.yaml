@@ -2,7 +2,7 @@ name: Local Network Connection Initiated By Script Interpreter
 id: 08249dc0-a28d-4555-8ba5-9255a198e08c
 author: frack113
 date: 2022/08/28
-level: medium
+severity: medium
 description: 'Detects a script interpreter (Wscript/Cscript) initiating a local network
   connection to download or execute a script hosted on a shared folder.
 
@@ -24,3 +24,13 @@ query: 'DeviceNetworkEvents
   "::1/128") or ipv4_is_in_range(RemoteIP, "fe80::/10") or ipv4_is_in_range(RemoteIP,
   "fc00::/7")) and (InitiatingProcessFolderPath endswith "\\wscript.exe" or InitiatingProcessFolderPath
   endswith "\\cscript.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Microsoft VBA For Outlook Addin Loaded Via Outlook
 id: 9a0b8719-cd3c-4f0a-90de-765a4cb3f5ed
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/02/08
-level: medium
+severity: medium
 description: Detects outlvba (Microsoft VBA for Outlook Addin) DLL being loaded by
   the outlook process
 status: test
@@ -18,3 +18,13 @@ query: 'DeviceImageLoadEvents
 
   | where FolderPath endswith "\\outlvba.dll" and InitiatingProcessFolderPath endswith
   "\\outlook.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

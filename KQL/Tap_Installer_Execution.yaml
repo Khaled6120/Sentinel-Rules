@@ -2,7 +2,7 @@ name: Tap Installer Execution
 id: 99793437-3e16-439b-be0f-078782cf953d
 author: Daniil Yugoslavskiy, Ian Davis, oscd.community
 date: 2019/10/24
-level: medium
+severity: medium
 description: Well-known TAP software installation. Possible preparation for data exfiltration
   using tunneling techniques
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   (x86)\\Avast Software\\SecureLine VPN\\") or FolderPath contains ":\\Program Files\\OpenVPN
   Connect\\drivers\\tap\\" or FolderPath contains ":\\Program Files (x86)\\Proton
   Technologies\\ProtonVPNTap\\installer\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

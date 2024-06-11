@@ -3,7 +3,7 @@ id: 587254ee-a24b-4335-b3cd-065c0f1f4baa
 author: Furkan CALISKAN, @caliskanfurkan_, @oscd_initiative, Nasreddine Bencherchali
   (Nextron Systems)
 date: 2020/10/05
-level: medium
+severity: medium
 description: 'Detects execution of "findstr" with specific flags and a remote share
   path. This specific set of CLI flags would allow "findstr" to download the content
   of the file located on the remote share as described in the LOLBAS entry.
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   or ProcessVersionInfoOriginalFileName =~ "FINDSTR.EXE") and ((ProcessCommandLine
   contains " -v " or ProcessCommandLine contains " /v ") and (ProcessCommandLine contains
   " -l " or ProcessCommandLine contains " /l ") and ProcessCommandLine contains "\\\\")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

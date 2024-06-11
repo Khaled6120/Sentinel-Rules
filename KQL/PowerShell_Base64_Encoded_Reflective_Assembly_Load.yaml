@@ -2,7 +2,7 @@ name: PowerShell Base64 Encoded Reflective Assembly Load
 id: 62b7ccc9-23b4-471e-aa15-6da3663c4d59
 author: Christian Burkard (Nextron Systems), pH-T (Nextron Systems)
 date: 2022/03/01
-level: high
+severity: high
 description: Detects base64 encoded .NET reflective loading of Assembly
 status: test
 modified: 2023/01/30
@@ -30,3 +30,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains "WwByAGUAZgBsAGUAYwB0AGkAbwBuAC4AYQBzAHMAZQBtAGIAbAB5AF0AOgA6AEwAbwBhAGQAKA"
   or ProcessCommandLine contains "sAcgBlAGYAbABlAGMAdABpAG8AbgAuAGEAcwBzAGUAbQBiAGwAeQBdADoAOgBMAG8AYQBkACgA"
   or ProcessCommandLine contains "bAHIAZQBmAGwAZQBjAHQAaQBvAG4ALgBhAHMAcwBlAG0AYgBsAHkAXQA6ADoATABvAGEAZAAoA"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Suspicious Invoke-WebRequest Execution With DirectIP
 id: 1edff897-9146-48d2-9066-52e8d8f80a2f
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/04/21
-level: medium
+severity: medium
 description: Detects calls to PowerShell with Invoke-WebRequest cmdlet using direct
   IP access
 status: test
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   "://3" or ProcessCommandLine contains "://4" or ProcessCommandLine contains "://5"
   or ProcessCommandLine contains "://6" or ProcessCommandLine contains "://7" or ProcessCommandLine
   contains "://8" or ProcessCommandLine contains "://9")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

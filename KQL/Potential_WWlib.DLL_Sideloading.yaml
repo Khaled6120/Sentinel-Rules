@@ -2,7 +2,7 @@ name: Potential WWlib.DLL Sideloading
 id: e2e01011-5910-4267-9c3b-4149ed5479cf
 author: X__Junior (Nextron Systems)
 date: 2023/05/18
-level: medium
+severity: medium
 description: Detects potential DLL sideloading of "wwlib.dll"
 status: test
 modified: ''
@@ -22,3 +22,13 @@ query: 'DeviceImageLoadEvents
   Office\\") and InitiatingProcessFolderPath endswith "\\winword.exe" and (InitiatingProcessFolderPath
   startswith "C:\\Program Files (x86)\\Microsoft Office\\" or InitiatingProcessFolderPath
   startswith "C:\\Program Files\\Microsoft Office\\"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

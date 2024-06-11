@@ -3,7 +3,7 @@ id: c625d754-6a3d-4f65-9c9a-536aea960d37
 author: Teymur Kheirkhabarov (idea), Mangatas Tondang, oscd.community, Nasreddine
   Bencherchali (Nextron Systems)
 date: 2020/10/13
-level: medium
+severity: medium
 description: Detects the usage of the "Accesschk" utility, an access and privilege
   audit tool developed by SysInternal and often being abused by attacker to verify
   process privileges
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   contains "Reports effective permissions" or (FolderPath endswith "\\accesschk.exe"
   or FolderPath endswith "\\accesschk64.exe") or ProcessVersionInfoOriginalFileName
   =~ "accesschk.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

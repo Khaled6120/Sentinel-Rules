@@ -2,7 +2,7 @@ name: Remotely Hosted HTA File Executed Via Mshta.EXE
 id: b98d0db6-511d-45de-ad02-e82a98729620
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/08/08
-level: high
+severity: high
 description: Detects execution of the "mshta" utility with an argument containing
   the "http" keyword, which could indicate that an attacker is executing a remotely
   hosted malicious hta file
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "http://" or ProcessCommandLine contains "https://"
   or ProcessCommandLine contains "ftp://") and (FolderPath endswith "\\mshta.exe"
   or ProcessVersionInfoOriginalFileName =~ "MSHTA.EXE")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

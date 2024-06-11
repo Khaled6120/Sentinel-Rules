@@ -3,7 +3,7 @@ id: 36480ae1-a1cb-4eaa-a0d6-29801d7e9142
 author: Matthew Green @mgreen27, Ecco, James Pemberton @4A616D6573, oscd.community,
   Andreas Hunkeler (@Karneades)
 date: 2019/06/15
-level: medium
+severity: medium
 description: Detects the execution of a renamed binary often used by attackers or
   malware leveraging new Sysmon OriginalFileName datapoint.
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   or FolderPath endswith "\\7z.exe" or FolderPath endswith "\\WinRAR.exe" or FolderPath
   endswith "\\wevtutil.exe" or FolderPath endswith "\\net.exe" or FolderPath endswith
   "\\net1.exe" or FolderPath endswith "\\netsh.exe" or FolderPath endswith "\\InstallUtil.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

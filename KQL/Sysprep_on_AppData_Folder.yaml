@@ -2,7 +2,7 @@ name: Sysprep on AppData Folder
 id: d5b9ae7a-e6fc-405e-80ff-2ff9dcc64e7e
 author: Florian Roth (Nextron Systems)
 date: 2018/06/22
-level: medium
+severity: medium
 description: Detects suspicious sysprep process start with AppData folder as target
   (as used by Trojan Syndicasec in Thrip report by Symantec)
 status: test
@@ -17,3 +17,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "\\AppData\\" and FolderPath endswith "\\sysprep.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

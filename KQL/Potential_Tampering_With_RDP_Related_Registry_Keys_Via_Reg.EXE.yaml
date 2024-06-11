@@ -2,7 +2,7 @@ name: Potential Tampering With RDP Related Registry Keys Via Reg.EXE
 id: 0d5675be-bc88-4172-86d3-1e96a4476536
 author: pH-T (Nextron Systems), @Kostastsale, @TheDFIRReport
 date: 2022/02/12
-level: high
+severity: high
 description: Detects the execution of "reg.exe" for enabling/disabling the RDP service
   on the host by tampering with the 'CurrentControlSet\Control\Terminal Server' values
 status: test
@@ -29,3 +29,13 @@ query: 'DeviceProcessEvents
   contains "IdleWinStationPoolCount" or ProcessCommandLine contains "TSAdvertise"
   or ProcessCommandLine contains "AllowTSConnections" or ProcessCommandLine contains
   "fSingleSessionPerUser" or ProcessCommandLine contains "fDenyTSConnections"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

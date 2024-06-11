@@ -2,7 +2,7 @@ name: Potential CommandLine Path Traversal Via Cmd.EXE
 id: 087790e3-3287-436c-bccf-cbd0184a7db1
 author: xknow @xknow_infosec, Tim Shelton
 date: 2020/06/11
-level: high
+severity: high
 description: Detects potential path traversal attempt via cmd.exe. Could indicate
   possible command/argument confusion/hijacking
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~ "cmd.exe") and (InitiatingProcessCommandLine
   =~ "/../../" or ProcessCommandLine contains "/../../")) and (not(ProcessCommandLine
   contains "\\Tasktop\\keycloak\\bin\\/../../jre\\bin\\java"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

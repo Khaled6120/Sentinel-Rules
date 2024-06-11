@@ -2,7 +2,7 @@ name: Application Terminated Via Wmic.EXE
 id: 49d9671b-0a0a-4c09-8280-d215bfd30662
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/09/11
-level: medium
+severity: medium
 description: Detects calls to the "terminate" function via wmic in order to kill an
   application
 status: experimental
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "call" and ProcessCommandLine contains "terminate")
   and (FolderPath endswith "\\WMIC.exe" or ProcessVersionInfoOriginalFileName =~ "wmic.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

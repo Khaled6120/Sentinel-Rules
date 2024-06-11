@@ -2,7 +2,7 @@ name: Odbcconf.EXE Suspicious DLL Location
 id: 6b65c28e-11f3-46cb-902a-68f2cafaf474
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/05/22
-level: high
+severity: high
 description: Detects execution of "odbcconf" where the path of the DLL being registered
   is located in a potentially suspicious location.
 status: test
@@ -33,3 +33,13 @@ query: 'DeviceProcessEvents
   contains "\\AppData\\Local\\Temp\\" or ProcessCommandLine contains "\\AppData\\Roaming\\")
   and (FolderPath endswith "\\odbcconf.exe" or ProcessVersionInfoOriginalFileName
   =~ "odbcconf.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: All Backups Deleted Via Wbadmin.EXE
 id: 639c9081-f482-47d3-a0bd-ddee3d4ecd76
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
 date: 2021/12/13
-level: high
+severity: high
 description: 'Detects the deletion of all backups or system state backups via "wbadmin.exe".
 
   This technique is used by numerous ransomware families and actors.
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "keepVersions:0" and (ProcessCommandLine contains
   "delete" and ProcessCommandLine contains "backup")) and (FolderPath endswith "\\wbadmin.exe"
   or ProcessVersionInfoOriginalFileName =~ "WBADMIN.EXE")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

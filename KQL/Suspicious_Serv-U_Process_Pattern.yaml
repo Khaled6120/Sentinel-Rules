@@ -2,7 +2,7 @@ name: Suspicious Serv-U Process Pattern
 id: 58f4ea09-0fc2-4520-ba18-b85c540b0eaf
 author: Florian Roth (Nextron Systems)
 date: 2021/07/14
-level: high
+severity: high
 description: Detects a suspicious process pattern which could be a sign of an exploited
   Serv-U service
 status: test
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   endswith "\\rundll32.exe" or FolderPath endswith "\\msiexec.exe" or FolderPath endswith
   "\\forfiles.exe" or FolderPath endswith "\\scriptrunner.exe") and InitiatingProcessFolderPath
   endswith "\\Serv-U.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

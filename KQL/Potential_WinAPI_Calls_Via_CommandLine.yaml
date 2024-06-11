@@ -2,7 +2,7 @@ name: Potential WinAPI Calls Via CommandLine
 id: ba3f5c1b-6272-4119-9dbd-0bc8d21c2702
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/09/06
-level: high
+severity: high
 description: Detects the use of WinAPI Functions via the commandline. As seen used
   by threat actors via the tool winapiexec
 status: test
@@ -43,3 +43,13 @@ query: 'DeviceProcessEvents
   ProcessCommandLine contains "WriteInt32" or ProcessCommandLine contains "WriteProcessMemory"
   or ProcessCommandLine contains "ZeroFreeGlobalAllocUnicode") and (not((ProcessCommandLine
   contains "GetLoadLibraryWAddress32" and FolderPath endswith "\\MpCmdRun.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: CMSTP Execution Process Creation
 id: 7d4cdc5a-0076-40ca-aac8-f7e714570e47
 author: Nik Seetharaman
 date: 2018/07/16
-level: high
+severity: high
 description: Detects various indicators of Microsoft Connection Manager Profile Installer
   execution
 status: stable
@@ -19,3 +19,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where InitiatingProcessFolderPath endswith "\\cmstp.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

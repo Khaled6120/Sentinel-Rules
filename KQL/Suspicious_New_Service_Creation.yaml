@@ -2,7 +2,7 @@ name: Suspicious New Service Creation
 id: 17a1be64-8d88-40bf-b5ff-a4f7a50ebcc8
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/07/14
-level: high
+severity: high
 description: Detects creation of a new service via "sc" command or the powershell
   "new-service" cmdlet with suspicious binary paths
 status: test
@@ -29,3 +29,13 @@ query: 'DeviceProcessEvents
   contains "\\Downloads\\" or ProcessCommandLine contains "\\Desktop\\" or ProcessCommandLine
   contains "\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\" or ProcessCommandLine
   contains "C:\\Windows\\TEMP\\" or ProcessCommandLine contains "\\AppData\\Local\\Temp")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

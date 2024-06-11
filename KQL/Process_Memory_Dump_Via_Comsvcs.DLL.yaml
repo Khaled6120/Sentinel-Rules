@@ -2,7 +2,7 @@ name: Process Memory Dump Via Comsvcs.DLL
 id: 646ea171-dded-4578-8a4d-65e9822892e3
 author: Florian Roth (Nextron Systems), Modexp, Nasreddine Bencherchali (Nextron Systems)
 date: 2020/02/18
-level: high
+severity: high
 description: Detects a process memory dump via "comsvcs.dll" using rundll32, covering
   multiple different techniques (ordinal, minidump function, etc.)
 status: test
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   or ((ProcessCommandLine contains " #" or ProcessCommandLine contains ",#" or ProcessCommandLine
   contains ", #") and (ProcessCommandLine contains "24" and ProcessCommandLine contains
   "comsvcs" and ProcessCommandLine contains "full"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Dllhost.EXE Initiated Network Connection To Non-Local IP Address
 id: cfed2f44-16df-4bf3-833a-79405198b277
 author: bartblaze
 date: 2020/07/13
-level: medium
+severity: medium
 description: 'Detects dllhost initiating a network connection to a non-local IP address.
 
   Aside from Microsoft own IP range that needs to be excluded. Network communication
@@ -33,3 +33,13 @@ query: 'DeviceNetworkEvents
   "23.72.0.0/13") or ipv4_is_in_range(RemoteIP, "51.10.0.0/15") or ipv4_is_in_range(RemoteIP,
   "51.103.0.0/16") or ipv4_is_in_range(RemoteIP, "51.104.0.0/15") or ipv4_is_in_range(RemoteIP,
   "52.224.0.0/11") or ipv4_is_in_range(RemoteIP, "204.79.197.0/24")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

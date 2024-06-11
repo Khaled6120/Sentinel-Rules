@@ -3,7 +3,7 @@ id: c27515df-97a9-4162-8a60-dc0eeb51b775
 author: Tim Rauch (Nextron Systems), Nasreddine Bencherchali (Nextron Systems), Elastic
   (idea)
 date: 2022/10/21
-level: high
+severity: high
 description: Detects suspicious child processes of the Microsoft OneNote application.
   This may indicate an attempt to execute malicious embedded objects from a .one file.
 status: test
@@ -53,3 +53,13 @@ query: 'DeviceProcessEvents
   "-Embedding" and FolderPath contains "\\AppData\\Local\\Microsoft\\OneDrive\\" and
   FolderPath endswith "\\FileCoAuth.exe") or (ProcessCommandLine endswith "-Embedding"
   and FolderPath endswith "\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

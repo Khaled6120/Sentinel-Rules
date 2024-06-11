@@ -2,7 +2,7 @@ name: PUA - Rclone Execution
 id: e37db05d-d1f9-49c8-b464-cee1a4b11638
 author: Bhabesh Raj, Sittikorn S, Aaron Greetham (@beardofbinary) - NCC Group
 date: 2021/05/10
-level: high
+severity: high
 description: Detects execution of RClone utility for exfiltration as used by various
   ransomwares strains like REvil, Conti, FiveHands, etc
 status: test
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   contains "transfers" or ProcessCommandLine contains "multi-thread-streams" or ProcessCommandLine
   contains "no-check-certificate ") and (FolderPath endswith "\\rclone.exe" or ProcessVersionInfoFileDescription
   =~ "Rsync for cloud storage"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

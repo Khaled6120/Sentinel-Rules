@@ -2,7 +2,7 @@ name: Execution from Suspicious Folder
 id: 3dfd06d2-eaf4-4532-9555-68aca59f57c4
 author: Florian Roth (Nextron Systems), Tim Shelton
 date: 2019/01/16
-level: high
+severity: high
 description: Detects a suspicious execution from an uncommon folder
 status: test
 modified: 2023/01/10
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   or FolderPath startswith "C:\\Perflogs\\") and (not(((FolderPath endswith "\\CitrixReceiverUpdater.exe"
   and FolderPath startswith "C:\\Windows\\SysWOW64\\config\\systemprofile\\Citrix\\UpdaterBinaries\\")
   or FolderPath startswith "C:\\Users\\Public\\IBM\\ClientSolutions\\Start_Programs\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

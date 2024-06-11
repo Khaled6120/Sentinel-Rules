@@ -2,7 +2,7 @@ name: Suspicious Program Names
 id: efdd8dd5-cee8-4e59-9390-7d4d5e4dd6f6
 author: Florian Roth (Nextron Systems)
 date: 2022/02/11
-level: high
+severity: high
 description: Detects suspicious patterns in program names or folders that are often
   found in malicious samples or hacktools
 status: test
@@ -36,3 +36,13 @@ query: 'DeviceProcessEvents
   or FolderPath endswith "\\artifact_protected.exe" or FolderPath endswith "\\artifact32.exe"
   or FolderPath endswith "\\artifact32big.exe" or FolderPath endswith "obfuscated.exe"
   or FolderPath endswith "obfusc.exe" or FolderPath endswith "\\meterpreter"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

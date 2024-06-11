@@ -2,7 +2,7 @@ name: File Download And Execution Via IEExec.EXE
 id: 9801abb8-e297-4dbf-9fbd-57dde0e830ad
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/05/16
-level: high
+severity: high
 description: Detects execution of the IEExec utility to download and execute files
 status: test
 modified: 2023/11/09
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "http://" or ProcessCommandLine contains "https://")
   and (FolderPath endswith "\\IEExec.exe" or ProcessVersionInfoOriginalFileName =~
   "IEExec.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

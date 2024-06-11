@@ -3,7 +3,7 @@ id: 9a132afa-654e-11eb-ae93-0242ac130002
 author: Janantha Marasinghe (https://github.com/blueteam0ps), FPT.EagleEye Team, omkar72,
   oscd.community
 date: 2021/02/02
-level: high
+severity: high
 description: Detects AdFind execution with common flags seen used during attacks
 status: test
 modified: 2023/03/05
@@ -30,3 +30,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains "fspdmp" or ProcessCommandLine contains "users_noexpire"
   or ProcessCommandLine contains "computers_active" or ProcessCommandLine contains
   "computers_pwdnotreqd"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

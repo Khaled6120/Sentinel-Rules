@@ -2,7 +2,7 @@ name: Use Short Name Path in Image
 id: a96970af-f126-420d-90e1-d37bf25e50e1
 author: frack113, Nasreddine Bencherchali
 date: 2022/08/07
-level: medium
+severity: medium
 description: Detect use of the Windows 8.3 short name. Which could be used as a method
   to avoid Image detection
 status: test
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   ProcessVersionInfoCompanyName =~ "InstallShield Software Corporation") or ((FolderPath
   contains "\\AppData\\" and FolderPath contains "\\Temp\\") or (FolderPath endswith
   "~1\\unzip.exe" or FolderPath endswith "~1\\7zG.exe")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

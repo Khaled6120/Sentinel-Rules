@@ -2,7 +2,7 @@ name: Suspicious Process Parents
 id: cbec226f-63d9-4eca-9f52-dfb6652f24df
 author: Florian Roth (Nextron Systems)
 date: 2022/03/21
-level: high
+severity: high
 description: Detects suspicious parent processes that should not have any children
   or should only have a single possible child program
 status: test
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   or FolderPath endswith "\\wermgr.exe" or FolderPath endswith "\\conhost.exe" or
   FolderPath endswith "\\mmc.exe" or FolderPath endswith "\\win32calc.exe" or FolderPath
   endswith "\\notepad.exe")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

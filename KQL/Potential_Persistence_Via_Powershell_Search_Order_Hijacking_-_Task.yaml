@@ -2,7 +2,7 @@ name: Potential Persistence Via Powershell Search Order Hijacking - Task
 id: b66474aa-bd92-4333-a16c-298155b120df
 author: pH-T (Nextron Systems), Florian Roth (Nextron Systems)
 date: 2022/04/08
-level: high
+severity: high
 description: Detects suspicious powershell execution via a schedule task where the
   command ends with an suspicious flags to hide the powershell instance instead of
   executeing scripts or commands. This could be a sign of persistence via PowerShell
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   endswith " -w hidden" or ProcessCommandLine endswith " -ep bypass" or ProcessCommandLine
   endswith " -noni") and (InitiatingProcessCommandLine contains "-k netsvcs" and InitiatingProcessCommandLine
   contains "-s Schedule") and InitiatingProcessFolderPath =~ "C:\\WINDOWS\\System32\\svchost.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Suspicious UltraVNC Execution
 id: 871b9555-69ca-4993-99d3-35a59f9f3599
 author: Bhabesh Raj
 date: 2022/03/04
-level: high
+severity: high
 description: Detects suspicious UltraVNC command line flag combination that indicate
   a auto reconnect upon execution, e.g. startup (as seen being used by Gamaredon threat
   group)
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "-autoreconnect " and ProcessCommandLine contains
   "-connect " and ProcessCommandLine contains "-id:"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

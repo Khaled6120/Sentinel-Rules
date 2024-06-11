@@ -2,7 +2,7 @@ name: HackTool - Jlaive In-Memory Assembly Execution
 id: 0a99eb3e-1617-41bd-b095-13dc767f3def
 author: Jose Luis Sanchez Martinez (@Joseliyo_Jstnk)
 date: 2022/05/24
-level: medium
+severity: medium
 description: Detects the use of Jlaive to execute assemblies in a copied PowerShell
 status: test
 modified: 2023/02/22
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   contains "pwsh.exe" and ProcessCommandLine contains ".bat.exe") and FolderPath endswith
   "\\xcopy.exe") or ((ProcessCommandLine contains "+s" and ProcessCommandLine contains
   "+h" and ProcessCommandLine contains ".bat.exe") and FolderPath endswith "\\attrib.exe"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

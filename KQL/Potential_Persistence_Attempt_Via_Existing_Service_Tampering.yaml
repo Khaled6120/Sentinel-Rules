@@ -2,7 +2,7 @@ name: Potential Persistence Attempt Via Existing Service Tampering
 id: 38879043-7e1e-47a9-8d46-6bec88e201df
 author: Sreeman
 date: 2020/09/29
-level: medium
+severity: medium
 description: Detects the modification of an existing service in order to execute an
   arbitrary payload when the service is started or killed as a potential method for
   persistence.
@@ -31,3 +31,13 @@ query: 'DeviceProcessEvents
   "add " and ProcessCommandLine contains "FailureCommand") or (ProcessCommandLine
   contains "reg " and ProcessCommandLine contains "add " and ProcessCommandLine contains
   "ImagePath")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

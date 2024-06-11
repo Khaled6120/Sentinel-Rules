@@ -2,7 +2,7 @@ name: HackTool - Certify Execution
 id: 762f2482-ff21-4970-8939-0aa317a886bb
 author: pH-T (Nextron Systems)
 date: 2023/04/17
-level: high
+severity: high
 description: Detects Certify a tool for Active Directory certificate abuse based on
   PE metadata characteristics and common command line arguments.
 status: test
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   contains " /template:" or ProcessCommandLine contains " /altname:" or ProcessCommandLine
   contains " /domain:" or ProcessCommandLine contains " /path:" or ProcessCommandLine
   contains " /ca:"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

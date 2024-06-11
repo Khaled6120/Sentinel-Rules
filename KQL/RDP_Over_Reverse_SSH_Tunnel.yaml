@@ -2,7 +2,7 @@ name: RDP Over Reverse SSH Tunnel
 id: 5f699bc5-5446-4a4a-a0b7-5ef2885a3eb4
 author: Samir Bousseaden
 date: 2019/02/16
-level: high
+severity: high
 description: Detects svchost hosting RDP termsvcs communicating with the loopback
   address and on TCP port 3389
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceNetworkEvents
   | where (ipv4_is_in_range(RemoteIP, "127.0.0.0/8") or ipv4_is_in_range(RemoteIP,
   "::1/128")) and (InitiatingProcessFolderPath endswith "\\svchost.exe" and LocalPort
   == 3389)'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

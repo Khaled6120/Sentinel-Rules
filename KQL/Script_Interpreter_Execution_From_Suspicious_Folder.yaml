@@ -2,7 +2,7 @@ name: Script Interpreter Execution From Suspicious Folder
 id: 1228c958-e64e-4e71-92ad-7d429f4138ba
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
 date: 2022/02/08
-level: high
+severity: high
 description: Detects a suspicious script execution in temporary folders or folders
   accessible by environment variables
 status: test
@@ -29,3 +29,13 @@ query: 'DeviceProcessEvents
   contains "\\Favorites\\") or (ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine
   contains "\\Favourites\\") or (ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine
   contains "\\Contacts\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

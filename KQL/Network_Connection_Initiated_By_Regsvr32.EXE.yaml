@@ -2,7 +2,7 @@ name: Network Connection Initiated By Regsvr32.EXE
 id: c7e91a02-d771-4a6d-a700-42587e0b1095
 author: Dmitriy Lifanov, oscd.community
 date: 2019/10/25
-level: medium
+severity: medium
 description: Detects a network connection initiated by "Regsvr32.exe"
 status: test
 modified: 2023/09/18
@@ -18,3 +18,13 @@ relevantTechniques:
 query: 'DeviceNetworkEvents
 
   | where InitiatingProcessFolderPath endswith "\\regsvr32.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

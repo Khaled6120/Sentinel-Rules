@@ -2,7 +2,7 @@ name: Potential appverifUI.DLL Sideloading
 id: ee6cea48-c5b6-4304-a332-10fc6446f484
 author: X__Junior (Nextron Systems)
 date: 2023/06/20
-level: high
+severity: high
 description: Detects potential DLL sideloading of "appverifUI.dll"
 status: test
 modified: ''
@@ -21,3 +21,13 @@ query: 'DeviceImageLoadEvents
   in~ ("C:\\Windows\\SysWOW64\\appverif.exe", "C:\\Windows\\System32\\appverif.exe"))
   and (FolderPath startswith "C:\\Windows\\System32\\" or FolderPath startswith "C:\\Windows\\SysWOW64\\"
   or FolderPath startswith "C:\\Windows\\WinSxS\\"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

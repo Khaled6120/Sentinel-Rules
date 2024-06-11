@@ -2,7 +2,7 @@ name: Suspicious Schtasks Schedule Types
 id: 24c8392b-aa3c-46b7-a545-43f71657fe98
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/09/09
-level: high
+severity: high
 description: Detects scheduled task creations or modification on a suspicious schedule
   type
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   contains " ONSTART " or ProcessCommandLine contains " ONCE " or ProcessCommandLine
   contains " ONIDLE ")) and (not((ProcessCommandLine contains "NT AUT" or ProcessCommandLine
   contains " SYSTEM" or ProcessCommandLine contains "HIGHEST")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

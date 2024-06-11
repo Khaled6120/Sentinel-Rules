@@ -2,7 +2,7 @@ name: PUA - Netcat Suspicious Execution
 id: e31033fc-33f0-4020-9a16-faf9b31cbf08
 author: frack113, Florian Roth (Nextron Systems)
 date: 2021/07/21
-level: high
+severity: high
 description: Detects execution of Netcat. Adversaries may use a non-application layer
   protocol for communication between host and C2 server or among infected hosts within
   a network
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   contains " -vnl --exec " or ProcessCommandLine contains " -vnl -e " or ProcessCommandLine
   contains " --lua-exec " or ProcessCommandLine contains " --sh-exec ") or (FolderPath
   endswith "\\nc.exe" or FolderPath endswith "\\ncat.exe" or FolderPath endswith "\\netcat.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

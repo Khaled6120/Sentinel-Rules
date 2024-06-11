@@ -2,7 +2,7 @@ name: Folder Compress To Potentially Suspicious Output Via Compress-Archive Cmdl
 id: 85a8e5ba-bd03-4bfb-bbfa-a4409a8f8b98
 author: Nasreddine Bencherchali (Nextron Systems), frack113
 date: 2021/07/20
-level: medium
+severity: medium
 description: 'Detects PowerShell scripts that make use of the "Compress-Archive" Cmdlet
   in order to compress folders and files where the output is stored in a potentially
   suspicious location that is used often by malware for exfiltration.
@@ -29,3 +29,13 @@ query: 'DeviceProcessEvents
   contains "\\AppData\\Local\\Temp\\") or (ProcessCommandLine contains "Compress-Archive
   -Path" and ProcessCommandLine contains "-DestinationPath" and ProcessCommandLine
   contains ":\\Windows\\Temp\\")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

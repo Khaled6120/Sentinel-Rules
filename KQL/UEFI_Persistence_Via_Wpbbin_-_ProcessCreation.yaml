@@ -2,7 +2,7 @@ name: UEFI Persistence Via Wpbbin - ProcessCreation
 id: 4abc0ec4-db5a-412f-9632-26659cddf145
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/07/18
-level: high
+severity: high
 description: Detects execution of the binary "wpbbin" which is used as part of the
   UEFI based persistence method described in the reference section
 status: test
@@ -18,3 +18,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where FolderPath =~ "C:\\Windows\\System32\\wpbbin.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

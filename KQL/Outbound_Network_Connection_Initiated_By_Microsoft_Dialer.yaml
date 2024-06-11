@@ -2,7 +2,7 @@ name: Outbound Network Connection Initiated By Microsoft Dialer
 id: 37e4024a-6c80-4d8f-b95d-2e7e94f3a8d1
 author: CertainlyP
 date: 2024/04/26
-level: high
+severity: high
 description: 'Detects outbound network connection initiated by Microsoft Dialer.
 
   The Microsoft Dialer, also known as Phone Dialer, is a built-in utility application
@@ -32,3 +32,13 @@ query: 'DeviceNetworkEvents
   "192.168.0.0/16") or ipv4_is_in_range(RemoteIP, "169.254.0.0/16") or ipv4_is_in_range(RemoteIP,
   "::1/128") or ipv4_is_in_range(RemoteIP, "fe80::/10") or ipv4_is_in_range(RemoteIP,
   "fc00::/7"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

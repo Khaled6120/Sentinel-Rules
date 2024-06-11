@@ -2,7 +2,7 @@ name: Suspicious Process Start Locations
 id: 15b75071-74cc-47e0-b4c6-b43744a62a2b
 author: juju4, Jonhnathan Ribeiro, oscd.community
 date: 2019/01/16
-level: medium
+severity: medium
 description: Detects suspicious process run from unusual locations
 status: test
 modified: 2022/01/07
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   or FolderPath startswith "C:\\Windows\\fonts\\" or FolderPath startswith "C:\\Windows\\help\\"
   or FolderPath startswith "C:\\Windows\\drivers\\" or FolderPath startswith "C:\\Windows\\addins\\"
   or FolderPath startswith "C:\\Windows\\cursors\\" or FolderPath startswith "C:\\Windows\\system32\\tasks\\")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

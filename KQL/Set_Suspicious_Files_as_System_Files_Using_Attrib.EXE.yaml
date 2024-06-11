@@ -2,7 +2,7 @@ name: Set Suspicious Files as System Files Using Attrib.EXE
 id: efec536f-72e8-4656-8960-5e85d091345b
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/06/28
-level: high
+severity: high
 description: 'Detects the usage of attrib with the "+s" option to set scripts or executables
   located in suspicious locations as system files to hide them from users and make
   them unable to be deleted with simple rights. The rule limits the search to specific
@@ -30,3 +30,13 @@ query: 'DeviceProcessEvents
   contains "\\Downloads\\" or ProcessCommandLine contains "\\Windows\\Temp\\")) and
   (not((ProcessCommandLine contains "\\Windows\\TEMP\\" and ProcessCommandLine contains
   ".exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

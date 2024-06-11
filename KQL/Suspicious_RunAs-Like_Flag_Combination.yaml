@@ -2,7 +2,7 @@ name: Suspicious RunAs-Like Flag Combination
 id: 50d66fb0-03f8-4da0-8add-84e77d12a020
 author: Florian Roth (Nextron Systems)
 date: 2022/11/11
-level: medium
+severity: medium
 description: Detects suspicious command line flags that let the user set a target
   user and command as e.g. seen in PsExec-like tools
 status: test
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   --user system " or ProcessCommandLine contains " -u NT" or ProcessCommandLine contains
   " -u \"NT" or ProcessCommandLine contains " -u ''NT" or ProcessCommandLine contains
   " --system " or ProcessCommandLine contains " -u administrator ")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Automated Collection Command Prompt
 id: f576a613-2392-4067-9d1a-9345fb58d8d1
 author: frack113
 date: 2021/07/28
-level: medium
+severity: medium
 description: Once established within a system or network, an adversary may use automated
   techniques for collecting internal data.
 status: test
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   " /b " and ProcessCommandLine contains " /s ") or ((ProcessCommandLine contains
   " /e " or ProcessCommandLine contains " /si ") and ProcessVersionInfoOriginalFileName
   =~ "FINDSTR.EXE"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Use NTFS Short Name in Image
 id: 3ef5605c-9eb9-47b0-9a71-b727e6aa5c3b
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
 date: 2022/08/06
-level: medium
+severity: medium
 description: Detect use of the Windows 8.3 short name. Which could be used as a method
   to avoid Image based detection
 status: test
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   =~ "C:\\Windows\\explorer.exe")) and (not((InitiatingProcessFolderPath endswith
   "\\thor\\thor64.exe" or FolderPath endswith "\\VCREDI~1.EXE" or InitiatingProcessFolderPath
   endswith "\\WebEx\\WebexHost.exe" or FolderPath =~ "C:\\PROGRA~1\\WinZip\\WZPREL~1.EXE")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

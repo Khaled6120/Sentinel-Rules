@@ -2,7 +2,7 @@ name: Potential Edputil.DLL Sideloading
 id: e4903324-1a10-4ed3-981b-f6fe3be3a2c2
 author: X__Junior (Nextron Systems)
 date: 2023/06/09
-level: high
+severity: high
 description: Detects potential DLL sideloading of "edputil.dll"
 status: test
 modified: ''
@@ -19,3 +19,13 @@ query: 'DeviceImageLoadEvents
 
   | where FolderPath endswith "\\edputil.dll" and (not((FolderPath startswith "C:\\Windows\\System32\\"
   or FolderPath startswith "C:\\Windows\\SysWOW64\\" or FolderPath startswith "C\\Windows\\WinSxS\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Allow Service Access Using Security Descriptor Tampering Via Sc.EXE
 id: 6c8fbee5-dee8-49bc-851d-c3142d02aa47
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/02/28
-level: high
+severity: high
 description: Detects suspicious DACL modifications to allow access to a service from
   a suspicious trustee. This can be used to override access restrictions set by previous
   ACLs.
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   "A;") and (ProcessCommandLine contains ";IU" or ProcessCommandLine contains ";SU"
   or ProcessCommandLine contains ";BA" or ProcessCommandLine contains ";SY" or ProcessCommandLine
   contains ";WD")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

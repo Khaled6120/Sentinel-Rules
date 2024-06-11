@@ -2,7 +2,7 @@ name: Control Panel Items
 id: 0ba863e6-def5-4e50-9cea-4dd8c7dc46a4
 author: Kyaw Min Thein, Furkan Caliskan (@caliskanfurkan_)
 date: 2020/06/22
-level: high
+severity: high
 description: Detects the malicious use of a control panel item
 status: test
 modified: 2023/10/11
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   contains "regsvr32 " and ProcessCommandLine contains " /s " and ProcessCommandLine
   contains "igfxCPL.cpl") or (ProcessCommandLine contains "\\System32\\" or ProcessCommandLine
   contains "%System%" or ProcessCommandLine contains "|C:\\Windows\\system32|")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

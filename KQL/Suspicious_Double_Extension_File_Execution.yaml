@@ -3,7 +3,7 @@ id: 1cdd9a09-06c9-4769-99ff-626e2b3991b8
 author: Florian Roth (Nextron Systems), @blu3_team (idea), Nasreddine Bencherchali
   (Nextron Systems)
 date: 2019/06/26
-level: critical
+severity: critical
 description: Detects suspicious use of an .exe extension after a non-executable file
   extension like .pdf.exe, a set of spaces or underlines to cloak the executable file
   in spear phishing campaigns
@@ -36,3 +36,13 @@ query: 'DeviceProcessEvents
   endswith ".docx.js" or FolderPath endswith ".xls.js" or FolderPath endswith ".xlsx.js"
   or FolderPath endswith ".ppt.js" or FolderPath endswith ".pptx.js" or FolderPath
   endswith ".rtf.js" or FolderPath endswith ".pdf.js" or FolderPath endswith ".txt.js")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

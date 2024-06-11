@@ -2,7 +2,7 @@ name: Suspicious WebDav Client Execution Via Rundll32.EXE
 id: 982e9f2d-1a85-4d5b-aea4-31f5e97c6555
 author: Nasreddine Bencherchali (Nextron Systems), Florian Roth (Nextron Systems)
 date: 2023/03/16
-level: high
+severity: high
 description: 'Detects "svchost.exe" spawning "rundll32.exe" with command arguments
   like C:\windows\system32\davclnt.dll,DavSetCookie. This could be an indicator of
   exfiltration or use of WebDav to launch code (hosted on WebDav Server) or potentially
@@ -34,3 +34,13 @@ query: 'DeviceProcessEvents
   contains "://172.28." or ProcessCommandLine contains "://172.29." or ProcessCommandLine
   contains "://172.30." or ProcessCommandLine contains "://172.31." or ProcessCommandLine
   contains "://127." or ProcessCommandLine contains "://169.254.")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

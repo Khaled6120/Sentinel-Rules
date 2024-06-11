@@ -2,7 +2,7 @@ name: Potential Persistence Via Microsoft Compatibility Appraiser
 id: f548a603-c9f2-4c89-b511-b089f7e94549
 author: Sreeman
 date: 2020/09/29
-level: medium
+severity: medium
 description: 'Detects manual execution of the "Microsoft Compatibility Appraiser"
   task via schtasks.
 
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "run " and ProcessCommandLine contains "\\Application
   Experience\\Microsoft Compatibility Appraiser") and (FolderPath endswith "\\schtasks.exe"
   or ProcessVersionInfoOriginalFileName =~ "schtasks.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

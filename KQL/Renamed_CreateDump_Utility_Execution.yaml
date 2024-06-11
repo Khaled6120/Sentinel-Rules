@@ -2,7 +2,7 @@ name: Renamed CreateDump Utility Execution
 id: 1a1ed54a-2ba4-4221-94d5-01dee560d71e
 author: Florian Roth (Nextron Systems)
 date: 2022/09/20
-level: high
+severity: high
 description: Detects uses of a renamed legitimate createdump.exe LOLOBIN utility to
   dump process memory
 status: test
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   " and ProcessCommandLine contains " --name " and ProcessCommandLine contains ".dmp"))
   or ProcessVersionInfoOriginalFileName =~ "FX_VER_INTERNALNAME_STR") and (not(FolderPath
   endswith "\\createdump.exe"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: PUA - Crassus Execution
 id: 2c32b543-1058-4808-91c6-5b31b8bed6c5
 author: pH-T (Nextron Systems)
 date: 2023/04/17
-level: high
+severity: high
 description: Detects Crassus, a Windows privilege escalation discovery tool, based
   on PE metadata characteristics.
 status: test
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\Crassus.exe" or ProcessVersionInfoOriginalFileName
   =~ "Crassus.exe" or ProcessVersionInfoFileDescription contains "Crassus"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

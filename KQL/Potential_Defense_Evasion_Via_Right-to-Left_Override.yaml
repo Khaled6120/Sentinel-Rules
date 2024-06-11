@@ -2,7 +2,7 @@ name: Potential Defense Evasion Via Right-to-Left Override
 id: ad691d92-15f2-4181-9aa4-723c74f9ddc3
 author: Micah Babinski, @micahbabinski
 date: 2023/02/15
-level: high
+severity: high
 description: 'Detects the presence of the "u202+E" character, which causes a terminal,
   browser, or operating system to render text in a right-to-left sequence.
 
@@ -19,3 +19,13 @@ tactics:
 relevantTechniques:
 - t1036.002
 query: "DeviceProcessEvents\n| where ProcessCommandLine contains \"\u202E\""
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

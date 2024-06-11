@@ -2,7 +2,7 @@ name: Suspicious ZipExec Execution
 id: 90dcf730-1b71-4ae7-9ffc-6fcf62bd0132
 author: frack113
 date: 2021/11/07
-level: medium
+severity: medium
 description: ZipExec is a Proof-of-Concept (POC) tool to wrap binary-based tools into
   a password-protected zip file.
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   and ProcessCommandLine contains "/user:") or (ProcessCommandLine contains "/delete"
   and ProcessCommandLine contains "Microsoft_Windows_Shell_ZipFolder:filename=" and
   ProcessCommandLine contains ".zip")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

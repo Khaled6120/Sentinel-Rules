@@ -2,7 +2,7 @@ name: Renamed Plink Execution
 id: 1c12727d-02bf-45ff-a9f3-d49806a3cf43
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/06/06
-level: high
+severity: high
 description: Detects the execution of a renamed version of the Plink binary
 status: test
 modified: 2023/02/03
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
   | where (ProcessVersionInfoOriginalFileName =~ "Plink" or (ProcessCommandLine contains
   " -l forward" and ProcessCommandLine contains " -P " and ProcessCommandLine contains
   " -R ")) and (not(FolderPath endswith "\\plink.exe"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

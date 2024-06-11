@@ -2,7 +2,7 @@ name: Potentially Suspicious Windows App Activity
 id: f91ed517-a6ba-471d-9910-b3b4a398c0f3
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/01/12
-level: medium
+severity: medium
 description: Detects potentially suspicious child process of applications launched
   from inside the WindowsApps directory. This could be a sign of a rogue ".appx" package
   installation/execution
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   endswith "\\cmd.exe" or FolderPath endswith "\\pwsh.exe") and InitiatingProcessFolderPath
   contains ":\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal" and InitiatingProcessFolderPath
   endswith "\\WindowsTerminal.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

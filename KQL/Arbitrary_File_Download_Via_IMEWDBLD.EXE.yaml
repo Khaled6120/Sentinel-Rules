@@ -2,7 +2,7 @@ name: Arbitrary File Download Via IMEWDBLD.EXE
 id: 863218bd-c7d0-4c52-80cd-0a96c09f54af
 author: Swachchhanda Shrawan Poudel
 date: 2023/11/09
-level: high
+severity: high
 description: Detects usage of "IMEWDBLD.exe" to download arbitrary files
 status: experimental
 modified: ''
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "http://" or ProcessCommandLine contains "https://")
   and (FolderPath endswith "\\IMEWDBLD.exe" or ProcessVersionInfoOriginalFileName
   =~ "imewdbld.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

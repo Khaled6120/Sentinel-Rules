@@ -2,7 +2,7 @@ name: Rundll32 Execution With Uncommon DLL Extension
 id: c3a99af4-35a9-4668-879e-c09aeb4f2bdf
 author: Tim Shelton, Florian Roth (Nextron Systems), Yassine Oukessou
 date: 2022/01/13
-level: medium
+severity: medium
 description: Detects the execution of rundll32 with a command line that doesn't contain
   a common extension
 status: experimental
@@ -33,3 +33,13 @@ query: 'DeviceProcessEvents
   contains ".tmp\\setup.exe" and InitiatingProcessCommandLine contains "--install-archive="
   and InitiatingProcessCommandLine contains "--previous-version=" and InitiatingProcessCommandLine
   contains "--msedgewebview --verbose-logging --do-not-launch-msedge --user-level")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

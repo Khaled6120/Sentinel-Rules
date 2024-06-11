@@ -3,7 +3,7 @@ name: Network Communication Initiated To File Sharing Domains From Process Locat
 id: e0f8ab85-0ac9-423b-a73a-81b3c7b1aa97
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
 date: 2018/08/30
-level: high
+severity: high
 description: Detects executables located in potentially suspicious directories initiating
   network connections towards file sharing domains.
 status: test
@@ -39,3 +39,13 @@ query: 'DeviceNetworkEvents
   contains ":\\Windows\\Temp\\" or InitiatingProcessFolderPath contains "\\AppData\\Temp\\"
   or InitiatingProcessFolderPath contains "\\config\\systemprofile\\" or InitiatingProcessFolderPath
   contains "\\Windows\\addins\\")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

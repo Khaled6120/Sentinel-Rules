@@ -2,7 +2,7 @@ name: RestrictedAdminMode Registry Value Tampering - ProcCreation
 id: 28ac00d6-22d9-4a3c-927f-bbd770104573
 author: frack113
 date: 2023/01/13
-level: high
+severity: high
 description: 'Detects changes to the "DisableRestrictedAdmin" registry value in order
   to disable or enable RestrictedAdmin mode.
 
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "\\System\\CurrentControlSet\\Control\\Lsa\\"
   and ProcessCommandLine contains "DisableRestrictedAdmin"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

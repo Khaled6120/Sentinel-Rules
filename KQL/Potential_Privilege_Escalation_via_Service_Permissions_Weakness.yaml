@@ -2,7 +2,7 @@ name: Potential Privilege Escalation via Service Permissions Weakness
 id: 0f9c21f1-6a73-4b0e-9809-cb562cb8d981
 author: Teymur Kheirkhabarov
 date: 2019/10/26
-level: high
+severity: high
 description: Detect modification of services configuration (ImagePath, FailureCommand
   and ServiceDLL) in registry by processes with Medium integrity level
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   "\\FailureCommand" or ProcessCommandLine contains "\\ServiceDll") and (ProcessCommandLine
   contains "ControlSet" and ProcessCommandLine contains "services") and ProcessIntegrityLevel
   =~ "Medium"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Suspicious Regsvr32 Execution From Remote Share
 id: 88a87a10-384b-4ad7-8871-2f9bf9259ce5
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/10/31
-level: high
+severity: high
 description: Detects REGSVR32.exe to execute DLL hosted on remote shares
 status: test
 modified: ''
@@ -17,3 +17,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " \\\\" and (FolderPath endswith "\\regsvr32.exe"
   or ProcessVersionInfoOriginalFileName =~ "\\REGSVR32.EXE")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

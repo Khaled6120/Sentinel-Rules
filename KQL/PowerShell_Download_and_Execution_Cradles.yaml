@@ -2,7 +2,7 @@ name: PowerShell Download and Execution Cradles
 id: 85b0b087-eddf-4a2b-b033-d771fa2b9775
 author: Florian Roth (Nextron Systems)
 date: 2022/03/24
-level: high
+severity: high
 description: Detects PowerShell download and execution cradles.
 status: test
 modified: 2023/05/04
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   "I`E`X" or ProcessCommandLine contains "I`EX" or ProcessCommandLine contains "IE`X"
   or ProcessCommandLine contains "iex " or ProcessCommandLine contains "IEX (" or
   ProcessCommandLine contains "IEX(" or ProcessCommandLine contains "Invoke-Expression")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Share And Session Enumeration Using Net.EXE
 id: 62510e69-616b-4078-b371-847da438cc03
 author: Endgame, JHasenbusch (ported for oscd.community)
 date: 2018/10/30
-level: low
+severity: low
 description: Detects attempts to enumerate file shares, printer shares and sessions
   using "net.exe" with the "view" flag.
 status: stable
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "view" and ((FolderPath endswith "\\net.exe"
   or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName in~
   ("net.exe", "net1.exe")))) and (not(ProcessCommandLine contains "\\\\"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

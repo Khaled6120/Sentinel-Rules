@@ -2,7 +2,7 @@ name: Arbitrary File Download Via PresentationHost.EXE
 id: b124ddf4-778d-418e-907f-6dd3fc0d31cd
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/08/19
-level: medium
+severity: medium
 description: Detects usage of "PresentationHost" which is a utility that runs ".xbap"
   (Browser Applications) files to download arbitrary files
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "http://" or ProcessCommandLine contains "https://"
   or ProcessCommandLine contains "ftp://") and (FolderPath endswith "\\presentationhost.exe"
   or ProcessVersionInfoOriginalFileName =~ "PresentationHost.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

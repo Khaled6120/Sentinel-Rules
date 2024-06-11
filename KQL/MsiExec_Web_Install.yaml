@@ -2,7 +2,7 @@ name: MsiExec Web Install
 id: f7b5f842-a6af-4da5-9e95-e32478f3cd2f
 author: Florian Roth (Nextron Systems)
 date: 2018/02/09
-level: medium
+severity: medium
 description: Detects suspicious msiexec process starts with web addresses as parameter
 status: test
 modified: 2022/01/07
@@ -18,3 +18,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " msiexec" and ProcessCommandLine contains "://"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

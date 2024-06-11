@@ -2,7 +2,7 @@ name: HackTool - CrackMapExec Process Patterns
 id: f26307d8-14cd-47e3-a26b-4b4769f24af6
 author: Florian Roth (Nextron Systems)
 date: 2022/03/12
-level: high
+severity: high
 description: Detects suspicious process patterns found in logs when CrackMapExec is
   used
 status: test
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   MiniDump" and ProcessCommandLine contains "\\Windows\\Temp\\" and ProcessCommandLine
   contains " full" and ProcessCommandLine contains "%%B") or (ProcessCommandLine contains
   "tasklist /v /fo csv" and ProcessCommandLine contains "findstr /i \"lsass\"")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

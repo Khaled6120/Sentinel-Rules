@@ -2,7 +2,7 @@ name: VMToolsd Suspicious Child Process
 id: 5687f942-867b-4578-ade7-1e341c46e99a
 author: bohops, Bhabesh Raj
 date: 2021/10/08
-level: high
+severity: high
 description: Detects suspicious child process creations of VMware Tools process which
   may indicate persistence setup
 status: test
@@ -29,3 +29,13 @@ query: 'DeviceProcessEvents
   Tools\\poweroff-vm-default.bat" or ProcessCommandLine contains "\\VMware\\VMware
   Tools\\resume-vm-default.bat" or ProcessCommandLine contains "\\VMware\\VMware Tools\\suspend-vm-default.bat")
   and FolderPath endswith "\\cmd.exe"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

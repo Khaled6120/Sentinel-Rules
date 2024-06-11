@@ -2,7 +2,7 @@ name: Suspicious WSMAN Provider Image Loads
 id: ad1f4bb9-8dfb-4765-adb6-2a7cfb6c0f94
 author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
 date: 2020/06/24
-level: medium
+severity: medium
 description: Detects signs of potential use of the WSMAN provider from uncommon processes
   locally and remote execution.
 status: test
@@ -37,3 +37,13 @@ query: 'DeviceImageLoadEvents
   "C:\\Windows\\System32\\ServerManager.exe")) or InitiatingProcessFolderPath startswith
   "C:\\$WINDOWS.~BT\\Sources\\"))) and (not((InitiatingProcessFolderPath endswith
   "\\svchost.exe" and isnull(InitiatingProcessCommandLine))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

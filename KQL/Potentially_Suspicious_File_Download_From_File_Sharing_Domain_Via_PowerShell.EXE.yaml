@@ -2,7 +2,7 @@ name: Potentially Suspicious File Download From File Sharing Domain Via PowerShe
 id: b6e04788-29e1-4557-bb14-77f761848ab8
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2024/02/23
-level: high
+severity: high
 description: Detects potentially suspicious file downloads from file sharing domains
   using PowerShell.exe
 status: experimental
@@ -34,3 +34,13 @@ query: 'DeviceProcessEvents
   contains "storjshare.io" or ProcessCommandLine contains "supabase.co" or ProcessCommandLine
   contains "temp.sh" or ProcessCommandLine contains "transfer.sh" or ProcessCommandLine
   contains "ufile.io")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

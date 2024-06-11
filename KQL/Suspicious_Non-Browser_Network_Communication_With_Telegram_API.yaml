@@ -2,7 +2,7 @@ name: Suspicious Non-Browser Network Communication With Telegram API
 id: c3dbbc9f-ef1d-470a-a90a-d343448d5875
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/05/19
-level: medium
+severity: medium
 description: Detects an a non-browser process interacting with the Telegram API which
   could indicate use of a covert C2
 status: test
@@ -34,3 +34,13 @@ query: 'DeviceNetworkEvents
   endswith "\\safari.exe" or InitiatingProcessFolderPath endswith "\\seamonkey.exe"
   or InitiatingProcessFolderPath endswith "\\vivaldi.exe" or InitiatingProcessFolderPath
   endswith "\\whale.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Suspicious Msiexec Execute Arbitrary DLL
 id: 6f4191bb-912b-48a8-9ce7-682769541e6d
 author: frack113
 date: 2022/01/16
-level: medium
+severity: medium
 description: 'Adversaries may abuse msiexec.exe to proxy execution of malicious payloads.
 
   Msiexec.exe is the command-line utility for the Windows Installer and is thus commonly
@@ -35,3 +35,13 @@ query: 'DeviceProcessEvents
   -Y \"C:\\Program Files (x86)\\Apple Software Update\\SoftwareUpdateAdmin.dll" or
   ProcessCommandLine contains "\\MsiExec.exe\" -Y \"C:\\Windows\\CCM\\" or ProcessCommandLine
   contains "\\MsiExec.exe\" -Y C:\\Windows\\CCM\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

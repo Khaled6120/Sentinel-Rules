@@ -2,7 +2,7 @@ name: Suspicious File Download From IP Via Curl.EXE
 id: 5cb299fc-5fb1-4d07-b989-0644c68b6043
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/07/27
-level: high
+severity: high
 description: Detects potentially suspicious file downloads directly from IP addresses
   using curl.exe
 status: test
@@ -39,3 +39,13 @@ query: 'DeviceProcessEvents
   "--output") and ProcessCommandLine contains "http" and (FolderPath endswith "\\curl.exe"
   or ProcessVersionInfoOriginalFileName =~ "curl.exe") and ProcessCommandLine matches
   regex "://[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

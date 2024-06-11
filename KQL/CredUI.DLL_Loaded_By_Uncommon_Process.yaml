@@ -2,7 +2,7 @@ name: CredUI.DLL Loaded By Uncommon Process
 id: 9ae01559-cf7e-4f8e-8e14-4c290a1b4784
 author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
 date: 2020/10/20
-level: medium
+severity: medium
 description: Detects loading of "credui.dll" and related DLLs by an uncommon process.
   Attackers might leverage this DLL for potential use of "CredUIPromptForCredentials"
   or "CredUnPackAuthenticationBufferW".
@@ -31,3 +31,13 @@ query: 'DeviceImageLoadEvents
   endswith "\\procexp.exe") or (InitiatingProcessFolderPath contains "\\AppData\\Local\\Microsoft\\Teams\\"
   and InitiatingProcessFolderPath endswith "\\Teams.exe" and InitiatingProcessFolderPath
   startswith "C:\\Users\\"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

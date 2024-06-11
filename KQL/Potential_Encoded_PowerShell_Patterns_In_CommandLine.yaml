@@ -2,7 +2,7 @@ name: Potential Encoded PowerShell Patterns In CommandLine
 id: cdf05894-89e7-4ead-b2b0-0a5f97a90f2f
 author: Teymur Kheirkhabarov (idea), Vasiliy Burov (rule), oscd.community, Tim Shelton
 date: 2020/10/11
-level: low
+severity: low
 description: Detects specific combinations of encoding methods in PowerShell via the
   commandline
 status: test
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains "String")) or ((ProcessCommandLine contains "char"
   and ProcessCommandLine contains "join") or (ProcessCommandLine contains "split"
   and ProcessCommandLine contains "join")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

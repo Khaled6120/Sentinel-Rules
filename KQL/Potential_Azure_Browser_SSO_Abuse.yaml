@@ -2,7 +2,7 @@ name: Potential Azure Browser SSO Abuse
 id: 50f852e6-af22-4c78-9ede-42ef36aa3453
 author: Den Iuzvyk
 date: 2020/07/15
-level: low
+severity: low
 description: 'Detects abusing Azure Browser SSO by requesting OAuth 2.0 refresh tokens
   for an Azure-AD-authenticated Windows user (i.e. the machine is joined to Azure
   AD and a user logs in with their Azure AD account) wanting to perform SSO authentication
@@ -39,3 +39,13 @@ query: 'DeviceImageLoadEvents
   or (InitiatingProcessFolderPath in~ ("C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe",
   "C:\\Program Files\\Internet Explorer\\iexplore.exe")) or isnull(InitiatingProcessFolderPath)
   or InitiatingProcessFolderPath endswith "\\AppData\\Local\\Microsoft\\OneDrive\\OneDrive.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

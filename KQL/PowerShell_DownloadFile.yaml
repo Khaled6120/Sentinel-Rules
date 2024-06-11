@@ -2,7 +2,7 @@ name: PowerShell DownloadFile
 id: 8f70ac5f-1f6f-4f8e-b454-db19561216c5
 author: Florian Roth (Nextron Systems)
 date: 2020/08/28
-level: high
+severity: high
 description: Detects the execution of powershell, a WebClient object creation and
   the invocation of DownloadFile in a single command line
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "powershell" and ProcessCommandLine contains
   ".DownloadFile" and ProcessCommandLine contains "System.Net.WebClient"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: HackTool - Empire PowerShell Launch Parameters
 id: 79f4ede3-402e-41c8-bc3e-ebbf5f162581
 author: Florian Roth (Nextron Systems)
 date: 2019/04/20
-level: high
+severity: high
 description: Detects suspicious powershell command line parameters used in Empire
 status: test
 modified: 2023/02/21
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   Hidden -enc " or ProcessCommandLine contains " -noP -sta -w 1 -enc" or ProcessCommandLine
   contains " -enc  SQB" or ProcessCommandLine contains " -nop -exec bypass -EncodedCommand
   "'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

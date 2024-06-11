@@ -2,7 +2,7 @@ name: Suspicious Curl.EXE Download
 id: e218595b-bbe7-4ee5-8a96-f32a24ad3468
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
 date: 2020/07/03
-level: high
+severity: high
 description: Detects a suspicious curl process start on Windows and outputs the requested
   document to a local file
 status: test
@@ -31,3 +31,13 @@ query: 'DeviceProcessEvents
   --show-error --output " and ProcessCommandLine contains "gfw-httpget-" and ProcessCommandLine
   contains "AppData") and FolderPath =~ "C:\\Program Files\\Git\\mingw64\\bin\\curl.exe"
   and InitiatingProcessFolderPath =~ "C:\\Program Files\\Git\\usr\\bin\\sh.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Suspicious Call by Ordinal
 id: e79a9e79-eb72-4e78-a628-0e7e8f59e89c
 author: Florian Roth (Nextron Systems)
 date: 2019/10/22
-level: high
+severity: high
 description: Detects suspicious calls of DLLs in rundll32.dll exports by ordinal
 status: stable
 modified: 2023/02/09
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains "\\FileTracker64.dll\",#1") and (InitiatingProcessFolderPath
   contains "\\Msbuild\\Current\\Bin\\" or InitiatingProcessFolderPath contains "\\VC\\Tools\\MSVC\\"
   or InitiatingProcessFolderPath contains "\\Tracker.exe")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

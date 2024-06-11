@@ -2,7 +2,7 @@ name: Suspicious Processes Spawned by Java.EXE
 id: 0d34ed8b-1c12-4ff2-828c-16fc860b766d
 author: Andreas Hunkeler (@Karneades), Florian Roth
 date: 2021/12/17
-level: high
+severity: high
 description: Detects suspicious processes spawned from a Java host process which could
   indicate a sign of exploitation (e.g. log4j)
 status: experimental
@@ -28,3 +28,13 @@ query: 'DeviceProcessEvents
   "\\scriptrunner.exe" or FolderPath endswith "\\sh.exe" or FolderPath endswith "\\systeminfo.exe"
   or FolderPath endswith "\\whoami.exe" or FolderPath endswith "\\wmic.exe" or FolderPath
   endswith "\\wscript.exe") and InitiatingProcessFolderPath endswith "\\java.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

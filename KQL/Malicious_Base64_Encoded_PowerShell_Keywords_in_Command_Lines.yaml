@@ -2,7 +2,7 @@ name: Malicious Base64 Encoded PowerShell Keywords in Command Lines
 id: f26c6093-6f14-4b12-800f-0fcb46f5ffd0
 author: John Lambert (rule)
 date: 2019/01/16
-level: high
+severity: high
 description: Detects base64 encoded strings used in hidden malicious PowerShell command
   lines
 status: test
@@ -50,3 +50,13 @@ query: 'DeviceProcessEvents
   contains "ZW1tb3Zl") and ProcessCommandLine contains " hidden " and ((FolderPath
   endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName
   in~ ("PowerShell.EXE", "pwsh.dll")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

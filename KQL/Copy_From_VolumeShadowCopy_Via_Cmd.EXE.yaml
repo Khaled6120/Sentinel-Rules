@@ -2,7 +2,7 @@ name: Copy From VolumeShadowCopy Via Cmd.EXE
 id: c73124a7-3e89-44a3-bdc1-25fe4df754b1
 author: Max Altgelt (Nextron Systems), Tobias Michalski (Nextron Systems)
 date: 2021/08/09
-level: high
+severity: high
 description: Detects the execution of the builtin "copy" command that targets a shadow
   copy (sometimes used to copy registry hives that are in use)
 status: test
@@ -17,3 +17,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "copy " and ProcessCommandLine contains "\\\\?\\GLOBALROOT\\Device\\HarddiskVolumeShadowCopy"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

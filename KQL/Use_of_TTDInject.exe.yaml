@@ -2,7 +2,7 @@ name: Use of TTDInject.exe
 id: b27077d6-23e6-45d2-81a0-e2b356eea5fd
 author: frack113
 date: 2022/05/16
-level: medium
+severity: medium
 description: Detects the executiob of TTDInject.exe, which is used by Windows 10 v1809
   and newer to debug time travel (underlying call of tttracer.exe)
 status: test
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
 
   | where FolderPath endswith "ttdinject.exe" or ProcessVersionInfoOriginalFileName
   =~ "TTDInject.EXE"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

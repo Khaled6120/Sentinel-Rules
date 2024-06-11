@@ -2,7 +2,7 @@ name: Imports Registry Key From an ADS
 id: 0b80ade5-6997-4b1d-99a1-71701778ea61
 author: Oddvar Moe, Sander Wiebing, oscd.community
 date: 2020/10/12
-level: high
+severity: high
 description: Detects the import of a alternate datastream to the registry with regedit.exe.
 status: test
 modified: 2024/03/13
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   contains " -e " or ProcessCommandLine contains " /e " or ProcessCommandLine contains
   " -a " or ProcessCommandLine contains " /a " or ProcessCommandLine contains " -c
   " or ProcessCommandLine contains " /c ")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

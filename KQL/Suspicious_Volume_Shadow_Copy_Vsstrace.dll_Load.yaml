@@ -2,7 +2,7 @@ name: Suspicious Volume Shadow Copy Vsstrace.dll Load
 id: 48bfd177-7cf2-412b-ad77-baf923489e82
 author: frack113
 date: 2023/02/17
-level: high
+severity: high
 description: Detects the image load of VSS DLL by uncommon executables
 status: test
 modified: 2023/03/28
@@ -23,3 +23,13 @@ query: 'DeviceImageLoadEvents
   startswith "C:\\Windows\\System32\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\SysWOW64\\"
   or InitiatingProcessFolderPath startswith "C:\\Windows\\Temp\\{" or InitiatingProcessFolderPath
   startswith "C:\\Windows\\WinSxS\\")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

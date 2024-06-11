@@ -2,7 +2,7 @@ name: Cloudflared Portable Execution
 id: fadb84f0-4e84-4f6d-a1ce-9ef2bffb6ccd
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/12/20
-level: medium
+severity: medium
 description: 'Detects the execution of the "cloudflared" binary from a non standard
   location.
 
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\cloudflared.exe" and (not((FolderPath contains ":\\Program
   Files (x86)\\cloudflared\\" or FolderPath contains ":\\Program Files\\cloudflared\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

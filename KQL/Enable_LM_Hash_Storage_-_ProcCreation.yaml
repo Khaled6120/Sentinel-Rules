@@ -2,7 +2,7 @@ name: Enable LM Hash Storage - ProcCreation
 id: 98dedfdd-8333-49d4-9f23-d7018cccae53
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/12/15
-level: high
+severity: high
 description: 'Detects changes to the "NoLMHash" registry value in order to allow Windows
   to store LM Hashes.
 
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "\\System\\CurrentControlSet\\Control\\Lsa"
   and ProcessCommandLine contains "NoLMHash" and ProcessCommandLine contains " 0"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

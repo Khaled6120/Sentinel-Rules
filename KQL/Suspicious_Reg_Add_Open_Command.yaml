@@ -2,7 +2,7 @@ name: Suspicious Reg Add Open Command
 id: dd3ee8cc-f751-41c9-ba53-5a32ed47e563
 author: frack113
 date: 2021/12/20
-level: medium
+severity: medium
 description: Threat actors performed dumping of SAM, SECURITY and SYSTEM registry
   hives using DelegateExecute key
 status: test
@@ -24,3 +24,13 @@ query: 'DeviceProcessEvents
   contains "/v" and ProcessCommandLine contains "DelegateExecute") or (ProcessCommandLine
   contains "reg" and ProcessCommandLine contains "delete" and ProcessCommandLine contains
   "hkcu\\software\\classes\\ms-settings")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: UAC Bypass Using Windows Media Player - Process
 id: 0058b9e5-bcd7-40d4-9205-95ca5a16d7b2
 author: Christian Burkard (Nextron Systems)
 date: 2021/08/23
-level: high
+severity: high
 description: Detects the pattern of UAC Bypass using Windows Media Player osksupport.dll
   (UACMe 32)
 status: test
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   in~ ("High", "System"))) or (FolderPath =~ "C:\\Windows\\System32\\cmd.exe" and
   (ProcessIntegrityLevel in~ ("High", "System")) and InitiatingProcessCommandLine
   =~ "\"C:\\Windows\\system32\\mmc.exe\" \"C:\\Windows\\system32\\eventvwr.msc\" /s")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

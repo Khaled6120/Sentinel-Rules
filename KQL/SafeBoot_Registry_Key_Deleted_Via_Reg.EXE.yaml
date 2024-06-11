@@ -2,7 +2,7 @@ name: SafeBoot Registry Key Deleted Via Reg.EXE
 id: fc0e89b5-adb0-43c1-b749-c12a10ec37de
 author: Nasreddine Bencherchali (Nextron Systems), Tim Shelton
 date: 2022/08/08
-level: high
+severity: high
 description: Detects execution of "reg.exe" commands with the "delete" flag on safe
   boot registry keys. Often used by attacker to prevent safeboot execution of security
   products
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains " delete " and ProcessCommandLine contains
   "\\SYSTEM\\CurrentControlSet\\Control\\SafeBoot") and (FolderPath endswith "reg.exe"
   or ProcessVersionInfoOriginalFileName =~ "reg.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Perl Inline Command Execution
 id: f426547a-e0f7-441a-b63e-854ac5bdf54d
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/01/02
-level: medium
+severity: medium
 description: Detects execution of perl using the "-e"/"-E" flags. This is could be
   used as a way to launch a reverse shell or execute live perl code.
 status: test
@@ -18,3 +18,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " -e" and (FolderPath endswith "\\perl.exe"
   or ProcessVersionInfoOriginalFileName =~ "perl.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

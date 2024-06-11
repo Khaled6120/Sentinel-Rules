@@ -2,7 +2,7 @@ name: Sdiagnhost Calling Suspicious Child Process
 id: f3d39c45-de1a-4486-a687-ab126124f744
 author: Nextron Systems
 date: 2022/06/01
-level: high
+severity: high
 description: Detects sdiagnhost.exe calling a suspicious child process (e.g. used
   in exploits for Follina / CVE-2022-30190)
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   "\\taskkill.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith
   "\\rundll32.exe" or FolderPath endswith "\\calc.exe") and InitiatingProcessFolderPath
   endswith "\\sdiagnhost.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

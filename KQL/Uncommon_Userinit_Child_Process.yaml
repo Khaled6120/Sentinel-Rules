@@ -2,7 +2,7 @@ name: Uncommon Userinit Child Process
 id: 0a98a10c-685d-4ab0-bddc-b6bdd1d48458
 author: Tom Ueltschi (@c_APT_ure), Tim Shelton
 date: 2019/01/12
-level: high
+severity: high
 description: Detects uncommon "userinit.exe" child processes, which could be a sign
   of uncommon shells or login scripts used for persistence.
 status: test
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   contains "netlogon.bat" or ProcessCommandLine contains "UsrLogon.cmd") or (FolderPath
   endswith ":\\Windows\\System32\\proquota.exe" or FolderPath endswith ":\\Windows\\SysWOW64\\proquota.exe")
   or ProcessCommandLine =~ "PowerShell.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

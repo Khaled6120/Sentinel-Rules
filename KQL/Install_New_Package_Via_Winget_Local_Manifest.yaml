@@ -2,7 +2,7 @@ name: Install New Package Via Winget Local Manifest
 id: 313d6012-51a0-4d93-8dfc-de8553239e25
 author: Sreeman, Florian Roth (Nextron Systems), frack113
 date: 2020/04/21
-level: medium
+severity: medium
 description: 'Detects usage of winget to install applications via manifest file. Adversaries
   can abuse winget to download payloads remotely and execute them.
 
@@ -28,3 +28,13 @@ query: 'DeviceProcessEvents
   =~ "winget.exe") and (ProcessCommandLine contains "install" or ProcessCommandLine
   contains " add ") and (ProcessCommandLine contains "-m " or ProcessCommandLine contains
   "--manifest")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Suspicious DumpMinitool Execution
 id: eb1c4225-1c23-4241-8dd4-051389fde4ce
 author: Florian Roth (Nextron Systems)
 date: 2022/04/06
-level: high
+severity: high
 description: Detects suspicious ways to use the "DumpMinitool.exe" binary
 status: test
 modified: 2023/04/12
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   "\\Extensions\\"))) or ProcessCommandLine contains ".txt" or ((ProcessCommandLine
   contains " Full" or ProcessCommandLine contains " Mini" or ProcessCommandLine contains
   " WithHeap") and (not(ProcessCommandLine contains "--dumpType"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

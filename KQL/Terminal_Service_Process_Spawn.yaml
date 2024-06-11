@@ -2,7 +2,7 @@ name: Terminal Service Process Spawn
 id: 1012f107-b8f1-4271-af30-5aed2de89b39
 author: Florian Roth (Nextron Systems)
 date: 2019/05/22
-level: high
+severity: high
 description: Detects a process spawned by the terminal service server process (this
   could be an indicator for an exploitation of CVE-2019-0708)
 status: test
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
   contains "termsvcs") and (not(((FolderPath endswith "\\rdpclip.exe" or FolderPath
   endswith ":\\Windows\\System32\\csrss.exe" or FolderPath endswith ":\\Windows\\System32\\wininit.exe"
   or FolderPath endswith ":\\Windows\\System32\\winlogon.exe") or isnull(FolderPath))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

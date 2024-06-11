@@ -2,7 +2,7 @@ name: Indirect Command Execution From Script File Via Bash.EXE
 id: 2d22a514-e024-4428-9dba-41505bd63a5b
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/08/15
-level: medium
+severity: medium
 description: 'Detects execution of Microsoft bash launcher without any flags to execute
   the content of a bash script directly.
 
@@ -26,3 +26,13 @@ query: 'DeviceProcessEvents
   and (not(((ProcessCommandLine contains "bash.exe -" or ProcessCommandLine contains
   "bash -") or ProcessCommandLine =~ "" or isnull(ProcessCommandLine) or (ProcessCommandLine
   in~ ("bash.exe", "bash")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

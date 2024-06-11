@@ -2,7 +2,7 @@ name: Renamed FTP.EXE Execution
 id: 277a4393-446c-449a-b0ed-7fdc7795244c
 author: Victor Sergeev, oscd.community
 date: 2020/10/09
-level: medium
+severity: medium
 description: Detects the execution of a renamed "ftp.exe" binary based on the PE metadata
   fields
 status: test
@@ -20,3 +20,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessVersionInfoOriginalFileName =~ "ftp.exe" and (not(FolderPath endswith
   "\\ftp.exe"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Audit Policy Tampering Via Auditpol
 id: 0a13e132-651d-11eb-ae93-0242ac130002
 author: Janantha Marasinghe (https://github.com/blueteam0ps)
 date: 2021/02/02
-level: high
+severity: high
 description: 'Threat actors can use auditpol binary to change audit policy configuration
   to impair detection capability.
 
@@ -25,3 +25,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains "remove" or ProcessCommandLine contains "restore")
   and (FolderPath endswith "\\auditpol.exe" or ProcessVersionInfoOriginalFileName
   =~ "AUDITPOL.EXE")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

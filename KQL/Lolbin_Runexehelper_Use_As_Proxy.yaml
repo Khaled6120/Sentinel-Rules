@@ -2,7 +2,7 @@ name: Lolbin Runexehelper Use As Proxy
 id: cd71385d-fd9b-4691-9b98-2b1f7e508714
 author: frack113
 date: 2022/12/29
-level: medium
+severity: medium
 description: Detect usage of the "runexehelper.exe" binary as a proxy to launch other
   programs
 status: test
@@ -17,3 +17,13 @@ relevantTechniques:
 query: 'DeviceProcessEvents
 
   | where InitiatingProcessFolderPath endswith "\\runexehelper.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

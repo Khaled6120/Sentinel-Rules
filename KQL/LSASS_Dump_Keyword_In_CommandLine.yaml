@@ -3,7 +3,7 @@ id: ffa6861c-4461-4f59-8a41-578c39f3f23e
 author: E.M. Anhaus, Tony Lambert, oscd.community, Nasreddine Bencherchali (Nextron
   Systems)
 date: 2019/10/24
-level: high
+severity: high
 description: 'Detects the presence of the keywords "lsass" and ".dmp" in the commandline,
   which could indicate a potential attempt to dump or create a dump of the lsass process.
 
@@ -27,3 +27,13 @@ query: 'DeviceProcessEvents
   contains "lsass" and ProcessCommandLine contains ".dmp") or (ProcessCommandLine
   contains "SQLDmpr" and ProcessCommandLine contains ".mdmp") or (ProcessCommandLine
   contains "nanodump" and ProcessCommandLine contains ".dmp")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

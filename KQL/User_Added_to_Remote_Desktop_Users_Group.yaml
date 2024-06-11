@@ -2,7 +2,7 @@ name: User Added to Remote Desktop Users Group
 id: ffa28e60-bdb1-46e0-9f82-05f7a61cc06e
 author: Florian Roth (Nextron Systems)
 date: 2021/12/06
-level: high
+severity: high
 description: Detects addition of users to the local Remote Desktop Users group via
   "Net" or "Add-LocalGroupMember".
 status: test
@@ -23,3 +23,13 @@ query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"Remote Deskt
   \ contains \"localgroup \" and ProcessCommandLine contains \" /add\") or (ProcessCommandLine\
   \ contains \"Add-LocalGroupMember \" and ProcessCommandLine contains \" -Group \"\
   ))"
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

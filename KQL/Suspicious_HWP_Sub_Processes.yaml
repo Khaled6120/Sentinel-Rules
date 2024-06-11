@@ -2,7 +2,7 @@ name: Suspicious HWP Sub Processes
 id: 023394c4-29d5-46ab-92b8-6a534c6f447b
 author: Florian Roth (Nextron Systems)
 date: 2019/10/24
-level: high
+severity: high
 description: Detects suspicious Hangul Word Processor (Hanword) sub processes that
   could indicate an exploitation
 status: test
@@ -22,3 +22,13 @@ query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\gbb.exe" and InitiatingProcessFolderPath endswith
   "\\Hwp.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

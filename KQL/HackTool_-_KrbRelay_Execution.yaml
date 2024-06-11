@@ -2,7 +2,7 @@ name: HackTool - KrbRelay Execution
 id: e96253b8-6b3b-4f90-9e59-3b24b99cf9b4
 author: Florian Roth (Nextron Systems)
 date: 2022/04/27
-level: high
+severity: high
 description: Detects the use of KrbRelay, a Kerberos relaying tool
 status: test
 modified: 2023/02/04
@@ -21,3 +21,13 @@ query: 'DeviceProcessEvents
   "spn") or (ProcessCommandLine contains "spn " and ProcessCommandLine contains "session
   " and ProcessCommandLine contains "clsid ") or (FolderPath endswith "\\KrbRelay.exe"
   or ProcessVersionInfoOriginalFileName =~ "KrbRelay.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

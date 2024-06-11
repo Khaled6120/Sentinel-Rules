@@ -2,7 +2,7 @@ name: MSHTA Suspicious Execution 01
 id: cc7abbd0-762b-41e3-8a26-57ad50d2eea3
 author: Diego Perez (@darkquassar), Markus Neis, Swisscom (Improve Rule)
 date: 2019/02/22
-level: high
+severity: high
 description: Detection for mshta.exe suspicious execution patterns sometimes involving
   file polyglotism
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   or ProcessCommandLine contains ".png" or ProcessCommandLine contains ".lnk" or ProcessCommandLine
   contains ".xls" or ProcessCommandLine contains ".doc" or ProcessCommandLine contains
   ".zip" or ProcessCommandLine contains ".dll") and FolderPath endswith "\\mshta.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

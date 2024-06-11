@@ -2,7 +2,7 @@ name: Use of Scriptrunner.exe
 id: 64760eef-87f7-4ed3-93fd-655668ea9420
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/07/01
-level: medium
+severity: medium
 description: The "ScriptRunner.exe" binary can be abused to proxy execution through
   it and bypass possible whitelisting
 status: test
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " -appvscript " and (FolderPath endswith "\\ScriptRunner.exe"
   or ProcessVersionInfoOriginalFileName =~ "ScriptRunner.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

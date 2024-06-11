@@ -2,7 +2,7 @@ name: Shadow Copies Creation Using Operating Systems Utilities
 id: b17ea6f7-6e90-447e-a799-e6c0a493d6ce
 author: Teymur Kheirkhabarov, Daniil Yugoslavskiy, oscd.community
 date: 2019/10/22
-level: medium
+severity: medium
 description: Shadow Copies creation using operating systems utilities, possible credential
   access
 status: test
@@ -23,3 +23,13 @@ query: 'DeviceProcessEvents
   or FolderPath endswith "\\wmic.exe" or FolderPath endswith "\\vssadmin.exe") or
   (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll", "wmic.exe",
   "VSSADMIN.EXE")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

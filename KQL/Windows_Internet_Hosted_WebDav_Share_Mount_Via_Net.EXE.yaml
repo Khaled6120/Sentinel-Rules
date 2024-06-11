@@ -2,7 +2,7 @@ name: Windows Internet Hosted WebDav Share Mount Via Net.EXE
 id: 7e6237fe-3ddb-438f-9381-9bf9de5af8d0
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/02/21
-level: high
+severity: high
 description: Detects when an internet hosted webdav share is mounted using the "net.exe"
   utility
 status: test
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains " use " and ProcessCommandLine contains " http")
   and ((FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName
   in~ ("net.exe", "net1.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

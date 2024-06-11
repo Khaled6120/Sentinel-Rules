@@ -2,7 +2,7 @@ name: Active Directory Kerberos DLL Loaded Via Office Application
 id: 7417e29e-c2e7-4cf6-a2e8-767228c64837
 author: Antonlovesdnb
 date: 2020/02/19
-level: medium
+severity: medium
 description: Detects Kerberos DLL being loaded by an Office Product
 status: test
 modified: 2023/03/28
@@ -20,3 +20,13 @@ query: 'DeviceImageLoadEvents
   endswith "\\onenote.exe" or InitiatingProcessFolderPath endswith "\\onenoteim.exe"
   or InitiatingProcessFolderPath endswith "\\outlook.exe" or InitiatingProcessFolderPath
   endswith "\\powerpnt.exe" or InitiatingProcessFolderPath endswith "\\winword.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

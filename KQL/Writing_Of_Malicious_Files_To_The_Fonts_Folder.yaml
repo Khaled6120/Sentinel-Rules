@@ -2,7 +2,7 @@ name: Writing Of Malicious Files To The Fonts Folder
 id: ae9b0bd7-8888-4606-b444-0ed7410cb728
 author: Sreeman
 date: 2020/04/21
-level: medium
+severity: medium
 description: Monitors for the hiding possible malicious files in the C:\Windows\Fonts\
   location. This folder doesn't require admin privillege to be written and executed
   from.
@@ -31,3 +31,13 @@ query: 'DeviceProcessEvents
   ".pl" or ProcessCommandLine contains ".inf" or ProcessCommandLine contains ".cpl"
   or ProcessCommandLine contains ".hta" or ProcessCommandLine contains ".msi" or ProcessCommandLine
   contains ".vbs")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Potential Goopdate.DLL Sideloading
 id: b6188d2f-b3c4-4d2c-a17d-9706e0851af0
 author: X__Junior (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
 date: 2023/05/15
-level: medium
+severity: medium
 description: Detects potential DLL sideloading of "goopdate.dll", a DLL used by googleupdate.exe
 status: test
 modified: 2023/05/20
@@ -22,3 +22,13 @@ query: 'DeviceImageLoadEvents
   contains "\\AppData\\Local\\Temp\\GUM" and FolderPath contains ".tmp\\goopdate.dll")
   and (InitiatingProcessFolderPath contains "\\AppData\\Local\\Temp\\GUM" and InitiatingProcessFolderPath
   contains ".tmp\\Dropbox"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false

@@ -2,7 +2,7 @@ name: Curl Web Request With Potential Custom User-Agent
 id: 85de1f22-d189-44e4-8239-dc276b45379b
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/07/27
-level: medium
+severity: medium
 description: Detects execution of "curl.exe" with a potential custom "User-Agent".
   Attackers can leverage this to download or exfiltrate data via "curl" to a domain
   that only accept specific "User-Agent" strings
@@ -19,3 +19,13 @@ query: 'DeviceProcessEvents
   | where (ProcessCommandLine contains "User-Agent:" and ProcessCommandLine matches
   regex "\\s-H\\s") and (FolderPath endswith "\\curl.exe" or ProcessVersionInfoOriginalFileName
   =~ "curl.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
