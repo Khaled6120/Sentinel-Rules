@@ -22,10 +22,11 @@ jobs:
           Get-ChildItem -Path 'KQL' -Filter '*.yaml' | ForEach-Object {
               Write-Output "Processing file: $($_.Name)"
               $yamlFilePath = $_.FullName.Replace('/Sigma2KQL-v2/', '/')
+              Write-Host "pathh: $yamlFilePath"
               $jsonFilePath = $yamlFilePath.Replace('.yaml', '.json')
               if (-not (Test-Path $jsonFilePath) -or (Get-Item $jsonFilePath).LastWriteTime -lt $_.LastWriteTime) {
                   Write-Host "Converting $($_.FullName) to $jsonFilePath"
-                  Convert-SentinelARYamlToArm -Filename $_.FullName -UseOriginalFilename
+                  Convert-SentinelARYamlToArm -Filename $_.yamlFilePath -UseOriginalFilename
               }
           }
         shell: pwsh
