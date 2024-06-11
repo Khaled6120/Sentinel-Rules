@@ -7,6 +7,9 @@ tactics:
 - Impact
 relevantTechniques:
 - T1531
+logsource:
+  category: process_creation
+  product: windows
 query: |+
   DeviceProcessEvents
   | where (((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"
