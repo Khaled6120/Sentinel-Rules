@@ -12,39 +12,17 @@ tactics:
 - Impact
 relevantTechniques:
 - T1531
-query: |+
-  let lookback = 2h;
-  let AdminRoleInfo = datatable (RoleId: guid, RoleDisplayName: string)[
-      '62e90394-69f5-4237-9190-012177145e10', 'Global Administrator',
-      'e8611ab8-c189-46e8-94e1-60213ab1f814', 'Privileged Role Administrator'
-  ];
-  AuditLogs
-  | where ingestion_time() > ago(lookback)
-  | where AADOperationType in~ ('AdminRemovePermanentGrantedRole', 'AdminRemovePermanentEligibleRole')
-  | mv-apply details = AdditionalDetails on (
-      where details.key == "RoleDefinitionOriginId"
-      | extend RoleId = toguid(details.value)
-      )
-  | mv-apply details = AdditionalDetails on (
-      where details.key == "ipaddr"
-      | extend IPAddress = tostring(details.value)
-      )
-  | lookup AdminRoleInfo on RoleId
-  | mv-expand TargetResources
-  | where TargetResources.type == 'User'
-  | extend
-      UserObjectId = TargetResources.id,
-      UserPrincipalName = TargetResources.userPrincipalName
-  | extend Actor = iif(isnotempty(InitiatedBy.user), InitiatedBy.user.id, InitiatedBy.app.appId)
-  | project
-      ActivityDateTime,
-      ActivityDisplayName,
-      RoleDisplayName,
-      UserPrincipalName,
-      UserObjectId,
-      Actor,
-      IPAddress
+query:  'DeviceImageLoadEvents
 
+  | where (FolderPath endswith "\\coreclr.dll" or FolderPath endswith "\\facesdk.dll"
+  or FolderPath endswith "\\HPCustPartUI.dll" or FolderPath endswith "\\libcef.dll"
+  or FolderPath endswith "\\ZIPDLL.dll") and ((FolderPath contains ":\\Perflogs\\"
+  or FolderPath contains ":\\Users\\Public\\" or FolderPath contains "\\Temporary
+  Internet" or FolderPath contains "\\Windows\\Temp\\") or ((FolderPath contains ":\\Users\\"
+  and FolderPath contains "\\Favorites\\") or (FolderPath contains ":\\Users\\" and
+  FolderPath contains "\\Favourites\\") or (FolderPath contains ":\\Users\\" and FolderPath
+  contains "\\Contacts\\") or (FolderPath contains ":\\Users\\" and FolderPath contains
+  "\\Pictures\\")))'
 suppressionEnabled: false
 incidentConfiguration:
   createIncident: true
