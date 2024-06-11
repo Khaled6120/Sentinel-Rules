@@ -2,7 +2,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "KQL/*.yaml"
+      - "KQL/*.json"
   workflow_dispatch:
 
 permissions:
