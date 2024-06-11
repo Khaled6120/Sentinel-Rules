@@ -2,7 +2,7 @@ on:
   push:
     branches: [main]
     paths:
-    - "KQL/*.yaml"
+    - "AnalyticRules/*.yaml"
   workflow_dispatch:
 
 permissions:
@@ -19,7 +19,7 @@ jobs:
     - name: Convert rules to YAML
       run: |
         Install-Module SentinelARConverter -AcceptLicense -Force
-        Get-ChildItem -Path 'KQL' -Filter '*.yaml' | ForEach-Object {
+        Get-ChildItem -Path 'AnalyticRules' -Filter '*.yaml' | ForEach-Object {
             Write-Output "Processing file: $($_.Name)"
             $yamlFilePath = $_.FullName.Replace('.yaml', '.json')
             if (-not (Test-Path $yamlFilePath) -or (Get-Item $yamlFilePath).LastWriteTime -lt $_.LastWriteTime) {
@@ -32,6 +32,6 @@ jobs:
       run: |
         git config --global user.name 'Khaled6120'
         git config --global user.email 'khalednaes3@gmail.com'
-        git add KQL
+        git add AnalyticRules
         git commit -am "SentinelARConverter"
         git push
