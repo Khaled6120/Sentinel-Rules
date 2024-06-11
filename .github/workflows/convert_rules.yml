@@ -22,7 +22,8 @@ jobs:
           Get-ChildItem -Path 'KQL' -Filter '*.yaml' | ForEach-Object {
               Write-Output "Processing file: $($_.Name)"
               $yamlFilePath = $_.FullName.Replace('/Sigma2KQL-v2/', '/')
-              Write-Host "pathh: $yamlFilePath"
+              Write-Host "yamlFilePath: $yamlFilePath"
+              Write-Host "FullName: $_.FullName"
               $jsonFilePath = $yamlFilePath.Replace('.yaml', '.json')
               if (-not (Test-Path $jsonFilePath) -or (Get-Item $jsonFilePath).LastWriteTime -lt $_.LastWriteTime) {
                   Write-Host "Converting $($_.FullName) to $jsonFilePath"
