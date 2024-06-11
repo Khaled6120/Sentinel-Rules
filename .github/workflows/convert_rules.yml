@@ -26,7 +26,7 @@ jobs:
               $jsonFilePath = $yamlFilePath.Replace('.yaml', '.json')
               if (-not (Test-Path $jsonFilePath) -or (Get-Item $jsonFilePath).LastWriteTime -lt $_.LastWriteTime) {
                   Write-Host "Converting $($_.FullName) to $jsonFilePath"
-                  Convert-SentinelARYamlToArm -Filename $_.yamlFilePath -UseOriginalFilename
+                  Convert-SentinelARYamlToArm -Filename $_.Name -UseOriginalFilename
               }
           }
         shell: pwsh
