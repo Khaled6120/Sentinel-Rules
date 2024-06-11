@@ -2,7 +2,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "KQL/*.yaml"
+      - "KQL/*.json"
   workflow_dispatch:
 
 permissions:
@@ -13,24 +13,18 @@ name: Build YAML Analytic Rules
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build ARM Analytic Rules
+    name: Build YAML Analytic Rules
     steps:
-      - uses: actions/checkout@v1
-      - name: Convert rules to ARM
+      - uses: actions/checkout@v3
+      - name: Convert rules to YAML
         run: |
           Install-Module SentinelARConverter -AcceptLicense -Force
-          Get-ChildItem -Path 'KQL' -Filter '*.yaml' | ForEach-Object {
+          Get-ChildItem -Path 'KQL' -Filter '*.json' | ForEach-Object {
               Write-Output "Processing file: $($_.Name)"
-              $FullName_1 = $_.FullName.Replace('.FullName', '')
-              $FullName_1 = $_.FullName.Replace('/Sigma2KQL-v2/', '/', 1)
-              Write-Output "FullName: $_.FullName"
-              Write-Output "FullNam_1: $FullName_1"
-              $jsonFilePath = $_.FullName.Replace('.yaml', '.json')
-              $jsonFilePath = $jsonFilePath.Replace('/Sigma2KQL-v2/', '/', 1)
-              Write-Output "jsonFilePath: $($jsonFilePath)"
-              if (-not (Test-Path $jsonFilePath) -or (Get-Item $jsonFilePath).LastWriteTime -lt $_.LastWriteTime) {
-                  Write-Host "Converting $($_.FullName) to $jsonFilePath"
-                  Convert-SentinelARYamlToArm -Filename $FullName_1 -UseOriginalFilename
+              $yamlFilePath = $_.FullName.Replace('.json', '.yaml')
+              if (-not (Test-Path $yamlFilePath) -or (Get-Item $yamlFilePath).LastWriteTime -lt $_.LastWriteTime) {
+                  Write-Host "Converting $($_.FullName) to $yamlFilePath"
+                  Convert-SentinelARArmToYaml -Filename $_.FullName -UseOriginalFilename
               }
           }
         shell: pwsh
