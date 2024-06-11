@@ -21,6 +21,8 @@ jobs:
           Install-Module SentinelARConverter -AcceptLicense -Force
           Get-ChildItem -Path 'KQL' -Filter '*.yaml' | ForEach-Object {
               Write-Output "Processing file: $($_.Name)"
+              $_.FullName = $_.FullName.Replace('/Sigma2KQL-v2/', './')
+              $_.FullName = $_.FullName.Replace('.FullName', '')
               Write-Output "FullName: $_.FullName"
               $jsonFilePath = $_.FullName.Replace('.yaml', '.json')
               Write-Output "jsonFilePath: $($jsonFilePath)"
