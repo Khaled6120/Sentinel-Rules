@@ -23,34 +23,3 @@ query:  'DeviceImageLoadEvents
   FolderPath contains "\\Favourites\\") or (FolderPath contains ":\\Users\\" and FolderPath
   contains "\\Contacts\\") or (FolderPath contains ":\\Users\\" and FolderPath contains
   "\\Pictures\\")))'
-suppressionEnabled: false
-incidentConfiguration:
-  createIncident: true
-  groupingConfiguration:
-    enabled: true
-    reopenClosedIncident: false
-    lookbackDuration: 2h
-    matchingMethod: Selected
-    groupByEntities:
-    - Account
-    groupByAlertDetails: []
-    groupByCustomDetails:
-    - RoleDisplayName
-eventGroupingSettings:
-  aggregationKind: SingleAlert
-customDetails:
-  RoleDisplayName: RoleDisplayName
-entityMappings:
-- entityType: Account
-  fieldMappings:
-  - identifier: AadUserId
-    columnName: UserObjectId
-- entityType: Account
-  fieldMappings:
-  - identifier: AadUserId
-    columnName: Actor
-- entityType: IP
-  fieldMappings:
-  - identifier: Address
-    columnName: IPAddress
-suppressionDuration: 5h
