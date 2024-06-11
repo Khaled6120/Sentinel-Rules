@@ -26,15 +26,4 @@ tactics:
 - privilege_escalation
 relevantTechniques:
 - t1548
-query: 'DeviceProcessEvents
-
-  | where (((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"
-  or FolderPath endswith "\\cmd.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE",
-  "pwsh.dll", "Cmd.Exe"))) and ((InitiatingProcessFolderPath endswith "\\winlogon.exe"
-  or InitiatingProcessFolderPath endswith "\\services.exe" or InitiatingProcessFolderPath
-  endswith "\\lsass.exe" or InitiatingProcessFolderPath endswith "\\csrss.exe" or
-  InitiatingProcessFolderPath endswith "\\smss.exe" or InitiatingProcessFolderPath
-  endswith "\\wininit.exe" or InitiatingProcessFolderPath endswith "\\spoolsv.exe"
-  or InitiatingProcessFolderPath endswith "\\searchindexer.exe") and (AccountName
-  contains "AUTHORI" or AccountName contains "AUTORI"))) and (not((ProcessCommandLine
-  contains " route " and ProcessCommandLine contains " ADD ")))'
+query: 'DeviceProcessEvents #magic___^_^___line | where (((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\cmd.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll", "Cmd.Exe"))) and ((InitiatingProcessFolderPath endswith "\\winlogon.exe" or InitiatingProcessFolderPath endswith "\\services.exe" or InitiatingProcessFolderPath endswith "\\lsass.exe" or InitiatingProcessFolderPath endswith "\\csrss.exe" or InitiatingProcessFolderPath endswith "\\smss.exe" or InitiatingProcessFolderPath endswith "\\wininit.exe" or InitiatingProcessFolderPath endswith "\\spoolsv.exe" or InitiatingProcessFolderPath endswith "\\searchindexer.exe") and (AccountName contains "AUTHORI" or AccountName contains "AUTORI"))) and (not((ProcessCommandLine contains " route " and ProcessCommandLine contains " ADD ")))'
