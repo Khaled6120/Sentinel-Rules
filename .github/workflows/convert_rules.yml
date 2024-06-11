@@ -18,13 +18,14 @@ jobs:
       - uses: actions/checkout@v3
       - name: Convert rules to ARM/JSON
         run: |
-          Install-Module SentinelARConverter -AcceptLicense -Force
           Get-ChildItem -Path 'KQL' -Filter '*.yaml' | ForEach-Object {
-              Write-Output "Processing file: $($_.Name)"
-              $armFilePath = $_.FullName.Replace('.yaml', '.json')
-              if (-not (Test-Path $armFilePath) -or (Get-Item $armFilePath).LastWriteTime -lt $_.LastWriteTime) {
-                  Write-Host "Converting $($_.FullName) to $armFilePath"
-                  Convert-SentinelARYamlToArm -Filename $_.FullName -UseOriginalFilename
+              if ($_.FullName) {
+                  Write-Output "Processing file: $($_.Name)"
+                  $armFilePath = $_.FullName.Replace('.yaml', '.json')
+                  if (-not (Test-Path $armFilePath) -or (Get-Item $armFilePath).LastWriteTime -lt $_.LastWriteTime) {
+                      Write-Host "Converting $($_.FullName) to $armFilePath"
+                      Convert-SentinelARYamlToArm -Filename $_.FullName -UseOriginalFilename
+                  }
               }
           }
         shell: pwsh
