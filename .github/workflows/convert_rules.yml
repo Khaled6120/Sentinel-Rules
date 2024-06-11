@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build ARM Analytic Rules
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v1
       - name: Convert rules to ARM
         run: |
           Install-Module SentinelARConverter -AcceptLicense -Force
