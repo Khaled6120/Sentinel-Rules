@@ -2,30 +2,29 @@ on:
   push:
     branches: [main]
     paths:
-      - "KQL/*.json"
+      - "AnalyticRules/*.yaml"
   workflow_dispatch:
 
 permissions:
   contents: write
 
-name: Convert YAML Analytic Rules
+name: Build YAML Analytic Rules
 
 jobs:
-  convert:
+  build:
     runs-on: ubuntu-latest
-    name: Convert YAML Analytic Rules
+    name: Build YAML Analytic Rules
     steps:
       - uses: actions/checkout@v3
-      - name: Convert rules to ARM/JSON
+      - name: Convert rules to YAML
         run: |
           Install-Module SentinelARConverter -AcceptLicense -Force
-          Get-ChildItem -Path 'KQL' -Filter '*.json' | ForEach-Object {
+          Get-ChildItem -Path 'AnalyticRules' -Filter '*.yaml' | ForEach-Object {
               Write-Output "Processing file: $($_.Name)"
-              $yamlFilePath = $_.FullName.Replace('.json', '.yaml')
+              $yamlFilePath = $_.FullName.Replace('.yaml', '.json')
               if (-not (Test-Path $yamlFilePath) -or (Get-Item $yamlFilePath).LastWriteTime -lt $_.LastWriteTime) {
                   Write-Host "Converting $($_.FullName) to $yamlFilePath"
-                  Write-Host "-----$_.FullName"
-                  Convert-SentinelARArmToYaml -Filename $_.FullName -UseOriginalFilename
+                  Convert-SentinelARYamlToArm -Filename $_.FullName -UseOriginalFilename
               }
           }
         shell: pwsh
@@ -33,6 +32,6 @@ jobs:
         run: |
           git config --global user.name 'Khaled6120'
           git config --global user.email 'khalednaes3@gmail.com'
-          git add KQL
-          git commit -am "Converted YAML to ARM/JSON"
+          git add AnalyticRules
+          git commit -am "SentinelARConverter"
           git push
