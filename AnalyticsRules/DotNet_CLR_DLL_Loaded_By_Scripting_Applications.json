@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/4508a70e-97ef-4300-b62b-ff27992990ea')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/4508a70e-97ef-4300-b62b-ff27992990ea')]",
+      "properties": {
+        "alertRuleTemplateName": "4508a70e-97ef-4300-b62b-ff27992990ea",
+        "author": "omkar72, oscd.community",
+        "customDetails": null,
+        "date": "2020/10/14",
+        "description": "Detects .NET CLR DLLs being loaded by scripting applications such as wscript or cscript. This could be an indication of potential suspicious execution.",
+        "displayName": "DotNet CLR DLL Loaded By Scripting Applications",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "2023/02/23",
+        "query": "DeviceImageLoadEvents\n| where (FolderPath endswith \"\\\\clr.dll\" or FolderPath endswith \"\\\\mscoree.dll\" or FolderPath endswith \"\\\\mscorlib.dll\") and (InitiatingProcessFolderPath endswith \"\\\\cmstp.exe\" or InitiatingProcessFolderPath endswith \"\\\\cscript.exe\" or InitiatingProcessFolderPath endswith \"\\\\mshta.exe\" or InitiatingProcessFolderPath endswith \"\\\\msxsl.exe\" or InitiatingProcessFolderPath endswith \"\\\\regsvr32.exe\" or InitiatingProcessFolderPath endswith \"\\\\wmic.exe\" or InitiatingProcessFolderPath endswith \"\\\\wscript.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1055"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

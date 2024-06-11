@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/bb2ba6fb-95d4-4a25-89fc-30bb736c021a')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/bb2ba6fb-95d4-4a25-89fc-30bb736c021a')]",
+      "properties": {
+        "alertRuleTemplateName": "bb2ba6fb-95d4-4a25-89fc-30bb736c021a",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/06/01",
+        "description": "Detects PowerShell core DLL being loaded by an Office Product",
+        "displayName": "PowerShell Core DLL Loaded Via Office Application",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceImageLoadEvents\n| where (FolderPath contains \"\\\\System.Management.Automation.Dll\" or FolderPath contains \"\\\\System.Management.Automation.ni.Dll\") and (InitiatingProcessFolderPath endswith \"\\\\excel.exe\" or InitiatingProcessFolderPath endswith \"\\\\mspub.exe\" or InitiatingProcessFolderPath endswith \"\\\\outlook.exe\" or InitiatingProcessFolderPath endswith \"\\\\onenote.exe\" or InitiatingProcessFolderPath endswith \"\\\\onenoteim.exe\" or InitiatingProcessFolderPath endswith \"\\\\powerpnt.exe\" or InitiatingProcessFolderPath endswith \"\\\\winword.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

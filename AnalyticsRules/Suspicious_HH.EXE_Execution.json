@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/e8a95b5e-c891-46e2-b33a-93937d3abc31')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/e8a95b5e-c891-46e2-b33a-93937d3abc31')]",
+      "properties": {
+        "alertRuleTemplateName": "e8a95b5e-c891-46e2-b33a-93937d3abc31",
+        "author": "Maxim Pavlunin",
+        "customDetails": null,
+        "date": "2020/04/01",
+        "description": "Detects a suspicious execution of a Microsoft HTML Help (HH.exe)",
+        "displayName": "Suspicious HH.EXE Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/04/12",
+        "query": "DeviceProcessEvents\n| where (ProcessVersionInfoOriginalFileName =~ \"HH.exe\" or FolderPath endswith \"\\\\hh.exe\") and (ProcessCommandLine contains \".application\" or ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Temp\\\\\" or ProcessCommandLine contains \"\\\\Content.Outlook\\\\\" or ProcessCommandLine contains \"\\\\Downloads\\\\\" or ProcessCommandLine contains \"\\\\Users\\\\Public\\\\\" or ProcessCommandLine contains \"\\\\Windows\\\\Temp\\\\\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1047",
+          "t1059",
+          "t1218",
+          "t1566"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/0944e002-e3f6-4eb5-bf69-3a3067b53d73')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/0944e002-e3f6-4eb5-bf69-3a3067b53d73')]",
+      "properties": {
+        "alertRuleTemplateName": "0944e002-e3f6-4eb5-bf69-3a3067b53d73",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/10/18",
+        "description": "Detects PowerShell scripts to set the ACL to a file in the Windows folder",
+        "displayName": "PowerShell Set-Acl On Windows Folder",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"Set-Acl \" and ProcessCommandLine contains \"-AclObject \") and ((ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\", \"pwsh.dll\")) or (FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\")) and (ProcessCommandLine contains \"-Path \\\"C:\\\\Windows\" or ProcessCommandLine contains \"-Path 'C:\\\\Windows\" or ProcessCommandLine contains \"-Path %windir%\" or ProcessCommandLine contains \"-Path $env:windir\") and (ProcessCommandLine contains \"FullControl\" or ProcessCommandLine contains \"Allow\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/4beb6ae0-f85b-41e2-8f18-8668abc8af78')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/4beb6ae0-f85b-41e2-8f18-8668abc8af78')]",
+      "properties": {
+        "alertRuleTemplateName": "4beb6ae0-f85b-41e2-8f18-8668abc8af78",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/03/23",
+        "description": "Detects suspicious execution of Sysinternals PsSuspend, where the utility is used to suspend critical processes such as AV or EDR to bypass defenses",
+        "displayName": "Sysinternals PsSuspend Suspicious Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"msmpeng.exe\" and (ProcessVersionInfoOriginalFileName =~ \"pssuspend.exe\" or (FolderPath endswith \"\\\\pssuspend.exe\" or FolderPath endswith \"\\\\pssuspend64.exe\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1562"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

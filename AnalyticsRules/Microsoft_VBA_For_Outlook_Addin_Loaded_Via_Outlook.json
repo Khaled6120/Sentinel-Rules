@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/9a0b8719-cd3c-4f0a-90de-765a4cb3f5ed')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/9a0b8719-cd3c-4f0a-90de-765a4cb3f5ed')]",
+      "properties": {
+        "alertRuleTemplateName": "9a0b8719-cd3c-4f0a-90de-765a4cb3f5ed",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/02/08",
+        "description": "Detects outlvba (Microsoft VBA for Outlook Addin) DLL being loaded by the outlook process",
+        "displayName": "Microsoft VBA For Outlook Addin Loaded Via Outlook",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "2024/03/12",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\outlvba.dll\" and InitiatingProcessFolderPath endswith \"\\\\outlook.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1204"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

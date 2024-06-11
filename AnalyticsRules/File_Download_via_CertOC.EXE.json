@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/70ad0861-d1fe-491c-a45f-fa48148a300d')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/70ad0861-d1fe-491c-a45f-fa48148a300d')]",
+      "properties": {
+        "alertRuleTemplateName": "70ad0861-d1fe-491c-a45f-fa48148a300d",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/05/16",
+        "description": "Detects when a user downloads a file by using CertOC.exe",
+        "displayName": "File Download via CertOC.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/10/18",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-GetCACAPS\" and ProcessCommandLine contains \"http\") and (FolderPath endswith \"\\\\certoc.exe\" or ProcessVersionInfoOriginalFileName =~ \"CertOC.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1105"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

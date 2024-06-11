@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/c260b6db-48ba-4b4a-a76f-2f67644e99d2')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/c260b6db-48ba-4b4a-a76f-2f67644e99d2')]",
+      "properties": {
+        "alertRuleTemplateName": "c260b6db-48ba-4b4a-a76f-2f67644e99d2",
+        "author": "Florian Roth (Nextron Systems), Jonhnathan Ribeiro, oscd.community",
+        "customDetails": null,
+        "date": "2020/06/04",
+        "description": "Detects suspicious command lines used in Covenant luanchers",
+        "displayName": "HackTool - Covenant PowerShell Launcher",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/21",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"-Command\" or ProcessCommandLine contains \"-EncodedCommand\") and (ProcessCommandLine contains \"-Sta\" and ProcessCommandLine contains \"-Nop\" and ProcessCommandLine contains \"-Window\" and ProcessCommandLine contains \"Hidden\")) or (ProcessCommandLine contains \"sv o (New-Object IO.MemorySteam);sv d \" or ProcessCommandLine contains \"mshta file.hta\" or ProcessCommandLine contains \"GruntHTTP\" or ProcessCommandLine contains \"-EncodedCommand cwB2ACAAbwAgA\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1059",
+          "t1564"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

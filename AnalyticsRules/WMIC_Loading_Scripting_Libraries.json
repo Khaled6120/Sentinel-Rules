@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/06ce37c2-61ab-4f05-9ff5-b1a96d18ae32')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/06ce37c2-61ab-4f05-9ff5-b1a96d18ae32')]",
+      "properties": {
+        "alertRuleTemplateName": "06ce37c2-61ab-4f05-9ff5-b1a96d18ae32",
+        "author": "Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)",
+        "customDetails": null,
+        "date": "2020/10/17",
+        "description": "Detects threat actors proxy executing code and bypassing application controls by leveraging wmic and the `/FORMAT` argument switch to download and execute an XSL file (i.e js, vbs, etc).",
+        "displayName": "WMIC Loading Scripting Libraries",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "2022/10/13",
+        "query": "DeviceImageLoadEvents\n| where (FolderPath endswith \"\\\\jscript.dll\" or FolderPath endswith \"\\\\vbscript.dll\") and InitiatingProcessFolderPath endswith \"\\\\wmic.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1220"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

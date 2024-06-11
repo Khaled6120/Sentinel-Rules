@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/5394fcc7-aeb2-43b5-9a09-cac9fc5edcd5')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/5394fcc7-aeb2-43b5-9a09-cac9fc5edcd5')]",
+      "properties": {
+        "alertRuleTemplateName": "5394fcc7-aeb2-43b5-9a09-cac9fc5edcd5",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/10/14",
+        "description": "Detects suspicious Windows Error Reporting manager (wermgr.exe) execution location.",
+        "displayName": "Suspicious Execution Location Of Wermgr.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/08/23",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\wermgr.exe\" and (not((FolderPath startswith \"C:\\\\Windows\\\\System32\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\SysWOW64\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\WinSxS\\\\\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

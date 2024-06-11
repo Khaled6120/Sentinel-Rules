@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/12fbff88-16b5-4b42-9754-cd001a789fb3')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/12fbff88-16b5-4b42-9754-cd001a789fb3')]",
+      "properties": {
+        "alertRuleTemplateName": "12fbff88-16b5-4b42-9754-cd001a789fb3",
+        "author": "Joseliyo Sanchez, @Joseliyo_Jstnk",
+        "customDetails": null,
+        "date": "2024/01/17",
+        "description": "Detects a CodePage modification using the \"mode.com\" utility to Russian language.\nThis behavior has been used by threat actors behind Dharma ransomware.\n",
+        "displayName": "CodePage Modification Via MODE.COM To Russian Language",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" con \" and ProcessCommandLine contains \" cp \" and ProcessCommandLine contains \" select=\") and (ProcessCommandLine endswith \"=1251\" or ProcessCommandLine endswith \"=866\")) and (FolderPath endswith \"\\\\mode.com\" or ProcessVersionInfoOriginalFileName =~ \"MODE.COM\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1036"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/6da2c9f5-7c53-401b-aacb-92c040ce1215')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/6da2c9f5-7c53-401b-aacb-92c040ce1215')]",
+      "properties": {
+        "alertRuleTemplateName": "6da2c9f5-7c53-401b-aacb-92c040ce1215",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2022/09/25",
+        "description": "When configured with suitable command line arguments, w32tm can act as a delay mechanism",
+        "displayName": "Use of W32tm as Timer",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"/stripchart\" and ProcessCommandLine contains \"/computer:\" and ProcessCommandLine contains \"/period:\" and ProcessCommandLine contains \"/dataonly\" and ProcessCommandLine contains \"/samples:\") and (FolderPath endswith \"\\\\w32tm.exe\" or ProcessVersionInfoOriginalFileName =~ \"w32time.dll\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "discovery"
+        ],
+        "techniques": [
+          "t1124"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

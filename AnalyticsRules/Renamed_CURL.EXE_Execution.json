@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/7530cd3d-7671-43e3-b209-976966f6ea48')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/7530cd3d-7671-43e3-b209-976966f6ea48')]",
+      "properties": {
+        "alertRuleTemplateName": "7530cd3d-7671-43e3-b209-976966f6ea48",
+        "author": "X__Junior (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/09/11",
+        "description": "Detects the execution of a renamed \"CURL.exe\" binary based on the PE metadata fields",
+        "displayName": "Renamed CURL.EXE Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/10/12",
+        "query": "DeviceProcessEvents\n| where (ProcessVersionInfoOriginalFileName =~ \"curl.exe\" or ProcessVersionInfoFileDescription =~ \"The curl executable\") and (not(FolderPath contains \"\\\\curl\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1059",
+          "t1202"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

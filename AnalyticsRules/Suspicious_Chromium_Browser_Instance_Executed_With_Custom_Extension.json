@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/27ba3207-dd30-4812-abbf-5d20c57d474e')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/27ba3207-dd30-4812-abbf-5d20c57d474e')]",
+      "properties": {
+        "alertRuleTemplateName": "27ba3207-dd30-4812-abbf-5d20c57d474e",
+        "author": "Aedan Russell, frack113, X__Junior (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/06/19",
+        "description": "Detects a suspicious process spawning a Chromium based browser process with the 'load-extension' flag to start an instance with a custom extension",
+        "displayName": "Suspicious Chromium Browser Instance Executed With Custom Extension",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/11/28",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"--load-extension=\" and (FolderPath endswith \"\\\\brave.exe\" or FolderPath endswith \"\\\\chrome.exe\" or FolderPath endswith \"\\\\msedge.exe\" or FolderPath endswith \"\\\\opera.exe\" or FolderPath endswith \"\\\\vivaldi.exe\") and (InitiatingProcessFolderPath endswith \"\\\\cmd.exe\" or InitiatingProcessFolderPath endswith \"\\\\cscript.exe\" or InitiatingProcessFolderPath endswith \"\\\\mshta.exe\" or InitiatingProcessFolderPath endswith \"\\\\powershell.exe\" or InitiatingProcessFolderPath endswith \"\\\\pwsh.exe\" or InitiatingProcessFolderPath endswith \"\\\\regsvr32.exe\" or InitiatingProcessFolderPath endswith \"\\\\rundll32.exe\" or InitiatingProcessFolderPath endswith \"\\\\wscript.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1176"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

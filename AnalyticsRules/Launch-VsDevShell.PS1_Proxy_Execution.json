@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/45d3a03d-f441-458c-8883-df101a3bb146')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/45d3a03d-f441-458c-8883-df101a3bb146')]",
+      "properties": {
+        "alertRuleTemplateName": "45d3a03d-f441-458c-8883-df101a3bb146",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/08/19",
+        "description": "Detects the use of the 'Launch-VsDevShell.ps1' Microsoft signed script to execute commands.",
+        "displayName": "Launch-VsDevShell.PS1 Proxy Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"VsWherePath \" or ProcessCommandLine contains \"VsInstallationPath \") and ProcessCommandLine contains \"Launch-VsDevShell.ps1\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1216"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

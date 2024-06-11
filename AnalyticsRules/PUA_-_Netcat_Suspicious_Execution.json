@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/e31033fc-33f0-4020-9a16-faf9b31cbf08')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/e31033fc-33f0-4020-9a16-faf9b31cbf08')]",
+      "properties": {
+        "alertRuleTemplateName": "e31033fc-33f0-4020-9a16-faf9b31cbf08",
+        "author": "frack113, Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2021/07/21",
+        "description": "Detects execution of Netcat. Adversaries may use a non-application layer protocol for communication between host and C2 server or among infected hosts within a network",
+        "displayName": "PUA - Netcat Suspicious Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/08",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -lvp \" or ProcessCommandLine contains \" -lvnp\" or ProcessCommandLine contains \" -l -v -p \" or ProcessCommandLine contains \" -lv -p \" or ProcessCommandLine contains \" -l --proxy-type http \" or ProcessCommandLine contains \" -vnl --exec \" or ProcessCommandLine contains \" -vnl -e \" or ProcessCommandLine contains \" --lua-exec \" or ProcessCommandLine contains \" --sh-exec \") or (FolderPath endswith \"\\\\nc.exe\" or FolderPath endswith \"\\\\ncat.exe\" or FolderPath endswith \"\\\\netcat.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1095"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

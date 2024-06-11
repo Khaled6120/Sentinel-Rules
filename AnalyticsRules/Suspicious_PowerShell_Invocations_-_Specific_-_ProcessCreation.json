@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/536e2947-3729-478c-9903-745aaffe60d2')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/536e2947-3729-478c-9903-745aaffe60d2')]",
+      "properties": {
+        "alertRuleTemplateName": "536e2947-3729-478c-9903-745aaffe60d2",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/01/05",
+        "description": "Detects suspicious PowerShell invocation command parameters",
+        "displayName": "Suspicious PowerShell Invocations - Specific - ProcessCreation",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"-nop\" and ProcessCommandLine contains \" -w \" and ProcessCommandLine contains \"hidden\" and ProcessCommandLine contains \" -c \" and ProcessCommandLine contains \"[Convert]::FromBase64String\") or (ProcessCommandLine contains \" -w \" and ProcessCommandLine contains \"hidden\" and ProcessCommandLine contains \"-ep\" and ProcessCommandLine contains \"bypass\" and ProcessCommandLine contains \"-Enc\") or (ProcessCommandLine contains \" -w \" and ProcessCommandLine contains \"hidden\" and ProcessCommandLine contains \"-noni\" and ProcessCommandLine contains \"-nop\" and ProcessCommandLine contains \" -c \" and ProcessCommandLine contains \"iex\" and ProcessCommandLine contains \"New-Object\") or (ProcessCommandLine contains \"iex\" and ProcessCommandLine contains \"New-Object\" and ProcessCommandLine contains \"Net.WebClient\" and ProcessCommandLine contains \".Download\") or (ProcessCommandLine contains \"powershell\" and ProcessCommandLine contains \"reg\" and ProcessCommandLine contains \"add\" and ProcessCommandLine contains \"\\\\software\\\\\") or (ProcessCommandLine contains \"bypass\" and ProcessCommandLine contains \"-noprofile\" and ProcessCommandLine contains \"-windowstyle\" and ProcessCommandLine contains \"hidden\" and ProcessCommandLine contains \"new-object\" and ProcessCommandLine contains \"system.net.webclient\" and ProcessCommandLine contains \".download\")) and (not((ProcessCommandLine contains \"(New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1\" or ProcessCommandLine contains \"Write-ChocolateyWarning\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

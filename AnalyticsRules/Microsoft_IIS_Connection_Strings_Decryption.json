@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/97dbf6e2-e436-44d8-abee-4261b24d3e41')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/97dbf6e2-e436-44d8-abee-4261b24d3e41')]",
+      "properties": {
+        "alertRuleTemplateName": "97dbf6e2-e436-44d8-abee-4261b24d3e41",
+        "author": "Tim Rauch, Elastic (idea)",
+        "customDetails": null,
+        "date": "2022/09/28",
+        "description": "Detects use of aspnet_regiis to decrypt Microsoft IIS connection strings. An attacker with Microsoft IIS web server access via a webshell or alike can decrypt and dump any hardcoded connection strings, such as the MSSQL service account password using aspnet_regiis command.",
+        "displayName": "Microsoft IIS Connection Strings Decryption",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/12/30",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"connectionStrings\" and ProcessCommandLine contains \" -pdf\") and (FolderPath endswith \"\\\\aspnet_regiis.exe\" or ProcessVersionInfoOriginalFileName =~ \"aspnet_regiis.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1003"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

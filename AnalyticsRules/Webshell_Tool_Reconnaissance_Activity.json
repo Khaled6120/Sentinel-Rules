@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/f64e5c19-879c-4bae-b471-6d84c8339677')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/f64e5c19-879c-4bae-b471-6d84c8339677')]",
+      "properties": {
+        "alertRuleTemplateName": "f64e5c19-879c-4bae-b471-6d84c8339677",
+        "author": "Cian Heasley, Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2020/07/22",
+        "description": "Detects processes spawned from web servers (PHP, Tomcat, IIS, etc.) that perform reconnaissance looking for the existence of popular scripting tools (perl, python, wget) on the system via the help commands\n",
+        "displayName": "Webshell Tool Reconnaissance Activity",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/11/09",
+        "query": "DeviceProcessEvents\n| where (((InitiatingProcessFolderPath contains \"-tomcat-\" or InitiatingProcessFolderPath contains \"\\\\tomcat\") and (InitiatingProcessFolderPath endswith \"\\\\java.exe\" or InitiatingProcessFolderPath endswith \"\\\\javaw.exe\")) or ((ProcessCommandLine contains \"CATALINA_HOME\" or ProcessCommandLine contains \"catalina.jar\") and (InitiatingProcessFolderPath endswith \"\\\\java.exe\" or InitiatingProcessFolderPath endswith \"\\\\javaw.exe\")) or (InitiatingProcessFolderPath endswith \"\\\\caddy.exe\" or InitiatingProcessFolderPath endswith \"\\\\httpd.exe\" or InitiatingProcessFolderPath endswith \"\\\\nginx.exe\" or InitiatingProcessFolderPath endswith \"\\\\php-cgi.exe\" or InitiatingProcessFolderPath endswith \"\\\\w3wp.exe\" or InitiatingProcessFolderPath endswith \"\\\\ws_tomcatservice.exe\")) and (ProcessCommandLine contains \"perl --help\" or ProcessCommandLine contains \"perl -h\" or ProcessCommandLine contains \"python --help\" or ProcessCommandLine contains \"python -h\" or ProcessCommandLine contains \"python3 --help\" or ProcessCommandLine contains \"python3 -h\" or ProcessCommandLine contains \"wget --help\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1505"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

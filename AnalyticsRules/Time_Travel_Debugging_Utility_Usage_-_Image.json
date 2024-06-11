@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/e76c8240-d68f-4773-8880-5c6f63595aaf')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/e76c8240-d68f-4773-8880-5c6f63595aaf')]",
+      "properties": {
+        "alertRuleTemplateName": "e76c8240-d68f-4773-8880-5c6f63595aaf",
+        "author": "Ensar Åžamil, @sblmsrsn, @oscd_initiative",
+        "customDetails": null,
+        "date": "2020/10/06",
+        "description": "Detects usage of Time Travel Debugging Utility. Adversaries can execute malicious processes and dump processes, such as lsass.exe, via tttracer.exe.",
+        "displayName": "Time Travel Debugging Utility Usage - Image",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "2022/12/02",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\ttdrecord.dll\" or FolderPath endswith \"\\\\ttdwriter.dll\" or FolderPath endswith \"\\\\ttdloader.dll\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1003",
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

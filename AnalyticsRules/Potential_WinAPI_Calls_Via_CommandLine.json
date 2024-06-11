@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/ba3f5c1b-6272-4119-9dbd-0bc8d21c2702')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/ba3f5c1b-6272-4119-9dbd-0bc8d21c2702')]",
+      "properties": {
+        "alertRuleTemplateName": "ba3f5c1b-6272-4119-9dbd-0bc8d21c2702",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/09/06",
+        "description": "Detects the use of WinAPI Functions via the commandline. As seen used by threat actors via the tool winapiexec",
+        "displayName": "Potential WinAPI Calls Via CommandLine",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/01/09",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"AddSecurityPackage\" or ProcessCommandLine contains \"AdjustTokenPrivileges\" or ProcessCommandLine contains \"Advapi32\" or ProcessCommandLine contains \"CloseHandle\" or ProcessCommandLine contains \"CreateProcessWithToken\" or ProcessCommandLine contains \"CreatePseudoConsole\" or ProcessCommandLine contains \"CreateRemoteThread\" or ProcessCommandLine contains \"CreateThread\" or ProcessCommandLine contains \"CreateUserThread\" or ProcessCommandLine contains \"DangerousGetHandle\" or ProcessCommandLine contains \"DuplicateTokenEx\" or ProcessCommandLine contains \"EnumerateSecurityPackages\" or ProcessCommandLine contains \"FreeHGlobal\" or ProcessCommandLine contains \"FreeLibrary\" or ProcessCommandLine contains \"GetDelegateForFunctionPointer\" or ProcessCommandLine contains \"GetLogonSessionData\" or ProcessCommandLine contains \"GetModuleHandle\" or ProcessCommandLine contains \"GetProcAddress\" or ProcessCommandLine contains \"GetProcessHandle\" or ProcessCommandLine contains \"GetTokenInformation\" or ProcessCommandLine contains \"ImpersonateLoggedOnUser\" or ProcessCommandLine contains \"kernel32\" or ProcessCommandLine contains \"LoadLibrary\" or ProcessCommandLine contains \"memcpy\" or ProcessCommandLine contains \"MiniDumpWriteDump\" or ProcessCommandLine contains \"ntdll\" or ProcessCommandLine contains \"OpenDesktop\" or ProcessCommandLine contains \"OpenProcess\" or ProcessCommandLine contains \"OpenProcessToken\" or ProcessCommandLine contains \"OpenThreadToken\" or ProcessCommandLine contains \"OpenWindowStation\" or ProcessCommandLine contains \"PtrToString\" or ProcessCommandLine contains \"QueueUserApc\" or ProcessCommandLine contains \"ReadProcessMemory\" or ProcessCommandLine contains \"RevertToSelf\" or ProcessCommandLine contains \"RtlCreateUserThread\" or ProcessCommandLine contains \"secur32\" or ProcessCommandLine contains \"SetThreadToken\" or ProcessCommandLine contains \"VirtualAlloc\" or ProcessCommandLine contains \"VirtualFree\" or ProcessCommandLine contains \"VirtualProtect\" or ProcessCommandLine contains \"WaitForSingleObject\" or ProcessCommandLine contains \"WriteInt32\" or ProcessCommandLine contains \"WriteProcessMemory\" or ProcessCommandLine contains \"ZeroFreeGlobalAllocUnicode\") and (not((ProcessCommandLine contains \"GetLoadLibraryWAddress32\" and FolderPath endswith \"\\\\MpCmdRun.exe\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1106"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

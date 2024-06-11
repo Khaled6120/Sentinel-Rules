@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/1b3b01c7-84e9-4072-86e5-fc285a41ff23')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/1b3b01c7-84e9-4072-86e5-fc285a41ff23')]",
+      "properties": {
+        "alertRuleTemplateName": "1b3b01c7-84e9-4072-86e5-fc285a41ff23",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/09/05",
+        "description": "Detects suspicious powershell download cradle using nslookup. This cradle uses nslookup to extract payloads from DNS records",
+        "displayName": "Nslookup PowerShell Download Cradle - ProcessCreation",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/12/19",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" -q=txt \" or ProcessCommandLine contains \" -querytype=txt \") and (InitiatingProcessFolderPath endswith \"\\\\powershell.exe\" or InitiatingProcessFolderPath endswith \"\\\\pwsh.exe\")) and (FolderPath contains \"\\\\nslookup.exe\" or ProcessVersionInfoOriginalFileName =~ \"\\\\nslookup.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

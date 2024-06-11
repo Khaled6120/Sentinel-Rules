@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/56321594-9087-49d9-bf10-524fe8479452')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/56321594-9087-49d9-bf10-524fe8479452')]",
+      "properties": {
+        "alertRuleTemplateName": "56321594-9087-49d9-bf10-524fe8479452",
+        "author": "Victor Sergeev, oscd.community",
+        "customDetails": null,
+        "date": "2019/10/25",
+        "description": "Detects the execution of netsh with \"add helper\" flag in order to add a custom helper DLL. This technique can be abused to add a malicious helper DLL that can be used as a persistence proxy that gets called when netsh.exe is executed.\n",
+        "displayName": "Potential Persistence Via Netsh Helper DLL",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/11/28",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"add\" and ProcessCommandLine contains \"helper\") and (ProcessVersionInfoOriginalFileName =~ \"netsh.exe\" or FolderPath endswith \"\\\\netsh.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1546"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

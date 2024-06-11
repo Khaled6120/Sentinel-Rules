@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/cbb9e3d1-2386-4e59-912e-62f1484f7a89')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/cbb9e3d1-2386-4e59-912e-62f1484f7a89')]",
+      "properties": {
+        "alertRuleTemplateName": "cbb9e3d1-2386-4e59-912e-62f1484f7a89",
+        "author": "Tim Rauch, Elastic (idea)",
+        "customDetails": null,
+        "date": "2022/09/28",
+        "description": "Detects when the Console Window Host (conhost.exe) process is spawned by an uncommon parent process, which could be indicative of potential code injection activity.",
+        "displayName": "Conhost Spawned By Uncommon Parent Process",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/03/29",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\conhost.exe\" and (InitiatingProcessFolderPath endswith \"\\\\explorer.exe\" or InitiatingProcessFolderPath endswith \"\\\\lsass.exe\" or InitiatingProcessFolderPath endswith \"\\\\regsvr32.exe\" or InitiatingProcessFolderPath endswith \"\\\\rundll32.exe\" or InitiatingProcessFolderPath endswith \"\\\\services.exe\" or InitiatingProcessFolderPath endswith \"\\\\smss.exe\" or InitiatingProcessFolderPath endswith \"\\\\spoolsv.exe\" or InitiatingProcessFolderPath endswith \"\\\\svchost.exe\" or InitiatingProcessFolderPath endswith \"\\\\userinit.exe\" or InitiatingProcessFolderPath endswith \"\\\\wininit.exe\" or InitiatingProcessFolderPath endswith \"\\\\winlogon.exe\")) and (not((InitiatingProcessCommandLine contains \"-k apphost -s AppHostSvc\" or InitiatingProcessCommandLine contains \"-k imgsvc\" or InitiatingProcessCommandLine contains \"-k localService -p -s RemoteRegistry\" or InitiatingProcessCommandLine contains \"-k LocalSystemNetworkRestricted -p -s NgcSvc\" or InitiatingProcessCommandLine contains \"-k NetSvcs -p -s NcaSvc\" or InitiatingProcessCommandLine contains \"-k netsvcs -p -s NetSetupSvc\" or InitiatingProcessCommandLine contains \"-k netsvcs -p -s wlidsvc\" or InitiatingProcessCommandLine contains \"-k NetworkService -p -s DoSvc\" or InitiatingProcessCommandLine contains \"-k wsappx -p -s AppXSvc\" or InitiatingProcessCommandLine contains \"-k wsappx -p -s ClipSVC\"))) and (not((InitiatingProcessCommandLine contains \"C:\\\\Program Files (x86)\\\\Dropbox\\\\Client\\\\\" or InitiatingProcessCommandLine contains \"C:\\\\Program Files\\\\Dropbox\\\\Client\\\\\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

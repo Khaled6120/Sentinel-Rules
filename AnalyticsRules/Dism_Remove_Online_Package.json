@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/43e32da2-fdd0-4156-90de-50dfd62636f9')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/43e32da2-fdd0-4156-90de-50dfd62636f9')]",
+      "properties": {
+        "alertRuleTemplateName": "43e32da2-fdd0-4156-90de-50dfd62636f9",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2022/01/16",
+        "description": "Deployment Image Servicing and Management tool. DISM is used to enumerate, install, uninstall, configure, and update features and packages in Windows images",
+        "displayName": "Dism Remove Online Package",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/08/26",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"/Online\" and ProcessCommandLine contains \"/Disable-Feature\") and FolderPath endswith \"\\\\Dism.exe\") or (FolderPath endswith \"\\\\DismHost.exe\" and (InitiatingProcessCommandLine contains \"/Online\" and InitiatingProcessCommandLine contains \"/Disable-Feature\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1562"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

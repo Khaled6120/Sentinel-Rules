@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/26d3f0a2-f514-4a3f-a8a7-e7e48a8d9160')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/26d3f0a2-f514-4a3f-a8a7-e7e48a8d9160')]",
+      "properties": {
+        "alertRuleTemplateName": "26d3f0a2-f514-4a3f-a8a7-e7e48a8d9160",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2022/01/01",
+        "description": "This tool enables enumeration and exporting of all DNS records in the zone for recon purposes of internal networks Python 3 and python.exe must be installed,\nUsee to Query/modify DNS records for Active Directory integrated DNS via LDAP\n",
+        "displayName": "PUA - Adidnsdump Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/21",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"adidnsdump\" and FolderPath endswith \"\\\\python.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "low",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "discovery"
+        ],
+        "techniques": [
+          "t1018"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

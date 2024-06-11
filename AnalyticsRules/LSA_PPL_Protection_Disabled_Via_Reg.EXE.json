@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/8c0eca51-0f88-4db2-9183-fdfb10c703f9')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/8c0eca51-0f88-4db2-9183-fdfb10c703f9')]",
+      "properties": {
+        "alertRuleTemplateName": "8c0eca51-0f88-4db2-9183-fdfb10c703f9",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/03/22",
+        "description": "Detects the usage of the \"reg.exe\" utility to disable PPL protection on the LSA process",
+        "displayName": "LSA PPL Protection Disabled Via Reg.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/03/26",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\" and (ProcessCommandLine contains \" add \" and ProcessCommandLine contains \" /d 0\" and ProcessCommandLine contains \" /v RunAsPPL \")) and (FolderPath endswith \"\\\\reg.exe\" or ProcessVersionInfoOriginalFileName =~ \"reg.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1562"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

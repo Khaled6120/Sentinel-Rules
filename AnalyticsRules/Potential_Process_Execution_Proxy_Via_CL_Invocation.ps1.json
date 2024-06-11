@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/a0459f02-ac51-4c09-b511-b8c9203fc429')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/a0459f02-ac51-4c09-b511-b8c9203fc429')]",
+      "properties": {
+        "alertRuleTemplateName": "a0459f02-ac51-4c09-b511-b8c9203fc429",
+        "author": "Nasreddine Bencherchali (Nextron Systems), oscd.community, Natalia Shornikova",
+        "customDetails": null,
+        "date": "2020/10/14",
+        "description": "Detects calls to \"SyncInvoke\" that is part of the \"CL_Invocation.ps1\" script to proxy execution using \"System.Diagnostics.Process\"",
+        "displayName": "Potential Process Execution Proxy Via CL_Invocation.ps1",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/08/17",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"SyncInvoke \"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1216"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

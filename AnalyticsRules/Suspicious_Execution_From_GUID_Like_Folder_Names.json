@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/90b63c33-2b97-4631-a011-ceb0f47b77c3')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/90b63c33-2b97-4631-a011-ceb0f47b77c3')]",
+      "properties": {
+        "alertRuleTemplateName": "90b63c33-2b97-4631-a011-ceb0f47b77c3",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/09/01",
+        "description": "Detects potential suspicious execution of a GUID like folder name located in a suspicious location such as %TEMP% as seen being used in IcedID attacks",
+        "displayName": "Suspicious Execution From GUID Like Folder Names",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/03/02",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"\\\\AppData\\\\Roaming\\\\\" or ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Temp\\\\\") and (ProcessCommandLine contains \"\\\\{\" and ProcessCommandLine contains \"}\\\\\")) and (not(((FolderPath contains \"\\\\{\" and FolderPath contains \"}\\\\\") or FolderPath =~ \"C:\\\\Windows\\\\System32\\\\drvinst.exe\" or isnull(FolderPath))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1027"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/65c3ca2c-525f-4ced-968e-246a713d164f')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/65c3ca2c-525f-4ced-968e-246a713d164f')]",
+      "properties": {
+        "alertRuleTemplateName": "65c3ca2c-525f-4ced-968e-246a713d164f",
+        "author": "Nasreddine Bencherchali (Nextron Systems), Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/04/11",
+        "description": "Detects renamed execution of \"Microsoft.NodejsTools.PressAnyKey.exe\", which can be abused as a LOLBIN to execute arbitrary binaries",
+        "displayName": "Visual Studio NodejsTools PressAnyKey Renamed Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where ProcessVersionInfoOriginalFileName =~ \"Microsoft.NodejsTools.PressAnyKey.exe\" and (not(FolderPath endswith \"\\\\Microsoft.NodejsTools.PressAnyKey.exe\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

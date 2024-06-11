@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/f1edd233-30b5-4823-9e6a-c4171b24d316')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/f1edd233-30b5-4823-9e6a-c4171b24d316')]",
+      "properties": {
+        "alertRuleTemplateName": "f1edd233-30b5-4823-9e6a-c4171b24d316",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2022/02/13",
+        "description": "load malicious registered COM objects",
+        "displayName": "Rundll32 Registered COM Objects",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/09",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"-sta \" or ProcessCommandLine contains \"-localserver \") and (ProcessCommandLine contains \"{\" and ProcessCommandLine contains \"}\")) and (FolderPath endswith \"\\\\rundll32.exe\" or ProcessVersionInfoOriginalFileName =~ \"RUNDLL32.EXE\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1546"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

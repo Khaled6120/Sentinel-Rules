@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/67bc0e75-c0a9-4cfc-8754-84a505b63c04')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/67bc0e75-c0a9-4cfc-8754-84a505b63c04')]",
+      "properties": {
+        "alertRuleTemplateName": "67bc0e75-c0a9-4cfc-8754-84a505b63c04",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/06/12",
+        "description": "Detects potentially suspicious child processes of a ClickOnce deployment application",
+        "displayName": "Potentially Suspicious Child Process Of ClickOnce Application",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\calc.exe\" or FolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\cscript.exe\" or FolderPath endswith \"\\\\explorer.exe\" or FolderPath endswith \"\\\\mshta.exe\" or FolderPath endswith \"\\\\net.exe\" or FolderPath endswith \"\\\\net1.exe\" or FolderPath endswith \"\\\\nltest.exe\" or FolderPath endswith \"\\\\notepad.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\reg.exe\" or FolderPath endswith \"\\\\regsvr32.exe\" or FolderPath endswith \"\\\\rundll32.exe\" or FolderPath endswith \"\\\\schtasks.exe\" or FolderPath endswith \"\\\\werfault.exe\" or FolderPath endswith \"\\\\wscript.exe\") and InitiatingProcessFolderPath contains \"\\\\AppData\\\\Local\\\\Apps\\\\2.0\\\\\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/1c526788-0abe-4713-862f-b520da5e5316')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/1c526788-0abe-4713-862f-b520da5e5316')]",
+      "properties": {
+        "alertRuleTemplateName": "1c526788-0abe-4713-862f-b520da5e5316",
+        "author": "X__Junior (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/09/11",
+        "description": "Detects the execution of a Chromium based browser process with the \"headless\" flag and a URL pointing to the mockbin.org service (which can be used to exfiltrate data).",
+        "displayName": "Chromium Browser Headless Execution To Mockbin Like Site",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"--headless\" and (FolderPath endswith \"\\\\brave.exe\" or FolderPath endswith \"\\\\chrome.exe\" or FolderPath endswith \"\\\\msedge.exe\" or FolderPath endswith \"\\\\opera.exe\" or FolderPath endswith \"\\\\vivaldi.exe\") and (ProcessCommandLine contains \"://run.mocky\" or ProcessCommandLine contains \"://mockbin\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

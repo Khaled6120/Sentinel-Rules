@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/0fa66f66-e3f6-4a9c-93f8-4f2610b00171')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/0fa66f66-e3f6-4a9c-93f8-4f2610b00171')]",
+      "properties": {
+        "alertRuleTemplateName": "0fa66f66-e3f6-4a9c-93f8-4f2610b00171",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2022/12/31",
+        "description": "Detect usage of DLL \"coregen.exe\" (Microsoft CoreCLR Native Image Generator) binary to sideload arbitrary DLLs.",
+        "displayName": "Potential DLL Sideloading Using Coregen.exe",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceImageLoadEvents\n| where InitiatingProcessFolderPath endswith \"\\\\coregen.exe\" and (not((FolderPath startswith \"C:\\\\Windows\\\\System32\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\SysWOW64\\\\\" or FolderPath startswith \"C:\\\\Program Files\\\\Microsoft Silverlight\\\\\" or FolderPath startswith \"C:\\\\Program Files (x86)\\\\Microsoft Silverlight\\\\\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1055",
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/01d2e2a1-5f09-44f7-9fc1-24faa7479b6d')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/01d2e2a1-5f09-44f7-9fc1-24faa7479b6d')]",
+      "properties": {
+        "alertRuleTemplateName": "01d2e2a1-5f09-44f7-9fc1-24faa7479b6d",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2017/08/15",
+        "description": "Detects an uncommon svchost parent process",
+        "displayName": "Uncommon Svchost Parent Process",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/06/28",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\svchost.exe\" and (not(((InitiatingProcessFolderPath endswith \"\\\\Mrt.exe\" or InitiatingProcessFolderPath endswith \"\\\\MsMpEng.exe\" or InitiatingProcessFolderPath endswith \"\\\\ngen.exe\" or InitiatingProcessFolderPath endswith \"\\\\rpcnet.exe\" or InitiatingProcessFolderPath endswith \"\\\\services.exe\" or InitiatingProcessFolderPath endswith \"\\\\TiWorker.exe\") or (InitiatingProcessFolderPath in~ (\"-\", \"\")) or isnull(InitiatingProcessFolderPath))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1036"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

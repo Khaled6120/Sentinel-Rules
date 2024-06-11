@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/71b31e99-9ad0-47d4-aeb5-c0ca3928eeeb')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/71b31e99-9ad0-47d4-aeb5-c0ca3928eeeb')]",
+      "properties": {
+        "alertRuleTemplateName": "71b31e99-9ad0-47d4-aeb5-c0ca3928eeeb",
+        "author": "X__Junior (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/06/14",
+        "description": "Detects potential DLL sideloading of \"waveedit.dll\", which is part of the Nero WaveEditor audio editing software.",
+        "displayName": "Potential Waveedit.DLL Sideloading",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\waveedit.dll\" and (not(((InitiatingProcessFolderPath in~ (\"C:\\\\Program Files (x86)\\\\Nero\\\\Nero Apps\\\\Nero WaveEditor\\\\waveedit.exe\", \"C:\\\\Program Files\\\\Nero\\\\Nero Apps\\\\Nero WaveEditor\\\\waveedit.exe\")) and (FolderPath startswith \"C:\\\\Program Files (x86)\\\\Nero\\\\Nero Apps\\\\Nero WaveEditor\\\\\" or FolderPath startswith \"C:\\\\Program Files\\\\Nero\\\\Nero Apps\\\\Nero WaveEditor\\\\\"))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1574"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

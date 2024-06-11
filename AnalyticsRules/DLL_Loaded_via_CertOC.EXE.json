@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/242301bc-f92f-4476-8718-78004a6efd9f')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/242301bc-f92f-4476-8718-78004a6efd9f')]",
+      "properties": {
+        "alertRuleTemplateName": "242301bc-f92f-4476-8718-78004a6efd9f",
+        "author": "Austin Songer @austinsonger",
+        "customDetails": null,
+        "date": "2021/10/23",
+        "description": "Detects when a user installs certificates by using CertOC.exe to loads the target DLL file.",
+        "displayName": "DLL Loaded via CertOC.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2024/03/05",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -LoadDLL \" or ProcessCommandLine contains \" /LoadDLL \") and (FolderPath endswith \"\\\\certoc.exe\" or ProcessVersionInfoOriginalFileName =~ \"CertOC.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

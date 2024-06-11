@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/15434e33-5027-4914-88d5-3d4145ec25a9')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/15434e33-5027-4914-88d5-3d4145ec25a9')]",
+      "properties": {
+        "alertRuleTemplateName": "15434e33-5027-4914-88d5-3d4145ec25a9",
+        "author": "Nasreddine Bencherchali",
+        "customDetails": null,
+        "date": "2023/02/14",
+        "description": "Detects the execution of WMIC in order to get a list of firewall and antivirus products",
+        "displayName": "Potential Product Reconnaissance Via Wmic.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"Product\" and (FolderPath endswith \"\\\\wmic.exe\" or ProcessVersionInfoOriginalFileName =~ \"wmic.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1047"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

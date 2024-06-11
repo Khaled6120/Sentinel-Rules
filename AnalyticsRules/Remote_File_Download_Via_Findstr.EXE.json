@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/587254ee-a24b-4335-b3cd-065c0f1f4baa')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/587254ee-a24b-4335-b3cd-065c0f1f4baa')]",
+      "properties": {
+        "alertRuleTemplateName": "587254ee-a24b-4335-b3cd-065c0f1f4baa",
+        "author": "Furkan CALISKAN, @caliskanfurkan_, @oscd_initiative, Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2020/10/05",
+        "description": "Detects execution of \"findstr\" with specific flags and a remote share path. This specific set of CLI flags would allow \"findstr\" to download the content of the file located on the remote share as described in the LOLBAS entry.\n",
+        "displayName": "Remote File Download Via Findstr.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2024/03/05",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"findstr\" or FolderPath endswith \"findstr.exe\" or ProcessVersionInfoOriginalFileName =~ \"FINDSTR.EXE\") and ((ProcessCommandLine contains \" -v \" or ProcessCommandLine contains \" /v \") and (ProcessCommandLine contains \" -l \" or ProcessCommandLine contains \" /l \") and ProcessCommandLine contains \"\\\\\\\\\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1105",
+          "t1218",
+          "t1552",
+          "t1564"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

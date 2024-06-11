@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/f57f8d16-1f39-4dcb-a604-6c73d9b54b3d')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/f57f8d16-1f39-4dcb-a604-6c73d9b54b3d')]",
+      "properties": {
+        "alertRuleTemplateName": "f57f8d16-1f39-4dcb-a604-6c73d9b54b3d",
+        "author": "Max Altgelt (Nextron Systems), Tobias Michalski (Nextron Systems)",
+        "customDetails": null,
+        "date": "2021/08/09",
+        "description": "Detects a command that accesses the VolumeShadowCopy in order to extract sensitive files such as the Security or SAM registry hives or the AD database (ntds.dit)\n",
+        "displayName": "Sensitive File Access Via Volume Shadow Copy Backup",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2024/01/18",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"\\\\\\\\?\\\\GLOBALROOT\\\\Device\\\\HarddiskVolumeShadowCopy\" and (ProcessCommandLine contains \"\\\\NTDS.dit\" or ProcessCommandLine contains \"\\\\SYSTEM\" or ProcessCommandLine contains \"\\\\SECURITY\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "impact"
+        ],
+        "techniques": [
+          "t1490"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

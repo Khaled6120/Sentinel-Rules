@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/129966c9-de17-4334-a123-8b58172e664d')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/129966c9-de17-4334-a123-8b58172e664d')]",
+      "properties": {
+        "alertRuleTemplateName": "129966c9-de17-4334-a123-8b58172e664d",
+        "author": "Austin Songer @austinsonger, Florian Roth",
+        "customDetails": null,
+        "date": "2021/11/26",
+        "description": "Detects when a user bypasses Defender by renaming a tool to dump64.exe and placing it in a Visual Studio folder",
+        "displayName": "Suspicious Dump64.exe Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/03/24",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\dump64.exe\" and (not(FolderPath contains \"\\\\Installer\\\\Feedback\\\\dump64.exe\"))) or (FolderPath endswith \"\\\\dump64.exe\" and (ProcessCommandLine contains \" -ma \" or ProcessCommandLine contains \"accepteula\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1003"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/21ff4ca9-f13a-41ad-b828-0077b2af2e40')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/21ff4ca9-f13a-41ad-b828-0077b2af2e40')]",
+      "properties": {
+        "alertRuleTemplateName": "21ff4ca9-f13a-41ad-b828-0077b2af2e40",
+        "author": "Tim Rauch, Elastic (idea)",
+        "customDetails": null,
+        "date": "2022/09/20",
+        "description": "Detects deletion of Windows Volume Shadow Copies with PowerShell code and Get-WMIObject. This technique is used by numerous ransomware families such as Sodinokibi/REvil",
+        "displayName": "Deletion of Volume Shadow Copies via WMI with PowerShell",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/12/30",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \".Delete()\" or ProcessCommandLine contains \"Remove-WmiObject\" or ProcessCommandLine contains \"rwmi\" or ProcessCommandLine contains \"Remove-CimInstance\" or ProcessCommandLine contains \"rcim\") and (ProcessCommandLine contains \"Get-WmiObject\" or ProcessCommandLine contains \"gwmi\" or ProcessCommandLine contains \"Get-CimInstance\" or ProcessCommandLine contains \"gcim\") and ProcessCommandLine contains \"Win32_ShadowCopy\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "impact"
+        ],
+        "techniques": [
+          "t1490"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

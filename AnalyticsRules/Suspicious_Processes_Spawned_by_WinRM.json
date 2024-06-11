@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/5cc2cda8-f261-4d88-a2de-e9e193c86716')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/5cc2cda8-f261-4d88-a2de-e9e193c86716')]",
+      "properties": {
+        "alertRuleTemplateName": "5cc2cda8-f261-4d88-a2de-e9e193c86716",
+        "author": "Andreas Hunkeler (@Karneades), Markus Neis",
+        "customDetails": null,
+        "date": "2021/05/20",
+        "description": "Detects suspicious processes including shells spawnd from WinRM host process",
+        "displayName": "Suspicious Processes Spawned by WinRM",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/07/14",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\sh.exe\" or FolderPath endswith \"\\\\bash.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\wsl.exe\" or FolderPath endswith \"\\\\schtasks.exe\" or FolderPath endswith \"\\\\certutil.exe\" or FolderPath endswith \"\\\\whoami.exe\" or FolderPath endswith \"\\\\bitsadmin.exe\") and InitiatingProcessFolderPath endswith \"\\\\wsmprovhost.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1190"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

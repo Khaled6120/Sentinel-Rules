@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/e568650b-5dcd-4658-8f34-ded0b1e13992')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/e568650b-5dcd-4658-8f34-ded0b1e13992')]",
+      "properties": {
+        "alertRuleTemplateName": "e568650b-5dcd-4658-8f34-ded0b1e13992",
+        "author": "Michael Haag, Florian Roth (Nextron Systems), juju4, oscd.community",
+        "customDetails": null,
+        "date": "2023/02/14",
+        "description": "Detects the execution of WMIC in order to get a list of firewall and antivirus products",
+        "displayName": "Potential Product Class Reconnaissance Via Wmic.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/03/07",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"AntiVirusProduct\" or ProcessCommandLine contains \"FirewallProduct\") and (FolderPath endswith \"\\\\wmic.exe\" or ProcessVersionInfoOriginalFileName =~ \"wmic.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1047"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

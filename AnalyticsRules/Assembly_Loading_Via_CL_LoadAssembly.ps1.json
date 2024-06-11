@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/c57872c7-614f-4d7f-a40d-b78c8df2d30d')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/c57872c7-614f-4d7f-a40d-b78c8df2d30d')]",
+      "properties": {
+        "alertRuleTemplateName": "c57872c7-614f-4d7f-a40d-b78c8df2d30d",
+        "author": "frack113, Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/05/21",
+        "description": "Detects calls to \"LoadAssemblyFromPath\" or \"LoadAssemblyFromNS\" that are part of the \"CL_LoadAssembly.ps1\" script. This can be abused to load different assemblies and bypass App locker controls.",
+        "displayName": "Assembly Loading Via CL_LoadAssembly.ps1",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/08/17",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"LoadAssemblyFromPath \" or ProcessCommandLine contains \"LoadAssemblyFromNS \"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1216"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

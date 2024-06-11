@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/77946e79-97f1-45a2-84b4-f37b5c0d8682')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/77946e79-97f1-45a2-84b4-f37b5c0d8682')]",
+      "properties": {
+        "alertRuleTemplateName": "77946e79-97f1-45a2-84b4-f37b5c0d8682",
+        "author": "Eli Salem, Sander Wiebing, oscd.community",
+        "customDetails": null,
+        "date": "2020/10/12",
+        "description": "Detects the import of an alternate data stream with regini.exe, regini.exe can be used to modify registry keys.",
+        "displayName": "Suspicious Registry Modification From ADS Via Regini.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/08",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\regini.exe\" or ProcessVersionInfoOriginalFileName =~ \"REGINI.EXE\") and ProcessCommandLine matches regex \":[^ \\\\\\\\]\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1112"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

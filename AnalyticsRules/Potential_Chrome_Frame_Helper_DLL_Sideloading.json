@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/72ca7c75-bf85-45cd-aca7-255d360e423c')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/72ca7c75-bf85-45cd-aca7-255d360e423c')]",
+      "properties": {
+        "alertRuleTemplateName": "72ca7c75-bf85-45cd-aca7-255d360e423c",
+        "author": "Nasreddine Bencherchali (Nextron Systems), Wietze Beukema (project and research)",
+        "customDetails": null,
+        "date": "2022/08/17",
+        "description": "Detects potential DLL sideloading of \"chrome_frame_helper.dll\"",
+        "displayName": "Potential Chrome Frame Helper DLL Sideloading",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "2023/05/15",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\chrome_frame_helper.dll\" and (not((FolderPath startswith \"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\\" or FolderPath startswith \"C:\\\\Program Files (x86)\\\\Google\\\\Chrome\\\\Application\\\\\"))) and (not(FolderPath contains \"\\\\AppData\\\\local\\\\Google\\\\Chrome\\\\Application\\\\\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1574"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

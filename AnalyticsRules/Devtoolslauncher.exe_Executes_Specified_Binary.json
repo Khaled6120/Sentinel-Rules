@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/cc268ac1-42d9-40fd-9ed3-8c4e1a5b87e6')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/cc268ac1-42d9-40fd-9ed3-8c4e1a5b87e6')]",
+      "properties": {
+        "alertRuleTemplateName": "cc268ac1-42d9-40fd-9ed3-8c4e1a5b87e6",
+        "author": "Beyu Denis, oscd.community (rule), @_felamos (idea)",
+        "customDetails": null,
+        "date": "2019/10/12",
+        "description": "The Devtoolslauncher.exe executes other binary",
+        "displayName": "Devtoolslauncher.exe Executes Specified Binary",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2021/11/27",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"LaunchForDeploy\" and FolderPath endswith \"\\\\devtoolslauncher.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

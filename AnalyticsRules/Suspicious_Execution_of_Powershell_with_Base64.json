@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/fb843269-508c-4b76-8b8d-88679db22ce7')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/fb843269-508c-4b76-8b8d-88679db22ce7')]",
+      "properties": {
+        "alertRuleTemplateName": "fb843269-508c-4b76-8b8d-88679db22ce7",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2022/01/02",
+        "description": "Commandline to launch powershell with a base64 payload",
+        "displayName": "Suspicious Execution of Powershell with Base64",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/01/05",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" -e \" or ProcessCommandLine contains \" -en \" or ProcessCommandLine contains \" -enc \" or ProcessCommandLine contains \" -enco\" or ProcessCommandLine contains \" -ec \") and (FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\")) and (not(((InitiatingProcessFolderPath contains \"C:\\\\Packages\\\\Plugins\\\\Microsoft.GuestConfiguration.ConfigurationforWindows\\\\\" or InitiatingProcessFolderPath contains \"\\\\gc_worker.exe\") or ProcessCommandLine contains \" -Encoding \")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

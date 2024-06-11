@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/caf201a9-c2ce-4a26-9c3a-2b9525413711')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/caf201a9-c2ce-4a26-9c3a-2b9525413711')]",
+      "properties": {
+        "alertRuleTemplateName": "caf201a9-c2ce-4a26-9c3a-2b9525413711",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/07/13",
+        "description": "Detects usage of the WMI class \"Win32_NTEventlogFile\" in a potentially suspicious way (delete, backup, change permissions, etc.) from a PowerShell script",
+        "displayName": "Potentially Suspicious Call To Win32_NTEventlogFile Class",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"Win32_NTEventlogFile\" and (ProcessCommandLine contains \".BackupEventlog(\" or ProcessCommandLine contains \".ChangeSecurityPermissions(\" or ProcessCommandLine contains \".ChangeSecurityPermissionsEx(\" or ProcessCommandLine contains \".ClearEventLog(\" or ProcessCommandLine contains \".Delete(\" or ProcessCommandLine contains \".DeleteEx(\" or ProcessCommandLine contains \".Rename(\" or ProcessCommandLine contains \".TakeOwnerShip(\" or ProcessCommandLine contains \".TakeOwnerShipEx(\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

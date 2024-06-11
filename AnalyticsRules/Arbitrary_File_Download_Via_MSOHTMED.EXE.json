@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/459f2f98-397b-4a4a-9f47-6a5ec2f1c69d')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/459f2f98-397b-4a4a-9f47-6a5ec2f1c69d')]",
+      "properties": {
+        "alertRuleTemplateName": "459f2f98-397b-4a4a-9f47-6a5ec2f1c69d",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/08/19",
+        "description": "Detects usage of \"MSOHTMED\" to download arbitrary files",
+        "displayName": "Arbitrary File Download Via MSOHTMED.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/11/09",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"ftp://\" or ProcessCommandLine contains \"http://\" or ProcessCommandLine contains \"https://\") and (FolderPath endswith \"\\\\MSOHTMED.exe\" or ProcessVersionInfoOriginalFileName =~ \"MsoHtmEd.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

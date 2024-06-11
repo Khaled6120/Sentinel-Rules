@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/9465ddf4-f9e4-4ebd-8d98-702df3a93239')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/9465ddf4-f9e4-4ebd-8d98-702df3a93239')]",
+      "properties": {
+        "alertRuleTemplateName": "9465ddf4-f9e4-4ebd-8d98-702df3a93239",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2019/12/11",
+        "description": "Detects suspicious IIS native-code module installations via command line",
+        "displayName": "IIS Native-Code Module Command Line Installation",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2024/03/13",
+        "query": "DeviceProcessEvents\n| where (((ProcessCommandLine contains \"install\" and ProcessCommandLine contains \"module\") and (ProcessCommandLine contains \"-name:\" or ProcessCommandLine contains \"/name:\")) and (FolderPath endswith \"\\\\appcmd.exe\" or ProcessVersionInfoOriginalFileName =~ \"appcmd.exe\")) and (not(InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\System32\\\\inetsrv\\\\iissetup.exe\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1505"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/ffa6861c-4461-4f59-8a41-578c39f3f23e')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/ffa6861c-4461-4f59-8a41-578c39f3f23e')]",
+      "properties": {
+        "alertRuleTemplateName": "ffa6861c-4461-4f59-8a41-578c39f3f23e",
+        "author": "E.M. Anhaus, Tony Lambert, oscd.community, Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2019/10/24",
+        "description": "Detects the presence of the keywords \"lsass\" and \".dmp\" in the commandline, which could indicate a potential attempt to dump or create a dump of the lsass process.\n",
+        "displayName": "LSASS Dump Keyword In CommandLine",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/08/29",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"lsass.dmp\" or ProcessCommandLine contains \"lsass.zip\" or ProcessCommandLine contains \"lsass.rar\" or ProcessCommandLine contains \"Andrew.dmp\" or ProcessCommandLine contains \"Coredump.dmp\" or ProcessCommandLine contains \"NotLSASS.zip\" or ProcessCommandLine contains \"lsass_2\" or ProcessCommandLine contains \"lsassdump\" or ProcessCommandLine contains \"lsassdmp\") or (ProcessCommandLine contains \"lsass\" and ProcessCommandLine contains \".dmp\") or (ProcessCommandLine contains \"SQLDmpr\" and ProcessCommandLine contains \".mdmp\") or (ProcessCommandLine contains \"nanodump\" and ProcessCommandLine contains \".dmp\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1003"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}
