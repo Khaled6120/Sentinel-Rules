@@ -4,7 +4,6 @@ version: 1.0.0
 kind: Scheduled
 description: Highly privileged Entra directory roles removed from multiple accounts.
 severity: Medium
-queryFrequency: 5m
 tactics:
 - Impact
 relevantTechniques:
