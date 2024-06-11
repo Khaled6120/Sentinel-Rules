@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/cd96d5f2-b6ac-46ac-a87e-55954c0c4ea2')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/cd96d5f2-b6ac-46ac-a87e-55954c0c4ea2')]",
+      "properties": {
+        "alertRuleTemplateName": "cd96d5f2-b6ac-46ac-a87e-55954c0c4ea2",
+        "customDetails": null,
+        "description": "Highly privileged Entra directory roles removed from multiple accounts.",
+        "displayName": "Privileged Entra Directory Roles unassigned from multiple accounts",
+        "enabled": true,
+        "entityMappings": null,
+        "query": "DeviceProcessEvents\n| where (((FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\"\nor FolderPath endswith \"\\\\cmd.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\",\n\"pwsh.dll\", \"Cmd.Exe\"))) and ((InitiatingProcessFolderPath endswith \"\\\\winlogon.exe\"\nor InitiatingProcessFolderPath endswith \"\\\\services.exe\" or InitiatingProcessFolderPath\nendswith \"\\\\lsass.exe\" or InitiatingProcessFolderPath endswith \"\\\\csrss.exe\" or\nInitiatingProcessFolderPath endswith \"\\\\smss.exe\" or InitiatingProcessFolderPath\nendswith \"\\\\wininit.exe\" or InitiatingProcessFolderPath endswith \"\\\\spoolsv.exe\"\nor InitiatingProcessFolderPath endswith \"\\\\searchindexer.exe\") and (AccountName\ncontains \"AUTHORI\" or AccountName contains \"AUTORI\"))) and (not((ProcessCommandLine\ncontains \" route \" and ProcessCommandLine contains \" ADD \")))\n",
+        "severity": "Medium",
+        "suppressionDuration": "PT1H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "Impact"
+        ],
+        "techniques": [
+          "T1531"
+        ],
+        "templateVersion": "1.0.0"
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}
