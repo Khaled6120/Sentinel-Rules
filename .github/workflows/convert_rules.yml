@@ -21,10 +21,10 @@ jobs:
           Install-Module SentinelARConverter -AcceptLicense -Force
           Get-ChildItem -Path 'KQL' -Filter '*.yaml' | ForEach-Object {
               Write-Output "Processing file: $($_.Name)"
-              $FullName_1 = $_.FullName.Replace('/Sigma2KQL-v2/', './')
               $FullName_1 = $_.FullName.Replace('.FullName', '')
+              $FullName_1 = $_.FullName.Replace('/Sigma2KQL-v2/', '/', 1)
               Write-Output "FullName: $_.FullName"
-              Write-Output "FullNam_1e: $FullName_1"
+              Write-Output "FullNam_1: $FullName_1"
               $jsonFilePath = $_.FullName.Replace('.yaml', '.json')
               Write-Output "jsonFilePath: $($jsonFilePath)"
               if (-not (Test-Path $jsonFilePath) -or (Get-Item $jsonFilePath).LastWriteTime -lt $_.LastWriteTime) {
