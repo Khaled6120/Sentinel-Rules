@@ -38,3 +38,4 @@ sentinelEntitiesMappings: null
 triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
+kind: Scheduled

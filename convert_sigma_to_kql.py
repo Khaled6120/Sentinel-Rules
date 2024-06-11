@@ -94,7 +94,8 @@ for yml in file_list_a:
                 'sentinelEntitiesMappings': None,
                 'triggerThreshold': 0,
                 'suppressionDuration': 'PT5H',
-                'suppressionEnabled': False
+                'suppressionEnabled': False,
+                'kind': 'Scheduled'
             }
 
             # Write the dictionary to a YAML file
