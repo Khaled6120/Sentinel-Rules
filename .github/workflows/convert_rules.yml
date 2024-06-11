@@ -26,10 +26,11 @@ jobs:
               Write-Output "FullName: $_.FullName"
               Write-Output "FullNam_1: $FullName_1"
               $jsonFilePath = $_.FullName.Replace('.yaml', '.json')
+              $jsonFilePath = $_.FullName.Replace('/Sigma2KQL-v2/', '/', 1)
               Write-Output "jsonFilePath: $($jsonFilePath)"
               if (-not (Test-Path $jsonFilePath) -or (Get-Item $jsonFilePath).LastWriteTime -lt $_.LastWriteTime) {
                   Write-Host "Converting $($_.FullName) to $jsonFilePath"
-                  Convert-SentinelARYamlToArm -Filename $_.FullName -UseOriginalFilename
+                  Convert-SentinelARYamlToArm -Filename $FullName_1 -UseOriginalFilename
               }
           }
         shell: pwsh
