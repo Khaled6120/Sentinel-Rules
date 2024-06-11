@@ -56,8 +56,7 @@ for yml in file_list_a:
             # Separate tags into tactics and techniques
             tags = yaml_contents.get('tags', [])
             for tag in tags:
-                if tag.startswith('attack.'):
-                    parts = tag.split('.')
+                if (parts := tag.split('.')) and tag.startswith('attack.'):
                     if len(parts) == 2 and not parts[1].startswith('t'):
                         tactics.add(parts[1])
                     elif len(parts) == 3 and parts[1].startswith('t'):
@@ -69,13 +68,12 @@ for yml in file_list_a:
             sorted_tactics = sorted(tactics)
             sorted_techniques = sorted(techniques)
 
-            # Create a dictionary for the YAML content
             yaml_content = {
                 'name': yaml_contents.get("title", ""),
                 'id': yaml_contents.get("id", ""),
                 'author': yaml_contents.get("author", ""),
                 'date': yaml_contents.get("date", ""),
-                'level': yaml_contents.get("level", ""),
+                'severity': yaml_contents.get("level", ""),
                 'description': yaml_contents.get("description", ""),
                 'status': yaml_contents.get("status", ""),
                 'modified': yaml_contents.get("modified", ""),
@@ -85,7 +83,18 @@ for yml in file_list_a:
                 },
                 'tactics': sorted_tactics,
                 'relevantTechniques': sorted_techniques,
-                'query': kql_query
+                'query': kql_query,
+                'eventGroupingSettings': {
+                    'aggregationKind': 'SingleAlert'
+                },
+                'queryFrequency': 'P1D',
+                'queryPeriod': 'P1D',
+                'enabled': True,
+                'entityMappings': None,
+                'sentinelEntitiesMappings': None,
+                'triggerThreshold': 0,
+                'suppressionDuration': 'PT5H',
+                'suppressionEnabled': False
             }
 
             # Write the dictionary to a YAML file
