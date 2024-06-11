@@ -1,14 +1,7 @@
 name: Abused Debug Privilege by Arbitrary Parent Processes
 id: d522eca2-2973-4391-a3e0-ef0374321dae
-author: Semanur Guneysu @semanurtg, oscd.community
-date: 2020/10/28
-level: high
+severity: high
 description: Detection of unusual child processes by different system processes
-status: test
-modified: 2022/11/11
-logsource:
-  category: process_creation
-  product: windows
 tactics:
 - privilege_escalation
 relevantTechniques:
