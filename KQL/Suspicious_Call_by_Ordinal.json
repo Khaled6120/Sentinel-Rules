@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/e79a9e79-eb72-4e78-a628-0e7e8f59e89c')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/e79a9e79-eb72-4e78-a628-0e7e8f59e89c')]",
+      "properties": {
+        "alertRuleTemplateName": "e79a9e79-eb72-4e78-a628-0e7e8f59e89c",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2019/10/22",
+        "description": "Detects suspicious calls of DLLs in rundll32.dll exports by ordinal",
+        "displayName": "Suspicious Call by Ordinal",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/09",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \",#\" or ProcessCommandLine contains \", #\" or ProcessCommandLine contains \".dll #\" or ProcessCommandLine contains \".ocx #\") and (FolderPath endswith \"\\\\rundll32.exe\" or ProcessVersionInfoOriginalFileName =~ \"RUNDLL32.EXE\")) and (not(((ProcessCommandLine contains \"EDGEHTML.dll\" and ProcessCommandLine contains \"#141\") or ((ProcessCommandLine contains \"\\\\FileTracker32.dll,#1\" or ProcessCommandLine contains \"\\\\FileTracker32.dll\\\",#1\" or ProcessCommandLine contains \"\\\\FileTracker64.dll,#1\" or ProcessCommandLine contains \"\\\\FileTracker64.dll\\\",#1\") and (InitiatingProcessFolderPath contains \"\\\\Msbuild\\\\Current\\\\Bin\\\\\" or InitiatingProcessFolderPath contains \"\\\\VC\\\\Tools\\\\MSVC\\\\\" or InitiatingProcessFolderPath contains \"\\\\Tracker.exe\")))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "stable",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

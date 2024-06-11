@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/30edb182-aa75-42c0-b0a9-e998bb29067c')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/30edb182-aa75-42c0-b0a9-e998bb29067c')]",
+      "properties": {
+        "alertRuleTemplateName": "30edb182-aa75-42c0-b0a9-e998bb29067c",
+        "author": "Markus Neis, @Kostastsale",
+        "customDetails": null,
+        "date": "2018/08/17",
+        "description": "Detects Request to \"amsiInitFailed\" that can be used to disable AMSI Scanning",
+        "displayName": "Potential AMSI Bypass Via .NET Reflection",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/03",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"System.Management.Automation.AmsiUtils\" or ProcessCommandLine contains \"amsiInitFailed\") or (ProcessCommandLine contains \"[Ref].Assembly.GetType\" and ProcessCommandLine contains \"SetValue($null,$true)\" and ProcessCommandLine contains \"NonPublic,Static\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1562"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

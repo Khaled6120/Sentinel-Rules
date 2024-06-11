@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/08249dc0-a28d-4555-8ba5-9255a198e08c')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/08249dc0-a28d-4555-8ba5-9255a198e08c')]",
+      "properties": {
+        "alertRuleTemplateName": "08249dc0-a28d-4555-8ba5-9255a198e08c",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2022/08/28",
+        "description": "Detects a script interpreter (Wscript/Cscript) initiating a local network connection to download or execute a script hosted on a shared folder.\n",
+        "displayName": "Local Network Connection Initiated By Script Interpreter",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "network_connection",
+          "product": "windows"
+        },
+        "modified": "2024/05/31",
+        "query": "DeviceNetworkEvents\n| where (ipv4_is_in_range(RemoteIP, \"127.0.0.0/8\") or ipv4_is_in_range(RemoteIP, \"10.0.0.0/8\") or ipv4_is_in_range(RemoteIP, \"172.16.0.0/12\") or ipv4_is_in_range(RemoteIP, \"192.168.0.0/16\") or ipv4_is_in_range(RemoteIP, \"169.254.0.0/16\") or ipv4_is_in_range(RemoteIP, \"::1/128\") or ipv4_is_in_range(RemoteIP, \"fe80::/10\") or ipv4_is_in_range(RemoteIP, \"fc00::/7\")) and (InitiatingProcessFolderPath endswith \"\\\\wscript.exe\" or InitiatingProcessFolderPath endswith \"\\\\cscript.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1105"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

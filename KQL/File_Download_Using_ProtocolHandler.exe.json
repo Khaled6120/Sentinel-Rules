@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/104cdb48-a7a8-4ca7-a453-32942c6e5dcb')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/104cdb48-a7a8-4ca7-a453-32942c6e5dcb')]",
+      "properties": {
+        "alertRuleTemplateName": "104cdb48-a7a8-4ca7-a453-32942c6e5dcb",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2021/07/13",
+        "description": "Detects usage of \"ProtocolHandler\" to download files. Downloaded files will be located in the cache folder (for example - %LOCALAPPDATA%\\Microsoft\\Windows\\INetCache\\IE)\n",
+        "displayName": "File Download Using ProtocolHandler.exe",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/11/09",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"ftp://\" or ProcessCommandLine contains \"http://\" or ProcessCommandLine contains \"https://\") and (FolderPath endswith \"\\\\protocolhandler.exe\" or ProcessVersionInfoOriginalFileName =~ \"ProtocolHandler.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

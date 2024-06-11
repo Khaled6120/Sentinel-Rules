@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/7eedcc9d-9fdb-4d94-9c54-474e8affc0c7')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/7eedcc9d-9fdb-4d94-9c54-474e8affc0c7')]",
+      "properties": {
+        "alertRuleTemplateName": "7eedcc9d-9fdb-4d94-9c54-474e8affc0c7",
+        "author": "Timur Zinniatullin, oscd.community",
+        "customDetails": null,
+        "date": "2020/10/18",
+        "description": "Detects Obfuscated Powershell via COMPRESS OBFUSCATION",
+        "displayName": "Invoke-Obfuscation COMPRESS OBFUSCATION",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/12/29",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"system.io.compression.deflatestream\" or ProcessCommandLine contains \"system.io.streamreader\" or ProcessCommandLine contains \"readtoend(\") and (ProcessCommandLine contains \"new-object\" and ProcessCommandLine contains \"text.encoding]::ascii\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1027",
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

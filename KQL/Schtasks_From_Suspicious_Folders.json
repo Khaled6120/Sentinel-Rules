@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/8a8379b8-780b-4dbf-b1e9-31c8d112fefb')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/8a8379b8-780b-4dbf-b1e9-31c8d112fefb')]",
+      "properties": {
+        "alertRuleTemplateName": "8a8379b8-780b-4dbf-b1e9-31c8d112fefb",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/04/15",
+        "description": "Detects scheduled task creations that have suspicious action command and folder combinations",
+        "displayName": "Schtasks From Suspicious Folders",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/11/18",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"C:\\\\ProgramData\\\\\" or ProcessCommandLine contains \"%ProgramData%\") and (ProcessCommandLine contains \"powershell\" or ProcessCommandLine contains \"pwsh\" or ProcessCommandLine contains \"cmd /c \" or ProcessCommandLine contains \"cmd /k \" or ProcessCommandLine contains \"cmd /r \" or ProcessCommandLine contains \"cmd.exe /c \" or ProcessCommandLine contains \"cmd.exe /k \" or ProcessCommandLine contains \"cmd.exe /r \") and ProcessCommandLine contains \" /create \" and (FolderPath endswith \"\\\\schtasks.exe\" or ProcessVersionInfoOriginalFileName =~ \"schtasks.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1053"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

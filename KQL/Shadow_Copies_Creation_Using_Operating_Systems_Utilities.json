@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/b17ea6f7-6e90-447e-a799-e6c0a493d6ce')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/b17ea6f7-6e90-447e-a799-e6c0a493d6ce')]",
+      "properties": {
+        "alertRuleTemplateName": "b17ea6f7-6e90-447e-a799-e6c0a493d6ce",
+        "author": "Teymur Kheirkhabarov, Daniil Yugoslavskiy, oscd.community",
+        "customDetails": null,
+        "date": "2019/10/22",
+        "description": "Shadow Copies creation using operating systems utilities, possible credential access",
+        "displayName": "Shadow Copies Creation Using Operating Systems Utilities",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/11/10",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"shadow\" and ProcessCommandLine contains \"create\") and ((FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\wmic.exe\" or FolderPath endswith \"\\\\vssadmin.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\", \"pwsh.dll\", \"wmic.exe\", \"VSSADMIN.EXE\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1003"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

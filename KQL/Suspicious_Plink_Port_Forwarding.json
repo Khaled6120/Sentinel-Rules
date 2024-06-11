@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/48a61b29-389f-4032-b317-b30de6b95314')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/48a61b29-389f-4032-b317-b30de6b95314')]",
+      "properties": {
+        "alertRuleTemplateName": "48a61b29-389f-4032-b317-b30de6b95314",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2021/01/19",
+        "description": "Detects suspicious Plink tunnel port forwarding to a local port",
+        "displayName": "Suspicious Plink Port Forwarding",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/10/09",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \" -R \" and ProcessVersionInfoFileDescription =~ \"Command-line SSH, Telnet, and Rlogin client\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1021",
+          "t1572"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

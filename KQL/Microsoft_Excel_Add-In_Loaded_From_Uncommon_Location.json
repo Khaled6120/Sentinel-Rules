@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/af4c4609-5755-42fe-8075-4effb49f5d44')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/af4c4609-5755-42fe-8075-4effb49f5d44')]",
+      "properties": {
+        "alertRuleTemplateName": "af4c4609-5755-42fe-8075-4effb49f5d44",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/05/12",
+        "description": "Detects Microsoft Excel loading an Add-In (.xll) file from an uncommon location",
+        "displayName": "Microsoft Excel Add-In Loaded From Uncommon Location",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceImageLoadEvents\n| where (FolderPath contains \"\\\\Desktop\\\\\" or FolderPath contains \"\\\\Downloads\\\\\" or FolderPath contains \"\\\\Perflogs\\\\\" or FolderPath contains \"\\\\Temp\\\\\" or FolderPath contains \"\\\\Users\\\\Public\\\\\" or FolderPath contains \"\\\\Windows\\\\Tasks\\\\\") and FolderPath endswith \".xll\" and InitiatingProcessFolderPath endswith \"\\\\excel.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1204"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

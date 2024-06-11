@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/c6fb44c6-71f5-49e6-9462-1425d328aee3')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/c6fb44c6-71f5-49e6-9462-1425d328aee3')]",
+      "properties": {
+        "alertRuleTemplateName": "c6fb44c6-71f5-49e6-9462-1425d328aee3",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/03/04",
+        "description": "Detects base64 encoded \"MpPreference\" PowerShell cmdlet code that tries to modifies or tamper with Windows Defender AV",
+        "displayName": "Powershell Base64 Encoded MpPreference Cmdlet",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/01/30",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"QWRkLU1wUHJlZmVyZW5jZS\" or ProcessCommandLine contains \"FkZC1NcFByZWZlcmVuY2Ug\" or ProcessCommandLine contains \"BZGQtTXBQcmVmZXJlbmNlI\" or ProcessCommandLine contains \"U2V0LU1wUHJlZmVyZW5jZS\" or ProcessCommandLine contains \"NldC1NcFByZWZlcmVuY2Ug\" or ProcessCommandLine contains \"TZXQtTXBQcmVmZXJlbmNlI\" or ProcessCommandLine contains \"YWRkLW1wcHJlZmVyZW5jZS\" or ProcessCommandLine contains \"FkZC1tcHByZWZlcmVuY2Ug\" or ProcessCommandLine contains \"hZGQtbXBwcmVmZXJlbmNlI\" or ProcessCommandLine contains \"c2V0LW1wcHJlZmVyZW5jZS\" or ProcessCommandLine contains \"NldC1tcHByZWZlcmVuY2Ug\" or ProcessCommandLine contains \"zZXQtbXBwcmVmZXJlbmNlI\") or (ProcessCommandLine contains \"QQBkAGQALQBNAHAAUAByAGUAZgBlAHIAZQBuAGMAZQAgA\" or ProcessCommandLine contains \"EAZABkAC0ATQBwAFAAcgBlAGYAZQByAGUAbgBjAGUAIA\" or ProcessCommandLine contains \"BAGQAZAAtAE0AcABQAHIAZQBmAGUAcgBlAG4AYwBlACAA\" or ProcessCommandLine contains \"UwBlAHQALQBNAHAAUAByAGUAZgBlAHIAZQBuAGMAZQAgA\" or ProcessCommandLine contains \"MAZQB0AC0ATQBwAFAAcgBlAGYAZQByAGUAbgBjAGUAIA\" or ProcessCommandLine contains \"TAGUAdAAtAE0AcABQAHIAZQBmAGUAcgBlAG4AYwBlACAA\" or ProcessCommandLine contains \"YQBkAGQALQBtAHAAcAByAGUAZgBlAHIAZQBuAGMAZQAgA\" or ProcessCommandLine contains \"EAZABkAC0AbQBwAHAAcgBlAGYAZQByAGUAbgBjAGUAIA\" or ProcessCommandLine contains \"hAGQAZAAtAG0AcABwAHIAZQBmAGUAcgBlAG4AYwBlACAA\" or ProcessCommandLine contains \"cwBlAHQALQBtAHAAcAByAGUAZgBlAHIAZQBuAGMAZQAgA\" or ProcessCommandLine contains \"MAZQB0AC0AbQBwAHAAcgBlAGYAZQByAGUAbgBjAGUAIA\" or ProcessCommandLine contains \"zAGUAdAAtAG0AcABwAHIAZQBmAGUAcgBlAG4AYwBlACAA\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1562"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

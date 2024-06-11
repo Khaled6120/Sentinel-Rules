@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/9719a8aa-401c-41af-8108-ced7ec9cd75c')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/9719a8aa-401c-41af-8108-ced7ec9cd75c')]",
+      "properties": {
+        "alertRuleTemplateName": "9719a8aa-401c-41af-8108-ced7ec9cd75c",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2021/07/07",
+        "description": "Adversaries may disable security tools to avoid possible detection of their tools and activities by removing Windows Defender Definition Files",
+        "displayName": "Windows Defender Definition Files Removed",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/07/18",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -RemoveDefinitions\" and ProcessCommandLine contains \" -All\") and (FolderPath endswith \"\\\\MpCmdRun.exe\" or ProcessVersionInfoOriginalFileName =~ \"MpCmdRun.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1562"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

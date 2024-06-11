@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/98b53e78-ebaf-46f8-be06-421aafd176d9')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/98b53e78-ebaf-46f8-be06-421aafd176d9')]",
+      "properties": {
+        "alertRuleTemplateName": "98b53e78-ebaf-46f8-be06-421aafd176d9",
+        "author": "Georg Lauenstein (sure[secure])",
+        "customDetails": null,
+        "date": "2022/09/19",
+        "description": "WinPEAS is a script that search for possible paths to escalate privileges on Windows hosts. The checks are explained on book.hacktricks.xyz",
+        "displayName": "HackTool - winPEAS Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/03/23",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"https://github.com/carlospolop/PEASS-ng/releases/latest/download/\" or (ProcessCommandLine contains \" applicationsinfo\" or ProcessCommandLine contains \" browserinfo\" or ProcessCommandLine contains \" eventsinfo\" or ProcessCommandLine contains \" fileanalysis\" or ProcessCommandLine contains \" filesinfo\" or ProcessCommandLine contains \" processinfo\" or ProcessCommandLine contains \" servicesinfo\" or ProcessCommandLine contains \" windowscreds\") or (InitiatingProcessCommandLine endswith \" -linpeas\" or ProcessCommandLine endswith \" -linpeas\") or (ProcessVersionInfoOriginalFileName =~ \"winPEAS.exe\" or (FolderPath endswith \"\\\\winPEASany_ofs.exe\" or FolderPath endswith \"\\\\winPEASany.exe\" or FolderPath endswith \"\\\\winPEASx64_ofs.exe\" or FolderPath endswith \"\\\\winPEASx64.exe\" or FolderPath endswith \"\\\\winPEASx86_ofs.exe\" or FolderPath endswith \"\\\\winPEASx86.exe\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1046",
+          "t1082",
+          "t1087"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

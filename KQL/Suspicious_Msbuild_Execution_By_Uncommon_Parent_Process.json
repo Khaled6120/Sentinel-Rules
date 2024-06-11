@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/33be4333-2c6b-44f4-ae28-102cdbde0a31')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/33be4333-2c6b-44f4-ae28-102cdbde0a31')]",
+      "properties": {
+        "alertRuleTemplateName": "33be4333-2c6b-44f4-ae28-102cdbde0a31",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2022/11/17",
+        "description": "Detects suspicious execution of 'Msbuild.exe' by a uncommon parent process",
+        "displayName": "Suspicious Msbuild Execution By Uncommon Parent Process",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\MSBuild.exe\" or ProcessVersionInfoOriginalFileName =~ \"MSBuild.exe\") and (not((InitiatingProcessFolderPath endswith \"\\\\devenv.exe\" or InitiatingProcessFolderPath endswith \"\\\\cmd.exe\" or InitiatingProcessFolderPath endswith \"\\\\msbuild.exe\" or InitiatingProcessFolderPath endswith \"\\\\python.exe\" or InitiatingProcessFolderPath endswith \"\\\\explorer.exe\" or InitiatingProcessFolderPath endswith \"\\\\nuget.exe\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

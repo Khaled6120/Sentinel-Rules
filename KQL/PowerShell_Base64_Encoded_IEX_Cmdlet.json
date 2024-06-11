@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/88f680b8-070e-402c-ae11-d2914f2257f1')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/88f680b8-070e-402c-ae11-d2914f2257f1')]",
+      "properties": {
+        "alertRuleTemplateName": "88f680b8-070e-402c-ae11-d2914f2257f1",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2019/08/23",
+        "description": "Detects usage of a base64 encoded \"IEX\" cmdlet in a process command line",
+        "displayName": "PowerShell Base64 Encoded IEX Cmdlet",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/04/06",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"SUVYIChb\" or ProcessCommandLine contains \"lFWCAoW\" or ProcessCommandLine contains \"JRVggKF\" or ProcessCommandLine contains \"aWV4IChb\" or ProcessCommandLine contains \"lleCAoW\" or ProcessCommandLine contains \"pZXggKF\" or ProcessCommandLine contains \"aWV4IChOZX\" or ProcessCommandLine contains \"lleCAoTmV3\" or ProcessCommandLine contains \"pZXggKE5ld\" or ProcessCommandLine contains \"SUVYIChOZX\" or ProcessCommandLine contains \"lFWCAoTmV3\" or ProcessCommandLine contains \"JRVggKE5ld\" or ProcessCommandLine contains \"SUVYKF\" or ProcessCommandLine contains \"lFWChb\" or ProcessCommandLine contains \"JRVgoW\" or ProcessCommandLine contains \"aWV4KF\" or ProcessCommandLine contains \"lleChb\" or ProcessCommandLine contains \"pZXgoW\" or ProcessCommandLine contains \"aWV4KE5ld\" or ProcessCommandLine contains \"lleChOZX\" or ProcessCommandLine contains \"pZXgoTmV3\" or ProcessCommandLine contains \"SUVYKE5ld\" or ProcessCommandLine contains \"lFWChOZX\" or ProcessCommandLine contains \"JRVgoTmV3\" or ProcessCommandLine contains \"SUVYKCgn\" or ProcessCommandLine contains \"lFWCgoJ\" or ProcessCommandLine contains \"JRVgoKC\" or ProcessCommandLine contains \"aWV4KCgn\" or ProcessCommandLine contains \"lleCgoJ\" or ProcessCommandLine contains \"pZXgoKC\") or (ProcessCommandLine contains \"SQBFAFgAIAAoAFsA\" or ProcessCommandLine contains \"kARQBYACAAKABbA\" or ProcessCommandLine contains \"JAEUAWAAgACgAWw\" or ProcessCommandLine contains \"aQBlAHgAIAAoAFsA\" or ProcessCommandLine contains \"kAZQB4ACAAKABbA\" or ProcessCommandLine contains \"pAGUAeAAgACgAWw\" or ProcessCommandLine contains \"aQBlAHgAIAAoAE4AZQB3A\" or ProcessCommandLine contains \"kAZQB4ACAAKABOAGUAdw\" or ProcessCommandLine contains \"pAGUAeAAgACgATgBlAHcA\" or ProcessCommandLine contains \"SQBFAFgAIAAoAE4AZQB3A\" or ProcessCommandLine contains \"kARQBYACAAKABOAGUAdw\" or ProcessCommandLine contains \"JAEUAWAAgACgATgBlAHcA\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

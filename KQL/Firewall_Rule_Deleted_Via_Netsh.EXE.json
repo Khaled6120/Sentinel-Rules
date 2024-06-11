@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/1a5fefe6-734f-452e-a07d-fc1c35bce4b2')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/1a5fefe6-734f-452e-a07d-fc1c35bce4b2')]",
+      "properties": {
+        "alertRuleTemplateName": "1a5fefe6-734f-452e-a07d-fc1c35bce4b2",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2022/08/14",
+        "description": "Detects the removal of a port or application rule in the Windows Firewall configuration using netsh",
+        "displayName": "Firewall Rule Deleted Via Netsh.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/10",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"firewall\" and ProcessCommandLine contains \"delete \") and (FolderPath endswith \"\\\\netsh.exe\" or ProcessVersionInfoOriginalFileName =~ \"netsh.exe\")) and (not((ProcessCommandLine contains \"name=Dropbox\" and InitiatingProcessFolderPath endswith \"\\\\Dropbox.exe\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1562"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

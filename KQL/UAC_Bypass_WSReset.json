@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/89a9a0e0-f61a-42e5-8957-b1479565a658')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/89a9a0e0-f61a-42e5-8957-b1479565a658')]",
+      "properties": {
+        "alertRuleTemplateName": "89a9a0e0-f61a-42e5-8957-b1479565a658",
+        "author": "Christian Burkard (Nextron Systems)",
+        "customDetails": null,
+        "date": "2021/08/23",
+        "description": "Detects the pattern of UAC Bypass via WSReset usable by default sysmon-config",
+        "displayName": "UAC Bypass WSReset",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/10/09",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\wsreset.exe\" and (ProcessIntegrityLevel in~ (\"High\", \"System\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1548"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

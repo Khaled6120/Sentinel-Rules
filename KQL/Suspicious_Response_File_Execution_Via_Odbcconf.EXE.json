@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/2d32dd6f-3196-4093-b9eb-1ad8ab088ca5')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/2d32dd6f-3196-4093-b9eb-1ad8ab088ca5')]",
+      "properties": {
+        "alertRuleTemplateName": "2d32dd6f-3196-4093-b9eb-1ad8ab088ca5",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/05/22",
+        "description": "Detects execution of \"odbcconf\" with the \"-f\" flag in order to load a response file with a non-\".rsp\" extension.",
+        "displayName": "Suspicious Response File Execution Via Odbcconf.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2024/03/13",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" -f \" or ProcessCommandLine contains \" /f \") and (FolderPath endswith \"\\\\odbcconf.exe\" or ProcessVersionInfoOriginalFileName =~ \"odbcconf.exe\")) and (not((ProcessCommandLine contains \".rsp\" or (ProcessCommandLine contains \".exe /E /F \\\"C:\\\\WINDOWS\\\\system32\\\\odbcconf.tmp\\\"\" and FolderPath =~ \"C:\\\\Windows\\\\System32\\\\odbcconf.exe\" and InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\System32\\\\runonce.exe\"))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

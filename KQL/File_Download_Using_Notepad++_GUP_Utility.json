@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/44143844-0631-49ab-97a0-96387d6b2d7c')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/44143844-0631-49ab-97a0-96387d6b2d7c')]",
+      "properties": {
+        "alertRuleTemplateName": "44143844-0631-49ab-97a0-96387d6b2d7c",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/06/10",
+        "description": "Detects execution of the Notepad++ updater (gup) from a process other than Notepad++ to download files.",
+        "displayName": "File Download Using Notepad++ GUP Utility",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/03/02",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" -unzipTo \" and ProcessCommandLine contains \"http\") and (FolderPath endswith \"\\\\GUP.exe\" or ProcessVersionInfoOriginalFileName =~ \"gup.exe\")) and (not(InitiatingProcessFolderPath endswith \"\\\\notepad++.exe\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1105"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

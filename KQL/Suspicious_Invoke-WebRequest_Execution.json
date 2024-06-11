@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/5e3cc4d8-3e68-43db-8656-eaaeefdec9cc')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/5e3cc4d8-3e68-43db-8656-eaaeefdec9cc')]",
+      "properties": {
+        "alertRuleTemplateName": "5e3cc4d8-3e68-43db-8656-eaaeefdec9cc",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/08/02",
+        "description": "Detects a suspicious call to Invoke-WebRequest cmdlet where the and output is located in a suspicious location",
+        "displayName": "Suspicious Invoke-WebRequest Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2024/02/23",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"curl \" or ProcessCommandLine contains \"Invoke-WebRequest\" or ProcessCommandLine contains \"iwr \" or ProcessCommandLine contains \"wget \") and (ProcessCommandLine contains \" -ur\" or ProcessCommandLine contains \" -o\") and ((FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\", \"pwsh.dll\"))) and (ProcessCommandLine contains \"\\\\AppData\\\\\" or ProcessCommandLine contains \"\\\\Desktop\\\\\" or ProcessCommandLine contains \"\\\\Temp\\\\\" or ProcessCommandLine contains \"\\\\Users\\\\Public\\\\\" or ProcessCommandLine contains \"%AppData%\" or ProcessCommandLine contains \"%Public%\" or ProcessCommandLine contains \"%Temp%\" or ProcessCommandLine contains \"%tmp%\" or ProcessCommandLine contains \":\\\\Windows\\\\\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1105"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

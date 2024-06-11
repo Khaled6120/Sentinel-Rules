@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/4fe074b4-b833-4081-8f24-7dcfeca72b42')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/4fe074b4-b833-4081-8f24-7dcfeca72b42')]",
+      "properties": {
+        "alertRuleTemplateName": "4fe074b4-b833-4081-8f24-7dcfeca72b42",
+        "author": "Nasreddine Bencherchali (Nextron Systems), frack113",
+        "customDetails": null,
+        "date": "2023/10/20",
+        "description": "Detects execution of \"findstr\" to search for common names of security tools. Attackers often pipe the results of recon commands such as \"tasklist\" or \"whoami\" to \"findstr\" in order to filter out the results.\nThis detection focuses on the keywords that the attacker might use as a filter.\n",
+        "displayName": "Security Tools Keyword Lookup Via Findstr.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/11/14",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine endswith \" avira\" or ProcessCommandLine endswith \" avira\\\"\" or ProcessCommandLine endswith \" cb\" or ProcessCommandLine endswith \" cb\\\"\" or ProcessCommandLine endswith \" cylance\" or ProcessCommandLine endswith \" cylance\\\"\" or ProcessCommandLine endswith \" defender\" or ProcessCommandLine endswith \" defender\\\"\" or ProcessCommandLine endswith \" kaspersky\" or ProcessCommandLine endswith \" kaspersky\\\"\" or ProcessCommandLine endswith \" kes\" or ProcessCommandLine endswith \" kes\\\"\" or ProcessCommandLine endswith \" mc\" or ProcessCommandLine endswith \" mc\\\"\" or ProcessCommandLine endswith \" sec\" or ProcessCommandLine endswith \" sec\\\"\" or ProcessCommandLine endswith \" sentinel\" or ProcessCommandLine endswith \" sentinel\\\"\" or ProcessCommandLine endswith \" symantec\" or ProcessCommandLine endswith \" symantec\\\"\" or ProcessCommandLine endswith \" virus\" or ProcessCommandLine endswith \" virus\\\"\") and ((FolderPath endswith \"\\\\find.exe\" or FolderPath endswith \"\\\\findstr.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"FIND.EXE\", \"FINDSTR.EXE\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "discovery"
+        ],
+        "techniques": [
+          "t1518"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

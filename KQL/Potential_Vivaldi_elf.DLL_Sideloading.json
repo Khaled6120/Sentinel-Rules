@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/2092cacb-d77b-4f98-ab0d-32b32f99a054')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/2092cacb-d77b-4f98-ab0d-32b32f99a054')]",
+      "properties": {
+        "alertRuleTemplateName": "2092cacb-d77b-4f98-ab0d-32b32f99a054",
+        "author": "X__Junior (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/08/03",
+        "description": "Detects potential DLL sideloading of \"vivaldi_elf.dll\"",
+        "displayName": "Potential Vivaldi_elf.DLL Sideloading",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\vivaldi_elf.dll\" and (not((FolderPath contains \"\\\\Vivaldi\\\\Application\\\\\" and InitiatingProcessFolderPath endswith \"\\\\Vivaldi\\\\Application\\\\vivaldi.exe\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1574"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

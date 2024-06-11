@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/e32f92d1-523e-49c3-9374-bdb13b46a3ba')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/e32f92d1-523e-49c3-9374-bdb13b46a3ba')]",
+      "properties": {
+        "alertRuleTemplateName": "e32f92d1-523e-49c3-9374-bdb13b46a3ba",
+        "author": "Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2021/07/17",
+        "description": "Detects suspicious mshta process execution patterns",
+        "displayName": "Suspicious Mshta.EXE Execution Patterns",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/21",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\mshta.exe\" or ProcessVersionInfoOriginalFileName =~ \"MSHTA.EXE\") and ((ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\\" or ProcessCommandLine contains \"C:\\\\ProgramData\\\\\" or ProcessCommandLine contains \"C:\\\\Users\\\\Public\\\\\" or ProcessCommandLine contains \"C:\\\\Windows\\\\Temp\\\\\") and (InitiatingProcessFolderPath endswith \"\\\\cmd.exe\" or InitiatingProcessFolderPath endswith \"\\\\cscript.exe\" or InitiatingProcessFolderPath endswith \"\\\\powershell.exe\" or InitiatingProcessFolderPath endswith \"\\\\pwsh.exe\" or InitiatingProcessFolderPath endswith \"\\\\regsvr32.exe\" or InitiatingProcessFolderPath endswith \"\\\\rundll32.exe\" or InitiatingProcessFolderPath endswith \"\\\\wscript.exe\"))) or ((FolderPath endswith \"\\\\mshta.exe\" or ProcessVersionInfoOriginalFileName =~ \"MSHTA.EXE\") and (not(((FolderPath startswith \"C:\\\\Windows\\\\System32\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\SysWOW64\\\\\") or (ProcessCommandLine contains \".htm\" or ProcessCommandLine contains \".hta\") or (ProcessCommandLine endswith \"mshta.exe\" or ProcessCommandLine endswith \"mshta\")))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1106"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

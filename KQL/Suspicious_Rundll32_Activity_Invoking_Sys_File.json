@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/731231b9-0b5d-4219-94dd-abb6959aa7ea')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/731231b9-0b5d-4219-94dd-abb6959aa7ea')]",
+      "properties": {
+        "alertRuleTemplateName": "731231b9-0b5d-4219-94dd-abb6959aa7ea",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2021/03/05",
+        "description": "Detects suspicious process related to rundll32 based on command line that includes a *.sys file as seen being used by UNC2452",
+        "displayName": "Suspicious Rundll32 Activity Invoking Sys File",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/10/09",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"rundll32.exe\" and (ProcessCommandLine contains \".sys,\" or ProcessCommandLine contains \".sys \")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

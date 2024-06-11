@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/6c96fc76-0eb1-11eb-adc1-0242ac120002')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/6c96fc76-0eb1-11eb-adc1-0242ac120002')]",
+      "properties": {
+        "alertRuleTemplateName": "6c96fc76-0eb1-11eb-adc1-0242ac120002",
+        "author": "Jonathan Cheong, oscd.community",
+        "customDetails": null,
+        "date": "2020/10/15",
+        "description": "Detects Obfuscated use of stdin to execute PowerShell",
+        "displayName": "Invoke-Obfuscation STDIN+ Launcher",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2024/04/15",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine matches regex \"cmd.{0,5}(?:/c|/r).+powershell.+(?:\\\\$\\\\{?input\\\\}?|noexit).+\\\\\"\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1027",
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

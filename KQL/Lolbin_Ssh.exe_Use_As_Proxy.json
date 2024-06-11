@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/7d6d30b8-5b91-4b90-a891-46cccaf29598')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/7d6d30b8-5b91-4b90-a891-46cccaf29598')]",
+      "properties": {
+        "alertRuleTemplateName": "7d6d30b8-5b91-4b90-a891-46cccaf29598",
+        "author": "frack113, Nasreddine Bencherchali",
+        "customDetails": null,
+        "date": "2022/12/29",
+        "description": "Detect usage of the \"ssh.exe\" binary as a proxy to launch other programs",
+        "displayName": "Lolbin Ssh.exe Use As Proxy",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/01/25",
+        "query": "DeviceProcessEvents\n| where InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\System32\\\\OpenSSH\\\\sshd.exe\" or ((ProcessCommandLine contains \"ProxyCommand=\" or (ProcessCommandLine contains \"PermitLocalCommand\" and ProcessCommandLine contains \"LocalCommand\")) and FolderPath endswith \"\\\\ssh.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1202"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

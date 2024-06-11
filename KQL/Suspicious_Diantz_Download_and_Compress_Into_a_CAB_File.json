@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/185d7418-f250-42d0-b72e-0c8b70661e93')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/185d7418-f250-42d0-b72e-0c8b70661e93')]",
+      "properties": {
+        "alertRuleTemplateName": "185d7418-f250-42d0-b72e-0c8b70661e93",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2021/11/26",
+        "description": "Download and compress a remote file and store it in a cab file on local machine.",
+        "displayName": "Suspicious Diantz Download and Compress Into a CAB File",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/08/13",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"diantz.exe\" and ProcessCommandLine contains \" \\\\\\\\\" and ProcessCommandLine contains \".cab\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1105"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

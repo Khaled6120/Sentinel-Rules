@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/480e7e51-e797-47e3-8d72-ebfce65b6d8d')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/480e7e51-e797-47e3-8d72-ebfce65b6d8d')]",
+      "properties": {
+        "alertRuleTemplateName": "480e7e51-e797-47e3-8d72-ebfce65b6d8d",
+        "author": "Nextron Systems",
+        "customDetails": null,
+        "date": "2022/06/03",
+        "description": "Detects python spawning a pretty tty",
+        "displayName": "Python Spawning Pretty TTY on Windows",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"python.exe\" or FolderPath endswith \"python3.exe\" or FolderPath endswith \"python2.exe\") and ((ProcessCommandLine contains \"import pty\" and ProcessCommandLine contains \".spawn(\") or ProcessCommandLine contains \"from pty import spawn\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/138d3531-8793-4f50-a2cd-f291b2863d78')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/138d3531-8793-4f50-a2cd-f291b2863d78')]",
+      "properties": {
+        "alertRuleTemplateName": "138d3531-8793-4f50-a2cd-f291b2863d78",
+        "author": "Victor Sergeev, oscd.community, Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2019/10/21",
+        "description": "Detects service path modification via the \"sc\" binary to a suspicious command or path",
+        "displayName": "Suspicious Service Path Modification",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/11/18",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"powershell\" or ProcessCommandLine contains \"cmd \" or ProcessCommandLine contains \"mshta\" or ProcessCommandLine contains \"wscript\" or ProcessCommandLine contains \"cscript\" or ProcessCommandLine contains \"rundll32\" or ProcessCommandLine contains \"svchost\" or ProcessCommandLine contains \"dllhost\" or ProcessCommandLine contains \"cmd.exe /c\" or ProcessCommandLine contains \"cmd.exe /k\" or ProcessCommandLine contains \"cmd.exe /r\" or ProcessCommandLine contains \"cmd /c\" or ProcessCommandLine contains \"cmd /k\" or ProcessCommandLine contains \"cmd /r\" or ProcessCommandLine contains \"C:\\\\Users\\\\Public\" or ProcessCommandLine contains \"\\\\Downloads\\\\\" or ProcessCommandLine contains \"\\\\Desktop\\\\\" or ProcessCommandLine contains \"\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\Startup\\\\\" or ProcessCommandLine contains \"C:\\\\Windows\\\\TEMP\\\\\" or ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Temp\") and (ProcessCommandLine contains \"config\" and ProcessCommandLine contains \"binPath\") and FolderPath endswith \"\\\\sc.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1543"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

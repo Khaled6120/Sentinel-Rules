@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/0ba863e6-def5-4e50-9cea-4dd8c7dc46a4')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/0ba863e6-def5-4e50-9cea-4dd8c7dc46a4')]",
+      "properties": {
+        "alertRuleTemplateName": "0ba863e6-def5-4e50-9cea-4dd8c7dc46a4",
+        "author": "Kyaw Min Thein, Furkan Caliskan (@caliskanfurkan_)",
+        "customDetails": null,
+        "date": "2020/06/22",
+        "description": "Detects the malicious use of a control panel item",
+        "displayName": "Control Panel Items",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/10/11",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"add\" and ProcessCommandLine contains \"CurrentVersion\\\\Control Panel\\\\CPLs\") and (FolderPath endswith \"\\\\reg.exe\" or ProcessVersionInfoOriginalFileName =~ \"reg.exe\")) or (ProcessCommandLine endswith \".cpl\" and (not(((ProcessCommandLine contains \"regsvr32 \" and ProcessCommandLine contains \" /s \" and ProcessCommandLine contains \"igfxCPL.cpl\") or (ProcessCommandLine contains \"\\\\System32\\\\\" or ProcessCommandLine contains \"%System%\" or ProcessCommandLine contains \"|C:\\\\Windows\\\\system32|\")))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution",
+          "persistence"
+        ],
+        "techniques": [
+          "t1218",
+          "t1546"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

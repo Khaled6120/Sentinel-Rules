@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/502b42de-4306-40b4-9596-6f590c81f073')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/502b42de-4306-40b4-9596-6f590c81f073')]",
+      "properties": {
+        "alertRuleTemplateName": "502b42de-4306-40b4-9596-6f590c81f073",
+        "author": "Timur Zinniatullin, Daniil Yugoslavskiy, oscd.community",
+        "customDetails": null,
+        "date": "2019/10/21",
+        "description": "Local accounts, System Owner/User discovery using operating systems utilities",
+        "displayName": "Local Accounts Discovery",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/01/03",
+        "query": "DeviceProcessEvents\n| where (((ProcessCommandLine contains \" /c\" and ProcessCommandLine contains \"dir \" and ProcessCommandLine contains \"\\\\Users\\\\\") and FolderPath endswith \"\\\\cmd.exe\") and (not(ProcessCommandLine contains \" rmdir \"))) or ((ProcessCommandLine contains \"user\" and (FolderPath endswith \"\\\\net.exe\" or FolderPath endswith \"\\\\net1.exe\")) and (not((ProcessCommandLine contains \"/domain\" or ProcessCommandLine contains \"/add\" or ProcessCommandLine contains \"/delete\" or ProcessCommandLine contains \"/active\" or ProcessCommandLine contains \"/expires\" or ProcessCommandLine contains \"/passwordreq\" or ProcessCommandLine contains \"/scriptpath\" or ProcessCommandLine contains \"/times\" or ProcessCommandLine contains \"/workstations\")))) or ((ProcessCommandLine contains \" /l\" and FolderPath endswith \"\\\\cmdkey.exe\") or (FolderPath endswith \"\\\\whoami.exe\" or FolderPath endswith \"\\\\quser.exe\" or FolderPath endswith \"\\\\qwinsta.exe\") or ((ProcessCommandLine contains \"useraccount\" and ProcessCommandLine contains \"get\") and FolderPath endswith \"\\\\wmic.exe\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "low",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "discovery"
+        ],
+        "techniques": [
+          "t1033",
+          "t1087"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/213d6a77-3d55-4ce8-ba74-fcfef741974e')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/213d6a77-3d55-4ce8-ba74-fcfef741974e')]",
+      "properties": {
+        "alertRuleTemplateName": "213d6a77-3d55-4ce8-ba74-fcfef741974e",
+        "author": "frack113, Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2021/07/20",
+        "description": "Adversaries may search for private key certificate files on compromised systems for insecurely stored credential",
+        "displayName": "Private Keys Reconnaissance Via CommandLine Tools",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/03/06",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \".key\" or ProcessCommandLine contains \".pgp\" or ProcessCommandLine contains \".gpg\" or ProcessCommandLine contains \".ppk\" or ProcessCommandLine contains \".p12\" or ProcessCommandLine contains \".pem\" or ProcessCommandLine contains \".pfx\" or ProcessCommandLine contains \".cer\" or ProcessCommandLine contains \".p7b\" or ProcessCommandLine contains \".asc\") and ((ProcessCommandLine contains \"dir \" and (FolderPath endswith \"\\\\cmd.exe\" or ProcessVersionInfoOriginalFileName =~ \"Cmd.Exe\")) or (ProcessCommandLine contains \"Get-ChildItem \" and ((FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\", \"pwsh.dll\")))) or (FolderPath endswith \"\\\\findstr.exe\" or ProcessVersionInfoOriginalFileName =~ \"FINDSTR.EXE\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1552"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/853e74f9-9392-4935-ad3b-2e8c040dae86')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/853e74f9-9392-4935-ad3b-2e8c040dae86')]",
+      "properties": {
+        "alertRuleTemplateName": "853e74f9-9392-4935-ad3b-2e8c040dae86",
+        "author": "Christian Burkard (Nextron Systems)",
+        "customDetails": null,
+        "date": "2021/08/30",
+        "description": "Detects the pattern of UAC Bypass using DismHost DLL hijacking (UACMe 63)",
+        "displayName": "UAC Bypass Using DismHost",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/10/09",
+        "query": "DeviceProcessEvents\n| where (ProcessIntegrityLevel in~ (\"High\", \"System\")) and (InitiatingProcessFolderPath contains \"C:\\\\Users\\\\\" and InitiatingProcessFolderPath contains \"\\\\AppData\\\\Local\\\\Temp\\\\\" and InitiatingProcessFolderPath contains \"\\\\DismHost.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1548"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

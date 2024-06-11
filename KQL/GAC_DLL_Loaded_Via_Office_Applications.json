@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/90217a70-13fc-48e4-b3db-0d836c5824ac')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/90217a70-13fc-48e4-b3db-0d836c5824ac')]",
+      "properties": {
+        "alertRuleTemplateName": "90217a70-13fc-48e4-b3db-0d836c5824ac",
+        "author": "Antonlovesdnb",
+        "customDetails": null,
+        "date": "2020/02/19",
+        "description": "Detects any GAC DLL being loaded by an Office Product",
+        "displayName": "GAC DLL Loaded Via Office Applications",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "2023/02/10",
+        "query": "DeviceImageLoadEvents\n| where FolderPath startswith \"C:\\\\Windows\\\\Microsoft.NET\\\\assembly\\\\GAC_MSIL\" and (InitiatingProcessFolderPath endswith \"\\\\excel.exe\" or InitiatingProcessFolderPath endswith \"\\\\mspub.exe\" or InitiatingProcessFolderPath endswith \"\\\\onenote.exe\" or InitiatingProcessFolderPath endswith \"\\\\onenoteim.exe\" or InitiatingProcessFolderPath endswith \"\\\\outlook.exe\" or InitiatingProcessFolderPath endswith \"\\\\powerpnt.exe\" or InitiatingProcessFolderPath endswith \"\\\\winword.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1204"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

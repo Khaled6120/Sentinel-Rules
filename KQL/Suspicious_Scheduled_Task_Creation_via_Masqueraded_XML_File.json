@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/dd2a821e-3b07-4d3b-a9ac-929fe4c6ca0c')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/dd2a821e-3b07-4d3b-a9ac-929fe4c6ca0c')]",
+      "properties": {
+        "alertRuleTemplateName": "dd2a821e-3b07-4d3b-a9ac-929fe4c6ca0c",
+        "author": "Swachchhanda Shrawan Poudel, Elastic (idea)",
+        "customDetails": null,
+        "date": "2023/04/20",
+        "description": "Detects the creation of a scheduled task using the \"-XML\" flag with a file without the '.xml' extension. This behavior could be indicative of potential defense evasion attempt during persistence",
+        "displayName": "Suspicious Scheduled Task Creation via Masqueraded XML File",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"/create\" or ProcessCommandLine contains \"-create\") and (ProcessCommandLine contains \"/xml\" or ProcessCommandLine contains \"-xml\") and (FolderPath endswith \"\\\\schtasks.exe\" or ProcessVersionInfoOriginalFileName =~ \"schtasks.exe\")) and (not((ProcessCommandLine contains \".xml\" or ((InitiatingProcessCommandLine contains \":\\\\WINDOWS\\\\Installer\\\\MSI\" and InitiatingProcessCommandLine contains \".tmp,zzzzInvokeManagedCustomActionOutOfProc\") and InitiatingProcessFolderPath endswith \"\\\\rundll32.exe\") or ProcessIntegrityLevel =~ \"System\"))) and (not(((InitiatingProcessFolderPath contains \":\\\\ProgramData\\\\OEM\\\\UpgradeTool\\\\CareCenter_\" and InitiatingProcessFolderPath contains \"\\\\BUnzip\\\\Setup_msi.exe\") or InitiatingProcessFolderPath endswith \":\\\\Program Files\\\\Axis Communications\\\\AXIS Camera Station\\\\SetupActions.exe\" or InitiatingProcessFolderPath endswith \":\\\\Program Files\\\\Axis Communications\\\\AXIS Device Manager\\\\AdmSetupActions.exe\" or InitiatingProcessFolderPath endswith \":\\\\Program Files (x86)\\\\Zemana\\\\AntiMalware\\\\AntiMalware.exe\" or InitiatingProcessFolderPath endswith \":\\\\Program Files\\\\Dell\\\\SupportAssist\\\\pcdrcui.exe\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1036",
+          "t1053"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

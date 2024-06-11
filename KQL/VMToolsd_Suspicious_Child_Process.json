@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/5687f942-867b-4578-ade7-1e341c46e99a')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/5687f942-867b-4578-ade7-1e341c46e99a')]",
+      "properties": {
+        "alertRuleTemplateName": "5687f942-867b-4578-ade7-1e341c46e99a",
+        "author": "bohops, Bhabesh Raj",
+        "customDetails": null,
+        "date": "2021/10/08",
+        "description": "Detects suspicious child process creations of VMware Tools process which may indicate persistence setup",
+        "displayName": "VMToolsd Suspicious Child Process",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/07/25",
+        "query": "DeviceProcessEvents\n| where (((FolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\cscript.exe\" or FolderPath endswith \"\\\\mshta.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\regsvr32.exe\" or FolderPath endswith \"\\\\rundll32.exe\" or FolderPath endswith \"\\\\wscript.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"Cmd.Exe\", \"cscript.exe\", \"MSHTA.EXE\", \"PowerShell.EXE\", \"pwsh.dll\", \"REGSVR32.EXE\", \"RUNDLL32.EXE\", \"wscript.exe\"))) and InitiatingProcessFolderPath endswith \"\\\\vmtoolsd.exe\") and (not(((ProcessCommandLine =~ \"\" and FolderPath endswith \"\\\\cmd.exe\") or (isnull(ProcessCommandLine) and FolderPath endswith \"\\\\cmd.exe\") or ((ProcessCommandLine contains \"\\\\VMware\\\\VMware Tools\\\\poweron-vm-default.bat\" or ProcessCommandLine contains \"\\\\VMware\\\\VMware Tools\\\\poweroff-vm-default.bat\" or ProcessCommandLine contains \"\\\\VMware\\\\VMware Tools\\\\resume-vm-default.bat\" or ProcessCommandLine contains \"\\\\VMware\\\\VMware Tools\\\\suspend-vm-default.bat\") and FolderPath endswith \"\\\\cmd.exe\"))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution",
+          "persistence"
+        ],
+        "techniques": [
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

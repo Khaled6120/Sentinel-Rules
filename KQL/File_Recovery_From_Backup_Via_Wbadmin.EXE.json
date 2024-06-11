@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/6fe4aa1e-0531-4510-8be2-782154b73b48')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/6fe4aa1e-0531-4510-8be2-782154b73b48')]",
+      "properties": {
+        "alertRuleTemplateName": "6fe4aa1e-0531-4510-8be2-782154b73b48",
+        "author": "Nasreddine Bencherchali (Nextron Systems), frack113",
+        "customDetails": null,
+        "date": "2024/05/10",
+        "description": "Detects the recovery of files from backups via \"wbadmin.exe\".\nAttackers can restore sensitive files such as NTDS.DIT or Registry Hives from backups in order to potentially extract credentials.\n",
+        "displayName": "File Recovery From Backup Via Wbadmin.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" recovery\" and ProcessCommandLine contains \"recoveryTarget\" and ProcessCommandLine contains \"itemtype:File\") and (FolderPath endswith \"\\\\wbadmin.exe\" or ProcessVersionInfoOriginalFileName =~ \"WBADMIN.EXE\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "impact"
+        ],
+        "techniques": [
+          "t1490"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

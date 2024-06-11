@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/322ed9ec-fcab-4f67-9a34-e7c6aef43614')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/322ed9ec-fcab-4f67-9a34-e7c6aef43614')]",
+      "properties": {
+        "alertRuleTemplateName": "322ed9ec-fcab-4f67-9a34-e7c6aef43614",
+        "author": "Florian Roth (Nextron Systems), omkar72, oscd.community, Swachchhanda Shrawan Poudel",
+        "customDetails": null,
+        "date": "2019/01/29",
+        "description": "Detects the execution of netsh commands that configure a new port forwarding (PortProxy) rule",
+        "displayName": "New Port Forwarding Rule Added Via Netsh.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/09/01",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\netsh.exe\" or ProcessVersionInfoOriginalFileName =~ \"netsh.exe\") and ((ProcessCommandLine contains \"interface\" and ProcessCommandLine contains \"portproxy\" and ProcessCommandLine contains \"add\" and ProcessCommandLine contains \"v4tov4\") or (ProcessCommandLine contains \"i \" and ProcessCommandLine contains \"p \" and ProcessCommandLine contains \"a \" and ProcessCommandLine contains \"v \") or (ProcessCommandLine contains \"connectp\" and ProcessCommandLine contains \"listena\" and ProcessCommandLine contains \"c=\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1090"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

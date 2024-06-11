@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/7d1aaf3d-4304-425c-b7c3-162055e0b3ab')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/7d1aaf3d-4304-425c-b7c3-162055e0b3ab')]",
+      "properties": {
+        "alertRuleTemplateName": "7d1aaf3d-4304-425c-b7c3-162055e0b3ab",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/08/02",
+        "description": "Detects the use of various CLI utilities exfiltrating data via web requests",
+        "displayName": "Potential Data Exfiltration Activity Via CommandLine Tools",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/07/27",
+        "query": "DeviceProcessEvents\n| where (((ProcessCommandLine contains \"Invoke-WebRequest\" or ProcessCommandLine contains \"iwr \" or ProcessCommandLine contains \"wget \" or ProcessCommandLine contains \"curl \") and (ProcessCommandLine contains \" -ur\" and ProcessCommandLine contains \" -me\" and ProcessCommandLine contains \" -b\" and ProcessCommandLine contains \" POST \") and (FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\cmd.exe\")) or ((ProcessCommandLine contains \"--ur\" and FolderPath endswith \"\\\\curl.exe\") and (ProcessCommandLine contains \" -d \" or ProcessCommandLine contains \" --data \")) or ((ProcessCommandLine contains \"--post-data\" or ProcessCommandLine contains \"--post-file\") and FolderPath endswith \"\\\\wget.exe\")) and ((ProcessCommandLine contains \"Get-Content\" or ProcessCommandLine contains \"GetBytes\" or ProcessCommandLine contains \"hostname\" or ProcessCommandLine contains \"ifconfig\" or ProcessCommandLine contains \"ipconfig\" or ProcessCommandLine contains \"net view\" or ProcessCommandLine contains \"netstat\" or ProcessCommandLine contains \"nltest\" or ProcessCommandLine contains \"qprocess\" or ProcessCommandLine contains \"sc query\" or ProcessCommandLine contains \"systeminfo\" or ProcessCommandLine contains \"tasklist\" or ProcessCommandLine contains \"ToBase64String\" or ProcessCommandLine contains \"whoami\") or (ProcessCommandLine contains \"type \" and ProcessCommandLine contains \" > \" and ProcessCommandLine contains \" C:\\\\\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

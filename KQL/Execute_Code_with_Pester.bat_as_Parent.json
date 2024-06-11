@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/18988e1b-9087-4f8a-82fe-0414dce49878')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/18988e1b-9087-4f8a-82fe-0414dce49878')]",
+      "properties": {
+        "alertRuleTemplateName": "18988e1b-9087-4f8a-82fe-0414dce49878",
+        "author": "frack113, Nasreddine Bencherchali",
+        "customDetails": null,
+        "date": "2022/08/20",
+        "description": "Detects code execution via Pester.bat (Pester - Powershell Modulte for testing)",
+        "displayName": "Execute Code with Pester.bat as Parent",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where (InitiatingProcessCommandLine contains \"{ Invoke-Pester -EnableExit ;\" or InitiatingProcessCommandLine contains \"{ Get-Help \\\"\") and (InitiatingProcessCommandLine contains \"\\\\WindowsPowerShell\\\\Modules\\\\Pester\\\\\" and (InitiatingProcessFolderPath endswith \"\\\\powershell.exe\" or InitiatingProcessFolderPath endswith \"\\\\pwsh.exe\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1059",
+          "t1216"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

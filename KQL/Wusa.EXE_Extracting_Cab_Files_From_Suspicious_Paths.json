@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/c74c0390-3e20-41fd-a69a-128f0275a5ea')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/c74c0390-3e20-41fd-a69a-128f0275a5ea')]",
+      "properties": {
+        "alertRuleTemplateName": "c74c0390-3e20-41fd-a69a-128f0275a5ea",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/08/05",
+        "description": "Detects usage of the \"wusa.exe\" (Windows Update Standalone Installer) utility to extract cab using the \"/extract\" argument from suspicious paths",
+        "displayName": "Wusa.EXE Extracting Cab Files From Suspicious Paths",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/11/28",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \":\\\\PerfLogs\\\\\" or ProcessCommandLine contains \":\\\\Users\\\\Public\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\Temp\\\\\" or ProcessCommandLine contains \"\\\\Appdata\\\\Local\\\\Temp\\\\\") and (ProcessCommandLine contains \"/extract:\" and FolderPath endswith \"\\\\wusa.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

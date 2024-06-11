@@ -1,0 +1,56 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/1d08ac94-400d-4469-a82f-daee9a908849')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/1d08ac94-400d-4469-a82f-daee9a908849')]",
+      "properties": {
+        "alertRuleTemplateName": "1d08ac94-400d-4469-a82f-daee9a908849",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/11/03",
+        "description": "Detects an executable initiating a network connection to \"ngrok\" tunneling domains.\nAttackers were seen using this \"ngrok\" in order to store their second stage payloads and malware.\nWhile communication with such domains can be legitimate, often times is a sign of either data exfiltration by malicious actors or additional download.\n",
+        "displayName": "Communication To Ngrok Tunneling Service Initiated",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "network_connection",
+          "product": "windows"
+        },
+        "modified": "2024/02/02",
+        "query": "DeviceNetworkEvents\n| where RemoteUrl contains \"tunnel.us.ngrok.com\" or RemoteUrl contains \"tunnel.eu.ngrok.com\" or RemoteUrl contains \"tunnel.ap.ngrok.com\" or RemoteUrl contains \"tunnel.au.ngrok.com\" or RemoteUrl contains \"tunnel.sa.ngrok.com\" or RemoteUrl contains \"tunnel.jp.ngrok.com\" or RemoteUrl contains \"tunnel.in.ngrok.com\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "exfiltration"
+        ],
+        "techniques": [
+          "t1090",
+          "t1102",
+          "t1567",
+          "t1568",
+          "t1572"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

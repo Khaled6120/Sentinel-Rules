@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/1ca6bd18-0ba0-44ca-851c-92ed89a61085')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/1ca6bd18-0ba0-44ca-851c-92ed89a61085')]",
+      "properties": {
+        "alertRuleTemplateName": "1ca6bd18-0ba0-44ca-851c-92ed89a61085",
+        "author": "Christian Burkard (Nextron Systems)",
+        "customDetails": null,
+        "date": "2021/08/23",
+        "description": "Detects the pattern of UAC Bypass using consent.exe and comctl32.dll (UACMe 22)",
+        "displayName": "UAC Bypass Using Consent and Comctl32 - Process",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/10/09",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\werfault.exe\" and (ProcessIntegrityLevel in~ (\"High\", \"System\")) and InitiatingProcessFolderPath endswith \"\\\\consent.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1548"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

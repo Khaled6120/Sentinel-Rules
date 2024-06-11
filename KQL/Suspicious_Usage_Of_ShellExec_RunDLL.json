@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/d87bd452-6da1-456e-8155-7dc988157b7d')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/d87bd452-6da1-456e-8155-7dc988157b7d')]",
+      "properties": {
+        "alertRuleTemplateName": "d87bd452-6da1-456e-8155-7dc988157b7d",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/09/01",
+        "description": "Detects suspicious usage of the ShellExec_RunDLL function to launch other commands as seen in the the raspberry-robin attack",
+        "displayName": "Suspicious Usage Of ShellExec_RunDLL",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/12/30",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"ShellExec_RunDLL\" and (ProcessCommandLine contains \"regsvr32\" or ProcessCommandLine contains \"msiexec\" or ProcessCommandLine contains \"\\\\Users\\\\Public\\\\\" or ProcessCommandLine contains \"odbcconf\" or ProcessCommandLine contains \"\\\\Desktop\\\\\" or ProcessCommandLine contains \"\\\\Temp\\\\\" or ProcessCommandLine contains \"Invoke-\" or ProcessCommandLine contains \"iex\" or ProcessCommandLine contains \"comspec\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/68d37776-61db-42f5-bf54-27e87072d17e')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/68d37776-61db-42f5-bf54-27e87072d17e')]",
+      "properties": {
+        "alertRuleTemplateName": "68d37776-61db-42f5-bf54-27e87072d17e",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/10/08",
+        "description": "Detects the use of NPS, a port forwarding and intranet penetration proxy server",
+        "displayName": "PUA - NPS Tunneling Tool Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/04",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -server=\" and ProcessCommandLine contains \" -vkey=\" and ProcessCommandLine contains \" -password=\") or ProcessCommandLine contains \" -config=npc\" or ((MD5 startswith \"AE8ACF66BFE3A44148964048B826D005\" or SHA1 startswith \"CEA49E9B9B67F3A13AD0BE1C2655293EA3C18181\" or SHA256 startswith \"5A456283392FFCEEEACA3D3426C306EB470304637520D72FED1CC1FEBBBD6856\") or MD5 =~ \"ae8acf66bfe3a44148964048b826d005\" or SHA1 =~ \"cea49e9b9b67f3a13ad0be1c2655293ea3c18181\" or SHA256 =~ \"5a456283392ffceeeaca3d3426c306eb470304637520d72fed1cc1febbbd6856\") or FolderPath endswith \"\\\\npc.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1090"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

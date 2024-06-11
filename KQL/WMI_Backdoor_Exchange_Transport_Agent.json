@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/797011dc-44f4-4e6f-9f10-a8ceefbe566b')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/797011dc-44f4-4e6f-9f10-a8ceefbe566b')]",
+      "properties": {
+        "alertRuleTemplateName": "797011dc-44f4-4e6f-9f10-a8ceefbe566b",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2019/10/11",
+        "description": "Detects a WMI backdoor in Exchange Transport Agents via WMI event filters",
+        "displayName": "WMI Backdoor Exchange Transport Agent",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/08",
+        "query": "DeviceProcessEvents\n| where InitiatingProcessFolderPath endswith \"\\\\EdgeTransport.exe\" and (not((FolderPath =~ \"C:\\\\Windows\\\\System32\\\\conhost.exe\" or (FolderPath endswith \"\\\\Bin\\\\OleConverter.exe\" and FolderPath startswith \"C:\\\\Program Files\\\\Microsoft\\\\Exchange Server\\\\\"))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "critical",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1546"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

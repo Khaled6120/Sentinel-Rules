@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/a16980c2-0c56-4de0-9a79-17971979efdd')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/a16980c2-0c56-4de0-9a79-17971979efdd')]",
+      "properties": {
+        "alertRuleTemplateName": "a16980c2-0c56-4de0-9a79-17971979efdd",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/08/23",
+        "description": "Detects Windows command lines that miss a space before or after the /c flag when running a command using the cmd.exe.\nThis could be a sign of obfuscation of a fat finger problem (typo by the developer).\n",
+        "displayName": "Cmd.EXE Missing Space Characters Execution Anomaly",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/03/06",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"cmd.exe/c\" or ProcessCommandLine contains \"\\\\cmd/c\" or ProcessCommandLine contains \"\\\"cmd/c\" or ProcessCommandLine contains \"cmd.exe/k\" or ProcessCommandLine contains \"\\\\cmd/k\" or ProcessCommandLine contains \"\\\"cmd/k\" or ProcessCommandLine contains \"cmd.exe/r\" or ProcessCommandLine contains \"\\\\cmd/r\" or ProcessCommandLine contains \"\\\"cmd/r\") or (ProcessCommandLine contains \"/cwhoami\" or ProcessCommandLine contains \"/cpowershell\" or ProcessCommandLine contains \"/cschtasks\" or ProcessCommandLine contains \"/cbitsadmin\" or ProcessCommandLine contains \"/ccertutil\" or ProcessCommandLine contains \"/kwhoami\" or ProcessCommandLine contains \"/kpowershell\" or ProcessCommandLine contains \"/kschtasks\" or ProcessCommandLine contains \"/kbitsadmin\" or ProcessCommandLine contains \"/kcertutil\") or (ProcessCommandLine contains \"cmd.exe /c\" or ProcessCommandLine contains \"cmd /c\" or ProcessCommandLine contains \"cmd.exe /k\" or ProcessCommandLine contains \"cmd /k\" or ProcessCommandLine contains \"cmd.exe /r\" or ProcessCommandLine contains \"cmd /r\")) and (not(((ProcessCommandLine in~ (\"cmd.exe /c\") or ProcessCommandLine contains \"AppData\\\\Local\\\\Programs\\\\Microsoft VS Code\\\\resources\\\\app\\\\node_modules\" or ProcessCommandLine endswith \"cmd.exe/c .\") or (ProcessCommandLine contains \"cmd.exe /c \" or ProcessCommandLine contains \"cmd /c \" or ProcessCommandLine contains \"cmd.exe /k \" or ProcessCommandLine contains \"cmd /k \" or ProcessCommandLine contains \"cmd.exe /r \" or ProcessCommandLine contains \"cmd /r \"))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

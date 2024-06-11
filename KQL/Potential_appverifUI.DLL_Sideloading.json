@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/ee6cea48-c5b6-4304-a332-10fc6446f484')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/ee6cea48-c5b6-4304-a332-10fc6446f484')]",
+      "properties": {
+        "alertRuleTemplateName": "ee6cea48-c5b6-4304-a332-10fc6446f484",
+        "author": "X__Junior (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/06/20",
+        "description": "Detects potential DLL sideloading of \"appverifUI.dll\"",
+        "displayName": "Potential appverifUI.DLL Sideloading",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\appverifUI.dll\" and (not(((InitiatingProcessFolderPath in~ (\"C:\\\\Windows\\\\SysWOW64\\\\appverif.exe\", \"C:\\\\Windows\\\\System32\\\\appverif.exe\")) and (FolderPath startswith \"C:\\\\Windows\\\\System32\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\SysWOW64\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\WinSxS\\\\\"))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1574"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

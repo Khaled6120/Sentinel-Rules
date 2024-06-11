@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/cc7abbd0-762b-41e3-8a26-57ad50d2eea3')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/cc7abbd0-762b-41e3-8a26-57ad50d2eea3')]",
+      "properties": {
+        "alertRuleTemplateName": "cc7abbd0-762b-41e3-8a26-57ad50d2eea3",
+        "author": "Diego Perez (@darkquassar), Markus Neis, Swisscom (Improve Rule)",
+        "customDetails": null,
+        "date": "2019/02/22",
+        "description": "Detection for mshta.exe suspicious execution patterns sometimes involving file polyglotism",
+        "displayName": "MSHTA Suspicious Execution 01",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/11/07",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"vbscript\" or ProcessCommandLine contains \".jpg\" or ProcessCommandLine contains \".png\" or ProcessCommandLine contains \".lnk\" or ProcessCommandLine contains \".xls\" or ProcessCommandLine contains \".doc\" or ProcessCommandLine contains \".zip\" or ProcessCommandLine contains \".dll\") and FolderPath endswith \"\\\\mshta.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1059",
+          "t1140",
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

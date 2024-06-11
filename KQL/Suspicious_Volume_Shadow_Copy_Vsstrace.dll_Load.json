@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/48bfd177-7cf2-412b-ad77-baf923489e82')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/48bfd177-7cf2-412b-ad77-baf923489e82')]",
+      "properties": {
+        "alertRuleTemplateName": "48bfd177-7cf2-412b-ad77-baf923489e82",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2023/02/17",
+        "description": "Detects the image load of VSS DLL by uncommon executables",
+        "displayName": "Suspicious Volume Shadow Copy Vsstrace.dll Load",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "2023/03/28",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\vsstrace.dll\" and (not(((InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Program Files (x86)\\\\\") or ((InitiatingProcessFolderPath in~ (\"C:\\\\Windows\\\\explorer.exe\", \"C:\\\\Windows\\\\ImmersiveControlPanel\\\\SystemSettings.exe\")) or (InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\System32\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\SysWOW64\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\Temp\\\\{\" or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\WinSxS\\\\\")))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "impact"
+        ],
+        "techniques": [
+          "t1490"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

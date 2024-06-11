@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/50f852e6-af22-4c78-9ede-42ef36aa3453')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/50f852e6-af22-4c78-9ede-42ef36aa3453')]",
+      "properties": {
+        "alertRuleTemplateName": "50f852e6-af22-4c78-9ede-42ef36aa3453",
+        "author": "Den Iuzvyk",
+        "customDetails": null,
+        "date": "2020/07/15",
+        "description": "Detects abusing Azure Browser SSO by requesting OAuth 2.0 refresh tokens for an Azure-AD-authenticated Windows user (i.e. the machine is joined to Azure AD and a user logs in with their Azure AD account) wanting to perform SSO authentication in the browser.\nAn attacker can use this to authenticate to Azure AD in a browser as that user.\n",
+        "displayName": "Potential Azure Browser SSO Abuse",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "2023/04/18",
+        "query": "DeviceImageLoadEvents\n| where FolderPath =~ \"C:\\\\Windows\\\\System32\\\\MicrosoftAccountTokenProvider.dll\" and (not((InitiatingProcessFolderPath endswith \"\\\\BackgroundTaskHost.exe\" and (InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\System32\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\SysWOW64\\\\\")))) and (not(((InitiatingProcessFolderPath endswith \"\\\\IDE\\\\devenv.exe\" and (InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\\")) or (InitiatingProcessFolderPath startswith \"C:\\\\Program Files (x86)\\\\Microsoft\\\\EdgeWebView\\\\Application\\\\\" or InitiatingProcessFolderPath endswith \"\\\\WindowsApps\\\\MicrosoftEdge.exe\" or (InitiatingProcessFolderPath in~ (\"C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\", \"C:\\\\Program Files\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"))) or ((InitiatingProcessFolderPath endswith \"\\\\msedge.exe\" or InitiatingProcessFolderPath endswith \"\\\\msedgewebview2.exe\") and (InitiatingProcessFolderPath startswith \"C:\\\\Program Files (x86)\\\\Microsoft\\\\EdgeCore\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\Microsoft\\\\EdgeCore\\\\\")) or (InitiatingProcessFolderPath in~ (\"C:\\\\Program Files (x86)\\\\Internet Explorer\\\\iexplore.exe\", \"C:\\\\Program Files\\\\Internet Explorer\\\\iexplore.exe\")) or isnull(InitiatingProcessFolderPath) or InitiatingProcessFolderPath endswith \"\\\\AppData\\\\Local\\\\Microsoft\\\\OneDrive\\\\OneDrive.exe\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "low",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1574"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

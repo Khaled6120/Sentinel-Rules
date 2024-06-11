@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/8bc64091-6875-4881-aaf9-7bd25b5dda08')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/8bc64091-6875-4881-aaf9-7bd25b5dda08')]",
+      "properties": {
+        "alertRuleTemplateName": "8bc64091-6875-4881-aaf9-7bd25b5dda08",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/03/11",
+        "description": "Detects suspicious process patterns used in NTDS.DIT exfiltration",
+        "displayName": "Suspicious Process Patterns NTDS.DIT Exfil",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/11/10",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"ac i ntds\" and ProcessCommandLine contains \"create full\") or (ProcessCommandLine contains \"/c copy \" and ProcessCommandLine contains \"\\\\windows\\\\ntds\\\\ntds.dit\") or (ProcessCommandLine contains \"activate instance ntds\" and ProcessCommandLine contains \"create full\") or (ProcessCommandLine contains \"powershell\" and ProcessCommandLine contains \"ntds.dit\") or ((FolderPath endswith \"\\\\NTDSDump.exe\" or FolderPath endswith \"\\\\NTDSDumpEx.exe\") or (ProcessCommandLine contains \"ntds.dit\" and ProcessCommandLine contains \"system.hiv\") or ProcessCommandLine contains \"NTDSgrab.ps1\")) or (((InitiatingProcessFolderPath contains \"\\\\apache\" or InitiatingProcessFolderPath contains \"\\\\tomcat\" or InitiatingProcessFolderPath contains \"\\\\AppData\\\\\" or InitiatingProcessFolderPath contains \"\\\\Temp\\\\\" or InitiatingProcessFolderPath contains \"\\\\Public\\\\\" or InitiatingProcessFolderPath contains \"\\\\PerfLogs\\\\\") or (FolderPath contains \"\\\\apache\" or FolderPath contains \"\\\\tomcat\" or FolderPath contains \"\\\\AppData\\\\\" or FolderPath contains \"\\\\Temp\\\\\" or FolderPath contains \"\\\\Public\\\\\" or FolderPath contains \"\\\\PerfLogs\\\\\")) and ProcessCommandLine contains \"ntds.dit\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1003"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

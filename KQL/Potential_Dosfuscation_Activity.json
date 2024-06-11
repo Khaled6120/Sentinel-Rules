@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/a77c1610-fc73-4019-8e29-0f51efc04a51')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/a77c1610-fc73-4019-8e29-0f51efc04a51')]",
+      "properties": {
+        "alertRuleTemplateName": "a77c1610-fc73-4019-8e29-0f51efc04a51",
+        "author": "frack113, Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/02/15",
+        "description": "Detects possible payload obfuscation via the commandline",
+        "displayName": "Potential Dosfuscation Activity",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/03/06",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"^^\" or ProcessCommandLine contains \"^|^\" or ProcessCommandLine contains \",;,\" or ProcessCommandLine contains \";;;;\" or ProcessCommandLine contains \";; ;;\" or ProcessCommandLine contains \"(,(,\" or ProcessCommandLine contains \"%COMSPEC:~\" or ProcessCommandLine contains \" c^m^d\" or ProcessCommandLine contains \"^c^m^d\" or ProcessCommandLine contains \" c^md\" or ProcessCommandLine contains \" cm^d\" or ProcessCommandLine contains \"^cm^d\" or ProcessCommandLine contains \" s^et \" or ProcessCommandLine contains \" s^e^t \" or ProcessCommandLine contains \" se^t \"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

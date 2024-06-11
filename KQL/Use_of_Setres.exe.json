@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/835e75bf-4bfd-47a4-b8a6-b766cac8bcb7')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/835e75bf-4bfd-47a4-b8a6-b766cac8bcb7')]",
+      "properties": {
+        "alertRuleTemplateName": "835e75bf-4bfd-47a4-b8a6-b766cac8bcb7",
+        "author": "@gott_cyber",
+        "customDetails": null,
+        "date": "2022/12/11",
+        "description": "Detects the use of Setres.exe to set the screen resolution and then potentially launch a file named \"choice\" (with any executable extension such as \".cmd\" or \".exe\") from the current execution path",
+        "displayName": "Use of Setres.exe",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\choice\" and InitiatingProcessFolderPath endswith \"\\\\setres.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1202",
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

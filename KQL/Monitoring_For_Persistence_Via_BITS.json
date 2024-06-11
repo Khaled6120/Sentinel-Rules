@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/b9cbbc17-d00d-4e3d-a827-b06d03d2380d')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/b9cbbc17-d00d-4e3d-a827-b06d03d2380d')]",
+      "properties": {
+        "alertRuleTemplateName": "b9cbbc17-d00d-4e3d-a827-b06d03d2380d",
+        "author": "Sreeman",
+        "customDetails": null,
+        "date": "2020/10/29",
+        "description": "BITS will allow you to schedule a command to execute after a successful download to notify you that the job is finished.\nWhen the job runs on the system the command specified in the BITS job will be executed.\nThis can be abused by actors to create a backdoor within the system and for persistence.\nIt will be chained in a BITS job to schedule the download of malware/additional binaries and execute the program after being downloaded.\n",
+        "displayName": "Monitoring For Persistence Via BITS",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2024/01/25",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\bitsadmin.exe\" or ProcessVersionInfoOriginalFileName =~ \"bitsadmin.exe\") and ((ProcessCommandLine contains \"/SetNotifyCmdLine\" and (ProcessCommandLine contains \"%COMSPEC%\" or ProcessCommandLine contains \"cmd.exe\" or ProcessCommandLine contains \"regsvr32.exe\")) or (ProcessCommandLine contains \"/Addfile\" and (ProcessCommandLine contains \"http:\" or ProcessCommandLine contains \"https:\" or ProcessCommandLine contains \"ftp:\" or ProcessCommandLine contains \"ftps:\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1197"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

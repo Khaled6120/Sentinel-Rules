@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/1dd05363-104e-4b4a-b963-196a534b03a1')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/1dd05363-104e-4b4a-b963-196a534b03a1')]",
+      "properties": {
+        "alertRuleTemplateName": "1dd05363-104e-4b4a-b963-196a534b03a1",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/07/12",
+        "description": "Detects execution of the \"mofcomp\" utility as a child of a suspicious shell or script running utility or by having a suspicious path in the commandline.\nThe \"mofcomp\" utility parses a file containing MOF statements and adds the classes and class instances defined in the file to the WMI repository.\nAttackers abuse this utility to install malicious MOF scripts\n",
+        "displayName": "Potential Suspicious Mofcomp Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/04/11",
+        "query": "DeviceProcessEvents\n| where (((InitiatingProcessFolderPath endswith \"\\\\cmd.exe\" or InitiatingProcessFolderPath endswith \"\\\\powershell.exe\" or InitiatingProcessFolderPath endswith \"\\\\pwsh.exe\" or InitiatingProcessFolderPath endswith \"\\\\wsl.exe\" or InitiatingProcessFolderPath endswith \"\\\\wscript.exe\" or InitiatingProcessFolderPath endswith \"\\\\cscript.exe\") or (ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Temp\" or ProcessCommandLine contains \"\\\\Users\\\\Public\\\\\" or ProcessCommandLine contains \"\\\\WINDOWS\\\\Temp\\\\\" or ProcessCommandLine contains \"%temp%\" or ProcessCommandLine contains \"%tmp%\" or ProcessCommandLine contains \"%appdata%\")) and (FolderPath endswith \"\\\\mofcomp.exe\" or ProcessVersionInfoOriginalFileName =~ \"mofcomp.exe\")) and (not((ProcessCommandLine contains \"C:\\\\Windows\\\\TEMP\\\\\" and ProcessCommandLine endswith \".mof\" and InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\System32\\\\wbem\\\\WmiPrvSE.exe\"))) and (not((ProcessCommandLine contains \"C:\\\\Windows\\\\TEMP\\\\\" and ProcessCommandLine endswith \".mof\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/1e0e1a81-e79b-44bc-935b-ddb9c8006b3d')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/1e0e1a81-e79b-44bc-935b-ddb9c8006b3d')]",
+      "properties": {
+        "alertRuleTemplateName": "1e0e1a81-e79b-44bc-935b-ddb9c8006b3d",
+        "author": "Nasreddine Bencherchali (Nextron Systems), oscd.community, Natalia Shornikova, frack113",
+        "customDetails": null,
+        "date": "2022/05/21",
+        "description": "Detects the use of the Microsoft signed script \"CL_mutexverifiers\" to proxy the execution of additional PowerShell script commands",
+        "displayName": "Potential Script Proxy Execution Via CL_Mutexverifiers.ps1",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/08/17",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -nologo -windowstyle minimized -file \" and FolderPath endswith \"\\\\powershell.exe\" and (InitiatingProcessFolderPath endswith \"\\\\powershell.exe\" or InitiatingProcessFolderPath endswith \"\\\\pwsh.exe\")) and (ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Temp\\\\\" or ProcessCommandLine contains \"\\\\Windows\\\\Temp\\\\\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1216"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

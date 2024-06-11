@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/6e30c82f-a9f8-4aab-b79c-7c12bce6f248')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/6e30c82f-a9f8-4aab-b79c-7c12bce6f248')]",
+      "properties": {
+        "alertRuleTemplateName": "6e30c82f-a9f8-4aab-b79c-7c12bce6f248",
+        "author": "Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/06/28",
+        "description": "Detects usage of bitsadmin downloading a file to uncommon target folder",
+        "displayName": "File Download Via Bitsadmin To An Uncommon Target Folder",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/15",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" /transfer \" or ProcessCommandLine contains \" /create \" or ProcessCommandLine contains \" /addfile \") and (ProcessCommandLine contains \"%AppData%\" or ProcessCommandLine contains \"%temp%\" or ProcessCommandLine contains \"%tmp%\" or ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\\" or ProcessCommandLine contains \"C:\\\\Windows\\\\Temp\\\\\") and (FolderPath endswith \"\\\\bitsadmin.exe\" or ProcessVersionInfoOriginalFileName =~ \"bitsadmin.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1036",
+          "t1197"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}
