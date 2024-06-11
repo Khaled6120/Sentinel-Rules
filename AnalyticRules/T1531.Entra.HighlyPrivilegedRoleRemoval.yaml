@@ -10,6 +10,18 @@ modified: 2022/11/11
 logsource:
   category: process_creation
   product: windows
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
 tactics:
 - privilege_escalation
 relevantTechniques:
