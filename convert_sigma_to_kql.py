@@ -95,6 +95,7 @@ for yml in file_list_a:
                 'triggerThreshold': 0,
                 'suppressionDuration': 'PT5H',
                 'suppressionEnabled': False,
+                'triggerOperator': 'GreaterThan',
                 'kind': 'NRT'
             }
 
