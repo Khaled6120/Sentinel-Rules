@@ -1,4 +1,4 @@
-# Sigma2KQL-v2
+# Sentinel-Analytic-Rules
 Updated Sigma2KQL script written by CodeByHarri
 
 ### - Clone this repo
@@ -10,4 +10,8 @@ Updated Sigma2KQL script written by CodeByHarri
 ### - Create a folder named "KQL"
 
 ### - Output format
-![image](https://github.com/Khaled6120/Sigma2KQL-v2/assets/86200305/dc59422d-4a3c-42ab-8a80-cf4e942520d7)
+<img width="406" alt="image" src="https://github.com/Khaled6120/Sentinel-Analytic-Rules/assets/86200305/f1c6f3ac-1b3a-4553-93c7-a6b539d5e192">
+
+### - Workflow
+The workflow is responsible for converting the generated YAML files into ARM files ready for sentinel deployment.
+<img width="539" alt="image" src="https://github.com/Khaled6120/Sentinel-Analytic-Rules/assets/86200305/4dd97029-e3b3-46fb-9b65-e1a3a669d761">
