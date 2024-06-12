@@ -25,7 +25,7 @@ jobs:
           }
           Get-ChildItem -Path 'test' -Filter '*.yaml' | ForEach-Object {
               Write-Output "Processing file: $($_.Name)"
-              $jsonFilePath = "AnalyticsRules/$($_.Name.Replace('.yaml', '.json'))"
+              $jsonFilePath = "test/$($_.Name.Replace('.yaml', '.json'))"
               if (-not (Test-Path $jsonFilePath) -or (Get-Item $jsonFilePath).LastWriteTime -lt $_.LastWriteTime) {
                   Write-Host "Converting $($_.FullName) to $jsonFilePath"
                   Convert-SentinelARYamlToArm -Filename $_.FullName -OutFile $jsonFilePath
