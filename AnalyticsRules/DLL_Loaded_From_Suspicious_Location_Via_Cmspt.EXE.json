@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/75e508f7-932d-4ebc-af77-269237a84ce1')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/75e508f7-932d-4ebc-af77-269237a84ce1')]",
+      "properties": {
+        "alertRuleTemplateName": "75e508f7-932d-4ebc-af77-269237a84ce1",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/08/30",
+        "description": "Detects cmstp loading \"dll\" or \"ocx\" files from suspicious locations",
+        "displayName": "DLL Loaded From Suspicious Location Via Cmspt.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "2023/02/17",
+        "query": "DeviceImageLoadEvents\n| where (FolderPath contains \"\\\\PerfLogs\\\\\" or FolderPath contains \"\\\\ProgramData\\\\\" or FolderPath contains \"\\\\Users\\\\\" or FolderPath contains \"\\\\Windows\\\\Temp\\\\\" or FolderPath contains \"C:\\\\Temp\\\\\") and (FolderPath endswith \".dll\" or FolderPath endswith \".ocx\") and InitiatingProcessFolderPath endswith \"\\\\cmstp.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

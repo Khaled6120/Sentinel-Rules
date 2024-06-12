@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/6360757a-d460-456c-8b13-74cf0e60cceb')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/6360757a-d460-456c-8b13-74cf0e60cceb')]",
+      "properties": {
+        "alertRuleTemplateName": "6360757a-d460-456c-8b13-74cf0e60cceb",
+        "author": "Nasreddine Bencherchali (Nextron Systems), Subhash Popuri (@pbssubhash)",
+        "customDetails": null,
+        "date": "2022/12/16",
+        "description": "Detects potential DLL sideloading using comctl32.dll to obtain system privileges",
+        "displayName": "Potential DLL Sideloading Via comctl32.dll",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "2022/12/19",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\comctl32.dll\" and (FolderPath startswith \"C:\\\\Windows\\\\System32\\\\logonUI.exe.local\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\System32\\\\werFault.exe.local\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\System32\\\\consent.exe.local\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\System32\\\\narrator.exe.local\\\\\" or FolderPath startswith \"C:\\\\windows\\\\system32\\\\wermgr.exe.local\\\\\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1574"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

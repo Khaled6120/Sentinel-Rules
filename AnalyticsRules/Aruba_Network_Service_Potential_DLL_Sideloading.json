@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/90ae0469-0cee-4509-b67f-e5efcef040f7')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/90ae0469-0cee-4509-b67f-e5efcef040f7')]",
+      "properties": {
+        "alertRuleTemplateName": "90ae0469-0cee-4509-b67f-e5efcef040f7",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/01/22",
+        "description": "Detects potential DLL sideloading activity via the Aruba Networks Virtual Intranet Access \"arubanetsvc.exe\" process using DLL Search Order Hijacking",
+        "displayName": "Aruba Network Service Potential DLL Sideloading",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "2023/03/15",
+        "query": "DeviceImageLoadEvents\n| where ((FolderPath endswith \"\\\\wtsapi32.dll\" or FolderPath endswith \"\\\\msvcr100.dll\" or FolderPath endswith \"\\\\msvcp100.dll\" or FolderPath endswith \"\\\\dbghelp.dll\" or FolderPath endswith \"\\\\dbgcore.dll\" or FolderPath endswith \"\\\\wininet.dll\" or FolderPath endswith \"\\\\iphlpapi.dll\" or FolderPath endswith \"\\\\version.dll\" or FolderPath endswith \"\\\\cryptsp.dll\" or FolderPath endswith \"\\\\cryptbase.dll\" or FolderPath endswith \"\\\\wldp.dll\" or FolderPath endswith \"\\\\profapi.dll\" or FolderPath endswith \"\\\\sspicli.dll\" or FolderPath endswith \"\\\\winsta.dll\" or FolderPath endswith \"\\\\dpapi.dll\") and InitiatingProcessFolderPath endswith \"\\\\arubanetsvc.exe\") and (not((FolderPath startswith \"C:\\\\Windows\\\\System32\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\SysWOW64\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\WinSxS\\\\\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1574"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

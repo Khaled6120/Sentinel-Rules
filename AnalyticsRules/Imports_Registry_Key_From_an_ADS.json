@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/0b80ade5-6997-4b1d-99a1-71701778ea61')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/0b80ade5-6997-4b1d-99a1-71701778ea61')]",
+      "properties": {
+        "alertRuleTemplateName": "0b80ade5-6997-4b1d-99a1-71701778ea61",
+        "author": "Oddvar Moe, Sander Wiebing, oscd.community",
+        "customDetails": null,
+        "date": "2020/10/12",
+        "description": "Detects the import of a alternate datastream to the registry with regedit.exe.",
+        "displayName": "Imports Registry Key From an ADS",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2024/03/13",
+        "query": "DeviceProcessEvents\n| where (((ProcessCommandLine contains \" /i \" or ProcessCommandLine contains \".reg\") and ProcessCommandLine matches regex \":[^ \\\\\\\\]\") and (FolderPath endswith \"\\\\regedit.exe\" or ProcessVersionInfoOriginalFileName =~ \"REGEDIT.EXE\")) and (not((ProcessCommandLine contains \" -e \" or ProcessCommandLine contains \" /e \" or ProcessCommandLine contains \" -a \" or ProcessCommandLine contains \" /a \" or ProcessCommandLine contains \" -c \" or ProcessCommandLine contains \" /c \")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1112"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/5edc2273-c26f-406c-83f3-f4d948e740dd')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/5edc2273-c26f-406c-83f3-f4d948e740dd')]",
+      "properties": {
+        "alertRuleTemplateName": "5edc2273-c26f-406c-83f3-f4d948e740dd",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2021/11/24",
+        "description": "Detects execution of Microsoft bash launcher with the \"-c\" flag.\nThis can be used to potentially bypass defenses and execute Linux or Windows-based binaries directly via bash.\n",
+        "displayName": "Indirect Inline Command Execution Via Bash.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/08/15",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \" -c \" and ((FolderPath endswith \":\\\\Windows\\\\System32\\\\bash.exe\" or FolderPath endswith \":\\\\Windows\\\\SysWOW64\\\\bash.exe\") or ProcessVersionInfoOriginalFileName =~ \"Bash.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1202"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

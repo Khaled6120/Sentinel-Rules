@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/50d66fb0-03f8-4da0-8add-84e77d12a020')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/50d66fb0-03f8-4da0-8add-84e77d12a020')]",
+      "properties": {
+        "alertRuleTemplateName": "50d66fb0-03f8-4da0-8add-84e77d12a020",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/11/11",
+        "description": "Detects suspicious command line flags that let the user set a target user and command as e.g. seen in PsExec-like tools",
+        "displayName": "Suspicious RunAs-Like Flag Combination",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -c cmd\" or ProcessCommandLine contains \" -c \\\"cmd\" or ProcessCommandLine contains \" -c powershell\" or ProcessCommandLine contains \" -c \\\"powershell\" or ProcessCommandLine contains \" --command cmd\" or ProcessCommandLine contains \" --command powershell\" or ProcessCommandLine contains \" -c whoami\" or ProcessCommandLine contains \" -c wscript\" or ProcessCommandLine contains \" -c cscript\") and (ProcessCommandLine contains \" -u system \" or ProcessCommandLine contains \" --user system \" or ProcessCommandLine contains \" -u NT\" or ProcessCommandLine contains \" -u \\\"NT\" or ProcessCommandLine contains \" -u 'NT\" or ProcessCommandLine contains \" --system \" or ProcessCommandLine contains \" -u administrator \")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

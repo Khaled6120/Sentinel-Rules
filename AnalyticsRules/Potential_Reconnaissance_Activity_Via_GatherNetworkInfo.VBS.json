@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/575dce0c-8139-4e30-9295-1ee75969f7fe')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/575dce0c-8139-4e30-9295-1ee75969f7fe')]",
+      "properties": {
+        "alertRuleTemplateName": "575dce0c-8139-4e30-9295-1ee75969f7fe",
+        "author": "blueteamer8699",
+        "customDetails": null,
+        "date": "2022/01/03",
+        "description": "Detects execution of the built-in script located in \"C:\\Windows\\System32\\gatherNetworkInfo.vbs\". Which can be used to gather information about the target machine",
+        "displayName": "Potential Reconnaissance Activity Via GatherNetworkInfo.VBS",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/08",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"gatherNetworkInfo.vbs\" and ((FolderPath endswith \"\\\\cscript.exe\" or FolderPath endswith \"\\\\wscript.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"cscript.exe\", \"wscript.exe\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "discovery",
+          "execution"
+        ],
+        "techniques": [
+          "t1059",
+          "t1615"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/0f6da907-5854-4be6-859a-e9958747b0aa')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/0f6da907-5854-4be6-859a-e9958747b0aa')]",
+      "properties": {
+        "alertRuleTemplateName": "0f6da907-5854-4be6-859a-e9958747b0aa",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/01/06",
+        "description": "Detects suspicious LOLBIN AccCheckConsole execution with parameters as used to load an arbitrary DLL",
+        "displayName": "Suspicious LOLBIN AccCheckConsole",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -window \" and ProcessCommandLine contains \".dll\") and (FolderPath endswith \"\\\\AccCheckConsole.exe\" or ProcessVersionInfoOriginalFileName =~ \"AccCheckConsole.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

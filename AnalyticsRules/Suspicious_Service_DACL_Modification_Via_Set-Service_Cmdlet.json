@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/a95b9b42-1308-4735-a1af-abb1c5e6f5ac')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/a95b9b42-1308-4735-a1af-abb1c5e6f5ac')]",
+      "properties": {
+        "alertRuleTemplateName": "a95b9b42-1308-4735-a1af-abb1c5e6f5ac",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/10/18",
+        "description": "Detects suspicious DACL modifications via the \"Set-Service\" cmdlet using the \"SecurityDescriptorSddl\" flag (Only available with PowerShell 7) that can be used to hide services or make them unstopable",
+        "displayName": "Suspicious Service DACL Modification Via Set-Service Cmdlet",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\pwsh.exe\" or ProcessVersionInfoOriginalFileName =~ \"pwsh.dll\") and (ProcessCommandLine contains \"-SecurityDescriptorSddl \" or ProcessCommandLine contains \"-sd \") and ((ProcessCommandLine contains \";;;IU\" or ProcessCommandLine contains \";;;SU\" or ProcessCommandLine contains \";;;BA\" or ProcessCommandLine contains \";;;SY\" or ProcessCommandLine contains \";;;WD\") and (ProcessCommandLine contains \"Set-Service \" and ProcessCommandLine contains \"D;;\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1543"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

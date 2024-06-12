@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/b3512211-c67e-4707-bedc-66efc7848863')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/b3512211-c67e-4707-bedc-66efc7848863')]",
+      "properties": {
+        "alertRuleTemplateName": "b3512211-c67e-4707-bedc-66efc7848863",
+        "author": "Harish Segar (rule)",
+        "customDetails": null,
+        "date": "2020/03/20",
+        "description": "Detects PowerShell downgrade attack by comparing the host versions with the actually used engine version 2.0",
+        "displayName": "Potential PowerShell Downgrade Attack",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/01/04",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -version 2 \" or ProcessCommandLine contains \" -versio 2 \" or ProcessCommandLine contains \" -versi 2 \" or ProcessCommandLine contains \" -vers 2 \" or ProcessCommandLine contains \" -ver 2 \" or ProcessCommandLine contains \" -ve 2 \" or ProcessCommandLine contains \" -v 2 \") and FolderPath endswith \"\\\\powershell.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

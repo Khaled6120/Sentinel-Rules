@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/349d891d-fef0-4fe4-bc53-eee623a15969')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/349d891d-fef0-4fe4-bc53-eee623a15969')]",
+      "properties": {
+        "alertRuleTemplateName": "349d891d-fef0-4fe4-bc53-eee623a15969",
+        "author": "frack113, Nasreddine Bencherchali",
+        "customDetails": null,
+        "date": "2022/08/07",
+        "description": "Detect use of the Windows 8.3 short name. Which could be used as a method to avoid command-line detection",
+        "displayName": "Use Short Name Path in Command Line",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/10/26",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"~1\\\\\" or ProcessCommandLine contains \"~2\\\\\") and (not(((InitiatingProcessFolderPath in~ (\"C:\\\\Windows\\\\System32\\\\Dism.exe\", \"C:\\\\Windows\\\\System32\\\\cleanmgr.exe\", \"C:\\\\Program Files\\\\GPSoftware\\\\Directory Opus\\\\dopus.exe\")) or (InitiatingProcessFolderPath endswith \"\\\\WebEx\\\\WebexHost.exe\" or InitiatingProcessFolderPath endswith \"\\\\thor\\\\thor64.exe\" or InitiatingProcessFolderPath endswith \"\\\\veam.backup.shell.exe\" or InitiatingProcessFolderPath endswith \"\\\\winget.exe\" or InitiatingProcessFolderPath endswith \"\\\\Everything\\\\Everything.exe\") or InitiatingProcessFolderPath contains \"\\\\AppData\\\\Local\\\\Temp\\\\WinGet\\\\\" or (ProcessCommandLine contains \"\\\\appdata\\\\local\\\\webex\\\\webex64\\\\meetings\\\\wbxreport.exe\" or ProcessCommandLine contains \"C:\\\\Program Files\\\\Git\\\\post-install.bat\" or ProcessCommandLine contains \"C:\\\\Program Files\\\\Git\\\\cmd\\\\scalar.exe\"))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1564"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

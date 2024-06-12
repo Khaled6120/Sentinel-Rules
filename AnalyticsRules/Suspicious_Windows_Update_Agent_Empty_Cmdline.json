@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/52d097e2-063e-4c9c-8fbb-855c8948d135')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/52d097e2-063e-4c9c-8fbb-855c8948d135')]",
+      "properties": {
+        "alertRuleTemplateName": "52d097e2-063e-4c9c-8fbb-855c8948d135",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/02/26",
+        "description": "Detects suspicious Windows Update Agent activity in which a wuauclt.exe process command line doesn't contain any command line flags\n",
+        "displayName": "Suspicious Windows Update Agent Empty Cmdline",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/11/11",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine endswith \"Wuauclt\" or ProcessCommandLine endswith \"Wuauclt.exe\") and (FolderPath endswith \"\\\\Wuauclt.exe\" or ProcessVersionInfoOriginalFileName =~ \"Wuauclt.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1036"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

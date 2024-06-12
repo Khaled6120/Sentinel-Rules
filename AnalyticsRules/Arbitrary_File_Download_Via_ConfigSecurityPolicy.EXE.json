@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/1f0f6176-6482-4027-b151-00071af39d7e')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/1f0f6176-6482-4027-b151-00071af39d7e')]",
+      "properties": {
+        "alertRuleTemplateName": "1f0f6176-6482-4027-b151-00071af39d7e",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2021/11/26",
+        "description": "Detects the execution of \"ConfigSecurityPolicy.EXE\", a binary part of Windows Defender used to manage settings in Windows Defender.\nUsers can configure different pilot collections for each of the co-management workloads.\nIt can be abused by attackers in order to upload or download files.\n",
+        "displayName": "Arbitrary File Download Via ConfigSecurityPolicy.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/05/16",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"ConfigSecurityPolicy.exe\" or FolderPath endswith \"\\\\ConfigSecurityPolicy.exe\" or ProcessVersionInfoOriginalFileName =~ \"ConfigSecurityPolicy.exe\") and (ProcessCommandLine contains \"ftp://\" or ProcessCommandLine contains \"http://\" or ProcessCommandLine contains \"https://\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "exfiltration"
+        ],
+        "techniques": [
+          "t1567"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

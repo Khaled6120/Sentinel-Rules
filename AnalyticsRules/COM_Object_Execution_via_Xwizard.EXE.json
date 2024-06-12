@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/53d4bb30-3f36-4e8a-b078-69d36c4a79ff')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/53d4bb30-3f36-4e8a-b078-69d36c4a79ff')]",
+      "properties": {
+        "alertRuleTemplateName": "53d4bb30-3f36-4e8a-b078-69d36c4a79ff",
+        "author": "Ensar Åžamil, @sblmsrsn, @oscd_initiative, Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2020/10/07",
+        "description": "Detects the execution of Xwizard tool with the \"RunWizard\" flag and a GUID like argument.\nThis utility can be abused in order to run custom COM object created in the registry.\n",
+        "displayName": "COM Object Execution via Xwizard.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2024/04/22",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine =~ \"RunWizard\" and ProcessCommandLine matches regex \"\\\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\\\}\") and (FolderPath endswith \"\\\\xwizard.exe\" or ProcessVersionInfoOriginalFileName =~ \"xwizard.exe\")) or ((ProcessCommandLine =~ \"RunWizard\" and ProcessCommandLine matches regex \"\\\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\\\}\") and (not((FolderPath endswith \"\\\\xwizard.exe\" or ProcessVersionInfoOriginalFileName =~ \"xwizard.exe\"))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

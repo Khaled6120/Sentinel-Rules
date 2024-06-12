@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/ad1f4bb9-8dfb-4765-adb6-2a7cfb6c0f94')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/ad1f4bb9-8dfb-4765-adb6-2a7cfb6c0f94')]",
+      "properties": {
+        "alertRuleTemplateName": "ad1f4bb9-8dfb-4765-adb6-2a7cfb6c0f94",
+        "author": "Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)",
+        "customDetails": null,
+        "date": "2020/06/24",
+        "description": "Detects signs of potential use of the WSMAN provider from uncommon processes locally and remote execution.",
+        "displayName": "Suspicious WSMAN Provider Image Loads",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "2022/10/07",
+        "query": "DeviceImageLoadEvents\n| where (((FolderPath endswith \"\\\\WsmSvc.dll\" or FolderPath endswith \"\\\\WsmAuto.dll\" or FolderPath endswith \"\\\\Microsoft.WSMan.Management.ni.dll\") or (InitiatingProcessVersionInfoOriginalFileName in~ (\"WsmSvc.dll\", \"WSMANAUTOMATION.DLL\", \"Microsoft.WSMan.Management.dll\"))) or (InitiatingProcessFolderPath endswith \"\\\\svchost.exe\" and InitiatingProcessVersionInfoOriginalFileName =~ \"WsmWmiPl.dll\")) and (not((InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\Citrix\\\\\" or (InitiatingProcessFolderPath endswith \"\\\\powershell.exe\" or InitiatingProcessFolderPath endswith \"C:\\\\Windows\\\\System32\\\\sdiagnhost.exe\" or InitiatingProcessFolderPath endswith \"C:\\\\Windows\\\\System32\\\\services.exe\") or (InitiatingProcessFolderPath endswith \"\\\\mscorsvw.exe\" and (InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\Microsoft.NET\\\\Framework64\\\\v\" or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\Microsoft.NET\\\\Framework\\\\v\")) or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\Temp\\\\asgard2-agent\\\\\" or InitiatingProcessFolderPath endswith \"\\\\powershell_ise.exe\" or (InitiatingProcessCommandLine contains \"svchost.exe -k netsvcs -p -s BITS\" or InitiatingProcessCommandLine contains \"svchost.exe -k GraphicsPerfSvcGroup -s GraphicsPerfSvc\" or InitiatingProcessCommandLine contains \"svchost.exe -k NetworkService -p -s Wecsvc\" or InitiatingProcessCommandLine contains \"svchost.exe -k netsvcs\") or (InitiatingProcessFolderPath in~ (\"C:\\\\Windows\\\\System32\\\\Configure-SMRemoting.exe\", \"C:\\\\Windows\\\\System32\\\\ServerManager.exe\")) or InitiatingProcessFolderPath startswith \"C:\\\\$WINDOWS.~BT\\\\Sources\\\\\"))) and (not((InitiatingProcessFolderPath endswith \"\\\\svchost.exe\" and isnull(InitiatingProcessCommandLine))))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1021",
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

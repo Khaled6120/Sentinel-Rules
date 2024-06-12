@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/d3b70aad-097e-409c-9df2-450f80dc476b')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/d3b70aad-097e-409c-9df2-450f80dc476b')]",
+      "properties": {
+        "alertRuleTemplateName": "d3b70aad-097e-409c-9df2-450f80dc476b",
+        "author": "Furkan Caliskan (@caliskanfurkan_)",
+        "customDetails": null,
+        "date": "2020/07/04",
+        "description": "Detects the use of Ditsnap tool, an inspection tool for Active Directory database, ntds.dit.",
+        "displayName": "PUA - DIT Snapshot Viewer",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/21",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\ditsnap.exe\" or ProcessCommandLine contains \"ditsnap.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1003"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

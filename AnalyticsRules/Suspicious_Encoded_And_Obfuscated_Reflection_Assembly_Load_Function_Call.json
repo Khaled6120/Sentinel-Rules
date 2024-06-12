@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/9c0295ce-d60d-40bd-bd74-84673b7592b1')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/9c0295ce-d60d-40bd-bd74-84673b7592b1')]",
+      "properties": {
+        "alertRuleTemplateName": "9c0295ce-d60d-40bd-bd74-84673b7592b1",
+        "author": "pH-T (Nextron Systems)",
+        "customDetails": null,
+        "date": "2022/03/01",
+        "description": "Detects suspicious base64 encoded and obfuscated \"LOAD\" keyword used in .NET \"reflection.assembly\"",
+        "displayName": "Suspicious Encoded And Obfuscated Reflection Assembly Load Function Call",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/04/06",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"OgA6ACgAIgBMACIAKwAiAG8AYQBkACIAKQ\" or ProcessCommandLine contains \"oAOgAoACIATAAiACsAIgBvAGEAZAAiACkA\" or ProcessCommandLine contains \"6ADoAKAAiAEwAIgArACIAbwBhAGQAIgApA\" or ProcessCommandLine contains \"OgA6ACgAIgBMAG8AIgArACIAYQBkACIAKQ\" or ProcessCommandLine contains \"oAOgAoACIATABvACIAKwAiAGEAZAAiACkA\" or ProcessCommandLine contains \"6ADoAKAAiAEwAbwAiACsAIgBhAGQAIgApA\" or ProcessCommandLine contains \"OgA6ACgAIgBMAG8AYQAiACsAIgBkACIAKQ\" or ProcessCommandLine contains \"oAOgAoACIATABvAGEAIgArACIAZAAiACkA\" or ProcessCommandLine contains \"6ADoAKAAiAEwAbwBhACIAKwAiAGQAIgApA\" or ProcessCommandLine contains \"OgA6ACgAJwBMACcAKwAnAG8AYQBkACcAKQ\" or ProcessCommandLine contains \"oAOgAoACcATAAnACsAJwBvAGEAZAAnACkA\" or ProcessCommandLine contains \"6ADoAKAAnAEwAJwArACcAbwBhAGQAJwApA\" or ProcessCommandLine contains \"OgA6ACgAJwBMAG8AJwArACcAYQBkACcAKQ\" or ProcessCommandLine contains \"oAOgAoACcATABvACcAKwAnAGEAZAAnACkA\" or ProcessCommandLine contains \"6ADoAKAAnAEwAbwAnACsAJwBhAGQAJwApA\" or ProcessCommandLine contains \"OgA6ACgAJwBMAG8AYQAnACsAJwBkACcAKQ\" or ProcessCommandLine contains \"oAOgAoACcATABvAGEAJwArACcAZAAnACkA\" or ProcessCommandLine contains \"6ADoAKAAnAEwAbwBhACcAKwAnAGQAJwApA\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1027",
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

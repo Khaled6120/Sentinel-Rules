@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/dee4af55-1f22-4e1d-a9d2-4bdc7ecb472a')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/dee4af55-1f22-4e1d-a9d2-4bdc7ecb472a')]",
+      "properties": {
+        "alertRuleTemplateName": "dee4af55-1f22-4e1d-a9d2-4bdc7ecb472a",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2021/01/28",
+        "description": "Detects commands that temporarily turn off Volume Snapshots",
+        "displayName": "Disabled Volume Snapshots",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/12/15",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"\\\\Services\\\\VSS\\\\Diag\" and ProcessCommandLine contains \"/d Disabled\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1562"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

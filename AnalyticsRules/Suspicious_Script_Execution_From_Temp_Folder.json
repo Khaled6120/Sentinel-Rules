@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/a6a39bdb-935c-4f0a-ab77-35f4bbf44d33')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/a6a39bdb-935c-4f0a-ab77-35f4bbf44d33')]",
+      "properties": {
+        "alertRuleTemplateName": "a6a39bdb-935c-4f0a-ab77-35f4bbf44d33",
+        "author": "Florian Roth (Nextron Systems), Max Altgelt (Nextron Systems), Tim Shelton",
+        "customDetails": null,
+        "date": "2021/07/14",
+        "description": "Detects a suspicious script executions from temporary folder",
+        "displayName": "Suspicious Script Execution From Temp Folder",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/10/05",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"\\\\Windows\\\\Temp\" or ProcessCommandLine contains \"\\\\Temporary Internet\" or ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Temp\" or ProcessCommandLine contains \"\\\\AppData\\\\Roaming\\\\Temp\" or ProcessCommandLine contains \"%TEMP%\" or ProcessCommandLine contains \"%TMP%\" or ProcessCommandLine contains \"%LocalAppData%\\\\Temp\") and (FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\mshta.exe\" or FolderPath endswith \"\\\\wscript.exe\" or FolderPath endswith \"\\\\cscript.exe\")) and (not((ProcessCommandLine contains \" >\" or ProcessCommandLine contains \"Out-File\" or ProcessCommandLine contains \"ConvertTo-Json\" or ProcessCommandLine contains \"-WindowStyle hidden -Verb runAs\" or ProcessCommandLine contains \"\\\\Windows\\\\system32\\\\config\\\\systemprofile\\\\AppData\\\\Local\\\\Temp\\\\Amazon\\\\EC2-Windows\\\\\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

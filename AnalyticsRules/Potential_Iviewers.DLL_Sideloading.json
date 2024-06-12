@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/4c21b805-4dd7-469f-b47d-7383a8fcb437')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/4c21b805-4dd7-469f-b47d-7383a8fcb437')]",
+      "properties": {
+        "alertRuleTemplateName": "4c21b805-4dd7-469f-b47d-7383a8fcb437",
+        "author": "X__Junior (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/03/21",
+        "description": "Detects potential DLL sideloading of \"iviewers.dll\" (OLE/COM Object Interface Viewer)",
+        "displayName": "Potential Iviewers.DLL Sideloading",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "image_load",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\iviewers.dll\" and (not((FolderPath startswith \"C:\\\\Program Files (x86)\\\\Windows Kits\\\\\" or FolderPath startswith \"C:\\\\Program Files\\\\Windows Kits\\\\\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1574"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

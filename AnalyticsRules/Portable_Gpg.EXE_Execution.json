@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/77df53a5-1d78-4f32-bc5a-0e7465bd8f41')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/77df53a5-1d78-4f32-bc5a-0e7465bd8f41')]",
+      "properties": {
+        "alertRuleTemplateName": "77df53a5-1d78-4f32-bc5a-0e7465bd8f41",
+        "author": "frack113, Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/08/06",
+        "description": "Detects the execution of \"gpg.exe\" from uncommon location. Often used by ransomware and loaders to decrypt/encrypt data.",
+        "displayName": "Portable Gpg.EXE Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/11/10",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\gpg.exe\" or FolderPath endswith \"\\\\gpg2.exe\") or ProcessVersionInfoOriginalFileName =~ \"gpg.exe\" or ProcessVersionInfoFileDescription =~ \"GnuPGâ€™s OpenPGP tool\") and (not((FolderPath contains \":\\\\Program Files (x86)\\\\GNU\\\\GnuPG\\\\bin\\\\\" or FolderPath contains \":\\\\Program Files (x86)\\\\GnuPG VS-Desktop\\\\\" or FolderPath contains \":\\\\Program Files (x86)\\\\GnuPG\\\\bin\\\\\" or FolderPath contains \":\\\\Program Files (x86)\\\\Gpg4win\\\\bin\\\\\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "impact"
+        ],
+        "techniques": [
+          "t1486"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

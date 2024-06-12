@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/f44800ac-38ec-471f-936e-3fa7d9c53100')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/f44800ac-38ec-471f-936e-3fa7d9c53100')]",
+      "properties": {
+        "alertRuleTemplateName": "f44800ac-38ec-471f-936e-3fa7d9c53100",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2021/12/18",
+        "description": "Detects the use of CleanWipe a tool usually used to delete Symantec antivirus.",
+        "displayName": "PUA - CleanWipe Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/14",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\SepRemovalToolNative_x64.exe\" or (ProcessCommandLine contains \"--uninstall\" and FolderPath endswith \"\\\\CATClean.exe\") or (ProcessCommandLine contains \"-r\" and FolderPath endswith \"\\\\NetInstaller.exe\") or ((ProcessCommandLine contains \"/uninstall\" and ProcessCommandLine contains \"/enterprise\") and FolderPath endswith \"\\\\WFPUnins.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1562"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

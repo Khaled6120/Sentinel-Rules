@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/13e6fe51-d478-4c7e-b0f2-6da9b400a829')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/13e6fe51-d478-4c7e-b0f2-6da9b400a829')]",
+      "properties": {
+        "alertRuleTemplateName": "13e6fe51-d478-4c7e-b0f2-6da9b400a829",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/02/15",
+        "description": "Detects the execution of certutil with certain flags that allow the utility to download files from direct IPs.",
+        "displayName": "Suspicious File Downloaded From Direct IP Via Certutil.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"urlcache \" or ProcessCommandLine contains \"verifyctl \") and (ProcessCommandLine contains \"://1\" or ProcessCommandLine contains \"://2\" or ProcessCommandLine contains \"://3\" or ProcessCommandLine contains \"://4\" or ProcessCommandLine contains \"://5\" or ProcessCommandLine contains \"://6\" or ProcessCommandLine contains \"://7\" or ProcessCommandLine contains \"://8\" or ProcessCommandLine contains \"://9\") and (FolderPath endswith \"\\\\certutil.exe\" or ProcessVersionInfoOriginalFileName =~ \"CertUtil.exe\")) and (not(ProcessCommandLine contains \"://7-\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1027"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

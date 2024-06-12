@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/50919691-7302-437f-8e10-1fe088afa145')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/50919691-7302-437f-8e10-1fe088afa145')]",
+      "properties": {
+        "alertRuleTemplateName": "50919691-7302-437f-8e10-1fe088afa145",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2019/07/17",
+        "description": "Detects a \"regsvr32\" execution where the DLL doesn't contain a common file extension.",
+        "displayName": "Regsvr32 DLL Execution With Uncommon Extension",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/05/24",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\regsvr32.exe\" or ProcessVersionInfoOriginalFileName =~ \"REGSVR32.EXE\") and (not((ProcessCommandLine =~ \"\" or (ProcessCommandLine contains \".ax\" or ProcessCommandLine contains \".cpl\" or ProcessCommandLine contains \".dll\" or ProcessCommandLine contains \".ocx\") or isnull(ProcessCommandLine)))) and (not((ProcessCommandLine contains \".bav\" or ProcessCommandLine contains \".ppl\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1574"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

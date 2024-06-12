@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/fb0b815b-f5f6-4f50-970f-ffe21f253f7a')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/fb0b815b-f5f6-4f50-970f-ffe21f253f7a')]",
+      "properties": {
+        "alertRuleTemplateName": "fb0b815b-f5f6-4f50-970f-ffe21f253f7a",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2021/11/26",
+        "description": "Extexport.exe loads dll and is execute from other folder the original path",
+        "displayName": "Suspicious Extexport Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/05/16",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"Extexport.exe\" or FolderPath endswith \"\\\\Extexport.exe\" or ProcessVersionInfoOriginalFileName =~ \"extexport.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1218"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/24de4f3b-804c-4165-b442-5a06a2302c7e')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/24de4f3b-804c-4165-b442-5a06a2302c7e')]",
+      "properties": {
+        "alertRuleTemplateName": "24de4f3b-804c-4165-b442-5a06a2302c7e",
+        "author": "Sreeman",
+        "customDetails": null,
+        "date": "2020/03/13",
+        "description": "The .SettingContent-ms file type was introduced in Windows 10 and allows a user to create \"shortcuts\" to various Windows 10 setting pages. These files are simply XML and contain paths to various Windows 10 settings binaries.",
+        "displayName": "Arbitrary Shell Command Execution Via Settingcontent-Ms",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/04/14",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \".SettingContent-ms\" and (not(ProcessCommandLine contains \"immersivecontrolpanel\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1204",
+          "t1566"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/8f02c935-effe-45b3-8fc9-ef8696a9e41d')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/8f02c935-effe-45b3-8fc9-ef8696a9e41d')]",
+      "properties": {
+        "alertRuleTemplateName": "8f02c935-effe-45b3-8fc9-ef8696a9e41d",
+        "author": "Teymur Kheirkhabarov (idea), Ryan Plas (rule), oscd.community",
+        "customDetails": null,
+        "date": "2020/10/05",
+        "description": "Search for usage of reg or Powershell by non-privileged users to modify service configuration in registry",
+        "displayName": "Non-privileged Usage of Reg or Powershell",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/07/07",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"reg \" and ProcessCommandLine contains \"add\") or (ProcessCommandLine contains \"powershell\" or ProcessCommandLine contains \"set-itemproperty\" or ProcessCommandLine contains \" sp \" or ProcessCommandLine contains \"new-itemproperty\")) and ((ProcessCommandLine contains \"ImagePath\" or ProcessCommandLine contains \"FailureCommand\" or ProcessCommandLine contains \"ServiceDLL\") and (ProcessCommandLine contains \"ControlSet\" and ProcessCommandLine contains \"Services\") and ProcessIntegrityLevel =~ \"Medium\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1112"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

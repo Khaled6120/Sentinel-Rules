@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/ae215552-081e-44c7-805f-be16f975c8a2')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/ae215552-081e-44c7-805f-be16f975c8a2')]",
+      "properties": {
+        "alertRuleTemplateName": "ae215552-081e-44c7-805f-be16f975c8a2",
+        "author": "Florian Roth (Nextron Systems), oscd.community, Jonhnathan Ribeiro",
+        "customDetails": null,
+        "date": "2019/09/06",
+        "description": "Detects the registration of a debugger for a program that is available in the logon screen (sticky key backdoor).",
+        "displayName": "Suspicious Debugger Registration Cmdline",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/08/06",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"\\\\CurrentVersion\\\\Image File Execution Options\\\\\" and (ProcessCommandLine contains \"sethc.exe\" or ProcessCommandLine contains \"utilman.exe\" or ProcessCommandLine contains \"osk.exe\" or ProcessCommandLine contains \"magnify.exe\" or ProcessCommandLine contains \"narrator.exe\" or ProcessCommandLine contains \"displayswitch.exe\" or ProcessCommandLine contains \"atbroker.exe\" or ProcessCommandLine contains \"HelpPane.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1546"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

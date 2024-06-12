@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/0e0255bf-2548-47b8-9582-c0955c9283f5')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/0e0255bf-2548-47b8-9582-c0955c9283f5')]",
+      "properties": {
+        "alertRuleTemplateName": "0e0255bf-2548-47b8-9582-c0955c9283f5",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2021/11/15",
+        "description": "Detects suspicious addition to BitLocker related registry keys via the reg.exe utility",
+        "displayName": "Suspicious Reg Add BitLocker",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/09/09",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"EnableBDEWithNoTPM\" or ProcessCommandLine contains \"UseAdvancedStartup\" or ProcessCommandLine contains \"UseTPM\" or ProcessCommandLine contains \"UseTPMKey\" or ProcessCommandLine contains \"UseTPMKeyPIN\" or ProcessCommandLine contains \"RecoveryKeyMessageSource\" or ProcessCommandLine contains \"UseTPMPIN\" or ProcessCommandLine contains \"RecoveryKeyMessage\") and (ProcessCommandLine contains \"REG\" and ProcessCommandLine contains \"ADD\" and ProcessCommandLine contains \"\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\FVE\" and ProcessCommandLine contains \"/v\" and ProcessCommandLine contains \"/f\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "impact"
+        ],
+        "techniques": [
+          "t1486"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/cdf05894-89e7-4ead-b2b0-0a5f97a90f2f')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/cdf05894-89e7-4ead-b2b0-0a5f97a90f2f')]",
+      "properties": {
+        "alertRuleTemplateName": "cdf05894-89e7-4ead-b2b0-0a5f97a90f2f",
+        "author": "Teymur Kheirkhabarov (idea), Vasiliy Burov (rule), oscd.community, Tim Shelton",
+        "customDetails": null,
+        "date": "2020/10/11",
+        "description": "Detects specific combinations of encoding methods in PowerShell via the commandline",
+        "displayName": "Potential Encoded PowerShell Patterns In CommandLine",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/01/26",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\", \"pwsh.dll\"))) and (((ProcessCommandLine contains \"ToInt\" or ProcessCommandLine contains \"ToDecimal\" or ProcessCommandLine contains \"ToByte\" or ProcessCommandLine contains \"ToUint\" or ProcessCommandLine contains \"ToSingle\" or ProcessCommandLine contains \"ToSByte\") and (ProcessCommandLine contains \"ToChar\" or ProcessCommandLine contains \"ToString\" or ProcessCommandLine contains \"String\")) or ((ProcessCommandLine contains \"char\" and ProcessCommandLine contains \"join\") or (ProcessCommandLine contains \"split\" and ProcessCommandLine contains \"join\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "low",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1027",
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

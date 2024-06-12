@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/a743ceba-c771-4d75-97eb-8a90f7f4844c')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/a743ceba-c771-4d75-97eb-8a90f7f4844c')]",
+      "properties": {
+        "alertRuleTemplateName": "a743ceba-c771-4d75-97eb-8a90f7f4844c",
+        "author": "Christian Burkard (Nextron Systems)",
+        "customDetails": null,
+        "date": "2021/08/23",
+        "description": "Detects the pattern of UAC Bypass using pkgmgr.exe and dism.exe (UACMe 23)",
+        "displayName": "UAC Bypass Using PkgMgr and DISM",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/10/09",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\dism.exe\" and (ProcessIntegrityLevel in~ (\"High\", \"System\")) and InitiatingProcessFolderPath endswith \"\\\\pkgmgr.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1548"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/ac175779-025a-4f12-98b0-acdaeb77ea85')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/ac175779-025a-4f12-98b0-acdaeb77ea85')]",
+      "properties": {
+        "alertRuleTemplateName": "ac175779-025a-4f12-98b0-acdaeb77ea85",
+        "author": "Florian Roth (Nextron Systems), Jonhnathan Ribeiro, oscd.community",
+        "customDetails": null,
+        "date": "2019/01/09",
+        "description": "Detects a suspicious command line execution that invokes PowerShell with reference to an AppData folder",
+        "displayName": "PowerShell Script Run in AppData",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/07/14",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"powershell.exe\" or ProcessCommandLine contains \"\\\\powershell\" or ProcessCommandLine contains \"\\\\pwsh\" or ProcessCommandLine contains \"pwsh.exe\") and ((ProcessCommandLine contains \"Local\\\\\" or ProcessCommandLine contains \"Roaming\\\\\") and (ProcessCommandLine contains \"/c \" and ProcessCommandLine contains \"\\\\AppData\\\\\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1059"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

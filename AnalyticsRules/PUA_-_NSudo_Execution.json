@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/771d1eb5-9587-4568-95fb-9ec44153a012')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/771d1eb5-9587-4568-95fb-9ec44153a012')]",
+      "properties": {
+        "alertRuleTemplateName": "771d1eb5-9587-4568-95fb-9ec44153a012",
+        "author": "Florian Roth (Nextron Systems), Nasreddine Bencherchali",
+        "customDetails": null,
+        "date": "2022/01/24",
+        "description": "Detects the use of NSudo tool for command execution",
+        "displayName": "PUA - NSudo Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/13",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-U:S \" or ProcessCommandLine contains \"-U:T \" or ProcessCommandLine contains \"-U:E \" or ProcessCommandLine contains \"-P:E \" or ProcessCommandLine contains \"-M:S \" or ProcessCommandLine contains \"-M:H \" or ProcessCommandLine contains \"-U=S \" or ProcessCommandLine contains \"-U=T \" or ProcessCommandLine contains \"-U=E \" or ProcessCommandLine contains \"-P=E \" or ProcessCommandLine contains \"-M=S \" or ProcessCommandLine contains \"-M=H \" or ProcessCommandLine contains \"-ShowWindowMode:Hide\") and ((FolderPath endswith \"\\\\NSudo.exe\" or FolderPath endswith \"\\\\NSudoLC.exe\" or FolderPath endswith \"\\\\NSudoLG.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"NSudo.exe\", \"NSudoLC.exe\", \"NSudoLG.exe\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "execution"
+        ],
+        "techniques": [
+          "t1569"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

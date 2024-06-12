@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/d55b793d-f847-4eea-b59a-5ab09908ac90')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/d55b793d-f847-4eea-b59a-5ab09908ac90')]",
+      "properties": {
+        "alertRuleTemplateName": "d55b793d-f847-4eea-b59a-5ab09908ac90",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/05/04",
+        "description": "Detects suspicious child processes of the Veeam service process. This could indicate potential RCE or SQL Injection.",
+        "displayName": "Suspicious Child Process Of Veeam Dabatase",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "",
+        "query": "DeviceProcessEvents\n| where (InitiatingProcessCommandLine contains \"VEEAMSQL\" and InitiatingProcessFolderPath endswith \"\\\\sqlservr.exe\") and (((ProcessCommandLine contains \"-ex \" or ProcessCommandLine contains \"bypass\" or ProcessCommandLine contains \"cscript\" or ProcessCommandLine contains \"DownloadString\" or ProcessCommandLine contains \"http://\" or ProcessCommandLine contains \"https://\" or ProcessCommandLine contains \"mshta\" or ProcessCommandLine contains \"regsvr32\" or ProcessCommandLine contains \"rundll32\" or ProcessCommandLine contains \"wscript\" or ProcessCommandLine contains \"copy \") and (FolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\wsl.exe\" or FolderPath endswith \"\\\\wt.exe\")) or (FolderPath endswith \"\\\\net.exe\" or FolderPath endswith \"\\\\net1.exe\" or FolderPath endswith \"\\\\netstat.exe\" or FolderPath endswith \"\\\\nltest.exe\" or FolderPath endswith \"\\\\ping.exe\" or FolderPath endswith \"\\\\tasklist.exe\" or FolderPath endswith \"\\\\whoami.exe\"))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "critical",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

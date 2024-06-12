@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/b4dc61f5-6cce-468e-a608-b48b469feaa2')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/b4dc61f5-6cce-468e-a608-b48b469feaa2')]",
+      "properties": {
+        "alertRuleTemplateName": "b4dc61f5-6cce-468e-a608-b48b469feaa2",
+        "author": "frack113",
+        "customDetails": null,
+        "date": "2022/08/20",
+        "description": "Detect the usage of \"DirLister.exe\" a utility for quickly listing folder or drive contents. It was seen used by BlackCat ransomware to create a list of accessible directories and files.",
+        "displayName": "DirLister Execution",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/04",
+        "query": "DeviceProcessEvents\n| where ProcessVersionInfoOriginalFileName =~ \"DirLister.exe\" or FolderPath endswith \"\\\\dirlister.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "low",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "discovery"
+        ],
+        "techniques": [
+          "t1083"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

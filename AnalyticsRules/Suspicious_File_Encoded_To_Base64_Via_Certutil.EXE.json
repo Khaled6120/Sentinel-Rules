@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/ea0cdc3e-2239-4f26-a947-4e8f8224e464')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/ea0cdc3e-2239-4f26-a947-4e8f8224e464')]",
+      "properties": {
+        "alertRuleTemplateName": "ea0cdc3e-2239-4f26-a947-4e8f8224e464",
+        "author": "Nasreddine Bencherchali (Nextron Systems)",
+        "customDetails": null,
+        "date": "2023/05/15",
+        "description": "Detects the execution of certutil with the \"encode\" flag to encode a file to base64 where the extensions of the file is suspicious",
+        "displayName": "Suspicious File Encoded To Base64 Via Certutil.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2024/03/05",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-encode\" or ProcessCommandLine contains \"/encode\") and (ProcessCommandLine contains \".acl\" or ProcessCommandLine contains \".bat\" or ProcessCommandLine contains \".doc\" or ProcessCommandLine contains \".gif\" or ProcessCommandLine contains \".jpeg\" or ProcessCommandLine contains \".jpg\" or ProcessCommandLine contains \".mp3\" or ProcessCommandLine contains \".pdf\" or ProcessCommandLine contains \".png\" or ProcessCommandLine contains \".ppt\" or ProcessCommandLine contains \".tmp\" or ProcessCommandLine contains \".xls\" or ProcessCommandLine contains \".xml\") and (FolderPath endswith \"\\\\certutil.exe\" or ProcessVersionInfoOriginalFileName =~ \"CertUtil.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1027"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

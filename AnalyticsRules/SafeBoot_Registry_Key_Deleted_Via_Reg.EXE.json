@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/fc0e89b5-adb0-43c1-b749-c12a10ec37de')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/fc0e89b5-adb0-43c1-b749-c12a10ec37de')]",
+      "properties": {
+        "alertRuleTemplateName": "fc0e89b5-adb0-43c1-b749-c12a10ec37de",
+        "author": "Nasreddine Bencherchali (Nextron Systems), Tim Shelton",
+        "customDetails": null,
+        "date": "2022/08/08",
+        "description": "Detects execution of \"reg.exe\" commands with the \"delete\" flag on safe boot registry keys. Often used by attacker to prevent safeboot execution of security products",
+        "displayName": "SafeBoot Registry Key Deleted Via Reg.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/02/04",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" delete \" and ProcessCommandLine contains \"\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\SafeBoot\") and (FolderPath endswith \"reg.exe\" or ProcessVersionInfoOriginalFileName =~ \"reg.exe\")",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [
+          "t1562"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

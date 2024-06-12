@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/869b9ca7-9ea2-4a5a-8325-e80e62f75445')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/869b9ca7-9ea2-4a5a-8325-e80e62f75445')]",
+      "properties": {
+        "alertRuleTemplateName": "869b9ca7-9ea2-4a5a-8325-e80e62f75445",
+        "author": "FPT.EagleEye Team, wagga",
+        "customDetails": null,
+        "date": "2020/12/11",
+        "description": "Detects suspicious child processes of the SQLServer process. This could indicate potential RCE or SQL Injection.",
+        "displayName": "Suspicious Child Process Of SQL Server",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/05/04",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\bash.exe\" or FolderPath endswith \"\\\\bitsadmin.exe\" or FolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\netstat.exe\" or FolderPath endswith \"\\\\nltest.exe\" or FolderPath endswith \"\\\\ping.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\regsvr32.exe\" or FolderPath endswith \"\\\\rundll32.exe\" or FolderPath endswith \"\\\\sh.exe\" or FolderPath endswith \"\\\\systeminfo.exe\" or FolderPath endswith \"\\\\tasklist.exe\" or FolderPath endswith \"\\\\wsl.exe\") and InitiatingProcessFolderPath endswith \"\\\\sqlservr.exe\") and (not((ProcessCommandLine startswith \"\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" \" and FolderPath =~ \"C:\\\\Windows\\\\System32\\\\cmd.exe\" and InitiatingProcessFolderPath endswith \"DATEV_DBENGINE\\\\MSSQL\\\\Binn\\\\sqlservr.exe\" and InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\Microsoft SQL Server\\\\\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "high",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1190",
+          "t1505"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

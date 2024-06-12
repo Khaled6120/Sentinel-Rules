@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/1723e720-616d-4ddc-ab02-f7e3685a4713')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/1723e720-616d-4ddc-ab02-f7e3685a4713')]",
+      "properties": {
+        "alertRuleTemplateName": "1723e720-616d-4ddc-ab02-f7e3685a4713",
+        "author": "CD_ROM_",
+        "customDetails": null,
+        "date": "2022/05/21",
+        "description": "Detects execution of \"rundll32.exe\" with a parent process of Explorer.exe. This has been observed by variants of Raspberry Robin, as first reported by Red Canary.",
+        "displayName": "Rundll32 Spawned Via Explorer.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/08/31",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\rundll32.exe\" or ProcessVersionInfoOriginalFileName =~ \"RUNDLL32.EXE\") and InitiatingProcessFolderPath endswith \"\\\\explorer.exe\") and (not((ProcessCommandLine contains \" C:\\\\Windows\\\\System32\\\\\" or ProcessCommandLine endswith \" -localserver 22d8c27b-47a1-48d1-ad08-7da7abd79617\")))",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "experimental",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": null,
+        "techniques": [],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

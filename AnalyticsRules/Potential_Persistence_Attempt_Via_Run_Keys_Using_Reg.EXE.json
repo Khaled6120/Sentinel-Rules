@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/de587dce-915e-4218-aac4-835ca6af6f70')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/de587dce-915e-4218-aac4-835ca6af6f70')]",
+      "properties": {
+        "alertRuleTemplateName": "de587dce-915e-4218-aac4-835ca6af6f70",
+        "author": "Florian Roth (Nextron Systems)",
+        "customDetails": null,
+        "date": "2021/06/28",
+        "description": "Detects suspicious command line reg.exe tool adding key to RUN key in Registry",
+        "displayName": "Potential Persistence Attempt Via Run Keys Using Reg.EXE",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2023/01/30",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"reg\" and ProcessCommandLine contains \" ADD \" and ProcessCommandLine contains \"Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1547"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2023-02-01-preview",
+      "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/a2ea3ae7-d3d0-40a0-a55c-25a45c87cac1')]",
+      "kind": "Scheduled",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/a2ea3ae7-d3d0-40a0-a55c-25a45c87cac1')]",
+      "properties": {
+        "alertRuleTemplateName": "a2ea3ae7-d3d0-40a0-a55c-25a45c87cac1",
+        "author": "Hai Vaknin @LuxNoBulIshit, Avihay eldad  @aloneliassaf, Austin Songer @austinsonger",
+        "customDetails": null,
+        "date": "2021/09/30",
+        "description": "Detects when a possible suspicious driver is being installed via pnputil.exe lolbin",
+        "displayName": "Suspicious Driver Install by pnputil.exe",
+        "enabled": true,
+        "entityMappings": null,
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "logsource": {
+          "category": "process_creation",
+          "product": "windows"
+        },
+        "modified": "2022/10/09",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-i\" or ProcessCommandLine contains \"/install\" or ProcessCommandLine contains \"-a\" or ProcessCommandLine contains \"/add-driver\" or ProcessCommandLine contains \".inf\") and FolderPath endswith \"\\\\pnputil.exe\"",
+        "queryFrequency": "P1D",
+        "queryPeriod": "P1D",
+        "sentinelEntitiesMappings": null,
+        "severity": "medium",
+        "status": "test",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "persistence"
+        ],
+        "techniques": [
+          "t1547"
+        ],
+        "templateVersion": "1.0.0",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
+    }
+  ]
+}
