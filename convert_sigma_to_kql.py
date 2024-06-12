@@ -95,7 +95,7 @@ for yml in file_list_a:
                 'triggerThreshold': 0,
                 'suppressionDuration': 'PT5H',
                 'suppressionEnabled': False,
-                'kind': 'Scheduled'
+                'kind': 'NRT'
             }
 
             # Write the dictionary to a YAML file
