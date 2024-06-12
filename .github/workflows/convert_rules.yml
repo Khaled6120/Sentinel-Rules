@@ -8,12 +8,12 @@ on:
 permissions:
   contents: write
 
-name: Build YAML Analytic Rules
+name: Build ARM Analytic Rules
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build YAML Analytic Rules
+    name: Build ARM Analytic Rules
     steps:
       - uses: actions/checkout@v3
       - name: Convert yaml rules to JSON/arm
