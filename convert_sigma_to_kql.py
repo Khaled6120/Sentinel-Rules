@@ -34,6 +34,14 @@ def convert_to_string(yaml_dict):
 # Ensure the output directory exists
 os.makedirs('KQL', exist_ok=True)
 
+# Function to process techniques format in a way that is acceptable by Sentinel.
+def process_techniques(techniques_list):
+    processed_techniques = set()
+    for technique in techniques_list:
+        main_technique = technique.split('.')[0].replace('t', 'T', 1)
+        processed_techniques.add(main_technique)
+    return sorted(processed_techniques)
+
 # Process each YAML file
 for yml in file_list_a:
     with open(yml) as yaml_file:
@@ -59,14 +67,12 @@ for yml in file_list_a:
                 if (parts := tag.split('.')) and tag.startswith('attack.'):
                     if len(parts) == 2 and not parts[1].startswith('t'):
                         tactics.add(parts[1])
-                    elif len(parts) == 3 and parts[1].startswith('t'):
-                        techniques.add(f'{parts[1]}.{parts[2]}')
-                    elif len(parts) == 2 and parts[1].startswith('t'):
+                    elif len(parts) >= 2 and parts[1].startswith('t'):
                         techniques.add(parts[1])
 
-            # Convert sets to sorted lists
+            # Convert sets to sorted lists and process techniques
             sorted_tactics = sorted(tactics)
-            sorted_techniques = sorted(techniques)
+            sorted_techniques = process_techniques(techniques)
 
             yaml_content = {
                 'name': yaml_contents.get("title", ""),
@@ -96,7 +102,7 @@ for yml in file_list_a:
                 'suppressionDuration': 'PT5H',
                 'suppressionEnabled': False,
                 'triggerOperator': 'GreaterThan',
-                'kind': 'NRT'
+                'kind': 'Scheduled'
             }
 
             # Write the dictionary to a YAML file
