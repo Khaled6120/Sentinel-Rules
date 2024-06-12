@@ -14,9 +14,9 @@ tactics:
 - defense_evasion
 - execution
 relevantTechniques:
-- t1059.005
-- t1202
-- t1218
+- T1059
+- T1202
+- T1218
 query: 'DeviceProcessEvents
 
   | where ((FolderPath endswith "\\calc.exe" or FolderPath endswith "\\cmd.exe" or
@@ -38,4 +38,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

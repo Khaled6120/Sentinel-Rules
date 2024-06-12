@@ -13,9 +13,9 @@ logsource:
 tactics:
 - privilege_escalation
 relevantTechniques:
-- t1046
-- t1082
-- t1087
+- T1046
+- T1082
+- T1087
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "https://github.com/carlospolop/PEASS-ng/releases/latest/download/"
@@ -40,4 +40,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

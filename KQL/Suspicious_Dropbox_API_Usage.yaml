@@ -13,7 +13,7 @@ logsource:
 tactics:
 - command_and_control
 relevantTechniques:
-- t1105
+- T1105
 query: 'DeviceNetworkEvents
 
   | where (RemoteUrl endswith "api.dropboxapi.com" or RemoteUrl endswith "content.dropboxapi.com")
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

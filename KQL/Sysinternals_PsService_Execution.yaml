@@ -14,7 +14,7 @@ tactics:
 - discovery
 - persistence
 relevantTechniques:
-- t1543.003
+- T1543
 query: 'DeviceProcessEvents
 
   | where ProcessVersionInfoOriginalFileName =~ "psservice.exe" or (FolderPath endswith
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -13,9 +13,9 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1027
-- t1059.001
-- t1140
+- T1027
+- T1059
+- T1140
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "::FromBase64String("'
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

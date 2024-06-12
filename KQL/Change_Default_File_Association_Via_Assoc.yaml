@@ -21,7 +21,7 @@ logsource:
 tactics:
 - persistence
 relevantTechniques:
-- t1546.001
+- T1546
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "assoc" and (FolderPath endswith "\\cmd.exe"
@@ -37,4 +37,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

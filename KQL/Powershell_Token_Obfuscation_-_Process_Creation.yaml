@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1027.009
+- T1027
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine matches regex "\\w+`(\\w+|-|.)`[\\w+|\\s]" or ProcessCommandLine
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

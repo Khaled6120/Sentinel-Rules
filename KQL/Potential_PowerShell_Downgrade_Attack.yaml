@@ -14,7 +14,7 @@ tactics:
 - defense_evasion
 - execution
 relevantTechniques:
-- t1059.001
+- T1059
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " -version 2 " or ProcessCommandLine contains
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

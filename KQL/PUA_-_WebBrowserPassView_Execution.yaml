@@ -15,7 +15,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1555.003
+- T1555
 query: 'DeviceProcessEvents
 
   | where ProcessVersionInfoFileDescription =~ "Web Browser Password Viewer" or FolderPath
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

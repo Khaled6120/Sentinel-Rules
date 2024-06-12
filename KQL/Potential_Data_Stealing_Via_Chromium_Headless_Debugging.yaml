@@ -14,7 +14,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1185
+- T1185
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "--remote-debugging-" and ProcessCommandLine
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

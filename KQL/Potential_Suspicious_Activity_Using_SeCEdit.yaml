@@ -17,20 +17,15 @@ tactics:
 - persistence
 - privilege_escalation
 relevantTechniques:
-- t1082
-- t1505.005
-- t1546.007
-- t1546.008
-- t1547.001
-- t1547.002
-- t1547.010
-- t1547.014
-- t1556.002
-- t1557
-- t1562
-- t1562.002
-- t1564.002
-- t1574.007
+- T1082
+- T1505
+- T1546
+- T1547
+- T1556
+- T1557
+- T1562
+- T1564
+- T1574
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\secedit.exe" or ProcessVersionInfoOriginalFileName
@@ -48,4 +43,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

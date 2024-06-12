@@ -14,8 +14,7 @@ logsource:
 tactics:
 - initial_access
 relevantTechniques:
-- t1566
-- t1566.001
+- T1566
 query: 'DeviceProcessEvents
 
   | where InitiatingProcessFolderPath endswith "\\onenote.exe" and (((ProcessCommandLine
@@ -64,4 +63,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

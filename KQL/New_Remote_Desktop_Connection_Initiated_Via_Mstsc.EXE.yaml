@@ -18,7 +18,7 @@ logsource:
 tactics:
 - lateral_movement
 relevantTechniques:
-- t1021.001
+- T1021
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " /v:" and (FolderPath endswith "\\mstsc.exe"
@@ -36,4 +36,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

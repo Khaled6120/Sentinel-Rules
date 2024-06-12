@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1036.003
+- T1036
 query: 'DeviceProcessEvents
 
   | where ProcessVersionInfoOriginalFileName =~ "msdt.exe" and (not(FolderPath endswith
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

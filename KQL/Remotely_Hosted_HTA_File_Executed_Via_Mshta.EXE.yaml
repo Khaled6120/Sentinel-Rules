@@ -15,7 +15,7 @@ tactics:
 - defense_evasion
 - execution
 relevantTechniques:
-- t1218.005
+- T1218
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "http://" or ProcessCommandLine contains "https://"
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

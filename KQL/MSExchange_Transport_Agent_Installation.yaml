@@ -12,7 +12,7 @@ logsource:
 tactics:
 - persistence
 relevantTechniques:
-- t1505.002
+- T1505
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "Install-TransportAgent"'
@@ -27,4 +27,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

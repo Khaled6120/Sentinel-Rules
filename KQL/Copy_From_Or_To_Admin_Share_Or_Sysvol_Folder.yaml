@@ -16,9 +16,9 @@ tactics:
 - exfiltration
 - lateral_movement
 relevantTechniques:
-- t1021.002
-- t1039
-- t1048
+- T1021
+- T1039
+- T1048
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "\\" and ProcessCommandLine contains "$")
@@ -43,4 +43,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

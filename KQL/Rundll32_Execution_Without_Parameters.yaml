@@ -14,9 +14,9 @@ tactics:
 - execution
 - lateral_movement
 relevantTechniques:
-- t1021.002
-- t1569.002
-- t1570
+- T1021
+- T1569
+- T1570
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine in~ ("rundll32.exe", "rundll32")'
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

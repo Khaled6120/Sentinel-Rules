@@ -14,8 +14,8 @@ tactics:
 - credential_access
 - defense_evasion
 relevantTechniques:
-- t1003.001
-- t1218
+- T1003
+- T1218
 query: 'DeviceProcessEvents
 
   | where InitiatingProcessFolderPath endswith "\\tttracer.exe"'
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -13,7 +13,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1027.004
+- T1027
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\cvtres.exe" and InitiatingProcessFolderPath endswith
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

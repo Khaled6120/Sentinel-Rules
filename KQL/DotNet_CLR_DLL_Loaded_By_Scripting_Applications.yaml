@@ -14,7 +14,7 @@ tactics:
 - execution
 - privilege_escalation
 relevantTechniques:
-- t1055
+- T1055
 query: 'DeviceImageLoadEvents
 
   | where (FolderPath endswith "\\clr.dll" or FolderPath endswith "\\mscoree.dll"
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

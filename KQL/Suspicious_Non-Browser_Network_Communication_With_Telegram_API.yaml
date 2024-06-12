@@ -13,7 +13,7 @@ logsource:
 tactics:
 - command_and_control
 relevantTechniques:
-- t1102
+- T1102
 query: 'DeviceNetworkEvents
 
   | where RemoteUrl contains "api.telegram.org" and (not((InitiatingProcessFolderPath
@@ -45,4 +45,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

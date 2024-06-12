@@ -19,8 +19,7 @@ logsource:
 tactics:
 - command_and_control
 relevantTechniques:
-- t1102
-- t1102.001
+- T1102
 query: 'DeviceNetworkEvents
 
   | where (RemoteUrl endswith ".t.me" or RemoteUrl endswith "4shared.com" or RemoteUrl
@@ -127,4 +126,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

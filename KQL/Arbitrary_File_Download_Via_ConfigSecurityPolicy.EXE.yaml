@@ -19,7 +19,7 @@ logsource:
 tactics:
 - exfiltration
 relevantTechniques:
-- t1567
+- T1567
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "ConfigSecurityPolicy.exe" or FolderPath endswith
@@ -37,4 +37,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

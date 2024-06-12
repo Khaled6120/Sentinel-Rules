@@ -14,8 +14,8 @@ tactics:
 - command_and_control
 - lateral_movement
 relevantTechniques:
-- t1021.001
-- t1572
+- T1021
+- T1572
 query: 'DeviceNetworkEvents
 
   | where (ipv4_is_in_range(RemoteIP, "127.0.0.0/8") or ipv4_is_in_range(RemoteIP,
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

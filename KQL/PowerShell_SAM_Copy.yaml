@@ -12,7 +12,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1003.002
+- T1003
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "\\HarddiskVolumeShadowCopy" and ProcessCommandLine
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

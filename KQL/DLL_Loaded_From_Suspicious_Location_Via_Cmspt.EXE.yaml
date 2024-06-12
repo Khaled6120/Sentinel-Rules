@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1218.003
+- T1218
 query: 'DeviceImageLoadEvents
 
   | where (FolderPath contains "\\PerfLogs\\" or FolderPath contains "\\ProgramData\\"
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

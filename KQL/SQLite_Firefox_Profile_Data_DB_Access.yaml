@@ -14,8 +14,8 @@ tactics:
 - collection
 - credential_access
 relevantTechniques:
-- t1005
-- t1539
+- T1005
+- T1539
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "cookies.sqlite" or ProcessCommandLine contains
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

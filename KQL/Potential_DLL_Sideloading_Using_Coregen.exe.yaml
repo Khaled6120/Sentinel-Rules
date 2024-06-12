@@ -13,8 +13,8 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1055
-- t1218
+- T1055
+- T1218
 query: 'DeviceImageLoadEvents
 
   | where InitiatingProcessFolderPath endswith "\\coregen.exe" and (not((FolderPath
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -13,9 +13,9 @@ tactics:
 - command_and_control
 - exfiltration
 relevantTechniques:
-- t1048.001
-- t1071.004
-- t1132.001
+- T1048
+- T1071
+- T1132
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\iodine.exe" or FolderPath contains "\\dnscat2"'
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

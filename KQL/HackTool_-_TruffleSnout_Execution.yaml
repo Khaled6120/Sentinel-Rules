@@ -13,7 +13,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1482
+- T1482
 query: 'DeviceProcessEvents
 
   | where ProcessVersionInfoOriginalFileName =~ "TruffleSnout.exe" or FolderPath endswith
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -14,8 +14,8 @@ tactics:
 - defense_evasion
 - execution
 relevantTechniques:
-- t1202
-- t1218
+- T1202
+- T1218
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\accesschk.exe" or FolderPath endswith "\\accesschk64.exe"
@@ -101,4 +101,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

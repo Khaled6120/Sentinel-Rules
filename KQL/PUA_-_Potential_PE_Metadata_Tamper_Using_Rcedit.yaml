@@ -13,10 +13,8 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1027
-- t1027.005
-- t1036
-- t1036.003
+- T1027
+- T1036
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "OriginalFileName" or ProcessCommandLine contains
@@ -36,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

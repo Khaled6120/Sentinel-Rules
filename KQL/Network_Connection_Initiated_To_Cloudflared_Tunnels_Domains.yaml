@@ -19,7 +19,7 @@ tactics:
 - command_and_control
 - exfiltration
 relevantTechniques:
-- t1567.001
+- T1567
 query: 'DeviceNetworkEvents
 
   | where RemoteUrl endswith ".v2.argotunnel.com" or RemoteUrl endswith "protocol-v2.argotunnel.com"
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

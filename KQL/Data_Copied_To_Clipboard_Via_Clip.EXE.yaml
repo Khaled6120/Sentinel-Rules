@@ -14,7 +14,7 @@ logsource:
 tactics:
 - collection
 relevantTechniques:
-- t1115
+- T1115
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\clip.exe" or ProcessVersionInfoOriginalFileName =~
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

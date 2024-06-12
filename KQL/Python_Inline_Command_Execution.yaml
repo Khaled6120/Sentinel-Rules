@@ -13,7 +13,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1059
+- T1059
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " -c" and (ProcessVersionInfoOriginalFileName
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

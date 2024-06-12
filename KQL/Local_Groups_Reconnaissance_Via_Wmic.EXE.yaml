@@ -22,7 +22,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1069.001
+- T1069
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " group" and (FolderPath endswith "\\wmic.exe"
@@ -38,4 +38,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

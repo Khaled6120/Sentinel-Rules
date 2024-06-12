@@ -13,7 +13,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1574.002
+- T1574
 query: 'DeviceImageLoadEvents
 
   | where (FolderPath endswith "\\mpclient.dll" and (InitiatingProcessFolderPath endswith
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

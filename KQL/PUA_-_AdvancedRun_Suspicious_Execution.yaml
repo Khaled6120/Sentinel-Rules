@@ -14,7 +14,7 @@ tactics:
 - defense_evasion
 - privilege_escalation
 relevantTechniques:
-- t1134.002
+- T1134
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "/EXEFilename" or ProcessCommandLine contains
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

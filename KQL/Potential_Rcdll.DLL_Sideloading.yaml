@@ -13,8 +13,7 @@ tactics:
 - defense_evasion
 - privilege_escalation
 relevantTechniques:
-- t1574.001
-- t1574.002
+- T1574
 query: 'DeviceImageLoadEvents
 
   | where FolderPath endswith "\\rcdll.dll" and (not((FolderPath startswith "C:\\Program
@@ -31,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

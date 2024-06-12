@@ -12,7 +12,7 @@ logsource:
 tactics:
 - persistence
 relevantTechniques:
-- t1546.003
+- T1546
 query: 'DeviceImageLoadEvents
 
   | where InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\wbem\\WmiPrvSE.exe"
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

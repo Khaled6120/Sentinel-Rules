@@ -17,7 +17,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1218.003
+- T1218
 query: 'DeviceNetworkEvents
 
   | where InitiatingProcessFolderPath endswith "\\cmstp.exe" and (not((ipv4_is_in_range(RemoteIP,
@@ -36,4 +36,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -15,7 +15,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1059
+- T1059
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " -a" and FolderPath endswith "\\pcalua.exe"'
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

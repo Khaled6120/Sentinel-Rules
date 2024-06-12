@@ -13,7 +13,7 @@ tactics:
 - persistence
 - privilege_escalation
 relevantTechniques:
-- t1543.003
+- T1543
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "create" and ProcessCommandLine contains "binPath")
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

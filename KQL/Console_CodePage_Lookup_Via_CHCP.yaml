@@ -13,7 +13,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1614.001
+- T1614
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine endswith "chcp" or ProcessCommandLine endswith "chcp
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

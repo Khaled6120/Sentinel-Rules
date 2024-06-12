@@ -14,9 +14,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1003.002
-- t1003.004
-- t1003.005
+- T1003
 query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" save \" or ProcessCommandLine\
   \ contains \" export \" or ProcessCommandLine contains \" \xCB\xA2ave \" or ProcessCommandLine\
   \ contains \" e\xCB\xA3port \") and (ProcessCommandLine contains \"\\\\system\"\
@@ -41,4 +39,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

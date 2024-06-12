@@ -14,7 +14,7 @@ tactics:
 - credential_access
 - discovery
 relevantTechniques:
-- t1649
+- T1649
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\Certify.exe" or ProcessVersionInfoOriginalFileName
@@ -36,4 +36,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

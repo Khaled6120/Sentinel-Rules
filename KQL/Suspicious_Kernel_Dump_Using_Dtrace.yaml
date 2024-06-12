@@ -13,7 +13,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1082
+- T1082
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "syscall:::return" and ProcessCommandLine contains
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

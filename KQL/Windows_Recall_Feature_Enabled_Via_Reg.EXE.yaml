@@ -23,7 +23,7 @@ logsource:
 tactics:
 - collection
 relevantTechniques:
-- t1113
+- T1113
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\reg.exe" or ProcessVersionInfoOriginalFileName =~
@@ -41,4 +41,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

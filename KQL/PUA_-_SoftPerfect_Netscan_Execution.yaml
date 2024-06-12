@@ -18,7 +18,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1046
+- T1046
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\netscan.exe" or ProcessVersionInfoProductName =~
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -14,8 +14,8 @@ tactics:
 - collection
 - execution
 relevantTechniques:
-- t1059.001
-- t1114
+- T1059
+- T1114
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "Add-PSSnapin" and ((FolderPath endswith "\\powershell.exe"
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

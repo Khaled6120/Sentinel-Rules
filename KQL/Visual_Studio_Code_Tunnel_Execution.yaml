@@ -13,7 +13,7 @@ logsource:
 tactics:
 - command_and_control
 relevantTechniques:
-- t1071.001
+- T1071
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine endswith ".exe tunnel" and isnull(ProcessVersionInfoOriginalFileName))
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

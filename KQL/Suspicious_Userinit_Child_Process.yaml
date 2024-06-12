@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1055
+- T1055
 query: 'DeviceProcessEvents
 
   | where InitiatingProcessFolderPath endswith "\\userinit.exe" and (not((ProcessCommandLine
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

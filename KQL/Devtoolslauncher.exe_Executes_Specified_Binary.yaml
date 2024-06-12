@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1218
+- T1218
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "LaunchForDeploy" and FolderPath endswith "\\devtoolslauncher.exe"'
@@ -27,4 +27,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

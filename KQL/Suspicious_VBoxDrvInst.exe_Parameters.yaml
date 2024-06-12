@@ -19,7 +19,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1112
+- T1112
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "driver" and ProcessCommandLine contains "executeinf")
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

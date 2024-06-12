@@ -14,8 +14,8 @@ tactics:
 - credential_access
 - lateral_movement
 relevantTechniques:
-- t1550.003
-- t1558.003
+- T1550
+- T1558
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " relay " and ProcessCommandLine contains "
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

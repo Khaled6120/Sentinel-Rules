@@ -14,7 +14,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1036.003
+- T1036
 query: 'DeviceProcessEvents
 
   | where (ProcessVersionInfoOriginalFileName in~ ("Cmd.Exe", "CONHOST.EXE", "7z.exe",
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

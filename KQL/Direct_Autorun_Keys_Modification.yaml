@@ -13,7 +13,7 @@ logsource:
 tactics:
 - persistence
 relevantTechniques:
-- t1547.001
+- T1547
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "add" and FolderPath endswith "\\reg.exe")
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

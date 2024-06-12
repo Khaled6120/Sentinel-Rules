@@ -21,8 +21,8 @@ tactics:
 - defense_evasion
 - impact
 relevantTechniques:
-- t1486
-- t1562.001
+- T1486
+- T1562
 query: 'DeviceImageLoadEvents
 
   | where (FolderPath endswith "\\RstrtMgr.dll" or InitiatingProcessVersionInfoOriginalFileName
@@ -49,4 +49,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

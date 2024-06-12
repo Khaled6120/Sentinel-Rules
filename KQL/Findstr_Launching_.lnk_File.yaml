@@ -13,9 +13,9 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1027.003
-- t1036
-- t1202
+- T1027
+- T1036
+- T1202
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine endswith ".lnk" or ProcessCommandLine endswith ".lnk\""
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

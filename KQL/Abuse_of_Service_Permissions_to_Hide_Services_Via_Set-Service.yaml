@@ -16,7 +16,7 @@ tactics:
 - persistence
 - privilege_escalation
 relevantTechniques:
-- t1574.011
+- T1574
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "-SecurityDescriptorSddl " or ProcessCommandLine
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

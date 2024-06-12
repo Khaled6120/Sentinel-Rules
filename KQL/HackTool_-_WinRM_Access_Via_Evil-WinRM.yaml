@@ -14,7 +14,7 @@ logsource:
 tactics:
 - lateral_movement
 relevantTechniques:
-- t1021.006
+- T1021
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "-i " and ProcessCommandLine contains "-u "
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

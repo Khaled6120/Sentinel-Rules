@@ -21,7 +21,7 @@ logsource:
 tactics:
 - impact
 relevantTechniques:
-- t1485
+- T1485
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " /w:" and (ProcessVersionInfoOriginalFileName
@@ -37,4 +37,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

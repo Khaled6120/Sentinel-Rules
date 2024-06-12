@@ -13,7 +13,7 @@ tactics:
 - defense_evasion
 - privilege_escalation
 relevantTechniques:
-- t1548.002
+- T1548
 query: 'DeviceProcessEvents
 
   | where ((InitiatingProcessCommandLine contains "/Processid:{3E5FC7F9-9A51-4367-9063-A120244FBEC7}"
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

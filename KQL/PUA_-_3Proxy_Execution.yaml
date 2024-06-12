@@ -12,7 +12,7 @@ logsource:
 tactics:
 - command_and_control
 relevantTechniques:
-- t1572
+- T1572
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\3proxy.exe" or ProcessCommandLine contains ".exe
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

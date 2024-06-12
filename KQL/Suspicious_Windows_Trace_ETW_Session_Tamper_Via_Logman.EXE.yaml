@@ -13,8 +13,8 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1070.001
-- t1562.001
+- T1070
+- T1562
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "stop " or ProcessCommandLine contains "delete
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

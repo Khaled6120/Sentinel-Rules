@@ -13,7 +13,7 @@ logsource:
 tactics:
 - command_and_control
 relevantTechniques:
-- t1105
+- T1105
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains " -unzipTo " and ProcessCommandLine contains
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

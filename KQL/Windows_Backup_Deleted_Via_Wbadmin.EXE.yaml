@@ -18,7 +18,7 @@ logsource:
 tactics:
 - impact
 relevantTechniques:
-- t1490
+- T1490
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "delete " and ProcessCommandLine contains
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

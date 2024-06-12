@@ -16,7 +16,7 @@ tactics:
 - privilege_escalation
 - s0111
 relevantTechniques:
-- t1053.005
+- T1053
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " /create " and FolderPath endswith "\\schtasks.exe")
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

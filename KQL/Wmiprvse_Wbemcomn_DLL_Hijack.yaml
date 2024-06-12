@@ -14,8 +14,8 @@ tactics:
 - execution
 - lateral_movement
 relevantTechniques:
-- t1021.002
-- t1047
+- T1021
+- T1047
 query: 'DeviceImageLoadEvents
 
   | where FolderPath endswith "\\wbem\\wbemcomn.dll" and InitiatingProcessFolderPath
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

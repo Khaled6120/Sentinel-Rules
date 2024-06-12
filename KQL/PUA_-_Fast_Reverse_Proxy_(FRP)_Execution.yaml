@@ -13,7 +13,7 @@ logsource:
 tactics:
 - command_and_control
 relevantTechniques:
-- t1090
+- T1090
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "\\frpc.ini" or ((MD5 startswith "7D9C233B8C9E3F0EA290D2B84593C842"
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -14,8 +14,8 @@ tactics:
 - command_and_control
 - defense_evasion
 relevantTechniques:
-- t1105
-- t1564.004
+- T1105
+- T1564
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " -f" and ProcessCommandLine contains ".zip")
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

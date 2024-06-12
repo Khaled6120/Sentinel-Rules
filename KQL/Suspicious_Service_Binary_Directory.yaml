@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1202
+- T1202
 query: 'DeviceProcessEvents
 
   | where (FolderPath contains "\\Users\\Public\\" or FolderPath contains "\\$Recycle.bin"
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

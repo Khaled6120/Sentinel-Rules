@@ -13,7 +13,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1027.004
+- T1027
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\csc.exe" and ((ProcessCommandLine contains ":\\Perflogs\\"
@@ -45,4 +45,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -14,7 +14,7 @@ tactics:
 - discovery
 - execution
 relevantTechniques:
-- t1543.003
+- T1543
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "/enumrecords" or ProcessCommandLine contains
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -13,7 +13,7 @@ logsource:
 tactics:
 - persistence
 relevantTechniques:
-- t1546.003
+- T1546
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "ActiveScriptEventConsumer" and ProcessCommandLine
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

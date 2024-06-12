@@ -13,7 +13,7 @@ logsource:
 tactics:
 - lateral_movement
 relevantTechniques:
-- t1210
+- T1210
 query: 'DeviceProcessEvents
 
   | where InitiatingProcessCommandLine contains "SysAidServer" and (InitiatingProcessFolderPath
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

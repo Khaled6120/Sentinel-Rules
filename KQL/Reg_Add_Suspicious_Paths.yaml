@@ -13,8 +13,8 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1112
-- t1562.001
+- T1112
+- T1562
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "\\AppDataLow\\Software\\Microsoft\\" or ProcessCommandLine
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

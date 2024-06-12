@@ -14,7 +14,7 @@ tactics:
 - persistence
 - privilege_escalation
 relevantTechniques:
-- t1546.008
+- T1546
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "\\CurrentVersion\\Image File Execution Options\\"
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

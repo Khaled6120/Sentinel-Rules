@@ -14,8 +14,8 @@ tactics:
 - execution
 - lateral_movement
 relevantTechniques:
-- t1021.003
-- t1059.001
+- T1021
+- T1059
 query: 'DeviceImageLoadEvents
 
   | where (((FolderPath endswith "\\WsmSvc.dll" or FolderPath endswith "\\WsmAuto.dll"
@@ -48,4 +48,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

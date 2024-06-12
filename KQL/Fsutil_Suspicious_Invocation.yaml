@@ -18,8 +18,8 @@ tactics:
 - defense_evasion
 - impact
 relevantTechniques:
-- t1070
-- t1485
+- T1070
+- T1485
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "deletejournal" or ProcessCommandLine contains
@@ -36,4 +36,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

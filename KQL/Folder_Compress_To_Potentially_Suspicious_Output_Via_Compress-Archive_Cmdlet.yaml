@@ -20,7 +20,7 @@ logsource:
 tactics:
 - collection
 relevantTechniques:
-- t1074.001
+- T1074
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "Compress-Archive -Path" and ProcessCommandLine
@@ -40,4 +40,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

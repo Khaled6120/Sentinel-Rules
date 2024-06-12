@@ -15,7 +15,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1217
+- T1217
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine =~ "*dir*-s*" or ProcessCommandLine =~ "*dir*/s*") and
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

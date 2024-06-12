@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1564.001
+- T1564
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " +h " and (FolderPath endswith "\\attrib.exe"
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

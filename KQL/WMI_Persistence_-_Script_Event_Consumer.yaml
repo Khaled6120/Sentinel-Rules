@@ -13,7 +13,7 @@ tactics:
 - persistence
 - privilege_escalation
 relevantTechniques:
-- t1546.003
+- T1546
 query: 'DeviceProcessEvents
 
   | where FolderPath =~ "C:\\WINDOWS\\system32\\wbem\\scrcons.exe" and InitiatingProcessFolderPath
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

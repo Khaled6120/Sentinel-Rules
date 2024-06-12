@@ -15,7 +15,7 @@ tactics:
 - g0047
 - lateral_movement
 relevantTechniques:
-- t1021.005
+- T1021
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "-autoreconnect " and ProcessCommandLine contains
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

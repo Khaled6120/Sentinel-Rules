@@ -12,7 +12,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1040
+- T1040
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\pktmon.exe" or ProcessVersionInfoOriginalFileName
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

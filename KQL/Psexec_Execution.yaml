@@ -12,8 +12,8 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1021
-- t1569
+- T1021
+- T1569
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\psexec.exe" or ProcessVersionInfoOriginalFileName
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

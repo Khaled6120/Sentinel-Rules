@@ -13,8 +13,8 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1003.001
-- t1036
+- T1003
+- T1036
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "copy procdump" or ProcessCommandLine contains
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -13,7 +13,7 @@ logsource:
 tactics:
 - lateral_movement
 relevantTechniques:
-- t1021.002
+- T1021
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " use " and ProcessCommandLine contains " http")
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

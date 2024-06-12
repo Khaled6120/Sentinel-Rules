@@ -14,7 +14,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1557.001
+- T1557
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " --adcs " and ProcessCommandLine contains "
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

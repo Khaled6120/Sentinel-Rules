@@ -17,8 +17,7 @@ tactics:
 - collection
 - exfiltration
 relevantTechniques:
-- t1560
-- t1560.001
+- T1560
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "-x" and (FolderPath endswith "\\tar.exe" or
@@ -34,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

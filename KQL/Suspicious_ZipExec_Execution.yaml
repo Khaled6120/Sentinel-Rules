@@ -14,8 +14,8 @@ tactics:
 - defense_evasion
 - execution
 relevantTechniques:
-- t1202
-- t1218
+- T1202
+- T1218
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "/generic:Microsoft_Windows_Shell_ZipFolder:filename="
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

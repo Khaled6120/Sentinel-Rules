@@ -14,8 +14,8 @@ tactics:
 - defense_evasion
 - execution
 relevantTechniques:
-- t1059.001
-- t1140
+- T1059
+- T1140
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "OjpGcm9tQmFzZTY0U3RyaW5n" or ProcessCommandLine
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

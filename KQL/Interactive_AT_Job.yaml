@@ -13,7 +13,7 @@ logsource:
 tactics:
 - privilege_escalation
 relevantTechniques:
-- t1053.002
+- T1053
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "interactive" and FolderPath endswith "\\at.exe"'
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

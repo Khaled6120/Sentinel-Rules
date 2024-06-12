@@ -14,8 +14,8 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1021.006
-- t1059.001
+- T1021
+- T1059
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\wsmprovhost.exe" or InitiatingProcessFolderPath endswith
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

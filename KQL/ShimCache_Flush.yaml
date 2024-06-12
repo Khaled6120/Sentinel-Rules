@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1112
+- T1112
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "rundll32" and ProcessCommandLine contains
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

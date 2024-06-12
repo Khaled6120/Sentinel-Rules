@@ -14,7 +14,7 @@ logsource:
 tactics:
 - lateral_movement
 relevantTechniques:
-- t1021
+- T1021
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains ":3389" and (ProcessCommandLine contains " -L
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

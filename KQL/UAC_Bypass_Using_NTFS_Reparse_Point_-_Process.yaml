@@ -14,7 +14,7 @@ tactics:
 - defense_evasion
 - privilege_escalation
 relevantTechniques:
-- t1548.002
+- T1548
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine endswith "\\AppData\\Local\\Temp\\update.msu" and ProcessCommandLine
@@ -36,4 +36,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1036
+- T1036
 query: 'DeviceProcessEvents
 
   | where (FolderPath contains ":\\RECYCLER\\" or FolderPath contains ":\\SystemVolumeInformation\\")
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -14,7 +14,7 @@ tactics:
 - persistence
 - privilege_escalation
 relevantTechniques:
-- t1543.003
+- T1543
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "New-Service" and ProcessCommandLine contains
@@ -40,4 +40,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

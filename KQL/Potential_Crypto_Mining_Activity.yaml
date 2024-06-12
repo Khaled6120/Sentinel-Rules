@@ -12,7 +12,7 @@ logsource:
 tactics:
 - impact
 relevantTechniques:
-- t1496
+- T1496
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " --cpu-priority=" or ProcessCommandLine contains
@@ -37,4 +37,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

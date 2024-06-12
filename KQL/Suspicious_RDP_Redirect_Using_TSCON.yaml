@@ -12,8 +12,8 @@ logsource:
 tactics:
 - lateral_movement
 relevantTechniques:
-- t1021.001
-- t1563.002
+- T1021
+- T1563
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " /dest:rdp-tcp#"'
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

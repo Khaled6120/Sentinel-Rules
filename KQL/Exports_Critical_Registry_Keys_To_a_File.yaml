@@ -12,7 +12,7 @@ logsource:
 tactics:
 - exfiltration
 relevantTechniques:
-- t1012
+- T1012
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " -E " or ProcessCommandLine contains " /E
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

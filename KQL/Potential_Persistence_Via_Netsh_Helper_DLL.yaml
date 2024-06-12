@@ -18,7 +18,7 @@ tactics:
 - privilege_escalation
 - s0108
 relevantTechniques:
-- t1546.007
+- T1546
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "add" and ProcessCommandLine contains "helper")
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

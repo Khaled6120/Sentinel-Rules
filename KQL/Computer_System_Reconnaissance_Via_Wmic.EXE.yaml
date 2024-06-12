@@ -14,7 +14,7 @@ tactics:
 - discovery
 - execution
 relevantTechniques:
-- t1047
+- T1047
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "computersystem" and (FolderPath endswith "\\wmic.exe"
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -15,7 +15,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1055
+- T1055
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\arp.exe" or FolderPath endswith "\\cmd.exe" or FolderPath
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

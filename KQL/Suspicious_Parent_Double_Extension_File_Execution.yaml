@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1036.007
+- T1036
 query: 'DeviceProcessEvents
 
   | where (InitiatingProcessFolderPath endswith ".doc.lnk" or InitiatingProcessFolderPath
@@ -45,4 +45,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

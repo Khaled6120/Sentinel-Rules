@@ -13,7 +13,7 @@ logsource:
 tactics:
 - resource_development
 relevantTechniques:
-- t1587.001
+- T1587
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "accepteula" and ProcessCommandLine contains
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

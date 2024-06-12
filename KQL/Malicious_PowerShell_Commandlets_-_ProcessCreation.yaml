@@ -13,14 +13,10 @@ tactics:
 - discovery
 - execution
 relevantTechniques:
-- t1059.001
-- t1069
-- t1069.001
-- t1069.002
-- t1087
-- t1087.001
-- t1087.002
-- t1482
+- T1059
+- T1069
+- T1087
+- T1482
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "Add-Exfiltration" or ProcessCommandLine contains
@@ -147,4 +143,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

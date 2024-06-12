@@ -18,7 +18,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1562.002
+- T1562
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "disable" or ProcessCommandLine contains "clear"
@@ -36,4 +36,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

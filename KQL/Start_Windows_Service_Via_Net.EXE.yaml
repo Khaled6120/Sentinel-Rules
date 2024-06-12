@@ -13,7 +13,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1569.002
+- T1569
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " start " and ((FolderPath endswith "\\net.exe"
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

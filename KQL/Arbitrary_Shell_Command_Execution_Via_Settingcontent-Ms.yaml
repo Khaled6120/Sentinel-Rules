@@ -15,8 +15,8 @@ tactics:
 - execution
 - initial_access
 relevantTechniques:
-- t1204
-- t1566.001
+- T1204
+- T1566
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains ".SettingContent-ms" and (not(ProcessCommandLine
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -16,7 +16,7 @@ logsource:
 tactics:
 - command_and_control
 relevantTechniques:
-- t1219
+- T1219
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\bitsadmin.exe" or FolderPath endswith "\\cmd.exe"
@@ -36,4 +36,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

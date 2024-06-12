@@ -14,7 +14,7 @@ tactics:
 - credential_access
 - privilege_escalation
 relevantTechniques:
-- t1212
+- T1212
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "spoolss" or ProcessCommandLine contains "srvsvc"
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

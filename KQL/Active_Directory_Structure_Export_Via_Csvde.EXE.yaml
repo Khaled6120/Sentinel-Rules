@@ -14,7 +14,7 @@ tactics:
 - discovery
 - exfiltration
 relevantTechniques:
-- t1087.002
+- T1087
 query: 'DeviceProcessEvents
 
   | where ((FolderPath endswith "\\csvde.exe" or ProcessVersionInfoOriginalFileName
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

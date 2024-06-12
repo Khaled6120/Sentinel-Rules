@@ -15,7 +15,7 @@ tactics:
 - defense_evasion
 - privilege_escalation
 relevantTechniques:
-- t1548.002
+- T1548
 query: 'DeviceImageLoadEvents
 
   | where (InitiatingProcessFolderPath =~ "C:\\Windows\\SysWOW64\\iscsicpl.exe" and
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

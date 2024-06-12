@@ -14,7 +14,7 @@ tactics:
 - execution
 - persistence
 relevantTechniques:
-- t1053.005
+- T1053
 query: 'DeviceProcessEvents
 
   | where (((ProcessCommandLine contains " /change " or ProcessCommandLine contains
@@ -37,4 +37,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

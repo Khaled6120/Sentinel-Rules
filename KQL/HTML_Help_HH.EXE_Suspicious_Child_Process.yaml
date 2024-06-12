@@ -14,17 +14,10 @@ tactics:
 - execution
 - initial_access
 relevantTechniques:
-- t1047
-- t1059.001
-- t1059.003
-- t1059.005
-- t1059.007
-- t1218
-- t1218.001
-- t1218.010
-- t1218.011
-- t1566
-- t1566.001
+- T1047
+- T1059
+- T1218
+- T1566
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\CertReq.exe" or FolderPath endswith "\\CertUtil.exe"
@@ -46,4 +39,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

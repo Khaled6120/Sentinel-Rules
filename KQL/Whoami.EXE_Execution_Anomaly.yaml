@@ -12,7 +12,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1033
+- T1033
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\whoami.exe" or ProcessVersionInfoOriginalFileName
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

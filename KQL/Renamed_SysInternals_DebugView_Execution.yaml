@@ -12,7 +12,7 @@ logsource:
 tactics:
 - resource_development
 relevantTechniques:
-- t1588.002
+- T1588
 query: 'DeviceProcessEvents
 
   | where ProcessVersionInfoProductName =~ "Sysinternals DebugView" and (not((FolderPath
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

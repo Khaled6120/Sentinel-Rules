@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1055.001
+- T1055
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains " /d " or ProcessCommandLine contains " /c
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

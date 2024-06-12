@@ -12,7 +12,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1047
+- T1047
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\svchost.exe" or FolderPath endswith "\\dllhost.exe"
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

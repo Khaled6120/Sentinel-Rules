@@ -15,7 +15,7 @@ tactics:
 - defense_evasion
 - execution
 relevantTechniques:
-- t1003.001
+- T1003
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " -hang " or ProcessCommandLine contains "
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -14,8 +14,8 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1202
-- t1218
+- T1202
+- T1218
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\choice" and InitiatingProcessFolderPath endswith
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

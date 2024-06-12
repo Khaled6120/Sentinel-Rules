@@ -13,7 +13,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1036
+- T1036
 query: 'DeviceImageLoadEvents
 
   | where (FolderPath endswith "\\hdwwiz.cpl" or FolderPath endswith "\\appwiz.cpl")
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

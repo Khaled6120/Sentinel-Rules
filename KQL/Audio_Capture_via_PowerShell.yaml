@@ -13,7 +13,7 @@ logsource:
 tactics:
 - collection
 relevantTechniques:
-- t1123
+- T1123
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "WindowsAudioDevice-Powershell-Cmdlet" or ProcessCommandLine
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

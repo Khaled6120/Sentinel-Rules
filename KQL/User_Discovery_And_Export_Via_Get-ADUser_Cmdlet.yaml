@@ -13,7 +13,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1033
+- T1033
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains " > " or ProcessCommandLine contains " | Select
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

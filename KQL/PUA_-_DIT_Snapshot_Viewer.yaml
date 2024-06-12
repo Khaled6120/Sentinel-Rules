@@ -13,7 +13,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1003.003
+- T1003
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\ditsnap.exe" or ProcessCommandLine contains "ditsnap.exe"'
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

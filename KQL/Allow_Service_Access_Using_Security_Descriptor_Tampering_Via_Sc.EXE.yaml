@@ -14,7 +14,7 @@ logsource:
 tactics:
 - persistence
 relevantTechniques:
-- t1543.003
+- T1543
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\sc.exe" or ProcessVersionInfoOriginalFileName =~
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

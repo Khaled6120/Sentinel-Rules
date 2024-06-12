@@ -14,8 +14,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1564
-- t1564.006
+- T1564
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "VBoxRT.dll,RTR3Init" or ProcessCommandLine
@@ -32,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

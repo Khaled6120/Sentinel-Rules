@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1127
+- T1127
 query: 'DeviceProcessEvents
 
   | where ((FolderPath endswith "\\calc.exe" or FolderPath endswith "\\notepad.exe")
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

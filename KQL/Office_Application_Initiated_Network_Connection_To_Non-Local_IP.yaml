@@ -20,7 +20,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1203
+- T1203
 query: 'DeviceNetworkEvents
 
   | where (InitiatingProcessFolderPath endswith "\\excel.exe" or InitiatingProcessFolderPath
@@ -45,4 +45,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

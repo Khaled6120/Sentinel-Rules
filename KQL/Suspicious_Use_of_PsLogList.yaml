@@ -13,9 +13,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1087
-- t1087.001
-- t1087.002
+- T1087
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " security" or ProcessCommandLine contains
@@ -37,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

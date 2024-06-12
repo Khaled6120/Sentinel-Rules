@@ -14,8 +14,8 @@ tactics:
 - persistence
 - s0190
 relevantTechniques:
-- t1036.003
-- t1197
+- T1036
+- T1197
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains ".7z" or ProcessCommandLine contains ".asax"
@@ -46,4 +46,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

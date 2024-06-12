@@ -13,7 +13,7 @@ logsource:
 tactics:
 - persistence
 relevantTechniques:
-- t1176
+- T1176
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "--load-extension=" and (FolderPath endswith
@@ -36,4 +36,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -14,8 +14,8 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1007
-- t1012
+- T1007
+- T1012
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "query" and (FolderPath endswith "\\reg.exe"
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

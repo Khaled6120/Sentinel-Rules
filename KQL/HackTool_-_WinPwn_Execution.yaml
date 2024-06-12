@@ -19,14 +19,13 @@ tactics:
 - execution
 - privilege_escalation
 relevantTechniques:
-- t1046
-- t1082
-- t1106
-- t1518
-- t1548.002
-- t1552.001
-- t1555
-- t1555.003
+- T1046
+- T1082
+- T1106
+- T1518
+- T1548
+- T1552
+- T1555
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "Offline_Winpwn" or ProcessCommandLine contains
@@ -43,4 +42,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -13,7 +13,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1555
+- T1555
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\powershell.exe"
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

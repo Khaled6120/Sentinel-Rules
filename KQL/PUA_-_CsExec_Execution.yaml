@@ -14,8 +14,8 @@ tactics:
 - execution
 - resource_development
 relevantTechniques:
-- t1569.002
-- t1587.001
+- T1569
+- T1587
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\csexec.exe" or ProcessVersionInfoFileDescription
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

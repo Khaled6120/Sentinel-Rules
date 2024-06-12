@@ -17,7 +17,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1057
+- T1057
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "ipconfig /all | find " or ProcessCommandLine
@@ -58,4 +58,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

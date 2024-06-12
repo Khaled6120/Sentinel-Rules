@@ -13,8 +13,8 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1003
-- t1588.002
+- T1003
+- T1588
 query: 'DeviceProcessEvents
 
   | where ProcessVersionInfoCompanyName =~ "Cube0x0"'
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

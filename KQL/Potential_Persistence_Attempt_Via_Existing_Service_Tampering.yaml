@@ -14,8 +14,8 @@ logsource:
 tactics:
 - persistence
 relevantTechniques:
-- t1543.003
-- t1574.011
+- T1543
+- T1574
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "sc " and ProcessCommandLine contains "config
@@ -42,4 +42,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

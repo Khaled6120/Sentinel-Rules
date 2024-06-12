@@ -13,9 +13,9 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1083
-- t1087
-- t1526
+- T1083
+- T1087
+- T1526
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\Seatbelt.exe" or ProcessVersionInfoOriginalFileName
@@ -43,4 +43,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

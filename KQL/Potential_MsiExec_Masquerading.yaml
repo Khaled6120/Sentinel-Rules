@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1036.005
+- T1036
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\msiexec.exe" or ProcessVersionInfoOriginalFileName
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

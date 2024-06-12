@@ -12,7 +12,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1059
+- T1059
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\cmd.exe" and (InitiatingProcessFolderPath endswith
@@ -43,4 +43,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

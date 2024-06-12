@@ -14,8 +14,8 @@ tactics:
 - defense_evasion
 - privilege_escalation
 relevantTechniques:
-- t1036
-- t1055
+- T1036
+- T1055
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\cscript.exe"
@@ -38,4 +38,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

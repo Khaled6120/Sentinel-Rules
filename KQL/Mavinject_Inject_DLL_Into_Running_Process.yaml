@@ -14,8 +14,8 @@ tactics:
 - defense_evasion
 - privilege_escalation
 relevantTechniques:
-- t1055.001
-- t1218.013
+- T1055
+- T1218
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " /INJECTRUNNING " and (not(InitiatingProcessFolderPath
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

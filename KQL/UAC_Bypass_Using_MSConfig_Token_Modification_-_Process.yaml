@@ -13,7 +13,7 @@ tactics:
 - defense_evasion
 - privilege_escalation
 relevantTechniques:
-- t1548.002
+- T1548
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine =~ "\"C:\\Windows\\system32\\msconfig.exe\" -5" and (ProcessIntegrityLevel
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

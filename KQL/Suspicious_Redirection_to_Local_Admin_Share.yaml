@@ -13,7 +13,7 @@ logsource:
 tactics:
 - exfiltration
 relevantTechniques:
-- t1048
+- T1048
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains ">" and (ProcessCommandLine contains "\\\\127.0.0.1\\admin$\\"
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

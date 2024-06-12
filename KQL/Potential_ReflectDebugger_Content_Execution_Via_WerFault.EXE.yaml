@@ -15,7 +15,7 @@ tactics:
 - defense_evasion
 - execution
 relevantTechniques:
-- t1036
+- T1036
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " -pr " and (FolderPath endswith "\\WerFault.exe"
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

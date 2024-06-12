@@ -13,8 +13,8 @@ tactics:
 - command_and_control
 - lateral_movement
 relevantTechniques:
-- t1021.001
-- t1572
+- T1021
+- T1572
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " -R " and ProcessVersionInfoFileDescription
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

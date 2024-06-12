@@ -22,7 +22,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1197
+- T1197
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\bitsadmin.exe" or ProcessVersionInfoOriginalFileName
@@ -42,4 +42,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

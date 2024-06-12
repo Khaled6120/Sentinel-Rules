@@ -15,10 +15,9 @@ tactics:
 - defense_evasion
 - execution
 relevantTechniques:
-- t1027.004
-- t1059.005
-- t1059.007
-- t1218.005
+- T1027
+- T1059
+- T1218
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\csc.exe" or ProcessVersionInfoOriginalFileName =~
@@ -58,4 +57,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

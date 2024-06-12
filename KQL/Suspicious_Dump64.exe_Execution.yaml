@@ -13,7 +13,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1003.001
+- T1003
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\dump64.exe" and (not(FolderPath contains "\\Installer\\Feedback\\dump64.exe")))
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

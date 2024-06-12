@@ -19,8 +19,8 @@ tactics:
 - defense_evasion
 - impact
 relevantTechniques:
-- t1112
-- t1491.001
+- T1112
+- T1491
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "add" and (FolderPath endswith "\\reg.exe"
@@ -41,4 +41,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

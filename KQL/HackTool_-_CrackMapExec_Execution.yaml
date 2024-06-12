@@ -17,12 +17,11 @@ tactics:
 - persistence
 - privilege_escalation
 relevantTechniques:
-- t1047
-- t1053
-- t1059.001
-- t1059.003
-- t1110
-- t1201
+- T1047
+- T1053
+- T1059
+- T1110
+- T1201
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\crackmapexec.exe" or (ProcessCommandLine contains
@@ -51,4 +50,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

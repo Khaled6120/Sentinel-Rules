@@ -13,7 +13,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1564.004
+- T1564
 query: 'DeviceProcessEvents
 
   | where (FolderPath contains "~1\\" or FolderPath contains "~2\\") and (not((((InitiatingProcessFolderPath
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

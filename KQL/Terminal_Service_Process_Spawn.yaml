@@ -14,8 +14,8 @@ tactics:
 - initial_access
 - lateral_movement
 relevantTechniques:
-- t1190
-- t1210
+- T1190
+- T1210
 query: 'DeviceProcessEvents
 
   | where (InitiatingProcessCommandLine contains "\\svchost.exe" and InitiatingProcessCommandLine
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

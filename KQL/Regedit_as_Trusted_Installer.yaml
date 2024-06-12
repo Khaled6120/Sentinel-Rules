@@ -12,7 +12,7 @@ logsource:
 tactics:
 - privilege_escalation
 relevantTechniques:
-- t1548
+- T1548
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\regedit.exe" and (InitiatingProcessFolderPath endswith
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

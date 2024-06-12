@@ -13,8 +13,8 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1059.007
-- t1127
+- T1059
+- T1127
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\Adobe Creative Cloud Experience\\libs\\node.exe"
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

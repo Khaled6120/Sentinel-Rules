@@ -13,7 +13,7 @@ logsource:
 tactics:
 - reconnaissance
 relevantTechniques:
-- t1595
+- T1595
 query: 'DeviceProcessEvents
 
   | where ((MD5 startswith "f741f25ac909ee434e50812d436c73ff" or MD5 startswith "d40acbfc29ee24388262e3d8be16f622"
@@ -133,4 +133,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

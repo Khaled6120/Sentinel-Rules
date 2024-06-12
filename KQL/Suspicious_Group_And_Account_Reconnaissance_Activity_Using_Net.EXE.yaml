@@ -19,8 +19,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1087.001
-- t1087.002
+- T1087
 query: "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\net.exe\" or FolderPath\
   \ endswith \"\\\\net1.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"net.exe\"\
   , \"net1.exe\"))) and ((((ProcessCommandLine contains \"domain admins\" or ProcessCommandLine\
@@ -44,4 +43,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -12,7 +12,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1558.003
+- T1558
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " -q " or ProcessCommandLine contains " /q
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

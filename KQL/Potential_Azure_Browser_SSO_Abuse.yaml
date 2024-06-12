@@ -20,7 +20,7 @@ tactics:
 - defense_evasion
 - privilege_escalation
 relevantTechniques:
-- t1574.002
+- T1574
 query: 'DeviceImageLoadEvents
 
   | where FolderPath =~ "C:\\Windows\\System32\\MicrosoftAccountTokenProvider.dll"
@@ -50,4 +50,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

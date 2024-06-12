@@ -13,7 +13,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1087.001
+- T1087
 query: "DeviceProcessEvents\n| where ProcessCommandLine contains \"Get-LocalGroupMember\
   \ \" and (ProcessCommandLine contains \"domain admins\" or ProcessCommandLine contains\
   \ \" administrator\" or ProcessCommandLine contains \" administrateur\" or ProcessCommandLine\
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

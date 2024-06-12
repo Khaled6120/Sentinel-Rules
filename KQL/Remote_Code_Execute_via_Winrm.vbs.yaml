@@ -13,7 +13,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1216
+- T1216
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "winrm" and ProcessCommandLine contains "invoke
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -13,7 +13,7 @@ logsource:
 tactics:
 - persistence
 relevantTechniques:
-- t1505.004
+- T1505
 query: 'DeviceProcessEvents
 
   | where InitiatingProcessFolderPath endswith "\\w3wp.exe" and (ProcessCommandLine
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

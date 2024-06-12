@@ -17,7 +17,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1018
+- T1018
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "adidnsdump" and FolderPath endswith "\\python.exe"'
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

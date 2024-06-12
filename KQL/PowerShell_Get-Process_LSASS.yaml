@@ -13,7 +13,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1552.004
+- T1552
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "Get-Process lsas" or ProcessCommandLine contains
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

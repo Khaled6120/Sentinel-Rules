@@ -14,9 +14,9 @@ tactics:
 - defense_evasion
 - execution
 relevantTechniques:
-- t1106
-- t1127
-- t1218
+- T1106
+- T1127
+- T1218
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " -c " or ProcessCommandLine contains " -cf
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

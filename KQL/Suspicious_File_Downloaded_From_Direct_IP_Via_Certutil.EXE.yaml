@@ -13,7 +13,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1027
+- T1027
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "urlcache " or ProcessCommandLine contains
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

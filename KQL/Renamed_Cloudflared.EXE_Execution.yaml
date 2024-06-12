@@ -12,7 +12,7 @@ logsource:
 tactics:
 - command_and_control
 relevantTechniques:
-- t1090.001
+- T1090
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "-url" and ProcessCommandLine contains "tunnel")
@@ -72,4 +72,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

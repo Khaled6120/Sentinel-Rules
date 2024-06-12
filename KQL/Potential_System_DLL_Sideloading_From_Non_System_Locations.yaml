@@ -15,8 +15,7 @@ tactics:
 - persistence
 - privilege_escalation
 relevantTechniques:
-- t1574.001
-- t1574.002
+- T1574
 query: 'DeviceImageLoadEvents
 
   | where (FolderPath endswith "\\shfolder.dll" or FolderPath endswith "\\activeds.dll"
@@ -247,4 +246,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

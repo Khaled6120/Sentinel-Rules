@@ -14,8 +14,7 @@ tactics:
 - defense_evasion
 - privilege_escalation
 relevantTechniques:
-- t1134.001
-- t1134.003
+- T1134
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains " user:" and ProcessCommandLine contains "
@@ -34,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -14,8 +14,8 @@ tactics:
 - execution
 - persistence
 relevantTechniques:
-- t1218.002
-- t1546
+- T1218
+- T1546
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "add" and ProcessCommandLine contains "CurrentVersion\\Control
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

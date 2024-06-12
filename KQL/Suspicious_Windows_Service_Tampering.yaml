@@ -14,7 +14,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1489
+- T1489
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "143Svc" or ProcessCommandLine contains "Acronis
@@ -130,4 +130,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

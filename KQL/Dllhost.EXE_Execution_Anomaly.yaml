@@ -14,7 +14,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1055
+- T1055
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine in~ ("dllhost.exe", "dllhost")) and FolderPath endswith
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

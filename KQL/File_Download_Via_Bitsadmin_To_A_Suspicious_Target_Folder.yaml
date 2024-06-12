@@ -15,8 +15,8 @@ tactics:
 - persistence
 - s0190
 relevantTechniques:
-- t1036.003
-- t1197
+- T1036
+- T1197
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " /transfer " or ProcessCommandLine contains
@@ -39,4 +39,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

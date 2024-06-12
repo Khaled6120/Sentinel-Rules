@@ -14,9 +14,9 @@ tactics:
 - collection
 - credential_access
 relevantTechniques:
-- t1005
-- t1539
-- t1555.003
+- T1005
+- T1539
+- T1555
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "\\User Data\\" or ProcessCommandLine contains
@@ -36,4 +36,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

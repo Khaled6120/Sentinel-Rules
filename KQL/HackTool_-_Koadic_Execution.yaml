@@ -12,9 +12,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1059.003
-- t1059.005
-- t1059.007
+- T1059
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "/q" and ProcessCommandLine contains "/c" and
@@ -31,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

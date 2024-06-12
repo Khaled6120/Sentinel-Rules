@@ -15,7 +15,7 @@ tactics:
 - persistence
 - privilege_escalation
 relevantTechniques:
-- t1190
+- T1190
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\sh.exe" or FolderPath
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

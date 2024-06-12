@@ -13,7 +13,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1087.002
+- T1087
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "-sc admincountdmp" or ProcessCommandLine contains
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

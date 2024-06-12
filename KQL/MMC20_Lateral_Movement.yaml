@@ -14,7 +14,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1021.003
+- T1021
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "-Embedding" and FolderPath endswith "\\mmc.exe"
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

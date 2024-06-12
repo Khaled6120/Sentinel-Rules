@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1140
+- T1140
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "h^t^t^p" or ProcessCommandLine contains "h\"t\"t\"p"'
@@ -27,4 +27,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

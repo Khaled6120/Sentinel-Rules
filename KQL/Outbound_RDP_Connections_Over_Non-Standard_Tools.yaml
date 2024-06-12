@@ -18,7 +18,7 @@ logsource:
 tactics:
 - lateral_movement
 relevantTechniques:
-- t1021.001
+- T1021
 query: 'DeviceNetworkEvents
 
   | where RemotePort == 3389 and (not((InitiatingProcessFolderPath in~ ("C:\\Windows\\System32\\mstsc.exe",
@@ -56,4 +56,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

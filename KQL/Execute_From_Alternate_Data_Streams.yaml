@@ -13,7 +13,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1564.004
+- T1564
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "txt:" and ((ProcessCommandLine contains "esentutl
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

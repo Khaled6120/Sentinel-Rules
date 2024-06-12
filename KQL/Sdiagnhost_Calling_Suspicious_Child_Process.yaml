@@ -13,8 +13,8 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1036
-- t1218
+- T1036
+- T1218
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

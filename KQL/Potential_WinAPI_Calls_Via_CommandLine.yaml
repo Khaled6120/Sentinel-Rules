@@ -13,7 +13,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1106
+- T1106
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "AddSecurityPackage" or ProcessCommandLine
@@ -54,4 +54,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

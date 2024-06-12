@@ -13,7 +13,7 @@ logsource:
 tactics:
 - reconnaissance
 relevantTechniques:
-- t1593.003
+- T1593
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " clone " or ProcessCommandLine contains "git-remote-https
@@ -37,4 +37,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

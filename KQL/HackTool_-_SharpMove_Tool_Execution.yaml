@@ -16,7 +16,7 @@ logsource:
 tactics:
 - lateral_movement
 relevantTechniques:
-- t1021.002
+- T1021
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\SharpMove.exe" or ProcessVersionInfoOriginalFileName
@@ -38,4 +38,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

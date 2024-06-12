@@ -15,9 +15,9 @@ tactics:
 - defense_evasion
 - privilege_escalation
 relevantTechniques:
-- t1003
-- t1027
-- t1134
+- T1003
+- T1027
+- T1134
 query: 'DeviceProcessEvents
 
   | where ((ProcessIntegrityLevel =~ "System" and (AccountName contains "AUTHORI"
@@ -66,4 +66,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

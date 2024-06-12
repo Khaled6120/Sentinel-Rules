@@ -13,7 +13,7 @@ tactics:
 - command_and_control
 - execution
 relevantTechniques:
-- t1105
+- T1105
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "-GetCACAPS" and (FolderPath endswith "\\certoc.exe"
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

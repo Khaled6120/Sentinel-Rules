@@ -16,7 +16,7 @@ logsource:
 tactics:
 - reconnaissance
 relevantTechniques:
-- t1595
+- T1595
 query: 'DeviceProcessEvents
 
   | where ((InitiatingProcessCommandLine contains ".bat" or InitiatingProcessCommandLine
@@ -66,4 +66,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -18,7 +18,7 @@ logsource:
 tactics:
 - privilege_escalation
 relevantTechniques:
-- t1546.002
+- T1546
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "HKEY_CURRENT_USER\\Control Panel\\Desktop"
@@ -43,4 +43,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -15,8 +15,8 @@ tactics:
 - credential_access
 - execution
 relevantTechniques:
-- t1059.001
-- t1552.004
+- T1059
+- T1552
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "Export-PfxCertificate " or ProcessCommandLine
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -19,7 +19,7 @@ tactics:
 - credential_access
 - discovery
 relevantTechniques:
-- t1552
+- T1552
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "-InstanceId 4624" or ProcessCommandLine contains
@@ -52,4 +52,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -14,8 +14,8 @@ tactics:
 - execution
 - privilege_escalation
 relevantTechniques:
-- t1203
-- t1574.002
+- T1203
+- T1574
 query: 'DeviceProcessEvents
 
   | where ((FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\cscript.exe"
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

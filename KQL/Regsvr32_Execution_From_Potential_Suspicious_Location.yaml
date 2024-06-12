@@ -13,7 +13,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1218.010
+- T1218
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains ":\\ProgramData\\" or ProcessCommandLine contains
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

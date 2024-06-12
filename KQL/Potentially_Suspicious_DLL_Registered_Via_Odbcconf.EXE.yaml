@@ -14,7 +14,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1218.008
+- T1218
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "REGSVR " and (FolderPath endswith "\\odbcconf.exe"
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

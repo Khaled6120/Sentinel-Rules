@@ -13,7 +13,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1615
+- T1615
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "/z" or ProcessCommandLine contains "/v") and
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

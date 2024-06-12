@@ -13,7 +13,7 @@ logsource:
 tactics:
 - privilege_escalation
 relevantTechniques:
-- t1548.002
+- T1548
 query: 'DeviceProcessEvents
 
   | where InitiatingProcessFolderPath endswith "\\fodhelper.exe"'
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

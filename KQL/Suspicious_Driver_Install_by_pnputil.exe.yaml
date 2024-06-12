@@ -13,7 +13,7 @@ logsource:
 tactics:
 - persistence
 relevantTechniques:
-- t1547
+- T1547
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "-i" or ProcessCommandLine contains "/install"
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

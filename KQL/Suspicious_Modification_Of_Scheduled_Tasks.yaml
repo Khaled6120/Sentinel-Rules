@@ -20,7 +20,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1053.005
+- T1053
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains " /Change " and ProcessCommandLine contains
@@ -55,4 +55,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

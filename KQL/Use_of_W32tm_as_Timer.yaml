@@ -13,7 +13,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1124
+- T1124
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "/stripchart" and ProcessCommandLine contains
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

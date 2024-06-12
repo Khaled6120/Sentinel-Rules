@@ -12,8 +12,8 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1016
-- t1482
+- T1016
+- T1482
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\nltest.exe" or ProcessVersionInfoOriginalFileName
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

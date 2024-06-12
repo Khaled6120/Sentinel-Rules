@@ -13,8 +13,8 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1003.003
-- t1552.001
+- T1003
+- T1552
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "snapshot" and (FolderPath endswith "\\ADExplorer.exe"
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

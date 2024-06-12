@@ -15,8 +15,8 @@ tactics:
 - defense_evasion
 - persistence
 relevantTechniques:
-- t1059
-- t1211
+- T1059
+- T1211
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "echo" or ProcessCommandLine contains "copy"
@@ -42,4 +42,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

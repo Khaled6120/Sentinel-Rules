@@ -13,7 +13,7 @@ logsource:
 tactics:
 - exfiltration
 relevantTechniques:
-- t1567.002
+- T1567
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "--config " and ProcessCommandLine contains
@@ -38,4 +38,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

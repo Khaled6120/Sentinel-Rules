@@ -13,8 +13,7 @@ logsource:
 tactics:
 - lateral_movement
 relevantTechniques:
-- t1021.002
-- t1021.003
+- T1021
 query: 'DeviceImageLoadEvents
 
   | where FolderPath endswith "\\Internet Explorer\\iertutil.dll" and InitiatingProcessFolderPath
@@ -30,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

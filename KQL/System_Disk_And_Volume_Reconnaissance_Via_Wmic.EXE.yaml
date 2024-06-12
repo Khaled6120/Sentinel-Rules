@@ -21,8 +21,8 @@ tactics:
 - discovery
 - execution
 relevantTechniques:
-- t1047
-- t1082
+- T1047
+- T1082
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "volume" or ProcessCommandLine contains "path
@@ -39,4 +39,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

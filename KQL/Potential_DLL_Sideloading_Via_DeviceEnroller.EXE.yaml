@@ -18,7 +18,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1574.002
+- T1574
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "/PhoneDeepLink" and (FolderPath endswith "\\deviceenroller.exe"
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

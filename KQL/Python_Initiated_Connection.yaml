@@ -14,7 +14,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1046
+- T1046
 query: 'DeviceNetworkEvents
 
   | where InitiatingProcessFolderPath contains "python" and (not((RemoteIP =~ "127.0.0.1"
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

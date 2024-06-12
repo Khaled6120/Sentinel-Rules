@@ -16,8 +16,8 @@ tactics:
 - g0069
 - privilege_escalation
 relevantTechniques:
-- t1218.003
-- t1548.002
+- T1218
+- T1548
 query: 'DeviceProcessEvents
 
   | where (ProcessIntegrityLevel in~ ("High", "System")) and (InitiatingProcessCommandLine
@@ -38,4 +38,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -15,7 +15,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1036
+- T1036
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine endswith "Wuauclt" or ProcessCommandLine endswith "Wuauclt.exe")
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

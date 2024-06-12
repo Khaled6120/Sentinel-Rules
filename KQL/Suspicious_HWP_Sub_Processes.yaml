@@ -15,9 +15,9 @@ tactics:
 - g0032
 - initial_access
 relevantTechniques:
-- t1059.003
-- t1203
-- t1566.001
+- T1059
+- T1203
+- T1566
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\gbb.exe" and InitiatingProcessFolderPath endswith
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

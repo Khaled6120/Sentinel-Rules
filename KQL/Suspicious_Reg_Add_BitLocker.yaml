@@ -13,7 +13,7 @@ logsource:
 tactics:
 - impact
 relevantTechniques:
-- t1486
+- T1486
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "EnableBDEWithNoTPM" or ProcessCommandLine
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

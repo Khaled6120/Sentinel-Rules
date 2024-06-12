@@ -16,8 +16,8 @@ tactics:
 - execution
 - persistence
 relevantTechniques:
-- t1053.005
-- t1059.001
+- T1053
+- T1059
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine endswith " -windowstyle hidden" or ProcessCommandLine
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

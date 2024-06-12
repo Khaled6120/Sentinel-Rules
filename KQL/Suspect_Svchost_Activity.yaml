@@ -15,7 +15,7 @@ tactics:
 - defense_evasion
 - privilege_escalation
 relevantTechniques:
-- t1055
+- T1055
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine endswith "svchost.exe" and FolderPath endswith "\\svchost.exe")
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -12,9 +12,9 @@ logsource:
 tactics:
 - privilege_escalation
 relevantTechniques:
-- t1569.002
-- t1574.005
-- t1615
+- T1569
+- T1574
+- T1615
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\SharpUp.exe" or ProcessVersionInfoFileDescription
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -13,7 +13,7 @@ logsource:
 tactics:
 - privilege_escalation
 relevantTechniques:
-- t1548.002
+- T1548
 query: 'DeviceProcessEvents
 
   | where (((FolderPath contains "\\Windows\\Installer\\" and FolderPath contains
@@ -38,4 +38,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

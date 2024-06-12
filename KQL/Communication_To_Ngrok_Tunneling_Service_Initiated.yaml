@@ -23,11 +23,11 @@ tactics:
 - exfiltration
 - s0508
 relevantTechniques:
-- t1090
-- t1102
-- t1567
-- t1568.002
-- t1572
+- T1090
+- T1102
+- T1567
+- T1568
+- T1572
 query: 'DeviceNetworkEvents
 
   | where RemoteUrl contains "tunnel.us.ngrok.com" or RemoteUrl contains "tunnel.eu.ngrok.com"
@@ -45,4 +45,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

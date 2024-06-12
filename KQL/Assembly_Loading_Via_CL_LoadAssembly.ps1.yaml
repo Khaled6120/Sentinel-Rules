@@ -14,7 +14,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1216
+- T1216
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "LoadAssemblyFromPath " or ProcessCommandLine
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

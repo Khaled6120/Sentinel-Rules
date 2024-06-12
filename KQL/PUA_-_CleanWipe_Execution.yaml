@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1562.001
+- T1562
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\SepRemovalToolNative_x64.exe" or (ProcessCommandLine
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

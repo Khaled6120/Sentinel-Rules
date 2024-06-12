@@ -12,9 +12,8 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1070
-- t1562
-- t1562.002
+- T1070
+- T1562
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "unload" and (FolderPath endswith "\\fltMC.exe"
@@ -31,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

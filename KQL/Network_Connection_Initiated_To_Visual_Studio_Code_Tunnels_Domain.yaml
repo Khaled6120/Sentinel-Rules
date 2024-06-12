@@ -16,7 +16,7 @@ logsource:
 tactics:
 - exfiltration
 relevantTechniques:
-- t1567.001
+- T1567
 query: 'DeviceNetworkEvents
 
   | where RemoteUrl endswith ".tunnels.api.visualstudio.com"'
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

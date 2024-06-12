@@ -13,7 +13,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1552.004
+- T1552
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains ".key" or ProcessCommandLine contains ".pgp"
@@ -37,4 +37,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

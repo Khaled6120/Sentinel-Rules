@@ -15,7 +15,7 @@ tactics:
 - collection
 - credential_access
 relevantTechniques:
-- t1056.002
+- T1056
 query: 'DeviceImageLoadEvents
 
   | where ((FolderPath endswith "\\credui.dll" or FolderPath endswith "\\wincredui.dll")
@@ -42,4 +42,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

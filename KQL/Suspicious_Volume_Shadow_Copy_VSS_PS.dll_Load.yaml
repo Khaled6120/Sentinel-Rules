@@ -13,7 +13,7 @@ tactics:
 - defense_evasion
 - impact
 relevantTechniques:
-- t1490
+- T1490
 query: 'DeviceImageLoadEvents
 
   | where FolderPath endswith "\\vss_ps.dll" and (not((isnull(InitiatingProcessFolderPath)
@@ -44,4 +44,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

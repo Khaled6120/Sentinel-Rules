@@ -13,7 +13,7 @@ logsource:
 tactics:
 - persistence
 relevantTechniques:
-- t1136.001
+- T1136
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "user" and ProcessCommandLine contains "add"
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

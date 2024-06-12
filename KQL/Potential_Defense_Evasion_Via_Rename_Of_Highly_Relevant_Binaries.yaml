@@ -13,7 +13,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1036.003
+- T1036
 query: 'DeviceProcessEvents
 
   | where (ProcessVersionInfoFileDescription =~ "Execute processes remotely" or ProcessVersionInfoProductName
@@ -41,4 +41,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

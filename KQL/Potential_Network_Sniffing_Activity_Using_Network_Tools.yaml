@@ -23,7 +23,7 @@ tactics:
 - credential_access
 - discovery
 relevantTechniques:
-- t1040
+- T1040
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "-i" and FolderPath endswith "\\tshark.exe")
@@ -39,4 +39,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

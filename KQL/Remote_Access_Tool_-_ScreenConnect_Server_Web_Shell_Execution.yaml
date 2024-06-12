@@ -12,7 +12,7 @@ logsource:
 tactics:
 - initial_access
 relevantTechniques:
-- t1190
+- T1190
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\csc.exe") and
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

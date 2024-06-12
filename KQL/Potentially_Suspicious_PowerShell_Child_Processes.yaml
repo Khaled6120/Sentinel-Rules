@@ -12,7 +12,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1059.001
+- T1059
 query: 'DeviceProcessEvents
 
   | where ((FolderPath endswith "\\bash.exe" or FolderPath endswith "\\bitsadmin.exe"
@@ -37,4 +37,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

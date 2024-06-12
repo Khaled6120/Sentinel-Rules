@@ -14,7 +14,7 @@ tactics:
 - discovery
 - privilege_escalation
 relevantTechniques:
-- t1033
+- T1033
 query: 'DeviceProcessEvents
 
   | where (ProcessVersionInfoOriginalFileName =~ "whoami.exe" or FolderPath endswith
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

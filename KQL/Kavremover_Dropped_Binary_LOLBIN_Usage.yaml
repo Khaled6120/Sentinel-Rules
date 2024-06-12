@@ -14,7 +14,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1127
+- T1127
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " run run-cmd " and (not((InitiatingProcessFolderPath
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

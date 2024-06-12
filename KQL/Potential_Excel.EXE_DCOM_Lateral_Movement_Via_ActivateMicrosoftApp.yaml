@@ -15,7 +15,7 @@ logsource:
 tactics:
 - lateral_movement
 relevantTechniques:
-- t1021.003
+- T1021
 query: 'DeviceProcessEvents
 
   | where ((ProcessVersionInfoOriginalFileName in~ ("foxprow.exe", "schdplus.exe",
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

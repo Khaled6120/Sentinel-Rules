@@ -13,7 +13,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1003.003
+- T1003
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "snapshot" and ProcessCommandLine contains
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

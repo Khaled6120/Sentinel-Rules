@@ -12,7 +12,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1204.002
+- T1204
 query: 'DeviceImageLoadEvents
 
   | where FolderPath contains "\\clr.dll" and (InitiatingProcessFolderPath endswith
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -15,7 +15,7 @@ tactics:
 - collection
 - credential_access
 relevantTechniques:
-- t1056.002
+- T1056
 query: 'DeviceProcessEvents
 
   | where ProcessVersionInfoProductName contains "Mouse Lock" or ProcessVersionInfoCompanyName
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -16,7 +16,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1204.002
+- T1204
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "http" and (FolderPath endswith "\\brave.exe"
@@ -37,4 +37,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

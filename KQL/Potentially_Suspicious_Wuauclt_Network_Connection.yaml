@@ -18,7 +18,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1218
+- T1218
 query: 'DeviceNetworkEvents
 
   | where (InitiatingProcessCommandLine contains " /RunHandlerComServer" and InitiatingProcessFolderPath
@@ -46,4 +46,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

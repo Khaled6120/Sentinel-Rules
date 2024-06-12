@@ -12,7 +12,7 @@ logsource:
 tactics:
 - persistence
 relevantTechniques:
-- t1098
+- T1098
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "Group Policy Creator Owners" or ProcessCommandLine
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

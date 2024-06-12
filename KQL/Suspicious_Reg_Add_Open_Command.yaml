@@ -13,7 +13,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1003
+- T1003
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "reg" and ProcessCommandLine contains "add"
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -19,7 +19,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1036
+- T1036
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "/factory,{75dff2b7-6936-4c06-a8bb-676a7b00b24b}"
@@ -36,4 +36,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

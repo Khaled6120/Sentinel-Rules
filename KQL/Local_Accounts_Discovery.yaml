@@ -12,8 +12,8 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1033
-- t1087.001
+- T1033
+- T1087
 query: 'DeviceProcessEvents
 
   | where (((ProcessCommandLine contains " /c" and ProcessCommandLine contains "dir
@@ -40,4 +40,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

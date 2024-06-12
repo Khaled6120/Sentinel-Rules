@@ -14,8 +14,8 @@ tactics:
 - discovery
 - execution
 relevantTechniques:
-- t1059.005
-- t1615
+- T1059
+- T1615
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "gatherNetworkInfo.vbs" and (not((FolderPath
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

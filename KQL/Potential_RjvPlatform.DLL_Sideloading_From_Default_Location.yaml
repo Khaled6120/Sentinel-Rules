@@ -15,8 +15,7 @@ tactics:
 - defense_evasion
 - privilege_escalation
 relevantTechniques:
-- t1574.001
-- t1574.002
+- T1574
 query: 'DeviceImageLoadEvents
 
   | where InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\SystemResetPlatform\\SystemResetPlatform.exe"
@@ -32,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

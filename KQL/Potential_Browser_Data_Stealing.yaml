@@ -21,7 +21,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1555.003
+- T1555
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "copy-item" or ProcessCommandLine contains
@@ -58,4 +58,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

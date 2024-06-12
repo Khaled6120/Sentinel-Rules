@@ -13,8 +13,8 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1082
-- t1087
+- T1082
+- T1087
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "nslookup" and ProcessCommandLine contains "_ldap._tcp.dc._msdcs."'
@@ -29,4 +29,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

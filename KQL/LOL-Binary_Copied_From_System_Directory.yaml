@@ -16,7 +16,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1036.003
+- T1036
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "copy " and FolderPath endswith "\\cmd.exe")
@@ -42,4 +42,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

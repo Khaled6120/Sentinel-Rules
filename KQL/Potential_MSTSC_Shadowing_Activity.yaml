@@ -12,7 +12,7 @@ logsource:
 tactics:
 - lateral_movement
 relevantTechniques:
-- t1563.002
+- T1563
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "noconsentprompt" and ProcessCommandLine contains
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

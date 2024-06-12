@@ -14,7 +14,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1518.001
+- T1518
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " 385201" and ((FolderPath endswith "\\find.exe"
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

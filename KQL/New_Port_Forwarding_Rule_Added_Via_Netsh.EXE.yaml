@@ -16,7 +16,7 @@ tactics:
 - defense_evasion
 - lateral_movement
 relevantTechniques:
-- t1090
+- T1090
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\netsh.exe" or ProcessVersionInfoOriginalFileName
@@ -37,4 +37,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -12,7 +12,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1574
+- T1574
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "-path" and ProcessCommandLine contains "dll")
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

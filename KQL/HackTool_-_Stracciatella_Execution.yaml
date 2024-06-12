@@ -15,8 +15,8 @@ tactics:
 - defense_evasion
 - execution
 relevantTechniques:
-- t1059
-- t1562.001
+- T1059
+- T1562
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\Stracciatella.exe" or ProcessVersionInfoOriginalFileName
@@ -36,4 +36,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

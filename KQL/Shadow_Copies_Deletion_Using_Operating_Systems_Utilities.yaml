@@ -14,8 +14,8 @@ tactics:
 - defense_evasion
 - impact
 relevantTechniques:
-- t1070
-- t1490
+- T1070
+- T1490
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "shadow" and ProcessCommandLine contains "delete")
@@ -40,4 +40,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

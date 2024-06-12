@@ -14,7 +14,7 @@ logsource:
 tactics:
 - initial_access
 relevantTechniques:
-- t1133
+- T1133
 query: 'DeviceProcessEvents
 
   | where InitiatingProcessFolderPath endswith "\\dns.exe" and (not(FolderPath endswith
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

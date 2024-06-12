@@ -12,7 +12,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1204.002
+- T1204
 query: 'DeviceImageLoadEvents
 
   | where FolderPath startswith "\\\\" and InitiatingProcessFolderPath endswith "\\rundll32.exe"'
@@ -27,4 +27,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

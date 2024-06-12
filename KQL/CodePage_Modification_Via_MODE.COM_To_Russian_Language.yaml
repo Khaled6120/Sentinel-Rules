@@ -17,7 +17,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1036
+- T1036
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains " con " and ProcessCommandLine contains "
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

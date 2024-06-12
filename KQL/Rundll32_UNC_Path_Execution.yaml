@@ -14,8 +14,8 @@ tactics:
 - defense_evasion
 - execution
 relevantTechniques:
-- t1021.002
-- t1218.011
+- T1021
+- T1218
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains " \\\\" and (FolderPath endswith "\\rundll32.exe"
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

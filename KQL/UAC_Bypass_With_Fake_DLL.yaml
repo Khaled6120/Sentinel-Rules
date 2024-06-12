@@ -14,8 +14,8 @@ tactics:
 - persistence
 - privilege_escalation
 relevantTechniques:
-- t1548.002
-- t1574.002
+- T1548
+- T1574
 query: 'DeviceImageLoadEvents
 
   | where (FolderPath endswith "\\dismcore.dll" and InitiatingProcessFolderPath endswith
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

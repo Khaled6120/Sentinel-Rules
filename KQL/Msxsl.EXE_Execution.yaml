@@ -19,7 +19,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1220
+- T1220
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\msxsl.exe"'
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

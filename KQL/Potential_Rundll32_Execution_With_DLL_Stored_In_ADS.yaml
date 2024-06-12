@@ -13,7 +13,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1564.004
+- T1564
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine matches regex "[Rr][Uu][Nn][Dd][Ll][Ll]32(\\.[Ee][Xx][Ee])?
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

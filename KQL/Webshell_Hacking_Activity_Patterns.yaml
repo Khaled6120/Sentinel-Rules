@@ -16,10 +16,10 @@ logsource:
 tactics:
 - persistence
 relevantTechniques:
-- t1018
-- t1033
-- t1087
-- t1505.003
+- T1018
+- T1033
+- T1087
+- T1505
 query: 'DeviceProcessEvents
 
   | where (((InitiatingProcessFolderPath contains "-tomcat-" or InitiatingProcessFolderPath
@@ -58,4 +58,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

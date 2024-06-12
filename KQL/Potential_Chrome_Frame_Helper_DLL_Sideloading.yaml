@@ -14,8 +14,7 @@ tactics:
 - persistence
 - privilege_escalation
 relevantTechniques:
-- t1574.001
-- t1574.002
+- T1574
 query: 'DeviceImageLoadEvents
 
   | where FolderPath endswith "\\chrome_frame_helper.dll" and (not((FolderPath startswith
@@ -32,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

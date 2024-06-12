@@ -14,7 +14,7 @@ logsource:
 tactics:
 - credential_access
 relevantTechniques:
-- t1528
+- T1528
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "eyJ0eXAiOi" or ProcessCommandLine contains
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

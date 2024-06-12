@@ -14,8 +14,8 @@ tactics:
 - defense_evasion
 - lateral_movement
 relevantTechniques:
-- t1021.001
-- t1112
+- T1021
+- T1112
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains " add " and ProcessCommandLine contains "\\CurrentControlSet\\Control\\Terminal
@@ -40,4 +40,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -13,8 +13,8 @@ tactics:
 - execution
 - lateral_movement
 relevantTechniques:
-- t1021.003
-- t1047
+- T1021
+- T1047
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "cmd.exe" and ProcessCommandLine contains
@@ -37,4 +37,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

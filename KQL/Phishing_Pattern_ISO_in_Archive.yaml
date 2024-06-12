@@ -15,7 +15,7 @@ logsource:
 tactics:
 - initial_access
 relevantTechniques:
-- t1566
+- T1566
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\isoburn.exe" or FolderPath endswith "\\PowerISO.exe"
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

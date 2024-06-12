@@ -15,7 +15,7 @@ tactics:
 - discovery
 - privilege_escalation
 relevantTechniques:
-- t1033
+- T1033
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " /priv" or ProcessCommandLine contains " -priv")
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

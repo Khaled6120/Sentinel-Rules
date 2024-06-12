@@ -14,7 +14,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1016
+- T1016
 query: 'DeviceNetworkEvents
 
   | where ((RemoteUrl in~ ("www.ip.cn", "l2.io")) or (RemoteUrl contains "api.2ip.ua"
@@ -65,4 +65,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -13,7 +13,7 @@ tactics:
 - defense_evasion
 - s0246
 relevantTechniques:
-- t1562.004
+- T1562
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains " firewall " and ProcessCommandLine contains
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

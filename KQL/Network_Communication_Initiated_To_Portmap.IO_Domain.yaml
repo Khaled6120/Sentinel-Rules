@@ -14,8 +14,8 @@ tactics:
 - command_and_control
 - exfiltration
 relevantTechniques:
-- t1041
-- t1090.002
+- T1041
+- T1090
 query: 'DeviceNetworkEvents
 
   | where RemoteUrl endswith ".portmap.io"'
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

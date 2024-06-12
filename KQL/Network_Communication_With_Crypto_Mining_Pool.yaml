@@ -12,7 +12,7 @@ logsource:
 tactics:
 - impact
 relevantTechniques:
-- t1496
+- T1496
 query: 'DeviceNetworkEvents
 
   | where RemoteUrl in~ ("alimabi.cn", "ap.luckpool.net", "bcn.pool.minergate.com",
@@ -80,4 +80,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

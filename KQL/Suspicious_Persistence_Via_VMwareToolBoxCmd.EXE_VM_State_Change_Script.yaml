@@ -15,7 +15,7 @@ tactics:
 - execution
 - persistence
 relevantTechniques:
-- t1059
+- T1059
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " script " and ProcessCommandLine contains
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

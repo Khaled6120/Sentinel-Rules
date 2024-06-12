@@ -21,7 +21,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1220
+- T1220
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains "-format" or ProcessCommandLine contains "/format")
@@ -41,4 +41,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

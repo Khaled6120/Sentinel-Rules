@@ -12,7 +12,7 @@ logsource:
 tactics:
 - impact
 relevantTechniques:
-- t1529
+- T1529
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains "/r " or ProcessCommandLine contains "/s ")
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

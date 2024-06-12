@@ -17,7 +17,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1574.002
+- T1574
 query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\xwizard.exe" or ProcessVersionInfoOriginalFileName
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

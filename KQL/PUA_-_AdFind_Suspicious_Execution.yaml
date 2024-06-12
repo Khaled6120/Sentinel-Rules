@@ -13,10 +13,10 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1018
-- t1069.002
-- t1087.002
-- t1482
+- T1018
+- T1069
+- T1087
+- T1482
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "domainlist" or ProcessCommandLine contains
@@ -41,4 +41,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -12,7 +12,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1120
+- T1120
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "drives" and (FolderPath endswith "\\fsutil.exe"
@@ -28,4 +28,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

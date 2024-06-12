@@ -14,7 +14,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1049
+- T1049
 query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine endswith " use" or ProcessCommandLine endswith " sessions")
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -17,7 +17,7 @@ logsource:
   product: windows
 tactics: []
 relevantTechniques:
-- t1003
+- T1003
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "query" and ProcessCommandLine contains "termservice"
@@ -33,4 +33,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

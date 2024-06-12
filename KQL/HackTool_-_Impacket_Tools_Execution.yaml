@@ -13,7 +13,7 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1557.001
+- T1557
 query: 'DeviceProcessEvents
 
   | where (FolderPath contains "\\goldenPac" or FolderPath contains "\\karmaSMB" or
@@ -44,4 +44,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

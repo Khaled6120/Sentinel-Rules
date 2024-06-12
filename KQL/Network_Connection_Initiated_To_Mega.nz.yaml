@@ -17,7 +17,7 @@ logsource:
 tactics:
 - exfiltration
 relevantTechniques:
-- t1567.001
+- T1567
 query: 'DeviceNetworkEvents
 
   | where RemoteUrl endswith "mega.co.nz" or RemoteUrl endswith "mega.nz"'
@@ -32,4 +32,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

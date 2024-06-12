@@ -14,7 +14,7 @@ logsource:
 tactics:
 - discovery
 relevantTechniques:
-- t1083
+- T1083
 query: 'DeviceProcessEvents
 
   | where ProcessVersionInfoOriginalFileName =~ "DirLister.exe" or FolderPath endswith
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

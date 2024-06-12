@@ -14,7 +14,7 @@ tactics:
 - execution
 - s0029
 relevantTechniques:
-- t1569.002
+- T1569
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains " /account=system " or ProcessCommandLine contains
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

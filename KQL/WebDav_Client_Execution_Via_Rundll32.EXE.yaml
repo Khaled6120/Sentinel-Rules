@@ -18,7 +18,7 @@ logsource:
 tactics:
 - exfiltration
 relevantTechniques:
-- t1048.003
+- T1048
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "C:\\windows\\system32\\davclnt.dll,DavSetCookie"
@@ -35,4 +35,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

@@ -14,9 +14,9 @@ tactics:
 - lateral_movement
 - persistence
 relevantTechniques:
-- t1021.001
-- t1133
-- t1136.001
+- T1021
+- T1133
+- T1136
 query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"Remote Desktop\
   \ Users\" or ProcessCommandLine contains \"Utilisateurs du Bureau \xC3\_ distance\"\
   \ or ProcessCommandLine contains \"Usuarios de escritorio remoto\") and ((ProcessCommandLine\
@@ -34,4 +34,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

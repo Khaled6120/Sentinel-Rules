@@ -14,8 +14,8 @@ tactics:
 - collection
 - credential_access
 relevantTechniques:
-- t1119
-- t1552.001
+- T1119
+- T1552
 query: 'DeviceProcessEvents
 
   | where (ProcessCommandLine contains ".doc" or ProcessCommandLine contains ".docx"
@@ -37,4 +37,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

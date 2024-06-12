@@ -14,7 +14,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1027.005
+- T1027
 query: 'DeviceProcessEvents
 
   | where FolderPath endswith "\\DefenderCheck.exe" or ProcessVersionInfoFileDescription
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

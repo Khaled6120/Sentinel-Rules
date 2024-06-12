@@ -14,7 +14,7 @@ logsource:
 tactics:
 - defense_evasion
 relevantTechniques:
-- t1220
+- T1220
 query: 'DeviceImageLoadEvents
 
   | where (FolderPath endswith "\\jscript.dll" or FolderPath endswith "\\vbscript.dll")
@@ -30,4 +30,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled

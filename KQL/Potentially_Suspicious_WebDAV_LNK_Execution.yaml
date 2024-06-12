@@ -12,8 +12,8 @@ logsource:
 tactics:
 - execution
 relevantTechniques:
-- t1059.001
-- t1204
+- T1059
+- T1204
 query: 'DeviceProcessEvents
 
   | where ProcessCommandLine contains "\\DavWWWRoot\\" and (FolderPath endswith "\\cmd.exe"
@@ -31,4 +31,4 @@ triggerThreshold: 0
 suppressionDuration: PT5H
 suppressionEnabled: false
 triggerOperator: GreaterThan
-kind: NRT
+kind: Scheduled
