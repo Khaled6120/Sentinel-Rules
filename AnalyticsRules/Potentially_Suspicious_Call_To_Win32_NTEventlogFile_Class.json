@@ -10,7 +10,7 @@
     {
       "apiVersion": "2023-02-01-preview",
       "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/caf201a9-c2ce-4a26-9c3a-2b9525413711')]",
-      "kind": "NRT",
+      "kind": "Scheduled",
       "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/caf201a9-c2ce-4a26-9c3a-2b9525413711')]",
       "properties": {
         "alertRuleTemplateName": "caf201a9-c2ce-4a26-9c3a-2b9525413711",

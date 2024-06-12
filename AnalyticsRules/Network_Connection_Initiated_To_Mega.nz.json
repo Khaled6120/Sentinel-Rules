@@ -10,7 +10,7 @@
     {
       "apiVersion": "2023-02-01-preview",
       "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/fdeebdf0-9f3f-4d08-84a6-4c4d13e39fe4')]",
-      "kind": "NRT",
+      "kind": "Scheduled",
       "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/fdeebdf0-9f3f-4d08-84a6-4c4d13e39fe4')]",
       "properties": {
         "alertRuleTemplateName": "fdeebdf0-9f3f-4d08-84a6-4c4d13e39fe4",
@@ -41,7 +41,7 @@
           "exfiltration"
         ],
         "techniques": [
-          "t1567"
+          "T1567"
         ],
         "templateVersion": "1.0.0",
         "triggerOperator": "GreaterThan",
