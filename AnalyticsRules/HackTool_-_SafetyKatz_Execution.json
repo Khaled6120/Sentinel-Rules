@@ -10,7 +10,7 @@
     {
       "apiVersion": "2023-02-01-preview",
       "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/b1876533-4ed5-4a83-90f3-b8645840a413')]",
-      "kind": "Scheduled",
+      "kind": "NRT",
       "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/b1876533-4ed5-4a83-90f3-b8645840a413')]",
       "properties": {
         "alertRuleTemplateName": "b1876533-4ed5-4a83-90f3-b8645840a413",
@@ -42,6 +42,7 @@
           "t1003"
         ],
         "templateVersion": "1.0.0",
+        "triggerOperator": "GreaterThan",
         "triggerThreshold": 0
       },
       "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules"
