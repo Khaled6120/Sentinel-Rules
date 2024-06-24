@@ -26,6 +26,7 @@ jobs:
         Write-Host "New Directory: $($newDirectory.FullName)"
         foreach($parserYaml in $(Get-Item ***\*.yaml))
         {
+             Write-Host 'FILE: $($parserYaml.BaseName)'
              $outputFilePath = "$($newDirectory.FullName)\$($parserYaml.BaseName).json"
              ConvertHuntingQueryFromYamlToArm $parserYaml.FullName $outputFilePath
         }
