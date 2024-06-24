@@ -23,7 +23,8 @@ jobs:
         Import-Module .\ConvertHuntingQueryFromYamlToArm.ps1
 
         $newDirectory = New-Item -ItemType Directory -Path ".\Hunting"
-        foreach($parserYaml in $(Get-Item KQL\*.yaml))
+        Write-Host 'new Directory: $newDirectory'
+        foreach($parserYaml in $(Get-Item ***\*.yaml))
         {
              $outputFilePath = "$($newDirectory.FullName)\$($parserYaml.BaseName).json"
              ConvertHuntingQueryFromYamlToArm $parserYaml.FullName $outputFilePath
