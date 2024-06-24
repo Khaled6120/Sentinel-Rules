@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/test')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "7Zip Compressing Dump Files",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \".dmp\" or ProcessCommandLine contains \".dump\" or ProcessCommandLine contains \".hdmp\") and (ProcessVersionInfoFileDescription contains \"7-Zip\" or (FolderPath endswith \"\\\\7z.exe\" or FolderPath endswith \"\\\\7zr.exe\" or FolderPath endswith \"\\\\7za.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"7z.exe\", \"7za.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects execution of 7z in order to compress a file with a \".dmp\"/\".dump\" extension, which could be a step in a process of dump file exfiltratio"
+          },
+          {
+            "name": "tactics",
+            "value": "collection"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "t1560.001"
+          }
+        ]
+      }
+    }
+  ]
+}
