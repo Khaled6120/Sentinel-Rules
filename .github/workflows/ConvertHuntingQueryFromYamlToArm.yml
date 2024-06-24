@@ -16,10 +16,12 @@ jobs:
     name: Build ARM Analytic Rules
     steps:
       - uses: actions/checkout@v3
-      - name: Convert yaml rules to JSON/arm
+      - name: Install PowerShell-yaml module
         run: |
           Install-Module PowerShell-yaml -Force -AllowClobber -Scope CurrentUser
-          Import-Module .\ConvertHuntingQueryFromYamlToArm.ps1
+      - name: Convert yaml rules to JSON/arm
+        run: |
+          Import-Module ConvertHuntingQueryFromYamlToArm.ps1
           
           $newDirectory = New-Item -ItemType Directory -Path "HuntingRules"
           foreach($parserYaml in $(Get-Item KQL\*.yaml))
