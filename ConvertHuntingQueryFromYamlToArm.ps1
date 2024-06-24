@@ -79,19 +79,25 @@ function ConvertHuntingQueryFromYamlToArm {
     }
 
     if ($yaml.relevantTechniques -and $yaml.relevantTechniques.Count -gt 0) {
+        $formattedTechniques = $yaml.relevantTechniques | ForEach-Object {
+            if ($_ -match "^t\d{4}(\.\d+)?$") {
+                "T" + ($_ -split '\.')[0].Substring(1)
+            } else {
+                $_
+            }
+        }
         $techniqueObj = [PSCustomObject]@{
             name  = "relevantTechniques";
-            value = $yaml.relevantTechniques -join ","
+            value = $formattedTechniques -join ","
         }
         if ($techniqueObj.value.ToString() -match ' ') {
-            $tactictechniqueObj.value = techniqueObj.value -replace ' ', ''
+            $techniqueObj.value = $techniqueObj.value -replace ' ', ''
         }
         $huntingQueryObj.properties.tags += $techniqueObj
     }
 
-     
     $baseHuntingObject.resources = @();
     $baseHuntingObject.resources += $huntingQueryObj;
 
-    ConvertTo-Json $baseHuntingObject -EscapeHandling Default -Depth $jsonConversionDepth  | Set-Content -Path $outputFilePath
+    ConvertTo-Json $baseHuntingObject -EscapeHandling Default -Depth $jsonConversionDepth | Set-Content -Path $outputFilePath
 }
