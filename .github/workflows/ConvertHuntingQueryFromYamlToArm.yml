@@ -21,7 +21,7 @@ jobs:
           Install-Module PowerShell-yaml
           Import-Module .\ConvertHuntingQueryFromYamlToArm.ps1
           
-          $newDirectory = New-Item -ItemType Directory -Path ".\HuntingRules"
+          $newDirectory = New-Item -ItemType Directory -Path "HuntingRules"
           foreach($parserYaml in $(Get-Item KQL\*.yaml))
           {
                $outputFilePath = "$($newDirectory.FullName)\$($parserYaml.BaseName).json"
