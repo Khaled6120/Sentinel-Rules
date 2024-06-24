@@ -21,6 +21,9 @@ jobs:
       shell: pwsh  # Use PowerShell shell
       run: |
         Import-Module .\ConvertHuntingQueryFromYamlToArm.ps1
+        if (-not (Test-Path -Path 'Hunting')) {
+              New-Item -ItemType Directory -Path 'Hunting'
+        }
 
         $newDirectory = New-Item -ItemType Directory -Path ".\Hunting"
         Write-Host "New Directory: $($newDirectory.FullName)"
