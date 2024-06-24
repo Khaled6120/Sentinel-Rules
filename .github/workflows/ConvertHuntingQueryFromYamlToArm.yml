@@ -37,13 +37,13 @@ jobs:
         Write-Host "New Directory: $($newDirectory.FullName)"
 
         # Iterate through each YAML file in the 'KQL' directory
-        Get-ChildItem -Path './KQL' -Filter '*.yaml' | ForEach-Object {
+        Get-ChildItem -Path './test' -Filter '*.yaml' | ForEach-Object {
             $yamlFilePath = $_.FullName
             Write-Host 'Yamlfilepath:$($_.FullName)'
             $outputFilePath = Join-Path -Path './Hunting' -ChildPath "$($_.BaseName).json"
             
             # Call your conversion function with appropriate parameters
-            ConvertHuntingQueryFromYamlToArm -inputFilePath KQL/$($_.Name) -outputFilePath $outputFilePath
+            ConvertHuntingQueryFromYamlToArm -inputFilePath test/$($_.Name) -outputFilePath $outputFilePath
             
             Write-Host "Converted $($_.Name) to $($outputFilePath)"
         }
