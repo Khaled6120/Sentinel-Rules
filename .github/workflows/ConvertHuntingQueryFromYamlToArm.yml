@@ -1,0 +1,37 @@
+on:
+  push:
+    branches: [main]
+    paths:
+      - "KQL/*.yaml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+name: Build ARM Hunt Rules
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build ARM Analytic Rules
+    steps:
+      - uses: actions/checkout@v3
+      - name: Convert yaml rules to JSON/arm
+        run: |
+          Install-Module PowerShell-yaml
+          Import-Module .\ConvertHuntingQueryFromYamlToArm.ps1
+          
+          $newDirectory = New-Item -ItemType Directory -Path ".\HuntingRules"
+          foreach($parserYaml in $(Get-Item KQL\*.yaml))
+          {
+               $outputFilePath = "$($newDirectory.FullName)\$($parserYaml.BaseName).json"
+               ConvertHuntingQueryFromYamlToArm $parserYaml.FullName $outputFilePath
+          }
+        shell: pwsh
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'Khaled6120'
+          git config --global user.email 'khalednaes3@gmail.com'
+          git add HuntingRules
+          git commit -am "ConvertHuntingQueryFromYamlToArm"
+          git push
