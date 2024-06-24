@@ -25,7 +25,7 @@ jobs:
               New-Item -ItemType Directory -Path 'Hunting'
         }
 
-        $newDirectory = New-Item -ItemType Directory -Path ".\Hunting"
+        $newDirectory = New-Item -ItemType Directory -Path "Hunting"
         Write-Host "New Directory: $($newDirectory.FullName)"
         Get-ChildItem -Path './KQL' -Filter '*.yaml' | ForEach-Object {
             $yamlFilePath = $_.FullName
