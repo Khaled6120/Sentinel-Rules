@@ -4,7 +4,11 @@ on:
   push:
     branches:
       - main  # Adjust branch name as needed
-
+  workflow_dispatch:
+  
+permissions:
+  contents: write
+  
 jobs:
   convert:
     runs-on: ubuntu-latest  # Use the latest version of Ubuntu as the runner
