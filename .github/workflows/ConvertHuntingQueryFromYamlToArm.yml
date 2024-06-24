@@ -29,6 +29,12 @@ jobs:
         } else {
           Write-Host "Directory './Hunting' already exists."
         }
+        
+        Write-Host "Current Directory: $(Get-Location)"
+
+        # Check if 'Hunting' directory exists; create if not
+        $newDirectory = New-Item -ItemType Directory -Path "./Hunting" -Force
+        Write-Host "New Directory: $($newDirectory.FullName)"
 
         # Iterate through each YAML file in the 'KQL' directory
         Get-ChildItem -Path './KQL' -Filter '*.yaml' | ForEach-Object {
