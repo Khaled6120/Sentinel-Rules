@@ -15,7 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     name: Build ARM Analytic Rules
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
+    
+      - name: Set up PowerShell
+        uses: PowerShell/setup-powershell@v1
+        with:
+          pwsh-version: '7.1'
+        
       - name: Install PowerShell-yaml module
         run: |
           Install-Module PowerShell-yaml -Force -AllowClobber -Scope CurrentUser
@@ -31,10 +38,3 @@ jobs:
                ConvertHuntingQueryFromYamlToArm $parserYaml.FullName $outputFilePath
           }
         shell: pwsh
-      - name: Commit and push changes
-        run: |
-          git config --global user.name 'Khaled6120'
-          git config --global user.email 'khalednaes3@gmail.com'
-          git add HuntingRules
-          git commit -am "ConvertHuntingQueryFromYamlToArm"
-          git push
