@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Uncommon__Assistive_Technology_Applications_Execution_Via_AtBroker.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Uncommon  Assistive Technology Applications Execution Via AtBroker.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"start\" and (FolderPath endswith \"\\\\AtBroker.exe\" or ProcessVersionInfoOriginalFileName =~ \"AtBroker.exe\")) and (not((ProcessCommandLine contains \"animations\" or ProcessCommandLine contains \"audiodescription\" or ProcessCommandLine contains \"caretbrowsing\" or ProcessCommandLine contains \"caretwidth\" or ProcessCommandLine contains \"colorfiltering\" or ProcessCommandLine contains \"cursorindicator\" or ProcessCommandLine contains \"cursorscheme\" or ProcessCommandLine contains \"filterkeys\" or ProcessCommandLine contains \"focusborderheight\" or ProcessCommandLine contains \"focusborderwidth\" or ProcessCommandLine contains \"highcontrast\" or ProcessCommandLine contains \"keyboardcues\" or ProcessCommandLine contains \"keyboardpref\" or ProcessCommandLine contains \"livecaptions\" or ProcessCommandLine contains \"magnifierpane\" or ProcessCommandLine contains \"messageduration\" or ProcessCommandLine contains \"minimumhitradius\" or ProcessCommandLine contains \"mousekeys\" or ProcessCommandLine contains \"Narrator\" or ProcessCommandLine contains \"osk\" or ProcessCommandLine contains \"overlappedcontent\" or ProcessCommandLine contains \"showsounds\" or ProcessCommandLine contains \"soundsentry\" or ProcessCommandLine contains \"speechreco\" or ProcessCommandLine contains \"stickykeys\" or ProcessCommandLine contains \"togglekeys\" or ProcessCommandLine contains \"voiceaccess\" or ProcessCommandLine contains \"windowarranging\" or ProcessCommandLine contains \"windowtracking\" or ProcessCommandLine contains \"windowtrackingtimeout\" or ProcessCommandLine contains \"windowtrackingzorder\"))) and (not(ProcessCommandLine contains \"Oracle_JavaAccessBridge\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the start of a non built-in assistive technology applications via \"Atbroker.EXE"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

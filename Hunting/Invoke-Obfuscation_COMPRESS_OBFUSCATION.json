@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Invoke-Obfuscation_COMPRESS_OBFUSCATION')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Invoke-Obfuscation COMPRESS OBFUSCATION",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"system.io.compression.deflatestream\" or ProcessCommandLine contains \"system.io.streamreader\" or ProcessCommandLine contains \"readtoend(\") and (ProcessCommandLine contains \"new-object\" and ProcessCommandLine contains \"text.encoding]::ascii\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects Obfuscated Powershell via COMPRESS OBFUSCATI"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1027,T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

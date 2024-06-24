@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Visual_Studio_Code_Tunnel_Service_Installation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Visual Studio Code Tunnel Service Installation",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"tunnel \" and ProcessCommandLine contains \"service\" and ProcessCommandLine contains \"internal-run\" and ProcessCommandLine contains \"tunnel-service.log\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the installation of VsCode tunnel (code-tunnel) as a servic"
+          },
+          {
+            "name": "tactics",
+            "value": "command_and_control"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1071"
+          }
+        ]
+      }
+    }
+  ]
+}

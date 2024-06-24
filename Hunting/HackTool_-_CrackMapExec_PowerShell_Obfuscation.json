@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/HackTool_-_CrackMapExec_PowerShell_Obfuscation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "HackTool - CrackMapExec PowerShell Obfuscation",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"join\" and ProcessCommandLine contains \"split\") or ProcessCommandLine contains \"( $ShellId[1]+$ShellId[13]+'x')\" or (ProcessCommandLine contains \"( $PSHome[\" and ProcessCommandLine contains \"]+$PSHOME[\" and ProcessCommandLine contains \"]+\") or ProcessCommandLine contains \"( $env:Public[13]+$env:Public[5]+'x')\" or (ProcessCommandLine contains \"( $env:ComSpec[4,\" and ProcessCommandLine contains \",25]-Join'')\") or ProcessCommandLine contains \"[1,3]+'x'-Join'')\") and ((FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\", \"pwsh.dll\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "he CrachMapExec pentesting framework implements a PowerShell obfuscation with some static strings detected by this rul"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1027,T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

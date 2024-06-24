@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/PsExec_Service_Child_Process_Execution_as_LOCAL_SYSTEM')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "PsExec Service Child Process Execution as LOCAL SYSTEM",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\PSEXESVC.exe\" and (AccountName contains \"AUTHORI\" or AccountName contains \"AUTORI\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects suspicious launch of the PSEXESVC service on this system and a sub process run as LOCAL_SYSTEM (-s), which means that someone remotely started a command on this system running it with highest privileges and not only the privileges of"
+          },
+          {
+            "name": "tactics",
+            "value": "execution"
+          }
+        ]
+      }
+    }
+  ]
+}

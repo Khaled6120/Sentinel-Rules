@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/VMToolsd_Suspicious_Child_Process')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "VMToolsd Suspicious Child Process",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (((FolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\cscript.exe\" or FolderPath endswith \"\\\\mshta.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\regsvr32.exe\" or FolderPath endswith \"\\\\rundll32.exe\" or FolderPath endswith \"\\\\wscript.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"Cmd.Exe\", \"cscript.exe\", \"MSHTA.EXE\", \"PowerShell.EXE\", \"pwsh.dll\", \"REGSVR32.EXE\", \"RUNDLL32.EXE\", \"wscript.exe\"))) and InitiatingProcessFolderPath endswith \"\\\\vmtoolsd.exe\") and (not(((ProcessCommandLine =~ \"\" and FolderPath endswith \"\\\\cmd.exe\") or (isnull(ProcessCommandLine) and FolderPath endswith \"\\\\cmd.exe\") or ((ProcessCommandLine contains \"\\\\VMware\\\\VMware Tools\\\\poweron-vm-default.bat\" or ProcessCommandLine contains \"\\\\VMware\\\\VMware Tools\\\\poweroff-vm-default.bat\" or ProcessCommandLine contains \"\\\\VMware\\\\VMware Tools\\\\resume-vm-default.bat\" or ProcessCommandLine contains \"\\\\VMware\\\\VMware Tools\\\\suspend-vm-default.bat\") and FolderPath endswith \"\\\\cmd.exe\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects suspicious child process creations of VMware Tools process which may indicate persistence set"
+          },
+          {
+            "name": "tactics",
+            "value": "execution,persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

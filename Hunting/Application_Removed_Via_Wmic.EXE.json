@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Application_Removed_Via_Wmic.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Application Removed Via Wmic.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"call\" or ProcessCommandLine contains \"uninstall\") and (FolderPath endswith \"\\\\WMIC.exe\" or ProcessVersionInfoOriginalFileName =~ \"wmic.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "ninstall an application with wm"
+          },
+          {
+            "name": "tactics",
+            "value": "execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1047"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Renamed_Whoami_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Renamed Whoami Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessVersionInfoOriginalFileName =~ \"whoami.exe\" and (not(FolderPath endswith \"\\\\whoami.exe\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the execution of whoami that has been renamed to a different name to avoid detecti"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1033"
+          }
+        ]
+      }
+    }
+  ]
+}

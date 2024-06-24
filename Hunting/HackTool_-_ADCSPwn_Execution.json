@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/HackTool_-_ADCSPwn_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "HackTool - ADCSPwn Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \" --adcs \" and ProcessCommandLine contains \" --port \"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects command line parameters used by ADCSPwn, a tool to escalate privileges in an active directory network by coercing authenticate from machine accounts and relaying to the certificate servi"
+          },
+          {
+            "name": "tactics",
+            "value": "credential_access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1557"
+          }
+        ]
+      }
+    }
+  ]
+}

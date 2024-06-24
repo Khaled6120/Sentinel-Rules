@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/PUA_-_Advanced_IP_Scanner_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "PUA - Advanced IP Scanner Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"/portable\" and ProcessCommandLine contains \"/lng\") or (FolderPath contains \"\\\\advanced_ip_scanner\" or ProcessVersionInfoOriginalFileName contains \"advanced_ip_scanner\" or ProcessVersionInfoFileDescription contains \"Advanced IP Scanner\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the use of Advanced IP Scanner. Seems to be a popular tool for ransomware group"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1046,T1135"
+          }
+        ]
+      }
+    }
+  ]
+}

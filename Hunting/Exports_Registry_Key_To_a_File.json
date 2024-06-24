@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Exports_Registry_Key_To_a_File')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Exports Registry Key To a File",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" -E \" or ProcessCommandLine contains \" /E \") and (FolderPath endswith \"\\\\regedit.exe\" or ProcessVersionInfoOriginalFileName =~ \"REGEDIT.EXE\")) and (not(((ProcessCommandLine contains \"hklm\" or ProcessCommandLine contains \"hkey_local_machine\") and (ProcessCommandLine endswith \"\\\\system\" or ProcessCommandLine endswith \"\\\\sam\" or ProcessCommandLine endswith \"\\\\security\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the export of the target Registry key to a fil"
+          },
+          {
+            "name": "tactics",
+            "value": "exfiltration"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1012"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Delete_Important_Scheduled_Task')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Delete Important Scheduled Task",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"\\\\Windows\\\\BitLocker\" or ProcessCommandLine contains \"\\\\Windows\\\\ExploitGuard\" or ProcessCommandLine contains \"\\\\Windows\\\\SystemRestore\\\\SR\" or ProcessCommandLine contains \"\\\\Windows\\\\UpdateOrchestrator\\\\\" or ProcessCommandLine contains \"\\\\Windows\\\\Windows Defender\\\\\" or ProcessCommandLine contains \"\\\\Windows\\\\WindowsBackup\\\\\" or ProcessCommandLine contains \"\\\\Windows\\\\WindowsUpdate\\\\\") and (ProcessCommandLine contains \"/delete\" and ProcessCommandLine contains \"/tn\") and FolderPath endswith \"\\\\schtasks.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects when adversaries stop services or processes by deleting their respective scheduled tasks in order to conduct data destructive activiti"
+          },
+          {
+            "name": "tactics",
+            "value": "impact"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1489"
+          }
+        ]
+      }
+    }
+  ]
+}

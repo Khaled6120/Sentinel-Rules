@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Processes_Spawned_by_WinRM')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Processes Spawned by WinRM",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\sh.exe\" or FolderPath endswith \"\\\\bash.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\wsl.exe\" or FolderPath endswith \"\\\\schtasks.exe\" or FolderPath endswith \"\\\\certutil.exe\" or FolderPath endswith \"\\\\whoami.exe\" or FolderPath endswith \"\\\\bitsadmin.exe\") and InitiatingProcessFolderPath endswith \"\\\\wsmprovhost.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects suspicious processes including shells spawnd from WinRM host proce"
+          },
+          {
+            "name": "tactics",
+            "value": "initial_access,persistence,privilege_escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1190"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/IIS_Native-Code_Module_Command_Line_Installation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "IIS Native-Code Module Command Line Installation",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (((ProcessCommandLine contains \"install\" and ProcessCommandLine contains \"module\") and (ProcessCommandLine contains \"-name:\" or ProcessCommandLine contains \"/name:\")) and (FolderPath endswith \"\\\\appcmd.exe\" or ProcessVersionInfoOriginalFileName =~ \"appcmd.exe\")) and (not(InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\System32\\\\inetsrv\\\\iissetup.exe\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects suspicious IIS native-code module installations via command li"
+          },
+          {
+            "name": "tactics",
+            "value": "persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1505"
+          }
+        ]
+      }
+    }
+  ]
+}

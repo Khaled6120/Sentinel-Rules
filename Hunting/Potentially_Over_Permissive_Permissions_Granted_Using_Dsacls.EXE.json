@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potentially_Over_Permissive_Permissions_Granted_Using_Dsacls.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potentially Over Permissive Permissions Granted Using Dsacls.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \" /G \" and (FolderPath endswith \"\\\\dsacls.exe\" or ProcessVersionInfoOriginalFileName =~ \"DSACLS.EXE\") and (ProcessCommandLine contains \"GR\" or ProcessCommandLine contains \"GE\" or ProcessCommandLine contains \"GW\" or ProcessCommandLine contains \"GA\" or ProcessCommandLine contains \"WP\" or ProcessCommandLine contains \"WD\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects usage of Dsacls to grant over permissive permissio"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

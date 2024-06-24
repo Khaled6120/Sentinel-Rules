@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Download_From_File-Sharing_Website_Via_Bitsadmin')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Download From File-Sharing Website Via Bitsadmin",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \".githubusercontent.com\" or ProcessCommandLine contains \"anonfiles.com\" or ProcessCommandLine contains \"cdn.discordapp.com\" or ProcessCommandLine contains \"cdn.discordapp.com/attachments/\" or ProcessCommandLine contains \"ddns.net\" or ProcessCommandLine contains \"dl.dropboxusercontent.com\" or ProcessCommandLine contains \"ghostbin.co\" or ProcessCommandLine contains \"glitch.me\" or ProcessCommandLine contains \"gofile.io\" or ProcessCommandLine contains \"hastebin.com\" or ProcessCommandLine contains \"mediafire.com\" or ProcessCommandLine contains \"mega.nz\" or ProcessCommandLine contains \"onrender.com\" or ProcessCommandLine contains \"paste.ee\" or ProcessCommandLine contains \"pastebin.com\" or ProcessCommandLine contains \"pastebin.pl\" or ProcessCommandLine contains \"pastetext.net\" or ProcessCommandLine contains \"privatlab.com\" or ProcessCommandLine contains \"privatlab.net\" or ProcessCommandLine contains \"send.exploit.in\" or ProcessCommandLine contains \"sendspace.com\" or ProcessCommandLine contains \"storage.googleapis.com\" or ProcessCommandLine contains \"storjshare.io\" or ProcessCommandLine contains \"supabase.co\" or ProcessCommandLine contains \"temp.sh\" or ProcessCommandLine contains \"transfer.sh\" or ProcessCommandLine contains \"ufile.io\") and (ProcessCommandLine contains \" /transfer \" or ProcessCommandLine contains \" /create \" or ProcessCommandLine contains \" /addfile \") and (FolderPath endswith \"\\\\bitsadmin.exe\" or ProcessVersionInfoOriginalFileName =~ \"bitsadmin.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects usage of bitsadmin downloading a file from a suspicious doma"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,persistence,s0190"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1036,T1197"
+          }
+        ]
+      }
+    }
+  ]
+}

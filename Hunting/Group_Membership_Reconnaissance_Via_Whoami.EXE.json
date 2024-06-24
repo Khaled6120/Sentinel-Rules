@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Group_Membership_Reconnaissance_Via_Whoami.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Group Membership Reconnaissance Via Whoami.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" /groups\" or ProcessCommandLine contains \" -groups\") and (FolderPath endswith \"\\\\whoami.exe\" or ProcessVersionInfoOriginalFileName =~ \"whoami.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the execution of whoami.exe with the /group command line flag to show group membership for the current user, account type, security identifiers (SID), and attribute"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1033"
+          }
+        ]
+      }
+    }
+  ]
+}

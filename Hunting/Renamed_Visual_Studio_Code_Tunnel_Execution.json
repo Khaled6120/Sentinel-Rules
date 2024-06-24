@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Renamed_Visual_Studio_Code_Tunnel_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Renamed Visual Studio Code Tunnel Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (((ProcessCommandLine endswith \".exe tunnel\" and isnull(ProcessVersionInfoOriginalFileName)) or (ProcessCommandLine contains \".exe tunnel\" and ProcessCommandLine contains \"--name \" and ProcessCommandLine contains \"--accept-server-license-terms\") or (ProcessCommandLine contains \"tunnel \" and ProcessCommandLine contains \"service\" and ProcessCommandLine contains \"internal-run\" and ProcessCommandLine contains \"tunnel-service.log\")) and (not((FolderPath endswith \"\\\\code-tunnel.exe\" or FolderPath endswith \"\\\\code.exe\")))) or (((ProcessCommandLine contains \"/d /c \" and ProcessCommandLine contains \"\\\\servers\\\\Stable-\" and ProcessCommandLine contains \"code-server.cmd\") and FolderPath endswith \"\\\\cmd.exe\" and InitiatingProcessCommandLine endswith \" tunnel\") and (not((InitiatingProcessFolderPath endswith \"\\\\code-tunnel.exe\" or InitiatingProcessFolderPath endswith \"\\\\code.exe\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects renamed Visual Studio Code tunnel execution. Attackers can abuse this functionality to establish a C2 chann"
+          },
+          {
+            "name": "tactics",
+            "value": "command_and_control"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1071"
+          }
+        ]
+      }
+    }
+  ]
+}

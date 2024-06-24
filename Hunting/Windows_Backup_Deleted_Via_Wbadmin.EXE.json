@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Windows_Backup_Deleted_Via_Wbadmin.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Windows Backup Deleted Via Wbadmin.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"delete \" and ProcessCommandLine contains \"backup\") and (FolderPath endswith \"\\\\wbadmin.exe\" or ProcessVersionInfoOriginalFileName =~ \"WBADMIN.EXE\")) and (not(ProcessCommandLine contains \"keepVersions:0\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the deletion of backups or system state backups via \"wbadmin.exe\".\nThis technique is used by numerous ransomware families and actors.\nThis may only be successful on server platforms that have Windows Backup enabled"
+          },
+          {
+            "name": "tactics",
+            "value": "impact"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1490"
+          }
+        ]
+      }
+    }
+  ]
+}

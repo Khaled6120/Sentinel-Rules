@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/CodePage_Modification_Via_MODE.COM_To_Russian_Language')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "CodePage Modification Via MODE.COM To Russian Language",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" con \" and ProcessCommandLine contains \" cp \" and ProcessCommandLine contains \" select=\") and (ProcessCommandLine endswith \"=1251\" or ProcessCommandLine endswith \"=866\")) and (FolderPath endswith \"\\\\mode.com\" or ProcessVersionInfoOriginalFileName =~ \"MODE.COM\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects a CodePage modification using the \"mode.com\" utility to Russian language.\nThis behavior has been used by threat actors behind Dharma ransomware"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1036"
+          }
+        ]
+      }
+    }
+  ]
+}

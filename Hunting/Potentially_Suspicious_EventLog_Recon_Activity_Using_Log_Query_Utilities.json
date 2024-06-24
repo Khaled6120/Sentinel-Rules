@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potentially_Suspicious_EventLog_Recon_Activity_Using_Log_Query_Utilities')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potentially Suspicious EventLog Recon Activity Using Log Query Utilities",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"-InstanceId 4624\" or ProcessCommandLine contains \"System[EventID=4624]\" or (ProcessCommandLine contains \"EventCode=\" and ProcessCommandLine contains \"4624\") or (ProcessCommandLine contains \"EventIdentifier=\" and ProcessCommandLine contains \"4624\") or ProcessCommandLine contains \"-InstanceId 4778\" or ProcessCommandLine contains \"System[EventID=4778]\" or (ProcessCommandLine contains \"EventCode=\" and ProcessCommandLine contains \"4778\") or (ProcessCommandLine contains \"EventIdentifier=\" and ProcessCommandLine contains \"4778\") or ProcessCommandLine contains \"-InstanceId 25\" or ProcessCommandLine contains \"System[EventID=25]\" or (ProcessCommandLine contains \"EventCode=\" and ProcessCommandLine contains \"25\") or (ProcessCommandLine contains \"EventIdentifier=\" and ProcessCommandLine contains \"25\")) or (ProcessCommandLine contains \"Microsoft-Windows-TerminalServices-LocalSessionManager/Operational\" or ProcessCommandLine contains \"Microsoft-Windows-Terminal-Services-RemoteConnectionManager/Operational\" or ProcessCommandLine contains \"Security\")) and ((ProcessCommandLine contains \"Select\" and ProcessCommandLine contains \"Win32_NTLogEvent\") or ((ProcessCommandLine contains \" qe \" or ProcessCommandLine contains \" query-events \") and (FolderPath endswith \"\\\\wevtutil.exe\" or ProcessVersionInfoOriginalFileName =~ \"wevtutil.exe\")) or (ProcessCommandLine contains \" ntevent\" and (FolderPath endswith \"\\\\wmic.exe\" or ProcessVersionInfoOriginalFileName =~ \"wmic.exe\")) or (ProcessCommandLine contains \"Get-WinEvent \" or ProcessCommandLine contains \"get-eventlog \"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects execution of different log query utilities and commands to search and dump the content of specific event logs or look for specific event IDs.\nThis technique is used by threat actors in order to extract sensitive information from even"
+          },
+          {
+            "name": "tactics",
+            "value": "credential_access,discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1552"
+          }
+        ]
+      }
+    }
+  ]
+}

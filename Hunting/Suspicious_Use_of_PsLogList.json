@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Use_of_PsLogList')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Use of PsLogList",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" security\" or ProcessCommandLine contains \" application\" or ProcessCommandLine contains \" system\") and (ProcessCommandLine contains \" -d\" or ProcessCommandLine contains \" /d\" or ProcessCommandLine contains \" -x\" or ProcessCommandLine contains \" /x\" or ProcessCommandLine contains \" -s\" or ProcessCommandLine contains \" /s\" or ProcessCommandLine contains \" -c\" or ProcessCommandLine contains \" /c\" or ProcessCommandLine contains \" -g\" or ProcessCommandLine contains \" /g\") and (ProcessVersionInfoOriginalFileName =~ \"psloglist.exe\" or (FolderPath endswith \"\\\\psloglist.exe\" or FolderPath endswith \"\\\\psloglist64.exe\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects usage of the PsLogList utility to dump event log in order to extract admin accounts and perform account discovery or delete events lo"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1087"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Uncommon_Svchost_Parent_Process')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Uncommon Svchost Parent Process",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\svchost.exe\" and (not(((InitiatingProcessFolderPath endswith \"\\\\Mrt.exe\" or InitiatingProcessFolderPath endswith \"\\\\MsMpEng.exe\" or InitiatingProcessFolderPath endswith \"\\\\ngen.exe\" or InitiatingProcessFolderPath endswith \"\\\\rpcnet.exe\" or InitiatingProcessFolderPath endswith \"\\\\services.exe\" or InitiatingProcessFolderPath endswith \"\\\\TiWorker.exe\") or (InitiatingProcessFolderPath in~ (\"-\", \"\")) or isnull(InitiatingProcessFolderPath))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects an uncommon svchost parent proce"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1036"
+          }
+        ]
+      }
+    }
+  ]
+}

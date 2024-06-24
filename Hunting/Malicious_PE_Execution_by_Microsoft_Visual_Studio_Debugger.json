@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Malicious_PE_Execution_by_Microsoft_Visual_Studio_Debugger')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Malicious PE Execution by Microsoft Visual Studio Debugger",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where InitiatingProcessFolderPath endswith \"\\\\vsjitdebugger.exe\" and (not(((FolderPath contains \"\\\\vsimmersiveactivatehelper\" and FolderPath contains \".exe\") or FolderPath endswith \"\\\\devenv.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "here is an option for a MS VS Just-In-Time Debugger \"vsjitdebugger.exe\" to launch specified executable and attach a debugger.\nThis option may be used adversaries to execute malicious code by signed verified binary.\nThe debugger is installed"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}
