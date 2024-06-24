@@ -12,13 +12,10 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2  # Action to checkout the repository
-    
-    - name: Set up PowerShell
-      uses: microsoft/powershell@v1  # Use PowerShell action provided by Microsoft
 
     - name: Install PowerShell module for YAML
       run: |
-        Install-Module -Name powershell-yaml -Force -Scope CurrentUser -AllowClobber
+        pwsh -c "Install-Module -Name powershell-yaml -Force -Scope CurrentUser -AllowClobber"
 
     - name: Create output directory
       run: |
