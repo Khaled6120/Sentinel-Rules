@@ -24,11 +24,8 @@ jobs:
 
         $newDirectory = New-Item -ItemType Directory -Path ".\Hunting"
         Write-Host "New Directory: $($newDirectory.FullName)"
-        foreach($parserYaml in $(Get-Item KQL\*.yaml))
+        Get-ChildItem -Path 'KQL' -Filter '*.yaml' | ForEach-Object
         {
-             Write-Host '$(Get-Item KQL\*.yaml)'
-             Write-Host 'FILE: $($parserYaml)'
-             Write-Host 'FILE: $($parserYaml.FullName)'
-             $outputFilePath = "$($newDirectory.FullName)\$($parserYaml.BaseName).json"
-             ConvertHuntingQueryFromYamlToArm $parserYaml.FullName $outputFilePath
+             Write-Host '$($_.Name)'
+
         }
