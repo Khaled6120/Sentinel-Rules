@@ -1,35 +1,33 @@
+name: Convert YAML to ARM Template
+
 on:
   push:
-    branches: [main]
-    paths:
-      - "KQL/*.yaml"
-  workflow_dispatch:
-
-permissions:
-  contents: write
-
-name: Build ARM Hunt Rules
+    branches:
+      - main  # Adjust branch name as needed
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    name: Build ARM Analytic Rules
+  convert:
+    runs-on: ubuntu-latest  # Use the latest version of Ubuntu as the runner
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-  
-      - name: Install PowerShell-yaml module
-        run: |
-          Install-Module PowerShell-yaml -Force -AllowClobber -Scope CurrentUser
-          shell: pwsh 
-      - name: Convert yaml rules to JSON/arm
-        run: |
-          Import-Module ConvertHuntingQueryFromYamlToArm.ps1
-          
-          $newDirectory = New-Item -ItemType Directory -Path "HuntingRules"
-          foreach($parserYaml in $(Get-Item KQL\*.yaml))
-          {
-               $outputFilePath = "$($newDirectory.FullName)\$($parserYaml.BaseName).json"
-               ConvertHuntingQueryFromYamlToArm $parserYaml.FullName $outputFilePath
-          }
-        shell: pwsh
+    - name: Checkout repository
+      uses: actions/checkout@v2  # Action to checkout the repository
+    
+    - name: Set up PowerShell
+      uses: microsoft/powershell@v1  # Use PowerShell action provided by Microsoft
+
+    - name: Install PowerShell module for YAML
+      run: |
+        Install-Module -Name powershell-yaml -Force -Scope CurrentUser -AllowClobber
+
+    - name: Create output directory
+      run: |
+        New-Item -ItemType Directory -Path ./Hunting -Force
+
+    - name: Convert YAML to ARM Template
+      shell: pwsh  # Use PowerShell shell
+      run: |
+        foreach ($yamlFile in -Path 'KQL' -Filter '*.yaml') {
+          $outputFilePath = "./Hunting/$($yamlFile.BaseName).json"
+          .\ConvertHuntingQueryFromYamlToArm.ps1 -inputFilePath $yamlFile.FullName -outputFilePath $outputFilePath
+        }
