@@ -19,6 +19,7 @@ jobs:
       - name: Install PowerShell-yaml module
         run: |
           Install-Module PowerShell-yaml -Force -AllowClobber -Scope CurrentUser
+          shell: pwsh 
       - name: Convert yaml rules to JSON/arm
         run: |
           Import-Module ConvertHuntingQueryFromYamlToArm.ps1
