@@ -21,15 +21,19 @@ jobs:
       shell: pwsh  # Use PowerShell shell
       run: |
         Import-Module .\ConvertHuntingQueryFromYamlToArm.ps1
-        if (-not (Test-Path -Path 'Hunting')) {
-              New-Item -ItemType Directory -Path 'Hunting'
+        
+        # Check if 'Hunting' directory exists; create if not
+        if (-not (Test-Path -Path './Hunting')) {
+          New-Item -ItemType Directory -Path './Hunting'
+          Write-Host "Created directory: ./Hunting"
+        } else {
+          Write-Host "Directory './Hunting' already exists."
         }
 
-        $newDirectory = New-Item -ItemType Directory -Path "Hunting"
-        Write-Host "New Directory: $($newDirectory.FullName)"
+        # Iterate through each YAML file in the 'KQL' directory
         Get-ChildItem -Path './KQL' -Filter '*.yaml' | ForEach-Object {
             $yamlFilePath = $_.FullName
-            $outputFilePath = Join-Path -Path $newDirectory.FullName -ChildPath "$($_.BaseName).json"
+            $outputFilePath = Join-Path -Path './Hunting' -ChildPath "$($_.BaseName).json"
             
             # Call your conversion function with appropriate parameters
             ConvertHuntingQueryFromYamlToArm -inputFilePath $yamlFilePath -outputFilePath $outputFilePath
