@@ -27,7 +27,7 @@ jobs:
         foreach($parserYaml in $(Get-Item KQL\*.yaml))
         {
              Write-Host '$(Get-Item KQL\*.yaml)'
-             Write-Host 'FILE: $($parserYaml.BaseName)'
+             Write-Host 'FILE: $($parserYaml)'
              Write-Host 'FILE: $($parserYaml.FullName)'
              $outputFilePath = "$($newDirectory.FullName)\$($parserYaml.BaseName).json"
              ConvertHuntingQueryFromYamlToArm $parserYaml.FullName $outputFilePath
