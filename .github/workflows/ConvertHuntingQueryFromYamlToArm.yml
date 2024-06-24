@@ -1,5 +1,4 @@
-name: Convert YAML to ARM Template
-
+name: Convert YAML to ARM Template (Hunting Rules)
 on:
   push:
     branches:
@@ -17,7 +16,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2  # Action to checkout the repository
 
-    - name: Install PowerShell module for YAML
+    - name: Install PowerShell module powershell-yaml
       run: |
         pwsh -c "Install-Module -Name powershell-yaml -Force -Scope CurrentUser -AllowClobber"
 
@@ -33,17 +32,10 @@ jobs:
         } else {
           Write-Host "Directory './Hunting' already exists."
         }
-        
-        Write-Host "Current Directory: $(Get-Location)"
-
-        # Check if 'Hunting' directory exists; create if not
-        $newDirectory = New-Item -ItemType Directory -Path "./Hunting" -Force
-        Write-Host "New Directory: $($newDirectory.FullName)"
 
         # Iterate through each YAML file in the 'KQL' directory
         Get-ChildItem -Path './KQL' -Filter '*.yaml' | ForEach-Object {
             $yamlFilePath = $_.FullName
-            Write-Host 'Yamlfilepath:$($_.FullName)'
             $outputFilePath = Join-Path -Path './Hunting' -ChildPath "$($_.BaseName).json"
             
             # Call your conversion function with appropriate parameters
