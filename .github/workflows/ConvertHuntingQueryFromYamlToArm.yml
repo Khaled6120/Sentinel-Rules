@@ -16,12 +16,6 @@ jobs:
     name: Build ARM Analytic Rules
     steps:
       - uses: actions/checkout@v3
-
-      - name: Set up PowerShell environment
-        uses: actions/setup-pwsh@v1
-        with:
-          pwsh-version: '7.1'  # Specify the version of PowerShell to use
-
       - name: Install PowerShell-yaml module
         run: |
           Install-Module PowerShell-yaml -Force -AllowClobber -Scope CurrentUser
