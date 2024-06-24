@@ -47,10 +47,10 @@ jobs:
             
             Write-Host "Converted $($_.Name) to $($outputFilePath)"
         }
-        - name: Commit and push changes
-        run: |
-          git config --global user.name 'Khaled6120'
-          git config --global user.email 'khalednaes3@gmail.com'
-          git add Hunting
-          git commit -am "huntingRules"
-          git push
+    - name: Commit and push changes
+      run: |
+         git config --global user.name 'Khaled6120'
+         git config --global user.email 'khalednaes3@gmail.com'
+         git add Hunting
+         git commit -am "huntingRules"
+         git push
