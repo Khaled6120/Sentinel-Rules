@@ -17,14 +17,14 @@ jobs:
       run: |
         pwsh -c "Install-Module -Name powershell-yaml -Force -Scope CurrentUser -AllowClobber"
 
-    - name: Create output directory
-      run: |
-        New-Item -ItemType Directory -Path ./Hunting -Force
-
     - name: Convert YAML to ARM Template
       shell: pwsh  # Use PowerShell shell
       run: |
-        foreach ($yamlFile in -Path 'KQL' -Filter '*.yaml') {
-          $outputFilePath = "./Hunting/$($yamlFile.BaseName).json"
-          .\ConvertHuntingQueryFromYamlToArm.ps1 -inputFilePath $yamlFile.FullName -outputFilePath $outputFilePath
+        Import-Module .\ConvertHuntingQueryFromYamlToArm.ps1
+
+        $newDirectory = New-Item -ItemType Directory -Path ".\Hunting"
+        foreach($parserYaml in $(Get-Item KQL\*.yaml))
+        {
+             $outputFilePath = "$($newDirectory.FullName)\$($parserYaml.BaseName).json"
+             ConvertHuntingQueryFromYamlToArm $parserYaml.FullName $outputFilePath
         }
