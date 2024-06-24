@@ -17,12 +17,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-    
-      - name: Set up PowerShell
-        uses: PowerShell/setup-powershell@v1
-        with:
-          pwsh-version: '7.1'
-        
+  
       - name: Install PowerShell-yaml module
         run: |
           Install-Module PowerShell-yaml -Force -AllowClobber -Scope CurrentUser
