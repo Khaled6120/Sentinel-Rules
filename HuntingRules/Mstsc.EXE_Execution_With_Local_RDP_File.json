@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Mstsc.EXE_Execution_With_Local_RDP_File')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Mstsc.EXE Execution With Local RDP File",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine endswith \".rdp\" or ProcessCommandLine endswith \".rdp\\\"\") and (FolderPath endswith \"\\\\mstsc.exe\" or ProcessVersionInfoOriginalFileName =~ \"mstsc.exe\")) and (not((ProcessCommandLine contains \"C:\\\\ProgramData\\\\Microsoft\\\\WSL\\\\wslg.rdp\" and InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\System32\\\\lxss\\\\wslhost.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects potential RDP connection via Mstsc using a local \".rdp\" fi"
+          },
+          {
+            "name": "tactics",
+            "value": "command_and_control"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1219"
+          }
+        ]
+      }
+    }
+  ]
+}

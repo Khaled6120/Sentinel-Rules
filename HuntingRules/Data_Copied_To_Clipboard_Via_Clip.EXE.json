@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Data_Copied_To_Clipboard_Via_Clip.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Data Copied To Clipboard Via Clip.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\clip.exe\" or ProcessVersionInfoOriginalFileName =~ \"clip.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the execution of clip.exe in order to copy data to the clipboard. Adversaries may collect data stored in the clipboard from users copying information within or between application"
+          },
+          {
+            "name": "tactics",
+            "value": "collection"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1115"
+          }
+        ]
+      }
+    }
+  ]
+}

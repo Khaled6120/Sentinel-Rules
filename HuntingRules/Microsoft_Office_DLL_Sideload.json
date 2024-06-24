@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Microsoft_Office_DLL_Sideload')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Microsoft Office DLL Sideload",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\outllib.dll\" and (not((FolderPath startswith \"C:\\\\Program Files\\\\Microsoft Office\\\\OFFICE\" or FolderPath startswith \"C:\\\\Program Files (x86)\\\\Microsoft Office\\\\OFFICE\" or FolderPath startswith \"C:\\\\Program Files\\\\Microsoft Office\\\\Root\\\\OFFICE\" or FolderPath startswith \"C:\\\\Program Files (x86)\\\\Microsoft Office\\\\Root\\\\OFFICE\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects DLL sideloading of DLLs that are part of Microsoft Office from non standard locati"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,persistence,privilege_escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

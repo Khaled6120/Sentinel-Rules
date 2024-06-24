@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Scan_Loop_Network')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Scan Loop Network",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"for \" or ProcessCommandLine contains \"foreach \") and (ProcessCommandLine contains \"nslookup\" or ProcessCommandLine contains \"ping\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "dversaries may attempt to get a listing of other systems by IP address, hostname, or other logical identifier on a network that may be used for Lateral Movement from the current syst"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery,execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1018,T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

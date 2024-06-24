@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Whoami_Utility_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Whoami Utility Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\whoami.exe\" or ProcessVersionInfoOriginalFileName =~ \"whoami.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the execution of whoami, which is often used by attackers after exploitation / privilege escalati"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1033"
+          }
+        ]
+      }
+    }
+  ]
+}

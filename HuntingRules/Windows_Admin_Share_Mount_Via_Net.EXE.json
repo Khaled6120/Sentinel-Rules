@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Windows_Admin_Share_Mount_Via_Net.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Windows Admin Share Mount Via Net.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" use \" and (ProcessCommandLine contains \" \\\\\" and ProcessCommandLine contains \"\\\\\" and ProcessCommandLine contains \"$\")) and ((FolderPath endswith \"\\\\net.exe\" or FolderPath endswith \"\\\\net1.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"net.exe\", \"net1.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects when an admin share is mounted using net.e"
+          },
+          {
+            "name": "tactics",
+            "value": "lateral_movement"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1021"
+          }
+        ]
+      }
+    }
+  ]
+}

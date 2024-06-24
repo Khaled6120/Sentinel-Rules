@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Use_NTFS_Short_Name_in_Image')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Use NTFS Short Name in Image",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath contains \"~1.bat\" or FolderPath contains \"~1.dll\" or FolderPath contains \"~1.exe\" or FolderPath contains \"~1.hta\" or FolderPath contains \"~1.js\" or FolderPath contains \"~1.msi\" or FolderPath contains \"~1.ps1\" or FolderPath contains \"~1.tmp\" or FolderPath contains \"~1.vbe\" or FolderPath contains \"~1.vbs\" or FolderPath contains \"~2.bat\" or FolderPath contains \"~2.dll\" or FolderPath contains \"~2.exe\" or FolderPath contains \"~2.hta\" or FolderPath contains \"~2.js\" or FolderPath contains \"~2.msi\" or FolderPath contains \"~2.ps1\" or FolderPath contains \"~2.tmp\" or FolderPath contains \"~2.vbe\" or FolderPath contains \"~2.vbs\") and (not(InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\explorer.exe\")) and (not((InitiatingProcessFolderPath endswith \"\\\\thor\\\\thor64.exe\" or FolderPath endswith \"\\\\VCREDI~1.EXE\" or InitiatingProcessFolderPath endswith \"\\\\WebEx\\\\WebexHost.exe\" or FolderPath =~ \"C:\\\\PROGRA~1\\\\WinZip\\\\WZPREL~1.EXE\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etect use of the Windows 8.3 short name. Which could be used as a method to avoid Image based detecti"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1564"
+          }
+        ]
+      }
+    }
+  ]
+}

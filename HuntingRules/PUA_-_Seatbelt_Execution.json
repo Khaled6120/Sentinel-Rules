@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/PUA_-_Seatbelt_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "PUA - Seatbelt Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\Seatbelt.exe\" or ProcessVersionInfoOriginalFileName =~ \"Seatbelt.exe\" or ProcessVersionInfoFileDescription =~ \"Seatbelt\" or (ProcessCommandLine contains \" DpapiMasterKeys\" or ProcessCommandLine contains \" InterestingProcesses\" or ProcessCommandLine contains \" InterestingFiles\" or ProcessCommandLine contains \" CertificateThumbprints\" or ProcessCommandLine contains \" ChromiumBookmarks\" or ProcessCommandLine contains \" ChromiumHistory\" or ProcessCommandLine contains \" ChromiumPresence\" or ProcessCommandLine contains \" CloudCredentials\" or ProcessCommandLine contains \" CredEnum\" or ProcessCommandLine contains \" CredGuard\" or ProcessCommandLine contains \" FirefoxHistory\" or ProcessCommandLine contains \" ProcessCreationEvents\")) or ((ProcessCommandLine contains \" -group=misc\" or ProcessCommandLine contains \" -group=remote\" or ProcessCommandLine contains \" -group=chromium\" or ProcessCommandLine contains \" -group=slack\" or ProcessCommandLine contains \" -group=system\" or ProcessCommandLine contains \" -group=user\" or ProcessCommandLine contains \" -group=all\") and ProcessCommandLine contains \" -outputfile=\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the execution of the PUA/Recon tool Seatbelt via PE information of command line paramete"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1083,T1087,T1526"
+          }
+        ]
+      }
+    }
+  ]
+}

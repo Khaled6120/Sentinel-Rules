@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/HackTool_-_Quarks_PwDump_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "HackTool - Quarks PwDump Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine in~ (\" -dhl\", \" --dump-hash-local\", \" -dhdc\", \" --dump-hash-domain-cached\", \" --dump-bitlocker\", \" -dhd \", \" --dump-hash-domain \", \"--ntds-file\")) or FolderPath endswith \"\\\\QuarksPwDump.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects usage of the Quarks PwDump tool via commandline argumen"
+          },
+          {
+            "name": "tactics",
+            "value": "credential_access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1003"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Arbitrary_DLL_Load_Using_Winword')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Arbitrary DLL Load Using Winword",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"/l \" and ProcessCommandLine contains \".dll\") and (FolderPath endswith \"\\\\WINWORD.exe\" or ProcessVersionInfoOriginalFileName =~ \"WinWord.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects potential DLL sideloading using the Microsoft Office winword process via the '/l' fla"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1202"
+          }
+        ]
+      }
+    }
+  ]
+}

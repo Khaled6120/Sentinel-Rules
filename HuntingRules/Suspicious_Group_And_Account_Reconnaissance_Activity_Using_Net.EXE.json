@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Group_And_Account_Reconnaissance_Activity_Using_Net.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Group And Account Reconnaissance Activity Using Net.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\net.exe\" or FolderPath endswith \"\\\\net1.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"net.exe\", \"net1.exe\"))) and ((((ProcessCommandLine contains \"domain admins\" or ProcessCommandLine contains \" administrator\" or ProcessCommandLine contains \" administrateur\" or ProcessCommandLine contains \"enterprise admins\" or ProcessCommandLine contains \"Exchange Trusted Subsystem\" or ProcessCommandLine contains \"Remote Desktop Users\" or ProcessCommandLine contains \"Utilisateurs du Bureau Ã  distance\" or ProcessCommandLine contains \"Usuarios de escritorio remoto\" or ProcessCommandLine contains \" /do\") and (ProcessCommandLine contains \" group \" or ProcessCommandLine contains \" localgroup \")) and (not(ProcessCommandLine contains \" /add\"))) or (ProcessCommandLine contains \" /do\" and ProcessCommandLine contains \" accounts \"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects suspicious reconnaissance command line activity on Windows systems using Net.EXE\nCheck if the user that executed the commands is suspicious (e.g. service accounts, LOCAL_SYSTEM"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1087"
+          }
+        ]
+      }
+    }
+  ]
+}

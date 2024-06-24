@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/HackTool_-_Certipy_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "HackTool - Certipy Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\Certipy.exe\" or ProcessVersionInfoOriginalFileName =~ \"Certipy.exe\" or ProcessVersionInfoFileDescription contains \"Certipy\") or ((ProcessCommandLine contains \" auth \" or ProcessCommandLine contains \" find \" or ProcessCommandLine contains \" forge \" or ProcessCommandLine contains \" relay \" or ProcessCommandLine contains \" req \" or ProcessCommandLine contains \" shadow \") and (ProcessCommandLine contains \" -bloodhound\" or ProcessCommandLine contains \" -ca-pfx \" or ProcessCommandLine contains \" -dc-ip \" or ProcessCommandLine contains \" -kirbi\" or ProcessCommandLine contains \" -old-bloodhound\" or ProcessCommandLine contains \" -pfx \" or ProcessCommandLine contains \" -target\" or ProcessCommandLine contains \" -username \" or ProcessCommandLine contains \" -vulnerable\" or ProcessCommandLine contains \"auth -pfx\" or ProcessCommandLine contains \"shadow auto\" or ProcessCommandLine contains \"shadow list\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects Certipy a tool for Active Directory Certificate Services enumeration and abuse based on PE metadata characteristics and common command line argument"
+          },
+          {
+            "name": "tactics",
+            "value": "credential_access,discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1649"
+          }
+        ]
+      }
+    }
+  ]
+}

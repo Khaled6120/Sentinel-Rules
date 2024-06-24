@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Time_Travel_Debugging_Utility_Usage_-_Image')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Time Travel Debugging Utility Usage - Image",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\ttdrecord.dll\" or FolderPath endswith \"\\\\ttdwriter.dll\" or FolderPath endswith \"\\\\ttdloader.dll\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects usage of Time Travel Debugging Utility. Adversaries can execute malicious processes and dump processes, such as lsass.exe, via tttracer.ex"
+          },
+          {
+            "name": "tactics",
+            "value": "credential_access,defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1003,T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

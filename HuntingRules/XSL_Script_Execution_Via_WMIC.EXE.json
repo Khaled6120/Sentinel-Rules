@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/XSL_Script_Execution_Via_WMIC.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "XSL Script Execution Via WMIC.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"-format\" or ProcessCommandLine contains \"/format\") and FolderPath endswith \"\\\\wmic.exe\") and (not((ProcessCommandLine contains \"Format:List\" or ProcessCommandLine contains \"Format:htable\" or ProcessCommandLine contains \"Format:hform\" or ProcessCommandLine contains \"Format:table\" or ProcessCommandLine contains \"Format:mof\" or ProcessCommandLine contains \"Format:value\" or ProcessCommandLine contains \"Format:rawxml\" or ProcessCommandLine contains \"Format:xml\" or ProcessCommandLine contains \"Format:csv\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the execution of WMIC with the \"format\" flag to potentially load XSL files.\nAdversaries abuse this functionality to execute arbitrary files while potentially bypassing application whitelisting defenses.\nExtensible Stylesheet Language"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1220"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_LSASS_Process_Dump_Via_Procdump')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential LSASS Process Dump Via Procdump",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -ma \" or ProcessCommandLine contains \" /ma \") and ProcessCommandLine contains \" ls\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects suspicious uses of the SysInternals Procdump utility by using a special command line parameter in combination with the lsass.exe process.\nThis way we are also able to catch cases in which the attacker has renamed the procdump executa"
+          },
+          {
+            "name": "tactics",
+            "value": "credential_access,defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1003,T1036"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Use_of_W32tm_as_Timer')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Use of W32tm as Timer",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"/stripchart\" and ProcessCommandLine contains \"/computer:\" and ProcessCommandLine contains \"/period:\" and ProcessCommandLine contains \"/dataonly\" and ProcessCommandLine contains \"/samples:\") and (FolderPath endswith \"\\\\w32tm.exe\" or ProcessVersionInfoOriginalFileName =~ \"w32time.dll\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "hen configured with suitable command line arguments, w32tm can act as a delay mechani"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1124"
+          }
+        ]
+      }
+    }
+  ]
+}

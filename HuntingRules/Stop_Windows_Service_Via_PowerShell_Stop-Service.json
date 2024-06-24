@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Stop_Windows_Service_Via_PowerShell_Stop-Service')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Stop Windows Service Via PowerShell Stop-Service",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"Stop-Service \" and ((ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\", \"pwsh.dll\")) or (FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the stopping of a Windows service via the PowerShell Cmdlet \"Stop-Servic"
+          },
+          {
+            "name": "tactics",
+            "value": "impact"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1489"
+          }
+        ]
+      }
+    }
+  ]
+}

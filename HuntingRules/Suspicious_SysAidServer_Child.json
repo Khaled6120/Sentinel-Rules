@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_SysAidServer_Child')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious SysAidServer Child",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where InitiatingProcessCommandLine contains \"SysAidServer\" and (InitiatingProcessFolderPath endswith \"\\\\java.exe\" or InitiatingProcessFolderPath endswith \"\\\\javaw.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects suspicious child processes of SysAidServer (as seen in MERCURY threat actor intrusion"
+          },
+          {
+            "name": "tactics",
+            "value": "lateral_movement"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1210"
+          }
+        ]
+      }
+    }
+  ]
+}

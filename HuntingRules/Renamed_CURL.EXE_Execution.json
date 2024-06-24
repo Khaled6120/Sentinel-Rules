@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Renamed_CURL.EXE_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Renamed CURL.EXE Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessVersionInfoOriginalFileName =~ \"curl.exe\" or ProcessVersionInfoFileDescription =~ \"The curl executable\") and (not(FolderPath contains \"\\\\curl\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the execution of a renamed \"CURL.exe\" binary based on the PE metadata fiel"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059,T1202"
+          }
+        ]
+      }
+    }
+  ]
+}

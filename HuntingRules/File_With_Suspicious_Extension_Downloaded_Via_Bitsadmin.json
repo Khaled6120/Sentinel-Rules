@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/File_With_Suspicious_Extension_Downloaded_Via_Bitsadmin')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "File With Suspicious Extension Downloaded Via Bitsadmin",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \".7z\" or ProcessCommandLine contains \".asax\" or ProcessCommandLine contains \".ashx\" or ProcessCommandLine contains \".asmx\" or ProcessCommandLine contains \".asp\" or ProcessCommandLine contains \".aspx\" or ProcessCommandLine contains \".bat\" or ProcessCommandLine contains \".cfm\" or ProcessCommandLine contains \".cgi\" or ProcessCommandLine contains \".chm\" or ProcessCommandLine contains \".cmd\" or ProcessCommandLine contains \".dll\" or ProcessCommandLine contains \".gif\" or ProcessCommandLine contains \".jpeg\" or ProcessCommandLine contains \".jpg\" or ProcessCommandLine contains \".jsp\" or ProcessCommandLine contains \".jspx\" or ProcessCommandLine contains \".log\" or ProcessCommandLine contains \".png\" or ProcessCommandLine contains \".ps1\" or ProcessCommandLine contains \".psm1\" or ProcessCommandLine contains \".rar\" or ProcessCommandLine contains \".scf\" or ProcessCommandLine contains \".sct\" or ProcessCommandLine contains \".txt\" or ProcessCommandLine contains \".vbe\" or ProcessCommandLine contains \".vbs\" or ProcessCommandLine contains \".war\" or ProcessCommandLine contains \".wsf\" or ProcessCommandLine contains \".wsh\" or ProcessCommandLine contains \".xll\" or ProcessCommandLine contains \".zip\") and (ProcessCommandLine contains \" /transfer \" or ProcessCommandLine contains \" /create \" or ProcessCommandLine contains \" /addfile \") and (FolderPath endswith \"\\\\bitsadmin.exe\" or ProcessVersionInfoOriginalFileName =~ \"bitsadmin.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects usage of bitsadmin downloading a file with a suspicious extensi"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,persistence,s0190"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1036,T1197"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Provlaunch.EXE_Child_Process')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Provlaunch.EXE Child Process",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\calc.exe\" or FolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\cscript.exe\" or FolderPath endswith \"\\\\mshta.exe\" or FolderPath endswith \"\\\\notepad.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\regsvr32.exe\" or FolderPath endswith \"\\\\rundll32.exe\" or FolderPath endswith \"\\\\wscript.exe\") or (FolderPath contains \":\\\\PerfLogs\\\\\" or FolderPath contains \":\\\\Temp\\\\\" or FolderPath contains \":\\\\Users\\\\Public\\\\\" or FolderPath contains \"\\\\AppData\\\\Temp\\\\\" or FolderPath contains \"\\\\Windows\\\\System32\\\\Tasks\\\\\" or FolderPath contains \"\\\\Windows\\\\Tasks\\\\\" or FolderPath contains \"\\\\Windows\\\\Temp\\\\\")) and InitiatingProcessFolderPath endswith \"\\\\provlaunch.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects suspicious child processes of \"provlaunch.exe\" which might indicate potential abuse to proxy executio"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

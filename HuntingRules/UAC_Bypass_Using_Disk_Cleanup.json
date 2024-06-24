@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/UAC_Bypass_Using_Disk_Cleanup')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "UAC Bypass Using Disk Cleanup",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine endswith \"\\\"\\\\system32\\\\cleanmgr.exe /autoclean /d C:\" and (ProcessIntegrityLevel in~ (\"High\", \"System\")) and InitiatingProcessCommandLine =~ \"C:\\\\Windows\\\\system32\\\\svchost.exe -k netsvcs -p -s Schedule\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the pattern of UAC Bypass using scheduled tasks and variable expansion of cleanmgr.exe (UACMe 3"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,privilege_escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1548"
+          }
+        ]
+      }
+    }
+  ]
+}

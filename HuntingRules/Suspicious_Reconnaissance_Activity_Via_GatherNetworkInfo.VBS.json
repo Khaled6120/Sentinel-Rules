@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Reconnaissance_Activity_Via_GatherNetworkInfo.VBS')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Reconnaissance Activity Via GatherNetworkInfo.VBS",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"gatherNetworkInfo.vbs\" and (not((FolderPath endswith \"\\\\cscript.exe\" or FolderPath endswith \"\\\\wscript.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects execution of the built-in script located in \"C:\\Windows\\System32\\gatherNetworkInfo.vbs\". Which can be used to gather information about the target machi"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery,execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059,T1615"
+          }
+        ]
+      }
+    }
+  ]
+}

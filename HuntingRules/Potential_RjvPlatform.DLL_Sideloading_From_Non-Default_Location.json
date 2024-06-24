@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_RjvPlatform.DLL_Sideloading_From_Non-Default_Location')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential RjvPlatform.DLL Sideloading From Non-Default Location",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where (InitiatingProcessFolderPath =~ \"\\\\SystemResetPlatform.exe\" and FolderPath endswith \"\\\\RjvPlatform.dll\") and (not(InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\System32\\\\SystemResetPlatform\\\\\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects potential DLL sideloading of \"RjvPlatform.dll\" by \"SystemResetPlatform.exe\" located in a non-default locatio"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,privilege_escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

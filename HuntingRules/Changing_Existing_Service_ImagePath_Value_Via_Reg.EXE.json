@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Changing_Existing_Service_ImagePath_Value_Via_Reg.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Changing Existing Service ImagePath Value Via Reg.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"add \" and ProcessCommandLine contains \"SYSTEM\\\\CurrentControlSet\\\\Services\\\\\" and ProcessCommandLine contains \" ImagePath \") and FolderPath endswith \"\\\\reg.exe\") and (ProcessCommandLine contains \" -d \" or ProcessCommandLine contains \" /d \")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "dversaries may execute their own malicious payloads by hijacking the Registry entries used by services.\nAdversaries may use flaws in the permissions for registry to redirect from the originally specified executable to one that they control,"
+          },
+          {
+            "name": "tactics",
+            "value": "persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

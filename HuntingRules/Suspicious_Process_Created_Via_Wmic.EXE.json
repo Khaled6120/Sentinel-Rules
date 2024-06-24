@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Process_Created_Via_Wmic.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Process Created Via Wmic.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"rundll32\" or ProcessCommandLine contains \"bitsadmin\" or ProcessCommandLine contains \"regsvr32\" or ProcessCommandLine contains \"cmd.exe /c \" or ProcessCommandLine contains \"cmd.exe /k \" or ProcessCommandLine contains \"cmd.exe /r \" or ProcessCommandLine contains \"cmd /c \" or ProcessCommandLine contains \"cmd /k \" or ProcessCommandLine contains \"cmd /r \" or ProcessCommandLine contains \"powershell\" or ProcessCommandLine contains \"pwsh\" or ProcessCommandLine contains \"certutil\" or ProcessCommandLine contains \"cscript\" or ProcessCommandLine contains \"wscript\" or ProcessCommandLine contains \"mshta\" or ProcessCommandLine contains \"\\\\Users\\\\Public\\\\\" or ProcessCommandLine contains \"\\\\Windows\\\\Temp\\\\\" or ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\\" or ProcessCommandLine contains \"%temp%\" or ProcessCommandLine contains \"%tmp%\" or ProcessCommandLine contains \"%ProgramData%\" or ProcessCommandLine contains \"%appdata%\" or ProcessCommandLine contains \"%comspec%\" or ProcessCommandLine contains \"%localappdata%\") and (ProcessCommandLine contains \"process \" and ProcessCommandLine contains \"call \" and ProcessCommandLine contains \"create \")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects WMIC executing \"process call create\" with suspicious calls to processes such as \"rundll32\", \"regsrv32\", et"
+          },
+          {
+            "name": "tactics",
+            "value": "execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1047"
+          }
+        ]
+      }
+    }
+  ]
+}

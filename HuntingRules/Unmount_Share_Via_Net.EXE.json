@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Unmount_Share_Via_Net.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Unmount Share Via Net.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"share\" and ProcessCommandLine contains \"/delete\") and ((FolderPath endswith \"\\\\net.exe\" or FolderPath endswith \"\\\\net1.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"net.exe\", \"net1.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects when when a mounted share is removed. Adversaries may remove share connections that are no longer useful in order to clean up traces of their operati"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1070"
+          }
+        ]
+      }
+    }
+  ]
+}

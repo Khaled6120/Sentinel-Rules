@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/System_Network_Connections_Discovery_Via_Net.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "System Network Connections Discovery Via Net.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine endswith \" use\" or ProcessCommandLine endswith \" sessions\") or (ProcessCommandLine contains \" use \" or ProcessCommandLine contains \" sessions \")) and ((FolderPath endswith \"\\\\net.exe\" or FolderPath endswith \"\\\\net1.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"net.exe\", \"net1.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "dversaries may attempt to get a listing of network connections to or from the compromised system they are currently accessing or from remote systems by querying for information over the networ"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1049"
+          }
+        ]
+      }
+    }
+  ]
+}

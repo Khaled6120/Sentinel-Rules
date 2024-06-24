@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Eventlog_Clear_or_Configuration_Change')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Eventlog Clear or Configuration Change",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (((ProcessCommandLine contains \"Clear-EventLog \" or ProcessCommandLine contains \"Remove-EventLog \" or ProcessCommandLine contains \"Limit-EventLog \" or ProcessCommandLine contains \"Clear-WinEvent \") and (FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\")) or (ProcessCommandLine contains \"ClearEventLog\" and (FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\wmic.exe\")) or ((ProcessCommandLine contains \"clear-log \" or ProcessCommandLine contains \" cl \" or ProcessCommandLine contains \"set-log \" or ProcessCommandLine contains \" sl \" or ProcessCommandLine contains \"lfn:\") and FolderPath endswith \"\\\\wevtutil.exe\")) and (not((ProcessCommandLine contains \" sl \" and (InitiatingProcessFolderPath in~ (\"C:\\\\Windows\\\\SysWOW64\\\\msiexec.exe\", \"C:\\\\Windows\\\\System32\\\\msiexec.exe\")))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects clearing or configuration of eventlogs using wevtutil, powershell and wmic. Might be used by ransomwares during the attack (seen by NotPetya and others"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1070,T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

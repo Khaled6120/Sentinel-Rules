@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_DLL_Sideloading_Of_DBGHELP.DLL')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential DLL Sideloading Of DBGHELP.DLL",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\dbghelp.dll\" and (not((FolderPath startswith \"C:\\\\Program Files (x86)\\\\\" or FolderPath startswith \"C:\\\\Program Files\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\SoftwareDistribution\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\System32\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\SystemTemp\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\SysWOW64\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\WinSxS\\\\\"))) and (not(((FolderPath endswith \"\\\\Anaconda3\\\\Lib\\\\site-packages\\\\vtrace\\\\platforms\\\\windll\\\\amd64\\\\dbghelp.dll\" or FolderPath endswith \"\\\\Anaconda3\\\\Lib\\\\site-packages\\\\vtrace\\\\platforms\\\\windll\\\\i386\\\\dbghelp.dll\") or (FolderPath endswith \"\\\\Epic Games\\\\Launcher\\\\Engine\\\\Binaries\\\\ThirdParty\\\\DbgHelp\\\\dbghelp.dll\" or FolderPath endswith \"\\\\Epic Games\\\\MagicLegends\\\\x86\\\\dbghelp.dll\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects DLL sideloading of \"dbghelp.dl"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,persistence,privilege_escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

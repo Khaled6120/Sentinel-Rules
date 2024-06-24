@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Process_Reconnaissance_Via_Wmic.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Process Reconnaissance Via Wmic.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"process\" and (FolderPath endswith \"\\\\WMIC.exe\" or ProcessVersionInfoOriginalFileName =~ \"wmic.exe\")) and (not((ProcessCommandLine contains \"call\" and ProcessCommandLine contains \"create\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "etects the execution of \"wmic\" with the \"process\" flag, which adversary might use to list processes running on the compromised host or list installed software hotfixes and patche"
+          },
+          {
+            "name": "tactics",
+            "value": "execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1047"
+          }
+        ]
+      }
+    }
+  ]
+}
