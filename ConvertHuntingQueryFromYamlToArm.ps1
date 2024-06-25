@@ -1,5 +1,4 @@
 $jsonConversionDepth = 50
-
 function ConvertHuntingQueryFromYamlToArm {
     param (
         # Parameter help description
@@ -9,12 +8,13 @@ function ConvertHuntingQueryFromYamlToArm {
 
     $file = Get-Item -Path $inputFilePath
     $yaml = $null
-
-    if ($file.FullName -match "(\.yaml)$") {
+    if ($file.FullName -match "(\.yaml)$")
+    {
         $rawData = Get-Content $inputFilePath
         $content = ''
-        foreach ($line in $rawData) {
-            $content = $content + "`n" + $line
+        foreach ($line in $rawData) 
+        {
+            $content = $content + "n" + $line
         }
 
         try {
@@ -23,12 +23,13 @@ function ConvertHuntingQueryFromYamlToArm {
         catch {
             Write-Host "Failed to deserialize $file $_" -ForegroundColor Red 
             break;
-        }
+        }               
     }
                             
-    $basicJson = @"
-{
-    "\$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    $basicJson =
+    @"
+{                        
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "workspace": {
@@ -43,7 +44,7 @@ function ConvertHuntingQueryFromYamlToArm {
     $huntingQueryObj = [PSCustomObject] @{
         type       = "Microsoft.OperationalInsights/workspaces/savedSearches";
         apiVersion = "2020-08-01";
-        name       = "[concat(parameters('workspace'), '/$($file.BaseName.replace(' ', ''))')]";
+        name       = "[concat(parameters('workspace'), '/$($file.BaseName.replace(" ", ""))')]";
         location   = "[resourceGroup().location]"; 
         properties = [PSCustomObject] @{
             eTag        = "*";
@@ -58,7 +59,7 @@ function ConvertHuntingQueryFromYamlToArm {
     $huntingQueryDescription = ""
     if ($yaml.description) {
         $huntingQueryDescription = $yaml.description.substring(0, [math]::min($yaml.description.length - 3, 240))
-        $descriptionObj = [PSCustomObject] @{
+        $descriptionObj = [PSCustomObject]@{
             name  = "description";
             value = $huntingQueryDescription
         }
@@ -67,22 +68,22 @@ function ConvertHuntingQueryFromYamlToArm {
     }
 
     $tacticsMapping = @{
-        'reconnaissance'            = 'Reconnaissance';
-        'resource_development'      = 'Resource Development';
-        'initial_access'            = 'Initial Access';
-        'execution'                 = 'Execution';
-        'persistence'               = 'Persistence';
-        'privilege_escalation'      = 'Privilege Escalation';
-        'defense_evasion'           = 'Defense Evasion';
-        'credential_access'         = 'Credential Access';
-        'discovery'                 = 'Discovery';
-        'collection'                = 'Collection';
-        'command_and_control'       = 'Command And Control';
-        'impact'                    = 'Impact';
-        'lateral_movement'          = 'Lateral Movement';
-        'evasion'                   = 'Evasion';
-        'inhibit_response_function' = 'Inhibit Response Function';
-        'impair_process_control'    = 'Impair Process Control'
+    'reconnaissance' = 'Reconnaissance';
+    'resource_development' = 'Resource Development';
+    'initial_access' = 'Initial Access';
+    'execution' = 'Execution';
+    'persistence' = 'Persistence';
+    'privilege_escalation' = 'Privilege Escalation';
+    'defense_evasion' = 'Defense Evasion';
+    'credential_access' = 'Credential Access';
+    'discovery' = 'Discovery';
+    'collection' = 'Collection';
+    'command_and_control' = 'Command And Control';
+    'impact' = 'Impact';
+    'lateral_movement' = 'Lateral Movement';
+    'evasion' = 'Evasion';
+    'inhibit_response_function' = 'Inhibit Response Function';
+    'impair_process_control' = 'Impair Process Control'
     }
 
     if ($yaml.tactics -and $yaml.tactics.Count -gt 0) {
@@ -95,13 +96,17 @@ function ConvertHuntingQueryFromYamlToArm {
             }
         } -join ","
        
-        $tacticsObj = [PSCustomObject] @{
+        $tacticsObj = [PSCustomObject]@{
             name  = "tactics";
             value = $formattedTactics
         }
     
         $huntingQueryObj.properties.tags += $tacticsObj
     }
+
+
+
+
 
     if ($yaml.relevantTechniques -and $yaml.relevantTechniques.Count -gt 0) {
         $formattedTechniques = $yaml.relevantTechniques | ForEach-Object {
@@ -111,21 +116,18 @@ function ConvertHuntingQueryFromYamlToArm {
                 $_
             }
         }
-
-        $techniqueObj = [PSCustomObject] @{
+        $techniqueObj = [PSCustomObject]@{
             name  = "relevantTechniques";
             value = $formattedTechniques -join ","
         }
-
         if ($techniqueObj.value.ToString() -match ' ') {
             $techniqueObj.value = $techniqueObj.value -replace ' ', ''
         }
-
         $huntingQueryObj.properties.tags += $techniqueObj
     }
 
-    $baseHuntingObject.resources = @()
-    $baseHuntingObject.resources += $huntingQueryObj
+    $baseHuntingObject.resources = @();
+    $baseHuntingObject.resources += $huntingQueryObj;
 
     ConvertTo-Json $baseHuntingObject -EscapeHandling Default -Depth $jsonConversionDepth | Set-Content -Path $outputFilePath
 }
