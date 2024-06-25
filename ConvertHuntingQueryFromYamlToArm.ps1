@@ -14,7 +14,7 @@ function ConvertHuntingQueryFromYamlToArm {
         $content = ''
         foreach ($line in $rawData) 
         {
-            $content = $content + "n" + $line
+            $content = $content + "`n" + $line
         }
 
         try {
@@ -29,7 +29,7 @@ function ConvertHuntingQueryFromYamlToArm {
     $basicJson =
     @"
 {                        
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "`$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "workspace": {
@@ -58,7 +58,7 @@ function ConvertHuntingQueryFromYamlToArm {
 
     $huntingQueryDescription = ""
     if ($yaml.description) {
-        $huntingQueryDescription = $yaml.description.substring(0, [math]::min($yaml.description.length - 3, 240))
+        $huntingQueryDescription = $yaml.description.substring(1, [math]::min($yaml.description.length - 3, 240))
         $descriptionObj = [PSCustomObject]@{
             name  = "description";
             value = $huntingQueryDescription
@@ -78,10 +78,6 @@ function ConvertHuntingQueryFromYamlToArm {
         $huntingQueryObj.properties.tags += $tacticsObj
     }
 
-
-
-
-
     if ($yaml.relevantTechniques -and $yaml.relevantTechniques.Count -gt 0) {
         $formattedTechniques = $yaml.relevantTechniques | ForEach-Object {
             if ($_ -match "^t\d{4}(\.\d+)?$") {
@@ -100,8 +96,9 @@ function ConvertHuntingQueryFromYamlToArm {
         $huntingQueryObj.properties.tags += $techniqueObj
     }
 
+     
     $baseHuntingObject.resources = @();
     $baseHuntingObject.resources += $huntingQueryObj;
 
-    ConvertTo-Json $baseHuntingObject -EscapeHandling Default -Depth $jsonConversionDepth | Set-Content -Path $outputFilePath
+    ConvertTo-Json $baseHuntingObject -EscapeHandling Default -Depth $jsonConversionDepth  | Set-Content -Path $outputFilePath
 }
