@@ -44,7 +44,7 @@ function ConvertHuntingQueryFromYamlToArm {
     $huntingQueryObj = [PSCustomObject] @{
         type       = "Microsoft.OperationalInsights/workspaces/savedSearches";
         apiVersion = "2020-08-01";
-        name = "[concat(parameters('workspace'), '/$($file.BaseName.replace(\" \", \"\"))')]";
+        name       = "[concat(parameters('workspace'), '/$($file.BaseName.replace(`" `", `"`"))')]";
         location   = "[resourceGroup().location]"; 
         properties = [PSCustomObject] @{
             eTag        = "*";
