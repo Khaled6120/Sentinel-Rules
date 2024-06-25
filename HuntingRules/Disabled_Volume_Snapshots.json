@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Disabled_Volume_Snapshots')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Disabled Volume Snapshots",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"\\\\Services\\\\VSS\\\\Diag\" and ProcessCommandLine contains \"/d Disabled\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects commands that temporarily turn off Volume Snapsh"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

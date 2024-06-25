@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Invoke-WebRequest_Execution_With_DirectIP')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Invoke-WebRequest Execution With DirectIP",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"curl \" or ProcessCommandLine contains \"Invoke-WebRequest\" or ProcessCommandLine contains \"iwr \" or ProcessCommandLine contains \"wget \") and ((FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\", \"pwsh.dll\"))) and (ProcessCommandLine contains \"://1\" or ProcessCommandLine contains \"://2\" or ProcessCommandLine contains \"://3\" or ProcessCommandLine contains \"://4\" or ProcessCommandLine contains \"://5\" or ProcessCommandLine contains \"://6\" or ProcessCommandLine contains \"://7\" or ProcessCommandLine contains \"://8\" or ProcessCommandLine contains \"://9\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects calls to PowerShell with Invoke-WebRequest cmdlet using direct IP acc"
+          },
+          {
+            "name": "tactics",
+            "value": "command_and_control"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1105"
+          }
+        ]
+      }
+    }
+  ]
+}

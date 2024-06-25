@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/COM_Object_Execution_via_Xwizard.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "COM Object Execution via Xwizard.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine =~ \"RunWizard\" and ProcessCommandLine matches regex \"\\\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\\\}\") and (FolderPath endswith \"\\\\xwizard.exe\" or ProcessVersionInfoOriginalFileName =~ \"xwizard.exe\")) or ((ProcessCommandLine =~ \"RunWizard\" and ProcessCommandLine matches regex \"\\\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\\\}\") and (not((FolderPath endswith \"\\\\xwizard.exe\" or ProcessVersionInfoOriginalFileName =~ \"xwizard.exe\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of Xwizard tool with the \"RunWizard\" flag and a GUID like argument.\nThis utility can be abused in order to run custom COM object created in the registr"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Service_DACL_Modification_Via_Set-Service_Cmdlet')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Service DACL Modification Via Set-Service Cmdlet",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\pwsh.exe\" or ProcessVersionInfoOriginalFileName =~ \"pwsh.dll\") and (ProcessCommandLine contains \"-SecurityDescriptorSddl \" or ProcessCommandLine contains \"-sd \") and ((ProcessCommandLine contains \";;;IU\" or ProcessCommandLine contains \";;;SU\" or ProcessCommandLine contains \";;;BA\" or ProcessCommandLine contains \";;;SY\" or ProcessCommandLine contains \";;;WD\") and (ProcessCommandLine contains \"Set-Service \" and ProcessCommandLine contains \"D;;\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious DACL modifications via the \"Set-Service\" cmdlet using the \"SecurityDescriptorSddl\" flag (Only available with PowerShell 7) that can be used to hide services or make them unstopa"
+          },
+          {
+            "name": "tactics",
+            "value": "persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1543"
+          }
+        ]
+      }
+    }
+  ]
+}

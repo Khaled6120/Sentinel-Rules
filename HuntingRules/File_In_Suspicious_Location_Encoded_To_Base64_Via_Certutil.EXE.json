@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/File_In_Suspicious_Location_Encoded_To_Base64_Via_Certutil.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "File In Suspicious Location Encoded To Base64 Via Certutil.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-encode\" or ProcessCommandLine contains \"/encode\") and (ProcessCommandLine contains \"\\\\AppData\\\\Roaming\\\\\" or ProcessCommandLine contains \"\\\\Desktop\\\\\" or ProcessCommandLine contains \"\\\\Local\\\\Temp\\\\\" or ProcessCommandLine contains \"\\\\PerfLogs\\\\\" or ProcessCommandLine contains \"\\\\Users\\\\Public\\\\\" or ProcessCommandLine contains \"\\\\Windows\\\\Temp\\\\\" or ProcessCommandLine contains \"$Recycle.Bin\") and (FolderPath endswith \"\\\\certutil.exe\" or ProcessVersionInfoOriginalFileName =~ \"CertUtil.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of certutil with the \"encode\" flag to encode a file to base64 where the files are located in potentially suspicious locati"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1027"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Dump64.exe_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Dump64.exe Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\dump64.exe\" and (not(FolderPath contains \"\\\\Installer\\\\Feedback\\\\dump64.exe\"))) or (FolderPath endswith \"\\\\dump64.exe\" and (ProcessCommandLine contains \" -ma \" or ProcessCommandLine contains \"accepteula\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects when a user bypasses Defender by renaming a tool to dump64.exe and placing it in a Visual Studio fol"
+          },
+          {
+            "name": "tactics",
+            "value": "credential_access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1003"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Audio_Capture_via_PowerShell')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Audio Capture via PowerShell",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"WindowsAudioDevice-Powershell-Cmdlet\" or ProcessCommandLine contains \"Toggle-AudioDevice\" or ProcessCommandLine contains \"Get-AudioDevice \" or ProcessCommandLine contains \"Set-AudioDevice \" or ProcessCommandLine contains \"Write-AudioDevice \"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects audio capture via PowerShell Cmdl"
+          },
+          {
+            "name": "tactics",
+            "value": "collection"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1123"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/PUA_-_CsExec_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "PUA - CsExec Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\csexec.exe\" or ProcessVersionInfoFileDescription =~ \"csexec\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the use of the lesser known remote execution tool named CsExec a PsExec alternat"
+          },
+          {
+            "name": "tactics",
+            "value": "execution,resource_development"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1569,T1587"
+          }
+        ]
+      }
+    }
+  ]
+}

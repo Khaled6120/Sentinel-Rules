@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Child_Process_Of_BgInfo.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Child Process Of BgInfo.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\calc.exe\" or FolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\cscript.exe\" or FolderPath endswith \"\\\\mshta.exe\" or FolderPath endswith \"\\\\notepad.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\wscript.exe\") or (FolderPath contains \"\\\\AppData\\\\Local\\\\\" or FolderPath contains \"\\\\AppData\\\\Roaming\\\\\" or FolderPath contains \":\\\\Users\\\\Public\\\\\" or FolderPath contains \":\\\\Temp\\\\\" or FolderPath contains \":\\\\Windows\\\\Temp\\\\\" or FolderPath contains \":\\\\PerfLogs\\\\\")) and (InitiatingProcessFolderPath endswith \"\\\\bginfo.exe\" or InitiatingProcessFolderPath endswith \"\\\\bginfo64.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious child processes of \"BgInfo.exe\" which could be a sign of potential abuse of the binary to proxy execution via external VBScr"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059,T1202,T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

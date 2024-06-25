@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/HackTool_-_XORDump_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "HackTool - XORDump Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\xordump.exe\" or (ProcessCommandLine contains \" -process lsass.exe \" or ProcessCommandLine contains \" -m comsvcs \" or ProcessCommandLine contains \" -m dbghelp \" or ProcessCommandLine contains \" -m dbgcore \")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious use of XORDump process memory dumping util"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1003,T1036"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Process_Memory_Dump_Via_Dotnet-Dump')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Process Memory Dump Via Dotnet-Dump",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"collect\" and (FolderPath endswith \"\\\\dotnet-dump.exe\" or ProcessVersionInfoOriginalFileName =~ \"dotnet-dump.dll\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of \"dotnet-dump\" with the \"collect\" flag. The execution could indicate potential process dumping of critical processes such as LSAS"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

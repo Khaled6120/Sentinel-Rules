@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potentially_Suspicious_Child_Process_Of_Regsvr32')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potentially Suspicious Child Process Of Regsvr32",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\calc.exe\" or FolderPath endswith \"\\\\cscript.exe\" or FolderPath endswith \"\\\\explorer.exe\" or FolderPath endswith \"\\\\mshta.exe\" or FolderPath endswith \"\\\\net.exe\" or FolderPath endswith \"\\\\net1.exe\" or FolderPath endswith \"\\\\nltest.exe\" or FolderPath endswith \"\\\\notepad.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\reg.exe\" or FolderPath endswith \"\\\\schtasks.exe\" or FolderPath endswith \"\\\\werfault.exe\" or FolderPath endswith \"\\\\wscript.exe\") and InitiatingProcessFolderPath endswith \"\\\\regsvr32.exe\") and (not((ProcessCommandLine contains \" -u -p \" and FolderPath endswith \"\\\\werfault.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potentially suspicious child processes of \"regsvr32.ex"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

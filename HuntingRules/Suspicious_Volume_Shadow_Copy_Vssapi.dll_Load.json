@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Volume_Shadow_Copy_Vssapi.dll_Load')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Volume Shadow Copy Vssapi.dll Load",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\vssapi.dll\" and (not(((InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Program Files (x86)\\\\\") or InitiatingProcessFolderPath startswith \"C:\\\\ProgramData\\\\Package Cache\\\\\" or ((InitiatingProcessFolderPath in~ (\"C:\\\\Windows\\\\explorer.exe\", \"C:\\\\Windows\\\\ImmersiveControlPanel\\\\SystemSettings.exe\")) or (InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\System32\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\SysWOW64\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\Temp\\\\{\" or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\WinSxS\\\\\")))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the image load of VSS DLL by uncommon executab"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,impact"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1490"
+          }
+        ]
+      }
+    }
+  ]
+}

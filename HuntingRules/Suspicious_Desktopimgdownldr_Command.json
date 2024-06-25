@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Desktopimgdownldr_Command')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Desktopimgdownldr Command",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" /lockscreenurl:\" and (not((ProcessCommandLine contains \".jpg\" or ProcessCommandLine contains \".jpeg\" or ProcessCommandLine contains \".png\")))) or (ProcessCommandLine contains \"reg delete\" and ProcessCommandLine contains \"\\\\PersonalizationCSP\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects a suspicious Microsoft desktopimgdownldr execution with parameters used to download files from the Inter"
+          },
+          {
+            "name": "tactics",
+            "value": "command_and_control"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1105"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Execution_of_Powershell_Script_in_Public_Folder')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Execution of Powershell Script in Public Folder",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-f C:\\\\Users\\\\Public\" or ProcessCommandLine contains \"-f \\\"C:\\\\Users\\\\Public\" or ProcessCommandLine contains \"-f %Public%\" or ProcessCommandLine contains \"-fi C:\\\\Users\\\\Public\" or ProcessCommandLine contains \"-fi \\\"C:\\\\Users\\\\Public\" or ProcessCommandLine contains \"-fi %Public%\" or ProcessCommandLine contains \"-fil C:\\\\Users\\\\Public\" or ProcessCommandLine contains \"-fil \\\"C:\\\\Users\\\\Public\" or ProcessCommandLine contains \"-fil %Public%\" or ProcessCommandLine contains \"-file C:\\\\Users\\\\Public\" or ProcessCommandLine contains \"-file \\\"C:\\\\Users\\\\Public\" or ProcessCommandLine contains \"-file %Public%\") and (FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "This rule detects execution of PowerShell scripts located in the \"C:\\Users\\Public\" fol"
+          },
+          {
+            "name": "tactics",
+            "value": "execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

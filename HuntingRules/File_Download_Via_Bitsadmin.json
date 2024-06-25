@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/File_Download_Via_Bitsadmin')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "File Download Via Bitsadmin",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\bitsadmin.exe\" or ProcessVersionInfoOriginalFileName =~ \"bitsadmin.exe\") and (ProcessCommandLine contains \" /transfer \" or ((ProcessCommandLine contains \" /create \" or ProcessCommandLine contains \" /addfile \") and ProcessCommandLine contains \"http\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects usage of bitsadmin downloading a f"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,persistence,s0190"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1036,T1197"
+          }
+        ]
+      }
+    }
+  ]
+}

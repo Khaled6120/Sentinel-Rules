@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Encoded_And_Obfuscated_Reflection_Assembly_Load_Function_Call')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Encoded And Obfuscated Reflection Assembly Load Function Call",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"OgA6ACgAIgBMACIAKwAiAG8AYQBkACIAKQ\" or ProcessCommandLine contains \"oAOgAoACIATAAiACsAIgBvAGEAZAAiACkA\" or ProcessCommandLine contains \"6ADoAKAAiAEwAIgArACIAbwBhAGQAIgApA\" or ProcessCommandLine contains \"OgA6ACgAIgBMAG8AIgArACIAYQBkACIAKQ\" or ProcessCommandLine contains \"oAOgAoACIATABvACIAKwAiAGEAZAAiACkA\" or ProcessCommandLine contains \"6ADoAKAAiAEwAbwAiACsAIgBhAGQAIgApA\" or ProcessCommandLine contains \"OgA6ACgAIgBMAG8AYQAiACsAIgBkACIAKQ\" or ProcessCommandLine contains \"oAOgAoACIATABvAGEAIgArACIAZAAiACkA\" or ProcessCommandLine contains \"6ADoAKAAiAEwAbwBhACIAKwAiAGQAIgApA\" or ProcessCommandLine contains \"OgA6ACgAJwBMACcAKwAnAG8AYQBkACcAKQ\" or ProcessCommandLine contains \"oAOgAoACcATAAnACsAJwBvAGEAZAAnACkA\" or ProcessCommandLine contains \"6ADoAKAAnAEwAJwArACcAbwBhAGQAJwApA\" or ProcessCommandLine contains \"OgA6ACgAJwBMAG8AJwArACcAYQBkACcAKQ\" or ProcessCommandLine contains \"oAOgAoACcATABvACcAKwAnAGEAZAAnACkA\" or ProcessCommandLine contains \"6ADoAKAAnAEwAbwAnACsAJwBhAGQAJwApA\" or ProcessCommandLine contains \"OgA6ACgAJwBMAG8AYQAnACsAJwBkACcAKQ\" or ProcessCommandLine contains \"oAOgAoACcATABvAGEAJwArACcAZAAnACkA\" or ProcessCommandLine contains \"6ADoAKAAnAEwAbwBhACcAKwAnAGQAJwApA\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious base64 encoded and obfuscated \"LOAD\" keyword used in .NET \"reflection.assemb"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1027,T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

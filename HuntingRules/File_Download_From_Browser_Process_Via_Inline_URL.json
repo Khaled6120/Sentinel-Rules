@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/File_Download_From_Browser_Process_Via_Inline_URL')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "File Download From Browser Process Via Inline URL",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine endswith \".7z\" or ProcessCommandLine endswith \".dat\" or ProcessCommandLine endswith \".dll\" or ProcessCommandLine endswith \".exe\" or ProcessCommandLine endswith \".hta\" or ProcessCommandLine endswith \".ps1\" or ProcessCommandLine endswith \".psm1\" or ProcessCommandLine endswith \".txt\" or ProcessCommandLine endswith \".vbe\" or ProcessCommandLine endswith \".vbs\" or ProcessCommandLine endswith \".zip\") and ProcessCommandLine contains \"http\" and (FolderPath endswith \"\\\\brave.exe\" or FolderPath endswith \"\\\\chrome.exe\" or FolderPath endswith \"\\\\msedge.exe\" or FolderPath endswith \"\\\\opera.exe\" or FolderPath endswith \"\\\\vivaldi.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects execution of a browser process with a URL argument pointing to a file with a potentially interesting extension. This can be abused to download arbitrary files or to hide from the user for example by launching the browser in a minimi"
+          },
+          {
+            "name": "tactics",
+            "value": "command_and_control"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1105"
+          }
+        ]
+      }
+    }
+  ]
+}

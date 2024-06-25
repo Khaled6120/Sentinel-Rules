@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Execution_of_Shutdown_to_Log_Out')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Execution of Shutdown to Log Out",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"/l\" and FolderPath endswith \"\\\\shutdown.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the rare use of the command line tool shutdown to logoff a u"
+          },
+          {
+            "name": "tactics",
+            "value": "impact"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1529"
+          }
+        ]
+      }
+    }
+  ]
+}

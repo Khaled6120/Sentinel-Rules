@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Mstsc.EXE_Execution_With_Local_RDP_File')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Mstsc.EXE Execution With Local RDP File",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine endswith \".rdp\" or ProcessCommandLine endswith \".rdp\\\"\") and (FolderPath endswith \"\\\\mstsc.exe\" or ProcessVersionInfoOriginalFileName =~ \"mstsc.exe\") and (ProcessCommandLine contains \":\\\\Users\\\\Public\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\System32\\\\spool\\\\drivers\\\\color\" or ProcessCommandLine contains \":\\\\Windows\\\\System32\\\\Tasks_Migrated \" or ProcessCommandLine contains \":\\\\Windows\\\\Tasks\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\Temp\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\Tracing\\\\\" or ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Temp\\\\\" or ProcessCommandLine contains \"\\\\Downloads\\\\\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potential RDP connection via Mstsc using a local \".rdp\" file located in suspicious locatio"
+          },
+          {
+            "name": "tactics",
+            "value": "command_and_control"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1219"
+          }
+        ]
+      }
+    }
+  ]
+}

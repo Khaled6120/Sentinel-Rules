@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Msiexec_Quiet_Installation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Msiexec Quiet Installation",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"-i\" or ProcessCommandLine contains \"/i\" or ProcessCommandLine contains \"-package\" or ProcessCommandLine contains \"/package\" or ProcessCommandLine contains \"-a\" or ProcessCommandLine contains \"/a\" or ProcessCommandLine contains \"-j\" or ProcessCommandLine contains \"/j\") and (FolderPath endswith \"\\\\msiexec.exe\" or ProcessVersionInfoOriginalFileName =~ \"msiexec.exe\") and (ProcessCommandLine contains \"-q\" or ProcessCommandLine contains \"/q\")) and (not(((ProcessIntegrityLevel =~ \"System\" and InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\CCM\\\\Ccm32BitLauncher.exe\") or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\Temp\\\\\" or (InitiatingProcessFolderPath contains \"\\\\AppData\\\\Local\\\\Temp\\\\\" and InitiatingProcessFolderPath startswith \"C:\\\\Users\\\\\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Adversaries may abuse msiexec.exe to proxy execution of malicious payloads.\nMsiexec.exe is the command-line utility for the Windows Installer and is thus commonly associated with executing installation packages (.ms"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

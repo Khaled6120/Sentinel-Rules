@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Windows_Hotfix_Updates_Reconnaissance_Via_Wmic.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Windows Hotfix Updates Reconnaissance Via Wmic.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \" qfe\" and (ProcessVersionInfoOriginalFileName =~ \"wmic.exe\" or FolderPath endswith \"\\\\WMIC.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of wmic with the \"qfe\" flag in order to obtain information about installed hotfix updates on the system. This is often used by pentester and attacker enumeration scri"
+          },
+          {
+            "name": "tactics",
+            "value": "execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1047"
+          }
+        ]
+      }
+    }
+  ]
+}

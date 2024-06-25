@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Add_Insecure_Download_Source_To_Winget')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Add Insecure Download Source To Winget",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"source \" and ProcessCommandLine contains \"add \" and ProcessCommandLine contains \"http://\") and (FolderPath endswith \"\\\\winget.exe\" or ProcessVersionInfoOriginalFileName =~ \"winget.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects usage of winget to add a new insecure (http) download source.\nWinget will not allow the addition of insecure sources, hence this could indicate potential suspicious activity (or typo"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

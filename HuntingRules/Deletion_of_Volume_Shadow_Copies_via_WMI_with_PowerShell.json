@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Deletion_of_Volume_Shadow_Copies_via_WMI_with_PowerShell')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Deletion of Volume Shadow Copies via WMI with PowerShell",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \".Delete()\" or ProcessCommandLine contains \"Remove-WmiObject\" or ProcessCommandLine contains \"rwmi\" or ProcessCommandLine contains \"Remove-CimInstance\" or ProcessCommandLine contains \"rcim\") and (ProcessCommandLine contains \"Get-WmiObject\" or ProcessCommandLine contains \"gwmi\" or ProcessCommandLine contains \"Get-CimInstance\" or ProcessCommandLine contains \"gcim\") and ProcessCommandLine contains \"Win32_ShadowCopy\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects deletion of Windows Volume Shadow Copies with PowerShell code and Get-WMIObject. This technique is used by numerous ransomware families such as Sodinokibi/RE"
+          },
+          {
+            "name": "tactics",
+            "value": "impact"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1490"
+          }
+        ]
+      }
+    }
+  ]
+}

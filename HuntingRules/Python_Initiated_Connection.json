@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Python_Initiated_Connection')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Python Initiated Connection",
+        "category": "Hunting Queries",
+        "query": "DeviceNetworkEvents\n| where InitiatingProcessFolderPath contains \"python\" and (not((RemoteIP =~ \"127.0.0.1\" and LocalIP =~ \"127.0.0.1\"))) and (not((((InitiatingProcessCommandLine contains \":\\\\ProgramData\\\\Anaconda3\\\\Scripts\\\\conda-script.py\" and InitiatingProcessCommandLine contains \"update\") and InitiatingProcessParentFileName =~ \"conda.exe\") or (InitiatingProcessCommandLine contains \"C:\\\\ProgramData\\\\Anaconda3\\\\Scripts\\\\jupyter-notebook-script.py\" and InitiatingProcessParentFileName =~ \"python.exe\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects a Python process initiating a network connection. While this often relates to package installation, it can also indicate a potential malicious script communicating with a C&C serv"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1046"
+          }
+        ]
+      }
+    }
+  ]
+}

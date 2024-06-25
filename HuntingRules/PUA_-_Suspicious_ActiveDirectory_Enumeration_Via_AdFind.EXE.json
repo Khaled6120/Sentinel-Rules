@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/PUA_-_Suspicious_ActiveDirectory_Enumeration_Via_AdFind.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "PUA - Suspicious ActiveDirectory Enumeration Via AdFind.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"-sc admincountdmp\" or ProcessCommandLine contains \"-sc exchaddresses\" or (ProcessCommandLine contains \"lockoutduration\" or ProcessCommandLine contains \"lockoutthreshold\" or ProcessCommandLine contains \"lockoutobservationwindow\" or ProcessCommandLine contains \"maxpwdage\" or ProcessCommandLine contains \"minpwdage\" or ProcessCommandLine contains \"minpwdlength\" or ProcessCommandLine contains \"pwdhistorylength\" or ProcessCommandLine contains \"pwdproperties\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects active directory enumeration activity using known AdFind CLI fl"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1087"
+          }
+        ]
+      }
+    }
+  ]
+}

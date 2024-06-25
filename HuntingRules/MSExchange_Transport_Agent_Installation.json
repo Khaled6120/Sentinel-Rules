@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/MSExchange_Transport_Agent_Installation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "MSExchange Transport Agent Installation",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"Install-TransportAgent\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the Installation of a Exchange Transport Ag"
+          },
+          {
+            "name": "tactics",
+            "value": "persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1505"
+          }
+        ]
+      }
+    }
+  ]
+}

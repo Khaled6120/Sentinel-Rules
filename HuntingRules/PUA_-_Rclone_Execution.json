@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/PUA_-_Rclone_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "PUA - Rclone Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"--config \" and ProcessCommandLine contains \"--no-check-certificate \" and ProcessCommandLine contains \" copy \") or ((ProcessCommandLine contains \"pass\" or ProcessCommandLine contains \"user\" or ProcessCommandLine contains \"copy\" or ProcessCommandLine contains \"sync\" or ProcessCommandLine contains \"config\" or ProcessCommandLine contains \"lsd\" or ProcessCommandLine contains \"remote\" or ProcessCommandLine contains \"ls\" or ProcessCommandLine contains \"mega\" or ProcessCommandLine contains \"pcloud\" or ProcessCommandLine contains \"ftp\" or ProcessCommandLine contains \"ignore-existing\" or ProcessCommandLine contains \"auto-confirm\" or ProcessCommandLine contains \"transfers\" or ProcessCommandLine contains \"multi-thread-streams\" or ProcessCommandLine contains \"no-check-certificate \") and (FolderPath endswith \"\\\\rclone.exe\" or ProcessVersionInfoFileDescription =~ \"Rsync for cloud storage\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects execution of RClone utility for exfiltration as used by various ransomwares strains like REvil, Conti, FiveHands, "
+          },
+          {
+            "name": "tactics",
+            "value": "exfiltration"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1567"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Third_Party_Software_DLL_Sideloading')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Third Party Software DLL Sideloading",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where (FolderPath endswith \"\\\\commfunc.dll\" and (not((FolderPath contains \"\\\\AppData\\\\local\\\\Google\\\\Chrome\\\\Application\\\\\" or (FolderPath startswith \"C:\\\\Program Files\\\\Lenovo\\\\Communications Utility\\\\\" or FolderPath startswith \"C:\\\\Program Files (x86)\\\\Lenovo\\\\Communications Utility\\\\\"))))) or (FolderPath endswith \"\\\\tosbtkbd.dll\" and (not((FolderPath startswith \"C:\\\\Program Files\\\\Toshiba\\\\Bluetooth Toshiba Stack\\\\\" or FolderPath startswith \"C:\\\\Program Files (x86)\\\\Toshiba\\\\Bluetooth Toshiba Stack\\\\\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects DLL sideloading of DLLs that are part of third party software (zoom, discord....e"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,persistence,privilege_escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

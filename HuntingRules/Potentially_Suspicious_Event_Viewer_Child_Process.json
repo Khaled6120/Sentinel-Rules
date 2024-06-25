@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potentially_Suspicious_Event_Viewer_Child_Process')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potentially Suspicious Event Viewer Child Process",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where InitiatingProcessFolderPath endswith \"\\\\eventvwr.exe\" and (not((FolderPath endswith \":\\\\Windows\\\\System32\\\\mmc.exe\" or FolderPath endswith \":\\\\Windows\\\\System32\\\\WerFault.exe\" or FolderPath endswith \":\\\\Windows\\\\SysWOW64\\\\WerFault.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects uncommon or suspicious child processes of \"eventvwr.exe\" which might indicate a UAC bypass atte"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,privilege_escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1548"
+          }
+        ]
+      }
+    }
+  ]
+}

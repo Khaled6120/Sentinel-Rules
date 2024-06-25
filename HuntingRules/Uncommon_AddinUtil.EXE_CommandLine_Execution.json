@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Uncommon_AddinUtil.EXE_CommandLine_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Uncommon AddinUtil.EXE CommandLine Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"-AddInRoot:\" or ProcessCommandLine contains \"-PipelineRoot:\") and (FolderPath endswith \"\\\\addinutil.exe\" or ProcessVersionInfoOriginalFileName =~ \"AddInUtil.exe\")) and (not((ProcessCommandLine contains \"-AddInRoot:\\\"C:\\\\Program Files (x86)\\\\Common Files\\\\Microsoft Shared\\\\VSTA\" or ProcessCommandLine contains \"-AddInRoot:C:\\\\Program Files (x86)\\\\Common Files\\\\Microsoft Shared\\\\VSTA\" or ProcessCommandLine contains \"-PipelineRoot:\\\"C:\\\\Program Files (x86)\\\\Common Files\\\\Microsoft Shared\\\\VSTA\" or ProcessCommandLine contains \"-PipelineRoot:C:\\\\Program Files (x86)\\\\Common Files\\\\Microsoft Shared\\\\VSTA\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects execution of the Add-In deployment cache updating utility (AddInutil.exe) with uncommon Addinroot or Pipelineroot paths. An adversary may execute AddinUtil.exe with uncommon Addinroot/Pipelineroot paths that point to the adversaries"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/RDP_Over_Reverse_SSH_Tunnel')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "RDP Over Reverse SSH Tunnel",
+        "category": "Hunting Queries",
+        "query": "DeviceNetworkEvents\n| where (ipv4_is_in_range(RemoteIP, \"127.0.0.0/8\") or ipv4_is_in_range(RemoteIP, \"::1/128\")) and (InitiatingProcessFolderPath endswith \"\\\\svchost.exe\" and LocalPort == 3389)",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects svchost hosting RDP termsvcs communicating with the loopback address and on TCP port 3"
+          },
+          {
+            "name": "tactics",
+            "value": "command_and_control,lateral_movement"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1021,T1572"
+          }
+        ]
+      }
+    }
+  ]
+}

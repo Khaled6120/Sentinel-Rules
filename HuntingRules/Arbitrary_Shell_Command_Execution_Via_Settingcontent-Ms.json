@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Arbitrary_Shell_Command_Execution_Via_Settingcontent-Ms')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Arbitrary Shell Command Execution Via Settingcontent-Ms",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \".SettingContent-ms\" and (not(ProcessCommandLine contains \"immersivecontrolpanel\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "The .SettingContent-ms file type was introduced in Windows 10 and allows a user to create \"shortcuts\" to various Windows 10 setting pages. These files are simply XML and contain paths to various Windows 10 settings binari"
+          },
+          {
+            "name": "tactics",
+            "value": "execution,initial_access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1204,T1566"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Recon_Information_for_Export_with_Command_Prompt')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Recon Information for Export with Command Prompt",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\tree.com\" or FolderPath endswith \"\\\\WMIC.exe\" or FolderPath endswith \"\\\\doskey.exe\" or FolderPath endswith \"\\\\sc.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"wmic.exe\", \"DOSKEY.EXE\", \"sc.exe\"))) and (InitiatingProcessCommandLine contains \" > %TEMP%\\\\\" or InitiatingProcessCommandLine contains \" > %TMP%\\\\\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Once established within a system or network, an adversary may use automated techniques for collecting internal da"
+          },
+          {
+            "name": "tactics",
+            "value": "collection"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1119"
+          }
+        ]
+      }
+    }
+  ]
+}

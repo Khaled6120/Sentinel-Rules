@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Diantz_Alternate_Data_Stream_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Diantz Alternate Data Stream Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"diantz.exe\" and ProcessCommandLine contains \".cab\") and ProcessCommandLine matches regex \":[^\\\\\\\\]\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Compress target file into a cab file stored in the Alternate Data Stream (ADS) of the target fi"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1564"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Microsoft_Excel_Add-In_Loaded_From_Uncommon_Location')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Microsoft Excel Add-In Loaded From Uncommon Location",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where (FolderPath contains \"\\\\Desktop\\\\\" or FolderPath contains \"\\\\Downloads\\\\\" or FolderPath contains \"\\\\Perflogs\\\\\" or FolderPath contains \"\\\\Temp\\\\\" or FolderPath contains \"\\\\Users\\\\Public\\\\\" or FolderPath contains \"\\\\Windows\\\\Tasks\\\\\") and FolderPath endswith \".xll\" and InitiatingProcessFolderPath endswith \"\\\\excel.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects Microsoft Excel loading an Add-In (.xll) file from an uncommon locat"
+          },
+          {
+            "name": "tactics",
+            "value": "execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1204"
+          }
+        ]
+      }
+    }
+  ]
+}

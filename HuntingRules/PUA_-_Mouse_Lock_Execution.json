@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/PUA_-_Mouse_Lock_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "PUA - Mouse Lock Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessVersionInfoProductName contains \"Mouse Lock\" or ProcessVersionInfoCompanyName contains \"Misc314\" or ProcessCommandLine contains \"Mouse Lock_\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "In Kaspersky's 2020 Incident Response Analyst Report they listed legitimate tool \"Mouse Lock\" as being used for both credential access and collection in security inciden"
+          },
+          {
+            "name": "tactics",
+            "value": "collection,credential_access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1056"
+          }
+        ]
+      }
+    }
+  ]
+}

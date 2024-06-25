@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Sysmon_Discovery_Via_Default_Driver_Altitude_Using_Findstr.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Sysmon Discovery Via Default Driver Altitude Using Findstr.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \" 385201\" and ((FolderPath endswith \"\\\\find.exe\" or FolderPath endswith \"\\\\findstr.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"FIND.EXE\", \"FINDSTR.EXE\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects usage of \"findstr\" with the argument \"385201\". Which could indicate potential discovery of an installed Sysinternals Sysmon service using the default driver altitude (even if the name is change"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1518"
+          }
+        ]
+      }
+    }
+  ]
+}

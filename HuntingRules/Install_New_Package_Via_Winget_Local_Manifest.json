@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Install_New_Package_Via_Winget_Local_Manifest')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Install New Package Via Winget Local Manifest",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\winget.exe\" or ProcessVersionInfoOriginalFileName =~ \"winget.exe\") and (ProcessCommandLine contains \"install\" or ProcessCommandLine contains \" add \") and (ProcessCommandLine contains \"-m \" or ProcessCommandLine contains \"--manifest\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects usage of winget to install applications via manifest file. Adversaries can abuse winget to download payloads remotely and execute them.\nThe manifest option enables you to install an application by passing in a YAML file directly to "
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

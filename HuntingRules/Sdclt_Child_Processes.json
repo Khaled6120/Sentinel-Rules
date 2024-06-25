@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Sdclt_Child_Processes')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Sdclt Child Processes",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where InitiatingProcessFolderPath endswith \"\\\\sdclt.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "A General detection for sdclt spawning new processes. This could be an indicator of sdclt being used for bypass UAC techniqu"
+          },
+          {
+            "name": "tactics",
+            "value": "privilege_escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1548"
+          }
+        ]
+      }
+    }
+  ]
+}

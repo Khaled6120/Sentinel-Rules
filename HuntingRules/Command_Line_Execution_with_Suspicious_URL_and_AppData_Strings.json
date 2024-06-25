@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Command_Line_Execution_with_Suspicious_URL_and_AppData_Strings')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Command Line Execution with Suspicious URL and AppData Strings",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"http\" and ProcessCommandLine contains \"://\" and ProcessCommandLine contains \"%AppData%\") and FolderPath endswith \"\\\\cmd.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects a suspicious command line execution that includes an URL and AppData string in the command line parameters as used by several droppers (js/vbs > powershe"
+          },
+          {
+            "name": "tactics",
+            "value": "command_and_control,execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059,T1105"
+          }
+        ]
+      }
+    }
+  ]
+}

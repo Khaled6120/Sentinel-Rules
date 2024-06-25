@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Chopper_Webshell_Process_Pattern')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Chopper Webshell Process Pattern",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"&ipconfig&echo\" or ProcessCommandLine contains \"&quser&echo\" or ProcessCommandLine contains \"&whoami&echo\" or ProcessCommandLine contains \"&c:&echo\" or ProcessCommandLine contains \"&cd&echo\" or ProcessCommandLine contains \"&dir&echo\" or ProcessCommandLine contains \"&echo [E]\" or ProcessCommandLine contains \"&echo [S]\") and (FolderPath endswith \"\\\\w3wp.exe\" or InitiatingProcessFolderPath endswith \"\\\\w3wp.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects patterns found in process executions cause by China Chopper like tiny (ASPX) webshe"
+          },
+          {
+            "name": "tactics",
+            "value": "persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1018,T1033,T1087,T1505"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/WMI_Persistence_-_Script_Event_Consumer')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "WMI Persistence - Script Event Consumer",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where FolderPath =~ \"C:\\\\WINDOWS\\\\system32\\\\wbem\\\\scrcons.exe\" and InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\System32\\\\svchost.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects WMI script event consum"
+          },
+          {
+            "name": "tactics",
+            "value": "persistence,privilege_escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

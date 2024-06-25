@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Execution_of_Powershell_with_Base64')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Execution of Powershell with Base64",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" -e \" or ProcessCommandLine contains \" -en \" or ProcessCommandLine contains \" -enc \" or ProcessCommandLine contains \" -enco\" or ProcessCommandLine contains \" -ec \") and (FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\")) and (not(((InitiatingProcessFolderPath contains \"C:\\\\Packages\\\\Plugins\\\\Microsoft.GuestConfiguration.ConfigurationforWindows\\\\\" or InitiatingProcessFolderPath contains \"\\\\gc_worker.exe\") or ProcessCommandLine contains \" -Encoding \")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Commandline to launch powershell with a base64 payl"
+          },
+          {
+            "name": "tactics",
+            "value": "execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

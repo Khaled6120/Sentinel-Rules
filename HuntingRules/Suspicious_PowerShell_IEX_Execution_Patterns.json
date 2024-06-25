@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_PowerShell_IEX_Execution_Patterns')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious PowerShell IEX Execution Patterns",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (((ProcessCommandLine contains \" | iex;\" or ProcessCommandLine contains \" | iex \" or ProcessCommandLine contains \" | iex}\" or ProcessCommandLine contains \" | IEX ;\" or ProcessCommandLine contains \" | IEX -Error\" or ProcessCommandLine contains \" | IEX (new\" or ProcessCommandLine contains \");IEX \") and (FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\")) and (ProcessCommandLine contains \"::FromBase64String\" or ProcessCommandLine contains \".GetString([System.Convert]::\")) or (ProcessCommandLine contains \")|iex;$\" or ProcessCommandLine contains \");iex($\" or ProcessCommandLine contains \");iex $\" or ProcessCommandLine contains \" | IEX | \" or ProcessCommandLine contains \" | iex\\\\\\\"\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious ways to run Invoke-Execution using IEX al"
+          },
+          {
+            "name": "tactics",
+            "value": "execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

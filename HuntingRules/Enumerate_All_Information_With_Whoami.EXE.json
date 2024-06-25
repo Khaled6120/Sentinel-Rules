@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Enumerate_All_Information_With_Whoami.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Enumerate All Information With Whoami.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -all\" or ProcessCommandLine contains \" /all\") and (FolderPath endswith \"\\\\whoami.exe\" or ProcessVersionInfoOriginalFileName =~ \"whoami.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of \"whoami.exe\" with the \"/all\" f"
+          },
+          {
+            "name": "tactics",
+            "value": "discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1033"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Persistence_Via_VMwareToolBoxCmd.EXE_VM_State_Change_Script')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Persistence Via VMwareToolBoxCmd.EXE VM State Change Script",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" script \" and ProcessCommandLine contains \" set \") and (FolderPath endswith \"\\\\VMwareToolBoxCmd.exe\" or ProcessVersionInfoOriginalFileName =~ \"toolbox-cmd.exe\") and (ProcessCommandLine contains \":\\\\PerfLogs\\\\\" or ProcessCommandLine contains \":\\\\Temp\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\System32\\\\Tasks\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\Tasks\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\Temp\\\\\" or ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Temp\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects execution of the \"VMwareToolBoxCmd.exe\" with the \"script\" and \"set\" flag to setup a specific script that's located in a potentially suspicious location to run for a specific VM st"
+          },
+          {
+            "name": "tactics",
+            "value": "execution,persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/PUA_-_NSudo_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "PUA - NSudo Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-U:S \" or ProcessCommandLine contains \"-U:T \" or ProcessCommandLine contains \"-U:E \" or ProcessCommandLine contains \"-P:E \" or ProcessCommandLine contains \"-M:S \" or ProcessCommandLine contains \"-M:H \" or ProcessCommandLine contains \"-U=S \" or ProcessCommandLine contains \"-U=T \" or ProcessCommandLine contains \"-U=E \" or ProcessCommandLine contains \"-P=E \" or ProcessCommandLine contains \"-M=S \" or ProcessCommandLine contains \"-M=H \" or ProcessCommandLine contains \"-ShowWindowMode:Hide\") and ((FolderPath endswith \"\\\\NSudo.exe\" or FolderPath endswith \"\\\\NSudoLC.exe\" or FolderPath endswith \"\\\\NSudoLG.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"NSudo.exe\", \"NSudoLC.exe\", \"NSudoLG.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the use of NSudo tool for command execut"
+          },
+          {
+            "name": "tactics",
+            "value": "execution,s0029"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1569"
+          }
+        ]
+      }
+    }
+  ]
+}

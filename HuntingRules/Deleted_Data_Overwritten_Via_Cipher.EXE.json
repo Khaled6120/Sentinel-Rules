@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Deleted_Data_Overwritten_Via_Cipher.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Deleted Data Overwritten Via Cipher.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \" /w:\" and (ProcessVersionInfoOriginalFileName =~ \"CIPHER.EXE\" or FolderPath endswith \"\\\\cipher.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects usage of the \"cipher\" built-in utility in order to overwrite deleted data from disk.\nAdversaries may destroy data and files on specific systems or in large numbers on a network to interrupt availability to systems, services, and net"
+          },
+          {
+            "name": "tactics",
+            "value": "impact"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1485"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Write_Protect_For_Storage_Disabled')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Write Protect For Storage Disabled",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"\\\\System\\\\CurrentControlSet\\\\Control\" and ProcessCommandLine contains \"Write Protection\" and ProcessCommandLine contains \"0\" and ProcessCommandLine contains \"storage\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects applications trying to modify the registry in order to disable any write-protect property for storage devices.\nThis could be a precursor to a ransomware attack and has been an observed technique used by cypherpunk grou"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

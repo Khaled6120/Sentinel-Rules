@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Workstation_Locking_via_Rundll32')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Workstation Locking via Rundll32",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"user32.dll,\" and (FolderPath endswith \"\\\\rundll32.exe\" or ProcessVersionInfoOriginalFileName =~ \"RUNDLL32.EXE\") and InitiatingProcessFolderPath endswith \"\\\\cmd.exe\" and ProcessCommandLine contains \"LockWorkStation\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects a suspicious call to the user32.dll function that locks the user workstat"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Debugger_Registration_Cmdline')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Debugger Registration Cmdline",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"\\\\CurrentVersion\\\\Image File Execution Options\\\\\" and (ProcessCommandLine contains \"sethc.exe\" or ProcessCommandLine contains \"utilman.exe\" or ProcessCommandLine contains \"osk.exe\" or ProcessCommandLine contains \"magnify.exe\" or ProcessCommandLine contains \"narrator.exe\" or ProcessCommandLine contains \"displayswitch.exe\" or ProcessCommandLine contains \"atbroker.exe\" or ProcessCommandLine contains \"HelpPane.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the registration of a debugger for a program that is available in the logon screen (sticky key backdoo"
+          },
+          {
+            "name": "tactics",
+            "value": "persistence,privilege_escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/UAC_Bypass_Using_DismHost')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "UAC Bypass Using DismHost",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessIntegrityLevel in~ (\"High\", \"System\")) and (InitiatingProcessFolderPath contains \"C:\\\\Users\\\\\" and InitiatingProcessFolderPath contains \"\\\\AppData\\\\Local\\\\Temp\\\\\" and InitiatingProcessFolderPath contains \"\\\\DismHost.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the pattern of UAC Bypass using DismHost DLL hijacking (UACMe "
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion,privilege_escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1548"
+          }
+        ]
+      }
+    }
+  ]
+}

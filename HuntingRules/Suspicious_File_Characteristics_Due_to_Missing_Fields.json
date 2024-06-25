@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_File_Characteristics_Due_to_Missing_Fields')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious File Characteristics Due to Missing Fields",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessVersionInfoFileDescription =~ \"?\" and ProcessVersionInfoProductVersion =~ \"?\") or (ProcessVersionInfoFileDescription =~ \"?\" and ProcessVersionInfoProductName =~ \"?\") or (ProcessVersionInfoCompanyName =~ \"?\" and ProcessVersionInfoFileDescription =~ \"?\")) and FolderPath contains \"\\\\Downloads\\\\\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects Executables in the Downloads folder without FileVersion,Description,Product,Company likely created with py2"
+          },
+          {
+            "name": "tactics",
+            "value": "execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

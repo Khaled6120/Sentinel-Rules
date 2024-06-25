@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_MSDT_Parent_Process')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious MSDT Parent Process",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\msdt.exe\" or ProcessVersionInfoOriginalFileName =~ \"msdt.exe\") and (InitiatingProcessFolderPath endswith \"\\\\cmd.exe\" or InitiatingProcessFolderPath endswith \"\\\\cscript.exe\" or InitiatingProcessFolderPath endswith \"\\\\mshta.exe\" or InitiatingProcessFolderPath endswith \"\\\\powershell.exe\" or InitiatingProcessFolderPath endswith \"\\\\pwsh.exe\" or InitiatingProcessFolderPath endswith \"\\\\regsvr32.exe\" or InitiatingProcessFolderPath endswith \"\\\\rundll32.exe\" or InitiatingProcessFolderPath endswith \"\\\\schtasks.exe\" or InitiatingProcessFolderPath endswith \"\\\\wmic.exe\" or InitiatingProcessFolderPath endswith \"\\\\wscript.exe\" or InitiatingProcessFolderPath endswith \"\\\\wsl.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects msdt.exe executed by a suspicious parent as seen in CVE-2022-30190 / Follina exploitat"
+          },
+          {
+            "name": "tactics",
+            "value": "defense_evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1036,T1218"
+          }
+        ]
+      }
+    }
+  ]
+}
