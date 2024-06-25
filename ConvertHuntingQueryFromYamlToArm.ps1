@@ -58,7 +58,7 @@ function ConvertHuntingQueryFromYamlToArm {
 
     $huntingQueryDescription = ""
     if ($yaml.description) {
-        $huntingQueryDescription = $yaml.description.substring(1, [math]::min($yaml.description.length - 3, 240))
+        $huntingQueryDescription = $yaml.description.substring(0, [math]::min($yaml.description.length - 3, 240))
         $descriptionObj = [PSCustomObject]@{
             name  = "description";
             value = $huntingQueryDescription
