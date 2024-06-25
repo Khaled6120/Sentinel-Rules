@@ -66,15 +66,35 @@ function ConvertHuntingQueryFromYamlToArm {
         $huntingQueryObj.properties.tags += $descriptionObj
         $huntingQueryDescription = "$huntingQueryDescription "
     }
+    $tacticsMapping = @{
+    'reconnaissance' = 'Reconnaissance';
+    'resource_development' = 'Resource Development';
+    'initial_access' = 'Initial Access';
+    'execution' = 'Execution';
+    'persistence' = 'Persistence';
+    'privilege_escalation' = 'Privilege Escalation';
+    'defense_evasion' = 'Defense Evasion';
+    'credential_access' = 'Credential Access';
+    'discovery' = 'Discovery';
+    'collection' = 'Collection';
+    'command_and_control' = 'Command And Control';
+    'impact' = 'Impact';
+    'lateral_movement' = 'Lateral Movement';
+    'evasion' = 'Evasion';
+    'inhibit_response_function' = 'Inhibit Response Function';
+    'impair_process_control' = 'Impair Process Control'
+    }
 
     if ($yaml.tactics -and $yaml.tactics.Count -gt 0) {
-        $tacticsString = $yaml.tactics -join ","
-        $formattedTactics = ($tacticsString -split ',' | ForEach-Object {
-            $_ -replace '(.)(.*)', {
-                $matches[1].ToUpper() + $matches[2].ToLower()
-            } -replace '_',' '
-        }) -join ', '
-    
+        $formattedTactics = $yaml.tactics | ForEach-Object {
+            $tactic = $_.Trim().ToLower()
+            if ($tacticsMapping.ContainsKey($tactic)) {
+                $tacticsMapping[$tactic]
+            } else {
+                throw "Invalid tactic: $tactic"
+            }
+        } -join ","
+       
         $tacticsObj = [PSCustomObject]@{
             name  = "tactics";
             value = $formattedTactics
@@ -82,7 +102,6 @@ function ConvertHuntingQueryFromYamlToArm {
     
         $huntingQueryObj.properties.tags += $tacticsObj
     }
-
 
     if ($yaml.relevantTechniques -and $yaml.relevantTechniques.Count -gt 0) {
         $formattedTechniques = $yaml.relevantTechniques | ForEach-Object {
