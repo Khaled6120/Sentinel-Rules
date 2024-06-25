@@ -67,16 +67,24 @@ function ConvertHuntingQueryFromYamlToArm {
         $huntingQueryDescription = "$huntingQueryDescription "
     }
 
-    if ($yaml.tactics -and $yaml.tactics.Count -gt 0) {
-        $tacticsObj = [PSCustomObject]@{
-            name  = "tactics";
-            value = $yaml.tactics -join ","
-        }
-        if ($tacticsObj.value.ToString() -match ' ') {
-            $tacticsObj.value = $tacticsObj.value -replace ' ', ''
-        }
-        $huntingQueryObj.properties.tags += $tacticsObj
+   if ($yaml.tactics -and $yaml.tactics.Count -gt 0) {
+    $formattedTactics = $yaml.tactics.value.ToString() -join ","
+    
+    $formattedTactics = ($formattedTactics -split ",").ForEach({
+        ($_ -replace '_', ' ').Split() | ForEach-Object { 
+            $_.Substring(0,1).ToUpper() + $_.Substring(1).ToLower() 
+        } -join ' '
+    }) -join ","
+    
+    $tacticsObj = [PSCustomObject]@{
+        name  = "tactics";
+        value = $formattedTactics
     }
+
+    $huntingQueryObj.properties.tags += $tacticsObj
+}
+
+
 
     if ($yaml.relevantTechniques -and $yaml.relevantTechniques.Count -gt 0) {
         $formattedTechniques = $yaml.relevantTechniques | ForEach-Object {
