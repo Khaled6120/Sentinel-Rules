@@ -67,16 +67,27 @@ function ConvertHuntingQueryFromYamlToArm {
         $huntingQueryDescription = "$huntingQueryDescription "
     }
 
-    if ($yaml.tactics -and $yaml.tactics.Count -gt 0) {
-        $tacticsObj = [PSCustomObject]@{
-            name  = "tactics";
-            value = $yaml.tactics -join ","
-        }
-        if ($tacticsObj.value.ToString() -match ' ') {
-            $tacticsObj.value = $tacticsObj.value -replace ' ', ''
-        }
-        $huntingQueryObj.properties.tags += $tacticsObj
+   if ($yaml.tactics -and $yaml.tactics.Count -gt 0) {
+    # Join tactics array into a single string separated by commas
+    $formattedTactics = $yaml.tactics -join ","
+    
+    # Split by commas, format each tactic, and rejoin
+    $formattedTactics = ($formattedTactics -split ",").ForEach({
+        # Replace underscores with spaces, split into words, capitalize each word, and rejoin with spaces
+        ($_ -replace '_', ' ').Split() | ForEach-Object { 
+            $_.Substring(0,1).ToUpper() + $_.Substring(1).ToLower() 
+        } -join ' '
+    }) -join ","
+    
+    # Create custom object for tactics
+    $tacticsObj = [PSCustomObject]@{
+        name  = "tactics";
+        value = $formattedTactics
     }
+
+    # Add the formatted tactics object to the hunting query object's tags
+    $huntingQueryObj.properties.tags += $tacticsObj
+}
 
     if ($yaml.relevantTechniques -and $yaml.relevantTechniques.Count -gt 0) {
         $formattedTechniques = $yaml.relevantTechniques | ForEach-Object {
