@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious processes including shells spawnd from WinRM host proce"
+            "value": "Detects suspicious processes including shells spawnd from WinRM host proc"
           },
           {
             "name": "tactics",
-            "value": "initial_access,persistence,privilege_escalation"
+            "value": "Initial Access,Persistence,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

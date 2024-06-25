@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects when an adversary uses the reg.exe utility to add or modify new keys or subke"
+            "value": "Detects when an adversary uses the reg.exe utility to add or modify new keys or subk"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

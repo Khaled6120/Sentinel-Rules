@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious aged finger.exe tool execution often used in malware attacks nowada"
+            "value": "Detects suspicious aged finger.exe tool execution often used in malware attacks nowad"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

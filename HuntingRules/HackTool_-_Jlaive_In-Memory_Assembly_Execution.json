@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of Jlaive to execute assemblies in a copied PowerShe"
+            "value": "Detects the use of Jlaive to execute assemblies in a copied PowerSh"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious winrar execution in a folder which is not the default installation fold"
+            "value": "Detects a suspicious winrar execution in a folder which is not the default installation fol"
           },
           {
             "name": "tactics",
-            "value": "collection"
+            "value": "Collection"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potential DLL files being downloaded using the PowerShell Invoke-WebRequest cmdl"
+            "value": "Detects potential DLL files being downloaded using the PowerShell Invoke-WebRequest cmd"
           },
           {
             "name": "tactics",
-            "value": "command_and_control,execution"
+            "value": "Command And Control,Execution"
           },
           {
             "name": "relevantTechniques",

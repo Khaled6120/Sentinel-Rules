@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious call to Invoke-WebRequest cmdlet where the and output is located in a suspicious locati"
+            "value": "Detects a suspicious call to Invoke-WebRequest cmdlet where the and output is located in a suspicious locat"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

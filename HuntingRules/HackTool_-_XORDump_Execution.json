@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious use of XORDump process memory dumping utili"
+            "value": "Detects suspicious use of XORDump process memory dumping util"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

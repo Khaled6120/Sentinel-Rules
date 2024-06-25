@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of rcedit to potentially alter executable PE metadata properties, which could conceal efforts to rename system utilities for defense evasio"
+            "value": "Detects the use of rcedit to potentially alter executable PE metadata properties, which could conceal efforts to rename system utilities for defense evasi"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

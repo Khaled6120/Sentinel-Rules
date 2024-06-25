@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the removal of a port or application rule in the Windows Firewall configuration using net"
+            "value": "Detects the removal of a port or application rule in the Windows Firewall configuration using ne"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

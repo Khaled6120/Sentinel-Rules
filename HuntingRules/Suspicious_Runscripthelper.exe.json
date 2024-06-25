@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of powershell scripts via Runscripthelper.e"
+            "value": "Detects execution of powershell scripts via Runscripthelper."
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

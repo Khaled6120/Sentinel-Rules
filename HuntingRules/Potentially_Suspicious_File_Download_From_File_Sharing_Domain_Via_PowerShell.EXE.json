@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potentially suspicious file downloads from file sharing domains using PowerShell.e"
+            "value": "Detects potentially suspicious file downloads from file sharing domains using PowerShell."
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           }
         ]
       }

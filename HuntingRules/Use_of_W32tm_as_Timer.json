@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "hen configured with suitable command line arguments, w32tm can act as a delay mechani"
+            "value": "When configured with suitable command line arguments, w32tm can act as a delay mechan"
           },
           {
             "name": "tactics",
-            "value": "discovery"
+            "value": "Discovery"
           },
           {
             "name": "relevantTechniques",

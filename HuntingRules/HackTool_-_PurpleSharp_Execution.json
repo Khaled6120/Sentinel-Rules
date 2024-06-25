@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of the PurpleSharp adversary simulation to"
+            "value": "Detects the execution of the PurpleSharp adversary simulation t"
           },
           {
             "name": "tactics",
-            "value": "resource_development"
+            "value": "Resource Development"
           },
           {
             "name": "relevantTechniques",

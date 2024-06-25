@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of CSharp interactive console by PowerShe"
+            "value": "Detects the execution of CSharp interactive console by PowerSh"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

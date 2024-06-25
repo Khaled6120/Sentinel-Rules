@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a Python process initiating a network connection. While this often relates to package installation, it can also indicate a potential malicious script communicating with a C&C serve"
+            "value": "Detects a Python process initiating a network connection. While this often relates to package installation, it can also indicate a potential malicious script communicating with a C&C serv"
           },
           {
             "name": "tactics",
-            "value": "discovery"
+            "value": "Discovery"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"curl.exe\" with the \"file://\" protocol handler in order to read local file"
+            "value": "Detects execution of \"curl.exe\" with the \"file://\" protocol handler in order to read local fil"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           }
         ]
       }

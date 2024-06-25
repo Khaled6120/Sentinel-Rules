@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious reconnaissance command line activity on Windows systems using the PowerShell Get-LocalGroupMember Cmdl"
+            "value": "Detects suspicious reconnaissance command line activity on Windows systems using the PowerShell Get-LocalGroupMember Cmd"
           },
           {
             "name": "tactics",
-            "value": "discovery"
+            "value": "Discovery"
           },
           {
             "name": "relevantTechniques",

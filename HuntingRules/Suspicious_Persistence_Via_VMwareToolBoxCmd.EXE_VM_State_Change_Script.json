@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of the \"VMwareToolBoxCmd.exe\" with the \"script\" and \"set\" flag to setup a specific script that's located in a potentially suspicious location to run for a specific VM sta"
+            "value": "Detects execution of the \"VMwareToolBoxCmd.exe\" with the \"script\" and \"set\" flag to setup a specific script that's located in a potentially suspicious location to run for a specific VM st"
           },
           {
             "name": "tactics",
-            "value": "execution,persistence"
+            "value": "Execution,Persistence"
           },
           {
             "name": "relevantTechniques",

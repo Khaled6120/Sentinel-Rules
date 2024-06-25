@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of the Microsoft Windows Resource Leak Diagnostic tool \"rdrleakdiag.exe\" to dump process memo"
+            "value": "Detects the use of the Microsoft Windows Resource Leak Diagnostic tool \"rdrleakdiag.exe\" to dump process mem"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

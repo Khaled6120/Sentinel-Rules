@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "n adversary might use WMI to check if a certain remote service is running on a remote device.\nWhen the test completes, a service information will be displayed on the screen if it exists.\nA common feedback message is that \"No instance(s) Ava"
+            "value": "An adversary might use WMI to check if a certain remote service is running on a remote device.\nWhen the test completes, a service information will be displayed on the screen if it exists.\nA common feedback message is that \"No instance(s) Av"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

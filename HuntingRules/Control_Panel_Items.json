@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the malicious use of a control panel it"
+            "value": "Detects the malicious use of a control panel i"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution,persistence"
+            "value": "Defense Evasion,Execution,Persistence"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of IOX - a tool for port forwarding and intranet proxy purpos"
+            "value": "Detects the use of IOX - a tool for port forwarding and intranet proxy purpo"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

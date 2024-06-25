@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of msdt.exe using the \"cab\" flag which could indicates suspicious diagcab files with embedded answer files leveraging CVE-2022-301"
+            "value": "Detects execution of msdt.exe using the \"cab\" flag which could indicates suspicious diagcab files with embedded answer files leveraging CVE-2022-30"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

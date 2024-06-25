@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects when verclsid.exe is used to run COM object via GU"
+            "value": "Detects when verclsid.exe is used to run COM object via G"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

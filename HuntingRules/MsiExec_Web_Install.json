@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious msiexec process starts with web addresses as paramet"
+            "value": "Detects suspicious msiexec process starts with web addresses as parame"
           },
           {
             "name": "tactics",
-            "value": "command_and_control,defense_evasion"
+            "value": "Command And Control,Defense Evasion"
           },
           {
             "name": "relevantTechniques",

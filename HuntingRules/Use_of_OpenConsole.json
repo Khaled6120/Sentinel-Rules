@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of OpenConsole binary as a LOLBIN to launch other binaries to bypass application Whitelisti"
+            "value": "Detects usage of OpenConsole binary as a LOLBIN to launch other binaries to bypass application Whitelist"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

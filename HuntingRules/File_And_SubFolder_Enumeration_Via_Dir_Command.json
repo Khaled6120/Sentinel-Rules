@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of the \"dir\" command part of Widows CMD with the \"/S\" command line flag in order to enumerate files in a specified directory and all subdirectories"
+            "value": "Detects usage of the \"dir\" command part of Widows CMD with the \"/S\" command line flag in order to enumerate files in a specified directory and all subdirectorie"
           },
           {
             "name": "tactics",
-            "value": "discovery"
+            "value": "Discovery"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "xecutes SCT script using scrobj.dll from a command in entered into a specially prepared INF fil"
+            "value": "Executes SCT script using scrobj.dll from a command in entered into a specially prepared INF fi"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

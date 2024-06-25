@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious child processes of the \"Manage Engine ServiceDesk Plus\" Java web servi"
+            "value": "Detects suspicious child processes of the \"Manage Engine ServiceDesk Plus\" Java web serv"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

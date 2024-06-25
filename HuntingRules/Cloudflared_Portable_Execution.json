@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of the \"cloudflared\" binary from a non standard location"
+            "value": "Detects the execution of the \"cloudflared\" binary from a non standard locatio"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

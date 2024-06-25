@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects when a system process (i.e. located in system32, syswow64, etc.) loads a DLL from a suspicious location or a location with permissive permissions such as \"C:\\Users\\Publi"
+            "value": "Detects when a system process (i.e. located in system32, syswow64, etc.) loads a DLL from a suspicious location or a location with permissive permissions such as \"C:\\Users\\Publ"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

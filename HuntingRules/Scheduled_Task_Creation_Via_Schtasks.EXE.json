@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the creation of scheduled tasks by user accounts via the \"schtasks\" utilit"
+            "value": "Detects the creation of scheduled tasks by user accounts via the \"schtasks\" utili"
           },
           {
             "name": "tactics",
-            "value": "execution,persistence,privilege_escalation,s0111"
+            "value": "Execution,Persistence,Privilege Escalation,S0111"
           },
           {
             "name": "relevantTechniques",

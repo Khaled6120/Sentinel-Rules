@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects attempts to bypass User Account Control (UAC) by hijacking the Microsoft Management Console (MMC) Windows Firewall snap-"
+            "value": "Detects attempts to bypass User Account Control (UAC) by hijacking the Microsoft Management Console (MMC) Windows Firewall snap"
           },
           {
             "name": "tactics",
-            "value": "privilege_escalation"
+            "value": "Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a script interpreter (Wscript/Cscript) initiating a local network connection to download or execute a script hosted on a shared folder"
+            "value": "Detects a script interpreter (Wscript/Cscript) initiating a local network connection to download or execute a script hosted on a shared folde"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

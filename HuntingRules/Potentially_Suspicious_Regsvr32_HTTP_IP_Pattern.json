@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects regsvr32 execution to download and install DLLs located remotely where the address is an IP addres"
+            "value": "Detects regsvr32 execution to download and install DLLs located remotely where the address is an IP addre"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

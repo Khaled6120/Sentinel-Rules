@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the registration of a debugger for a program that is available in the logon screen (sticky key backdoor"
+            "value": "Detects the registration of a debugger for a program that is available in the logon screen (sticky key backdoo"
           },
           {
             "name": "tactics",
-            "value": "persistence,privilege_escalation"
+            "value": "Persistence,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

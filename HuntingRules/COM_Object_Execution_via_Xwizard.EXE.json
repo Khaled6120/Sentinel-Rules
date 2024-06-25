@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of Xwizard tool with the \"RunWizard\" flag and a GUID like argument.\nThis utility can be abused in order to run custom COM object created in the registry"
+            "value": "Detects the execution of Xwizard tool with the \"RunWizard\" flag and a GUID like argument.\nThis utility can be abused in order to run custom COM object created in the registr"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

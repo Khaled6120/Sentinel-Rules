@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potential psexec command that initiate execution on a remote systems via common commandline flags used by the utili"
+            "value": "Detects potential psexec command that initiate execution on a remote systems via common commandline flags used by the util"
           },
           {
             "name": "tactics",
-            "value": "resource_development"
+            "value": "Resource Development"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects both of CVE-2022-30190 (Follina) and DogWalk vulnerabilities exploiting msdt.exe binary to load the \"sdiageng.dll\" libra"
+            "value": "Detects both of CVE-2022-30190 (Follina) and DogWalk vulnerabilities exploiting msdt.exe binary to load the \"sdiageng.dll\" libr"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

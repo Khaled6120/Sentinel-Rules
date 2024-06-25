@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects when an admin share is mounted using net.e"
+            "value": "Detects when an admin share is mounted using net."
           },
           {
             "name": "tactics",
-            "value": "lateral_movement"
+            "value": "Lateral Movement"
           },
           {
             "name": "relevantTechniques",

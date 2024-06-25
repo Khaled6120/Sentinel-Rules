@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects when a user bypasses Defender by renaming a tool to dump64.exe and placing it in a Visual Studio fold"
+            "value": "Detects when a user bypasses Defender by renaming a tool to dump64.exe and placing it in a Visual Studio fol"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

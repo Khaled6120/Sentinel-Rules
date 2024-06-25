@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious network connections made by a well-known Windows binary run with no command line paramete"
+            "value": "Detects suspicious network connections made by a well-known Windows binary run with no command line paramet"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           }
         ]
       }

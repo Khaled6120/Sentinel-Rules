@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of commands that leverage the \"mshtml.dll\" RunHTMLApplication export to run arbitrary code via different protocol handlers (vbscript, javascript, file, http..."
+            "value": "Detects execution of commands that leverage the \"mshtml.dll\" RunHTMLApplication export to run arbitrary code via different protocol handlers (vbscript, javascript, file, http.."
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           }
         ]
       }

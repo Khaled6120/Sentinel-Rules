@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious child process of a Microsoft HTML Help (HH.ex"
+            "value": "Detects a suspicious child process of a Microsoft HTML Help (HH.e"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution,initial_access"
+            "value": "Defense Evasion,Execution,Initial Access"
           },
           {
             "name": "relevantTechniques",

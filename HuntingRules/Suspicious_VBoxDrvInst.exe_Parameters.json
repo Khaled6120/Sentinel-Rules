@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etect VBoxDrvInst.exe run with parameters allowing processing INF file.\nThis allows to create values in the registry and install drivers.\nFor example one could use this technique to obtain persistence via modifying one of Run or RunOnce reg"
+            "value": "Detect VBoxDrvInst.exe run with parameters allowing processing INF file.\nThis allows to create values in the registry and install drivers.\nFor example one could use this technique to obtain persistence via modifying one of Run or RunOnce re"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

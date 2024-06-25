@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a Windows command line executable started from M"
+            "value": "Detects a Windows command line executable started from "
           },
           {
             "name": "tactics",
-            "value": "lateral_movement"
+            "value": "Lateral Movement"
           },
           {
             "name": "relevantTechniques",

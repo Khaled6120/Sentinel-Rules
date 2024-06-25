@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a potentially suspicious parent of \"csc.exe\", which could be a sign of payload deliver"
+            "value": "Detects a potentially suspicious parent of \"csc.exe\", which could be a sign of payload delive"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

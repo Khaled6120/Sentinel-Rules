@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of the Dinject PowerShell cradle based on the specific fla"
+            "value": "Detects the use of the Dinject PowerShell cradle based on the specific fl"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

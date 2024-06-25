@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "n attacker may execute an application as a SCR File using rundll32.exe desk.cpl,InstallScreenSav"
+            "value": "An attacker may execute an application as a SCR File using rundll32.exe desk.cpl,InstallScreenSa"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

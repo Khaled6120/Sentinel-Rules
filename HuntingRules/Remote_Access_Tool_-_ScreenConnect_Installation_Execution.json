@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects ScreenConnect program starts that establish a remote access to a syste"
+            "value": "Detects ScreenConnect program starts that establish a remote access to a syst"
           },
           {
             "name": "tactics",
-            "value": "initial_access"
+            "value": "Initial Access"
           },
           {
             "name": "relevantTechniques",

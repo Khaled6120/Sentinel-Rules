@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects file downloads directly from IP address URL using curl.e"
+            "value": "Detects file downloads directly from IP address URL using curl."
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           }
         ]
       }

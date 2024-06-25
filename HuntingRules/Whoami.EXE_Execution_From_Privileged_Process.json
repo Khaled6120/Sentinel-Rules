@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of \"whoami.exe\" by privileged accounts that are often abused by threat acto"
+            "value": "Detects the execution of \"whoami.exe\" by privileged accounts that are often abused by threat act"
           },
           {
             "name": "tactics",
-            "value": "discovery,privilege_escalation"
+            "value": "Discovery,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

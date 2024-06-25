@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious ways to download files or content using PowerShe"
+            "value": "Detects suspicious ways to download files or content using PowerSh"
           },
           {
             "name": "tactics",
-            "value": "command_and_control,execution"
+            "value": "Command And Control,Execution"
           },
           {
             "name": "relevantTechniques",

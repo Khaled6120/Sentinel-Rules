@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects various execution patterns of the CrackMapExec pentesting framewo"
+            "value": "Detects various execution patterns of the CrackMapExec pentesting framew"
           },
           {
             "name": "tactics",
-            "value": "execution,s0106"
+            "value": "Execution,S0106"
           },
           {
             "name": "relevantTechniques",

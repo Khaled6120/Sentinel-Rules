@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the usage of \"reg.exe\" to add Defender folder exclusions. Qbot has been seen using this technique to add exclusions for folders within AppData and ProgramDat"
+            "value": "Detects the usage of \"reg.exe\" to add Defender folder exclusions. Qbot has been seen using this technique to add exclusions for folders within AppData and ProgramDa"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

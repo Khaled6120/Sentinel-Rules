@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a command line process that uses explorer.exe to launch arbitrary commands or binaries,\nwhich is similar to cmd.exe /c, only it breaks the process tree and makes its parent a new instance of explorer spawning from \"svchost"
+            "value": "Detects a command line process that uses explorer.exe to launch arbitrary commands or binaries,\nwhich is similar to cmd.exe /c, only it breaks the process tree and makes its parent a new instance of explorer spawning from \"svchos"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

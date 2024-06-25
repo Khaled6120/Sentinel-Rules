@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects REGSVR32.exe to execute DLL hosted on remote shar"
+            "value": "Detects REGSVR32.exe to execute DLL hosted on remote sha"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

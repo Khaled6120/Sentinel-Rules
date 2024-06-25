@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects svchost hosting RDP termsvcs communicating with the loopback address and on TCP port 33"
+            "value": "Detects svchost hosting RDP termsvcs communicating with the loopback address and on TCP port 3"
           },
           {
             "name": "tactics",
-            "value": "command_and_control,lateral_movement"
+            "value": "Command And Control,Lateral Movement"
           },
           {
             "name": "relevantTechniques",

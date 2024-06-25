@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects Powershell as a child of the WmiPrvSE process. Which could be a sign of lateral movement via WM"
+            "value": "Detects Powershell as a child of the WmiPrvSE process. Which could be a sign of lateral movement via W"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

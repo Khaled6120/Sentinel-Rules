@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of a renamed \"Msdt.exe\" bina"
+            "value": "Detects the execution of a renamed \"Msdt.exe\" bin"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

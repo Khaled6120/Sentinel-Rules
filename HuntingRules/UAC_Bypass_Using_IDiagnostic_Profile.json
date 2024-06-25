@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the \"IDiagnosticProfileUAC\" UAC bypass techniq"
+            "value": "Detects the \"IDiagnosticProfileUAC\" UAC bypass techni"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution,privilege_escalation"
+            "value": "Defense Evasion,Execution,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

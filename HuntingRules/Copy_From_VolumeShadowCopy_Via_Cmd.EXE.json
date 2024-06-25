@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of the builtin \"copy\" command that targets a shadow copy (sometimes used to copy registry hives that are in us"
+            "value": "Detects the execution of the builtin \"copy\" command that targets a shadow copy (sometimes used to copy registry hives that are in u"
           },
           {
             "name": "tactics",
-            "value": "impact"
+            "value": "Impact"
           },
           {
             "name": "relevantTechniques",

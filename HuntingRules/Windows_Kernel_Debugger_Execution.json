@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of the Windows Kernel Debugger \"kd.exe"
+            "value": "Detects execution of the Windows Kernel Debugger \"kd.ex"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,privilege_escalation"
+            "value": "Defense Evasion,Privilege Escalation"
           }
         ]
       }

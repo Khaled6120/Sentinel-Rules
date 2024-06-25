@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects unknown program using commandline flags usually used by tools such as PsExec and PAExec to start programs with SYSTEM Privileg"
+            "value": "Detects unknown program using commandline flags usually used by tools such as PsExec and PAExec to start programs with SYSTEM Privile"
           },
           {
             "name": "tactics",
-            "value": "resource_development"
+            "value": "Resource Development"
           },
           {
             "name": "relevantTechniques",

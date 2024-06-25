@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "ttackers may leverage fsutil to enumerated connected drive"
+            "value": "Attackers may leverage fsutil to enumerated connected driv"
           },
           {
             "name": "tactics",
-            "value": "discovery"
+            "value": "Discovery"
           },
           {
             "name": "relevantTechniques",

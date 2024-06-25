@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects commandline keywords indicative of potential usge of the tool WinPwn. A tool for Windows and Active Directory reconnaissance and exploitation"
+            "value": "Detects commandline keywords indicative of potential usge of the tool WinPwn. A tool for Windows and Active Directory reconnaissance and exploitatio"
           },
           {
             "name": "tactics",
-            "value": "credential_access,defense_evasion,discovery,execution,privilege_escalation"
+            "value": "Credential Access,Defense Evasion,Discovery,Execution,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

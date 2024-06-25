@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of the LOLBIN PrintBrm.exe, which can be used to create or extract ZIP files. PrintBrm.exe should not be run on a normal workstatio"
+            "value": "Detects the execution of the LOLBIN PrintBrm.exe, which can be used to create or extract ZIP files. PrintBrm.exe should not be run on a normal workstati"
           },
           {
             "name": "tactics",
-            "value": "command_and_control,defense_evasion"
+            "value": "Command And Control,Defense Evasion"
           },
           {
             "name": "relevantTechniques",

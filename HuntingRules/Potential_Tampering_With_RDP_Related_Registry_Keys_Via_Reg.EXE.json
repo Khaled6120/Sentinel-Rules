@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of \"reg.exe\" for enabling/disabling the RDP service on the host by tampering with the 'CurrentControlSet\\Control\\Terminal Server' valu"
+            "value": "Detects the execution of \"reg.exe\" for enabling/disabling the RDP service on the host by tampering with the 'CurrentControlSet\\Control\\Terminal Server' val"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,lateral_movement"
+            "value": "Defense Evasion,Lateral Movement"
           },
           {
             "name": "relevantTechniques",

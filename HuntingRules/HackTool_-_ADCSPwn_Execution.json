@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects command line parameters used by ADCSPwn, a tool to escalate privileges in an active directory network by coercing authenticate from machine accounts and relaying to the certificate servi"
+            "value": "Detects command line parameters used by ADCSPwn, a tool to escalate privileges in an active directory network by coercing authenticate from machine accounts and relaying to the certificate serv"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

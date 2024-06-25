@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "ell-known DNS Exfiltration tools executi"
+            "value": "Well-known DNS Exfiltration tools execut"
           },
           {
             "name": "tactics",
-            "value": "command_and_control,exfiltration"
+            "value": "Command And Control,Exfiltration"
           },
           {
             "name": "relevantTechniques",

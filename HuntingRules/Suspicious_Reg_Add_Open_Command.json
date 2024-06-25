@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "hreat actors performed dumping of SAM, SECURITY and SYSTEM registry hives using DelegateExecute k"
+            "value": "Threat actors performed dumping of SAM, SECURITY and SYSTEM registry hives using DelegateExecute "
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects creation of a new service via \"sc\" command or the powershell \"new-service\" cmdlet with suspicious binary pat"
+            "value": "Detects creation of a new service via \"sc\" command or the powershell \"new-service\" cmdlet with suspicious binary pa"
           },
           {
             "name": "tactics",
-            "value": "persistence,privilege_escalation"
+            "value": "Persistence,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

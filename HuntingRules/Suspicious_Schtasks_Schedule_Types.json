@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects scheduled task creations or modification on a suspicious schedule ty"
+            "value": "Detects scheduled task creations or modification on a suspicious schedule t"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

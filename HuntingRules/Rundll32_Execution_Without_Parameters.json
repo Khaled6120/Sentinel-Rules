@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects rundll32 execution without parameters as observed when running Metasploit windows/smb/psexec exploit modu"
+            "value": "Detects rundll32 execution without parameters as observed when running Metasploit windows/smb/psexec exploit mod"
           },
           {
             "name": "tactics",
-            "value": "execution,lateral_movement"
+            "value": "Execution,Lateral Movement"
           },
           {
             "name": "relevantTechniques",

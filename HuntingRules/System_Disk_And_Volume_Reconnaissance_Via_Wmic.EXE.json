@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "n adversary might use WMI to discover information about the system, such as the volume name, size,\nfree space, and other disk information. This can be done using the `wmic` command-line utility and has been\nobserved being used by threat act"
+            "value": "An adversary might use WMI to discover information about the system, such as the volume name, size,\nfree space, and other disk information. This can be done using the `wmic` command-line utility and has been\nobserved being used by threat ac"
           },
           {
             "name": "tactics",
-            "value": "discovery,execution"
+            "value": "Discovery,Execution"
           },
           {
             "name": "relevantTechniques",

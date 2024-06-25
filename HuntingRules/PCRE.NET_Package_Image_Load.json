@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects processes loading modules related to PCRE.NET packa"
+            "value": "Detects processes loading modules related to PCRE.NET pack"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

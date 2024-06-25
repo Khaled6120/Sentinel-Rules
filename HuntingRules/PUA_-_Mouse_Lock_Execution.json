@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "n Kaspersky's 2020 Incident Response Analyst Report they listed legitimate tool \"Mouse Lock\" as being used for both credential access and collection in security incident"
+            "value": "In Kaspersky's 2020 Incident Response Analyst Report they listed legitimate tool \"Mouse Lock\" as being used for both credential access and collection in security inciden"
           },
           {
             "name": "tactics",
-            "value": "collection,credential_access"
+            "value": "Collection,Credential Access"
           },
           {
             "name": "relevantTechniques",

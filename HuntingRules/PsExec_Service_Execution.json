@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects launch of the PSEXESVC service, which means that this system was the target of a psexec remote executi"
+            "value": "Detects launch of the PSEXESVC service, which means that this system was the target of a psexec remote execut"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           }
         ]
       }

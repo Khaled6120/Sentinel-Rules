@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of arbitrary DLLs or unsigned code via a \".csproj\" files via Dotnet.EX"
+            "value": "Detects execution of arbitrary DLLs or unsigned code via a \".csproj\" files via Dotnet.E"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

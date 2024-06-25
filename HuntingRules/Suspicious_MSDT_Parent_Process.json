@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects msdt.exe executed by a suspicious parent as seen in CVE-2022-30190 / Follina exploitati"
+            "value": "Detects msdt.exe executed by a suspicious parent as seen in CVE-2022-30190 / Follina exploitat"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

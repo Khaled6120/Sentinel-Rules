@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of Microsoft bash launcher with the \"-c\" flag.\nThis can be used to potentially bypass defenses and execute Linux or Windows-based binaries directly via bash"
+            "value": "Detects execution of Microsoft bash launcher with the \"-c\" flag.\nThis can be used to potentially bypass defenses and execute Linux or Windows-based binaries directly via bas"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

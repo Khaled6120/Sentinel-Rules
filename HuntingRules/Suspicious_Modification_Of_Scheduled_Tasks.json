@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects when an attacker tries to modify an already existing scheduled tasks to run from a suspicious location\nAttackers can create a simple looking task in order to avoid detection on creation as it's often the most focused on\nInstead they "
+            "value": "Detects when an attacker tries to modify an already existing scheduled tasks to run from a suspicious location\nAttackers can create a simple looking task in order to avoid detection on creation as it's often the most focused on\nInstead they"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

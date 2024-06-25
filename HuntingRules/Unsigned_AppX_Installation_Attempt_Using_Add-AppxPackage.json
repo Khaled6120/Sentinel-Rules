@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of the \"Add-AppxPackage\" or it's alias \"Add-AppPackage\" to install unsigned AppX packag"
+            "value": "Detects usage of the \"Add-AppxPackage\" or it's alias \"Add-AppPackage\" to install unsigned AppX packa"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,persistence"
+            "value": "Defense Evasion,Persistence"
           }
         ]
       }

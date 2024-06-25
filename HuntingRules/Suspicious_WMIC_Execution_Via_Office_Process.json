@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "ffice application called wmic to proxye execution through a LOLBIN process. This is often used to break suspicious parent-child chain (Office app spawns LOLBin"
+            "value": "Office application called wmic to proxye execution through a LOLBIN process. This is often used to break suspicious parent-child chain (Office app spawns LOLBi"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

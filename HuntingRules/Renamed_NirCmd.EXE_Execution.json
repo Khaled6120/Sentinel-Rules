@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of a renamed \"NirCmd.exe\" binary based on the PE metadata field"
+            "value": "Detects the execution of a renamed \"NirCmd.exe\" binary based on the PE metadata fiel"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

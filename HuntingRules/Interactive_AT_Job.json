@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects an interactive AT job, which may be used as a form of privilege escalatio"
+            "value": "Detects an interactive AT job, which may be used as a form of privilege escalati"
           },
           {
             "name": "tactics",
-            "value": "privilege_escalation"
+            "value": "Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

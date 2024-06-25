@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of \"dotnet-dump\" with the \"collect\" flag. The execution could indicate potential process dumping of critical processes such as LSASS"
+            "value": "Detects the execution of \"dotnet-dump\" with the \"collect\" flag. The execution could indicate potential process dumping of critical processes such as LSAS"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of regsvr32 where the DLL is located in a potentially suspicious locatio"
+            "value": "Detects execution of regsvr32 where the DLL is located in a potentially suspicious locati"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

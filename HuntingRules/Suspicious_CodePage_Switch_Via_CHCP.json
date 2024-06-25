@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a code page switch in command line or batch scripts to a rare langua"
+            "value": "Detects a code page switch in command line or batch scripts to a rare langu"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

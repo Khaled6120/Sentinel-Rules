@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "xecutes arbitrary PowerShell code using SyncAppvPublishingServer.v"
+            "value": "Executes arbitrary PowerShell code using SyncAppvPublishingServer."
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of NSudo tool for command executi"
+            "value": "Detects the use of NSudo tool for command execut"
           },
           {
             "name": "tactics",
-            "value": "execution,s0029"
+            "value": "Execution,S0029"
           },
           {
             "name": "relevantTechniques",

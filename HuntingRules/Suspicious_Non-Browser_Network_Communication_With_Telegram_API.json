@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects an a non-browser process interacting with the Telegram API which could indicate use of a covert "
+            "value": "Detects an a non-browser process interacting with the Telegram API which could indicate use of a covert"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

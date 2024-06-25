@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects when a user installs certificates by using CertOC.exe to load the target DLL fil"
+            "value": "Detects when a user installs certificates by using CertOC.exe to load the target DLL fi"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

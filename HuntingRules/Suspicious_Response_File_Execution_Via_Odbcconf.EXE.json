@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"odbcconf\" with the \"-f\" flag in order to load a response file with a non-\".rsp\" extensio"
+            "value": "Detects execution of \"odbcconf\" with the \"-f\" flag in order to load a response file with a non-\".rsp\" extensi"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

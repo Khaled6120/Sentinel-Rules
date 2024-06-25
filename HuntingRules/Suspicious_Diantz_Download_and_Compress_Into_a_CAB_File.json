@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "ownload and compress a remote file and store it in a cab file on local machin"
+            "value": "Download and compress a remote file and store it in a cab file on local machi"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

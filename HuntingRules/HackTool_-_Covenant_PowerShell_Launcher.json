@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious command lines used in Covenant luanche"
+            "value": "Detects suspicious command lines used in Covenant luanch"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

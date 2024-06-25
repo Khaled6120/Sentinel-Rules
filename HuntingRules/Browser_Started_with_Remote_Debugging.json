@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects browsers starting with the remote debugging flags. Which is a technique often used to perform browser injection attac"
+            "value": "Detects browsers starting with the remote debugging flags. Which is a technique often used to perform browser injection atta"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

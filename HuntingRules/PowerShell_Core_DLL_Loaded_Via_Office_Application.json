@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects PowerShell core DLL being loaded by an Office Produ"
+            "value": "Detects PowerShell core DLL being loaded by an Office Prod"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           }
         ]
       }

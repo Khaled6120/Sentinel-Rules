@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of WinRAR in order to compress a file with a \".dmp\"/\".dump\" extension, which could be a step in a process of dump file exfiltratio"
+            "value": "Detects execution of WinRAR in order to compress a file with a \".dmp\"/\".dump\" extension, which could be a step in a process of dump file exfiltrati"
           },
           {
             "name": "tactics",
-            "value": "collection"
+            "value": "Collection"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects creation of a scheduled task with a GUID like na"
+            "value": "Detects creation of a scheduled task with a GUID like n"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

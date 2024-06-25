@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potentially suspicious execution of the Qemu utility in a Windows environment.\nThreat actors have leveraged this utility and this technique for achieving network access as reported by Kaspersky"
+            "value": "Detects potentially suspicious execution of the Qemu utility in a Windows environment.\nThreat actors have leveraged this utility and this technique for achieving network access as reported by Kaspersk"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

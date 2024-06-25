@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "undll32 can be use by Cobalt Strike with StartW function to load DLLs from the command lin"
+            "value": "Rundll32 can be use by Cobalt Strike with StartW function to load DLLs from the command li"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

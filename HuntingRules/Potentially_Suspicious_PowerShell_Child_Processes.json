@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potentially suspicious child processes spawned by PowerShe"
+            "value": "Detects potentially suspicious child processes spawned by PowerSh"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

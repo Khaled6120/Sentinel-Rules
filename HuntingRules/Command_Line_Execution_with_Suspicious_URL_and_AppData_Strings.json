@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious command line execution that includes an URL and AppData string in the command line parameters as used by several droppers (js/vbs > powershel"
+            "value": "Detects a suspicious command line execution that includes an URL and AppData string in the command line parameters as used by several droppers (js/vbs > powershe"
           },
           {
             "name": "tactics",
-            "value": "command_and_control,execution"
+            "value": "Command And Control,Execution"
           },
           {
             "name": "relevantTechniques",

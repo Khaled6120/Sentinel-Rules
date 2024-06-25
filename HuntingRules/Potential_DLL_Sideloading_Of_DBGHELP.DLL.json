@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects DLL sideloading of \"dbghelp.dl"
+            "value": "Detects DLL sideloading of \"dbghelp.d"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,persistence,privilege_escalation"
+            "value": "Defense Evasion,Persistence,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

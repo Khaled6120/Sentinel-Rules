@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects WMI script event consume"
+            "value": "Detects WMI script event consum"
           },
           {
             "name": "tactics",
-            "value": "persistence,privilege_escalation"
+            "value": "Persistence,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

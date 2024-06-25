@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects shell32.dll executing a DLL in a suspicious directo"
+            "value": "Detects shell32.dll executing a DLL in a suspicious direct"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

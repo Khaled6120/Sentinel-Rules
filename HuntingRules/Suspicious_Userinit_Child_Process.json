@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious child process of userin"
+            "value": "Detects a suspicious child process of useri"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

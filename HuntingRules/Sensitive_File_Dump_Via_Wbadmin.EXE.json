@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the dump of highly sensitive files such as \"NTDS.DIT\" and \"SECURITY\" hive.\nAttackers can leverage the \"wbadmin\" utility in order to dump sensitive files that might contain credential or sensitive information"
+            "value": "Detects the dump of highly sensitive files such as \"NTDS.DIT\" and \"SECURITY\" hive.\nAttackers can leverage the \"wbadmin\" utility in order to dump sensitive files that might contain credential or sensitive informatio"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

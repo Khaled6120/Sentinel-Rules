@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potential arbitrary file download using a Microsoft Office applicati"
+            "value": "Detects potential arbitrary file download using a Microsoft Office applicat"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

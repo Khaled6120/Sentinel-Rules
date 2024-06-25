@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of GfxDownloadWrapper.exe with a URL as an argument to download fil"
+            "value": "Detects execution of GfxDownloadWrapper.exe with a URL as an argument to download fi"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

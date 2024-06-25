@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etect usage of the \"sqlite\" binary to query databases in Firefox and other Gecko-based browsers for potential data stealin"
+            "value": "Detect usage of the \"sqlite\" binary to query databases in Firefox and other Gecko-based browsers for potential data steali"
           },
           {
             "name": "tactics",
-            "value": "collection,credential_access"
+            "value": "Collection,Credential Access"
           },
           {
             "name": "relevantTechniques",

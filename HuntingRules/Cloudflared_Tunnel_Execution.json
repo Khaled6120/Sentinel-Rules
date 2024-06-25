@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of the \"cloudflared\" tool to connect back to a tunnel. This was seen used by threat actors to maintain persistence and remote access to compromised network"
+            "value": "Detects execution of the \"cloudflared\" tool to connect back to a tunnel. This was seen used by threat actors to maintain persistence and remote access to compromised networ"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

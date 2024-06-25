@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "emote.exe is part of WinDbg in the Windows SDK and can be used for AWL bypass and running remote file"
+            "value": "Remote.exe is part of WinDbg in the Windows SDK and can be used for AWL bypass and running remote fil"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

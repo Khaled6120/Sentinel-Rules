@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of wmic utility with the \"computersystem\" flag in order to obtain information about the machine such as the domain, username, model, et"
+            "value": "Detects execution of wmic utility with the \"computersystem\" flag in order to obtain information about the machine such as the domain, username, model, e"
           },
           {
             "name": "tactics",
-            "value": "discovery,execution"
+            "value": "Discovery,Execution"
           },
           {
             "name": "relevantTechniques",

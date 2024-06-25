@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious command line flags that let the user set a target user and command as e.g. seen in PsExec-like too"
+            "value": "Detects suspicious command line flags that let the user set a target user and command as e.g. seen in PsExec-like to"
           },
           {
             "name": "tactics",
-            "value": "privilege_escalation"
+            "value": "Privilege Escalation"
           }
         ]
       }

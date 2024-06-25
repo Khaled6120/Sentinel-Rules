@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "xtexport.exe loads dll and is execute from other folder the original pa"
+            "value": "Extexport.exe loads dll and is execute from other folder the original p"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

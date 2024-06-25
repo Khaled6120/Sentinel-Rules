@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "ses the .NET InstallUtil.exe application in order to execute image without l"
+            "value": "Uses the .NET InstallUtil.exe application in order to execute image without "
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           }
         ]
       }

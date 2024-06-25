@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potentially suspicious child processes of a ClickOnce deployment applicati"
+            "value": "Detects potentially suspicious child processes of a ClickOnce deployment applicat"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           }
         ]
       }

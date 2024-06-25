@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects uncommon or suspicious child processes spawning from a VsCode \"code.exe\" process. This could indicate an attempt of persistence via VsCode tasks or terminal profile"
+            "value": "Detects uncommon or suspicious child processes spawning from a VsCode \"code.exe\" process. This could indicate an attempt of persistence via VsCode tasks or terminal profil"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

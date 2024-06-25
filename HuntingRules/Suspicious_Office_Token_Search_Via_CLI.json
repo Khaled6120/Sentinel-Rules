@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects possible search for office tokens via CLI by looking for the string \"eyJ0eX\". This string is used as an anchor to look for the start of the JWT token used by office and similar app"
+            "value": "Detects possible search for office tokens via CLI by looking for the string \"eyJ0eX\". This string is used as an anchor to look for the start of the JWT token used by office and similar ap"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

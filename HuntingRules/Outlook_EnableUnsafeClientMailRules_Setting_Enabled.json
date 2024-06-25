@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects an attacker trying to enable the outlook security setting \"EnableUnsafeClientMailRules\" which allows outlook to run applications or execute macr"
+            "value": "Detects an attacker trying to enable the outlook security setting \"EnableUnsafeClientMailRules\" which allows outlook to run applications or execute mac"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potentially uncommon child processes of SndVol.exe (the Windows volume mixe"
+            "value": "Detects potentially uncommon child processes of SndVol.exe (the Windows volume mix"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           }
         ]
       }

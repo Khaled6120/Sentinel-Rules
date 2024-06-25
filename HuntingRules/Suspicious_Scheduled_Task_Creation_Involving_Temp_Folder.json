@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the creation of scheduled tasks that involves a temporary folder and runs only on"
+            "value": "Detects the creation of scheduled tasks that involves a temporary folder and runs only o"
           },
           {
             "name": "tactics",
-            "value": "execution,persistence"
+            "value": "Execution,Persistence"
           },
           {
             "name": "relevantTechniques",

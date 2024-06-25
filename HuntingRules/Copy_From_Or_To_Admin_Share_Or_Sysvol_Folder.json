@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a copy command or a copy utility execution to or from an Admin share or remo"
+            "value": "Detects a copy command or a copy utility execution to or from an Admin share or rem"
           },
           {
             "name": "tactics",
-            "value": "collection,exfiltration,lateral_movement"
+            "value": "Collection,Exfiltration,Lateral Movement"
           },
           {
             "name": "relevantTechniques",

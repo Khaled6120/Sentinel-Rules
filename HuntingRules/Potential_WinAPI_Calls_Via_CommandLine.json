@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of WinAPI Functions via the commandline. As seen used by threat actors via the tool winapiex"
+            "value": "Detects the use of WinAPI Functions via the commandline. As seen used by threat actors via the tool winapie"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

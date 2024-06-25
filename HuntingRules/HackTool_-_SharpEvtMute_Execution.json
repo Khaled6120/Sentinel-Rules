@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of SharpEvtHook, a tool that tampers with the Windows event lo"
+            "value": "Detects the use of SharpEvtHook, a tool that tampers with the Windows event l"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

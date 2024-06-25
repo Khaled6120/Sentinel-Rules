@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"VSDiagnostics.exe\" with the \"start\" command in order to launch and proxy arbitrary binarie"
+            "value": "Detects execution of \"VSDiagnostics.exe\" with the \"start\" command in order to launch and proxy arbitrary binari"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potential DLL sideloading of \"iviewers.dll\" (OLE/COM Object Interface Viewe"
+            "value": "Detects potential DLL sideloading of \"iviewers.dll\" (OLE/COM Object Interface View"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,privilege_escalation"
+            "value": "Defense Evasion,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

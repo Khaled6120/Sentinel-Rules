@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "ownload or Copy file with Extrac"
+            "value": "Download or Copy file with Extra"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

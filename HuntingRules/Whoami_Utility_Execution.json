@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of whoami, which is often used by attackers after exploitation / privilege escalati"
+            "value": "Detects the execution of whoami, which is often used by attackers after exploitation / privilege escalat"
           },
           {
             "name": "tactics",
-            "value": "discovery"
+            "value": "Discovery"
           },
           {
             "name": "relevantTechniques",

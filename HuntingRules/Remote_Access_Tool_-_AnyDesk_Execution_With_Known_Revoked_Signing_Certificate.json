@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of an AnyDesk binary with a version prior to 8.0.8.\nPrior to version 8.0.8, the Anydesk application used a signing certificate that got compromised by threat actors.\nUse this rule to detect instances of older versions o"
+            "value": "Detects the execution of an AnyDesk binary with a version prior to 8.0.8.\nPrior to version 8.0.8, the Anydesk application used a signing certificate that got compromised by threat actors.\nUse this rule to detect instances of older versions "
           },
           {
             "name": "tactics",
-            "value": "execution,initial_access"
+            "value": "Execution,Initial Access"
           }
         ]
       }

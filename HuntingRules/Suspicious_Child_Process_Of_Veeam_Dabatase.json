@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious child processes of the Veeam service process. This could indicate potential RCE or SQL Injectio"
+            "value": "Detects suspicious child processes of the Veeam service process. This could indicate potential RCE or SQL Injecti"
           },
           {
             "name": "tactics",
-            "value": "initial_access,persistence,privilege_escalation"
+            "value": "Initial Access,Persistence,Privilege Escalation"
           }
         ]
       }

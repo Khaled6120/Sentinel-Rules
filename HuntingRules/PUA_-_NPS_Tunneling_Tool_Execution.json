@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of NPS, a port forwarding and intranet penetration proxy serv"
+            "value": "Detects the use of NPS, a port forwarding and intranet penetration proxy ser"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

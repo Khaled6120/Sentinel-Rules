@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects some Empire PowerShell UAC bypass metho"
+            "value": "Detects some Empire PowerShell UAC bypass meth"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,privilege_escalation"
+            "value": "Defense Evasion,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

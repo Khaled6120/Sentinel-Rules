@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious curl process start on Windows and outputs the requested document to a local fi"
+            "value": "Detects a suspicious curl process start on Windows and outputs the requested document to a local f"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

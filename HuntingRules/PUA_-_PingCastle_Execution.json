@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of PingCastle, a tool designed to quickly assess the Active Directory security leve"
+            "value": "Detects the execution of PingCastle, a tool designed to quickly assess the Active Directory security lev"
           },
           {
             "name": "tactics",
-            "value": "reconnaissance"
+            "value": "Reconnaissance"
           },
           {
             "name": "relevantTechniques",

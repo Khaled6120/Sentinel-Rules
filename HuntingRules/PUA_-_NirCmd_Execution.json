@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of NirCmd tool for command execution, which could be the result of legitimate administrative activi"
+            "value": "Detects the use of NirCmd tool for command execution, which could be the result of legitimate administrative activ"
           },
           {
             "name": "tactics",
-            "value": "execution,s0029"
+            "value": "Execution,S0029"
           },
           {
             "name": "relevantTechniques",

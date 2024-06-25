@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the image load of VSS DLL by uncommon executabl"
+            "value": "Detects the image load of VSS DLL by uncommon executab"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,impact"
+            "value": "Defense Evasion,Impact"
           },
           {
             "name": "relevantTechniques",

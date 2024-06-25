@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects Schtask creations that point to a suspicious folder or an environment variable often used by malwa"
+            "value": "Detects Schtask creations that point to a suspicious folder or an environment variable often used by malw"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

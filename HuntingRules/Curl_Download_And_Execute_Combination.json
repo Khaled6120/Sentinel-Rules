@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "dversaries can use curl to download payloads remotely and execute them. Curl is included by default in Windows 10 build 17063 and late"
+            "value": "Adversaries can use curl to download payloads remotely and execute them. Curl is included by default in Windows 10 build 17063 and lat"
           },
           {
             "name": "tactics",
-            "value": "command_and_control,defense_evasion"
+            "value": "Command And Control,Defense Evasion"
           },
           {
             "name": "relevantTechniques",

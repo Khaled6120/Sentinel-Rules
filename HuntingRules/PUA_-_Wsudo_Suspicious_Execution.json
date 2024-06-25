@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of wsudo (Windows Sudo Utility). Which is a tool that let the user execute programs with different permissions (System, Trusted Installer, Administrator...et"
+            "value": "Detects usage of wsudo (Windows Sudo Utility). Which is a tool that let the user execute programs with different permissions (System, Trusted Installer, Administrator...e"
           },
           {
             "name": "tactics",
-            "value": "execution,privilege_escalation"
+            "value": "Execution,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

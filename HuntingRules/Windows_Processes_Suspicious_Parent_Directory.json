@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etect suspicious parent processes of well-known Windows process"
+            "value": "Detect suspicious parent processes of well-known Windows proces"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

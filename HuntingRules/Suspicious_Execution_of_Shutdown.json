@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "se of the commandline to shutdown or reboot windo"
+            "value": "Use of the commandline to shutdown or reboot wind"
           },
           {
             "name": "tactics",
-            "value": "impact"
+            "value": "Impact"
           },
           {
             "name": "relevantTechniques",

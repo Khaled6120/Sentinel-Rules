@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects command line parameters used by Koadic hack to"
+            "value": "Detects command line parameters used by Koadic hack t"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

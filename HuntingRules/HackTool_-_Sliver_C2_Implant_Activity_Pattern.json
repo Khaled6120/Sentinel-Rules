@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects process activity patterns as seen being used by Sliver C2 framework implan"
+            "value": "Detects process activity patterns as seen being used by Sliver C2 framework impla"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

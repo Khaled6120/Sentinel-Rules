@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potentially suspicious child processes of \"GoogleUpdate.ex"
+            "value": "Detects potentially suspicious child processes of \"GoogleUpdate.e"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           }
         ]
       }

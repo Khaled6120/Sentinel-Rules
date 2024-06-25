@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of the 'Launch-VsDevShell.ps1' Microsoft signed script to execute command"
+            "value": "Detects the use of the 'Launch-VsDevShell.ps1' Microsoft signed script to execute comman"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

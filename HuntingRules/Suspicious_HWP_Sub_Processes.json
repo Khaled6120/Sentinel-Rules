@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious Hangul Word Processor (Hanword) sub processes that could indicate an exploitati"
+            "value": "Detects suspicious Hangul Word Processor (Hanword) sub processes that could indicate an exploitat"
           },
           {
             "name": "tactics",
-            "value": "execution,g0032,initial_access"
+            "value": "Execution,G0032,Initial Access"
           },
           {
             "name": "relevantTechniques",

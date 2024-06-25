@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "hadow Copies deletion using operating systems utiliti"
+            "value": "Shadow Copies deletion using operating systems utilit"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,impact"
+            "value": "Defense Evasion,Impact"
           },
           {
             "name": "relevantTechniques",

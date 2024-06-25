@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "ocal accounts, System Owner/User discovery using operating systems utiliti"
+            "value": "Local accounts, System Owner/User discovery using operating systems utilit"
           },
           {
             "name": "tactics",
-            "value": "discovery"
+            "value": "Discovery"
           },
           {
             "name": "relevantTechniques",

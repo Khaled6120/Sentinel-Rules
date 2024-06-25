@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "hreat actors can use auditpol binary to change audit policy configuration to impair detection capability.\nThis can be carried out by selectively disabling/removing certain audit policies as well as restoring a custom policy owned by the thr"
+            "value": "Threat actors can use auditpol binary to change audit policy configuration to impair detection capability.\nThis can be carried out by selectively disabling/removing certain audit policies as well as restoring a custom policy owned by the th"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

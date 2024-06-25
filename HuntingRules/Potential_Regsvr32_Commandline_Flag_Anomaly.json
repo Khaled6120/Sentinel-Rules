@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a potential command line flag anomaly related to \"regsvr32\" in which the \"/i\" flag is used without the \"/n\" which should be uncommo"
+            "value": "Detects a potential command line flag anomaly related to \"regsvr32\" in which the \"/i\" flag is used without the \"/n\" which should be uncomm"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

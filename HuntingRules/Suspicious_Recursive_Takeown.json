@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "dversaries can interact with the DACLs using built-in Windows commands takeown which can grant adversaries higher permissions on specific files and folde"
+            "value": "Adversaries can interact with the DACLs using built-in Windows commands takeown which can grant adversaries higher permissions on specific files and fold"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

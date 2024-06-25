@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of the \"msxsl\" binary with an \"http\" keyword in the command line. This might indicate a potential remote execution of XSL file"
+            "value": "Detects the execution of the \"msxsl\" binary with an \"http\" keyword in the command line. This might indicate a potential remote execution of XSL fil"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

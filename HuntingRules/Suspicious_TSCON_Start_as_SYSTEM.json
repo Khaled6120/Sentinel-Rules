@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a tscon.exe start as LOCAL SYST"
+            "value": "Detects a tscon.exe start as LOCAL SYS"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects use of chcp to look up the system locale value as part of host discove"
+            "value": "Detects use of chcp to look up the system locale value as part of host discov"
           },
           {
             "name": "tactics",
-            "value": "discovery"
+            "value": "Discovery"
           },
           {
             "name": "relevantTechniques",

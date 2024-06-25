@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the usage of \"reg.exe\" in order to dump sensitive registry hives. This includes SAM, SYSTEM and SECURITY hive"
+            "value": "Detects the usage of \"reg.exe\" in order to dump sensitive registry hives. This includes SAM, SYSTEM and SECURITY hiv"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

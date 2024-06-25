@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects python spawning a pretty t"
+            "value": "Detects python spawning a pretty "
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

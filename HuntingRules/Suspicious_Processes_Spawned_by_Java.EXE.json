@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious processes spawned from a Java host process which could indicate a sign of exploitation (e.g. log4"
+            "value": "Detects suspicious processes spawned from a Java host process which could indicate a sign of exploitation (e.g. log"
           },
           {
             "name": "tactics",
-            "value": "initial_access,persistence,privilege_escalation"
+            "value": "Initial Access,Persistence,Privilege Escalation"
           }
         ]
       }

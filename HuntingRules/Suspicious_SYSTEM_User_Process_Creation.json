@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious process creation as SYSTEM user (suspicious program or command line paramete"
+            "value": "Detects a suspicious process creation as SYSTEM user (suspicious program or command line paramet"
           },
           {
             "name": "tactics",
-            "value": "credential_access,defense_evasion,privilege_escalation"
+            "value": "Credential Access,Defense Evasion,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

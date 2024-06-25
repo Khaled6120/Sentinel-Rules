@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a CodePage modification using the \"mode.com\" utility to Russian language.\nThis behavior has been used by threat actors behind Dharma ransomware"
+            "value": "Detects a CodePage modification using the \"mode.com\" utility to Russian language.\nThis behavior has been used by threat actors behind Dharma ransomwar"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

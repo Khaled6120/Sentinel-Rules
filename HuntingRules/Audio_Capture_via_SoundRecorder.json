@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etect attacker collecting audio via SoundRecorder applicatio"
+            "value": "Detect attacker collecting audio via SoundRecorder applicati"
           },
           {
             "name": "tactics",
-            "value": "collection"
+            "value": "Collection"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious Windows Error Reporting manager (wermgr.exe) child proce"
+            "value": "Detects suspicious Windows Error Reporting manager (wermgr.exe) child proc"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,privilege_escalation"
+            "value": "Defense Evasion,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "dversaries may disable security tools to avoid possible detection of their tools and activities by uninstalling Crowdstrike Falc"
+            "value": "Adversaries may disable security tools to avoid possible detection of their tools and activities by uninstalling Crowdstrike Fal"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

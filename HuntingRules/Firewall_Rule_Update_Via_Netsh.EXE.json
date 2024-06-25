@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of netsh with the \"advfirewall\" and the \"set\" option in order to set new values for properties of a existing ru"
+            "value": "Detects execution of netsh with the \"advfirewall\" and the \"set\" option in order to set new values for properties of a existing r"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           }
         ]
       }

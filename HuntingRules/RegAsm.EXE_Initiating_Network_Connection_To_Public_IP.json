@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects \"RegAsm.exe\" initiating a network connection to public IP adress"
+            "value": "Detects \"RegAsm.exe\" initiating a network connection to public IP adres"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

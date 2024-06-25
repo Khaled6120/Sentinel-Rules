@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potential \"ShellDispatch.dll\" functionality abuse to execute arbitrary binaries via \"ShellExecut"
+            "value": "Detects potential \"ShellDispatch.dll\" functionality abuse to execute arbitrary binaries via \"ShellExecu"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           }
         ]
       }

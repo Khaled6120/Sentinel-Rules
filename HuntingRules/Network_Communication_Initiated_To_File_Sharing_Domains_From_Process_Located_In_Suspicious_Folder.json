@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects executables located in potentially suspicious directories initiating network connections towards file sharing domain"
+            "value": "Detects executables located in potentially suspicious directories initiating network connections towards file sharing domai"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

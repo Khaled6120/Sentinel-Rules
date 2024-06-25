@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of SharpMove, a .NET utility performing multiple tasks such as \"Task Creation\", \"SCM\" query, VBScript execution using WMI via its PE metadata and command line options"
+            "value": "Detects the execution of SharpMove, a .NET utility performing multiple tasks such as \"Task Creation\", \"SCM\" query, VBScript execution using WMI via its PE metadata and command line option"
           },
           {
             "name": "tactics",
-            "value": "lateral_movement"
+            "value": "Lateral Movement"
           },
           {
             "name": "relevantTechniques",

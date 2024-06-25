@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "ompress target file into a cab file stored in the Alternate Data Stream (ADS) of the target fil"
+            "value": "Compress target file into a cab file stored in the Alternate Data Stream (ADS) of the target fi"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

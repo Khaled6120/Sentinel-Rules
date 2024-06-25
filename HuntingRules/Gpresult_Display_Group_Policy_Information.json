@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects cases in which a user uses the built-in Windows utility gpresult to display the Resultant Set of Policy (RSoP) informati"
+            "value": "Detects cases in which a user uses the built-in Windows utility gpresult to display the Resultant Set of Policy (RSoP) informat"
           },
           {
             "name": "tactics",
-            "value": "discovery"
+            "value": "Discovery"
           },
           {
             "name": "relevantTechniques",

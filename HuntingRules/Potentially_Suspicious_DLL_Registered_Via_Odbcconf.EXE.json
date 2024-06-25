@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"odbcconf\" with the \"REGSVR\" action where the DLL in question doesn't contain a \".dll\" extension. Which is often used as a method to evade defense"
+            "value": "Detects execution of \"odbcconf\" with the \"REGSVR\" action where the DLL in question doesn't contain a \".dll\" extension. Which is often used as a method to evade defens"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

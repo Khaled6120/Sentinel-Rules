@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the creation of a schtask that executes a file from C:\\Users\\<USER>\\AppData\\Loc"
+            "value": "Detects the creation of a schtask that executes a file from C:\\Users\\<USER>\\AppData\\Lo"
           },
           {
             "name": "tactics",
-            "value": "execution,persistence"
+            "value": "Execution,Persistence"
           },
           {
             "name": "relevantTechniques",

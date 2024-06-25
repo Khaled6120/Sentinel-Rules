@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of Radmin which can be abused by an adversary to remotely control Windows machin"
+            "value": "Detects the execution of Radmin which can be abused by an adversary to remotely control Windows machi"
           },
           {
             "name": "tactics",
-            "value": "execution,lateral_movement"
+            "value": "Execution,Lateral Movement"
           },
           {
             "name": "relevantTechniques",

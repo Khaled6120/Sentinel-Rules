@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the usage and installation of a backdoor that uses an option to register a malicious debugger for built-in tools that are accessible in the login scre"
+            "value": "Detects the usage and installation of a backdoor that uses an option to register a malicious debugger for built-in tools that are accessible in the login scr"
           },
           {
             "name": "tactics",
-            "value": "persistence,privilege_escalation"
+            "value": "Persistence,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

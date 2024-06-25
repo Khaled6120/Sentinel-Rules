@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "his rule detects execution of a PowerShell code through the sqlps.exe utility, which is included in the standard set of utilities supplied with the MSSQL Server.\nScript blocks are not logged in this case, so this utility helps to bypass pro"
+            "value": "This rule detects execution of a PowerShell code through the sqlps.exe utility, which is included in the standard set of utilities supplied with the MSSQL Server.\nScript blocks are not logged in this case, so this utility helps to bypass pr"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

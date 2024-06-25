@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of the \"cipher\" built-in utility in order to overwrite deleted data from disk.\nAdversaries may destroy data and files on specific systems or in large numbers on a network to interrupt availability to systems, services, and netw"
+            "value": "Detects usage of the \"cipher\" built-in utility in order to overwrite deleted data from disk.\nAdversaries may destroy data and files on specific systems or in large numbers on a network to interrupt availability to systems, services, and net"
           },
           {
             "name": "tactics",
-            "value": "impact"
+            "value": "Impact"
           },
           {
             "name": "relevantTechniques",

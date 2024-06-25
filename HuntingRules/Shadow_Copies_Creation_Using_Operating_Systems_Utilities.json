@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "hadow Copies creation using operating systems utilities, possible credential acce"
+            "value": "Shadow Copies creation using operating systems utilities, possible credential acc"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

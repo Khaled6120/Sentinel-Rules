@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etect the use of \"<\" to read and potentially execute a file via cmd.e"
+            "value": "Detect the use of \"<\" to read and potentially execute a file via cmd."
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

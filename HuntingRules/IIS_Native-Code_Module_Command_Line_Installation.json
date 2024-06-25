@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious IIS native-code module installations via command li"
+            "value": "Detects suspicious IIS native-code module installations via command l"
           },
           {
             "name": "tactics",
-            "value": "persistence"
+            "value": "Persistence"
           },
           {
             "name": "relevantTechniques",

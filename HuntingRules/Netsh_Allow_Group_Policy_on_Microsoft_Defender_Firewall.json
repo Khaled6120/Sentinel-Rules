@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "dversaries may modify system firewalls in order to bypass controls limiting network usa"
+            "value": "Adversaries may modify system firewalls in order to bypass controls limiting network us"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious ways to download files from Microsoft domains that are used to store attachments in Emails or OneNote documen"
+            "value": "Detects suspicious ways to download files from Microsoft domains that are used to store attachments in Emails or OneNote docume"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

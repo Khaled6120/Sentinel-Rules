@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious print spool service (spoolsv.exe) child processe"
+            "value": "Detects suspicious print spool service (spoolsv.exe) child process"
           },
           {
             "name": "tactics",
-            "value": "execution,privilege_escalation"
+            "value": "Execution,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of the hacktool SafetyKatz via PE information and default Image na"
+            "value": "Detects the execution of the hacktool SafetyKatz via PE information and default Image n"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

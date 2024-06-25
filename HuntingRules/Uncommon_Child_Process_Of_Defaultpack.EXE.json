@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects uncommon child processes of \"DefaultPack.EXE\" binary as a proxy to launch other progra"
+            "value": "Detects uncommon child processes of \"DefaultPack.EXE\" binary as a proxy to launch other progr"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a process spawned by the terminal service server process (this could be an indicator for an exploitation of CVE-2019-070"
+            "value": "Detects a process spawned by the terminal service server process (this could be an indicator for an exploitation of CVE-2019-07"
           },
           {
             "name": "tactics",
-            "value": "initial_access,lateral_movement"
+            "value": "Initial Access,Lateral Movement"
           },
           {
             "name": "relevantTechniques",

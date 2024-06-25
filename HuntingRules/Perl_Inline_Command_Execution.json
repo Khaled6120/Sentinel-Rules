@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of perl using the \"-e\"/\"-E\" flags. This is could be used as a way to launch a reverse shell or execute live perl cod"
+            "value": "Detects execution of perl using the \"-e\"/\"-E\" flags. This is could be used as a way to launch a reverse shell or execute live perl co"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

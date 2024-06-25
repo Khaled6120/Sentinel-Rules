@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potential DLL sideloading of \"RjvPlatform.dll\" by \"SystemResetPlatform.exe\" located in a non-default locatio"
+            "value": "Detects potential DLL sideloading of \"RjvPlatform.dll\" by \"SystemResetPlatform.exe\" located in a non-default locati"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,privilege_escalation"
+            "value": "Defense Evasion,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

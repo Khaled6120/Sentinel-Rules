@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects attackers attempting to disable Windows Defender using Powershe"
+            "value": "Detects attackers attempting to disable Windows Defender using Powersh"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

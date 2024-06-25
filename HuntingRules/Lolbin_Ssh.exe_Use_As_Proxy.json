@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etect usage of the \"ssh.exe\" binary as a proxy to launch other progra"
+            "value": "Detect usage of the \"ssh.exe\" binary as a proxy to launch other progr"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

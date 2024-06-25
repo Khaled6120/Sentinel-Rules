@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of a renamed \"CURL.exe\" binary based on the PE metadata fiel"
+            "value": "Detects the execution of a renamed \"CURL.exe\" binary based on the PE metadata fie"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

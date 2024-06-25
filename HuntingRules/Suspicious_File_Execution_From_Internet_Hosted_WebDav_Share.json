@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of the \"net use\" command to mount a WebDAV server and then immediately execute some content in it. As seen being used in malicious LNK fil"
+            "value": "Detects the execution of the \"net use\" command to mount a WebDAV server and then immediately execute some content in it. As seen being used in malicious LNK fi"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

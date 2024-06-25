@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of \"rar\" to add files to an archive for potential compression. An adversary may compress data (e.g. sensitive documents) that is collected prior to exfiltration in order to make it portable and minimize the amount of data sent "
+            "value": "Detects usage of \"rar\" to add files to an archive for potential compression. An adversary may compress data (e.g. sensitive documents) that is collected prior to exfiltration in order to make it portable and minimize the amount of data sent"
           },
           {
             "name": "tactics",
-            "value": "collection"
+            "value": "Collection"
           },
           {
             "name": "relevantTechniques",

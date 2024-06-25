@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "his rule detect common flag combinations used by CrackMapExec in order to detect its use even if the binary has been replace"
+            "value": "This rule detect common flag combinations used by CrackMapExec in order to detect its use even if the binary has been replac"
           },
           {
             "name": "tactics",
-            "value": "credential_access,discovery,execution,persistence,privilege_escalation"
+            "value": "Credential Access,Discovery,Execution,Persistence,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

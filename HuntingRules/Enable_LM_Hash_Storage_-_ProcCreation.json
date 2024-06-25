@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects changes to the \"NoLMHash\" registry value in order to allow Windows to store LM Hashes.\nBy setting this registry value to \"0\" (DWORD), Windows will be allowed to store a LAN manager hash of your password in Active Directory and local "
+            "value": "Detects changes to the \"NoLMHash\" registry value in order to allow Windows to store LM Hashes.\nBy setting this registry value to \"0\" (DWORD), Windows will be allowed to store a LAN manager hash of your password in Active Directory and local"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

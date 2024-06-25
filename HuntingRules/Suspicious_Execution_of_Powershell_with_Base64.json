@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "ommandline to launch powershell with a base64 paylo"
+            "value": "Commandline to launch powershell with a base64 payl"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

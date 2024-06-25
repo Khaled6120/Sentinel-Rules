@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a Powershell process that contains download commands in its command line stri"
+            "value": "Detects a Powershell process that contains download commands in its command line str"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

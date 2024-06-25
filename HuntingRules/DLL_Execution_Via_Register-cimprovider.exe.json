@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects using register-cimprovider.exe to execute arbitrary dll fil"
+            "value": "Detects using register-cimprovider.exe to execute arbitrary dll fi"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potential suspicious behaviour using secedit.exe. Such as exporting or modifying the security poli"
+            "value": "Detects potential suspicious behaviour using secedit.exe. Such as exporting or modifying the security pol"
           },
           {
             "name": "tactics",
-            "value": "credential_access,defense_evasion,discovery,persistence,privilege_escalation"
+            "value": "Credential Access,Defense Evasion,Discovery,Persistence,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

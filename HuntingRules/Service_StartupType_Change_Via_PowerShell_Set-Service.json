@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of the PowerShell \"Set-Service\" cmdlet to change the startup type of a service to \"disabled\" or \"manua"
+            "value": "Detects the use of the PowerShell \"Set-Service\" cmdlet to change the startup type of a service to \"disabled\" or \"manu"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

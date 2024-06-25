@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of the tool PowerTool which has the ability to kill a process, delete its process file, unload drivers, and delete the driver fil"
+            "value": "Detects the execution of the tool PowerTool which has the ability to kill a process, delete its process file, unload drivers, and delete the driver fi"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

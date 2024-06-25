@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the usage of the \"Squirrel.exe\" to download arbitrary files. This binary is part of multiple Electron based software installations (Slack, Teams, Discord, etc."
+            "value": "Detects the usage of the \"Squirrel.exe\" to download arbitrary files. This binary is part of multiple Electron based software installations (Slack, Teams, Discord, etc"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

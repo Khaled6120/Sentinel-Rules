@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"reg.exe\" commands with the \"add\" or \"copy\" flags on safe boot registry keys. Often used by attacker to allow the ransomware to work in safe mode as some security products do n"
+            "value": "Detects execution of \"reg.exe\" commands with the \"add\" or \"copy\" flags on safe boot registry keys. Often used by attacker to allow the ransomware to work in safe mode as some security products do "
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

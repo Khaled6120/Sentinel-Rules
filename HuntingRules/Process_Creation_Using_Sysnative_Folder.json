@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects process creation events that use the Sysnative folder (common for CobaltStrike spawn"
+            "value": "Detects process creation events that use the Sysnative folder (common for CobaltStrike spaw"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,privilege_escalation"
+            "value": "Defense Evasion,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

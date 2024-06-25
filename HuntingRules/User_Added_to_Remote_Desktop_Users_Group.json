@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects addition of users to the local Remote Desktop Users group via \"Net\" or \"Add-LocalGroupMember"
+            "value": "Detects addition of users to the local Remote Desktop Users group via \"Net\" or \"Add-LocalGroupMembe"
           },
           {
             "name": "tactics",
-            "value": "lateral_movement,persistence"
+            "value": "Lateral Movement,Persistence"
           },
           {
             "name": "relevantTechniques",

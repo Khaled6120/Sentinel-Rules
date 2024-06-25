@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of WMIC with the \"format\" flag to potentially load XSL files.\nAdversaries abuse this functionality to execute arbitrary files while potentially bypassing application whitelisting defenses.\nExtensible Stylesheet Language"
+            "value": "Detects the execution of WMIC with the \"format\" flag to potentially load XSL files.\nAdversaries abuse this functionality to execute arbitrary files while potentially bypassing application whitelisting defenses.\nExtensible Stylesheet Languag"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects DLL sideloading of DLLs that are part of third party software (zoom, discord....et"
+            "value": "Detects DLL sideloading of DLLs that are part of third party software (zoom, discord....e"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,persistence,privilege_escalation"
+            "value": "Defense Evasion,Persistence,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

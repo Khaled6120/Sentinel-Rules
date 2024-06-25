@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects scheduled task creations that have suspicious action command and folder combinatio"
+            "value": "Detects scheduled task creations that have suspicious action command and folder combinati"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

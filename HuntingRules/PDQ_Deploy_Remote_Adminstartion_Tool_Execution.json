@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etect use of PDQ Deploy remote admin to"
+            "value": "Detect use of PDQ Deploy remote admin t"
           },
           {
             "name": "tactics",
-            "value": "execution,lateral_movement"
+            "value": "Execution,Lateral Movement"
           },
           {
             "name": "relevantTechniques",

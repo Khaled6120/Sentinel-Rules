@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etect DLL Load from Spooler Service backup fold"
+            "value": "Detect DLL Load from Spooler Service backup fol"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,persistence,privilege_escalation"
+            "value": "Defense Evasion,Persistence,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

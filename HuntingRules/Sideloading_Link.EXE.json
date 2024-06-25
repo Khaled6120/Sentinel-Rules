@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution utitilies often found in Visual Studio tools that hardcode the call to the binary \"link.exe\". They can be abused to sideload any binary with the same na"
+            "value": "Detects the execution utitilies often found in Visual Studio tools that hardcode the call to the binary \"link.exe\". They can be abused to sideload any binary with the same n"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

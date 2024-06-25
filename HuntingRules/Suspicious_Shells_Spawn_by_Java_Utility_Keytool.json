@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious shell spawn from Java utility keytool process (e.g. adselfservice plus exploitatio"
+            "value": "Detects suspicious shell spawn from Java utility keytool process (e.g. adselfservice plus exploitati"
           },
           {
             "name": "tactics",
-            "value": "initial_access,persistence,privilege_escalation"
+            "value": "Initial Access,Persistence,Privilege Escalation"
           }
         ]
       }

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potential DLL sideloading using the Microsoft Office winword process via the '/l' fla"
+            "value": "Detects potential DLL sideloading using the Microsoft Office winword process via the '/l' fl"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects wmiexec/dcomexec/atexec/smbexec from Impacket framewo"
+            "value": "Detects wmiexec/dcomexec/atexec/smbexec from Impacket framew"
           },
           {
             "name": "tactics",
-            "value": "execution,lateral_movement"
+            "value": "Execution,Lateral Movement"
           },
           {
             "name": "relevantTechniques",

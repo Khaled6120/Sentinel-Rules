@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects Visual Studio Code tunnel execution. Attackers can abuse this functionality to establish a C2 chann"
+            "value": "Detects Visual Studio Code tunnel execution. Attackers can abuse this functionality to establish a C2 chan"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

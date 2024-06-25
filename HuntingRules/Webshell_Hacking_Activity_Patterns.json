@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects certain parent child patterns found in cases in which a web shell is used to perform certain credential dumping or exfiltration activities on a compromised syste"
+            "value": "Detects certain parent child patterns found in cases in which a web shell is used to perform certain credential dumping or exfiltration activities on a compromised syst"
           },
           {
             "name": "tactics",
-            "value": "persistence"
+            "value": "Persistence"
           },
           {
             "name": "relevantTechniques",

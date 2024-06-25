@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of certutil with certain flags that allow the utility to download file"
+            "value": "Detects the execution of certutil with certain flags that allow the utility to download fil"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

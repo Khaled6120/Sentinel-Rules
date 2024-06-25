@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects calls to PowerShell with Invoke-WebRequest cmdlet using direct IP acce"
+            "value": "Detects calls to PowerShell with Invoke-WebRequest cmdlet using direct IP acc"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

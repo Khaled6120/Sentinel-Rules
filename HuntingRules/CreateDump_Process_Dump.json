@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects uses of the createdump.exe LOLOBIN utility to dump process memo"
+            "value": "Detects uses of the createdump.exe LOLOBIN utility to dump process mem"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

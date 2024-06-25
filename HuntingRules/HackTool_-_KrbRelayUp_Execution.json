@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects KrbRelayUp used to perform a universal no-fix local privilege escalation in Windows domain environments where LDAP signing is not enforc"
+            "value": "Detects KrbRelayUp used to perform a universal no-fix local privilege escalation in Windows domain environments where LDAP signing is not enfor"
           },
           {
             "name": "tactics",
-            "value": "credential_access,lateral_movement"
+            "value": "Credential Access,Lateral Movement"
           },
           {
             "name": "relevantTechniques",

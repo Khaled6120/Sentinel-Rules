@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of a system command via the ScreenConnect RMM servic"
+            "value": "Detects the execution of a system command via the ScreenConnect RMM servi"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

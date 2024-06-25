@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of SoftPerfect's \"netscan.exe\". An application for scanning networks.\nIt is actively used in-the-wild by threat actors to inspect and understand the network architecture of a victim"
+            "value": "Detects usage of SoftPerfect's \"netscan.exe\". An application for scanning networks.\nIt is actively used in-the-wild by threat actors to inspect and understand the network architecture of a victi"
           },
           {
             "name": "tactics",
-            "value": "discovery"
+            "value": "Discovery"
           },
           {
             "name": "relevantTechniques",

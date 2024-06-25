@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of the Quarks PwDump tool via commandline argumen"
+            "value": "Detects usage of the Quarks PwDump tool via commandline argume"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

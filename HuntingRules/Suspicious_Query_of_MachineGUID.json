@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "se of reg to get MachineGuid informati"
+            "value": "Use of reg to get MachineGuid informat"
           },
           {
             "name": "tactics",
-            "value": "discovery"
+            "value": "Discovery"
           },
           {
             "name": "relevantTechniques",

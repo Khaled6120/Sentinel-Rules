@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of the netsh command to open and allow connections to port 3389 (RDP). As seen used by Sarwent Malwa"
+            "value": "Detects usage of the netsh command to open and allow connections to port 3389 (RDP). As seen used by Sarwent Malw"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

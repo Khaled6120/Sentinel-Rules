@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the pattern of UAC Bypass via WSReset usable by default sysmon-conf"
+            "value": "Detects the pattern of UAC Bypass via WSReset usable by default sysmon-con"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,privilege_escalation"
+            "value": "Defense Evasion,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

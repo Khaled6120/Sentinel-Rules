@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects scheduled task creation using \"schtasks\" that contain potentially suspicious or uncommon comman"
+            "value": "Detects scheduled task creation using \"schtasks\" that contain potentially suspicious or uncommon comma"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

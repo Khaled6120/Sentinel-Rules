@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious Microsoft desktopimgdownldr execution with parameters used to download files from the Intern"
+            "value": "Detects a suspicious Microsoft desktopimgdownldr execution with parameters used to download files from the Inter"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

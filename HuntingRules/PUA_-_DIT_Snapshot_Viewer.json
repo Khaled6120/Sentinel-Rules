@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of Ditsnap tool, an inspection tool for Active Directory database, ntds.di"
+            "value": "Detects the use of Ditsnap tool, an inspection tool for Active Directory database, ntds.d"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

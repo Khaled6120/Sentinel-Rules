@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects using WorkFolders.exe to execute an arbitrary control.e"
+            "value": "Detects using WorkFolders.exe to execute an arbitrary control."
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potentially suspicious child process of applications launched from inside the WindowsApps directory. This could be a sign of a rogue \".appx\" package installation/executi"
+            "value": "Detects potentially suspicious child process of applications launched from inside the WindowsApps directory. This could be a sign of a rogue \".appx\" package installation/execut"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           }
         ]
       }

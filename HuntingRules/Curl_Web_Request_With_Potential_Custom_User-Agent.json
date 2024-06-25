@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"curl.exe\" with a potential custom \"User-Agent\". Attackers can leverage this to download or exfiltrate data via \"curl\" to a domain that only accept specific \"User-Agent\" strin"
+            "value": "Detects execution of \"curl.exe\" with a potential custom \"User-Agent\". Attackers can leverage this to download or exfiltrate data via \"curl\" to a domain that only accept specific \"User-Agent\" stri"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           }
         ]
       }

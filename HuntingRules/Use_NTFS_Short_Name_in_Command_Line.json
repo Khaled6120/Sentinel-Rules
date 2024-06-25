@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etect use of the Windows 8.3 short name. Which could be used as a method to avoid command-line detecti"
+            "value": "Detect use of the Windows 8.3 short name. Which could be used as a method to avoid command-line detect"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

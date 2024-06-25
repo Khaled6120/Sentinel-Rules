@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious child process spawning from Outlook where the image is located in a remote location (SMB/WebDav shares"
+            "value": "Detects a suspicious child process spawning from Outlook where the image is located in a remote location (SMB/WebDav share"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of different Windows based hacktools via PE metadata (company, product, etc.) even if the files have been renam"
+            "value": "Detects the execution of different Windows based hacktools via PE metadata (company, product, etc.) even if the files have been rena"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

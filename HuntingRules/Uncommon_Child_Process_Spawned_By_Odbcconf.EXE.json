@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects an uncommon child process of \"odbcconf.exe\" binary which normally shouldn't have any child processe"
+            "value": "Detects an uncommon child process of \"odbcconf.exe\" binary which normally shouldn't have any child process"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

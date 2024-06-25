@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects calls to \"LoadAssemblyFromPath\" or \"LoadAssemblyFromNS\" that are part of the \"CL_LoadAssembly.ps1\" script. This can be abused to load different assemblies and bypass App locker control"
+            "value": "Detects calls to \"LoadAssemblyFromPath\" or \"LoadAssemblyFromNS\" that are part of the \"CL_LoadAssembly.ps1\" script. This can be abused to load different assemblies and bypass App locker contro"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

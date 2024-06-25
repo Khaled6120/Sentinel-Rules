@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious Plink tunnel port forwarding to a local po"
+            "value": "Detects suspicious Plink tunnel port forwarding to a local p"
           },
           {
             "name": "tactics",
-            "value": "command_and_control,lateral_movement"
+            "value": "Command And Control,Lateral Movement"
           },
           {
             "name": "relevantTechniques",

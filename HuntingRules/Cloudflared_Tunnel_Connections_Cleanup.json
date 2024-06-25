@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of the \"cloudflared\" tool with the tunnel \"cleanup\" flag in order to cleanup tunnel connection"
+            "value": "Detects execution of the \"cloudflared\" tool with the tunnel \"cleanup\" flag in order to cleanup tunnel connectio"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

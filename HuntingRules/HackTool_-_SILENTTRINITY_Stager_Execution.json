@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects SILENTTRINITY stager use via PE metada"
+            "value": "Detects SILENTTRINITY stager use via PE metad"
           },
           {
             "name": "tactics",
-            "value": "command_and_control"
+            "value": "Command And Control"
           },
           {
             "name": "relevantTechniques",

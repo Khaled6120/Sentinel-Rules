@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects PowerShell command line patterns in combincation with encoded commands that often appear in malware infection chai"
+            "value": "Detects PowerShell command line patterns in combincation with encoded commands that often appear in malware infection cha"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious ways to use the \"DumpMinitool.exe\" bina"
+            "value": "Detects suspicious ways to use the \"DumpMinitool.exe\" bin"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects successful code compilation via Visual Basic Command Line Compiler that utilizes Windows Resource to Object Converte"
+            "value": "Detects successful code compilation via Visual Basic Command Line Compiler that utilizes Windows Resource to Object Convert"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

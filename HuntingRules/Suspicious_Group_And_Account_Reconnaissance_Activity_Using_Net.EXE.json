@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious reconnaissance command line activity on Windows systems using Net.EXE\nCheck if the user that executed the commands is suspicious (e.g. service accounts, LOCAL_SYSTEM"
+            "value": "Detects suspicious reconnaissance command line activity on Windows systems using Net.EXE\nCheck if the user that executed the commands is suspicious (e.g. service accounts, LOCAL_SYSTE"
           },
           {
             "name": "tactics",
-            "value": "discovery"
+            "value": "Discovery"
           },
           {
             "name": "relevantTechniques",

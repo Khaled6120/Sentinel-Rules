@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious program execution in Outlook temp fold"
+            "value": "Detects a suspicious program execution in Outlook temp fol"
           },
           {
             "name": "tactics",
-            "value": "initial_access"
+            "value": "Initial Access"
           },
           {
             "name": "relevantTechniques",

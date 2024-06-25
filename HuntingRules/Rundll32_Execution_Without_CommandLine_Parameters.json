@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious start of rundll32.exe without any parameters as found in CobaltStrike beacon activi"
+            "value": "Detects suspicious start of rundll32.exe without any parameters as found in CobaltStrike beacon activ"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

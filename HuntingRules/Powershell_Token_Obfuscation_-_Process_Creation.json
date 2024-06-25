@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects TOKEN OBFUSCATION technique from Invoke-Obfuscati"
+            "value": "Detects TOKEN OBFUSCATION technique from Invoke-Obfuscat"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

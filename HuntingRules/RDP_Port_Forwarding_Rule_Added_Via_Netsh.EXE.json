@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of netsh to configure a port forwarding of port 3389 (RDP) ru"
+            "value": "Detects the execution of netsh to configure a port forwarding of port 3389 (RDP) r"
           },
           {
             "name": "tactics",
-            "value": "command_and_control,defense_evasion,lateral_movement"
+            "value": "Command And Control,Defense Evasion,Lateral Movement"
           },
           {
             "name": "relevantTechniques",

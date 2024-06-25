@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "dversaries may acquire credentials from web browsers by reading files specific to the target browser.\nWeb browsers commonly save credentials such as website usernames and passwords so that they do not need to be entered manually in the futu"
+            "value": "Adversaries may acquire credentials from web browsers by reading files specific to the target browser.\nWeb browsers commonly save credentials such as website usernames and passwords so that they do not need to be entered manually in the fut"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etect use of X509Enrollme"
+            "value": "Detect use of X509Enrollm"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

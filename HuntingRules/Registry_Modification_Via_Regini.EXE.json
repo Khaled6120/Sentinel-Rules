@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of regini.exe which can be used to modify registry keys, the changes are imported from one or more text file"
+            "value": "Detects the execution of regini.exe which can be used to modify registry keys, the changes are imported from one or more text fil"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a possible process memory dump that uses the white-listed Citrix TrolleyExpress.exe filename as a way to dump the lsass process memo"
+            "value": "Detects a possible process memory dump that uses the white-listed Citrix TrolleyExpress.exe filename as a way to dump the lsass process mem"
           },
           {
             "name": "tactics",
-            "value": "credential_access,defense_evasion"
+            "value": "Credential Access,Defense Evasion"
           },
           {
             "name": "relevantTechniques",

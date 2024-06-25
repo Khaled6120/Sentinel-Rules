@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects netsh commands that turns off the Windows firewa"
+            "value": "Detects netsh commands that turns off the Windows firew"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,s0108"
+            "value": "Defense Evasion,S0108"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a regedit started with TrustedInstaller privileges or by ProcessHacker.e"
+            "value": "Detects a regedit started with TrustedInstaller privileges or by ProcessHacker."
           },
           {
             "name": "tactics",
-            "value": "privilege_escalation"
+            "value": "Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

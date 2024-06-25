@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of Inveigh a cross-platform .NET IPv4/IPv6 machine-in-the-middle to"
+            "value": "Detects the use of Inveigh a cross-platform .NET IPv4/IPv6 machine-in-the-middle t"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

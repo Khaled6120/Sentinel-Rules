@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a \"winlogon.exe\" process that initiate network communications with public IP address"
+            "value": "Detects a \"winlogon.exe\" process that initiate network communications with public IP addres"
           },
           {
             "name": "tactics",
-            "value": "command_and_control,defense_evasion,execution"
+            "value": "Command And Control,Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

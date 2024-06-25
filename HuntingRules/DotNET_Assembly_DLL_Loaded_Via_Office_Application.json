@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects any assembly DLL being loaded by an Office Produ"
+            "value": "Detects any assembly DLL being loaded by an Office Prod"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

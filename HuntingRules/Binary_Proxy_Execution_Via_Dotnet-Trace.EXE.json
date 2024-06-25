@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects commandline arguments for executing a child process via dotnet-trace.e"
+            "value": "Detects commandline arguments for executing a child process via dotnet-trace."
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

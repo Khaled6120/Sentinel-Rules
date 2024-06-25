@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of a base64 encoded \"FromBase64String\" cmdlet in a process command li"
+            "value": "Detects usage of a base64 encoded \"FromBase64String\" cmdlet in a process command l"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

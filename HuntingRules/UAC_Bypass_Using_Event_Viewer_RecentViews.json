@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the pattern of UAC Bypass using Event Viewer RecentVie"
+            "value": "Detects the pattern of UAC Bypass using Event Viewer RecentVi"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,privilege_escalation"
+            "value": "Defense Evasion,Privilege Escalation"
           }
         ]
       }

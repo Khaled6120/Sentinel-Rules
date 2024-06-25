@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of certutil with the \"encode\" flag to encode a file to base64 where the extensions of the file is suspicio"
+            "value": "Detects the execution of certutil with the \"encode\" flag to encode a file to base64 where the extensions of the file is suspici"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects code execution via Pester.bat (Pester - Powershell Modulte for testin"
+            "value": "Detects code execution via Pester.bat (Pester - Powershell Modulte for testi"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

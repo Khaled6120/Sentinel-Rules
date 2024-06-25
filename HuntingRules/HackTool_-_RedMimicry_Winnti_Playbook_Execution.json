@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects actions caused by the RedMimicry Winnti playbook a automated breach emulations utili"
+            "value": "Detects actions caused by the RedMimicry Winnti playbook a automated breach emulations util"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

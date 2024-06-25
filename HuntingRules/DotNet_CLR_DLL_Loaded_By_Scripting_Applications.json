@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects .NET CLR DLLs being loaded by scripting applications such as wscript or cscript. This could be an indication of potential suspicious executio"
+            "value": "Detects .NET CLR DLLs being loaded by scripting applications such as wscript or cscript. This could be an indication of potential suspicious executi"
           },
           {
             "name": "tactics",
-            "value": "execution,privilege_escalation"
+            "value": "Execution,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

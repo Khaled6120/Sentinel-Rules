@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "dversaries may abuse msiexec.exe to proxy the execution of malicious payloa"
+            "value": "Adversaries may abuse msiexec.exe to proxy the execution of malicious paylo"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",

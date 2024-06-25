@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects installation of a new shim using sdbinst.exe.\nAdversaries may establish persistence and/or elevate privileges by executing malicious content triggered by application shim"
+            "value": "Detects installation of a new shim using sdbinst.exe.\nAdversaries may establish persistence and/or elevate privileges by executing malicious content triggered by application shi"
           },
           {
             "name": "tactics",
-            "value": "persistence,privilege_escalation"
+            "value": "Persistence,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

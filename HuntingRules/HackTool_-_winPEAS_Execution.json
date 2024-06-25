@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "inPEAS is a script that search for possible paths to escalate privileges on Windows hosts. The checks are explained on book.hacktricks.x"
+            "value": "WinPEAS is a script that search for possible paths to escalate privileges on Windows hosts. The checks are explained on book.hacktricks."
           },
           {
             "name": "tactics",
-            "value": "privilege_escalation"
+            "value": "Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

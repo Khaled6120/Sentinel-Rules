@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects UAC Bypass Attempt Using Microsoft Connection Manager Profile Installer Autoelevate-capable COM Objects (e.g. UACMe ID of 41, 43, 58 or 6"
+            "value": "Detects UAC Bypass Attempt Using Microsoft Connection Manager Profile Installer Autoelevate-capable COM Objects (e.g. UACMe ID of 41, 43, 58 or "
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution,g0069,privilege_escalation"
+            "value": "Defense Evasion,Execution,G0069,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

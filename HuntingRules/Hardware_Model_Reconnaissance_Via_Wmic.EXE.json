@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of WMIC with the \"csproduct\" which is used to obtain information such as hardware models and vendor informati"
+            "value": "Detects the execution of WMIC with the \"csproduct\" which is used to obtain information such as hardware models and vendor informat"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

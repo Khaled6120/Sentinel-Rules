@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects process injection using the signed Windows tool \"Mavinject\" via the \"INJECTRUNNING\" fl"
+            "value": "Detects process injection using the signed Windows tool \"Mavinject\" via the \"INJECTRUNNING\" f"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,privilege_escalation"
+            "value": "Defense Evasion,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

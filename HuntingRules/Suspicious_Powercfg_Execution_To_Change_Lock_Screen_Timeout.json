@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious execution of 'Powercfg.exe' to change lock screen timeo"
+            "value": "Detects suspicious execution of 'Powercfg.exe' to change lock screen time"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           }
         ]
       }

@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects process dump via legitimate sqldumper.exe bina"
+            "value": "Detects process dump via legitimate sqldumper.exe bin"
           },
           {
             "name": "tactics",
-            "value": "credential_access"
+            "value": "Credential Access"
           },
           {
             "name": "relevantTechniques",

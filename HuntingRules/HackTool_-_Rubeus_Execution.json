@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of the hacktool Rubeus via PE information of command line paramete"
+            "value": "Detects the execution of the hacktool Rubeus via PE information of command line paramet"
           },
           {
             "name": "tactics",
-            "value": "credential_access,lateral_movement"
+            "value": "Credential Access,Lateral Movement"
           },
           {
             "name": "relevantTechniques",

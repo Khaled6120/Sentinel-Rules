@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of AdvancedRun utili"
+            "value": "Detects the execution of AdvancedRun util"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution,privilege_escalation"
+            "value": "Defense Evasion,Execution,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

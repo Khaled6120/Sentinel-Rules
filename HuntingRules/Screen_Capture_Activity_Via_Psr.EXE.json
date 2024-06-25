@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of Windows Problem Steps Recorder (psr.exe), a utility used to record the user screen and click"
+            "value": "Detects execution of Windows Problem Steps Recorder (psr.exe), a utility used to record the user screen and clic"
           },
           {
             "name": "tactics",
-            "value": "collection"
+            "value": "Collection"
           },
           {
             "name": "relevantTechniques",

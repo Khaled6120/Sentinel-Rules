@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of winget to install applications via manifest file. Adversaries can abuse winget to download payloads remotely and execute them.\nThe manifest option enables you to install an application by passing in a YAML file directly to t"
+            "value": "Detects usage of winget to install applications via manifest file. Adversaries can abuse winget to download payloads remotely and execute them.\nThe manifest option enables you to install an application by passing in a YAML file directly to "
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution"
+            "value": "Defense Evasion,Execution"
           },
           {
             "name": "relevantTechniques",

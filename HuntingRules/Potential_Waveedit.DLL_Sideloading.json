@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potential DLL sideloading of \"waveedit.dll\", which is part of the Nero WaveEditor audio editing softwar"
+            "value": "Detects potential DLL sideloading of \"waveedit.dll\", which is part of the Nero WaveEditor audio editing softwa"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,privilege_escalation"
+            "value": "Defense Evasion,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

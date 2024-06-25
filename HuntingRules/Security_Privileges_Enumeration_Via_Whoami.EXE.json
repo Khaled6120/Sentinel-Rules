@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a whoami.exe executed with the /priv command line flag instructing the tool to show all current user privileges. This is often used after a privilege escalation attemp"
+            "value": "Detects a whoami.exe executed with the /priv command line flag instructing the tool to show all current user privileges. This is often used after a privilege escalation attem"
           },
           {
             "name": "tactics",
-            "value": "discovery,privilege_escalation"
+            "value": "Discovery,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

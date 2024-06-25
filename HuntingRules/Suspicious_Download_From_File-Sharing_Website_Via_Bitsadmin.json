@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of bitsadmin downloading a file from a suspicious doma"
+            "value": "Detects usage of bitsadmin downloading a file from a suspicious dom"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,persistence,s0190"
+            "value": "Defense Evasion,Persistence,S0190"
           },
           {
             "name": "relevantTechniques",

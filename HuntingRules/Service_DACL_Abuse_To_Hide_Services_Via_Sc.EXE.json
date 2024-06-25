@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of the \"sc.exe\" utility adding a new service with special permission seen used by threat actors which makes the service hidden and unremovabl"
+            "value": "Detects usage of the \"sc.exe\" utility adding a new service with special permission seen used by threat actors which makes the service hidden and unremovab"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,persistence,privilege_escalation"
+            "value": "Defense Evasion,Persistence,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

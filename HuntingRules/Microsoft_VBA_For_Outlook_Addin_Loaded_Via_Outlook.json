@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects outlvba (Microsoft VBA for Outlook Addin) DLL being loaded by the outlook proce"
+            "value": "Detects outlvba (Microsoft VBA for Outlook Addin) DLL being loaded by the outlook proc"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

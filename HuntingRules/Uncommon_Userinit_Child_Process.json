@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects uncommon \"userinit.exe\" child processes, which could be a sign of uncommon shells or login scripts used for persistenc"
+            "value": "Detects uncommon \"userinit.exe\" child processes, which could be a sign of uncommon shells or login scripts used for persisten"
           },
           {
             "name": "tactics",
-            "value": "persistence"
+            "value": "Persistence"
           },
           {
             "name": "relevantTechniques",

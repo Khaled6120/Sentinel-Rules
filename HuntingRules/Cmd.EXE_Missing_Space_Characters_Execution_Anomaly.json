@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects Windows command lines that miss a space before or after the /c flag when running a command using the cmd.exe.\nThis could be a sign of obfuscation of a fat finger problem (typo by the developer)"
+            "value": "Detects Windows command lines that miss a space before or after the /c flag when running a command using the cmd.exe.\nThis could be a sign of obfuscation of a fat finger problem (typo by the developer"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           },
           {
             "name": "relevantTechniques",

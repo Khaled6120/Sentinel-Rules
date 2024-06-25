@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious Windows Error Reporting manager (wermgr.exe) execution locatio"
+            "value": "Detects suspicious Windows Error Reporting manager (wermgr.exe) execution locati"
           },
           {
             "name": "tactics",
-            "value": "execution"
+            "value": "Execution"
           }
         ]
       }

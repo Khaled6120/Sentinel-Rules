@@ -21,11 +21,11 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects processes leveraging the \"ms-msdt\" handler or the \"msdt.exe\" binary to execute arbitrary commands as seen in the follina (CVE-2022-30190) vulnerabili"
+            "value": "Detects processes leveraging the \"ms-msdt\" handler or the \"msdt.exe\" binary to execute arbitrary commands as seen in the follina (CVE-2022-30190) vulnerabil"
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "Defense Evasion"
           },
           {
             "name": "relevantTechniques",
