@@ -69,7 +69,7 @@ function ConvertHuntingQueryFromYamlToArm {
 
    if ($yaml.tactics -and $yaml.tactics.Count -gt 0) {
     # Join tactics array into a single string separated by commas
-    $formattedTactics = $yaml.tactics -join ","
+    $formattedTactics = $yaml.tactics.value.ToString() -join ","
     
     # Split by commas, format each tactic, and rejoin
     $formattedTactics = ($formattedTactics -split ",").ForEach({
@@ -88,6 +88,7 @@ function ConvertHuntingQueryFromYamlToArm {
     # Add the formatted tactics object to the hunting query object's tags
     $huntingQueryObj.properties.tags += $tacticsObj
 }
+
 
     if ($yaml.relevantTechniques -and $yaml.relevantTechniques.Count -gt 0) {
         $formattedTechniques = $yaml.relevantTechniques | ForEach-Object {
