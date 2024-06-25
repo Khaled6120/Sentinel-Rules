@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious UltraVNC command line flag combination that indicate a auto reconnect upon execution, e.g. startup (as seen being used by Gamaredon threat grou"
+            "value": "Detects suspicious UltraVNC command line flag combination that indicate a auto reconnect upon execution, e.g. startup (as seen being used by Gamaredon threat gro"
           },
           {
             "name": "tactics",

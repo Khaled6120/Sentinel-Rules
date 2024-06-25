@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects Microsoft Visual Studio vsls-agent.exe lolbin execution with a suspicious library load using the --agentExtensionPath paramet"
+            "value": "Detects Microsoft Visual Studio vsls-agent.exe lolbin execution with a suspicious library load using the --agentExtensionPath parame"
           },
           {
             "name": "tactics",

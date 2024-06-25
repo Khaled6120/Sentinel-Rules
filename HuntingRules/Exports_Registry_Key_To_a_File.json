@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the export of the target Registry key to a fil"
+            "value": "Detects the export of the target Registry key to a fi"
           },
           {
             "name": "tactics",

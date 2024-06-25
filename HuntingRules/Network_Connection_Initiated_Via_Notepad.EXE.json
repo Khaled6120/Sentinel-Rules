@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a network connection that is initiated by the \"notepad.exe\" process.\nThis might be a sign of process injection from a beacon process or something similar.\nNotepad rarely initiates a network communication except when printing document"
+            "value": "Detects a network connection that is initiated by the \"notepad.exe\" process.\nThis might be a sign of process injection from a beacon process or something similar.\nNotepad rarely initiates a network communication except when printing documen"
           },
           {
             "name": "tactics",

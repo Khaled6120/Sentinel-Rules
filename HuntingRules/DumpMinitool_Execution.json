@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of \"DumpMinitool.exe\" a tool that allows the dump of process memory via the use of the \"MiniDumpWriteDum"
+            "value": "Detects the use of \"DumpMinitool.exe\" a tool that allows the dump of process memory via the use of the \"MiniDumpWriteDu"
           },
           {
             "name": "tactics",

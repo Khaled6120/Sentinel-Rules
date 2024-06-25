@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects whether the image specified in a process creation event doesn't refer to an \".exe\" (or other known executable extension) file. This can be caused by process ghosting or other unorthodox methods to start a process.\nThis rule might req"
+            "value": "Detects whether the image specified in a process creation event doesn't refer to an \".exe\" (or other known executable extension) file. This can be caused by process ghosting or other unorthodox methods to start a process.\nThis rule might re"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects WmiPrvSE spawning a proce"
+            "value": "Detects WmiPrvSE spawning a proc"
           },
           {
             "name": "tactics",

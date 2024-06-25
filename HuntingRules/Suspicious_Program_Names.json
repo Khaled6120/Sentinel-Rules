@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious patterns in program names or folders that are often found in malicious samples or hacktoo"
+            "value": "Detects suspicious patterns in program names or folders that are often found in malicious samples or hackto"
           },
           {
             "name": "tactics",

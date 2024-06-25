@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects inline execution of PowerShell code from a fi"
+            "value": "Detects inline execution of PowerShell code from a f"
           },
           {
             "name": "tactics",

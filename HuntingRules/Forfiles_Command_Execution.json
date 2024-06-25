@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of \"forfiles\" with the \"/c\" flag.\nWhile this is an expected behavior of the tool, it can be abused in order to proxy execution through it with any binary.\nCan be used to bypass application whitelisting"
+            "value": "Detects the execution of \"forfiles\" with the \"/c\" flag.\nWhile this is an expected behavior of the tool, it can be abused in order to proxy execution through it with any binary.\nCan be used to bypass application whitelistin"
           },
           {
             "name": "tactics",

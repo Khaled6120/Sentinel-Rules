@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of the Chisel tunneling tool via the commandline argumen"
+            "value": "Detects usage of the Chisel tunneling tool via the commandline argume"
           },
           {
             "name": "tactics",

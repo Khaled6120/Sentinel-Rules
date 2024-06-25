@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the usage of the \"sftp.exe\" binary as a LOLBIN by abusing the \"-D\" fl"
+            "value": "Detects the usage of the \"sftp.exe\" binary as a LOLBIN by abusing the \"-D\" f"
           },
           {
             "name": "tactics",

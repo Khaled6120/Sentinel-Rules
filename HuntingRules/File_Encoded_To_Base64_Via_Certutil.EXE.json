@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of certutil with the \"encode\" flag to encode a file to base64. This can be abused by threat actors and attackers for data exfiltrati"
+            "value": "Detects the execution of certutil with the \"encode\" flag to encode a file to base64. This can be abused by threat actors and attackers for data exfiltrat"
           },
           {
             "name": "tactics",

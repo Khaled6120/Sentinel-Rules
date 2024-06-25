@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of \".xbap\" (Browser Applications) files via PresentationHost.EXE from an uncommon location. These files can be abused to run malicious \".xbap\" files any bypass AW"
+            "value": "Detects the execution of \".xbap\" (Browser Applications) files via PresentationHost.EXE from an uncommon location. These files can be abused to run malicious \".xbap\" files any bypass A"
           },
           {
             "name": "tactics",

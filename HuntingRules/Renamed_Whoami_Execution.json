@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of whoami that has been renamed to a different name to avoid detecti"
+            "value": "Detects the execution of whoami that has been renamed to a different name to avoid detect"
           },
           {
             "name": "tactics",

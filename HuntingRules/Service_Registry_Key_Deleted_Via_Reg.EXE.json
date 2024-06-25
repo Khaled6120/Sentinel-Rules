@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"reg.exe\" commands with the \"delete\" flag on services registry key. Often used by attacker to remove AV software servic"
+            "value": "Detects execution of \"reg.exe\" commands with the \"delete\" flag on services registry key. Often used by attacker to remove AV software servi"
           },
           {
             "name": "tactics",

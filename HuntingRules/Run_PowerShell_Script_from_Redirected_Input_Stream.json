@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects PowerShell script execution via input stream redire"
+            "value": "Detects PowerShell script execution via input stream redir"
           },
           {
             "name": "tactics",

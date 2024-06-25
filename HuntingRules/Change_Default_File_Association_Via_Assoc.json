@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects file association changes using the builtin \"assoc\" command.\nWhen a file is opened, the default program used to open the file (also called the file association or handler) is checked. File association selections are stored in the Wind"
+            "value": "Detects file association changes using the builtin \"assoc\" command.\nWhen a file is opened, the default program used to open the file (also called the file association or handler) is checked. File association selections are stored in the Win"
           },
           {
             "name": "tactics",

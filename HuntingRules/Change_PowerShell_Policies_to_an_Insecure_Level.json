@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects changing the PowerShell script execution policy to a potentially insecure level using the \"-ExecutionPolicy\" fla"
+            "value": "Detects changing the PowerShell script execution policy to a potentially insecure level using the \"-ExecutionPolicy\" fl"
           },
           {
             "name": "tactics",

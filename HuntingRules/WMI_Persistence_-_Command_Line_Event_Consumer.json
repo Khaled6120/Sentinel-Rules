@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects WMI command line event consume"
+            "value": "Detects WMI command line event consum"
           },
           {
             "name": "tactics",

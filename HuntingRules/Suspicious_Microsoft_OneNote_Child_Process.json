@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious child processes of the Microsoft OneNote application. This may indicate an attempt to execute malicious embedded objects from a .one fil"
+            "value": "Detects suspicious child processes of the Microsoft OneNote application. This may indicate an attempt to execute malicious embedded objects from a .one fi"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious launch of the PSEXESVC service on this system and a sub process run as LOCAL_SYSTEM (-s), which means that someone remotely started a command on this system running it with highest privileges and not only the privileges of"
+            "value": "Detects suspicious launch of the PSEXESVC service on this system and a sub process run as LOCAL_SYSTEM (-s), which means that someone remotely started a command on this system running it with highest privileges and not only the privileges o"
           },
           {
             "name": "tactics",

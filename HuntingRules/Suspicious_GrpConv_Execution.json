@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the suspicious execution of a utility to convert Windows 3.x .grp files or for persistence purposes by malicious software or acto"
+            "value": "Detects the suspicious execution of a utility to convert Windows 3.x .grp files or for persistence purposes by malicious software or act"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious parent process for cmd.e"
+            "value": "Detects suspicious parent process for cmd."
           },
           {
             "name": "tactics",

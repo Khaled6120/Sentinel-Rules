@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects Obfuscated Powershell via VAR++ LAUNCH"
+            "value": "Detects Obfuscated Powershell via VAR++ LAUNC"
           },
           {
             "name": "tactics",

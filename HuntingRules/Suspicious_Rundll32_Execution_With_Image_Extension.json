@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of Rundll32.exe with DLL files masquerading as image fil"
+            "value": "Detects the execution of Rundll32.exe with DLL files masquerading as image fi"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of \"MSPUB\" (Microsoft Publisher) to download arbitrary fil"
+            "value": "Detects usage of \"MSPUB\" (Microsoft Publisher) to download arbitrary fi"
           },
           {
             "name": "tactics",

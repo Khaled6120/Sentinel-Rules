@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious UTF16 and base64 encoded and often obfuscated PowerShell code often used in command lin"
+            "value": "Detects suspicious UTF16 and base64 encoded and often obfuscated PowerShell code often used in command li"
           },
           {
             "name": "tactics",

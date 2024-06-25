@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"findstr\" with specific flags and a remote share path. This specific set of CLI flags would allow \"findstr\" to download the content of the file located on the remote share as described in the LOLBAS entry"
+            "value": "Detects execution of \"findstr\" with specific flags and a remote share path. This specific set of CLI flags would allow \"findstr\" to download the content of the file located on the remote share as described in the LOLBAS entr"
           },
           {
             "name": "tactics",

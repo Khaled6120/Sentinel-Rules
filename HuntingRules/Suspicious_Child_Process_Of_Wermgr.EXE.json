@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious Windows Error Reporting manager (wermgr.exe) child proce"
+            "value": "Detects suspicious Windows Error Reporting manager (wermgr.exe) child proc"
           },
           {
             "name": "tactics",

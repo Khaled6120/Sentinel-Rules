@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects Certipy a tool for Active Directory Certificate Services enumeration and abuse based on PE metadata characteristics and common command line argument"
+            "value": "Detects Certipy a tool for Active Directory Certificate Services enumeration and abuse based on PE metadata characteristics and common command line argumen"
           },
           {
             "name": "tactics",

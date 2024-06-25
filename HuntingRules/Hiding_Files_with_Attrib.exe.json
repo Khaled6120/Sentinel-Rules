@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of attrib.exe to hide files from user"
+            "value": "Detects usage of attrib.exe to hide files from use"
           },
           {
             "name": "tactics",

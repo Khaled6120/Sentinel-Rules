@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potential RDP connection via Mstsc using a local \".rdp\" fi"
+            "value": "Detects potential RDP connection via Mstsc using a local \".rdp\" f"
           },
           {
             "name": "tactics",

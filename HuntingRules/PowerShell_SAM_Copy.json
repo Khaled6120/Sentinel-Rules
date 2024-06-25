@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious PowerShell scripts accessing SAM hiv"
+            "value": "Detects suspicious PowerShell scripts accessing SAM hi"
           },
           {
             "name": "tactics",

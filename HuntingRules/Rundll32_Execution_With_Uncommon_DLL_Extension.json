@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of rundll32 with a command line that doesn't contain a common extensi"
+            "value": "Detects the execution of rundll32 with a command line that doesn't contain a common extens"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of the WMI class \"Win32_NTEventlogFile\" in a potentially suspicious way (delete, backup, change permissions, etc.) from a PowerShell scri"
+            "value": "Detects usage of the WMI class \"Win32_NTEventlogFile\" in a potentially suspicious way (delete, backup, change permissions, etc.) from a PowerShell scr"
           },
           {
             "name": "tactics",

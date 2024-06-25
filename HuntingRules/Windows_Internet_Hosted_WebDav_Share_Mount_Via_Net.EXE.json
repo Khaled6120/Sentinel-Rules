@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects when an internet hosted webdav share is mounted using the \"net.exe\" utili"
+            "value": "Detects when an internet hosted webdav share is mounted using the \"net.exe\" util"
           },
           {
             "name": "tactics",

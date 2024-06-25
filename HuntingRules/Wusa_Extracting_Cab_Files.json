@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of the \"wusa.exe\" (Windows Update Standalone Installer) utility to extract cab using the \"/extract\" argument which is not longer supported. This could indicate an attacker using an old techniq"
+            "value": "Detects usage of the \"wusa.exe\" (Windows Update Standalone Installer) utility to extract cab using the \"/extract\" argument which is not longer supported. This could indicate an attacker using an old techni"
           },
           {
             "name": "tactics",

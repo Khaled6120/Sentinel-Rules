@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious connections from Microsoft Sync Center to non-private IP"
+            "value": "Detects suspicious connections from Microsoft Sync Center to non-private I"
           },
           {
             "name": "tactics",

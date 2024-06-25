@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of javascript code using \"mshta.exe"
+            "value": "Detects execution of javascript code using \"mshta.ex"
           },
           {
             "name": "tactics",

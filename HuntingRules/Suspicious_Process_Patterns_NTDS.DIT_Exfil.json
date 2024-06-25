@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious process patterns used in NTDS.DIT exfiltrati"
+            "value": "Detects suspicious process patterns used in NTDS.DIT exfiltrat"
           },
           {
             "name": "tactics",

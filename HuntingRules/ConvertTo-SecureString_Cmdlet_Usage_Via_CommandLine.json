@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of the \"ConvertTo-SecureString\" cmdlet via the commandline. Which is fairly uncommon and could indicate potential suspicious activi"
+            "value": "Detects usage of the \"ConvertTo-SecureString\" cmdlet via the commandline. Which is fairly uncommon and could indicate potential suspicious activ"
           },
           {
             "name": "tactics",

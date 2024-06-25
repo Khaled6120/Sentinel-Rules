@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of \"reg.exe\" to alter registry keys that would replace the user's desktop background.\nThis is a common technique used by malware to change the desktop background to a ransom note or other image"
+            "value": "Detects the execution of \"reg.exe\" to alter registry keys that would replace the user's desktop background.\nThis is a common technique used by malware to change the desktop background to a ransom note or other imag"
           },
           {
             "name": "tactics",

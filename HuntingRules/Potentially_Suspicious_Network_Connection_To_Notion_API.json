@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a non-browser process communicating with the Notion API. This could indicate potential use of a covert C2 channel such as \"OffensiveNotion C"
+            "value": "Detects a non-browser process communicating with the Notion API. This could indicate potential use of a covert C2 channel such as \"OffensiveNotion "
           },
           {
             "name": "tactics",

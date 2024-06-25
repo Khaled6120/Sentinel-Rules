@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of certutil with the \"encode\" flag to encode a file to base64 where the files are located in potentially suspicious locatio"
+            "value": "Detects the execution of certutil with the \"encode\" flag to encode a file to base64 where the files are located in potentially suspicious locati"
           },
           {
             "name": "tactics",

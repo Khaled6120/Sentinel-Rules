@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects Certify a tool for Active Directory certificate abuse based on PE metadata characteristics and common command line argument"
+            "value": "Detects Certify a tool for Active Directory certificate abuse based on PE metadata characteristics and common command line argumen"
           },
           {
             "name": "tactics",

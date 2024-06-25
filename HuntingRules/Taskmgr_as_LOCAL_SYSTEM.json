@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the creation of taskmgr.exe process in context of LOCAL_SYST"
+            "value": "Detects the creation of taskmgr.exe process in context of LOCAL_SYS"
           },
           {
             "name": "tactics",

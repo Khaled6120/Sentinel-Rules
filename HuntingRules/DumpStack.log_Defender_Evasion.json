@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of the filename DumpStack.log to evade Microsoft Defend"
+            "value": "Detects the use of the filename DumpStack.log to evade Microsoft Defen"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of of Dxcap.e"
+            "value": "Detects execution of of Dxcap."
           },
           {
             "name": "tactics",

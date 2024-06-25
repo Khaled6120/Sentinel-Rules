@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of the hacktool SharPersist - used to deploy various different kinds of persistence mechanis"
+            "value": "Detects the execution of the hacktool SharPersist - used to deploy various different kinds of persistence mechani"
           },
           {
             "name": "tactics",

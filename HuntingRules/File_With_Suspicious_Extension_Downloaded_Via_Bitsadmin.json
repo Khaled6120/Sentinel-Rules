@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of bitsadmin downloading a file with a suspicious extensi"
+            "value": "Detects usage of bitsadmin downloading a file with a suspicious extens"
           },
           {
             "name": "tactics",

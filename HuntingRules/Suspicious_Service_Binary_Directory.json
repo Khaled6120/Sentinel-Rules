@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a service binary running in a suspicious directo"
+            "value": "Detects a service binary running in a suspicious direct"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects email exfiltration via powershell cmdle"
+            "value": "Detects email exfiltration via powershell cmdl"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of NirCmd tool for command execution as SYSTEM us"
+            "value": "Detects the use of NirCmd tool for command execution as SYSTEM u"
           },
           {
             "name": "tactics",

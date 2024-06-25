@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects possible execution via LNK file accessed on a WebDAV serve"
+            "value": "Detects possible execution via LNK file accessed on a WebDAV serv"
           },
           {
             "name": "tactics",

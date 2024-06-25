@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects shell spawned from Java host process, which could be a sign of exploitation (e.g. log4j exploitatio"
+            "value": "Detects shell spawned from Java host process, which could be a sign of exploitation (e.g. log4j exploitati"
           },
           {
             "name": "tactics",

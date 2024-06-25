@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of the \"cloudflared\" binary from a non standard location"
+            "value": "Detects the execution of the \"cloudflared\" binary from a non standard locatio"
           },
           {
             "name": "tactics",

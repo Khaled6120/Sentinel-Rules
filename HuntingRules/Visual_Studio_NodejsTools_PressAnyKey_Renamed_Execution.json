@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects renamed execution of \"Microsoft.NodejsTools.PressAnyKey.exe\", which can be abused as a LOLBIN to execute arbitrary binari"
+            "value": "Detects renamed execution of \"Microsoft.NodejsTools.PressAnyKey.exe\", which can be abused as a LOLBIN to execute arbitrary binar"
           },
           {
             "name": "tactics",

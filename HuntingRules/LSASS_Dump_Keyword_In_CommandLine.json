@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the presence of the keywords \"lsass\" and \".dmp\" in the commandline, which could indicate a potential attempt to dump or create a dump of the lsass process"
+            "value": "Detects the presence of the keywords \"lsass\" and \".dmp\" in the commandline, which could indicate a potential attempt to dump or create a dump of the lsass proces"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects actions that clear the local ShimCache and remove forensic eviden"
+            "value": "Detects actions that clear the local ShimCache and remove forensic evide"
           },
           {
             "name": "tactics",

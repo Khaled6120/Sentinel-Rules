@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects commands that indicate a Raccine removal from an end system. Raccine is a free ransomware protection too"
+            "value": "Detects commands that indicate a Raccine removal from an end system. Raccine is a free ransomware protection to"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of Msiexec.exe to install packages hosted remotely quiet"
+            "value": "Detects usage of Msiexec.exe to install packages hosted remotely quie"
           },
           {
             "name": "tactics",

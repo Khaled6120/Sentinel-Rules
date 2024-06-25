@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects AdFind execution with common flags seen used during attac"
+            "value": "Detects AdFind execution with common flags seen used during atta"
           },
           {
             "name": "tactics",

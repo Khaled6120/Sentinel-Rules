@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "dentifies use of various commands to query a systems time. This technique may be used before executing a scheduled task or to discover the time zone of a target syste"
+            "value": "Identifies use of various commands to query a systems time. This technique may be used before executing a scheduled task or to discover the time zone of a target syst"
           },
           {
             "name": "tactics",

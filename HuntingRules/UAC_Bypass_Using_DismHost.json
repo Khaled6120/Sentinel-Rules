@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the pattern of UAC Bypass using DismHost DLL hijacking (UACMe 6"
+            "value": "Detects the pattern of UAC Bypass using DismHost DLL hijacking (UACMe "
           },
           {
             "name": "tactics",

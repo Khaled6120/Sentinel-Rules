@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potentially suspicious child processes of \"aspnet_compiler.exe"
+            "value": "Detects potentially suspicious child processes of \"aspnet_compiler.ex"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious parent processes that should not have any children or should only have a single possible child progr"
+            "value": "Detects suspicious parent processes that should not have any children or should only have a single possible child prog"
           },
           {
             "name": "tactics",

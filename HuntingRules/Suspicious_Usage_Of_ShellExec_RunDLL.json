@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious usage of the ShellExec_RunDLL function to launch other commands as seen in the the raspberry-robin atta"
+            "value": "Detects suspicious usage of the ShellExec_RunDLL function to launch other commands as seen in the the raspberry-robin att"
           },
           {
             "name": "tactics",

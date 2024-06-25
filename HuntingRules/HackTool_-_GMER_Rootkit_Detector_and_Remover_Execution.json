@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution GMER tool based on image and hash field"
+            "value": "Detects the execution GMER tool based on image and hash fiel"
           },
           {
             "name": "tactics",

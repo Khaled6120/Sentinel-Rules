@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects calls to the AtomicTestHarnesses \"Invoke-ATHRemoteFXvGPUDisablementCommand\" which is designed to abuse the \"RemoteFXvGPUDisablement.exe\" binary to run custom PowerShell code via module load-order hijackin"
+            "value": "Detects calls to the AtomicTestHarnesses \"Invoke-ATHRemoteFXvGPUDisablementCommand\" which is designed to abuse the \"RemoteFXvGPUDisablement.exe\" binary to run custom PowerShell code via module load-order hijacki"
           },
           {
             "name": "tactics",

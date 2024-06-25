@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of a renamed autohotkey.exe binary based on PE metadata fiel"
+            "value": "Detects execution of a renamed autohotkey.exe binary based on PE metadata fie"
           },
           {
             "name": "tactics",

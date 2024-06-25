@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of \"forfiles\" from a non-default location, in order to potentially spawn a custom \"cmd.exe\" from the current working directory"
+            "value": "Detects the execution of \"forfiles\" from a non-default location, in order to potentially spawn a custom \"cmd.exe\" from the current working director"
           },
           {
             "name": "tactics",

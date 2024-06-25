@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects when a share is mounted using the \"net.exe\" utili"
+            "value": "Detects when a share is mounted using the \"net.exe\" util"
           },
           {
             "name": "tactics",

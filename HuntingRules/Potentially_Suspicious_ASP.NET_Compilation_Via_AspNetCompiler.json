@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"aspnet_compiler.exe\" with potentially suspicious paths for compilatio"
+            "value": "Detects execution of \"aspnet_compiler.exe\" with potentially suspicious paths for compilati"
           },
           {
             "name": "tactics",

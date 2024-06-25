@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of Ngrok, a utility used for port forwarding and tunneling, often used by threat actors to make local protected services publicly available.\nInvolved domains are bin.equinox.io for download and *.ngrok.io for connections"
+            "value": "Detects the use of Ngrok, a utility used for port forwarding and tunneling, often used by threat actors to make local protected services publicly available.\nInvolved domains are bin.equinox.io for download and *.ngrok.io for connection"
           },
           {
             "name": "tactics",

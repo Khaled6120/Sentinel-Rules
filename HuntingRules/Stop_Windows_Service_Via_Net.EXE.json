@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the stopping of a Windows service via the \"net\" utilit"
+            "value": "Detects the stopping of a Windows service via the \"net\" utili"
           },
           {
             "name": "tactics",

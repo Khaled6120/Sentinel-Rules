@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of winget to add a new insecure (http) download source.\nWinget will not allow the addition of insecure sources, hence this could indicate potential suspicious activity (or typos"
+            "value": "Detects usage of winget to add a new insecure (http) download source.\nWinget will not allow the addition of insecure sources, hence this could indicate potential suspicious activity (or typo"
           },
           {
             "name": "tactics",

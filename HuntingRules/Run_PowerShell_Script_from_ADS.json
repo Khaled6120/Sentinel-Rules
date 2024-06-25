@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects PowerShell script execution from Alternate Data Stream (AD"
+            "value": "Detects PowerShell script execution from Alternate Data Stream (A"
           },
           {
             "name": "tactics",

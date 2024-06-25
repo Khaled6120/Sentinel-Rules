@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of the \"wusa.exe\" (Windows Update Standalone Installer) utility by a parent process that is located in a suspicious location"
+            "value": "Detects execution of the \"wusa.exe\" (Windows Update Standalone Installer) utility by a parent process that is located in a suspicious locatio"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects indicators of a UAC bypass method by mocking directori"
+            "value": "Detects indicators of a UAC bypass method by mocking director"
           },
           {
             "name": "tactics",

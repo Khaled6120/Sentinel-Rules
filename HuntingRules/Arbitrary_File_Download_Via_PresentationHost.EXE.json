@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of \"PresentationHost\" which is a utility that runs \".xbap\" (Browser Applications) files to download arbitrary fil"
+            "value": "Detects usage of \"PresentationHost\" which is a utility that runs \".xbap\" (Browser Applications) files to download arbitrary fi"
           },
           {
             "name": "tactics",

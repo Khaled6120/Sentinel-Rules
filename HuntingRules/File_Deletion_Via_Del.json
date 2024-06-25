@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of the builtin \"del\"/\"erase\" commands in order to delete files.\nAdversaries may delete files left behind by the actions of their intrusion activity.\nMalware, tools, or other non-native files dropped or created on a system b"
+            "value": "Detects execution of the builtin \"del\"/\"erase\" commands in order to delete files.\nAdversaries may delete files left behind by the actions of their intrusion activity.\nMalware, tools, or other non-native files dropped or created on a system "
           },
           {
             "name": "tactics",

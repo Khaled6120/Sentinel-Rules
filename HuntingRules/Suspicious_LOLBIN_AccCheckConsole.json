@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious LOLBIN AccCheckConsole execution with parameters as used to load an arbitrary D"
+            "value": "Detects suspicious LOLBIN AccCheckConsole execution with parameters as used to load an arbitrary "
           },
           {
             "name": "tactics",

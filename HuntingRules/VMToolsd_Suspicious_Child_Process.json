@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious child process creations of VMware Tools process which may indicate persistence set"
+            "value": "Detects suspicious child process creations of VMware Tools process which may indicate persistence se"
           },
           {
             "name": "tactics",

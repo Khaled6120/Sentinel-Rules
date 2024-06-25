@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etection of sc.exe utility adding a new service with special permission which hides that servic"
+            "value": "Detection of sc.exe utility adding a new service with special permission which hides that servi"
           },
           {
             "name": "tactics",

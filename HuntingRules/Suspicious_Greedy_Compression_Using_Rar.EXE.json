@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects RAR usage that creates an archive from a suspicious folder, either a system folder or one of the folders often used by attackers for staging purpos"
+            "value": "Detects RAR usage that creates an archive from a suspicious folder, either a system folder or one of the folders often used by attackers for staging purpo"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious Rundll32 execution from control.exe as used by Equation Group and Exploit Ki"
+            "value": "Detects suspicious Rundll32 execution from control.exe as used by Equation Group and Exploit K"
           },
           {
             "name": "tactics",

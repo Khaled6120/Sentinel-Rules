@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "dversaries may disable security tools to avoid possible detection of their tools and activities by removing Windows Defender Definition Fil"
+            "value": "Adversaries may disable security tools to avoid possible detection of their tools and activities by removing Windows Defender Definition Fi"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects VB DLL's loaded by an office application. Which could indicate the presence of VBA Macro"
+            "value": "Detects VB DLL's loaded by an office application. Which could indicate the presence of VBA Macr"
           },
           {
             "name": "tactics",

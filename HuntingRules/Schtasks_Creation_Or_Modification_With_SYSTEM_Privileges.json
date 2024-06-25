@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the creation or update of a scheduled task to run with \"NT AUTHORITY\\SYSTEM\" privileg"
+            "value": "Detects the creation or update of a scheduled task to run with \"NT AUTHORITY\\SYSTEM\" privile"
           },
           {
             "name": "tactics",

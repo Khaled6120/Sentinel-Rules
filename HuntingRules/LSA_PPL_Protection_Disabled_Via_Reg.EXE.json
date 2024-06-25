@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the usage of the \"reg.exe\" utility to disable PPL protection on the LSA proce"
+            "value": "Detects the usage of the \"reg.exe\" utility to disable PPL protection on the LSA proc"
           },
           {
             "name": "tactics",

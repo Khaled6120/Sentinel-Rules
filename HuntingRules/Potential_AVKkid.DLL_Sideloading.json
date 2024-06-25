@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potential DLL sideloading of \"AVKkid.dl"
+            "value": "Detects potential DLL sideloading of \"AVKkid.d"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects Crassus, a Windows privilege escalation discovery tool, based on PE metadata characteristic"
+            "value": "Detects Crassus, a Windows privilege escalation discovery tool, based on PE metadata characteristi"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etection for mshta.exe suspicious execution patterns sometimes involving file polygloti"
+            "value": "Detection for mshta.exe suspicious execution patterns sometimes involving file polyglot"
           },
           {
             "name": "tactics",

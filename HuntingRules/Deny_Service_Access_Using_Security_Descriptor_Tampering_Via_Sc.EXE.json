@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious DACL modifications to deny access to a service that affects critical trustees. This can be used to hide services or make them unstoppabl"
+            "value": "Detects suspicious DACL modifications to deny access to a service that affects critical trustees. This can be used to hide services or make them unstoppab"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects Stracciatella which executes a Powershell runspace from within C# (aka SharpPick technique) with AMSI, ETW and Script Block Logging disabled based on PE metadata characteristic"
+            "value": "Detects Stracciatella which executes a Powershell runspace from within C# (aka SharpPick technique) with AMSI, ETW and Script Block Logging disabled based on PE metadata characteristi"
           },
           {
             "name": "tactics",

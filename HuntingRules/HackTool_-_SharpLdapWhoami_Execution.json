@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects SharpLdapWhoami, a whoami alternative that queries the LDAP service on a domain controll"
+            "value": "Detects SharpLdapWhoami, a whoami alternative that queries the LDAP service on a domain control"
           },
           {
             "name": "tactics",

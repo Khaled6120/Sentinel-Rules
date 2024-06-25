@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects powershell scripts that import modules from suspicious directori"
+            "value": "Detects powershell scripts that import modules from suspicious director"
           },
           {
             "name": "tactics",

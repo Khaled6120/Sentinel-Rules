@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of findstr to identify and execute a lnk file as seen within the HHS redirect atta"
+            "value": "Detects usage of findstr to identify and execute a lnk file as seen within the HHS redirect att"
           },
           {
             "name": "tactics",

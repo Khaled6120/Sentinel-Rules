@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of special strings/null bits in order to potentially bypass AMSI functionaliti"
+            "value": "Detects usage of special strings/null bits in order to potentially bypass AMSI functionalit"
           },
           {
             "name": "tactics",

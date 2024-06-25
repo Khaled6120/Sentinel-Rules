@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects changes to environment variables related to ETW logging. This could indicate potential adversaries stopping ETW providers recording loaded .NET assemblie"
+            "value": "Detects changes to environment variables related to ETW logging. This could indicate potential adversaries stopping ETW providers recording loaded .NET assembli"
           },
           {
             "name": "tactics",

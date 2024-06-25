@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of the \"systeminfo\" command to retrieve informati"
+            "value": "Detects usage of the \"systeminfo\" command to retrieve informat"
           },
           {
             "name": "tactics",

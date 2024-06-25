@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potentially suspicious child processes of \"Diskshadow.exe\". This could be an attempt to bypass parent/child relationship detection or application whitelisting rule"
+            "value": "Detects potentially suspicious child processes of \"Diskshadow.exe\". This could be an attempt to bypass parent/child relationship detection or application whitelisting rul"
           },
           {
             "name": "tactics",

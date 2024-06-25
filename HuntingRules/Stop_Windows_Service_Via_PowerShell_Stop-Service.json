@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the stopping of a Windows service via the PowerShell Cmdlet \"Stop-Servic"
+            "value": "Detects the stopping of a Windows service via the PowerShell Cmdlet \"Stop-Servi"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of \"hh.exe\" to open \".chm\" file"
+            "value": "Detects the execution of \"hh.exe\" to open \".chm\" fil"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etect indirect command execution via Program Compatibility Assistant pcwrun.e"
+            "value": "Detect indirect command execution via Program Compatibility Assistant pcwrun."
           },
           {
             "name": "tactics",

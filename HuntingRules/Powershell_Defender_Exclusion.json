@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects requests to exclude files, folders or processes from Antivirus scanning using PowerShell cmdle"
+            "value": "Detects requests to exclude files, folders or processes from Antivirus scanning using PowerShell cmdl"
           },
           {
             "name": "tactics",

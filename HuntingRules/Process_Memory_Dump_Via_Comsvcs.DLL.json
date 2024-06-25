@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a process memory dump via \"comsvcs.dll\" using rundll32, covering multiple different techniques (ordinal, minidump function, etc"
+            "value": "Detects a process memory dump via \"comsvcs.dll\" using rundll32, covering multiple different techniques (ordinal, minidump function, et"
           },
           {
             "name": "tactics",

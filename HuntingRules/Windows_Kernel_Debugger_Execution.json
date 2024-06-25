@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of the Windows Kernel Debugger \"kd.exe"
+            "value": "Detects execution of the Windows Kernel Debugger \"kd.ex"
           },
           {
             "name": "tactics",

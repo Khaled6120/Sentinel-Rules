@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects signs of the WMI script host process \"scrcons.exe\" loading scripting DLLs which could indicates WMI ActiveScriptEventConsumers EventConsumers activit"
+            "value": "Detects signs of the WMI script host process \"scrcons.exe\" loading scripting DLLs which could indicates WMI ActiveScriptEventConsumers EventConsumers activi"
           },
           {
             "name": "tactics",

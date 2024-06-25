@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects service path modification via the \"sc\" binary to a suspicious command or pa"
+            "value": "Detects service path modification via the \"sc\" binary to a suspicious command or p"
           },
           {
             "name": "tactics",

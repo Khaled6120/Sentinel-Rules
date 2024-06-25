@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the load of RstrtMgr DLL (Restart Manager) by an uncommon process.\nThis library has been used during ransomware campaigns to kill processes that would prevent file encryption by locking them (e.g. Conti ransomware, Cactus ransomware)"
+            "value": "Detects the load of RstrtMgr DLL (Restart Manager) by an uncommon process.\nThis library has been used during ransomware campaigns to kill processes that would prevent file encryption by locking them (e.g. Conti ransomware, Cactus ransomware"
           },
           {
             "name": "tactics",

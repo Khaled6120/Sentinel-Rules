@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the recovery of files from backups via \"wbadmin.exe\".\nAttackers can restore sensitive files such as NTDS.DIT or Registry Hives from backups in order to potentially extract credentials"
+            "value": "Detects the recovery of files from backups via \"wbadmin.exe\".\nAttackers can restore sensitive files such as NTDS.DIT or Registry Hives from backups in order to potentially extract credential"
           },
           {
             "name": "tactics",

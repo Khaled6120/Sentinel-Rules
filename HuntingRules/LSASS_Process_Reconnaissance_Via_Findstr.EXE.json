@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects findstring commands that include the keyword lsass, which indicates recon actviity for the LSASS process P"
+            "value": "Detects findstring commands that include the keyword lsass, which indicates recon actviity for the LSASS process "
           },
           {
             "name": "tactics",

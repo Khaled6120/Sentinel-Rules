@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious process related to rundll32 based on command line that includes a *.sys file as seen being used by UNC24"
+            "value": "Detects suspicious process related to rundll32 based on command line that includes a *.sys file as seen being used by UNC2"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potential DLL sideloading of \"wwlib.dl"
+            "value": "Detects potential DLL sideloading of \"wwlib.d"
           },
           {
             "name": "tactics",

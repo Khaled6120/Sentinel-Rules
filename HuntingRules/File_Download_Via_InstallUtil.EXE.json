@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects use of .NET InstallUtil.exe in order to download arbitrary files. The files will be written to \"%LOCALAPPDATA%\\Microsoft\\Windows\\INetCache\\IE\\"
+            "value": "Detects use of .NET InstallUtil.exe in order to download arbitrary files. The files will be written to \"%LOCALAPPDATA%\\Microsoft\\Windows\\INetCache\\IE"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of CustomShellHost binary where the child isn't located in 'C:\\Windows\\explorer.ex"
+            "value": "Detects the execution of CustomShellHost binary where the child isn't located in 'C:\\Windows\\explorer.e"
           },
           {
             "name": "tactics",

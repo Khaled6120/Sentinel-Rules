@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious process spawning from one of the Microsoft Office suite products (Word, Excel, PowerPoint, Publisher, Visio, etc"
+            "value": "Detects a suspicious process spawning from one of the Microsoft Office suite products (Word, Excel, PowerPoint, Publisher, Visio, et"
           },
           {
             "name": "tactics",

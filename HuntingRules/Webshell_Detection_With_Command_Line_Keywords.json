@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects certain command line parameters often used during reconnaissance activity via web shel"
+            "value": "Detects certain command line parameters often used during reconnaissance activity via web she"
           },
           {
             "name": "tactics",

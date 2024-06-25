@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"tar.exe\" in order to extract compressed file.\nAdversaries may abuse various utilities in order to decompress data to avoid detection"
+            "value": "Detects execution of \"tar.exe\" in order to extract compressed file.\nAdversaries may abuse various utilities in order to decompress data to avoid detectio"
           },
           {
             "name": "tactics",

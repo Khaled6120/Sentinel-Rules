@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious sysprep process start with AppData folder as target (as used by Trojan Syndicasec in Thrip report by Symante"
+            "value": "Detects suspicious sysprep process start with AppData folder as target (as used by Trojan Syndicasec in Thrip report by Symant"
           },
           {
             "name": "tactics",

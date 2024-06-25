@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects Netsh command execution that whitelists a program located in a suspicious location in the Windows Firewa"
+            "value": "Detects Netsh command execution that whitelists a program located in a suspicious location in the Windows Firew"
           },
           {
             "name": "tactics",

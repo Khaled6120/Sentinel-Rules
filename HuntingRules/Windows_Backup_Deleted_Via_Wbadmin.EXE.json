@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the deletion of backups or system state backups via \"wbadmin.exe\".\nThis technique is used by numerous ransomware families and actors.\nThis may only be successful on server platforms that have Windows Backup enabled"
+            "value": "Detects the deletion of backups or system state backups via \"wbadmin.exe\".\nThis technique is used by numerous ransomware families and actors.\nThis may only be successful on server platforms that have Windows Backup enable"
           },
           {
             "name": "tactics",

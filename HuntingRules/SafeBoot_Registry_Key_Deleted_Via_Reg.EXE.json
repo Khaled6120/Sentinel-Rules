@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"reg.exe\" commands with the \"delete\" flag on safe boot registry keys. Often used by attacker to prevent safeboot execution of security produc"
+            "value": "Detects execution of \"reg.exe\" commands with the \"delete\" flag on safe boot registry keys. Often used by attacker to prevent safeboot execution of security produ"
           },
           {
             "name": "tactics",

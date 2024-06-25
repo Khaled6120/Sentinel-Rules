@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious or uncommon parent processes of PowerShe"
+            "value": "Detects a suspicious or uncommon parent processes of PowerSh"
           },
           {
             "name": "tactics",

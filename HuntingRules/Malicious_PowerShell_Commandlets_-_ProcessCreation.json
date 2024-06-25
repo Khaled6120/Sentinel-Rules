@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects Commandlet names from well-known PowerShell exploitation framewor"
+            "value": "Detects Commandlet names from well-known PowerShell exploitation framewo"
           },
           {
             "name": "tactics",

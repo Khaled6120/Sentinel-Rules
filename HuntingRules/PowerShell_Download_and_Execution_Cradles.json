@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects PowerShell download and execution cradle"
+            "value": "Detects PowerShell download and execution cradl"
           },
           {
             "name": "tactics",

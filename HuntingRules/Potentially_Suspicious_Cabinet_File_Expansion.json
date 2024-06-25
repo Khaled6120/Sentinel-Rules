@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the expansion or decompression of cabinet files from potentially suspicious or uncommon locations, e.g. seen in Iranian MeteorExpress related attac"
+            "value": "Detects the expansion or decompression of cabinet files from potentially suspicious or uncommon locations, e.g. seen in Iranian MeteorExpress related atta"
           },
           {
             "name": "tactics",

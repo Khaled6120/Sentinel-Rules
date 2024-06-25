@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious msiexec process starts with web addresses as paramet"
+            "value": "Detects suspicious msiexec process starts with web addresses as parame"
           },
           {
             "name": "tactics",

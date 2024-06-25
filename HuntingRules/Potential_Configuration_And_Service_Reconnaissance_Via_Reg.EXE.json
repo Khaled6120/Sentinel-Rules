@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the usage of \"reg.exe\" in order to query reconnaissance information from the registry. Adversaries may interact with the Windows registry to gather information about credentials, the system, configuration, and installed softwar"
+            "value": "Detects the usage of \"reg.exe\" in order to query reconnaissance information from the registry. Adversaries may interact with the Windows registry to gather information about credentials, the system, configuration, and installed softwa"
           },
           {
             "name": "tactics",

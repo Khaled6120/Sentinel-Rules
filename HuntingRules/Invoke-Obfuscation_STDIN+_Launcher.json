@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects Obfuscated use of stdin to execute PowerShe"
+            "value": "Detects Obfuscated use of stdin to execute PowerSh"
           },
           {
             "name": "tactics",

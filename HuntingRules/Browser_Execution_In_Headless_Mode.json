@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of Chromium based browser in headless mo"
+            "value": "Detects execution of Chromium based browser in headless m"
           },
           {
             "name": "tactics",

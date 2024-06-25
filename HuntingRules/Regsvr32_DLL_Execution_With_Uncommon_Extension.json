@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a \"regsvr32\" execution where the DLL doesn't contain a common file extensio"
+            "value": "Detects a \"regsvr32\" execution where the DLL doesn't contain a common file extensi"
           },
           {
             "name": "tactics",

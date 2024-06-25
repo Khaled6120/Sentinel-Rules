@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of the \"jsc.exe\" (JScript Compiler).\nAttacker might abuse this in order to compile JScript files on the fly and bypassing application whitelisting"
+            "value": "Detects the execution of the \"jsc.exe\" (JScript Compiler).\nAttacker might abuse this in order to compile JScript files on the fly and bypassing application whitelistin"
           },
           {
             "name": "tactics",

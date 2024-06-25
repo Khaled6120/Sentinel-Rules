@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects process creation with a renamed BrowserCore.exe (used to extract Azure token"
+            "value": "Detects process creation with a renamed BrowserCore.exe (used to extract Azure toke"
           },
           {
             "name": "relevantTechniques",

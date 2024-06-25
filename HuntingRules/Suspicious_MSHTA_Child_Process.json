@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious process spawning from an \"mshta.exe\" process, which could be indicative of a malicious HTA script executi"
+            "value": "Detects a suspicious process spawning from an \"mshta.exe\" process, which could be indicative of a malicious HTA script execut"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects DLL sideloading of \"dbghelp.dl"
+            "value": "Detects DLL sideloading of \"dbghelp.d"
           },
           {
             "name": "tactics",

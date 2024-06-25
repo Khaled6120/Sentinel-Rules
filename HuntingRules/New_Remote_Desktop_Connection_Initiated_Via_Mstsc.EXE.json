@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the usage of \"mstsc.exe\" with the \"/v\" flag to initiate a connection to a remote server.\nAdversaries may use valid accounts to log into a computer using the Remote Desktop Protocol (RDP). The adversary may then perform actions as the"
+            "value": "Detects the usage of \"mstsc.exe\" with the \"/v\" flag to initiate a connection to a remote server.\nAdversaries may use valid accounts to log into a computer using the Remote Desktop Protocol (RDP). The adversary may then perform actions as th"
           },
           {
             "name": "tactics",

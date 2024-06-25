@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etect malicious GPO modifications can be used to implement many other malicious behavior"
+            "value": "Detect malicious GPO modifications can be used to implement many other malicious behavio"
           },
           {
             "name": "tactics",

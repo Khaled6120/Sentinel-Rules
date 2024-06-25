@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects child processes of \"provlaunch.exe\" which might indicate potential abuse to proxy executio"
+            "value": "Detects child processes of \"provlaunch.exe\" which might indicate potential abuse to proxy executi"
           },
           {
             "name": "tactics",

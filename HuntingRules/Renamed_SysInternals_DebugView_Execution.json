@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious renamed SysInternals DebugView executi"
+            "value": "Detects suspicious renamed SysInternals DebugView execut"
           },
           {
             "name": "tactics",

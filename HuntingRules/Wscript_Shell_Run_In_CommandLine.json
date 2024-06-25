@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the presence of the keywords \"Wscript\", \"Shell\" and \"Run\" in the command, which could indicate a suspicious activi"
+            "value": "Detects the presence of the keywords \"Wscript\", \"Shell\" and \"Run\" in the command, which could indicate a suspicious activ"
           },
           {
             "name": "tactics",

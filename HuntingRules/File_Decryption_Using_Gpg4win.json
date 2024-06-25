@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of Gpg4win to decrypt fil"
+            "value": "Detects usage of Gpg4win to decrypt fi"
           },
           {
             "name": "tactics",

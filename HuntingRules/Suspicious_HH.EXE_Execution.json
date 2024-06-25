@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious execution of a Microsoft HTML Help (HH.ex"
+            "value": "Detects a suspicious execution of a Microsoft HTML Help (HH.e"
           },
           {
             "name": "tactics",

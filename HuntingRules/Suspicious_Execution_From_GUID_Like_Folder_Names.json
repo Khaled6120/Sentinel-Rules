@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potential suspicious execution of a GUID like folder name located in a suspicious location such as %TEMP% as seen being used in IcedID attac"
+            "value": "Detects potential suspicious execution of a GUID like folder name located in a suspicious location such as %TEMP% as seen being used in IcedID atta"
           },
           {
             "name": "tactics",

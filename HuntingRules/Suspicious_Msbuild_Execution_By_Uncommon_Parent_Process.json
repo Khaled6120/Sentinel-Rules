@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious execution of 'Msbuild.exe' by a uncommon parent proce"
+            "value": "Detects suspicious execution of 'Msbuild.exe' by a uncommon parent proc"
           },
           {
             "name": "tactics",

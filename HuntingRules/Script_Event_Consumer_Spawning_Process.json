@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious child process of Script Event Consumer (scrcons.exe"
+            "value": "Detects a suspicious child process of Script Event Consumer (scrcons.ex"
           },
           {
             "name": "tactics",

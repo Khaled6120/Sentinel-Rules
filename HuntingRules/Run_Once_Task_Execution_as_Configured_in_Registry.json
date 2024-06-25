@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "his rule detects the execution of Run Once task as configured in the regist"
+            "value": "This rule detects the execution of Run Once task as configured in the regis"
           },
           {
             "name": "tactics",

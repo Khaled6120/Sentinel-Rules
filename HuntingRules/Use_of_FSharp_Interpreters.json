@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of FSharp Interpreters \"FsiAnyCpu.exe\" and \"FSi.exe\"\nBoth can be used for AWL bypass and to execute F# code via scripts or inline"
+            "value": "Detects the execution of FSharp Interpreters \"FsiAnyCpu.exe\" and \"FSi.exe\"\nBoth can be used for AWL bypass and to execute F# code via scripts or inlin"
           },
           {
             "name": "tactics",

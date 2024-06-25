@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"ftp.exe\" script with the \"-s\" or \"/s\" flag and any child processes ran by \"ftp.exe"
+            "value": "Detects execution of \"ftp.exe\" script with the \"-s\" or \"/s\" flag and any child processes ran by \"ftp.ex"
           },
           {
             "name": "tactics",

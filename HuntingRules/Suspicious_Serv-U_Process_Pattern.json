@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious process pattern which could be a sign of an exploited Serv-U servi"
+            "value": "Detects a suspicious process pattern which could be a sign of an exploited Serv-U serv"
           },
           {
             "name": "tactics",

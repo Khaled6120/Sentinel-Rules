@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of iexpress.exe to create binaries via Self Extraction Directive (SED) files located in potentially suspicious locations.\nThis behavior has been observed in-the-wild by different threat actors"
+            "value": "Detects the use of iexpress.exe to create binaries via Self Extraction Directive (SED) files located in potentially suspicious locations.\nThis behavior has been observed in-the-wild by different threat actor"
           },
           {
             "name": "tactics",

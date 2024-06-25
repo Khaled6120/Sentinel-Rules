@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects launch of executable by calling the LaunchApplication function from pcwutl.dll librar"
+            "value": "Detects launch of executable by calling the LaunchApplication function from pcwutl.dll libra"
           },
           {
             "name": "tactics",

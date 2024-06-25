@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects processes spawned from web servers (PHP, Tomcat, IIS, etc.) that perform reconnaissance looking for the existence of popular scripting tools (perl, python, wget) on the system via the help command"
+            "value": "Detects processes spawned from web servers (PHP, Tomcat, IIS, etc.) that perform reconnaissance looking for the existence of popular scripting tools (perl, python, wget) on the system via the help comman"
           },
           {
             "name": "tactics",

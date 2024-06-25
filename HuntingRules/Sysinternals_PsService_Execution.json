@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of Sysinternals PsService which can be abused for service reconnaissance and tamperi"
+            "value": "Detects usage of Sysinternals PsService which can be abused for service reconnaissance and tamper"
           },
           {
             "name": "tactics",

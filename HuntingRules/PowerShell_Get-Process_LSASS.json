@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a \"Get-Process\" cmdlet and it's aliases on lsass process, which is in almost all cases a sign of malicious activi"
+            "value": "Detects a \"Get-Process\" cmdlet and it's aliases on lsass process, which is in almost all cases a sign of malicious activ"
           },
           {
             "name": "tactics",

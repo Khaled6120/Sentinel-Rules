@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of a Microsoft signed script executing a managed DLL with PowerShel"
+            "value": "Detects the use of a Microsoft signed script executing a managed DLL with PowerShe"
           },
           {
             "name": "tactics",

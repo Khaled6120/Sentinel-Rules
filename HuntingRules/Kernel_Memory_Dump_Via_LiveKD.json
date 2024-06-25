@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of LiveKD with the \"-m\" flag to potentially dump the kernel memo"
+            "value": "Detects execution of LiveKD with the \"-m\" flag to potentially dump the kernel mem"
           },
           {
             "name": "tactics",

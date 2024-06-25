@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of \"wmic\" with the \"group\" flag.\nAdversaries may attempt to find local system groups and permission settings.\nThe knowledge of local system permission groups can help adversaries determine which groups exist and which u"
+            "value": "Detects the execution of \"wmic\" with the \"group\" flag.\nAdversaries may attempt to find local system groups and permission settings.\nThe knowledge of local system permission groups can help adversaries determine which groups exist and which "
           },
           {
             "name": "tactics",

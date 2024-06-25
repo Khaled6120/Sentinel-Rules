@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects direct modification of autostart extensibility point (ASEP) in registry using reg.ex"
+            "value": "Detects direct modification of autostart extensibility point (ASEP) in registry using reg.e"
           },
           {
             "name": "tactics",

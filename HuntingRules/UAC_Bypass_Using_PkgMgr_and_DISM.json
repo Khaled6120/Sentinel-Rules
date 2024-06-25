@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the pattern of UAC Bypass using pkgmgr.exe and dism.exe (UACMe 2"
+            "value": "Detects the pattern of UAC Bypass using pkgmgr.exe and dism.exe (UACMe "
           },
           {
             "name": "tactics",

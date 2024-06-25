@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects when the Console Window Host (conhost.exe) process is spawned by an uncommon parent process, which could be indicative of potential code injection activit"
+            "value": "Detects when the Console Window Host (conhost.exe) process is spawned by an uncommon parent process, which could be indicative of potential code injection activi"
           },
           {
             "name": "tactics",

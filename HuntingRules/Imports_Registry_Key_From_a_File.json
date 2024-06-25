@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the import of the specified file to the registry with regedit.ex"
+            "value": "Detects the import of the specified file to the registry with regedit.e"
           },
           {
             "name": "tactics",

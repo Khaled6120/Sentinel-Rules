@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects indirect command execution via Program Compatibility Assistant \"pcwrun.exe\" leveraging the follina (CVE-2022-30190) vulnerabili"
+            "value": "Detects indirect command execution via Program Compatibility Assistant \"pcwrun.exe\" leveraging the follina (CVE-2022-30190) vulnerabil"
           },
           {
             "name": "tactics",

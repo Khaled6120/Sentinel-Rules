@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects file execution using the msdeploy.exe lolb"
+            "value": "Detects file execution using the msdeploy.exe lol"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"curl.exe\" with the \"--insecure\" fla"
+            "value": "Detects execution of \"curl.exe\" with the \"--insecure\" fl"
           },
           {
             "name": "tactics",

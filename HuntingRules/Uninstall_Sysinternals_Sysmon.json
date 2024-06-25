@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the removal of Sysmon, which could be a potential attempt at defense evasi"
+            "value": "Detects the removal of Sysmon, which could be a potential attempt at defense evas"
           },
           {
             "name": "tactics",

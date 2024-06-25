@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects when a possible suspicious driver is being installed via pnputil.exe lolb"
+            "value": "Detects when a possible suspicious driver is being installed via pnputil.exe lol"
           },
           {
             "name": "tactics",

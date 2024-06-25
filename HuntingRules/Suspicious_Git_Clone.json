@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"git\" in order to clone a remote repository that contain suspicious keywords which might be suspicio"
+            "value": "Detects execution of \"git\" in order to clone a remote repository that contain suspicious keywords which might be suspici"
           },
           {
             "name": "tactics",

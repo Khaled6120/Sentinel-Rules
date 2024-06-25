@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the use of \"Ilasm.EXE\" in order to compile C# intermediate (IL) code to EXE or DL"
+            "value": "Detects the use of \"Ilasm.EXE\" in order to compile C# intermediate (IL) code to EXE or D"
           },
           {
             "name": "tactics",

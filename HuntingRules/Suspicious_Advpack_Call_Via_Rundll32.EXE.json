@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of \"rundll32\" calling \"advpack.dll\" with potential obfuscated ordinal calls in order to leverage the \"RegisterOCX\" functi"
+            "value": "Detects execution of \"rundll32\" calling \"advpack.dll\" with potential obfuscated ordinal calls in order to leverage the \"RegisterOCX\" funct"
           },
           {
             "name": "tactics",

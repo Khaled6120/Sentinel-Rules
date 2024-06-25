@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "he Fax service attempts to load ualapi.dll, which is non-existent. An attacker can then (side)load their own malicious DLL using this servic"
+            "value": "The Fax service attempts to load ualapi.dll, which is non-existent. An attacker can then (side)load their own malicious DLL using this servi"
           },
           {
             "name": "tactics",

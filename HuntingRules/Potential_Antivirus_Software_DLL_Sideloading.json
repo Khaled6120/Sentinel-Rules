@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects potential DLL sideloading of DLLs that are part of antivirus software suchas McAfee, Symantec...e"
+            "value": "Detects potential DLL sideloading of DLLs that are part of antivirus software suchas McAfee, Symantec..."
           },
           {
             "name": "tactics",

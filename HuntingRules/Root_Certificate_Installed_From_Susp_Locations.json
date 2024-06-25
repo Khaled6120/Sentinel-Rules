@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "dversaries may install a root certificate on a compromised system to avoid warnings when connecting to adversary controlled web server"
+            "value": "Adversaries may install a root certificate on a compromised system to avoid warnings when connecting to adversary controlled web serve"
           },
           {
             "name": "tactics",

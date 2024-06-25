@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "his tool enables enumeration and exporting of all DNS records in the zone for recon purposes of internal networks Python 3 and python.exe must be installed,\nUsee to Query/modify DNS records for Active Directory integrated DNS via LDA"
+            "value": "This tool enables enumeration and exporting of all DNS records in the zone for recon purposes of internal networks Python 3 and python.exe must be installed,\nUsee to Query/modify DNS records for Active Directory integrated DNS via LD"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects process creation events that use the Sysnative folder (common for CobaltStrike spawn"
+            "value": "Detects process creation events that use the Sysnative folder (common for CobaltStrike spaw"
           },
           {
             "name": "tactics",

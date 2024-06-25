@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of the certutil with the \"exportPFX\" flag which allows the utility to export certificate"
+            "value": "Detects the execution of the certutil with the \"exportPFX\" flag which allows the utility to export certificat"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of a renamed ProcDump executable often used by attackers or malwa"
+            "value": "Detects the execution of a renamed ProcDump executable often used by attackers or malw"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects Access to Domain Group Policies stored in SYSV"
+            "value": "Detects Access to Domain Group Policies stored in SYS"
           },
           {
             "name": "tactics",

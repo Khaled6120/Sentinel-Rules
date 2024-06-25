@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of the binary \"wpbbin\" which is used as part of the UEFI based persistence method described in the reference secti"
+            "value": "Detects execution of the binary \"wpbbin\" which is used as part of the UEFI based persistence method described in the reference sect"
           },
           {
             "name": "tactics",

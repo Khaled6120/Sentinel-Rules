@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects calls to base64 encoded WMI class such as \"Win32_ShadowCopy\", \"Win32_ScheduledJob\", et"
+            "value": "Detects calls to base64 encoded WMI class such as \"Win32_ShadowCopy\", \"Win32_ScheduledJob\", e"
           },
           {
             "name": "tactics",

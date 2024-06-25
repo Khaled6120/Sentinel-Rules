@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the execution of \"Ldifde.exe\" with the import flag \"-i\". The can be abused to include HTTP-based arguments which will allow the arbitrary download of files from a remote server"
+            "value": "Detects the execution of \"Ldifde.exe\" with the import flag \"-i\". The can be abused to include HTTP-based arguments which will allow the arbitrary download of files from a remote serve"
           },
           {
             "name": "tactics",

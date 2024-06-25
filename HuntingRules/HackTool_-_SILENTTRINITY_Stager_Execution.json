@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects SILENTTRINITY stager use via PE metada"
+            "value": "Detects SILENTTRINITY stager use via PE metad"
           },
           {
             "name": "tactics",

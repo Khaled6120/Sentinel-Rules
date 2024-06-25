@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a suspicious copy operation that tries to copy a program from system (System32, SysWOW64, WinSxS) directories to another on disk.\nOften used to move LOLBINs such as 'certutil' or 'desktopimgdownldr' to a different location with a dif"
+            "value": "Detects a suspicious copy operation that tries to copy a program from system (System32, SysWOW64, WinSxS) directories to another on disk.\nOften used to move LOLBINs such as 'certutil' or 'desktopimgdownldr' to a different location with a di"
           },
           {
             "name": "tactics",

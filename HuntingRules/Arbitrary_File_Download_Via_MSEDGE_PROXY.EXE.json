@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects usage of \"msedge_proxy.exe\" to download arbitrary fil"
+            "value": "Detects usage of \"msedge_proxy.exe\" to download arbitrary fi"
           },
           {
             "name": "tactics",

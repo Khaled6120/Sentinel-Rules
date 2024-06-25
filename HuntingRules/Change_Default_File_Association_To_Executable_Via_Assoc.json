@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects when a program changes the default file association of any extension to an executable.\nWhen a file is opened, the default program used to open the file (also called the file association or handler) is checked. File association select"
+            "value": "Detects when a program changes the default file association of any extension to an executable.\nWhen a file is opened, the default program used to open the file (also called the file association or handler) is checked. File association selec"
           },
           {
             "name": "tactics",

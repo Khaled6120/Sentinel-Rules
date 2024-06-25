@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects PowerShell scripts that make use of the \"Compress-Archive\" Cmdlet in order to compress folders and files where the output is stored in a potentially suspicious location that is used often by malware for exfiltration.\nAn adversary mig"
+            "value": "Detects PowerShell scripts that make use of the \"Compress-Archive\" Cmdlet in order to compress folders and files where the output is stored in a potentially suspicious location that is used often by malware for exfiltration.\nAn adversary mi"
           },
           {
             "name": "tactics",

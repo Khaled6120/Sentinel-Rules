@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects a remote file copy attempt to a hidden network share. This may indicate lateral movement or data staging activit"
+            "value": "Detects a remote file copy attempt to a hidden network share. This may indicate lateral movement or data staging activi"
           },
           {
             "name": "tactics",

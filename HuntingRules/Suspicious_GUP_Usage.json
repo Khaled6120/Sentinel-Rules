@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects execution of the Notepad++ updater in a suspicious directory, which is often used in DLL side-loading attac"
+            "value": "Detects execution of the Notepad++ updater in a suspicious directory, which is often used in DLL side-loading atta"
           },
           {
             "name": "tactics",

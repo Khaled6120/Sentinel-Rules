@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects suspicious ways to run Invoke-Execution using IEX ali"
+            "value": "Detects suspicious ways to run Invoke-Execution using IEX al"
           },
           {
             "name": "tactics",

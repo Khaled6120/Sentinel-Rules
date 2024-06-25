@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "etects the pattern of UAC Bypass using scheduled tasks and variable expansion of cleanmgr.exe (UACMe 3"
+            "value": "Detects the pattern of UAC Bypass using scheduled tasks and variable expansion of cleanmgr.exe (UACMe "
           },
           {
             "name": "tactics",
