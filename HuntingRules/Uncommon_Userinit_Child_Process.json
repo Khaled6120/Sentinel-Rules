@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects uncommon \"userinit.exe\" child processes, which could be a sign of uncommon shells or login scripts used for persisten"
+            "value": "etects uncommon \"userinit.exe\" child processes, which could be a sign of uncommon shells or login scripts used for persistenc"
           },
           {
             "name": "tactics",

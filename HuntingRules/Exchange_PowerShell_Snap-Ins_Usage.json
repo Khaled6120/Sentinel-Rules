@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects adding and using Exchange PowerShell snap-ins to export mailbox data. As seen used by HAFNIUM and AP"
+            "value": "etects adding and using Exchange PowerShell snap-ins to export mailbox data. As seen used by HAFNIUM and APT"
           },
           {
             "name": "tactics",

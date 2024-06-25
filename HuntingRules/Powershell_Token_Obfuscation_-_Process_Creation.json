@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects TOKEN OBFUSCATION technique from Invoke-Obfuscat"
+            "value": "etects TOKEN OBFUSCATION technique from Invoke-Obfuscati"
           },
           {
             "name": "tactics",

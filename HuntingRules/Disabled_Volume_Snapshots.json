@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects commands that temporarily turn off Volume Snapsh"
+            "value": "etects commands that temporarily turn off Volume Snapsho"
           },
           {
             "name": "tactics",

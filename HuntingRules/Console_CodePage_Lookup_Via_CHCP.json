@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects use of chcp to look up the system locale value as part of host discov"
+            "value": "etects use of chcp to look up the system locale value as part of host discove"
           },
           {
             "name": "tactics",

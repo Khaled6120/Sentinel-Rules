@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detect usage of the \"runexehelper.exe\" binary as a proxy to launch other progr"
+            "value": "etect usage of the \"runexehelper.exe\" binary as a proxy to launch other progra"
           },
           {
             "name": "tactics",

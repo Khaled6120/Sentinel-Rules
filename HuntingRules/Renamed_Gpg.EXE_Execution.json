@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of a renamed \"gpg.exe\". Often used by ransomware and loaders to decrypt/encrypt da"
+            "value": "etects the execution of a renamed \"gpg.exe\". Often used by ransomware and loaders to decrypt/encrypt dat"
           },
           {
             "name": "tactics",

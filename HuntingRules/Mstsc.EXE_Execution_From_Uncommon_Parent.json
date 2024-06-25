@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential RDP connection via Mstsc using a local \".rdp\" file located in suspicious locatio"
+            "value": "etects potential RDP connection via Mstsc using a local \".rdp\" file located in suspicious location"
           },
           {
             "name": "tactics",

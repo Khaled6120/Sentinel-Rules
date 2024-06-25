@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the creation of a schtask that executes a file from C:\\Users\\<USER>\\AppData\\Lo"
+            "value": "etects the creation of a schtask that executes a file from C:\\Users\\<USER>\\AppData\\Loc"
           },
           {
             "name": "tactics",

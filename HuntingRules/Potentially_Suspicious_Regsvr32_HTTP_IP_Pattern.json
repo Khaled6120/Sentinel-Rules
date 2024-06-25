@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects regsvr32 execution to download and install DLLs located remotely where the address is an IP addre"
+            "value": "etects regsvr32 execution to download and install DLLs located remotely where the address is an IP addres"
           },
           {
             "name": "tactics",

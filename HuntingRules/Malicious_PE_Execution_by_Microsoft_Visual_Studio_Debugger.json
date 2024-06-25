@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "There is an option for a MS VS Just-In-Time Debugger \"vsjitdebugger.exe\" to launch specified executable and attach a debugger.\nThis option may be used adversaries to execute malicious code by signed verified binary.\nThe debugger is installe"
+            "value": "here is an option for a MS VS Just-In-Time Debugger \"vsjitdebugger.exe\" to launch specified executable and attach a debugger.\nThis option may be used adversaries to execute malicious code by signed verified binary.\nThe debugger is installed"
           },
           {
             "name": "tactics",

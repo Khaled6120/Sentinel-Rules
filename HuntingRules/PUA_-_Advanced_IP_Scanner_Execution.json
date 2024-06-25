@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of Advanced IP Scanner. Seems to be a popular tool for ransomware grou"
+            "value": "etects the use of Advanced IP Scanner. Seems to be a popular tool for ransomware group"
           },
           {
             "name": "tactics",

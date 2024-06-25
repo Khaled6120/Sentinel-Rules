@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of arbitrary DLLs or unsigned code via a \".csproj\" files via Dotnet.E"
+            "value": "etects execution of arbitrary DLLs or unsigned code via a \".csproj\" files via Dotnet.EX"
           },
           {
             "name": "tactics",

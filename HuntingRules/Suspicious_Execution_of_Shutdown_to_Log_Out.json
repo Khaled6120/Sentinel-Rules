@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the rare use of the command line tool shutdown to logoff a u"
+            "value": "etects the rare use of the command line tool shutdown to logoff a us"
           },
           {
             "name": "tactics",

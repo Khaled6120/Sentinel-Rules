@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a code page switch in command line or batch scripts to a rare langu"
+            "value": "etects a code page switch in command line or batch scripts to a rare langua"
           },
           {
             "name": "tactics",

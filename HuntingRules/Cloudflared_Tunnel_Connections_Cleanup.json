@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of the \"cloudflared\" tool with the tunnel \"cleanup\" flag in order to cleanup tunnel connectio"
+            "value": "etects execution of the \"cloudflared\" tool with the tunnel \"cleanup\" flag in order to cleanup tunnel connection"
           },
           {
             "name": "tactics",

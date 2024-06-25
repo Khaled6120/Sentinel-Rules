@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a suspicious output redirection to the local admins share, this technique is often found in malicious scripts or hacktool stag"
+            "value": "etects a suspicious output redirection to the local admins share, this technique is often found in malicious scripts or hacktool stage"
           },
           {
             "name": "tactics",

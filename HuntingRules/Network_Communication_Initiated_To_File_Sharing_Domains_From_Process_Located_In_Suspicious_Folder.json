@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects executables located in potentially suspicious directories initiating network connections towards file sharing domai"
+            "value": "etects executables located in potentially suspicious directories initiating network connections towards file sharing domain"
           },
           {
             "name": "tactics",

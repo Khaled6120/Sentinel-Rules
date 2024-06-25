@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Uses the .NET InstallUtil.exe application in order to execute image without "
+            "value": "ses the .NET InstallUtil.exe application in order to execute image without l"
           },
           {
             "name": "tactics",

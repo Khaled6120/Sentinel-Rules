@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of sigverif binary as a parent process which could indicate it being used as a LOLBIN to proxy execut"
+            "value": "etects the execution of sigverif binary as a parent process which could indicate it being used as a LOLBIN to proxy executi"
           },
           {
             "name": "tactics",

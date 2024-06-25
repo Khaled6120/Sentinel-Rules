@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of \"VSDiagnostics.exe\" with the \"start\" command in order to launch and proxy arbitrary binari"
+            "value": "etects execution of \"VSDiagnostics.exe\" with the \"start\" command in order to launch and proxy arbitrary binarie"
           },
           {
             "name": "tactics",

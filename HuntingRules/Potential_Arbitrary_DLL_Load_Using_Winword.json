@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading using the Microsoft Office winword process via the '/l' fl"
+            "value": "etects potential DLL sideloading using the Microsoft Office winword process via the '/l' fla"
           },
           {
             "name": "tactics",

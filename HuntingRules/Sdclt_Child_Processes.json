@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "A General detection for sdclt spawning new processes. This could be an indicator of sdclt being used for bypass UAC techniqu"
+            "value": " General detection for sdclt spawning new processes. This could be an indicator of sdclt being used for bypass UAC technique"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Deployment Image Servicing and Management tool. DISM is used to enumerate, install, uninstall, configure, and update features and packages in Windows ima"
+            "value": "eployment Image Servicing and Management tool. DISM is used to enumerate, install, uninstall, configure, and update features and packages in Windows imag"
           },
           {
             "name": "tactics",

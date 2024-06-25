@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of \"whoami.exe\" with the \"/all\" f"
+            "value": "etects the execution of \"whoami.exe\" with the \"/all\" fl"
           },
           {
             "name": "tactics",

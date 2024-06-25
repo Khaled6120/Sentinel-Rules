@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects Obfuscated use of Clip.exe to execute PowerSh"
+            "value": "etects Obfuscated use of Clip.exe to execute PowerShe"
           },
           {
             "name": "tactics",

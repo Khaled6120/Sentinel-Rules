@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects commandline arguments for executing a child process via dotnet-trace."
+            "value": "etects commandline arguments for executing a child process via dotnet-trace.e"
           },
           {
             "name": "tactics",

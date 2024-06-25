@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious execution of rundll32, with specific calls to some DLLs with known LOLBIN functionalit"
+            "value": "etects suspicious execution of rundll32, with specific calls to some DLLs with known LOLBIN functionaliti"
           },
           {
             "name": "tactics",

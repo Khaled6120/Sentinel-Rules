@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a suspicious script execution in temporary folders or folders accessible by environment variab"
+            "value": "etects a suspicious script execution in temporary folders or folders accessible by environment variabl"
           },
           {
             "name": "tactics",

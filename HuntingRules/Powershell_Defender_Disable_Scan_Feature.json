@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects requests to disable Microsoft Defender features using PowerShell comma"
+            "value": "etects requests to disable Microsoft Defender features using PowerShell comman"
           },
           {
             "name": "tactics",

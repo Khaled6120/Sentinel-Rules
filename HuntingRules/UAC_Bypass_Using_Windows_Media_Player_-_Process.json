@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the pattern of UAC Bypass using Windows Media Player osksupport.dll (UACMe "
+            "value": "etects the pattern of UAC Bypass using Windows Media Player osksupport.dll (UACMe 3"
           },
           {
             "name": "tactics",

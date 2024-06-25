@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a Chromium based browser process with the 'load-extension' flag to start a instance with a custom extens"
+            "value": "etects a Chromium based browser process with the 'load-extension' flag to start a instance with a custom extensi"
           },
           {
             "name": "tactics",

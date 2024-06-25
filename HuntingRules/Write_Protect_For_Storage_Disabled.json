@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects applications trying to modify the registry in order to disable any write-protect property for storage devices.\nThis could be a precursor to a ransomware attack and has been an observed technique used by cypherpunk grou"
+            "value": "etects applications trying to modify the registry in order to disable any write-protect property for storage devices.\nThis could be a precursor to a ransomware attack and has been an observed technique used by cypherpunk group"
           },
           {
             "name": "tactics",

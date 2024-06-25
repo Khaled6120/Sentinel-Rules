@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of a base64 encoded \"FromBase64String\" cmdlet in a process command l"
+            "value": "etects usage of a base64 encoded \"FromBase64String\" cmdlet in a process command li"
           },
           {
             "name": "tactics",

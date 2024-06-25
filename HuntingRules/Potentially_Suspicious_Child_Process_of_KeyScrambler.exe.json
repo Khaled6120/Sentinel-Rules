@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potentially suspicious child processes of KeyScrambler."
+            "value": "etects potentially suspicious child processes of KeyScrambler.e"
           },
           {
             "name": "tactics",

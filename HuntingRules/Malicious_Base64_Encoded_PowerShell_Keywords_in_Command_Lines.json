@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects base64 encoded strings used in hidden malicious PowerShell command li"
+            "value": "etects base64 encoded strings used in hidden malicious PowerShell command lin"
           },
           {
             "name": "tactics",

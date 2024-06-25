@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a script interpreter wscript/cscript opening a network connection to a non-local network. Adversaries may use script to download malicious payloa"
+            "value": "etects a script interpreter wscript/cscript opening a network connection to a non-local network. Adversaries may use script to download malicious payload"
           },
           {
             "name": "tactics",

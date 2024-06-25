@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects creation of a scheduled task with a GUID like n"
+            "value": "etects creation of a scheduled task with a GUID like na"
           },
           {
             "name": "tactics",

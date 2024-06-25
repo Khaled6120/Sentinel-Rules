@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects PowerShell commands that decrypt an \".LNK\" \"file to drop the next stage of the malwa"
+            "value": "etects PowerShell commands that decrypt an \".LNK\" \"file to drop the next stage of the malwar"
           },
           {
             "name": "tactics",

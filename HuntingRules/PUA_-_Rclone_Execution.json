@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of RClone utility for exfiltration as used by various ransomwares strains like REvil, Conti, FiveHands, "
+            "value": "etects execution of RClone utility for exfiltration as used by various ransomwares strains like REvil, Conti, FiveHands, e"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a suspicious command line execution that invokes PowerShell with reference to an AppData fol"
+            "value": "etects a suspicious command line execution that invokes PowerShell with reference to an AppData fold"
           },
           {
             "name": "tactics",

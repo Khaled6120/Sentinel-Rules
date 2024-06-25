@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects an UAC bypass that uses changepk.exe and slui.exe (UACMe "
+            "value": "etects an UAC bypass that uses changepk.exe and slui.exe (UACMe 6"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects netsh commands that turns off the Windows firew"
+            "value": "etects netsh commands that turns off the Windows firewa"
           },
           {
             "name": "tactics",

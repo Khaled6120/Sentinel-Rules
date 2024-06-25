@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects cases in which a user uses the built-in Windows utility gpresult to display the Resultant Set of Policy (RSoP) informat"
+            "value": "etects cases in which a user uses the built-in Windows utility gpresult to display the Resultant Set of Policy (RSoP) informati"
           },
           {
             "name": "tactics",

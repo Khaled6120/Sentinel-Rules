@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious use of XORDump process memory dumping util"
+            "value": "etects suspicious use of XORDump process memory dumping utili"
           },
           {
             "name": "tactics",

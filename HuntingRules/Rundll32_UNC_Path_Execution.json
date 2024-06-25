@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects rundll32 execution where the DLL is located on a remote location (sha"
+            "value": "etects rundll32 execution where the DLL is located on a remote location (shar"
           },
           {
             "name": "tactics",

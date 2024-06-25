@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects use of WSReset.exe to bypass User Account Control (UAC). Adversaries use this technique to execute privileged process"
+            "value": "etects use of WSReset.exe to bypass User Account Control (UAC). Adversaries use this technique to execute privileged processe"
           },
           {
             "name": "tactics",

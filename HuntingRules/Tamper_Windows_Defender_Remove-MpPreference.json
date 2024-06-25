@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects attempts to remove Windows Defender configurations using the 'MpPreference' cmd"
+            "value": "etects attempts to remove Windows Defender configurations using the 'MpPreference' cmdl"
           },
           {
             "name": "tactics",

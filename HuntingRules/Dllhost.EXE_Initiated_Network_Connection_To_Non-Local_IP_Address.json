@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects dllhost initiating a network connection to a non-local IP address.\nAside from Microsoft own IP range that needs to be excluded. Network communication from Dllhost will depend entirely on the hosted DLL.\nAn initial baseline is recomm"
+            "value": "etects dllhost initiating a network connection to a non-local IP address.\nAside from Microsoft own IP range that needs to be excluded. Network communication from Dllhost will depend entirely on the hosted DLL.\nAn initial baseline is recomme"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious Hangul Word Processor (Hanword) sub processes that could indicate an exploitat"
+            "value": "etects suspicious Hangul Word Processor (Hanword) sub processes that could indicate an exploitati"
           },
           {
             "name": "tactics",

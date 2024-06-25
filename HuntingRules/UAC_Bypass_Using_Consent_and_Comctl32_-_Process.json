@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the pattern of UAC Bypass using consent.exe and comctl32.dll (UACMe "
+            "value": "etects the pattern of UAC Bypass using consent.exe and comctl32.dll (UACMe 2"
           },
           {
             "name": "tactics",

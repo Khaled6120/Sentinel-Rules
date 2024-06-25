@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious powershell process starts with base64 encoded commands (e.g. Emot"
+            "value": "etects suspicious powershell process starts with base64 encoded commands (e.g. Emote"
           },
           {
             "name": "tactics",

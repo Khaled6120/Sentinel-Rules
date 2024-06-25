@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects using Rasautou.exe for loading arbitrary .DLL specified in -d option and executes the export specified in "
+            "value": "etects using Rasautou.exe for loading arbitrary .DLL specified in -d option and executes the export specified in -"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of the LOLBIN gpscript, which executes logon or startup scripts configured in Group Pol"
+            "value": "etects the execution of the LOLBIN gpscript, which executes logon or startup scripts configured in Group Poli"
           },
           {
             "name": "tactics",

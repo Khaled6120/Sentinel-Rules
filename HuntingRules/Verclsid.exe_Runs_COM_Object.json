@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects when verclsid.exe is used to run COM object via G"
+            "value": "etects when verclsid.exe is used to run COM object via GU"
           },
           {
             "name": "tactics",

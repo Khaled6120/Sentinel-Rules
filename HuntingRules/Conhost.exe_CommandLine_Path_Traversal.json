@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "detects the usage of path traversal in conhost.exe indicating possible command/argument confusion/hijack"
+            "value": "etects the usage of path traversal in conhost.exe indicating possible command/argument confusion/hijacki"
           },
           {
             "name": "tactics",

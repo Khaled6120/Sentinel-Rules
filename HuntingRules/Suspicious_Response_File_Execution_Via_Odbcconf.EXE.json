@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of \"odbcconf\" with the \"-f\" flag in order to load a response file with a non-\".rsp\" extensi"
+            "value": "etects execution of \"odbcconf\" with the \"-f\" flag in order to load a response file with a non-\".rsp\" extensio"
           },
           {
             "name": "tactics",

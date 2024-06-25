@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects using SettingSyncHost.exe to run hijacked bin"
+            "value": "etects using SettingSyncHost.exe to run hijacked bina"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of the 'Launch-VsDevShell.ps1' Microsoft signed script to execute comman"
+            "value": "etects the use of the 'Launch-VsDevShell.ps1' Microsoft signed script to execute command"
           },
           {
             "name": "tactics",

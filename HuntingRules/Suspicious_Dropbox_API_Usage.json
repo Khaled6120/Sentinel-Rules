@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects an executable that isn't dropbox but communicates with the Dropbox "
+            "value": "etects an executable that isn't dropbox but communicates with the Dropbox A"
           },
           {
             "name": "tactics",

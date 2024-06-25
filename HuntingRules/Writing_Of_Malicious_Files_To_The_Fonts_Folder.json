@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Monitors for the hiding possible malicious files in the C:\\Windows\\Fonts\\ location. This folder doesn't require admin privillege to be written and executed fr"
+            "value": "onitors for the hiding possible malicious files in the C:\\Windows\\Fonts\\ location. This folder doesn't require admin privillege to be written and executed fro"
           },
           {
             "name": "tactics",

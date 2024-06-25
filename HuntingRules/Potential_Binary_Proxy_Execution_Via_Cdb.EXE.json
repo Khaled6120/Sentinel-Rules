@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of \"cdb.exe\" to launch arbitrary processes or commands from a debugger script f"
+            "value": "etects usage of \"cdb.exe\" to launch arbitrary processes or commands from a debugger script fi"
           },
           {
             "name": "tactics",

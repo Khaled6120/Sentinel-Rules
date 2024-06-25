@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects renamed vmnat.exe or portable version that can be used for DLL side-load"
+            "value": "etects renamed vmnat.exe or portable version that can be used for DLL side-loadi"
           },
           {
             "name": "tactics",

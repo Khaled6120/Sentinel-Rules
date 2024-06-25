@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Executes arbitrary PowerShell code using SyncAppvPublishingServer."
+            "value": "xecutes arbitrary PowerShell code using SyncAppvPublishingServer.v"
           },
           {
             "name": "tactics",

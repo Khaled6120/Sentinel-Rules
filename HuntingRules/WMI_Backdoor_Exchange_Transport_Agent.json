@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a WMI backdoor in Exchange Transport Agents via WMI event filt"
+            "value": "etects a WMI backdoor in Exchange Transport Agents via WMI event filte"
           },
           {
             "name": "tactics",

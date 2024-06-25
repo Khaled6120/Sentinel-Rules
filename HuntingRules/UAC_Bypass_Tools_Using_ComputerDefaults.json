@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects tools such as UACMe used to bypass UAC with computerdefaults.exe (UACMe "
+            "value": "etects tools such as UACMe used to bypass UAC with computerdefaults.exe (UACMe 5"
           },
           {
             "name": "tactics",

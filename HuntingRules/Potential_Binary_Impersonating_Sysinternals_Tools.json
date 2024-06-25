@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects binaries that use the same name as legitimate sysinternals tools to evade detect"
+            "value": "etects binaries that use the same name as legitimate sysinternals tools to evade detecti"
           },
           {
             "name": "tactics",

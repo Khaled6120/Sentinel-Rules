@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of various web request commands with commandline tools and Windows PowerShell cmdlets (including aliases) via CommandL"
+            "value": "etects the use of various web request commands with commandline tools and Windows PowerShell cmdlets (including aliases) via CommandLi"
           },
           {
             "name": "tactics",

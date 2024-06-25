@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious child processes of the SQLServer process. This could indicate potential RCE or SQL Injecti"
+            "value": "etects suspicious child processes of the SQLServer process. This could indicate potential RCE or SQL Injectio"
           },
           {
             "name": "tactics",

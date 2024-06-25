@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential abuse of Windows Subsystem for Linux (WSL) binary as a LOLBIN to execute arbitrary Linux or Windows comma"
+            "value": "etects potential abuse of Windows Subsystem for Linux (WSL) binary as a LOLBIN to execute arbitrary Linux or Windows comman"
           },
           {
             "name": "tactics",

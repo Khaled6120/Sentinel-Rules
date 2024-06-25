@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potentially suspicious child processes of \"GoogleUpdate.e"
+            "value": "etects potentially suspicious child processes of \"GoogleUpdate.ex"
           },
           {
             "name": "tactics",

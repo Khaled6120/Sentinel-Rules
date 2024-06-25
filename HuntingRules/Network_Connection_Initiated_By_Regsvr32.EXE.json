@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a network connection initiated by \"Regsvr32.e"
+            "value": "etects a network connection initiated by \"Regsvr32.ex"
           },
           {
             "name": "tactics",

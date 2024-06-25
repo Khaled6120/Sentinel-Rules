@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the image load of vss_ps.dll by uncommon executab"
+            "value": "etects the image load of vss_ps.dll by uncommon executabl"
           },
           {
             "name": "tactics",

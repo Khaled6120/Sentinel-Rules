@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detect usage of the \"sqlite\" binary to query databases in Chromium-based browsers for potential data steali"
+            "value": "etect usage of the \"sqlite\" binary to query databases in Chromium-based browsers for potential data stealin"
           },
           {
             "name": "tactics",

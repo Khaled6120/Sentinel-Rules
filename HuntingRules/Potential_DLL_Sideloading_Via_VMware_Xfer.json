@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects loading of a DLL by the VMware Xfer utility from the non-default directory which may be an attempt to sideload arbitrary "
+            "value": "etects loading of a DLL by the VMware Xfer utility from the non-default directory which may be an attempt to sideload arbitrary D"
           },
           {
             "name": "tactics",

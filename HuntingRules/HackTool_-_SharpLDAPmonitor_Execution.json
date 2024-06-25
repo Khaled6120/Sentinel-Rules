@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of the SharpLDAPmonitor. Which can monitor the creation, deletion and changes to LDAP objec"
+            "value": "etects execution of the SharpLDAPmonitor. Which can monitor the creation, deletion and changes to LDAP object"
           },
           {
             "name": "tactics",

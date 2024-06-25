@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects process execution from a fake recycle bin folder, often used to avoid security soluti"
+            "value": "etects process execution from a fake recycle bin folder, often used to avoid security solutio"
           },
           {
             "name": "tactics",

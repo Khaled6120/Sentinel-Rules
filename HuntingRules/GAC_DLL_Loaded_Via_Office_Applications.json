@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects any GAC DLL being loaded by an Office Prod"
+            "value": "etects any GAC DLL being loaded by an Office Produ"
           },
           {
             "name": "tactics",

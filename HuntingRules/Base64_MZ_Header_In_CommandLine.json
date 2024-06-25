@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects encoded base64 MZ header in the commandl"
+            "value": "etects encoded base64 MZ header in the commandli"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects an a non-browser process interacting with the Telegram API which could indicate use of a covert"
+            "value": "etects an a non-browser process interacting with the Telegram API which could indicate use of a covert "
           },
           {
             "name": "tactics",

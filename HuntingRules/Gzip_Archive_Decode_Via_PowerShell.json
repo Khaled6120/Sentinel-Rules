@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects attempts of decoding encoded Gzip archives via PowerShe"
+            "value": "etects attempts of decoding encoded Gzip archives via PowerShel"
           },
           {
             "name": "tactics",

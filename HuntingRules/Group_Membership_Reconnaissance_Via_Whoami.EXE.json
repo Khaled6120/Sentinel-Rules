@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of whoami.exe with the /group command line flag to show group membership for the current user, account type, security identifiers (SID), and attribut"
+            "value": "etects the execution of whoami.exe with the /group command line flag to show group membership for the current user, account type, security identifiers (SID), and attribute"
           },
           {
             "name": "tactics",

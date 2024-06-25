@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects signs of potential use of the WSMAN provider from uncommon processes locally and remote executi"
+            "value": "etects signs of potential use of the WSMAN provider from uncommon processes locally and remote executio"
           },
           {
             "name": "tactics",

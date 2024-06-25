@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potentially suspicious child processes of a ClickOnce deployment applicat"
+            "value": "etects potentially suspicious child processes of a ClickOnce deployment applicati"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a suspicious process command line that uses whoami as first parameter (as e.g. used by EfsPota"
+            "value": "etects a suspicious process command line that uses whoami as first parameter (as e.g. used by EfsPotat"
           },
           {
             "name": "tactics",

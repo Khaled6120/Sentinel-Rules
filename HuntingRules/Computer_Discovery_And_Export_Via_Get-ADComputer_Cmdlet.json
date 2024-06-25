@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of the Get-ADComputer cmdlet to collect computer information and output it to a f"
+            "value": "etects usage of the Get-ADComputer cmdlet to collect computer information and output it to a fi"
           },
           {
             "name": "tactics",

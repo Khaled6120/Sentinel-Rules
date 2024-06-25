@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects Obfuscated Powershell via use Clip.exe in Scri"
+            "value": "etects Obfuscated Powershell via use Clip.exe in Scrip"
           },
           {
             "name": "tactics",

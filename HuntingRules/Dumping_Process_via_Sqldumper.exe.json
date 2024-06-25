@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects process dump via legitimate sqldumper.exe bin"
+            "value": "etects process dump via legitimate sqldumper.exe bina"
           },
           {
             "name": "tactics",

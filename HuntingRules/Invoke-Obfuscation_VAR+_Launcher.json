@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects Obfuscated use of Environment Variables to execute PowerSh"
+            "value": "etects Obfuscated use of Environment Variables to execute PowerShe"
           },
           {
             "name": "tactics",

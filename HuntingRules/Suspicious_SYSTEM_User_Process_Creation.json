@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a suspicious process creation as SYSTEM user (suspicious program or command line paramet"
+            "value": "etects a suspicious process creation as SYSTEM user (suspicious program or command line paramete"
           },
           {
             "name": "tactics",

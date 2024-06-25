@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "ForceV1 asks for information directly from the kernel space. Conhost connects to the console application. High IntegrityLevel means the process is running with elevated privileges, such as an Administrator conte"
+            "value": "orceV1 asks for information directly from the kernel space. Conhost connects to the console application. High IntegrityLevel means the process is running with elevated privileges, such as an Administrator contex"
           },
           {
             "name": "tactics",

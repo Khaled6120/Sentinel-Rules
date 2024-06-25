@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a copy command or a copy utility execution to or from an Admin share or rem"
+            "value": "etects a copy command or a copy utility execution to or from an Admin share or remo"
           },
           {
             "name": "tactics",

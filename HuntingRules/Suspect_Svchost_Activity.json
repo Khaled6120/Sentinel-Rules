@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "It is extremely abnormal for svchost.exe to spawn without any CLI arguments and is normally observed when a malicious process spawns the process and injects code into the process memory spa"
+            "value": "t is extremely abnormal for svchost.exe to spawn without any CLI arguments and is normally observed when a malicious process spawns the process and injects code into the process memory spac"
           },
           {
             "name": "tactics",

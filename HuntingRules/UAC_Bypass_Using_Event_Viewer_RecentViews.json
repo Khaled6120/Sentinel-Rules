@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the pattern of UAC Bypass using Event Viewer RecentVi"
+            "value": "etects the pattern of UAC Bypass using Event Viewer RecentVie"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious calls of DLLs in rundll32.dll exports by ordi"
+            "value": "etects suspicious calls of DLLs in rundll32.dll exports by ordin"
           },
           {
             "name": "tactics",

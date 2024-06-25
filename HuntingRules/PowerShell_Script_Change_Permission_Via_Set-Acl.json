@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects PowerShell execution to set the ACL of a file or a fol"
+            "value": "etects PowerShell execution to set the ACL of a file or a fold"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects an uncommon svchost parent proc"
+            "value": "etects an uncommon svchost parent proce"
           },
           {
             "name": "tactics",

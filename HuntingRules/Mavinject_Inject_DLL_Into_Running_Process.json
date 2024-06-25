@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects process injection using the signed Windows tool \"Mavinject\" via the \"INJECTRUNNING\" f"
+            "value": "etects process injection using the signed Windows tool \"Mavinject\" via the \"INJECTRUNNING\" fl"
           },
           {
             "name": "tactics",

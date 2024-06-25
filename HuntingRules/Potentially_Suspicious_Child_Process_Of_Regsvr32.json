@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potentially suspicious child processes of \"regsvr32.ex"
+            "value": "etects potentially suspicious child processes of \"regsvr32.exe"
           },
           {
             "name": "tactics",

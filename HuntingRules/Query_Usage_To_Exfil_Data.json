@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of \"query.exe\" a system binary to exfil information such as \"sessions\" and \"processes\" for later "
+            "value": "etects usage of \"query.exe\" a system binary to exfil information such as \"sessions\" and \"processes\" for later u"
           },
           {
             "name": "tactics",

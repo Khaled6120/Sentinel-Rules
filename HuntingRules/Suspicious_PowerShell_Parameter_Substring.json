@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious PowerShell invocation with a parameter substr"
+            "value": "etects suspicious PowerShell invocation with a parameter substri"
           },
           {
             "name": "tactics",

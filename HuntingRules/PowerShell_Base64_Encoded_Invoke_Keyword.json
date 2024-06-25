@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects UTF-8 and UTF-16 Base64 encoded powershell 'Invoke-' ca"
+            "value": "etects UTF-8 and UTF-16 Base64 encoded powershell 'Invoke-' cal"
           },
           {
             "name": "tactics",

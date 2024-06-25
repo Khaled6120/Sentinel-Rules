@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of the Windows Update Client binary (wuauclt.exe) to proxy execute code and making network connections.\nOne could easily make the DLL spawn a new process and inject to it to proxy the network connection and bypass this rul"
+            "value": "etects the use of the Windows Update Client binary (wuauclt.exe) to proxy execute code and making network connections.\nOne could easily make the DLL spawn a new process and inject to it to proxy the network connection and bypass this rule"
           },
           {
             "name": "tactics",

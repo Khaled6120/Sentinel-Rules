@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Threat actors can use an older version of the auditpol binary available inside the NT resource kit to change audit policy configuration to impair detection capability.\nThis can be carried out by selectively disabling/removing certain audit "
+            "value": "hreat actors can use an older version of the auditpol binary available inside the NT resource kit to change audit policy configuration to impair detection capability.\nThis can be carried out by selectively disabling/removing certain audit p"
           },
           {
             "name": "tactics",

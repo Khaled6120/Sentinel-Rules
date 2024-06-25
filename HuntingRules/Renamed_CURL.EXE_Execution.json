@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of a renamed \"CURL.exe\" binary based on the PE metadata fie"
+            "value": "etects the execution of a renamed \"CURL.exe\" binary based on the PE metadata fiel"
           },
           {
             "name": "tactics",

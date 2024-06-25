@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects attempts to disable the Windows Firewall using PowerSh"
+            "value": "etects attempts to disable the Windows Firewall using PowerShe"
           },
           {
             "name": "tactics",

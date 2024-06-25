@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of the \"FromBase64String\" function in the commandline which is used to decode a base64 encoded str"
+            "value": "etects usage of the \"FromBase64String\" function in the commandline which is used to decode a base64 encoded stri"
           },
           {
             "name": "tactics",

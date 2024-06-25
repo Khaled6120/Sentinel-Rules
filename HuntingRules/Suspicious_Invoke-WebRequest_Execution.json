@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a suspicious call to Invoke-WebRequest cmdlet where the and output is located in a suspicious locat"
+            "value": "etects a suspicious call to Invoke-WebRequest cmdlet where the and output is located in a suspicious locati"
           },
           {
             "name": "tactics",

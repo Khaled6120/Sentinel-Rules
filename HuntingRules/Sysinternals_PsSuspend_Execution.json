@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of Sysinternals PsSuspend which can be abused to suspend critical proces"
+            "value": "etects usage of Sysinternals PsSuspend which can be abused to suspend critical process"
           },
           {
             "name": "tactics",

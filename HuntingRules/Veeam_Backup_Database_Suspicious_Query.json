@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potentially suspicious SQL queries using SQLCmd targeting the Veeam backup databases in order to steal informati"
+            "value": "etects potentially suspicious SQL queries using SQLCmd targeting the Veeam backup databases in order to steal informatio"
           },
           {
             "name": "tactics",

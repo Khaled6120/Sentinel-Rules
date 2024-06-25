@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects PowerShell scripts to set the ACL to a file in the Windows fol"
+            "value": "etects PowerShell scripts to set the ACL to a file in the Windows fold"
           },
           {
             "name": "tactics",

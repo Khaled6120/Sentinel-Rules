@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious child processes of SysAidServer (as seen in MERCURY threat actor intrusio"
+            "value": "etects suspicious child processes of SysAidServer (as seen in MERCURY threat actor intrusion"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects Microsoft Excel loading an Add-In (.xll) file from an uncommon locat"
+            "value": "etects Microsoft Excel loading an Add-In (.xll) file from an uncommon locati"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious IIS native-code module installations via command l"
+            "value": "etects suspicious IIS native-code module installations via command li"
           },
           {
             "name": "tactics",

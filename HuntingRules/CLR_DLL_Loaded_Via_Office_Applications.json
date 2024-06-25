@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects CLR DLL being loaded by an Office Prod"
+            "value": "etects CLR DLL being loaded by an Office Produ"
           },
           {
             "name": "tactics",

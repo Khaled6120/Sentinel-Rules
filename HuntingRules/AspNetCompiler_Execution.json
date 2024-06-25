@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of \"aspnet_compiler.exe\" which can be abused to compile and execute C# co"
+            "value": "etects execution of \"aspnet_compiler.exe\" which can be abused to compile and execute C# cod"
           },
           {
             "name": "tactics",

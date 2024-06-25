@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects DLL sideloading of DLLs that are part of third party software (zoom, discord....e"
+            "value": "etects DLL sideloading of DLLs that are part of third party software (zoom, discord....et"
           },
           {
             "name": "tactics",

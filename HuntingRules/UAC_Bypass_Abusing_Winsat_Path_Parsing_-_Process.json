@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the pattern of UAC Bypass using a path parsing issue in winsat.exe (UACMe "
+            "value": "etects the pattern of UAC Bypass using a path parsing issue in winsat.exe (UACMe 5"
           },
           {
             "name": "tactics",

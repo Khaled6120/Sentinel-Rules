@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects commandline keywords indicative of potential usge of the tool WinPwn. A tool for Windows and Active Directory reconnaissance and exploitatio"
+            "value": "etects commandline keywords indicative of potential usge of the tool WinPwn. A tool for Windows and Active Directory reconnaissance and exploitation"
           },
           {
             "name": "tactics",

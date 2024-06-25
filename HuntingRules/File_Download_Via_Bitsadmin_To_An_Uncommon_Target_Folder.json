@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of bitsadmin downloading a file to uncommon target fol"
+            "value": "etects usage of bitsadmin downloading a file to uncommon target fold"
           },
           {
             "name": "tactics",

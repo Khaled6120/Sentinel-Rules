@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a suspicious RDP session redirect using tscon."
+            "value": "etects a suspicious RDP session redirect using tscon.e"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of the builtin \"rmdir\" command in order to delete directories.\nAdversaries may delete files left behind by the actions of their intrusion activity.\nMalware, tools, or other non-native files dropped or created on a system b"
+            "value": "etects execution of the builtin \"rmdir\" command in order to delete directories.\nAdversaries may delete files left behind by the actions of their intrusion activity.\nMalware, tools, or other non-native files dropped or created on a system by"
           },
           {
             "name": "tactics",

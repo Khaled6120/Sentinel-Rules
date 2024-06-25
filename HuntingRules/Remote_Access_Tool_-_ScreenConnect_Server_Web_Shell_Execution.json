@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential web shell execution from the ScreenConnect server proce"
+            "value": "etects potential web shell execution from the ScreenConnect server proces"
           },
           {
             "name": "tactics",

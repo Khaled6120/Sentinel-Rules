@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects when an admin share is mounted using net."
+            "value": "etects when an admin share is mounted using net.e"
           },
           {
             "name": "tactics",

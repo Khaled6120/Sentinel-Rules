@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of certutil with certain flags that allow the utility to download files from direct I"
+            "value": "etects the execution of certutil with certain flags that allow the utility to download files from direct IP"
           },
           {
             "name": "tactics",

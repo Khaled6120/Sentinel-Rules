@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious process patterns found in logs when CrackMapExec is u"
+            "value": "etects suspicious process patterns found in logs when CrackMapExec is us"
           },
           {
             "name": "tactics",

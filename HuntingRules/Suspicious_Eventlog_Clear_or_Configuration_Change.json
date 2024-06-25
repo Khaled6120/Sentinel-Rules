@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects clearing or configuration of eventlogs using wevtutil, powershell and wmic. Might be used by ransomwares during the attack (seen by NotPetya and other"
+            "value": "etects clearing or configuration of eventlogs using wevtutil, powershell and wmic. Might be used by ransomwares during the attack (seen by NotPetya and others"
           },
           {
             "name": "tactics",

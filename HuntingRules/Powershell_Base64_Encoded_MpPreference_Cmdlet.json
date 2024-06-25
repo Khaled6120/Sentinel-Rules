@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects base64 encoded \"MpPreference\" PowerShell cmdlet code that tries to modifies or tamper with Windows Defender"
+            "value": "etects base64 encoded \"MpPreference\" PowerShell cmdlet code that tries to modifies or tamper with Windows Defender "
           },
           {
             "name": "tactics",

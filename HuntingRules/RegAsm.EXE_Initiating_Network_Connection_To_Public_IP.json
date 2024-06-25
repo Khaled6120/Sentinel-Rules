@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects \"RegAsm.exe\" initiating a network connection to public IP adres"
+            "value": "etects \"RegAsm.exe\" initiating a network connection to public IP adress"
           },
           {
             "name": "tactics",

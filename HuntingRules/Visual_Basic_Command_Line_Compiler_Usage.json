@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects successful code compilation via Visual Basic Command Line Compiler that utilizes Windows Resource to Object Convert"
+            "value": "etects successful code compilation via Visual Basic Command Line Compiler that utilizes Windows Resource to Object Converte"
           },
           {
             "name": "tactics",

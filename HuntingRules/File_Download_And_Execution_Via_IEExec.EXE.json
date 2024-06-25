@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of the IEExec utility to download and execute fi"
+            "value": "etects execution of the IEExec utility to download and execute fil"
           },
           {
             "name": "tactics",

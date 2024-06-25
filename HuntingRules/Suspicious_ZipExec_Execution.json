@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "ZipExec is a Proof-of-Concept (POC) tool to wrap binary-based tools into a password-protected zip fi"
+            "value": "ipExec is a Proof-of-Concept (POC) tool to wrap binary-based tools into a password-protected zip fil"
           },
           {
             "name": "tactics",

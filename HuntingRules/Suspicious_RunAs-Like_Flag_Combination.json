@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious command line flags that let the user set a target user and command as e.g. seen in PsExec-like to"
+            "value": "etects suspicious command line flags that let the user set a target user and command as e.g. seen in PsExec-like too"
           },
           {
             "name": "tactics",

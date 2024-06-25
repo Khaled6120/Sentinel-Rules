@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of \"dsquery.exe\" for domain trust discov"
+            "value": "etects execution of \"dsquery.exe\" for domain trust discove"
           },
           {
             "name": "tactics",

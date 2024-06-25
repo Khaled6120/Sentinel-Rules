@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects WMIC executing \"process call create\" with suspicious calls to processes such as \"rundll32\", \"regsrv32\", e"
+            "value": "etects WMIC executing \"process call create\" with suspicious calls to processes such as \"rundll32\", \"regsrv32\", et"
           },
           {
             "name": "tactics",

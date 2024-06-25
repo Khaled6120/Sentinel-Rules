@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"EACore.d"
+            "value": "etects potential DLL sideloading of \"EACore.dl"
           },
           {
             "name": "tactics",

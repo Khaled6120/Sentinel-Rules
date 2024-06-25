@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects when a user performs data exfiltration by using DataSvcUtil."
+            "value": "etects when a user performs data exfiltration by using DataSvcUtil.e"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of regsvr32 where the DLL is located in a highly suspicious locati"
+            "value": "etects execution of regsvr32 where the DLL is located in a highly suspicious locatio"
           },
           {
             "name": "tactics",

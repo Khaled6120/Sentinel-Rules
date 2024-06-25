@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of netsh with the \"advfirewall\" and the \"set\" option in order to set new values for properties of a existing r"
+            "value": "etects execution of netsh with the \"advfirewall\" and the \"set\" option in order to set new values for properties of a existing ru"
           },
           {
             "name": "tactics",

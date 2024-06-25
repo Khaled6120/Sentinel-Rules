@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects network connections from the Equation Editor process \"eqnedt32.ex"
+            "value": "etects network connections from the Equation Editor process \"eqnedt32.exe"
           },
           {
             "name": "tactics",

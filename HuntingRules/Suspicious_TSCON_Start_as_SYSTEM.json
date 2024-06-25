@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a tscon.exe start as LOCAL SYS"
+            "value": "etects a tscon.exe start as LOCAL SYST"
           },
           {
             "name": "tactics",

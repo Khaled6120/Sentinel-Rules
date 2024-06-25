@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of \"logman\" utility in order to disable or delete Windows trace sessi"
+            "value": "etects the execution of \"logman\" utility in order to disable or delete Windows trace sessio"
           },
           {
             "name": "tactics",

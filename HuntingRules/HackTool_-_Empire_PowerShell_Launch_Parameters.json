@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious powershell command line parameters used in Emp"
+            "value": "etects suspicious powershell command line parameters used in Empi"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potentially suspicious file download from file sharing domains using curl."
+            "value": "etects potentially suspicious file download from file sharing domains using curl.e"
           },
           {
             "name": "tactics",

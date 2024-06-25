@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects creation of a new service (kernel driver) with the type \"kern"
+            "value": "etects creation of a new service (kernel driver) with the type \"kerne"
           },
           {
             "name": "tactics",

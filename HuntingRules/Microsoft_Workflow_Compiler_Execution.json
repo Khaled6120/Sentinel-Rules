@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects invocation of Microsoft Workflow Compiler, which may permit the execution of arbitrary unsigned co"
+            "value": "etects invocation of Microsoft Workflow Compiler, which may permit the execution of arbitrary unsigned cod"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the pattern of UAC Bypass using a msconfig GUI hack (UACMe "
+            "value": "etects the pattern of UAC Bypass using a msconfig GUI hack (UACMe 5"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of the lesser known remote execution tool named CsExec a PsExec alternat"
+            "value": "etects the use of the lesser known remote execution tool named CsExec a PsExec alternati"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the removal of a port or application rule in the Windows Firewall configuration using ne"
+            "value": "etects the removal of a port or application rule in the Windows Firewall configuration using net"
           },
           {
             "name": "tactics",

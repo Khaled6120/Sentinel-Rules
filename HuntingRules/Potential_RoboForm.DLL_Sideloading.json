@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"roboform.dll\", a DLL used by RoboForm Password Mana"
+            "value": "etects potential DLL sideloading of \"roboform.dll\", a DLL used by RoboForm Password Manag"
           },
           {
             "name": "tactics",

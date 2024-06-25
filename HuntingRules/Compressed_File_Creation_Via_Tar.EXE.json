@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of \"tar.exe\" in order to create a compressed file.\nAdversaries may abuse various utilities to compress or encrypt data before exfiltratio"
+            "value": "etects execution of \"tar.exe\" in order to create a compressed file.\nAdversaries may abuse various utilities to compress or encrypt data before exfiltration"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects an uncommon child process of \"odbcconf.exe\" binary which normally shouldn't have any child process"
+            "value": "etects an uncommon child process of \"odbcconf.exe\" binary which normally shouldn't have any child processe"
           },
           {
             "name": "tactics",
