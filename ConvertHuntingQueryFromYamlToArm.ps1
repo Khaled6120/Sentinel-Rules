@@ -91,8 +91,6 @@ function ConvertHuntingQueryFromYamlToArm {
             $tactic = $_.Trim().ToLower()
             if ($tacticsMapping.ContainsKey($tactic)) {
                 $tacticsMapping[$tactic]
-            } else {
-                throw "Invalid tactic: $tactic"
             }
         } -join ","
        
