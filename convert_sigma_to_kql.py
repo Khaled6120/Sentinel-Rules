@@ -66,7 +66,9 @@ for yml in file_list_a:
             for tag in tags:
                 if (parts := tag.split('.')) and tag.startswith('attack.'):
                     if len(parts) == 2 and not parts[1].startswith('t'):
-                        tactics.add(parts[1])
+                        # Transform the tactic to capitalize and replace underscores with spaces
+                        transformed_tactic = ' '.join(word.capitalize() for word in parts[1].split('_'))
+                        tactics.add(transformed_tactic)
                     elif len(parts) >= 2 and parts[1].startswith('t'):
                         techniques.add(parts[1])
 

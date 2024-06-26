@@ -66,41 +66,29 @@ function ConvertHuntingQueryFromYamlToArm {
         $huntingQueryObj.properties.tags += $descriptionObj
         $huntingQueryDescription = "$huntingQueryDescription "
     }
+    
 
     if ($yaml.tactics -and $yaml.tactics.Count -gt 0) {
-        $formattedTactics = @()
-        foreach ($tactic in $yaml.tactics) {
-            $tacticWords = $tactic -replace '_', ' ' -split ' '
-            $capitalizedTactic = ($tacticWords | ForEach-Object { $_.substring(0,1).ToUpper() + $_.substring(1).ToLower() }) -join ' '
-            $formattedTactics += $capitalizedTactic
-        }
         $tacticsObj = [PSCustomObject]@{
             name  = "tactics";
-            value = $formattedTactics -join ","
+            value = $yaml.tactics -join ","
+        }
+        if ($tacticsObj.value.ToString() -match ' ') {
+            $tacticsObj.value = $tacticsObj.value -replace ' ', ''
         }
         $huntingQueryObj.properties.tags += $tacticsObj
     }
 
-
-
     if ($yaml.relevantTechniques -and $yaml.relevantTechniques.Count -gt 0) {
-        $formattedTechniques = $yaml.relevantTechniques | ForEach-Object {
-            if ($_ -match "^t\d{4}(\.\d+)?$") {
-                "T" + ($_ -split '\.')[0].Substring(1)
-            } else {
-                $_
-            }
-        }
         $techniqueObj = [PSCustomObject]@{
             name  = "relevantTechniques";
-            value = $formattedTechniques -join ","
+            value = $yaml.relevantTechniques -join ","
         }
         if ($techniqueObj.value.ToString() -match ' ') {
-            $techniqueObj.value = $techniqueObj.value -replace ' ', ''
+            $tactictechniqueObj.value = techniqueObj.value -replace ' ', ''
         }
         $huntingQueryObj.properties.tags += $techniqueObj
     }
-
      
     $baseHuntingObject.resources = @();
     $baseHuntingObject.resources += $huntingQueryObj;
