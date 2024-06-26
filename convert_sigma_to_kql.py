@@ -41,7 +41,7 @@ def process_techniques(techniques_list):
         main_technique = technique.split('.')[0].replace('t', 'T', 1)
         processed_techniques.add(main_technique)
     return sorted(processed_techniques)
-
+print('test')
 # Process each YAML file
 for yml in file_list_a:
     with open(yml) as yaml_file:
