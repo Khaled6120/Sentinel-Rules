@@ -66,16 +66,16 @@ function ConvertHuntingQueryFromYamlToArm {
         $huntingQueryObj.properties.tags += $descriptionObj
         $huntingQueryDescription = "$huntingQueryDescription "
     }
-    
+
 
     if ($yaml.tactics -and $yaml.tactics.Count -gt 0) {
         $tacticsObj = [PSCustomObject]@{
             name  = "tactics";
             value = $yaml.tactics -join ","
         }
-        if ($tacticsObj.value.ToString() -match ' ') {
-            $tacticsObj.value = $tacticsObj.value -replace ' ', ''
-        }
+        #if ($tacticsObj.value.ToString() -match ' ') {
+        #    $tacticsObj.value = $tacticsObj.value -replace ' ', ''
+        #}
         $huntingQueryObj.properties.tags += $tacticsObj
     }
 
