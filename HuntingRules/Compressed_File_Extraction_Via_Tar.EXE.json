@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "collection,exfiltration"
+            "value": "Collection,Exfiltration"
           },
           {
             "name": "relevantTechniques",

@@ -38,10 +38,10 @@
         "suppressionDuration": "PT5H",
         "suppressionEnabled": false,
         "tactics": [
-          "discovery",
-          "execution",
-          "impact",
-          "reconnaissance"
+          "Discovery",
+          "Execution",
+          "Impact",
+          "Reconnaissance"
         ],
         "techniques": [],
         "templateVersion": "1.0.0",

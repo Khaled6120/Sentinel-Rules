@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Portable_Gpg.EXE_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Portable Gpg.EXE Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\gpg.exe\" or FolderPath endswith \"\\\\gpg2.exe\") or ProcessVersionInfoOriginalFileName =~ \"gpg.exe\" or ProcessVersionInfoFileDescription =~ \"GnuPGâ€™s OpenPGP tool\") and (not((FolderPath contains \":\\\\Program Files (x86)\\\\GNU\\\\GnuPG\\\\bin\\\\\" or FolderPath contains \":\\\\Program Files (x86)\\\\GnuPG VS-Desktop\\\\\" or FolderPath contains \":\\\\Program Files (x86)\\\\GnuPG\\\\bin\\\\\" or FolderPath contains \":\\\\Program Files (x86)\\\\Gpg4win\\\\bin\\\\\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of \"gpg.exe\" from uncommon location. Often used by ransomware and loaders to decrypt/encrypt da"
+          },
+          {
+            "name": "tactics",
+            "value": "Impact"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1486"
+          }
+        ]
+      }
+    }
+  ]
+}

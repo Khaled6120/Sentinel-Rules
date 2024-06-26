@@ -38,7 +38,7 @@
         "suppressionDuration": "PT5H",
         "suppressionEnabled": false,
         "tactics": [
-          "reconnaissance"
+          "Reconnaissance"
         ],
         "techniques": [
           "T1595"

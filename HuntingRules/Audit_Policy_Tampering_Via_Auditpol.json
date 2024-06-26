@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "defense_evasion"
+            "value": "DefenseEvasion"
           },
           {
             "name": "relevantTechniques",

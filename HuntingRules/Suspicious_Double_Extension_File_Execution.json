@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "initial_access"
+            "value": "InitialAccess"
           },
           {
             "name": "relevantTechniques",

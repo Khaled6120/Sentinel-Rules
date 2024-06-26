@@ -38,8 +38,8 @@
         "suppressionDuration": "PT5H",
         "suppressionEnabled": false,
         "tactics": [
-          "discovery",
-          "exfiltration"
+          "Discovery",
+          "Exfiltration"
         ],
         "techniques": [
           "T1087"

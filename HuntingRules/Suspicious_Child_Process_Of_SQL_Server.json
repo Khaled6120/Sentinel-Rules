@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "initial_access,persistence,privilege_escalation"
+            "value": "InitialAccess,Persistence,PrivilegeEscalation"
           },
           {
             "name": "relevantTechniques",

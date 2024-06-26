@@ -38,8 +38,8 @@
         "suppressionDuration": "PT5H",
         "suppressionEnabled": false,
         "tactics": [
-          "collection",
-          "discovery"
+          "Collection",
+          "Discovery"
         ],
         "techniques": [],
         "templateVersion": "1.0.0",

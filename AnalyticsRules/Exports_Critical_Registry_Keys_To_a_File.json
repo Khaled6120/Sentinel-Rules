@@ -38,7 +38,7 @@
         "suppressionDuration": "PT5H",
         "suppressionEnabled": false,
         "tactics": [
-          "exfiltration"
+          "Exfiltration"
         ],
         "techniques": [
           "T1012"

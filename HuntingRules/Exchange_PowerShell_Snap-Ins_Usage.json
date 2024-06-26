@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "collection,execution"
+            "value": "Collection,Execution"
           },
           {
             "name": "relevantTechniques",

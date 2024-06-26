@@ -38,7 +38,7 @@
         "suppressionDuration": "PT5H",
         "suppressionEnabled": false,
         "tactics": [
-          "discovery"
+          "Discovery"
         ],
         "techniques": [
           "T1083"

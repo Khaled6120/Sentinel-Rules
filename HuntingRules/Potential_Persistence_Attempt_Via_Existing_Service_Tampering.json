@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Persistence_Attempt_Via_Existing_Service_Tampering')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Persistence Attempt Via Existing Service Tampering",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"sc \" and ProcessCommandLine contains \"config \" and ProcessCommandLine contains \"binpath=\") or (ProcessCommandLine contains \"sc \" and ProcessCommandLine contains \"failure\" and ProcessCommandLine contains \"command=\")) or ((ProcessCommandLine contains \".sh\" or ProcessCommandLine contains \".exe\" or ProcessCommandLine contains \".dll\" or ProcessCommandLine contains \".bin$\" or ProcessCommandLine contains \".bat\" or ProcessCommandLine contains \".cmd\" or ProcessCommandLine contains \".js\" or ProcessCommandLine contains \".msh$\" or ProcessCommandLine contains \".reg$\" or ProcessCommandLine contains \".scr\" or ProcessCommandLine contains \".ps\" or ProcessCommandLine contains \".vb\" or ProcessCommandLine contains \".jar\" or ProcessCommandLine contains \".pl\") and ((ProcessCommandLine contains \"reg \" and ProcessCommandLine contains \"add \" and ProcessCommandLine contains \"FailureCommand\") or (ProcessCommandLine contains \"reg \" and ProcessCommandLine contains \"add \" and ProcessCommandLine contains \"ImagePath\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the modification of an existing service in order to execute an arbitrary payload when the service is started or killed as a potential method for persisten"
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1543,T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

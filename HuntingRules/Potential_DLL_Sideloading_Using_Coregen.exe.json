@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_DLL_Sideloading_Using_Coregen.exe')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential DLL Sideloading Using Coregen.exe",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where InitiatingProcessFolderPath endswith \"\\\\coregen.exe\" and (not((FolderPath startswith \"C:\\\\Windows\\\\System32\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\SysWOW64\\\\\" or FolderPath startswith \"C:\\\\Program Files\\\\Microsoft Silverlight\\\\\" or FolderPath startswith \"C:\\\\Program Files (x86)\\\\Microsoft Silverlight\\\\\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detect usage of DLL \"coregen.exe\" (Microsoft CoreCLR Native Image Generator) binary to sideload arbitrary DL"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1055,T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

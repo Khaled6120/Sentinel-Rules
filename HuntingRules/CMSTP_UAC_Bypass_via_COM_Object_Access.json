@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution,g0069,privilege_escalation"
+            "value": "DefenseEvasion,Execution,G0069,PrivilegeEscalation"
           },
           {
             "name": "relevantTechniques",

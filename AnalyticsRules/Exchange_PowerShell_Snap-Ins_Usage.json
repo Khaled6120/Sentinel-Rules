@@ -38,8 +38,8 @@
         "suppressionDuration": "PT5H",
         "suppressionEnabled": false,
         "tactics": [
-          "collection",
-          "execution"
+          "Collection",
+          "Execution"
         ],
         "techniques": [
           "T1059",

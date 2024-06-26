@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "privilege_escalation"
+            "value": "PrivilegeEscalation"
           }
         ]
       }

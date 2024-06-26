@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "credential_access,defense_evasion,discovery,persistence,privilege_escalation"
+            "value": "CredentialAccess,DefenseEvasion,Discovery,Persistence,PrivilegeEscalation"
           },
           {
             "name": "relevantTechniques",

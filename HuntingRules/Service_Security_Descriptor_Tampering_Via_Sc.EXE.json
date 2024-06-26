@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,persistence,privilege_escalation"
+            "value": "DefenseEvasion,Persistence,PrivilegeEscalation"
           },
           {
             "name": "relevantTechniques",

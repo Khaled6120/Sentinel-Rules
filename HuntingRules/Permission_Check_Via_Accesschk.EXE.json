@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Permission_Check_Via_Accesschk.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Permission Check Via Accesschk.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"uwcqv \" or ProcessCommandLine contains \"kwsu \" or ProcessCommandLine contains \"qwsu \" or ProcessCommandLine contains \"uwdqs \") and (ProcessVersionInfoProductName endswith \"AccessChk\" or ProcessVersionInfoFileDescription contains \"Reports effective permissions\" or (FolderPath endswith \"\\\\accesschk.exe\" or FolderPath endswith \"\\\\accesschk64.exe\") or ProcessVersionInfoOriginalFileName =~ \"accesschk.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the usage of the \"Accesschk\" utility, an access and privilege audit tool developed by SysInternal and often being abused by attacker to verify process privile"
+          },
+          {
+            "name": "tactics",
+            "value": "Discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1069"
+          }
+        ]
+      }
+    }
+  ]
+}

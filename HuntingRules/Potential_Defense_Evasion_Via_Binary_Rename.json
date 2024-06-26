@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Defense_Evasion_Via_Binary_Rename')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Defense Evasion Via Binary Rename",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessVersionInfoOriginalFileName in~ (\"Cmd.Exe\", \"CONHOST.EXE\", \"7z.exe\", \"WinRAR.exe\", \"wevtutil.exe\", \"net.exe\", \"net1.exe\", \"netsh.exe\", \"InstallUtil.exe\")) and (not((FolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\conhost.exe\" or FolderPath endswith \"\\\\7z.exe\" or FolderPath endswith \"\\\\WinRAR.exe\" or FolderPath endswith \"\\\\wevtutil.exe\" or FolderPath endswith \"\\\\net.exe\" or FolderPath endswith \"\\\\net1.exe\" or FolderPath endswith \"\\\\netsh.exe\" or FolderPath endswith \"\\\\InstallUtil.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of a renamed binary often used by attackers or malware leveraging new Sysmon OriginalFileName datapoi"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1036"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -38,8 +38,8 @@
         "suppressionDuration": "PT5H",
         "suppressionEnabled": false,
         "tactics": [
-          "discovery",
-          "execution"
+          "Discovery",
+          "Execution"
         ],
         "techniques": [
           "T1543"

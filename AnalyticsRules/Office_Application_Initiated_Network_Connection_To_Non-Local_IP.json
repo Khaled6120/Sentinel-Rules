@@ -38,7 +38,7 @@
         "suppressionDuration": "PT5H",
         "suppressionEnabled": false,
         "tactics": [
-          "execution"
+          "Execution"
         ],
         "techniques": [
           "T1203"
