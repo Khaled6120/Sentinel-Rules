@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "Credential Access,Execution"
+            "value": "credential_access,execution"
           },
           {
             "name": "relevantTechniques",

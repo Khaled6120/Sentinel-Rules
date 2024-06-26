@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "Collection,Exfiltration,Lateral Movement"
+            "value": "collection,exfiltration,lateral_movement"
           },
           {
             "name": "relevantTechniques",
