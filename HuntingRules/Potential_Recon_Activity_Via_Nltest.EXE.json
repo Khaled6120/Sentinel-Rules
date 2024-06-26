@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Recon_Activity_Via_Nltest.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Recon Activity Via Nltest.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\nltest.exe\" or ProcessVersionInfoOriginalFileName =~ \"nltestrk.exe\") and ((ProcessCommandLine contains \"server\" and ProcessCommandLine contains \"query\") or (ProcessCommandLine contains \"/user\" or ProcessCommandLine contains \"all_trusts\" or ProcessCommandLine contains \"dclist:\" or ProcessCommandLine contains \"dnsgetdc:\" or ProcessCommandLine contains \"domain_trusts\" or ProcessCommandLine contains \"dsgetdc:\" or ProcessCommandLine contains \"parentdomain\" or ProcessCommandLine contains \"trusted_domains\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects nltest commands that can be used for information discov"
+          },
+          {
+            "name": "tactics",
+            "value": "Discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1016,T1482"
+          }
+        ]
+      }
+    }
+  ]
+}

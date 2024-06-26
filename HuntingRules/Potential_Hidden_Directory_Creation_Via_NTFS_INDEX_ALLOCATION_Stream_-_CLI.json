@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Hidden_Directory_Creation_Via_NTFS_INDEX_ALLOCATION_Stream_-_CLI')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Hidden Directory Creation Via NTFS INDEX_ALLOCATION Stream - CLI",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"::$index_allocation\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects command line containing reference to the \"::$index_allocation\" stream, which can be used as a technique to prevent access to folders or files from tooling such as \"explorer.exe\" or \"powershell.ex"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1564"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_File_Download_Via_MS-AppInstaller_Protocol_Handler')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential File Download Via MS-AppInstaller Protocol Handler",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"ms-appinstaller://\" and ProcessCommandLine contains \"source=\") and ProcessCommandLine contains \"http\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects usage of the \"ms-appinstaller\" protocol handler via command line to potentially download arbitrary files via AppInstaller.EXE\nThe downloaded files are temporarly stored in \":\\Users\\%username%\\AppData\\Local\\Packages\\Microsoft.Desktop"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

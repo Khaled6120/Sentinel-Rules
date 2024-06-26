@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/AddinUtil.EXE_Execution_From_Uncommon_Directory')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "AddinUtil.EXE Execution From Uncommon Directory",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\addinutil.exe\" or ProcessVersionInfoOriginalFileName =~ \"AddInUtil.exe\") and (not((FolderPath contains \":\\\\Windows\\\\Microsoft.NET\\\\Framework\\\\\" or FolderPath contains \":\\\\Windows\\\\Microsoft.NET\\\\Framework64\\\\\" or FolderPath contains \":\\\\Windows\\\\WinSxS\\\\\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects execution of the Add-In deployment cache updating utility (AddInutil.exe) from a non-standard directo"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

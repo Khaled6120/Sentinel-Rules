@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Encoded_PowerShell_Patterns_In_CommandLine')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Encoded PowerShell Patterns In CommandLine",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\", \"pwsh.dll\"))) and (((ProcessCommandLine contains \"ToInt\" or ProcessCommandLine contains \"ToDecimal\" or ProcessCommandLine contains \"ToByte\" or ProcessCommandLine contains \"ToUint\" or ProcessCommandLine contains \"ToSingle\" or ProcessCommandLine contains \"ToSByte\") and (ProcessCommandLine contains \"ToChar\" or ProcessCommandLine contains \"ToString\" or ProcessCommandLine contains \"String\")) or ((ProcessCommandLine contains \"char\" and ProcessCommandLine contains \"join\") or (ProcessCommandLine contains \"split\" and ProcessCommandLine contains \"join\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects specific combinations of encoding methods in PowerShell via the commandl"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1027,T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

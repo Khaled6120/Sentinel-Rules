@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,execution,initial_access"
+            "value": "DefenseEvasion,Execution,InitialAccess"
           },
           {
             "name": "relevantTechniques",

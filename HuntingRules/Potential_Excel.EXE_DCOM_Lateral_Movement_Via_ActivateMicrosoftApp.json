@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Excel.EXE_DCOM_Lateral_Movement_Via_ActivateMicrosoftApp')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Excel.EXE DCOM Lateral Movement Via ActivateMicrosoftApp",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessVersionInfoOriginalFileName in~ (\"foxprow.exe\", \"schdplus.exe\", \"winproj.exe\")) or (FolderPath endswith \"\\\\foxprow.exe\" or FolderPath endswith \"\\\\schdplus.exe\" or FolderPath endswith \"\\\\winproj.exe\")) and InitiatingProcessFolderPath endswith \"\\\\excel.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious child processes of Excel which could be an indicator of lateral movement leveraging the \"ActivateMicrosoftApp\" Excel DCOM objec"
+          },
+          {
+            "name": "tactics",
+            "value": "LateralMovement"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1021"
+          }
+        ]
+      }
+    }
+  ]
+}

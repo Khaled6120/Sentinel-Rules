@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Data_Exfiltration_Activity_Via_CommandLine_Tools')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Data Exfiltration Activity Via CommandLine Tools",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (((ProcessCommandLine contains \"Invoke-WebRequest\" or ProcessCommandLine contains \"iwr \" or ProcessCommandLine contains \"wget \" or ProcessCommandLine contains \"curl \") and (ProcessCommandLine contains \" -ur\" and ProcessCommandLine contains \" -me\" and ProcessCommandLine contains \" -b\" and ProcessCommandLine contains \" POST \") and (FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\cmd.exe\")) or ((ProcessCommandLine contains \"--ur\" and FolderPath endswith \"\\\\curl.exe\") and (ProcessCommandLine contains \" -d \" or ProcessCommandLine contains \" --data \")) or ((ProcessCommandLine contains \"--post-data\" or ProcessCommandLine contains \"--post-file\") and FolderPath endswith \"\\\\wget.exe\")) and ((ProcessCommandLine contains \"Get-Content\" or ProcessCommandLine contains \"GetBytes\" or ProcessCommandLine contains \"hostname\" or ProcessCommandLine contains \"ifconfig\" or ProcessCommandLine contains \"ipconfig\" or ProcessCommandLine contains \"net view\" or ProcessCommandLine contains \"netstat\" or ProcessCommandLine contains \"nltest\" or ProcessCommandLine contains \"qprocess\" or ProcessCommandLine contains \"sc query\" or ProcessCommandLine contains \"systeminfo\" or ProcessCommandLine contains \"tasklist\" or ProcessCommandLine contains \"ToBase64String\" or ProcessCommandLine contains \"whoami\") or (ProcessCommandLine contains \"type \" and ProcessCommandLine contains \" > \" and ProcessCommandLine contains \" C:\\\\\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the use of various CLI utilities exfiltrating data via web reque"
+          },
+          {
+            "name": "tactics",
+            "value": "Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Obfuscated_Ordinal_Call_Via_Rundll32')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Obfuscated Ordinal Call Via Rundll32",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"#+\" or ProcessCommandLine contains \"#-\") and (FolderPath endswith \"\\\\rundll32.exe\" or ProcessVersionInfoOriginalFileName =~ \"RUNDLL32.EXE\" or ProcessCommandLine contains \"rundll32\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects execution of \"rundll32\" with potential obfuscated ordinal ca"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          }
+        ]
+      }
+    }
+  ]
+}

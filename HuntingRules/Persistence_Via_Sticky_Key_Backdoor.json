@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Persistence_Via_Sticky_Key_Backdoor')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Persistence Via Sticky Key Backdoor",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"copy \" and ProcessCommandLine contains \"/y \" and ProcessCommandLine contains \"C:\\\\windows\\\\system32\\\\cmd.exe C:\\\\windows\\\\system32\\\\sethc.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "By replacing the sticky keys executable with the local admins CMD executable, an attacker is able to access a privileged windows console session without authenticating to the system.\nWhen the sticky keys are \"activated\" the privilleged shel"
+          },
+          {
+            "name": "tactics",
+            "value": "PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

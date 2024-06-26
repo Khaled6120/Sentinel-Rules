@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_File_Overwrite_Via_Sysinternals_SDelete')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential File Overwrite Via Sysinternals SDelete",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessVersionInfoOriginalFileName =~ \"sdelete.exe\" and (not((ProcessCommandLine contains \" -h\" or ProcessCommandLine contains \" -c\" or ProcessCommandLine contains \" -z\" or ProcessCommandLine contains \" /?\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the use of SDelete to erase a file not the free sp"
+          },
+          {
+            "name": "tactics",
+            "value": "Impact"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1485"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Command_Line_Path_Traversal_Evasion_Attempt')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Command Line Path Traversal Evasion Attempt",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (((ProcessCommandLine contains \"\\\\..\\\\Windows\\\\\" or ProcessCommandLine contains \"\\\\..\\\\System32\\\\\" or ProcessCommandLine contains \"\\\\..\\\\..\\\\\") and FolderPath contains \"\\\\Windows\\\\\") or ProcessCommandLine contains \".exe\\\\..\\\\\") and (not((ProcessCommandLine contains \"\\\\Citrix\\\\Virtual Smart Card\\\\Citrix.Authentication.VirtualSmartcard.Launcher.exe\\\\..\\\\\" or ProcessCommandLine contains \"\\\\Google\\\\Drive\\\\googledrivesync.exe\\\\..\\\\\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potential evasion or obfuscation attempts using bogus path traversal via the commandl"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1036"
+          }
+        ]
+      }
+    }
+  ]
+}

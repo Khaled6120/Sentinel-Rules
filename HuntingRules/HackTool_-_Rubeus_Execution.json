@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "credential_access,lateral_movement"
+            "value": "CredentialAccess,LateralMovement"
           },
           {
             "name": "relevantTechniques",

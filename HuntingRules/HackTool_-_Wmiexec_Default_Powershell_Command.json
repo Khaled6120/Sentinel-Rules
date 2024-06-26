@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "defense_evasion,lateral_movement"
+            "value": "DefenseEvasion,LateralMovement"
           }
         ]
       }

@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "credential_access,privilege_escalation"
+            "value": "CredentialAccess,PrivilegeEscalation"
           },
           {
             "name": "relevantTechniques",

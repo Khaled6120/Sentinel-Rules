@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "collection,command_and_control,defense_evasion,discovery,s0592"
+            "value": "Collection,CommandAndControl,DefenseEvasion,Discovery,S0592"
           }
         ]
       }
