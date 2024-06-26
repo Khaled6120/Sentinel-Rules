@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "Command And Control,Defense Evasion,Execution"
+            "value": "command_and_control,defense_evasion,execution"
           },
           {
             "name": "relevantTechniques",

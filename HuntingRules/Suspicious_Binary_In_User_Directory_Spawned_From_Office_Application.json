@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "Execution,G0046"
+            "value": "execution,g0046"
           },
           {
             "name": "relevantTechniques",

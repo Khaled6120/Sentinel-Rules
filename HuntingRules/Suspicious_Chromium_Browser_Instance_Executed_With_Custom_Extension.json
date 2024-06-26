@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "Persistence"
+            "value": "persistence"
           },
           {
             "name": "relevantTechniques",
