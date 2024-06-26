@@ -10,7 +10,7 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- command_and_control
+- Command And Control
 relevantTechniques:
 - T1071
 query: 'DeviceImageLoadEvents

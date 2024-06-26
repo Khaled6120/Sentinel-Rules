@@ -12,7 +12,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- credential_access
+- Credential Access
 relevantTechniques:
 - T1003
 - T1552

@@ -11,8 +11,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- credential_access
-- privilege_escalation
+- Credential Access
+- Privilege Escalation
 relevantTechniques:
 - T1212
 query: 'DeviceProcessEvents

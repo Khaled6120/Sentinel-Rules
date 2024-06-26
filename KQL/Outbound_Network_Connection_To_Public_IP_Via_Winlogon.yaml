@@ -11,9 +11,9 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- command_and_control
-- defense_evasion
-- execution
+- Command And Control
+- Defense Evasion
+- Execution
 relevantTechniques:
 - T1218
 query: 'DeviceNetworkEvents

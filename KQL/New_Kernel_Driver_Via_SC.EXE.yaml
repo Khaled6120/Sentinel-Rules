@@ -10,8 +10,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- persistence
-- privilege_escalation
+- Persistence
+- Privilege Escalation
 relevantTechniques:
 - T1543
 query: 'DeviceProcessEvents

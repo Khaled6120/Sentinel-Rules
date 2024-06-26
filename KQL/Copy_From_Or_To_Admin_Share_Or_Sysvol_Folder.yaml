@@ -12,9 +12,9 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- collection
-- exfiltration
-- lateral_movement
+- Collection
+- Exfiltration
+- Lateral Movement
 relevantTechniques:
 - T1021
 - T1039

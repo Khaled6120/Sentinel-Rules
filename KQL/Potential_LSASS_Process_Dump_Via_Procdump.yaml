@@ -16,8 +16,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- credential_access
-- defense_evasion
+- Credential Access
+- Defense Evasion
 relevantTechniques:
 - T1003
 - T1036

@@ -11,8 +11,8 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- execution
-- privilege_escalation
+- Execution
+- Privilege Escalation
 relevantTechniques:
 - T1055
 query: 'DeviceImageLoadEvents

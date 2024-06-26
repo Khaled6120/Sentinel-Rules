@@ -11,8 +11,8 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- defense_evasion
-- persistence
+- Defense Evasion
+- Persistence
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

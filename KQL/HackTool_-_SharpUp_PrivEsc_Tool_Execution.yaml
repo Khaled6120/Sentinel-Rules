@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- privilege_escalation
+- Privilege Escalation
 relevantTechniques:
 - T1569
 - T1574

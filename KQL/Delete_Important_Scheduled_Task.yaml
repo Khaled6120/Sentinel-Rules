@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- impact
+- Impact
 relevantTechniques:
 - T1489
 query: 'DeviceProcessEvents

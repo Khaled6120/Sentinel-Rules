@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- impact
+- Impact
 relevantTechniques:
 - T1529
 query: 'DeviceProcessEvents

@@ -10,7 +10,7 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- impact
+- Impact
 relevantTechniques:
 - T1496
 query: 'DeviceNetworkEvents

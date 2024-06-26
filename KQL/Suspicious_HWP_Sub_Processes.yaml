@@ -11,9 +11,9 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
-- g0032
-- initial_access
+- Execution
+- G0032
+- Initial Access
 relevantTechniques:
 - T1059
 - T1203

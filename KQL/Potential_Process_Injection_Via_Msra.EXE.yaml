@@ -13,7 +13,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- defense_evasion
+- Defense Evasion
 relevantTechniques:
 - T1055
 query: 'DeviceProcessEvents

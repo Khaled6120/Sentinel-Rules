@@ -16,7 +16,7 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- execution
+- Execution
 relevantTechniques:
 - T1059
 query: 'DeviceImageLoadEvents

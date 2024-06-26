@@ -13,7 +13,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- impact
+- Impact
 relevantTechniques:
 - T1490
 query: 'DeviceProcessEvents

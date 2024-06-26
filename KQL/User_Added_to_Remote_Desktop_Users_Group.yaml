@@ -11,8 +11,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- lateral_movement
-- persistence
+- Lateral Movement
+- Persistence
 relevantTechniques:
 - T1021
 - T1133

@@ -12,7 +12,7 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- discovery
+- Discovery
 relevantTechniques:
 - T1046
 query: 'DeviceNetworkEvents

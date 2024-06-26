@@ -14,7 +14,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- reconnaissance
+- Reconnaissance
 relevantTechniques:
 - T1595
 query: 'DeviceProcessEvents

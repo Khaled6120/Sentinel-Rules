@@ -11,8 +11,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
-- g0046
+- Execution
+- G0046
 relevantTechniques:
 - T1204
 query: 'DeviceProcessEvents

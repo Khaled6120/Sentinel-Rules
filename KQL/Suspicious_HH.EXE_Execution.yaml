@@ -10,9 +10,9 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- defense_evasion
-- execution
-- initial_access
+- Defense Evasion
+- Execution
+- Initial Access
 relevantTechniques:
 - T1047
 - T1059

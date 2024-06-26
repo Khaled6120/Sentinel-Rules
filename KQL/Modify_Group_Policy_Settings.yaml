@@ -11,8 +11,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- defense_evasion
-- privilege_escalation
+- Defense Evasion
+- Privilege Escalation
 relevantTechniques:
 - T1484
 query: 'DeviceProcessEvents

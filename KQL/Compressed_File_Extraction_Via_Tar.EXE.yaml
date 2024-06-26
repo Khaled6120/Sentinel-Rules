@@ -14,8 +14,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- collection
-- exfiltration
+- Collection
+- Exfiltration
 relevantTechniques:
 - T1560
 query: 'DeviceProcessEvents

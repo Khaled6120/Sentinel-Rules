@@ -12,7 +12,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- discovery
+- Discovery
 relevantTechniques:
 - T1049
 query: 'DeviceProcessEvents

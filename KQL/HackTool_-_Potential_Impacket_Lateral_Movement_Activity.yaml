@@ -10,8 +10,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
-- lateral_movement
+- Execution
+- Lateral Movement
 relevantTechniques:
 - T1021
 - T1047

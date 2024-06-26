@@ -11,7 +11,7 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- defense_evasion
+- Defense Evasion
 relevantTechniques:
 - T1036
 query: 'DeviceImageLoadEvents

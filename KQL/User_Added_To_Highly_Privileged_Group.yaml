@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- persistence
+- Persistence
 relevantTechniques:
 - T1098
 query: 'DeviceProcessEvents

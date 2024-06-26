@@ -11,8 +11,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
-- persistence
+- Execution
+- Persistence
 relevantTechniques:
 - T1053
 query: 'DeviceProcessEvents

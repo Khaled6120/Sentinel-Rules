@@ -12,8 +12,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- defense_evasion
-- persistence
+- Defense Evasion
+- Persistence
 relevantTechniques:
 - T1036
 - T1053

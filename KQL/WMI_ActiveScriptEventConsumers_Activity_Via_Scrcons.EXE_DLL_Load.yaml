@@ -11,9 +11,9 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- lateral_movement
-- persistence
-- privilege_escalation
+- Lateral Movement
+- Persistence
+- Privilege Escalation
 relevantTechniques:
 - T1546
 query: 'DeviceImageLoadEvents

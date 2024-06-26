@@ -15,7 +15,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- discovery
+- Discovery
 relevantTechniques:
 - T1057
 query: 'DeviceProcessEvents

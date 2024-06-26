@@ -10,8 +10,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- command_and_control
-- lateral_movement
+- Command And Control
+- Lateral Movement
 relevantTechniques:
 - T1021
 - T1572

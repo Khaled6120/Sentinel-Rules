@@ -16,7 +16,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- exfiltration
+- Exfiltration
 relevantTechniques:
 - T1048
 query: 'DeviceProcessEvents

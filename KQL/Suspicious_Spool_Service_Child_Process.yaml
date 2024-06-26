@@ -10,8 +10,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
-- privilege_escalation
+- Execution
+- Privilege Escalation
 relevantTechniques:
 - T1068
 - T1203

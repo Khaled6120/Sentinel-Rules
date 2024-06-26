@@ -10,8 +10,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
-- s0106
+- Execution
+- S0106
 relevantTechniques:
 - T1047
 - T1053

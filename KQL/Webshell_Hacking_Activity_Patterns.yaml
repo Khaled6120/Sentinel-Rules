@@ -14,7 +14,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- persistence
+- Persistence
 relevantTechniques:
 - T1018
 - T1033

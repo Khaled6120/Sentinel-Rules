@@ -10,9 +10,9 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- defense_evasion
-- execution
-- persistence
+- Defense Evasion
+- Execution
+- Persistence
 relevantTechniques:
 - T1218
 - T1546

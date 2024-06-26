@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- exfiltration
+- Exfiltration
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

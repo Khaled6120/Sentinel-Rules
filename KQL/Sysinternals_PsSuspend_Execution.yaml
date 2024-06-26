@@ -11,8 +11,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- discovery
-- persistence
+- Discovery
+- Persistence
 relevantTechniques:
 - T1543
 query: 'DeviceProcessEvents

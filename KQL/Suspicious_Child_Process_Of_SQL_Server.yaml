@@ -11,9 +11,9 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- initial_access
-- persistence
-- privilege_escalation
+- Initial Access
+- Persistence
+- Privilege Escalation
 relevantTechniques:
 - T1190
 - T1505

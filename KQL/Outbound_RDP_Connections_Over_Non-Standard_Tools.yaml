@@ -16,7 +16,7 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- lateral_movement
+- Lateral Movement
 relevantTechniques:
 - T1021
 query: 'DeviceNetworkEvents

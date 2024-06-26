@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- initial_access
+- Initial Access
 relevantTechniques:
 - T1190
 query: 'DeviceProcessEvents

@@ -18,8 +18,8 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- defense_evasion
-- impact
+- Defense Evasion
+- Impact
 relevantTechniques:
 - T1486
 - T1562

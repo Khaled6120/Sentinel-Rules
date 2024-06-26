@@ -12,8 +12,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- collection
-- credential_access
+- Collection
+- Credential Access
 relevantTechniques:
 - T1056
 query: 'DeviceProcessEvents

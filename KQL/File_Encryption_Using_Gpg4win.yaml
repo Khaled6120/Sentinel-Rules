@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
+- Execution
 relevantTechniques: []
 query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -c \" and ProcessCommandLine\
   \ contains \"passphrase\") and ((FolderPath endswith \"\\\\gpg.exe\" or FolderPath\

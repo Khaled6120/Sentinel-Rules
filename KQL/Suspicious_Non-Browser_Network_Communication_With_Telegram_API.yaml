@@ -11,7 +11,7 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- command_and_control
+- Command And Control
 relevantTechniques:
 - T1102
 query: 'DeviceNetworkEvents

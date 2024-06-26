@@ -10,7 +10,7 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- execution
+- Execution
 relevantTechniques:
 - T1203
 query: 'DeviceNetworkEvents

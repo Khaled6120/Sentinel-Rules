@@ -19,9 +19,9 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- command_and_control
-- exfiltration
-- s0508
+- Command And Control
+- Exfiltration
+- S0508
 relevantTechniques:
 - T1090
 - T1102

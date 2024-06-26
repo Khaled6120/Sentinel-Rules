@@ -11,8 +11,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
-- s0029
+- Execution
+- S0029
 relevantTechniques:
 - T1569
 query: 'DeviceProcessEvents

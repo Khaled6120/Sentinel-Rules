@@ -19,7 +19,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- persistence
+- Persistence
 relevantTechniques:
 - T1546
 query: 'DeviceProcessEvents

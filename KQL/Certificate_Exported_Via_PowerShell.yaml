@@ -12,8 +12,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- credential_access
-- execution
+- Credential Access
+- Execution
 relevantTechniques:
 - T1059
 - T1552

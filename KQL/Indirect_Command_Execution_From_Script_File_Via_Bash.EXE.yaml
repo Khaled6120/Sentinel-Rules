@@ -16,7 +16,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- defense_evasion
+- Defense Evasion
 relevantTechniques:
 - T1202
 query: 'DeviceProcessEvents

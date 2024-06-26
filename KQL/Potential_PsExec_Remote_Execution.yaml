@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- resource_development
+- Resource Development
 relevantTechniques:
 - T1587
 query: 'DeviceProcessEvents

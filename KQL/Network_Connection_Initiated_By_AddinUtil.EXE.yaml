@@ -16,7 +16,7 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- defense_evasion
+- Defense Evasion
 relevantTechniques:
 - T1218
 query: 'DeviceNetworkEvents

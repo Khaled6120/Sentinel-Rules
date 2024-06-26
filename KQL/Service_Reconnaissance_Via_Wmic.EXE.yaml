@@ -22,7 +22,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
+- Execution
 relevantTechniques:
 - T1047
 query: 'DeviceProcessEvents

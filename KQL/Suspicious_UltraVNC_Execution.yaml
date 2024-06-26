@@ -12,8 +12,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- g0047
-- lateral_movement
+- G0047
+- Lateral Movement
 relevantTechniques:
 - T1021
 query: 'DeviceProcessEvents

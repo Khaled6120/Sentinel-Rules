@@ -12,8 +12,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- defense_evasion
-- execution
+- Defense Evasion
+- Execution
 relevantTechniques:
 - T1027
 - T1059

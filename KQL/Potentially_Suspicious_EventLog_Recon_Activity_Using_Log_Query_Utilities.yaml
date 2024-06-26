@@ -16,8 +16,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- credential_access
-- discovery
+- Credential Access
+- Discovery
 relevantTechniques:
 - T1552
 query: 'DeviceProcessEvents

@@ -11,8 +11,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- initial_access
-- lateral_movement
+- Initial Access
+- Lateral Movement
 relevantTechniques:
 - T1190
 - T1210

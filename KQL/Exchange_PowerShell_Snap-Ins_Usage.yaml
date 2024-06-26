@@ -11,8 +11,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- collection
-- execution
+- Collection
+- Execution
 relevantTechniques:
 - T1059
 - T1114

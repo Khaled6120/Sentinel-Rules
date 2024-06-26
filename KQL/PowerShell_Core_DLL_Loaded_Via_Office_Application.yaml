@@ -10,7 +10,7 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- defense_evasion
+- Defense Evasion
 relevantTechniques: []
 query: 'DeviceImageLoadEvents
 

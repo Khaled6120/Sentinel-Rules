@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
+- Execution
 relevantTechniques:
 - T1053
 query: 'DeviceProcessEvents

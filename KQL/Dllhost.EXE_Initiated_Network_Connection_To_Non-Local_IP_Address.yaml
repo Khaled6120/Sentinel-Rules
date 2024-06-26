@@ -17,8 +17,8 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- defense_evasion
-- execution
+- Defense Evasion
+- Execution
 relevantTechniques:
 - T1218
 - T1559

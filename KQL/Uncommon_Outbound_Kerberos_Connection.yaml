@@ -13,8 +13,8 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- credential_access
-- lateral_movement
+- Credential Access
+- Lateral Movement
 relevantTechniques:
 - T1550
 - T1558

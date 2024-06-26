@@ -12,8 +12,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
-- privilege_escalation
+- Execution
+- Privilege Escalation
 relevantTechniques:
 - T1059
 query: 'DeviceProcessEvents

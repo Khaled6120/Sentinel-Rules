@@ -11,8 +11,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
-- resource_development
+- Execution
+- Resource Development
 relevantTechniques:
 - T1569
 - T1587

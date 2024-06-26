@@ -12,7 +12,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- collection
+- Collection
 relevantTechniques:
 - T1115
 query: 'DeviceProcessEvents

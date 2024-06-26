@@ -12,8 +12,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
-- initial_access
+- Execution
+- Initial Access
 relevantTechniques:
 - T1204
 - T1566

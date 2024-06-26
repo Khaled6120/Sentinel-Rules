@@ -1,0 +1,33 @@
+name: Add New Download Source To Winget
+id: 05ebafc8-7aa2-4bcd-a269-2aec93f9e842
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/04/17
+severity: medium
+description: Detects usage of winget to add new additional download sources
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+- Execution
+relevantTechniques:
+- T1059
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "source " and ProcessCommandLine contains "add
+  ") and (FolderPath endswith "\\winget.exe" or ProcessVersionInfoOriginalFileName
+  =~ "winget.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

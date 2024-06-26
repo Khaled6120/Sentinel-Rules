@@ -11,8 +11,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- discovery
-- execution
+- Discovery
+- Execution
 relevantTechniques:
 - T1059
 - T1615

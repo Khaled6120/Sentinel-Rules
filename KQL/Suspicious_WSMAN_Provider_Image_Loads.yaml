@@ -11,8 +11,8 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- execution
-- lateral_movement
+- Execution
+- Lateral Movement
 relevantTechniques:
 - T1021
 - T1059

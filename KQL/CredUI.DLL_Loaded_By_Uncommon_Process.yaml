@@ -12,8 +12,8 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- collection
-- credential_access
+- Collection
+- Credential Access
 relevantTechniques:
 - T1056
 query: 'DeviceImageLoadEvents

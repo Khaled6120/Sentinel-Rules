@@ -11,11 +11,11 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- collection
-- command_and_control
-- defense_evasion
-- discovery
-- s0592
+- Collection
+- Command And Control
+- Defense Evasion
+- Discovery
+- S0592
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

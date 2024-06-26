@@ -21,7 +21,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- collection
+- Collection
 relevantTechniques:
 - T1113
 query: 'DeviceProcessEvents

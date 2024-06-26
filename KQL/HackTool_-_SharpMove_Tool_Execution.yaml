@@ -14,7 +14,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- lateral_movement
+- Lateral Movement
 relevantTechniques:
 - T1021
 query: 'DeviceProcessEvents

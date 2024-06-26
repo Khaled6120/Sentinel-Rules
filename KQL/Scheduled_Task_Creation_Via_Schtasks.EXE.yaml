@@ -11,10 +11,10 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
-- persistence
-- privilege_escalation
-- s0111
+- Execution
+- Persistence
+- Privilege Escalation
+- S0111
 relevantTechniques:
 - T1053
 query: 'DeviceProcessEvents

@@ -14,7 +14,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- command_and_control
+- Command And Control
 relevantTechniques:
 - T1219
 query: 'DeviceProcessEvents

@@ -16,8 +16,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- defense_evasion
-- impact
+- Defense Evasion
+- Impact
 relevantTechniques:
 - T1112
 - T1491

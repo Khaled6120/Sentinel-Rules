@@ -12,8 +12,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- discovery
-- privilege_escalation
+- Discovery
+- Privilege Escalation
 relevantTechniques:
 - T1033
 query: 'DeviceProcessEvents

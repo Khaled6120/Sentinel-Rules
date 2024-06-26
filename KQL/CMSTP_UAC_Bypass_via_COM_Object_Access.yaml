@@ -11,10 +11,10 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- defense_evasion
-- execution
-- g0069
-- privilege_escalation
+- Defense Evasion
+- Execution
+- G0069
+- Privilege Escalation
 relevantTechniques:
 - T1218
 - T1548

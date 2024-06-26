@@ -12,8 +12,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- command_and_control
-- execution
+- Command And Control
+- Execution
 relevantTechniques:
 - T1059
 - T1105

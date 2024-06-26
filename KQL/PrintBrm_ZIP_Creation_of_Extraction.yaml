@@ -11,8 +11,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- command_and_control
-- defense_evasion
+- Command And Control
+- Defense Evasion
 relevantTechniques:
 - T1105
 - T1564

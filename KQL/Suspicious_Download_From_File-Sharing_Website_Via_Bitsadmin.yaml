@@ -10,9 +10,9 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- defense_evasion
-- persistence
-- s0190
+- Defense Evasion
+- Persistence
+- S0190
 relevantTechniques:
 - T1036
 - T1197

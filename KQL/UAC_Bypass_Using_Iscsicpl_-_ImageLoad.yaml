@@ -12,8 +12,8 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- defense_evasion
-- privilege_escalation
+- Defense Evasion
+- Privilege Escalation
 relevantTechniques:
 - T1548
 query: 'DeviceImageLoadEvents

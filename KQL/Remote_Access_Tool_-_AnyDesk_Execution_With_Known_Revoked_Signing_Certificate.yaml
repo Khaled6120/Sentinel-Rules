@@ -21,8 +21,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- execution
-- initial_access
+- Execution
+- Initial Access
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

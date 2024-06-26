@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- collection
+- Collection
 relevantTechniques:
 - T1123
 query: 'DeviceProcessEvents

@@ -10,9 +10,9 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- defense_evasion
-- execution
-- privilege_escalation
+- Defense Evasion
+- Execution
+- Privilege Escalation
 relevantTechniques:
 - T1059
 - T1134

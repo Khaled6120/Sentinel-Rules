@@ -11,9 +11,9 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- command_and_control
-- defense_evasion
-- lateral_movement
+- Command And Control
+- Defense Evasion
+- Lateral Movement
 relevantTechniques:
 - T1090
 query: 'DeviceProcessEvents

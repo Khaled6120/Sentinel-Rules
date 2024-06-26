@@ -13,11 +13,11 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- credential_access
-- defense_evasion
-- discovery
-- execution
-- privilege_escalation
+- Credential Access
+- Defense Evasion
+- Discovery
+- Execution
+- Privilege Escalation
 relevantTechniques:
 - T1046
 - T1082

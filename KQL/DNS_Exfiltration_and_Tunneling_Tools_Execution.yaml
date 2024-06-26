@@ -10,8 +10,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- command_and_control
-- exfiltration
+- Command And Control
+- Exfiltration
 relevantTechniques:
 - T1048
 - T1071
