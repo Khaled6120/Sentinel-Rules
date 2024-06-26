@@ -38,8 +38,8 @@
         "suppressionDuration": "PT5H",
         "suppressionEnabled": false,
         "tactics": [
-          "collection",
-          "exfiltration"
+          "Collection",
+          "Exfiltration"
         ],
         "techniques": [
           "T1021",

@@ -38,8 +38,8 @@
         "suppressionDuration": "PT5H",
         "suppressionEnabled": false,
         "tactics": [
-          "execution",
-          "persistence"
+          "Execution",
+          "Persistence"
         ],
         "techniques": [
           "T1218",

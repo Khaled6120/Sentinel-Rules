@@ -38,7 +38,7 @@
         "suppressionDuration": "PT5H",
         "suppressionEnabled": false,
         "tactics": [
-          "impact"
+          "Impact"
         ],
         "techniques": [
           "T1529"

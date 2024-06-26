@@ -38,9 +38,9 @@
         "suppressionDuration": "PT5H",
         "suppressionEnabled": false,
         "tactics": [
-          "discovery",
-          "impact",
-          "reconnaissance"
+          "Discovery",
+          "Impact",
+          "Reconnaissance"
         ],
         "techniques": [],
         "templateVersion": "1.0.0",
