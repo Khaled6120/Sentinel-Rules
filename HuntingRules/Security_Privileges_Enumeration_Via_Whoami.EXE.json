@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "Discovery,PrivilegeEscalation"
+            "value": "Discovery,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

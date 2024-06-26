@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "DefenseEvasion,S0246"
+            "value": "Defense Evasion,S0246"
           },
           {
             "name": "relevantTechniques",

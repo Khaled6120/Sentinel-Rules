@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "LateralMovement"
+            "value": "Lateral Movement"
           },
           {
             "name": "relevantTechniques",

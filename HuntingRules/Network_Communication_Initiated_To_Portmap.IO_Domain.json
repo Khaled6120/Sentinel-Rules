@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "CommandAndControl,Exfiltration"
+            "value": "Command And Control,Exfiltration"
           },
           {
             "name": "relevantTechniques",

@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "DefenseEvasion,Execution,G0069"
+            "value": "Defense Evasion,Execution,G0069"
           },
           {
             "name": "relevantTechniques",

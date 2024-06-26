@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "CommandAndControl,LateralMovement"
+            "value": "Command And Control,Lateral Movement"
           },
           {
             "name": "relevantTechniques",

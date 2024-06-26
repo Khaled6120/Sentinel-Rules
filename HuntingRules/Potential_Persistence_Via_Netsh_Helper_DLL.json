@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "Persistence,PrivilegeEscalation,S0108"
+            "value": "Persistence,Privilege Escalation,S0108"
           },
           {
             "name": "relevantTechniques",

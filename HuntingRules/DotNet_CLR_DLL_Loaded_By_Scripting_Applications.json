@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "Execution,PrivilegeEscalation"
+            "value": "Execution,Privilege Escalation"
           },
           {
             "name": "relevantTechniques",

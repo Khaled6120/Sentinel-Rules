@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "DefenseEvasion,Execution,Persistence"
+            "value": "Defense Evasion,Execution,Persistence"
           },
           {
             "name": "relevantTechniques",

@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "Execution,G0032,InitialAccess"
+            "value": "Execution,G0032,Initial Access"
           },
           {
             "name": "relevantTechniques",

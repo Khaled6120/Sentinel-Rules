@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "DefenseEvasion,Persistence,S0190"
+            "value": "Defense Evasion,Persistence,S0190"
           },
           {
             "name": "relevantTechniques",

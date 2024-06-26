@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "CommandAndControl,Execution"
+            "value": "Command And Control,Execution"
           },
           {
             "name": "relevantTechniques",

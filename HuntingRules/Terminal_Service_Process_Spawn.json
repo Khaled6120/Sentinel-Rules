@@ -25,7 +25,7 @@
           },
           {
             "name": "tactics",
-            "value": "InitialAccess,LateralMovement"
+            "value": "Initial Access,Lateral Movement"
           },
           {
             "name": "relevantTechniques",
