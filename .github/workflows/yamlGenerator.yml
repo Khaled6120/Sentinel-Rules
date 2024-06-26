@@ -28,4 +28,4 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run script
-      run: python .\convert_sigma_to_kql.py
+      run: python \convert_sigma_to_kql.py
