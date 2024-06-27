@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects possible NTLM coercion via certutil using the 'syncwithWU' f"
+            "value": "Detects possible NTLM coercion via certutil using the 'syncwithWU' flag"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the command line executed when TeamViewer starts a session started by a remote host.\nOnce a connection has been started, an investigator can verify the connection details by viewing the \"incoming_connections.txt\" log file in the Tea"
+            "value": "Detects the command line executed when TeamViewer starts a session started by a remote host.\nOnce a connection has been started, an investigator can verify the connection details by viewing the \"incoming_connections.txt\" log file in the TeamViewer folder"
           },
           {
             "name": "tactics",

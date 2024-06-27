@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of rcdll."
+            "value": "Detects potential DLL sideloading of rcdll.dll"
           },
           {
             "name": "tactics",

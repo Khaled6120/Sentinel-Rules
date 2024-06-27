@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects MMC20.Application Lateral Movement; specifically looks for the spawning of the parent MMC.exe with a command line of \"-Embedding\" as a child of svchost."
+            "value": "Detects MMC20.Application Lateral Movement; specifically looks for the spawning of the parent MMC.exe with a command line of \"-Embedding\" as a child of svchost.exe"
           },
           {
             "name": "tactics",

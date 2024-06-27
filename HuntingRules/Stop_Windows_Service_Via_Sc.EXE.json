@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the stopping of a Windows service via the \"sc.exe\" util"
+            "value": "Detects the stopping of a Windows service via the \"sc.exe\" utility"
           },
           {
             "name": "tactics",

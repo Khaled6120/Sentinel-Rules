@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects processes loading the non-existent DLL \"ShellChromeAPI\". One known example is the \"DeviceEnroller\" binary in combination with the \"PhoneDeepLink\" flag tries to load this DLL.\nAdversaries can drop their own renamed DLL and execute it"
+            "value": "Detects processes loading the non-existent DLL \"ShellChromeAPI\". One known example is the \"DeviceEnroller\" binary in combination with the \"PhoneDeepLink\" flag tries to load this DLL.\nAdversaries can drop their own renamed DLL and execute it via DeviceEnr"
           },
           {
             "name": "tactics",

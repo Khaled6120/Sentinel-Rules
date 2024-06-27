@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects base64 encoded .NET reflective loading of Assem"
+            "value": "Detects base64 encoded .NET reflective loading of Assembly"
           },
           {
             "name": "tactics",

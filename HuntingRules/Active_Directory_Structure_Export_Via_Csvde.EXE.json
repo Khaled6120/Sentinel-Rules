@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of \"csvde.exe\" in order to export organizational Active Directory structu"
+            "value": "Detects the execution of \"csvde.exe\" in order to export organizational Active Directory structure."
           },
           {
             "name": "tactics",

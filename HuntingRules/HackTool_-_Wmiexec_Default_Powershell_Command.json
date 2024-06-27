@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of PowerShell with a specific flag sequence that is used by the Wmiexec scr"
+            "value": "Detects the execution of PowerShell with a specific flag sequence that is used by the Wmiexec script"
           },
           {
             "name": "tactics",

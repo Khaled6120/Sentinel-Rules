@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects command that type the content of ntdll.dll to a different file or a pipe in order to evade AV / EDR detection. As seen being used in the POC NtdllP"
+            "value": "Detects command that type the content of ntdll.dll to a different file or a pipe in order to evade AV / EDR detection. As seen being used in the POC NtdllPipe"
           },
           {
             "name": "tactics",

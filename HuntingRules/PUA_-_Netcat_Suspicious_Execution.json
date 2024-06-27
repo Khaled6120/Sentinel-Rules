@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of Netcat. Adversaries may use a non-application layer protocol for communication between host and C2 server or among infected hosts within a netw"
+            "value": "Detects execution of Netcat. Adversaries may use a non-application layer protocol for communication between host and C2 server or among infected hosts within a network"
           },
           {
             "name": "tactics",

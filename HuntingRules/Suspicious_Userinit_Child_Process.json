@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a suspicious child process of useri"
+            "value": "Detects a suspicious child process of userinit"
           },
           {
             "name": "tactics",

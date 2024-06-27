@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects changes to the PowerShell execution policy registry key in order to bypass signing requirements for script execution from the CommandL"
+            "value": "Detects changes to the PowerShell execution policy registry key in order to bypass signing requirements for script execution from the CommandLine"
           },
           {
             "name": "tactics",

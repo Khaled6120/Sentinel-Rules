@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects network connections to Cloudflared tunnels domains initiated by a process on the system.\nAttackers can abuse that feature to establish a reverse shell or persistence on a machin"
+            "value": "Detects network connections to Cloudflared tunnels domains initiated by a process on the system.\nAttackers can abuse that feature to establish a reverse shell or persistence on a machine.\n"
           },
           {
             "name": "tactics",

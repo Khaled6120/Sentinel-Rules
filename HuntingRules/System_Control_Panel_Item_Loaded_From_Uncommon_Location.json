@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects image load events of system control panel items (.cpl) from uncommon or non-system locations which might be the result of sideloadi"
+            "value": "Detects image load events of system control panel items (.cpl) from uncommon or non-system locations which might be the result of sideloading."
           },
           {
             "name": "tactics",

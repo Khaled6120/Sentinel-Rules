@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Adversaries may disable security tools to avoid possible detection of their tools and activities by uninstalling Crowdstrike Fal"
+            "value": "Adversaries may disable security tools to avoid possible detection of their tools and activities by uninstalling Crowdstrike Falcon"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution from an Alternate Data Stream (ADS). Adversaries may use NTFS file attributes to hide their malicious data in order to evade detect"
+            "value": "Detects execution from an Alternate Data Stream (ADS). Adversaries may use NTFS file attributes to hide their malicious data in order to evade detection"
           },
           {
             "name": "tactics",

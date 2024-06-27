@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious children spawned via the Windows Terminal application which could be a sign of persistence via WindowsTerminal (see references secti"
+            "value": "Detects suspicious children spawned via the Windows Terminal application which could be a sign of persistence via WindowsTerminal (see references section)"
           },
           {
             "name": "tactics",

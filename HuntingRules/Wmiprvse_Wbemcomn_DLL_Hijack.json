@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a threat actor creating a file named `wbemcomn.dll` in the `C:\\Windows\\System32\\wbem\\` directory over the network and loading it for a WMI DLL Hijack scenar"
+            "value": "Detects a threat actor creating a file named `wbemcomn.dll` in the `C:\\Windows\\System32\\wbem\\` directory over the network and loading it for a WMI DLL Hijack scenario."
           },
           {
             "name": "tactics",

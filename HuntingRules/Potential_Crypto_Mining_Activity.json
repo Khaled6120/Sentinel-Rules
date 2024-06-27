@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects command line parameters or strings often used by crypto min"
+            "value": "Detects command line parameters or strings often used by crypto miners"
           },
           {
             "name": "tactics",

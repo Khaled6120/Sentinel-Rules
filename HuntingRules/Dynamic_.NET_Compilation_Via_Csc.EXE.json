@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of \"csc.exe\" to compile .NET code. Attackers often leverage this to compile code on the fly and use it in other stag"
+            "value": "Detects execution of \"csc.exe\" to compile .NET code. Attackers often leverage this to compile code on the fly and use it in other stages."
           },
           {
             "name": "tactics",

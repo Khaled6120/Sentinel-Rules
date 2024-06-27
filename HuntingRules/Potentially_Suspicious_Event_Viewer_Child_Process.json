@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects uncommon or suspicious child processes of \"eventvwr.exe\" which might indicate a UAC bypass atte"
+            "value": "Detects uncommon or suspicious child processes of \"eventvwr.exe\" which might indicate a UAC bypass attempt"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of the SharpImpersonation tool. Which can be used to manipulate tokens on a Windows computers remotely (PsExec/WmiExec) or interactiv"
+            "value": "Detects execution of the SharpImpersonation tool. Which can be used to manipulate tokens on a Windows computers remotely (PsExec/WmiExec) or interactively"
           },
           {
             "name": "tactics",

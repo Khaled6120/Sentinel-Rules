@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a commandline containing references to the Microsoft Teams database or cookies files from a process other than Teams.\nThe database might contain authentication tokens and other sensitive information about the logged in account"
+            "value": "Detects a commandline containing references to the Microsoft Teams database or cookies files from a process other than Teams.\nThe database might contain authentication tokens and other sensitive information about the logged in accounts.\n"
           },
           {
             "name": "tactics",

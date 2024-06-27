@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects using WorkFolders.exe to execute an arbitrary control."
+            "value": "Detects using WorkFolders.exe to execute an arbitrary control.exe"
           },
           {
             "name": "tactics",

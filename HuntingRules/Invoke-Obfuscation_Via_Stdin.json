@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects Obfuscated Powershell via Stdin in Scri"
+            "value": "Detects Obfuscated Powershell via Stdin in Scripts"
           },
           {
             "name": "tactics",

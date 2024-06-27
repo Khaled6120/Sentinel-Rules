@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "One way Qbot steals sensitive information is by extracting browser data from Internet Explorer and Microsoft Edge by using the built-in utility esentutl."
+            "value": "One way Qbot steals sensitive information is by extracting browser data from Internet Explorer and Microsoft Edge by using the built-in utility esentutl.exe"
           },
           {
             "name": "tactics",

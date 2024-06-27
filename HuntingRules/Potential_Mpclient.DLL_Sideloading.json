@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential sideloading of \"mpclient.dll\" by Windows Defender processes (\"MpCmdRun\" and \"NisSrv\") from their non-default directo"
+            "value": "Detects potential sideloading of \"mpclient.dll\" by Windows Defender processes (\"MpCmdRun\" and \"NisSrv\") from their non-default directory."
           },
           {
             "name": "tactics",

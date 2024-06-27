@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of the Windows Update Client binary (wuauclt.exe) for proxy executi"
+            "value": "Detects the use of the Windows Update Client binary (wuauclt.exe) for proxy execution."
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential tampering with Windows Defender settings such as adding exclusion using w"
+            "value": "Detects potential tampering with Windows Defender settings such as adding exclusion using wmic"
           },
           {
             "name": "tactics",

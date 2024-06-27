@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects certain parent child patterns found in cases in which a web shell is used to perform certain credential dumping or exfiltration activities on a compromised syst"
+            "value": "Detects certain parent child patterns found in cases in which a web shell is used to perform certain credential dumping or exfiltration activities on a compromised system\n"
           },
           {
             "name": "tactics",

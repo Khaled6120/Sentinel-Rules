@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of REGSVR32.exe with DLL files masquerading as other fi"
+            "value": "Detects the execution of REGSVR32.exe with DLL files masquerading as other files"
           },
           {
             "name": "tactics",

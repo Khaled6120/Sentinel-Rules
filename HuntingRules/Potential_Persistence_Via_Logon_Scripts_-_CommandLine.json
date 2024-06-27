@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the addition of a new LogonScript to the registry value \"UserInitMprLogonScript\" for potential persiste"
+            "value": "Detects the addition of a new LogonScript to the registry value \"UserInitMprLogonScript\" for potential persistence"
           },
           {
             "name": "tactics",

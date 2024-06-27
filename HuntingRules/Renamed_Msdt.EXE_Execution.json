@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of a renamed \"Msdt.exe\" bin"
+            "value": "Detects the execution of a renamed \"Msdt.exe\" binary"
           },
           {
             "name": "tactics",

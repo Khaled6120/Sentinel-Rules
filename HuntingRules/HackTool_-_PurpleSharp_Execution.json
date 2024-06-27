@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of the PurpleSharp adversary simulation t"
+            "value": "Detects the execution of the PurpleSharp adversary simulation tool"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects uncommon child processes of \"BgInfo.exe\" which could be a sign of potential abuse of the binary to proxy execution via external VBScr"
+            "value": "Detects uncommon child processes of \"BgInfo.exe\" which could be a sign of potential abuse of the binary to proxy execution via external VBScript"
           },
           {
             "name": "tactics",

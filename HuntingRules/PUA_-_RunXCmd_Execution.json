@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of the RunXCmd tool to execute commands with System or TrustedInstaller accou"
+            "value": "Detects the use of the RunXCmd tool to execute commands with System or TrustedInstaller accounts"
           },
           {
             "name": "tactics",

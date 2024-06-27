@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "The \"VSIISExeLauncher.exe\" binary part of the Visual Studio/VS Code can be used to execute arbitrary binar"
+            "value": "The \"VSIISExeLauncher.exe\" binary part of the Visual Studio/VS Code can be used to execute arbitrary binaries"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of Time Travel Debugging Utility. Adversaries can execute malicious processes and dump processes, such as lsass.exe, via tttracer.e"
+            "value": "Detects usage of Time Travel Debugging Utility. Adversaries can execute malicious processes and dump processes, such as lsass.exe, via tttracer.exe."
           },
           {
             "name": "tactics",

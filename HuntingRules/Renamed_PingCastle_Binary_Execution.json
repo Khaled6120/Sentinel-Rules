@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of a renamed \"PingCastle\" binary based on the PE metadata fiel"
+            "value": "Detects the execution of a renamed \"PingCastle\" binary based on the PE metadata fields."
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the modification of an existing service in order to execute an arbitrary payload when the service is started or killed as a potential method for persisten"
+            "value": "Detects the modification of an existing service in order to execute an arbitrary payload when the service is started or killed as a potential method for persistence."
           },
           {
             "name": "tactics",

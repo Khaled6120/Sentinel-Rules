@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects when adversaries stop services or processes by deleting their respective scheduled tasks in order to conduct data destructive activit"
+            "value": "Detects when adversaries stop services or processes by deleting their respective scheduled tasks in order to conduct data destructive activities"
           },
           {
             "name": "tactics",

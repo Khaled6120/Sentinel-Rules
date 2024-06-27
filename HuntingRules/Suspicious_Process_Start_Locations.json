@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious process run from unusual locati"
+            "value": "Detects suspicious process run from unusual locations"
           },
           {
             "name": "tactics",

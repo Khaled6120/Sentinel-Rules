@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the creation of a schtask that potentially executes a base64 encoded payload stored in the Windows Registry using PowerShe"
+            "value": "Detects the creation of a schtask that potentially executes a base64 encoded payload stored in the Windows Registry using PowerShell."
           },
           {
             "name": "tactics",

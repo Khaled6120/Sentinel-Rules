@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of Setres.exe to set the screen resolution and then potentially launch a file named \"choice\" (with any executable extension such as \".cmd\" or \".exe\") from the current execution p"
+            "value": "Detects the use of Setres.exe to set the screen resolution and then potentially launch a file named \"choice\" (with any executable extension such as \".cmd\" or \".exe\") from the current execution path"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"waveedit.dll\", which is part of the Nero WaveEditor audio editing softwa"
+            "value": "Detects potential DLL sideloading of \"waveedit.dll\", which is part of the Nero WaveEditor audio editing software."
           },
           {
             "name": "tactics",

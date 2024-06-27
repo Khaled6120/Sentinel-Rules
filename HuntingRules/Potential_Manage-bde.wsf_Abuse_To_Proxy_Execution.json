@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential abuse of the \"manage-bde.wsf\" script as a LOLBIN to proxy execut"
+            "value": "Detects potential abuse of the \"manage-bde.wsf\" script as a LOLBIN to proxy execution"
           },
           {
             "name": "tactics",

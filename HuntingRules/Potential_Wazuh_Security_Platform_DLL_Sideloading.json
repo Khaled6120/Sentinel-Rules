@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL side loading of DLLs that are part of the Wazuh security platf"
+            "value": "Detects potential DLL side loading of DLLs that are part of the Wazuh security platform"
           },
           {
             "name": "tactics",

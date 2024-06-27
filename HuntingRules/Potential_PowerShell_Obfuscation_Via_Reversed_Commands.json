@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the presence of reversed PowerShell commands in the CommandLine. This is often used as a method of obfuscation by attack"
+            "value": "Detects the presence of reversed PowerShell commands in the CommandLine. This is often used as a method of obfuscation by attackers"
           },
           {
             "name": "tactics",

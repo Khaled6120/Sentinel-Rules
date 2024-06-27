@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential process patterns related to Cobalt Strike beacon activ"
+            "value": "Detects potential process patterns related to Cobalt Strike beacon activity"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"iviewers.dll\" (OLE/COM Object Interface View"
+            "value": "Detects potential DLL sideloading of \"iviewers.dll\" (OLE/COM Object Interface Viewer)"
           },
           {
             "name": "tactics",

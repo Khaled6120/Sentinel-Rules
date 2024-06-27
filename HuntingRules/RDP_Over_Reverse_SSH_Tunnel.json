@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects svchost hosting RDP termsvcs communicating with the loopback address and on TCP port 3"
+            "value": "Detects svchost hosting RDP termsvcs communicating with the loopback address and on TCP port 3389"
           },
           {
             "name": "tactics",

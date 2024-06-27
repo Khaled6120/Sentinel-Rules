@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of \"IMEWDBLD.exe\" to download arbitrary fi"
+            "value": "Detects usage of \"IMEWDBLD.exe\" to download arbitrary files"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects different hacktools used for relay attacks on Windows for privilege escalat"
+            "value": "Detects different hacktools used for relay attacks on Windows for privilege escalation"
           },
           {
             "name": "tactics",

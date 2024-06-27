@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of different compiled Windows binaries of the impacket toolset (based on names or part of their names - could lead to false positiv"
+            "value": "Detects the execution of different compiled Windows binaries of the impacket toolset (based on names or part of their names - could lead to false positives)"
           },
           {
             "name": "tactics",

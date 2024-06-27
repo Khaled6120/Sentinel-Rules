@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Adversaries may modify system firewalls in order to bypass controls limiting network us"
+            "value": "Adversaries may modify system firewalls in order to bypass controls limiting network usage"
           },
           {
             "name": "tactics",

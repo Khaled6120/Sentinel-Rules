@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects browsers starting with the remote debugging flags. Which is a technique often used to perform browser injection atta"
+            "value": "Detects browsers starting with the remote debugging flags. Which is a technique often used to perform browser injection attacks"
           },
           {
             "name": "tactics",

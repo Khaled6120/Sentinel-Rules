@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the creation of a new service using the \"sc.exe\" utili"
+            "value": "Detects the creation of a new service using the \"sc.exe\" utility."
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the creation of a process via the Windows task manager. This might be an attempt to bypass "
+            "value": "Detects the creation of a process via the Windows task manager. This might be an attempt to bypass UAC"
           },
           {
             "name": "tactics",

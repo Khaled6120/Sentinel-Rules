@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of 3proxy, a tiny free proxy ser"
+            "value": "Detects the use of 3proxy, a tiny free proxy server"
           },
           {
             "name": "tactics",

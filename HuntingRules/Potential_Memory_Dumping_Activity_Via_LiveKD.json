@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of LiveKD based on PE metadata or image n"
+            "value": "Detects execution of LiveKD based on PE metadata or image name"
           },
           {
             "name": "tactics",

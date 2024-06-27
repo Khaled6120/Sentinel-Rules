@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects uncommon child processes of Appvlp.EXE\nAppvlp or the Application Virtualization Utility is included with Microsoft Office. Attackers are able to abuse \"AppVLP\" to execute shell commands.\nNormally, this binary is used for Application"
+            "value": "Detects uncommon child processes of Appvlp.EXE\nAppvlp or the Application Virtualization Utility is included with Microsoft Office. Attackers are able to abuse \"AppVLP\" to execute shell commands.\nNormally, this binary is used for Application Virtualizatio"
           },
           {
             "name": "tactics",

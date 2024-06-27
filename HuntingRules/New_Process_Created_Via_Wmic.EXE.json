@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects new process creation using WMIC via the \"process call create\" f"
+            "value": "Detects new process creation using WMIC via the \"process call create\" flag"
           },
           {
             "name": "tactics",

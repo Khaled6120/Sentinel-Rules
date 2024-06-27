@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects when a user enable developer features such as \"Developer Mode\" or \"Application Sideloading\". Which allows the user to install untrusted packag"
+            "value": "Detects when a user enable developer features such as \"Developer Mode\" or \"Application Sideloading\". Which allows the user to install untrusted packages."
           },
           {
             "name": "tactics",

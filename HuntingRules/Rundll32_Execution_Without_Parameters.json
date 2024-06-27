@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects rundll32 execution without parameters as observed when running Metasploit windows/smb/psexec exploit mod"
+            "value": "Detects rundll32 execution without parameters as observed when running Metasploit windows/smb/psexec exploit module"
           },
           {
             "name": "tactics",

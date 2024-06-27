@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of the powerShell New-MailboxExportRequest Cmdlet to exports a mailbox to a remote or local share, as used in ProxyShell exploitati"
+            "value": "Detects usage of the powerShell New-MailboxExportRequest Cmdlet to exports a mailbox to a remote or local share, as used in ProxyShell exploitations"
           },
           {
             "name": "tactics",

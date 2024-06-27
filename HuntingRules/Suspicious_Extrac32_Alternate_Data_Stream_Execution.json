@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Extract data from cab file and hide it in an alternate data str"
+            "value": "Extract data from cab file and hide it in an alternate data stream"
           },
           {
             "name": "tactics",

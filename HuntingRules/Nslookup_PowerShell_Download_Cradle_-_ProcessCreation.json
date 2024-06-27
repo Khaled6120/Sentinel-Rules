@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious powershell download cradle using nslookup. This cradle uses nslookup to extract payloads from DNS reco"
+            "value": "Detects suspicious powershell download cradle using nslookup. This cradle uses nslookup to extract payloads from DNS records"
           },
           {
             "name": "tactics",

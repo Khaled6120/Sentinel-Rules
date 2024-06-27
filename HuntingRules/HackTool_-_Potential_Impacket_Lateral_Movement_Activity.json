@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects wmiexec/dcomexec/atexec/smbexec from Impacket framew"
+            "value": "Detects wmiexec/dcomexec/atexec/smbexec from Impacket framework"
           },
           {
             "name": "tactics",

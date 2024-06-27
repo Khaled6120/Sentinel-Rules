@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Ntvdm.exe allows the execution of 16-bit Windows applications on 32-bit Windows operating systems, as well as the execution of both 16-bit and 32-bit DOS applicati"
+            "value": "Ntvdm.exe allows the execution of 16-bit Windows applications on 32-bit Windows operating systems, as well as the execution of both 16-bit and 32-bit DOS applications"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious Plink tunnel port forwarding to a local p"
+            "value": "Detects suspicious Plink tunnel port forwarding to a local port"
           },
           {
             "name": "tactics",

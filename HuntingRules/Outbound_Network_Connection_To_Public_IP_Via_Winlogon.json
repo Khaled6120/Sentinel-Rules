@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a \"winlogon.exe\" process that initiate network communications with public IP addres"
+            "value": "Detects a \"winlogon.exe\" process that initiate network communications with public IP addresses"
           },
           {
             "name": "tactics",

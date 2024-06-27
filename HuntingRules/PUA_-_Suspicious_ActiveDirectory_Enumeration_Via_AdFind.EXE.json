@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects active directory enumeration activity using known AdFind CLI fl"
+            "value": "Detects active directory enumeration activity using known AdFind CLI flags"
           },
           {
             "name": "tactics",

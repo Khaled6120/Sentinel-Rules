@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a network connection initiated by Cmstp.EXE\nIts uncommon for \"cmstp.exe\" to initiate an outbound network connection. Investigate the source of such requests to determine if they are maliciou"
+            "value": "Detects a network connection initiated by Cmstp.EXE\nIts uncommon for \"cmstp.exe\" to initiate an outbound network connection. Investigate the source of such requests to determine if they are malicious.\n"
           },
           {
             "name": "tactics",

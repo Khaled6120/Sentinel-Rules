@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects addition of users to highly privileged groups via \"Net\" or \"Add-LocalGroupMembe"
+            "value": "Detects addition of users to highly privileged groups via \"Net\" or \"Add-LocalGroupMember\"."
           },
           {
             "name": "tactics",

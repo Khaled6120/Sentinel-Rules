@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects Visual Studio Code tunnel execution. Attackers can abuse this functionality to establish a C2 chan"
+            "value": "Detects Visual Studio Code tunnel execution. Attackers can abuse this functionality to establish a C2 channel"
           },
           {
             "name": "tactics",

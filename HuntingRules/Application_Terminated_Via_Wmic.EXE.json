@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects calls to the \"terminate\" function via wmic in order to kill an applicat"
+            "value": "Detects calls to the \"terminate\" function via wmic in order to kill an application"
           },
           {
             "name": "tactics",

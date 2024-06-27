@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detect usage of DLL \"coregen.exe\" (Microsoft CoreCLR Native Image Generator) binary to sideload arbitrary DL"
+            "value": "Detect usage of DLL \"coregen.exe\" (Microsoft CoreCLR Native Image Generator) binary to sideload arbitrary DLLs."
           },
           {
             "name": "tactics",

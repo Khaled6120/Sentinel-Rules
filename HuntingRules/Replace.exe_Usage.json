@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of Replace.exe which can be used to replace file with another f"
+            "value": "Detects the use of Replace.exe which can be used to replace file with another file"
           },
           {
             "name": "tactics",

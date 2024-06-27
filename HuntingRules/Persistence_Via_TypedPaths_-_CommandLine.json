@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects modification addition to the 'TypedPaths' key in the user or admin registry via the commandline. Which might indicate persistence atte"
+            "value": "Detects modification addition to the 'TypedPaths' key in the user or admin registry via the commandline. Which might indicate persistence attempt"
           },
           {
             "name": "tactics",

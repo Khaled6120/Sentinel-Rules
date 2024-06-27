@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Identifies use of Fodhelper.exe to bypass User Account Control. Adversaries use this technique to execute privileged process"
+            "value": "Identifies use of Fodhelper.exe to bypass User Account Control. Adversaries use this technique to execute privileged processes."
           },
           {
             "name": "tactics",

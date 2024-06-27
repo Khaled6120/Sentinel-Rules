@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects one of the possible scenarios for disabling Symantec Endpoint Protection.\nSymantec Endpoint Protection antivirus software services incorrectly implement the protected service mechanism.\nAs a result, the NT AUTHORITY/SYSTEM user can "
+            "value": "Detects one of the possible scenarios for disabling Symantec Endpoint Protection.\nSymantec Endpoint Protection antivirus software services incorrectly implement the protected service mechanism.\nAs a result, the NT AUTHORITY/SYSTEM user can execute the ta"
           },
           {
             "name": "tactics",

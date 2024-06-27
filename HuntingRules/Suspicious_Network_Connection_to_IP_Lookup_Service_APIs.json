@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects external IP address lookups by non-browser processes via services such as \"api.ipify.org\". This could be indicative of potential post compromise internet test activi"
+            "value": "Detects external IP address lookups by non-browser processes via services such as \"api.ipify.org\". This could be indicative of potential post compromise internet test activity."
           },
           {
             "name": "tactics",

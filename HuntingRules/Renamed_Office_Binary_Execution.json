@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of a renamed office bin"
+            "value": "Detects the execution of a renamed office binary"
           },
           {
             "name": "tactics",

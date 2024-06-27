@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a suspicious process spawning from an Outlook proce"
+            "value": "Detects a suspicious process spawning from an Outlook process."
           },
           {
             "name": "tactics",

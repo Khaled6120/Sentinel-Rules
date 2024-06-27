@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious aged finger.exe tool execution often used in malware attacks nowad"
+            "value": "Detects suspicious aged finger.exe tool execution often used in malware attacks nowadays"
           },
           {
             "name": "tactics",

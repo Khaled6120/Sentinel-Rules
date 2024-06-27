@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects DLL sideloading of DLLs usually located in system locations (System32, SysWOW64, etc"
+            "value": "Detects DLL sideloading of DLLs usually located in system locations (System32, SysWOW64, etc.)."
           },
           {
             "name": "tactics",

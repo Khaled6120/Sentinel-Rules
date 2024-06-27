@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious and uncommon child processes of WmiPr"
+            "value": "Detects suspicious and uncommon child processes of WmiPrvSE"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of the Microsoft signed script \"CL_mutexverifiers\" to proxy the execution of additional PowerShell script comma"
+            "value": "Detects the use of the Microsoft signed script \"CL_mutexverifiers\" to proxy the execution of additional PowerShell script commands"
           },
           {
             "name": "tactics",

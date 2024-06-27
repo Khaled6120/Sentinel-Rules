@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects when a user installs certificates by using CertOC.exe to loads the target DLL fi"
+            "value": "Detects when a user installs certificates by using CertOC.exe to loads the target DLL file."
           },
           {
             "name": "tactics",

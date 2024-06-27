@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of \"reg.exe\" to disable security services such as Windows Defend"
+            "value": "Detects execution of \"reg.exe\" to disable security services such as Windows Defender."
           },
           {
             "name": "tactics",

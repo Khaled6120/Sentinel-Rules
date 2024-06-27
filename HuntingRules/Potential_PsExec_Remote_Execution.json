@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential psexec command that initiate execution on a remote systems via common commandline flags used by the util"
+            "value": "Detects potential psexec command that initiate execution on a remote systems via common commandline flags used by the utility"
           },
           {
             "name": "tactics",

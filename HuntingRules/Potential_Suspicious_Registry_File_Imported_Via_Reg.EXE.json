@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the import of '.reg' files from suspicious paths using the 'reg.exe' util"
+            "value": "Detects the import of '.reg' files from suspicious paths using the 'reg.exe' utility"
           },
           {
             "name": "tactics",

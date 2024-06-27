@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of bitsadmin downloading a file to a suspicious target fol"
+            "value": "Detects usage of bitsadmin downloading a file to a suspicious target folder"
           },
           {
             "name": "tactics",

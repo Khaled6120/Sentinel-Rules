@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a ping command that uses a hex encoded IP addr"
+            "value": "Detects a ping command that uses a hex encoded IP address"
           },
           {
             "name": "tactics",

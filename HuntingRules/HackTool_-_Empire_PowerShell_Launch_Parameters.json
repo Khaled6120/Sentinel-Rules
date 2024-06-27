@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious powershell command line parameters used in Emp"
+            "value": "Detects suspicious powershell command line parameters used in Empire"
           },
           {
             "name": "tactics",

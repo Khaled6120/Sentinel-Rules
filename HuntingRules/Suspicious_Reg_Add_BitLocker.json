@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious addition to BitLocker related registry keys via the reg.exe util"
+            "value": "Detects suspicious addition to BitLocker related registry keys via the reg.exe utility"
           },
           {
             "name": "tactics",

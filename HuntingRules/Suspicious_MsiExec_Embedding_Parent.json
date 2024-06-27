@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Adversaries may abuse msiexec.exe to proxy the execution of malicious paylo"
+            "value": "Adversaries may abuse msiexec.exe to proxy the execution of malicious payloads"
           },
           {
             "name": "tactics",

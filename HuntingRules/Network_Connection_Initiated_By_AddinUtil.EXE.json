@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a network connection initiated by the Add-In deployment cache updating utility \"AddInutil.exe\".\nThis could indicate a potential command and control communication as this tool doesn't usually initiate network activit"
+            "value": "Detects a network connection initiated by the Add-In deployment cache updating utility \"AddInutil.exe\".\nThis could indicate a potential command and control communication as this tool doesn't usually initiate network activity.\n"
           },
           {
             "name": "tactics",

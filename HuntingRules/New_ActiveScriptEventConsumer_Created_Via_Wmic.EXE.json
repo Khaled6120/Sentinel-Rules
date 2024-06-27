@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects WMIC executions in which an event consumer gets created. This could be used to establish persiste"
+            "value": "Detects WMIC executions in which an event consumer gets created. This could be used to establish persistence"
           },
           {
             "name": "tactics",

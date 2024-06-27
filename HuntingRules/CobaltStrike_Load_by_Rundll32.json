@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Rundll32 can be use by Cobalt Strike with StartW function to load DLLs from the command li"
+            "value": "Rundll32 can be use by Cobalt Strike with StartW function to load DLLs from the command line."
           },
           {
             "name": "tactics",

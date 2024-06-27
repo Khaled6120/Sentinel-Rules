@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of ntdsutil.exe, which can be used for various attacks against the NTDS database (NTDS.D"
+            "value": "Detects execution of ntdsutil.exe, which can be used for various attacks against the NTDS database (NTDS.DIT)"
           },
           {
             "name": "tactics",

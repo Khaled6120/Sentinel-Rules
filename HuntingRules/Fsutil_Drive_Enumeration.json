@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Attackers may leverage fsutil to enumerated connected driv"
+            "value": "Attackers may leverage fsutil to enumerated connected drives."
           },
           {
             "name": "tactics",

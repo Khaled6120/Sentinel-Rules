@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a JAVA process running with remote debugging allowing more than just localhost to conn"
+            "value": "Detects a JAVA process running with remote debugging allowing more than just localhost to connect"
           },
           {
             "name": "tactics",

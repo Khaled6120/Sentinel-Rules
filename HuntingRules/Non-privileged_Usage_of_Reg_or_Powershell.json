@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Search for usage of reg or Powershell by non-privileged users to modify service configuration in regis"
+            "value": "Search for usage of reg or Powershell by non-privileged users to modify service configuration in registry"
           },
           {
             "name": "tactics",

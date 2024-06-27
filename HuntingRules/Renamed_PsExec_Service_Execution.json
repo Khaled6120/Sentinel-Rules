@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious launch of a renamed version of the PSEXESVC service with, which is not often used by legitimate administrat"
+            "value": "Detects suspicious launch of a renamed version of the PSEXESVC service with, which is not often used by legitimate administrators"
           },
           {
             "name": "tactics",

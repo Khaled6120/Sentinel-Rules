@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of KrbRelay, a Kerberos relaying t"
+            "value": "Detects the use of KrbRelay, a Kerberos relaying tool"
           },
           {
             "name": "tactics",

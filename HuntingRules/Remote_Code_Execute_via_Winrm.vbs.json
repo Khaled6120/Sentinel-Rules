@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects an attempt to execute code or create service on remote host via winrm.v"
+            "value": "Detects an attempt to execute code or create service on remote host via winrm.vbs."
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detect usage of the \"driverquery\" utility to perform reconnaissance on installed driv"
+            "value": "Detect usage of the \"driverquery\" utility to perform reconnaissance on installed drivers"
           },
           {
             "name": "tactics",

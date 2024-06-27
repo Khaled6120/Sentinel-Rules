@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of the Get-ADUser cmdlet to collect user information and output it to a f"
+            "value": "Detects usage of the Get-ADUser cmdlet to collect user information and output it to a file"
           },
           {
             "name": "tactics",

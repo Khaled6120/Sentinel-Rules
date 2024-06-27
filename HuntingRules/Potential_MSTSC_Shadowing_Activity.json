@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects RDP session hijacking by using MSTSC shadow"
+            "value": "Detects RDP session hijacking by using MSTSC shadowing"
           },
           {
             "name": "tactics",

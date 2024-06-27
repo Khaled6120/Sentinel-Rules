@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of the PhoneDeepLink parameter to potentially sideload a DLL file that does not exist. This non-existent DLL file is named \"ShellChromeAPI.dll\".\nAdversaries can drop their own renamed DLL and execute it via DeviceEnroller.ex"
+            "value": "Detects the use of the PhoneDeepLink parameter to potentially sideload a DLL file that does not exist. This non-existent DLL file is named \"ShellChromeAPI.dll\".\nAdversaries can drop their own renamed DLL and execute it via DeviceEnroller.exe using this p"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detect filter driver unloading activity via fltmc."
+            "value": "Detect filter driver unloading activity via fltmc.exe"
           },
           {
             "name": "tactics",

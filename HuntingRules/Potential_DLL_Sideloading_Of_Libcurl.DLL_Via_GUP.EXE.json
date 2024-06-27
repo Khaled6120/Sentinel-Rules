@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"libcurl.dll\" by the \"gup.exe\" process from an uncommon locat"
+            "value": "Detects potential DLL sideloading of \"libcurl.dll\" by the \"gup.exe\" process from an uncommon location"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a regedit started with TrustedInstaller privileges or by ProcessHacker."
+            "value": "Detects a regedit started with TrustedInstaller privileges or by ProcessHacker.exe"
           },
           {
             "name": "tactics",

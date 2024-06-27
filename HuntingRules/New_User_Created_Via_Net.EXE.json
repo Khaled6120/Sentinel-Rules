@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Identifies the creation of local users via the net.exe comma"
+            "value": "Identifies the creation of local users via the net.exe command."
           },
           {
             "name": "tactics",

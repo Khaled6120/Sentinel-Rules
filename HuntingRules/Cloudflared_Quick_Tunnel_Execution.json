@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects creation of an ad-hoc Cloudflare Quick Tunnel, which can be used to tunnel local services such as HTTP, RDP, SSH and SMB.\nThe free TryCloudflare Quick Tunnel will generate a random subdomain on trycloudflare[.]com, following a call "
+            "value": "Detects creation of an ad-hoc Cloudflare Quick Tunnel, which can be used to tunnel local services such as HTTP, RDP, SSH and SMB.\nThe free TryCloudflare Quick Tunnel will generate a random subdomain on trycloudflare[.]com, following a call to api[.]trycl"
           },
           {
             "name": "tactics",

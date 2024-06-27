@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a privilege elevation attempt by coercing NTLM authentication on the Printer Spooler serv"
+            "value": "Detects a privilege elevation attempt by coercing NTLM authentication on the Printer Spooler service"
           },
           {
             "name": "tactics",

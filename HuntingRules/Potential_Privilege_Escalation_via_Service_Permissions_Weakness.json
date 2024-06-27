@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detect modification of services configuration (ImagePath, FailureCommand and ServiceDLL) in registry by processes with Medium integrity le"
+            "value": "Detect modification of services configuration (ImagePath, FailureCommand and ServiceDLL) in registry by processes with Medium integrity level"
           },
           {
             "name": "tactics",

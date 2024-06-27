@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious execution of 'Powercfg.exe' to change lock screen time"
+            "value": "Detects suspicious execution of 'Powercfg.exe' to change lock screen timeout"
           },
           {
             "name": "tactics",

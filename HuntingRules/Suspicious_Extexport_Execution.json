@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Extexport.exe loads dll and is execute from other folder the original p"
+            "value": "Extexport.exe loads dll and is execute from other folder the original path"
           },
           {
             "name": "tactics",

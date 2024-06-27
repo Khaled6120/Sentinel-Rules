@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects chromium based browsers starting in headless and debugging mode and pointing to a user profile. This could be a sign of data stealing or remote cont"
+            "value": "Detects chromium based browsers starting in headless and debugging mode and pointing to a user profile. This could be a sign of data stealing or remote control"
           },
           {
             "name": "tactics",

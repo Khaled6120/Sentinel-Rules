@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of different Windows based hacktools via PE metadata (company, product, etc.) even if the files have been rena"
+            "value": "Detects the execution of different Windows based hacktools via PE metadata (company, product, etc.) even if the files have been renamed"
           },
           {
             "name": "tactics",

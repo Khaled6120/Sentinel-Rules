@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects service principal name (SPN) enumeration used for Kerberoast"
+            "value": "Detects service principal name (SPN) enumeration used for Kerberoasting"
           },
           {
             "name": "tactics",

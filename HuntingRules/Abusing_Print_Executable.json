@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Attackers can use print.exe for remote file c"
+            "value": "Attackers can use print.exe for remote file copy"
           },
           {
             "name": "tactics",

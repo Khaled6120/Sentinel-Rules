@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of the Quarks PwDump tool via commandline argume"
+            "value": "Detects usage of the Quarks PwDump tool via commandline arguments"
           },
           {
             "name": "tactics",

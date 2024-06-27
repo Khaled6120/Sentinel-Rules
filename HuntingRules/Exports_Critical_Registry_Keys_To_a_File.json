@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the export of a crital Registry key to a fi"
+            "value": "Detects the export of a crital Registry key to a file."
           },
           {
             "name": "tactics",

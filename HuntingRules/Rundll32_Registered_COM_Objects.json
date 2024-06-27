@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "load malicious registered COM obje"
+            "value": "load malicious registered COM objects"
           },
           {
             "name": "tactics",

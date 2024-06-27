@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a suspicious script executions from temporary fol"
+            "value": "Detects a suspicious script executions from temporary folder"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects Powershell as a child of the WmiPrvSE process. Which could be a sign of lateral movement via W"
+            "value": "Detects Powershell as a child of the WmiPrvSE process. Which could be a sign of lateral movement via WMI."
           },
           {
             "name": "tactics",

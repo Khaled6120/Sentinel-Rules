@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects non-interactive PowerShell activity by looking at the \"powershell\" process with a non-user GUI process such as \"explorer.exe\" as a pare"
+            "value": "Detects non-interactive PowerShell activity by looking at the \"powershell\" process with a non-user GUI process such as \"explorer.exe\" as a parent."
           },
           {
             "name": "tactics",

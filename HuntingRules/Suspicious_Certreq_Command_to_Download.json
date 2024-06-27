@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a suspicious certreq execution taken from the LOLBAS examples, which can be abused to download (small) fi"
+            "value": "Detects a suspicious certreq execution taken from the LOLBAS examples, which can be abused to download (small) files"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects child processes of the \"Trace log generation tool for Media Foundation Tools\" (Mftrace.exe) which can abused to execute arbitrary binari"
+            "value": "Detects child processes of the \"Trace log generation tool for Media Foundation Tools\" (Mftrace.exe) which can abused to execute arbitrary binaries."
           },
           {
             "name": "tactics",

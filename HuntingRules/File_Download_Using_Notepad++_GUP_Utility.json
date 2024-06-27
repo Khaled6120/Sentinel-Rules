@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of the Notepad++ updater (gup) from a process other than Notepad++ to download fil"
+            "value": "Detects execution of the Notepad++ updater (gup) from a process other than Notepad++ to download files."
           },
           {
             "name": "tactics",

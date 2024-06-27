@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects possible payload obfuscation via the commandl"
+            "value": "Detects possible payload obfuscation via the commandline"
           },
           {
             "name": "tactics",

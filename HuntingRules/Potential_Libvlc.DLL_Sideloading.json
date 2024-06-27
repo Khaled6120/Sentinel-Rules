@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"libvlc.dll\", a DLL that is legitimately used by \"VLC.e"
+            "value": "Detects potential DLL sideloading of \"libvlc.dll\", a DLL that is legitimately used by \"VLC.exe\""
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of findstr with the \"s\" and \"i\" flags for a \"subfolder\" and \"insensitive\" search respectively. Attackers sometimes leverage this built-in utility to search the system for interesting files or filter through results of comm"
+            "value": "Detects execution of findstr with the \"s\" and \"i\" flags for a \"subfolder\" and \"insensitive\" search respectively. Attackers sometimes leverage this built-in utility to search the system for interesting files or filter through results of commands.\n"
           },
           {
             "name": "tactics",

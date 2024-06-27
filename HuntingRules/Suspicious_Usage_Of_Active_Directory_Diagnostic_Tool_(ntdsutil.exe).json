@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of ntdsutil.exe to perform different actions such as restoring snapshots...e"
+            "value": "Detects execution of ntdsutil.exe to perform different actions such as restoring snapshots...etc."
           },
           {
             "name": "tactics",

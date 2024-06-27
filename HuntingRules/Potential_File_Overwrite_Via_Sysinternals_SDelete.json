@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of SDelete to erase a file not the free sp"
+            "value": "Detects the use of SDelete to erase a file not the free space"
           },
           {
             "name": "tactics",

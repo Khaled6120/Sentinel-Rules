@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of CleanWipe a tool usually used to delete Symantec antivir"
+            "value": "Detects the use of CleanWipe a tool usually used to delete Symantec antivirus."
           },
           {
             "name": "tactics",

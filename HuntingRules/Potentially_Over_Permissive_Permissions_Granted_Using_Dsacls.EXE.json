@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of Dsacls to grant over permissive permissi"
+            "value": "Detects usage of Dsacls to grant over permissive permissions"
           },
           {
             "name": "tactics",

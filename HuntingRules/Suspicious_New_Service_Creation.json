@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects creation of a new service via \"sc\" command or the powershell \"new-service\" cmdlet with suspicious binary pa"
+            "value": "Detects creation of a new service via \"sc\" command or the powershell \"new-service\" cmdlet with suspicious binary paths"
           },
           {
             "name": "tactics",

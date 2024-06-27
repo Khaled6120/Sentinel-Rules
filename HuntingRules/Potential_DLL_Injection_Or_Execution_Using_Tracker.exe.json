@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL injection and execution using \"Tracker.e"
+            "value": "Detects potential DLL injection and execution using \"Tracker.exe\""
           },
           {
             "name": "tactics",

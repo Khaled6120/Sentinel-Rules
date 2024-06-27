@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects Cobalt Strike module/commands accidentally entered in CMD sh"
+            "value": "Detects Cobalt Strike module/commands accidentally entered in CMD shell"
           },
           {
             "name": "tactics",

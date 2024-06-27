@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of the Notepad++ updater (gup) to launch other commands or executab"
+            "value": "Detects execution of the Notepad++ updater (gup) to launch other commands or executables"
           },
           {
             "name": "tactics",

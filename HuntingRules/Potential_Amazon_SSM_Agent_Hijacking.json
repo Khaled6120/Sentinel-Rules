@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential Amazon SSM agent hijack attempts as outlined in the Mitiga research repo"
+            "value": "Detects potential Amazon SSM agent hijack attempts as outlined in the Mitiga research report."
           },
           {
             "name": "tactics",

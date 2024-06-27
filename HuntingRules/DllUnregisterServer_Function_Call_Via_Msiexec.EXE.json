@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects MsiExec loading a DLL and calling its DllUnregisterServer funct"
+            "value": "Detects MsiExec loading a DLL and calling its DllUnregisterServer function"
           },
           {
             "name": "tactics",

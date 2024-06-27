@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of the Add-In deployment cache updating utility (AddInutil.exe) from a non-standard directo"
+            "value": "Detects execution of the Add-In deployment cache updating utility (AddInutil.exe) from a non-standard directory."
           },
           {
             "name": "tactics",

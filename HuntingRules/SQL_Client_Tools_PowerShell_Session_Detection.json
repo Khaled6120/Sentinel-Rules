@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "This rule detects execution of a PowerShell code through the sqltoolsps.exe utility, which is included in the standard set of utilities supplied with the Microsoft SQL Server Management studio.\nScript blocks are not logged in this case, so "
+            "value": "This rule detects execution of a PowerShell code through the sqltoolsps.exe utility, which is included in the standard set of utilities supplied with the Microsoft SQL Server Management studio.\nScript blocks are not logged in this case, so this utility h"
           },
           {
             "name": "tactics",

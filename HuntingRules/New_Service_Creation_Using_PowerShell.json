@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the creation of a new service using powershe"
+            "value": "Detects the creation of a new service using powershell."
           },
           {
             "name": "tactics",

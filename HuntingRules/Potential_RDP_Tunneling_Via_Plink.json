@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Execution of plink to perform data exfiltration and tunnel"
+            "value": "Execution of plink to perform data exfiltration and tunneling"
           },
           {
             "name": "tactics",

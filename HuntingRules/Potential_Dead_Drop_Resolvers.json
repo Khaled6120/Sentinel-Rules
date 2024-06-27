@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects an executable, which is not an internet browser or known application, initiating network connections to legit popular websites, which were seen to be used as dead drop resolvers in previous attacks.\nIn this context attackers leverag"
+            "value": "Detects an executable, which is not an internet browser or known application, initiating network connections to legit popular websites, which were seen to be used as dead drop resolvers in previous attacks.\nIn this context attackers leverage known websit"
           },
           {
             "name": "tactics",

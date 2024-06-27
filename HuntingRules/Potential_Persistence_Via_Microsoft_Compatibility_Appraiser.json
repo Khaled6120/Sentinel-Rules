@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects manual execution of the \"Microsoft Compatibility Appraiser\" task via schtasks.\nIn order to trigger persistence stored in the \"\\AppCompatFlags\\TelemetryController\" registry ke"
+            "value": "Detects manual execution of the \"Microsoft Compatibility Appraiser\" task via schtasks.\nIn order to trigger persistence stored in the \"\\AppCompatFlags\\TelemetryController\" registry key.\n"
           },
           {
             "name": "tactics",

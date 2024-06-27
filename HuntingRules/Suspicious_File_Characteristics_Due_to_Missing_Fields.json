@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects Executables in the Downloads folder without FileVersion,Description,Product,Company likely created with py2"
+            "value": "Detects Executables in the Downloads folder without FileVersion,Description,Product,Company likely created with py2exe"
           },
           {
             "name": "tactics",

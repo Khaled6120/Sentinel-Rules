@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious base64 encoded and obfuscated \"LOAD\" keyword used in .NET \"reflection.assemb"
+            "value": "Detects suspicious base64 encoded and obfuscated \"LOAD\" keyword used in .NET \"reflection.assembly\""
           },
           {
             "name": "tactics",

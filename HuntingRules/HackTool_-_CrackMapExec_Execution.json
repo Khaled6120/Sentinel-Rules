@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "This rule detect common flag combinations used by CrackMapExec in order to detect its use even if the binary has been replac"
+            "value": "This rule detect common flag combinations used by CrackMapExec in order to detect its use even if the binary has been replaced."
           },
           {
             "name": "tactics",

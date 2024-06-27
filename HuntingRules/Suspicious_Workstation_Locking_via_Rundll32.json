@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a suspicious call to the user32.dll function that locks the user workstat"
+            "value": "Detects a suspicious call to the user32.dll function that locks the user workstation"
           },
           {
             "name": "tactics",

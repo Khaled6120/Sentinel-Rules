@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Checks whether the image specified in a process creation event is not a full, absolute path (caused by process ghosting or other unorthodox methods to start a proce"
+            "value": "Checks whether the image specified in a process creation event is not a full, absolute path (caused by process ghosting or other unorthodox methods to start a process)"
           },
           {
             "name": "tactics",

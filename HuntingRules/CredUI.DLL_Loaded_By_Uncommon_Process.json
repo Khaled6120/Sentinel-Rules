@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects loading of \"credui.dll\" and related DLLs by an uncommon process. Attackers might leverage this DLL for potential use of \"CredUIPromptForCredentials\" or \"CredUnPackAuthenticationBuffer"
+            "value": "Detects loading of \"credui.dll\" and related DLLs by an uncommon process. Attackers might leverage this DLL for potential use of \"CredUIPromptForCredentials\" or \"CredUnPackAuthenticationBufferW\"."
           },
           {
             "name": "tactics",

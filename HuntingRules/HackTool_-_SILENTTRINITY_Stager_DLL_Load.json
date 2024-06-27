@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects SILENTTRINITY stager dll loading activ"
+            "value": "Detects SILENTTRINITY stager dll loading activity"
           },
           {
             "name": "tactics",

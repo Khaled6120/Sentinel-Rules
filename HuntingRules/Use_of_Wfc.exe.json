@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "The Workflow Command-line Compiler can be used for AWL bypass and is listed in Microsoft's recommended block rul"
+            "value": "The Workflow Command-line Compiler can be used for AWL bypass and is listed in Microsoft's recommended block rules."
           },
           {
             "name": "tactics",

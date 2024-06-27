@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potentially suspicious file downloads from file sharing domains using wget."
+            "value": "Detects potentially suspicious file downloads from file sharing domains using wget.exe"
           },
           {
             "name": "tactics",

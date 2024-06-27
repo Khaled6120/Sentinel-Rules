@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of python using the \"-c\" flag. This is could be used as a way to launch a reverse shell or execute live python co"
+            "value": "Detects execution of python using the \"-c\" flag. This is could be used as a way to launch a reverse shell or execute live python code."
           },
           {
             "name": "tactics",

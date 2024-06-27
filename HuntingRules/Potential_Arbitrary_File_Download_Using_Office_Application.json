@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential arbitrary file download using a Microsoft Office applicat"
+            "value": "Detects potential arbitrary file download using a Microsoft Office application"
           },
           {
             "name": "tactics",

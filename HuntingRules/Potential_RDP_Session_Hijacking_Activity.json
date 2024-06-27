@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential RDP Session Hijacking activity on Windows syst"
+            "value": "Detects potential RDP Session Hijacking activity on Windows systems"
           },
           {
             "name": "tactics",

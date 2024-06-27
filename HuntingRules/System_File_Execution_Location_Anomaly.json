@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a Windows program executable started from a suspicious fol"
+            "value": "Detects a Windows program executable started from a suspicious folder"
           },
           {
             "name": "tactics",

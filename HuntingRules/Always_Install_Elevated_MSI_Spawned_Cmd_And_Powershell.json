@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects Windows Installer service (msiexec.exe) spawning \"cmd\" or \"powershe"
+            "value": "Detects Windows Installer service (msiexec.exe) spawning \"cmd\" or \"powershell\""
           },
           {
             "name": "tactics",

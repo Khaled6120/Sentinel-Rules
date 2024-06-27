@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential commandline obfuscation using known escape charact"
+            "value": "Detects potential commandline obfuscation using known escape characters"
           },
           {
             "name": "tactics",

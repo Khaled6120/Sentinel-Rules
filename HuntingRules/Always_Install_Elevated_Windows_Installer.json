@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects Windows Installer service (msiexec.exe) trying to install MSI packages with SYSTEM privil"
+            "value": "Detects Windows Installer service (msiexec.exe) trying to install MSI packages with SYSTEM privilege"
           },
           {
             "name": "tactics",

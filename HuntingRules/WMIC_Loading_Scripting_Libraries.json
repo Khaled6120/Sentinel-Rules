@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects threat actors proxy executing code and bypassing application controls by leveraging wmic and the `/FORMAT` argument switch to download and execute an XSL file (i.e js, vbs, et"
+            "value": "Detects threat actors proxy executing code and bypassing application controls by leveraging wmic and the `/FORMAT` argument switch to download and execute an XSL file (i.e js, vbs, etc)."
           },
           {
             "name": "tactics",

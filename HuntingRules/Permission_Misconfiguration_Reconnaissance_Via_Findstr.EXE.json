@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of findstr with the \"EVERYONE\" or \"BUILTIN\" keywords. This is seen being used in combination with \"icacls\" to look for misconfigured files or folders permissi"
+            "value": "Detects usage of findstr with the \"EVERYONE\" or \"BUILTIN\" keywords. This is seen being used in combination with \"icacls\" to look for misconfigured files or folders permissions"
           },
           {
             "name": "tactics",

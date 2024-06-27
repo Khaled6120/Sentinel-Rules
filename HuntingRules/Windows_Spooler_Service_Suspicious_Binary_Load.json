@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detect DLL Load from Spooler Service backup fol"
+            "value": "Detect DLL Load from Spooler Service backup folder"
           },
           {
             "name": "tactics",

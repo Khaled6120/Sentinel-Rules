@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detect execution of suspicious double extension files in ParentCommandL"
+            "value": "Detect execution of suspicious double extension files in ParentCommandLine"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious Windows Update Agent activity in which a wuauclt.exe process command line doesn't contain any command line fla"
+            "value": "Detects suspicious Windows Update Agent activity in which a wuauclt.exe process command line doesn't contain any command line flags\n"
           },
           {
             "name": "tactics",

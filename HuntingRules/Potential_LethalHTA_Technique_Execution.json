@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential LethalHTA technique where the \"mshta.exe\" is spawned by an \"svchost.exe\" proc"
+            "value": "Detects potential LethalHTA technique where the \"mshta.exe\" is spawned by an \"svchost.exe\" process"
           },
           {
             "name": "tactics",

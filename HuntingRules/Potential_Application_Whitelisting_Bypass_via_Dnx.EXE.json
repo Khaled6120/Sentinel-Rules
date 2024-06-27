@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of Dnx.EXE. The Dnx utility allows for the execution of C# code.\nAttackers might abuse this in order to bypass application whitelistin"
+            "value": "Detects the execution of Dnx.EXE. The Dnx utility allows for the execution of C# code.\nAttackers might abuse this in order to bypass application whitelisting.\n"
           },
           {
             "name": "tactics",

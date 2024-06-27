@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious processes including shells spawnd from WinRM host proc"
+            "value": "Detects suspicious processes including shells spawnd from WinRM host process"
           },
           {
             "name": "tactics",

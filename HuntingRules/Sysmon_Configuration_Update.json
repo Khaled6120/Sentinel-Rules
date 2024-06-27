@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects updates to Sysmon's configuration. Attackers might update or replace the Sysmon configuration with a bare bone one to avoid monitoring without shutting down the service complet"
+            "value": "Detects updates to Sysmon's configuration. Attackers might update or replace the Sysmon configuration with a bare bone one to avoid monitoring without shutting down the service completely"
           },
           {
             "name": "tactics",

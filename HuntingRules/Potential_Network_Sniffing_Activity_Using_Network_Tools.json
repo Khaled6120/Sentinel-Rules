@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential network sniffing via use of network tools such as \"tshark\", \"windump\".\nNetwork sniffing refers to using the network interface on a system to monitor or capture information sent over a wired or wireless connection.\nAn adver"
+            "value": "Detects potential network sniffing via use of network tools such as \"tshark\", \"windump\".\nNetwork sniffing refers to using the network interface on a system to monitor or capture information sent over a wired or wireless connection.\nAn adversary may place"
           },
           {
             "name": "tactics",

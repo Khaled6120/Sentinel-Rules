@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects an executable accessing the portmap.io domain, which could be a sign of forbidden C2 traffic or data exfiltration by malicious act"
+            "value": "Detects an executable accessing the portmap.io domain, which could be a sign of forbidden C2 traffic or data exfiltration by malicious actors"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the \"IDiagnosticProfileUAC\" UAC bypass techni"
+            "value": "Detects the \"IDiagnosticProfileUAC\" UAC bypass technique"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects code execution via Pester.bat (Pester - Powershell Modulte for testi"
+            "value": "Detects code execution via Pester.bat (Pester - Powershell Modulte for testing)"
           },
           {
             "name": "tactics",

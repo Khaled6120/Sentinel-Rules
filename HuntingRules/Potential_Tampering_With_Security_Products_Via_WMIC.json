@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects uninstallation or termination of security products using the WMIC util"
+            "value": "Detects uninstallation or termination of security products using the WMIC utility"
           },
           {
             "name": "tactics",

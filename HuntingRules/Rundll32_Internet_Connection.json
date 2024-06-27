@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a rundll32 that communicates with public IP addres"
+            "value": "Detects a rundll32 that communicates with public IP addresses"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detect use of PDQ Deploy remote admin t"
+            "value": "Detect use of PDQ Deploy remote admin tool"
           },
           {
             "name": "tactics",

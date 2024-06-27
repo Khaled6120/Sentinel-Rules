@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of stordiag.exe to execute schtasks.exe systeminfo.exe and fltmc."
+            "value": "Detects the use of stordiag.exe to execute schtasks.exe systeminfo.exe and fltmc.exe"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of Windows Defender MpCmdRun.EXE to download fi"
+            "value": "Detects the use of Windows Defender MpCmdRun.EXE to download files"
           },
           {
             "name": "tactics",

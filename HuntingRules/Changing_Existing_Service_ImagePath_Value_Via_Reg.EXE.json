@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Adversaries may execute their own malicious payloads by hijacking the Registry entries used by services.\nAdversaries may use flaws in the permissions for registry to redirect from the originally specified executable to one that they control"
+            "value": "Adversaries may execute their own malicious payloads by hijacking the Registry entries used by services.\nAdversaries may use flaws in the permissions for registry to redirect from the originally specified executable to one that they control, in order to "
           },
           {
             "name": "tactics",

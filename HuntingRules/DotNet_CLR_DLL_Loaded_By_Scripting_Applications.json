@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects .NET CLR DLLs being loaded by scripting applications such as wscript or cscript. This could be an indication of potential suspicious executi"
+            "value": "Detects .NET CLR DLLs being loaded by scripting applications such as wscript or cscript. This could be an indication of potential suspicious execution."
           },
           {
             "name": "tactics",

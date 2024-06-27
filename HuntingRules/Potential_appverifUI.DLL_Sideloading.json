@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"appverifUI.d"
+            "value": "Detects potential DLL sideloading of \"appverifUI.dll\""
           },
           {
             "name": "tactics",

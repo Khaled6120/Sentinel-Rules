@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of bitsadmin downloading a f"
+            "value": "Detects usage of bitsadmin downloading a file"
           },
           {
             "name": "tactics",

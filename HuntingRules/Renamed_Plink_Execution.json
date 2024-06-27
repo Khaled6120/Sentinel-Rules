@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of a renamed version of the Plink bin"
+            "value": "Detects the execution of a renamed version of the Plink binary"
           },
           {
             "name": "tactics",

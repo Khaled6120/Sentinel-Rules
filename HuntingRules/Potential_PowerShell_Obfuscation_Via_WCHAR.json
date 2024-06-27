@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious encoded character syntax often used for defense evas"
+            "value": "Detects suspicious encoded character syntax often used for defense evasion"
           },
           {
             "name": "tactics",

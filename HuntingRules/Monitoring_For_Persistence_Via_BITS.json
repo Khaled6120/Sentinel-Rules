@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "BITS will allow you to schedule a command to execute after a successful download to notify you that the job is finished.\nWhen the job runs on the system the command specified in the BITS job will be executed.\nThis can be abused by actors to"
+            "value": "BITS will allow you to schedule a command to execute after a successful download to notify you that the job is finished.\nWhen the job runs on the system the command specified in the BITS job will be executed.\nThis can be abused by actors to create a back"
           },
           {
             "name": "tactics",

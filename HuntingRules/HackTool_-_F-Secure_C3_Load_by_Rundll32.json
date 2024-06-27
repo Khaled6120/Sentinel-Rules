@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "F-Secure C3 produces DLLs with a default exported StartNodeRelay functi"
+            "value": "F-Secure C3 produces DLLs with a default exported StartNodeRelay function."
           },
           {
             "name": "tactics",

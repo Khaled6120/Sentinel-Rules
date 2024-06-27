@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious ways to use the \"DumpMinitool.exe\" bin"
+            "value": "Detects suspicious ways to use the \"DumpMinitool.exe\" binary"
           },
           {
             "name": "tactics",

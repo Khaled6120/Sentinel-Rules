@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential malicious and unauthorized usage of bcdedit."
+            "value": "Detects potential malicious and unauthorized usage of bcdedit.exe"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects nltest commands that can be used for information discov"
+            "value": "Detects nltest commands that can be used for information discovery"
           },
           {
             "name": "tactics",

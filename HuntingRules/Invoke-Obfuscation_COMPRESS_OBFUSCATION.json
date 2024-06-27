@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects Obfuscated Powershell via COMPRESS OBFUSCAT"
+            "value": "Detects Obfuscated Powershell via COMPRESS OBFUSCATION"
           },
           {
             "name": "tactics",

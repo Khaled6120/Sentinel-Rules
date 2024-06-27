@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious command line reg.exe tool adding key to RUN key in Regis"
+            "value": "Detects suspicious command line reg.exe tool adding key to RUN key in Registry"
           },
           {
             "name": "tactics",

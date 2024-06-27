@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Commandline to launch powershell with a base64 payl"
+            "value": "Commandline to launch powershell with a base64 payload"
           },
           {
             "name": "tactics",

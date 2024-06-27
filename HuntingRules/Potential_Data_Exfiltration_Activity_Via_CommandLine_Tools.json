@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of various CLI utilities exfiltrating data via web reque"
+            "value": "Detects the use of various CLI utilities exfiltrating data via web requests"
           },
           {
             "name": "tactics",

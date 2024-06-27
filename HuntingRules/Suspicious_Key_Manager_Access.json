@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the invocation of the Stored User Names and Passwords dialogue (Key Manag"
+            "value": "Detects the invocation of the Stored User Names and Passwords dialogue (Key Manager)"
           },
           {
             "name": "tactics",

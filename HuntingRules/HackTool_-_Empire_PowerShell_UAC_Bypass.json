@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects some Empire PowerShell UAC bypass meth"
+            "value": "Detects some Empire PowerShell UAC bypass methods"
           },
           {
             "name": "tactics",

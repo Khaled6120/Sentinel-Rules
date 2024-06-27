@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the PowerShell command lines with special charact"
+            "value": "Detects the PowerShell command lines with special characters"
           },
           {
             "name": "tactics",

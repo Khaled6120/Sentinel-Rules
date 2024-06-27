@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects various indicators of Microsoft Connection Manager Profile Installer execut"
+            "value": "Detects various indicators of Microsoft Connection Manager Profile Installer execution"
           },
           {
             "name": "tactics",

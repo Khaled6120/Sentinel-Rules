@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Execution of ssh.exe to perform data exfiltration and tunneling through "
+            "value": "Execution of ssh.exe to perform data exfiltration and tunneling through RDP"
           },
           {
             "name": "tactics",

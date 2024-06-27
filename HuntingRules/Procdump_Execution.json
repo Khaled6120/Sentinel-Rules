@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of the SysInternals Procdump util"
+            "value": "Detects usage of the SysInternals Procdump utility"
           },
           {
             "name": "tactics",

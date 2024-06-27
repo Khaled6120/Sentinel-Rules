@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of SharpEvtHook, a tool that tampers with the Windows event l"
+            "value": "Detects the use of SharpEvtHook, a tool that tampers with the Windows event logs"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading using comctl32.dll to obtain system privile"
+            "value": "Detects potential DLL sideloading using comctl32.dll to obtain system privileges"
           },
           {
             "name": "tactics",

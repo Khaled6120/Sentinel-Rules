@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of Cmdl32 with the \"/vpn\" and \"/lan\" flags.\nAttackers can abuse this utility in order to download arbitrary files via a configuration file.\nInspect the location and the content of the file passed as an argument in order to"
+            "value": "Detects execution of Cmdl32 with the \"/vpn\" and \"/lan\" flags.\nAttackers can abuse this utility in order to download arbitrary files via a configuration file.\nInspect the location and the content of the file passed as an argument in order to determine if "
           },
           {
             "name": "tactics",

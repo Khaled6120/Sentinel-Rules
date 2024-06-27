@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects command lines that indicate unwanted modifications to registry keys that disable important Internet Explorer security featu"
+            "value": "Detects command lines that indicate unwanted modifications to registry keys that disable important Internet Explorer security features"
           },
           {
             "name": "tactics",

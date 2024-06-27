@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious uses of the SysInternals Procdump utility by using a special command line parameter in combination with the lsass.exe process.\nThis way we are also able to catch cases in which the attacker has renamed the procdump execut"
+            "value": "Detects suspicious uses of the SysInternals Procdump utility by using a special command line parameter in combination with the lsass.exe process.\nThis way we are also able to catch cases in which the attacker has renamed the procdump executable.\n"
           },
           {
             "name": "tactics",

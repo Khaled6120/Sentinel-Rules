@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious process related to rundll32 based on command line that invokes inline VBScript as seen being used by UNC2"
+            "value": "Detects suspicious process related to rundll32 based on command line that invokes inline VBScript as seen being used by UNC2452"
           },
           {
             "name": "tactics",

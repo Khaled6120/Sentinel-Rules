@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a potentially suspicious parent of \"csc.exe\", which could be a sign of payload delive"
+            "value": "Detects a potentially suspicious parent of \"csc.exe\", which could be a sign of payload delivery."
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of NPS, a port forwarding and intranet penetration proxy ser"
+            "value": "Detects the use of NPS, a port forwarding and intranet penetration proxy server"
           },
           {
             "name": "tactics",

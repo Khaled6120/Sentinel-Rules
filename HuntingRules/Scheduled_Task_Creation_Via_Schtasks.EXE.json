@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the creation of scheduled tasks by user accounts via the \"schtasks\" utili"
+            "value": "Detects the creation of scheduled tasks by user accounts via the \"schtasks\" utility."
           },
           {
             "name": "tactics",

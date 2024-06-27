@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects actions caused by the RedMimicry Winnti playbook a automated breach emulations util"
+            "value": "Detects actions caused by the RedMimicry Winnti playbook a automated breach emulations utility"
           },
           {
             "name": "tactics",

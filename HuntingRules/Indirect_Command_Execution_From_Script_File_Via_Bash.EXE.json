@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of Microsoft bash launcher without any flags to execute the content of a bash script directly.\nThis can be used to potentially bypass defenses and execute Linux or Windows-based binaries directly via bas"
+            "value": "Detects execution of Microsoft bash launcher without any flags to execute the content of a bash script directly.\nThis can be used to potentially bypass defenses and execute Linux or Windows-based binaries directly via bash.\n"
           },
           {
             "name": "tactics",

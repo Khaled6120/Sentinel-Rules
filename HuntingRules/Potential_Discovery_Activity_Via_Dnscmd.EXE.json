@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects an attempt to leverage dnscmd.exe to enumerate the DNS zones of a domain. DNS zones used to host the DNS records for a particular doma"
+            "value": "Detects an attempt to leverage dnscmd.exe to enumerate the DNS zones of a domain. DNS zones used to host the DNS records for a particular domain."
           },
           {
             "name": "tactics",

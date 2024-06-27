@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects file downloads directly from IP address URL using curl."
+            "value": "Detects file downloads directly from IP address URL using curl.exe"
           },
           {
             "name": "tactics",

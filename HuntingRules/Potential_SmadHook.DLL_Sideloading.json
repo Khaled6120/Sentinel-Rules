@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"SmadHook.dll\", a DLL used by SmadAV antivi"
+            "value": "Detects potential DLL sideloading of \"SmadHook.dll\", a DLL used by SmadAV antivirus"
           },
           {
             "name": "tactics",

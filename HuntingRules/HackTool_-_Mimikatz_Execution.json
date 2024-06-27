@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detection well-known mimikatz command line argume"
+            "value": "Detection well-known mimikatz command line arguments"
           },
           {
             "name": "tactics",

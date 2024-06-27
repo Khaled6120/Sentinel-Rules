@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Well-known TAP software installation. Possible preparation for data exfiltration using tunneling techniq"
+            "value": "Well-known TAP software installation. Possible preparation for data exfiltration using tunneling techniques"
           },
           {
             "name": "tactics",

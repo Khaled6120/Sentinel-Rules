@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"CCleanerReactivator.d"
+            "value": "Detects potential DLL sideloading of \"CCleanerReactivator.dll\""
           },
           {
             "name": "tactics",

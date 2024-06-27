@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of a renamed SysInternals Sdelete, which is something an administrator shouldn't do (the renami"
+            "value": "Detects the use of a renamed SysInternals Sdelete, which is something an administrator shouldn't do (the renaming)"
           },
           {
             "name": "tactics",

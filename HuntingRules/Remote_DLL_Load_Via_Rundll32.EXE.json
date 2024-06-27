@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a remote DLL load event via \"rundll32.ex"
+            "value": "Detects a remote DLL load event via \"rundll32.exe\"."
           },
           {
             "name": "tactics",

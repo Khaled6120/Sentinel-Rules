@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects attempts to disable the Windows Firewall using PowerSh"
+            "value": "Detects attempts to disable the Windows Firewall using PowerShell"
           },
           {
             "name": "tactics",

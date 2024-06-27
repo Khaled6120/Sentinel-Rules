@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects use of an encoded/obfuscated version of an IP address (hex, octal...) in an URL combined with a download comm"
+            "value": "Detects use of an encoded/obfuscated version of an IP address (hex, octal...) in an URL combined with a download command"
           },
           {
             "name": "tactics",

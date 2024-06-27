@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential evasion or obfuscation attempts using bogus path traversal via the commandl"
+            "value": "Detects potential evasion or obfuscation attempts using bogus path traversal via the commandline"
           },
           {
             "name": "tactics",

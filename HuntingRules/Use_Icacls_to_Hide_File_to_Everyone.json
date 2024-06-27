@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detect use of icacls to deny access for everyone in Users folder sometimes used to hide malicious fi"
+            "value": "Detect use of icacls to deny access for everyone in Users folder sometimes used to hide malicious files"
           },
           {
             "name": "tactics",

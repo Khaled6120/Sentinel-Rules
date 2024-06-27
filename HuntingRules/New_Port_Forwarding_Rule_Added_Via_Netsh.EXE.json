@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of netsh commands that configure a new port forwarding (PortProxy) r"
+            "value": "Detects the execution of netsh commands that configure a new port forwarding (PortProxy) rule"
           },
           {
             "name": "tactics",

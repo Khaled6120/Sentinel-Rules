@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects loading of \"RjvPlatform.dll\" by the \"SystemResetPlatform.exe\" binary which can be abused as a method of DLL side loading since the \"$SysReset\" directory isn't created by defau"
+            "value": "Detects loading of \"RjvPlatform.dll\" by the \"SystemResetPlatform.exe\" binary which can be abused as a method of DLL side loading since the \"$SysReset\" directory isn't created by default."
           },
           {
             "name": "tactics",

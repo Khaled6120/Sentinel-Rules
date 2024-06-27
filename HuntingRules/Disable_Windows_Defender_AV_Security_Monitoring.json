@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects attackers attempting to disable Windows Defender using Powersh"
+            "value": "Detects attackers attempting to disable Windows Defender using Powershell"
           },
           {
             "name": "tactics",

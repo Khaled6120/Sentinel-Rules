@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious Splwow64.exe process without any command line paramet"
+            "value": "Detects suspicious Splwow64.exe process without any command line parameters"
           },
           {
             "name": "tactics",

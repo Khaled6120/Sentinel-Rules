@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a suspicious program execution in Outlook temp fol"
+            "value": "Detects a suspicious program execution in Outlook temp folder"
           },
           {
             "name": "tactics",

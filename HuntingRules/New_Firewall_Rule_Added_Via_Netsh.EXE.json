@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the addition of a new rule to the Windows firewall via ne"
+            "value": "Detects the addition of a new rule to the Windows firewall via netsh"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potentially suspicious child processes of WinRAR.e"
+            "value": "Detects potentially suspicious child processes of WinRAR.exe."
           },
           {
             "name": "tactics",

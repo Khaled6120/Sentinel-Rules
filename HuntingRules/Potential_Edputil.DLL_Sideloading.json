@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"edputil.d"
+            "value": "Detects potential DLL sideloading of \"edputil.dll\""
           },
           {
             "name": "tactics",

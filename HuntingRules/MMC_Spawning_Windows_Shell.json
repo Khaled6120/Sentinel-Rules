@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a Windows command line executable started from "
+            "value": "Detects a Windows command line executable started from MMC"
           },
           {
             "name": "tactics",

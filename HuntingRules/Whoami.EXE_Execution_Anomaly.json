@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of whoami.exe with suspicious parent process"
+            "value": "Detects the execution of whoami.exe with suspicious parent processes."
           },
           {
             "name": "tactics",

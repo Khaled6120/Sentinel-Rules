@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potentially suspicious child processes launched via the ScreenConnect client servic"
+            "value": "Detects potentially suspicious child processes launched via the ScreenConnect client service.\n"
           },
           {
             "name": "tactics",

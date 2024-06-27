@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects loading of \"Amsi.dll\" by a living of the land process. This could be an indication of a \"PowerShell without PowerShell\" att"
+            "value": "Detects loading of \"Amsi.dll\" by a living of the land process. This could be an indication of a \"PowerShell without PowerShell\" attack"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "The CrachMapExec pentesting framework implements a PowerShell obfuscation with some static strings detected by this ru"
+            "value": "The CrachMapExec pentesting framework implements a PowerShell obfuscation with some static strings detected by this rule."
           },
           {
             "name": "tactics",

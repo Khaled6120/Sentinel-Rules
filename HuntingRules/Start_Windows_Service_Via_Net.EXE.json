@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the usage of the \"net.exe\" command to start a service using the \"start\" f"
+            "value": "Detects the usage of the \"net.exe\" command to start a service using the \"start\" flag"
           },
           {
             "name": "tactics",

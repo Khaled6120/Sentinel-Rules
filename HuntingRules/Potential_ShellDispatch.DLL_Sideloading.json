@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"ShellDispatch.d"
+            "value": "Detects potential DLL sideloading of \"ShellDispatch.dll\""
           },
           {
             "name": "tactics",

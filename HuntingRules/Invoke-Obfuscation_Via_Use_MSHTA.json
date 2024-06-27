@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects Obfuscated Powershell via use MSHTA in Scri"
+            "value": "Detects Obfuscated Powershell via use MSHTA in Scripts"
           },
           {
             "name": "tactics",

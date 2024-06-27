@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Uninstall an application with w"
+            "value": "Uninstall an application with wmic"
           },
           {
             "name": "tactics",

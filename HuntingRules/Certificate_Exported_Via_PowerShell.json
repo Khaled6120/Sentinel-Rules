@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects calls to cmdlets that are used to export certificates from the local certificate store. Threat actors were seen abusing this to steal private keys from compromised machin"
+            "value": "Detects calls to cmdlets that are used to export certificates from the local certificate store. Threat actors were seen abusing this to steal private keys from compromised machines."
           },
           {
             "name": "tactics",

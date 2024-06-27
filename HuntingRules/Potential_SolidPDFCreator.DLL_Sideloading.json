@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"SolidPDFCreator.d"
+            "value": "Detects potential DLL sideloading of \"SolidPDFCreator.dll\""
           },
           {
             "name": "tactics",

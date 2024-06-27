@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the pattern of UAC Bypass using ICMLuaUtil Elevated COM interf"
+            "value": "Detects the pattern of UAC Bypass using ICMLuaUtil Elevated COM interface"
           },
           {
             "name": "tactics",

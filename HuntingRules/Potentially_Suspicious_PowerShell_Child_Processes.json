@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potentially suspicious child processes spawned by PowerSh"
+            "value": "Detects potentially suspicious child processes spawned by PowerShell"
           },
           {
             "name": "tactics",

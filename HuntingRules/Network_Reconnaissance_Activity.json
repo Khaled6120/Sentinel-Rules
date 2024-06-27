@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a set of suspicious network related commands often used in recon sta"
+            "value": "Detects a set of suspicious network related commands often used in recon stages"
           },
           {
             "name": "tactics",

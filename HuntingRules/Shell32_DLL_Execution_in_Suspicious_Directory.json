@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects shell32.dll executing a DLL in a suspicious direct"
+            "value": "Detects shell32.dll executing a DLL in a suspicious directory"
           },
           {
             "name": "tactics",

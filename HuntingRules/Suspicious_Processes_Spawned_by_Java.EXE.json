@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious processes spawned from a Java host process which could indicate a sign of exploitation (e.g. log"
+            "value": "Detects suspicious processes spawned from a Java host process which could indicate a sign of exploitation (e.g. log4j)"
           },
           {
             "name": "tactics",

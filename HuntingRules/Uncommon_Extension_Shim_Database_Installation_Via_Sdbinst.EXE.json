@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects installation of a potentially suspicious new shim with an uncommon extension using sdbinst.exe.\nAdversaries may establish persistence and/or elevate privileges by executing malicious content triggered by application shi"
+            "value": "Detects installation of a potentially suspicious new shim with an uncommon extension using sdbinst.exe.\nAdversaries may establish persistence and/or elevate privileges by executing malicious content triggered by application shims\n"
           },
           {
             "name": "tactics",

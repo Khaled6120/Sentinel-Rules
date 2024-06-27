@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potentially suspicious processes being spawned by a web server process which could be the result of a successfully placed web shell or exploitati"
+            "value": "Detects potentially suspicious processes being spawned by a web server process which could be the result of a successfully placed web shell or exploitation\n"
           },
           {
             "name": "tactics",

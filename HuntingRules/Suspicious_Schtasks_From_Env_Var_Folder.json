@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects Schtask creations that point to a suspicious folder or an environment variable often used by malw"
+            "value": "Detects Schtask creations that point to a suspicious folder or an environment variable often used by malware"
           },
           {
             "name": "tactics",

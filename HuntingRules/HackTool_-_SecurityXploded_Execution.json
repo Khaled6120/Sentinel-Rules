@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of SecurityXploded To"
+            "value": "Detects the execution of SecurityXploded Tools"
           },
           {
             "name": "tactics",

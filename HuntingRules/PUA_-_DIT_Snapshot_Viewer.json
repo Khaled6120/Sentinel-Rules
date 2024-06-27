@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of Ditsnap tool, an inspection tool for Active Directory database, ntds.d"
+            "value": "Detects the use of Ditsnap tool, an inspection tool for Active Directory database, ntds.dit."
           },
           {
             "name": "tactics",

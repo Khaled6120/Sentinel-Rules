@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects scheduled task creations or modification on a suspicious schedule t"
+            "value": "Detects scheduled task creations or modification on a suspicious schedule type"
           },
           {
             "name": "tactics",

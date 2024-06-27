@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Office application called wmic to proxye execution through a LOLBIN process. This is often used to break suspicious parent-child chain (Office app spawns LOLBi"
+            "value": "Office application called wmic to proxye execution through a LOLBIN process. This is often used to break suspicious parent-child chain (Office app spawns LOLBin)."
           },
           {
             "name": "tactics",

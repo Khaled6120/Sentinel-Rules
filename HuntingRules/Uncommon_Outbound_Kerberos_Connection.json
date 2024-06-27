@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects uncommon outbound network activity via Kerberos default port indicating possible lateral movement or first stage PrivEsc via delegatio"
+            "value": "Detects uncommon outbound network activity via Kerberos default port indicating possible lateral movement or first stage PrivEsc via delegation.\n"
           },
           {
             "name": "tactics",

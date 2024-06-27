@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a Powershell process that contains download commands in its command line str"
+            "value": "Detects a Powershell process that contains download commands in its command line string"
           },
           {
             "name": "tactics",

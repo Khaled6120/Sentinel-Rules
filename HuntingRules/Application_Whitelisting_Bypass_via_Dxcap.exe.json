@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of of Dxcap."
+            "value": "Detects execution of of Dxcap.exe"
           },
           {
             "name": "tactics",

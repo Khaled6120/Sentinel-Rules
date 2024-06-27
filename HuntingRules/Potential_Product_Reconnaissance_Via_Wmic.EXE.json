@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of WMIC in order to get a list of firewall and antivirus produ"
+            "value": "Detects the execution of WMIC in order to get a list of firewall and antivirus products"
           },
           {
             "name": "tactics",

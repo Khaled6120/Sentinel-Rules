@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects process activity patterns as seen being used by Sliver C2 framework impla"
+            "value": "Detects process activity patterns as seen being used by Sliver C2 framework implants"
           },
           {
             "name": "tactics",

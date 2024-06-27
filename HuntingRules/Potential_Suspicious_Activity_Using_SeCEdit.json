@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential suspicious behaviour using secedit.exe. Such as exporting or modifying the security pol"
+            "value": "Detects potential suspicious behaviour using secedit.exe. Such as exporting or modifying the security policy"
           },
           {
             "name": "tactics",

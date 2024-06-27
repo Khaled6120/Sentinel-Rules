@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Disables HTTP logging on a Windows IIS web server as seen by Threat Group 3390 (Bronze Uni"
+            "value": "Disables HTTP logging on a Windows IIS web server as seen by Threat Group 3390 (Bronze Union)"
           },
           {
             "name": "tactics",

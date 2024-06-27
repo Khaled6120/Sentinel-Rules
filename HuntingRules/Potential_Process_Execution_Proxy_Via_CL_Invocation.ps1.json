@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects calls to \"SyncInvoke\" that is part of the \"CL_Invocation.ps1\" script to proxy execution using \"System.Diagnostics.Proce"
+            "value": "Detects calls to \"SyncInvoke\" that is part of the \"CL_Invocation.ps1\" script to proxy execution using \"System.Diagnostics.Process\""
           },
           {
             "name": "tactics",

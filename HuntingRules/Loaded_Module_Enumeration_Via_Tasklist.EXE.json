@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the enumeration of a specific DLL or EXE being used by a binary via \"tasklist.exe\".\nThis is often used by attackers in order to find the specific process identifier (PID) that is using the DLL in question.\nIn order to dump the proce"
+            "value": "Detects the enumeration of a specific DLL or EXE being used by a binary via \"tasklist.exe\".\nThis is often used by attackers in order to find the specific process identifier (PID) that is using the DLL in question.\nIn order to dump the process memory or p"
           },
           {
             "name": "relevantTechniques",

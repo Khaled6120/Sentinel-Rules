@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of msiexec.exe from an uncommon direct"
+            "value": "Detects the execution of msiexec.exe from an uncommon directory"
           },
           {
             "name": "tactics",

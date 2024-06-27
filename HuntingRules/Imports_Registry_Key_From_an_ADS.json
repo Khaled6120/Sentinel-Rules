@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the import of a alternate datastream to the registry with regedit.e"
+            "value": "Detects the import of a alternate datastream to the registry with regedit.exe."
           },
           {
             "name": "tactics",

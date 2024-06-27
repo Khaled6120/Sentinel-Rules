@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Threat actors performed dumping of SAM, SECURITY and SYSTEM registry hives using DelegateExecute "
+            "value": "Threat actors performed dumping of SAM, SECURITY and SYSTEM registry hives using DelegateExecute key"
           },
           {
             "name": "tactics",

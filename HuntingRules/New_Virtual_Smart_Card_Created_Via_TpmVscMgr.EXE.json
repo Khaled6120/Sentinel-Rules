@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of \"Tpmvscmgr.exe\" to create a new virtual smart ca"
+            "value": "Detects execution of \"Tpmvscmgr.exe\" to create a new virtual smart card."
           },
           {
             "name": "tactics",

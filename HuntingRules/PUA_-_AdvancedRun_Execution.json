@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of AdvancedRun util"
+            "value": "Detects the execution of AdvancedRun utility"
           },
           {
             "name": "tactics",

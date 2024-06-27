@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects \"svchost.exe\" spawning \"rundll32.exe\" with command arguments like \"C:\\windows\\system32\\davclnt.dll,DavSetCookie\".\nThis could be an indicator of exfiltration or use of WebDav to launch code (hosted on a WebDav server"
+            "value": "Detects \"svchost.exe\" spawning \"rundll32.exe\" with command arguments like \"C:\\windows\\system32\\davclnt.dll,DavSetCookie\".\nThis could be an indicator of exfiltration or use of WebDav to launch code (hosted on a WebDav server).\n"
           },
           {
             "name": "tactics",

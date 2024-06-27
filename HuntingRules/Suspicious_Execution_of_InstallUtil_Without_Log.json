@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Uses the .NET InstallUtil.exe application in order to execute image without "
+            "value": "Uses the .NET InstallUtil.exe application in order to execute image without log"
           },
           {
             "name": "tactics",

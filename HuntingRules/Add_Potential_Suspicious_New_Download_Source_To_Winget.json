@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of winget to add new potentially suspicious download sour"
+            "value": "Detects usage of winget to add new potentially suspicious download sources"
           },
           {
             "name": "tactics",

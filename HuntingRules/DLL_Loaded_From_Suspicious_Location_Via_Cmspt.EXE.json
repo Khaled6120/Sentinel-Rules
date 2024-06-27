@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects cmstp loading \"dll\" or \"ocx\" files from suspicious locati"
+            "value": "Detects cmstp loading \"dll\" or \"ocx\" files from suspicious locations"
           },
           {
             "name": "tactics",

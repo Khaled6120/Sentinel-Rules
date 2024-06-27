@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of a renamed binary often used by attackers or malware leveraging new Sysmon OriginalFileName datapoi"
+            "value": "Detects the execution of a renamed binary often used by attackers or malware leveraging new Sysmon OriginalFileName datapoint."
           },
           {
             "name": "tactics",

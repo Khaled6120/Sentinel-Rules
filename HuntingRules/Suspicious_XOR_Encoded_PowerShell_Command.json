@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects presence of a potentially xor encoded powershell comm"
+            "value": "Detects presence of a potentially xor encoded powershell command"
           },
           {
             "name": "tactics",

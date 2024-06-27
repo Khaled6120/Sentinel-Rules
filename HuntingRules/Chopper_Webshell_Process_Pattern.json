@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects patterns found in process executions cause by China Chopper like tiny (ASPX) webshe"
+            "value": "Detects patterns found in process executions cause by China Chopper like tiny (ASPX) webshells"
           },
           {
             "name": "tactics",

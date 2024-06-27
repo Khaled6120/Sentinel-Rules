@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of the \"wusa.exe\" (Windows Update Standalone Installer) utility to extract cab using the \"/extract\" argument from suspicious pa"
+            "value": "Detects usage of the \"wusa.exe\" (Windows Update Standalone Installer) utility to extract cab using the \"/extract\" argument from suspicious paths"
           },
           {
             "name": "tactics",

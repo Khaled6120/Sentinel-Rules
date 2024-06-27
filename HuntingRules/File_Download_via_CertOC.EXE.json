@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects when a user downloads a file by using CertOC."
+            "value": "Detects when a user downloads a file by using CertOC.exe"
           },
           {
             "name": "tactics",

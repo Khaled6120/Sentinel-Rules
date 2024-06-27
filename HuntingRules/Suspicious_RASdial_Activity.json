@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious process related to rasdial."
+            "value": "Detects suspicious process related to rasdial.exe"
           },
           {
             "name": "tactics",

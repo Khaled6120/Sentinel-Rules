@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a network connection initiated by programs or processes running from suspicious or uncommon files system location"
+            "value": "Detects a network connection initiated by programs or processes running from suspicious or uncommon files system locations.\n"
           },
           {
             "name": "tactics",

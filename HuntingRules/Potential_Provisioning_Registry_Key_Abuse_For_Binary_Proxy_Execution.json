@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential abuse of the provisioning registry key for indirect command execution through \"Provlaunch.ex"
+            "value": "Detects potential abuse of the provisioning registry key for indirect command execution through \"Provlaunch.exe\"."
           },
           {
             "name": "tactics",

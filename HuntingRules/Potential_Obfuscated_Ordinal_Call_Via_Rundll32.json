@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of \"rundll32\" with potential obfuscated ordinal ca"
+            "value": "Detects execution of \"rundll32\" with potential obfuscated ordinal calls"
           },
           {
             "name": "tactics",

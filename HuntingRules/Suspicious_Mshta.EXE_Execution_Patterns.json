@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious mshta process execution patte"
+            "value": "Detects suspicious mshta process execution patterns"
           },
           {
             "name": "tactics",

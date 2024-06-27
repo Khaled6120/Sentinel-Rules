@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of \"odbcconf\" where the path of the DLL being registered is located in a potentially suspicious locati"
+            "value": "Detects execution of \"odbcconf\" where the path of the DLL being registered is located in a potentially suspicious location."
           },
           {
             "name": "tactics",

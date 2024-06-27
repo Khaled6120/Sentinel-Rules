@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading using ClassicExplorer32.dll from the Classic Shell softw"
+            "value": "Detects potential DLL sideloading using ClassicExplorer32.dll from the Classic Shell software"
           },
           {
             "name": "tactics",

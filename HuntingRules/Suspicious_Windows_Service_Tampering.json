@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the usage of binaries such as 'net', 'sc' or 'powershell' in order to stop, pause or delete critical or important Windows services such as AV, Backup, etc. As seen being used in some ransomware scri"
+            "value": "Detects the usage of binaries such as 'net', 'sc' or 'powershell' in order to stop, pause or delete critical or important Windows services such as AV, Backup, etc. As seen being used in some ransomware scripts"
           },
           {
             "name": "tactics",

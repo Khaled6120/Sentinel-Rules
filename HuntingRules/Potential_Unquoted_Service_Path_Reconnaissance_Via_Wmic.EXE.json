@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects known WMI recon method to look for unquoted service paths using wmic. Often used by pentester and attacker enumeration scri"
+            "value": "Detects known WMI recon method to look for unquoted service paths using wmic. Often used by pentester and attacker enumeration scripts"
           },
           {
             "name": "tactics",

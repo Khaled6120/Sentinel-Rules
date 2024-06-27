@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects port forwarding activity via SSH."
+            "value": "Detects port forwarding activity via SSH.exe"
           },
           {
             "name": "tactics",

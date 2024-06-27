@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of the 'Get-Clipboard' cmdlet via "
+            "value": "Detects usage of the 'Get-Clipboard' cmdlet via CLI"
           },
           {
             "name": "tactics",

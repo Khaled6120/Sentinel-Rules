@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects attempts to enumerate file shares, printer shares and sessions using \"net.exe\" with the \"view\" fl"
+            "value": "Detects attempts to enumerate file shares, printer shares and sessions using \"net.exe\" with the \"view\" flag."
           },
           {
             "name": "tactics",

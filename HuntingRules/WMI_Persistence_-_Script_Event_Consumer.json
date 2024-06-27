@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects WMI script event consum"
+            "value": "Detects WMI script event consumers"
           },
           {
             "name": "tactics",

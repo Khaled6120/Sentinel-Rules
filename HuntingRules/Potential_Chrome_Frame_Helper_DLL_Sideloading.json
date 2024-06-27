@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"chrome_frame_helper.d"
+            "value": "Detects potential DLL sideloading of \"chrome_frame_helper.dll\""
           },
           {
             "name": "tactics",

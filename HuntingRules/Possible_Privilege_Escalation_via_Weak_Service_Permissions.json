@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detection of sc.exe utility spawning by user with Medium integrity level to change service ImagePath or FailureComm"
+            "value": "Detection of sc.exe utility spawning by user with Medium integrity level to change service ImagePath or FailureCommand"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious parameters of fsutil (deleting USN journal, configuring it with small size, etc).\nMight be used by ransomwares during the attack (seen by NotPetya and others"
+            "value": "Detects suspicious parameters of fsutil (deleting USN journal, configuring it with small size, etc).\nMight be used by ransomwares during the attack (seen by NotPetya and others).\n"
           },
           {
             "name": "tactics",

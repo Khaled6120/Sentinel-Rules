@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects usage of an encoded/obfuscated version of an IP address (hex, octal, etc.) via command l"
+            "value": "Detects usage of an encoded/obfuscated version of an IP address (hex, octal, etc.) via command line"
           },
           {
             "name": "tactics",

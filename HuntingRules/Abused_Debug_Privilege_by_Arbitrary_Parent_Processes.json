@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detection of unusual child processes by different system proces"
+            "value": "Detection of unusual child processes by different system processes"
           },
           {
             "name": "tactics",

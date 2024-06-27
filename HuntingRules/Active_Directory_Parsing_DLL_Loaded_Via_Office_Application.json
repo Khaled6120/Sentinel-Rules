@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects DSParse DLL being loaded by an Office Prod"
+            "value": "Detects DSParse DLL being loaded by an Office Product"
           },
           {
             "name": "tactics",

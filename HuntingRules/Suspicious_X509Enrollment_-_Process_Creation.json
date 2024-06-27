@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detect use of X509Enrollm"
+            "value": "Detect use of X509Enrollment"
           },
           {
             "name": "tactics",

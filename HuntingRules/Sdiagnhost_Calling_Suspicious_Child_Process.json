@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects sdiagnhost.exe calling a suspicious child process (e.g. used in exploits for Follina / CVE-2022-301"
+            "value": "Detects sdiagnhost.exe calling a suspicious child process (e.g. used in exploits for Follina / CVE-2022-30190)"
           },
           {
             "name": "tactics",

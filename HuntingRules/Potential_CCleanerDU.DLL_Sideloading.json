@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"CCleanerDU.d"
+            "value": "Detects potential DLL sideloading of \"CCleanerDU.dll\""
           },
           {
             "name": "tactics",

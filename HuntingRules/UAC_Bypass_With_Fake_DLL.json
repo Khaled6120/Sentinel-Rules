@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Attempts to load dismcore.dll after dropping"
+            "value": "Attempts to load dismcore.dll after dropping it"
           },
           {
             "name": "tactics",

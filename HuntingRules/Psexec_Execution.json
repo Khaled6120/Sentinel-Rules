@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects user accept agreement execution in psexec commandl"
+            "value": "Detects user accept agreement execution in psexec commandline"
           },
           {
             "name": "tactics",

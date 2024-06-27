@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the use of the 'Pubprn.vbs' Microsoft signed script to execute comman"
+            "value": "Detects the use of the 'Pubprn.vbs' Microsoft signed script to execute commands."
           },
           {
             "name": "tactics",

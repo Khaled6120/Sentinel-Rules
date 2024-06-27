@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious command lines used in Covenant luanch"
+            "value": "Detects suspicious command lines used in Covenant luanchers"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects scheduled task creations that have suspicious action command and folder combinati"
+            "value": "Detects scheduled task creations that have suspicious action command and folder combinations"
           },
           {
             "name": "tactics",

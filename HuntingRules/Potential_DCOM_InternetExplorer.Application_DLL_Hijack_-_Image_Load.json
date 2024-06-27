@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL hijack of \"iertutil.dll\" found in the DCOM InternetExplorer.Application Cl"
+            "value": "Detects potential DLL hijack of \"iertutil.dll\" found in the DCOM InternetExplorer.Application Class"
           },
           {
             "name": "tactics",

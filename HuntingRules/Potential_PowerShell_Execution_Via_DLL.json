@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential PowerShell execution from a DLL instead of the usual PowerShell process as seen used in PowerShdll.\nThis detection assumes that PowerShell commands are passed via the CommandLin"
+            "value": "Detects potential PowerShell execution from a DLL instead of the usual PowerShell process as seen used in PowerShdll.\nThis detection assumes that PowerShell commands are passed via the CommandLine.\n"
           },
           {
             "name": "tactics",

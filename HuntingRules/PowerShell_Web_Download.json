@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious ways to download files or content using PowerSh"
+            "value": "Detects suspicious ways to download files or content using PowerShell"
           },
           {
             "name": "tactics",

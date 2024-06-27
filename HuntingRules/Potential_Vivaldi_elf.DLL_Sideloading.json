@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects potential DLL sideloading of \"vivaldi_elf.d"
+            "value": "Detects potential DLL sideloading of \"vivaldi_elf.dll\""
           },
           {
             "name": "tactics",

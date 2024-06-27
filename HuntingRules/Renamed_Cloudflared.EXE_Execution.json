@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of a renamed \"cloudflared\" bina"
+            "value": "Detects the execution of a renamed \"cloudflared\" binary."
           },
           {
             "name": "tactics",

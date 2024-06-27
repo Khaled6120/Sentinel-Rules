@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of \"curl.exe\" with the \"-c\" flag in order to save cookie da"
+            "value": "Detects execution of \"curl.exe\" with the \"-c\" flag in order to save cookie data."
           },
           {
             "name": "tactics",

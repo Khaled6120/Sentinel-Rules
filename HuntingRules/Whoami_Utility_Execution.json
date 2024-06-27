@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of whoami, which is often used by attackers after exploitation / privilege escalat"
+            "value": "Detects the execution of whoami, which is often used by attackers after exploitation / privilege escalation"
           },
           {
             "name": "tactics",

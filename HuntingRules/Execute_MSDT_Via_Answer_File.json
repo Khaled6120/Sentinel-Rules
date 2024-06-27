@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of \"msdt.exe\" using an answer file which is simulating the legitimate way of calling msdt via \"pcwrun.exe\" (For example from the compatibility t"
+            "value": "Detects execution of \"msdt.exe\" using an answer file which is simulating the legitimate way of calling msdt via \"pcwrun.exe\" (For example from the compatibility tab)"
           },
           {
             "name": "tactics",

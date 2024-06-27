@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects suspicious print spool service (spoolsv.exe) child process"
+            "value": "Detects suspicious print spool service (spoolsv.exe) child processes."
           },
           {
             "name": "tactics",

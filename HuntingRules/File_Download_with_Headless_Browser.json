@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of chromium based browser in headless mode using the \"dump-dom\" command line to download fi"
+            "value": "Detects execution of chromium based browser in headless mode using the \"dump-dom\" command line to download files"
           },
           {
             "name": "tactics",

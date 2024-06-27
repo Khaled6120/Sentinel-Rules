@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects a suspicious or uncommon parent processes of PowerSh"
+            "value": "Detects a suspicious or uncommon parent processes of PowerShell"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects execution of Remote Utilities RAT (RURAT) from an unusual location (outside of 'C:\\Program File"
+            "value": "Detects execution of Remote Utilities RAT (RURAT) from an unusual location (outside of 'C:\\Program Files')"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detect suspicious parent processes of well-known Windows proces"
+            "value": "Detect suspicious parent processes of well-known Windows processes"
           },
           {
             "name": "tactics",

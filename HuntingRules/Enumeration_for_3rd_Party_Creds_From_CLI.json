@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects processes that query known 3rd party registry keys that holds credentials via commandl"
+            "value": "Detects processes that query known 3rd party registry keys that holds credentials via commandline"
           },
           {
             "name": "tactics",

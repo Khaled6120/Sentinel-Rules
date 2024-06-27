@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects command lines that contain the 'accepteula' flag which could be a sign of execution of one of the Sysinternals to"
+            "value": "Detects command lines that contain the 'accepteula' flag which could be a sign of execution of one of the Sysinternals tools"
           },
           {
             "name": "tactics",

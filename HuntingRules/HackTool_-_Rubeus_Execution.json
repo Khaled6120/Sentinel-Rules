@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of the hacktool Rubeus via PE information of command line paramet"
+            "value": "Detects the execution of the hacktool Rubeus via PE information of command line parameters"
           },
           {
             "name": "tactics",

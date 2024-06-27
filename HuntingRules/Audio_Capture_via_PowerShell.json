@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects audio capture via PowerShell Cmdl"
+            "value": "Detects audio capture via PowerShell Cmdlet."
           },
           {
             "name": "tactics",

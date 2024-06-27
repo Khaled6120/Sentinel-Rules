@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of CSharp interactive console by PowerSh"
+            "value": "Detects the execution of CSharp interactive console by PowerShell"
           },
           {
             "name": "tactics",

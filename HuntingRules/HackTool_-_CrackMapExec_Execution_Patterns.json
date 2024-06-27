@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects various execution patterns of the CrackMapExec pentesting framew"
+            "value": "Detects various execution patterns of the CrackMapExec pentesting framework"
           },
           {
             "name": "tactics",

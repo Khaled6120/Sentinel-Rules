@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of wmic with the \"qfe\" flag in order to obtain information about installed hotfix updates on the system. This is often used by pentester and attacker enumeration scri"
+            "value": "Detects the execution of wmic with the \"qfe\" flag in order to obtain information about installed hotfix updates on the system. This is often used by pentester and attacker enumeration scripts"
           },
           {
             "name": "tactics",

@@ -21,7 +21,7 @@
         "tags": [
           {
             "name": "description",
-            "value": "Detects the execution of other scripts using the Node executable packaged with Adobe Creative Cl"
+            "value": "Detects the execution of other scripts using the Node executable packaged with Adobe Creative Cloud"
           },
           {
             "name": "tactics",
