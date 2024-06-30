@@ -24,6 +24,8 @@ jobs:
           pip install pyyaml pygithub python-dotenv pysigma-backend-microsoft365defender
 
       - name: Check for updates and process Sigma rules
+        env:
+          SUPER_SECRET_TOKEN: ${{ secrets.SUPER_SECRET_TOKEN }}
         run: |
           python convert_sigma_to_kql_automated.py
 
