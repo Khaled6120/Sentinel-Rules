@@ -61,7 +61,7 @@ def convert_to_string(yaml_dict):
 def download_sigma_rules(repo='SigmaHQ/sigma', path='rules/windows'):
     headers = {
         'Accept': 'application/vnd.github.v3+json',
-        'Authorization': f'token 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'
+        'Authorization': f'token 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'
 
     }
     url = f'https://api.github.com/repos/{repo}/contents/{path}'
@@ -172,7 +172,7 @@ def fetch_commits_with_retries(max_retries=5, retry_delay=10):
         try:
             headers = {
                 'Accept': 'application/vnd.github.v3+json',
-                'Authorization': f'token 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'
+                'Authorization': f'token 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'
 
             }
             response = requests.get(f'https://api.github.com/repos/SigmaHQ/sigma/commits', headers=headers)
