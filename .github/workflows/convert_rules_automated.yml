@@ -23,7 +23,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.SUPER_SECRET_TOKEN }}
         run: |
-          python convert_sigma_to_kql_automated.py
+          python .\convert_sigma_to_kql_automated.py
 
       - name: Commit changes if any
         if: github.event_name != 'pull_request'
