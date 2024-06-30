@@ -1,0 +1,32 @@
+name: Amsi.DLL Loaded Via LOLBIN Process
+id: 6ec86d9e-912e-4726-91a2-209359b999b9
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/06/01
+severity: medium
+description: Detects loading of "Amsi.dll" by a living of the land process. This could
+  be an indication of a "PowerShell without PowerShell" attack
+status: experimental
+modified: 2023/09/20
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques: []
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\amsi.dll" and (InitiatingProcessFolderPath endswith
+  "\\ExtExport.exe" or InitiatingProcessFolderPath endswith "\\odbcconf.exe" or InitiatingProcessFolderPath
+  endswith "\\regsvr32.exe" or InitiatingProcessFolderPath endswith "\\rundll32.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -1,0 +1,31 @@
+name: Custom File Open Handler Executes PowerShell
+id: 7530b96f-ad8e-431d-a04d-ac85cc461fdc
+author: CD_R0M_
+date: 2022/06/11
+severity: high
+description: Detects the abuse of custom file open handler, executing powershell
+status: experimental
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1202
+query: 'DeviceRegistryEvents
+
+  | where (RegistryValueData contains "powershell" and RegistryValueData contains
+  "-command") and RegistryKey contains "shell\\open\\command"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

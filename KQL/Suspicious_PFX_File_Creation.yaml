@@ -1,0 +1,32 @@
+name: Suspicious PFX File Creation
+id: dca1b3e8-e043-4ec8-85d7-867f334b5724
+author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+date: 2020/05/02
+severity: medium
+description: A general detection for processes creating PFX files. This could be an
+  indicator of an adversary exporting a local certificate to a PFX file.
+status: test
+modified: 2022/07/07
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Credential Access
+relevantTechniques:
+- T1552
+query: 'DeviceFileEvents
+
+  | where FolderPath endswith ".pfx" and (not((FolderPath contains "\\Templates\\Windows\\Windows_TemporaryKey.pfx"
+  and FolderPath contains "\\CMake\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

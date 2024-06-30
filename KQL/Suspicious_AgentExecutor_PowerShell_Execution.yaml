@@ -1,0 +1,35 @@
+name: Suspicious AgentExecutor PowerShell Execution
+id: c0b40568-b1e9-4b03-8d6c-b096da6da9ab
+author: Nasreddine Bencherchali (Nextron Systems), memory-shards
+date: 2022/12/24
+severity: high
+description: Detects execution of the AgentExecutor.exe binary. Which can be abused
+  as a LOLBIN to execute powershell scripts with the ExecutionPolicy "Bypass" or any
+  binary named "powershell.exe" located in the path provided by 6th positional argument
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1218
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains " -powershell" or ProcessCommandLine contains
+  " -remediationScript") and (FolderPath endswith "\\AgentExecutor.exe" or ProcessVersionInfoOriginalFileName
+  =~ "AgentExecutor.exe")) and (not((ProcessCommandLine contains "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\"
+  or ProcessCommandLine contains "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -1,0 +1,32 @@
+name: TeamViewer Log File Deleted
+id: b1decb61-ed83-4339-8e95-53ea51901720
+author: frack113
+date: 2022/01/16
+severity: low
+description: Detects the deletion of the TeamViewer log files which may indicate an
+  attempt to destroy forensic evidence
+status: test
+modified: 2023/02/15
+logsource:
+  category: file_delete
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1070
+query: 'DeviceFileEvents
+
+  | where (FolderPath contains "\\TeamViewer_" and FolderPath endswith ".log") and
+  (not(InitiatingProcessFolderPath =~ "C:\\Windows\\system32\\svchost.exe"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

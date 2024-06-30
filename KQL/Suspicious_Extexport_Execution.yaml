@@ -1,0 +1,32 @@
+name: Suspicious Extexport Execution
+id: fb0b815b-f5f6-4f50-970f-ffe21f253f7a
+author: frack113
+date: 2021/11/26
+severity: medium
+description: Extexport.exe loads dll and is execute from other folder the original
+  path
+status: test
+modified: 2022/05/16
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1218
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "Extexport.exe" or FolderPath endswith "\\Extexport.exe"
+  or ProcessVersionInfoOriginalFileName =~ "extexport.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

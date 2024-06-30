@@ -1,0 +1,34 @@
+name: Suspicious Desktopimgdownldr Target File
+id: fc4f4817-0c53-4683-a4ee-b17a64bc1039
+author: Florian Roth (Nextron Systems)
+date: 2020/07/03
+severity: high
+description: Detects a suspicious Microsoft desktopimgdownldr file creation that stores
+  a file to a suspicious location or contains a file with a suspicious extension
+status: test
+modified: 2022/06/02
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Command And Control
+relevantTechniques:
+- T1105
+query: 'DeviceFileEvents
+
+  | where (InitiatingProcessFolderPath endswith "\\svchost.exe" and FolderPath contains
+  "\\Personalization\\LockScreenImage\\") and (not(FolderPath contains "C:\\Windows\\"))
+  and (not((FolderPath contains ".jpg" or FolderPath contains ".jpeg" or FolderPath
+  contains ".png")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

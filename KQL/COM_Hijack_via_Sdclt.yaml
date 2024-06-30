@@ -1,0 +1,31 @@
+name: COM Hijack via Sdclt
+id: 07743f65-7ec9-404a-a519-913db7118a8d
+author: Omkar Gudhate
+date: 2020/09/27
+severity: high
+description: Detects changes to 'HKCU\Software\Classes\Folder\shell\open\command\DelegateExecute'
+status: test
+modified: 2023/09/28
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Privilege Escalation
+relevantTechniques:
+- T1546
+- T1548
+query: 'DeviceRegistryEvents
+
+  | where RegistryKey contains "\\Software\\Classes\\Folder\\shell\\open\\command\\DelegateExecute"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

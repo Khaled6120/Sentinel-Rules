@@ -1,0 +1,42 @@
+name: Suspicious Service Installed
+id: f2485272-a156-4773-82d7-1d178bc4905b
+author: xknow (@xknow_infosec), xorxes (@xor_xes)
+date: 2019/04/08
+severity: medium
+description: 'Detects installation of NalDrv or PROCEXP152 services via registry-keys
+  to non-system32 folders.
+
+  Both services are used in the tool Ghost-In-The-Logs (https://github.com/bats3c/Ghost-In-The-Logs),
+  which uses KDU (https://github.com/hfiref0x/KDU)
+
+  '
+status: test
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1562
+query: 'DeviceRegistryEvents
+
+  | where (RegistryKey in~ ("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services\\NalDrv\\ImagePath",
+  "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services\\PROCEXP152\\ImagePath"))
+  and (not((RegistryValueData contains "\\WINDOWS\\system32\\Drivers\\PROCEXP152.SYS"
+  and (InitiatingProcessFolderPath endswith "\\procexp64.exe" or InitiatingProcessFolderPath
+  endswith "\\procexp.exe" or InitiatingProcessFolderPath endswith "\\procmon64.exe"
+  or InitiatingProcessFolderPath endswith "\\procmon.exe" or InitiatingProcessFolderPath
+  endswith "\\handle.exe" or InitiatingProcessFolderPath endswith "\\handle64.exe"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

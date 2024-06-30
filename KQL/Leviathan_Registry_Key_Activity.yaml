@@ -1,0 +1,30 @@
+name: Leviathan Registry Key Activity
+id: 70d43542-cd2d-483c-8f30-f16b436fd7db
+author: Aidan Bracher
+date: 2020/07/07
+severity: critical
+description: Detects registry key used by Leviathan APT in Malaysian focused campaign
+status: test
+modified: 2023/09/19
+logsource:
+  category: registry_event
+  product: windows
+tactics:
+- Persistence
+relevantTechniques:
+- T1547
+query: 'DeviceRegistryEvents
+
+  | where RegistryKey contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\ntkd"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -1,0 +1,33 @@
+name: Potential Persistence Via DLLPathOverride
+id: a1b1fd53-9c4a-444c-bae0-34a330fc7aa8
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/07/21
+severity: high
+description: Detects when an attacker adds a new "DLLPathOverride" value to the "Natural
+  Language" key in order to achieve persistence which will get invoked by "SearchIndexer.exe"
+  process
+status: experimental
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Persistence
+relevantTechniques: []
+query: 'DeviceRegistryEvents
+
+  | where RegistryKey contains "\\SYSTEM\\CurrentControlSet\\Control\\ContentIndex\\Language"
+  and (RegistryKey contains "\\StemmerDLLPathOverride" or RegistryKey contains "\\WBDLLPathOverride"
+  or RegistryKey contains "\\StemmerClass" or RegistryKey contains "\\WBreakerClass")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

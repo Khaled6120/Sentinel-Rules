@@ -1,0 +1,43 @@
+name: Disable Windows Event Logging Via Registry
+id: 2f78da12-f7c7-430b-8b19-a28f269b77a3
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: 2022/07/04
+severity: high
+description: Detects tampering with the "Enabled" registry key in order to disable
+  Windows logging of a Windows event channel
+status: experimental
+modified: 2024/03/25
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1562
+query: 'DeviceRegistryEvents
+
+  | where (RegistryValueData =~ "DWORD (0x00000000)" and RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels"
+  and RegistryKey endswith "\\Enabled") and (not(((InitiatingProcessFolderPath endswith
+  "\\TiWorker.exe" and InitiatingProcessFolderPath startswith "C:\\Windows\\winsxs\\")
+  or (InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\svchost.exe" and (RegistryKey
+  contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-FileInfoMinifilter"
+  or RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-ASN1"
+  or RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-Kernel-AppCompat"
+  or RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-Runtime\\Error"
+  or RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-CAPI2/Operational"))
+  or (InitiatingProcessFolderPath =~ "C:\\Windows\\servicing\\TrustedInstaller.exe"
+  and RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-Compat-Appraiser")
+  or InitiatingProcessFolderPath =~ "C:\\Windows\\system32\\wevtutil.exe"))) and (not((InitiatingProcessFolderPath
+  =~ "" or isnull(InitiatingProcessFolderPath))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

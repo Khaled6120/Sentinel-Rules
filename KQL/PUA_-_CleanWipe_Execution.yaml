@@ -1,0 +1,34 @@
+name: PUA - CleanWipe Execution
+id: f44800ac-38ec-471f-936e-3fa7d9c53100
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2021/12/18
+severity: high
+description: Detects the use of CleanWipe a tool usually used to delete Symantec antivirus.
+status: test
+modified: 2023/02/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1562
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\SepRemovalToolNative_x64.exe" or (ProcessCommandLine
+  contains "--uninstall" and FolderPath endswith "\\CATClean.exe") or (ProcessCommandLine
+  contains "-r" and FolderPath endswith "\\NetInstaller.exe") or ((ProcessCommandLine
+  contains "/uninstall" and ProcessCommandLine contains "/enterprise") and FolderPath
+  endswith "\\WFPUnins.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -1,0 +1,33 @@
+name: Created Files by Microsoft Sync Center
+id: 409f8a98-4496-4aaa-818a-c931c0a8b832
+author: elhoim
+date: 2022/04/28
+severity: medium
+description: This rule detects suspicious files created by Microsoft Sync Center (mobsync)
+status: test
+modified: 2022/06/02
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Defense Evasion
+- Execution
+relevantTechniques:
+- T1055
+- T1218
+query: 'DeviceFileEvents
+
+  | where InitiatingProcessFolderPath endswith "\\mobsync.exe" and (FolderPath endswith
+  ".dll" or FolderPath endswith ".exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

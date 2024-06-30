@@ -1,0 +1,32 @@
+name: Activate Suppression of Windows Security Center Notifications
+id: 0c93308a-3f1b-40a9-b649-57ea1a1c1d63
+author: frack113
+date: 2022/08/19
+severity: medium
+description: Detect set Notification_Suppress to 1 to disable the Windows security
+  center notification
+status: experimental
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1112
+query: 'DeviceRegistryEvents
+
+  | where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "SOFTWARE\\Policies\\Microsoft\\Windows
+  Defender\\UX Configuration\\Notification_Suppress"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

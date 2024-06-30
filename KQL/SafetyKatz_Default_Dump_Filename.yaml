@@ -1,0 +1,30 @@
+name: SafetyKatz Default Dump Filename
+id: e074832a-eada-4fd7-94a1-10642b130e16
+author: Markus Neis
+date: 2018/07/24
+severity: high
+description: Detects default lsass dump filename from SafetyKatz
+status: test
+modified: 2021/11/27
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Credential Access
+relevantTechniques:
+- T1003
+query: 'DeviceFileEvents
+
+  | where FolderPath endswith "\\Temp\\debug.bin"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

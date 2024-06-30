@@ -1,0 +1,31 @@
+name: Windows Registry Trust Record Modification
+id: 295a59c1-7b79-4b47-a930-df12c15fc9c2
+author: Antonlovesdnb, Trent Liffick (@tliffick)
+date: 2020/02/19
+severity: medium
+description: Alerts on trust record modification within the registry, indicating usage
+  of macros
+status: test
+modified: 2023/06/21
+logsource:
+  category: registry_event
+  product: windows
+tactics:
+- Initial Access
+relevantTechniques:
+- T1566
+query: 'DeviceRegistryEvents
+
+  | where RegistryKey contains "\\Security\\Trusted Documents\\TrustRecords"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

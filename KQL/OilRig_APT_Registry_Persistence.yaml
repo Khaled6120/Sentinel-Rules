@@ -1,0 +1,40 @@
+name: OilRig APT Registry Persistence
+id: 7bdf2a7c-3acc-4091-9581-0a77dad1c5b5
+author: Florian Roth (Nextron Systems), Markus Neis, Jonhnathan Ribeiro, Daniil Yugoslavskiy,
+  oscd.community
+date: 2018/03/23
+severity: critical
+description: Detects OilRig registry persistence as reported by Nyotron in their March
+  2018 report
+status: test
+modified: 2023/03/08
+logsource:
+  category: registry_event
+  product: windows
+tactics:
+- Command And Control
+- Defense Evasion
+- G0049
+- Persistence
+- S0111
+relevantTechniques:
+- T1053
+- T1071
+- T1112
+- T1543
+query: 'DeviceRegistryEvents
+
+  | where RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\UMe"
+  or RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\UT"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

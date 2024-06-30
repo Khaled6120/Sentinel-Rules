@@ -1,0 +1,38 @@
+name: New Custom Shim Database Created
+id: ee63c85c-6d51-4d12-ad09-04e25877a947
+author: frack113, Nasreddine Bencherchali (Nextron Systems)
+date: 2021/12/29
+severity: medium
+description: 'Adversaries may establish persistence and/or elevate privileges by executing
+  malicious content triggered by application shims.
+
+  The Microsoft Windows Application Compatibility Infrastructure/Framework (Application
+  Shim) was created to allow for backward compatibility of software as the operating
+  system codebase changes over time.
+
+  '
+status: test
+modified: 2023/12/06
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Persistence
+relevantTechniques:
+- T1547
+query: 'DeviceFileEvents
+
+  | where FolderPath contains ":\\Windows\\apppatch\\Custom\\" or FolderPath contains
+  ":\\Windows\\apppatch\\CustomSDB\\"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

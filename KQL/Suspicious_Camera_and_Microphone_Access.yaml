@@ -1,0 +1,37 @@
+name: Suspicious Camera and Microphone Access
+id: 62120148-6b7a-42be-8b91-271c04e281a3
+author: Den Iuzvyk
+date: 2020/06/07
+severity: high
+description: Detects Processes accessing the camera and microphone from suspicious
+  folder
+status: test
+modified: 2022/10/09
+logsource:
+  category: registry_event
+  product: windows
+tactics:
+- Collection
+relevantTechniques:
+- T1123
+- T1125
+query: 'DeviceRegistryEvents
+
+  | where (RegistryKey contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore"
+  and RegistryKey contains "\\NonPackaged") and (RegistryKey contains "microphone"
+  or RegistryKey contains "webcam") and (RegistryKey contains ":#Windows#Temp#" or
+  RegistryKey contains ":#$Recycle.bin#" or RegistryKey contains ":#Temp#" or RegistryKey
+  contains ":#Users#Public#" or RegistryKey contains ":#Users#Default#" or RegistryKey
+  contains ":#Users#Desktop#")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -1,0 +1,38 @@
+name: Uncommon File Creation By Mysql Daemon Process
+id: c61daa90-3c1e-4f18-af62-8f288b5c9aaf
+author: Joseph Kamau
+date: 2024/05/27
+severity: high
+description: 'Detects the creation of files with scripting or executable extensions
+  by Mysql daemon.
+
+  Which could be an indicator of "User Defined Functions" abuse to download malware.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques: []
+query: 'DeviceFileEvents
+
+  | where (InitiatingProcessFolderPath endswith "\\mysqld.exe" or InitiatingProcessFolderPath
+  endswith "\\mysqld-nt.exe") and (FolderPath endswith ".bat" or FolderPath endswith
+  ".dat" or FolderPath endswith ".dll" or FolderPath endswith ".exe" or FolderPath
+  endswith ".ps1" or FolderPath endswith ".psm1" or FolderPath endswith ".vbe" or
+  FolderPath endswith ".vbs")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

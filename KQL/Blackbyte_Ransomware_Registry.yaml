@@ -1,0 +1,33 @@
+name: Blackbyte Ransomware Registry
+id: 83314318-052a-4c90-a1ad-660ece38d276
+author: frack113
+date: 2022/01/24
+severity: high
+description: BlackByte set three different registry values to escalate privileges
+  and begin setting the stage for lateral movement and encryption
+status: test
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1112
+query: 'DeviceRegistryEvents
+
+  | where RegistryValueData =~ "DWORD (0x00000001)" and (RegistryKey in~ ("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\LocalAccountTokenFilterPolicy",
+  "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\EnableLinkedConnections",
+  "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Control\\FileSystem\\LongPathsEnabled"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -1,0 +1,38 @@
+name: Suspicious Executable File Creation
+id: 74babdd6-a758-4549-9632-26535279e654
+author: frack113
+date: 2022/09/05
+severity: high
+description: 'Detect creation of suspicious executable file names.
+
+  Some strings look for suspicious file extensions, others look for filenames that
+  exploit unquoted service paths.
+
+  '
+status: test
+modified: 2023/12/11
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1564
+query: 'DeviceFileEvents
+
+  | where FolderPath endswith ":\\$Recycle.Bin.exe" or FolderPath endswith ":\\Documents
+  and Settings.exe" or FolderPath endswith ":\\MSOCache.exe" or FolderPath endswith
+  ":\\PerfLogs.exe" or FolderPath endswith ":\\Recovery.exe" or FolderPath endswith
+  ".bat.exe" or FolderPath endswith ".sys.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

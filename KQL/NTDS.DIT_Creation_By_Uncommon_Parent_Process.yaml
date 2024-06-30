@@ -1,0 +1,36 @@
+name: NTDS.DIT Creation By Uncommon Parent Process
+id: 4e7050dd-e548-483f-b7d6-527ab4fa784d
+author: Florian Roth (Nextron Systems)
+date: 2022/03/11
+severity: high
+description: Detects creation of a file named "ntds.dit" (Active Directory Database)
+  by an uncommon parent process or directory
+status: test
+modified: 2023/01/05
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Credential Access
+relevantTechniques:
+- T1003
+query: 'DeviceFileEvents
+
+  | where FolderPath endswith "\\ntds.dit" and ((InitiatingProcessParentFileName in~
+  ("cscript.exe", "httpd.exe", "nginx.exe", "php-cgi.exe", "powershell.exe", "pwsh.exe",
+  "w3wp.exe", "wscript.exe")) or (InitiatingProcessParentFileName startswith "apache"
+  or InitiatingProcessParentFileName startswith "tomcat" or InitiatingProcessParentFileName
+  startswith "" or InitiatingProcessParentFileName startswith "" or InitiatingProcessParentFileName
+  startswith "" or InitiatingProcessParentFileName startswith ""))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

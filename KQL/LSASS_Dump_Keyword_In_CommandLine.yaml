@@ -1,0 +1,41 @@
+name: LSASS Dump Keyword In CommandLine
+id: ffa6861c-4461-4f59-8a41-578c39f3f23e
+author: E.M. Anhaus, Tony Lambert, oscd.community, Nasreddine Bencherchali (Nextron
+  Systems)
+date: 2019/10/24
+severity: high
+description: 'Detects the presence of the keywords "lsass" and ".dmp" in the commandline,
+  which could indicate a potential attempt to dump or create a dump of the lsass process.
+
+  '
+status: test
+modified: 2023/08/29
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Credential Access
+relevantTechniques:
+- T1003
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "lsass.dmp" or ProcessCommandLine contains
+  "lsass.zip" or ProcessCommandLine contains "lsass.rar" or ProcessCommandLine contains
+  "Andrew.dmp" or ProcessCommandLine contains "Coredump.dmp" or ProcessCommandLine
+  contains "NotLSASS.zip" or ProcessCommandLine contains "lsass_2" or ProcessCommandLine
+  contains "lsassdump" or ProcessCommandLine contains "lsassdmp") or (ProcessCommandLine
+  contains "lsass" and ProcessCommandLine contains ".dmp") or (ProcessCommandLine
+  contains "SQLDmpr" and ProcessCommandLine contains ".mdmp") or (ProcessCommandLine
+  contains "nanodump" and ProcessCommandLine contains ".dmp")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

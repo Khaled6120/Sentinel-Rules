@@ -1,0 +1,35 @@
+name: WScript or CScript Dropper - File
+id: 002bdb95-0cf1-46a6-9e08-d38c128a6127
+author: Tim Shelton
+date: 2022/01/10
+severity: high
+description: Detects a file ending in jse, vbe, js, vba, vbs written by cscript.exe
+  or wscript.exe
+status: test
+modified: 2022/12/02
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Execution
+relevantTechniques:
+- T1059
+query: 'DeviceFileEvents
+
+  | where (InitiatingProcessFolderPath endswith "\\wscript.exe" or InitiatingProcessFolderPath
+  endswith "\\cscript.exe") and (FolderPath endswith ".jse" or FolderPath endswith
+  ".vbe" or FolderPath endswith ".js" or FolderPath endswith ".vba" or FolderPath
+  endswith ".vbs") and (FolderPath startswith "C:\\Users\\" or FolderPath startswith
+  "C:\\ProgramData")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled
