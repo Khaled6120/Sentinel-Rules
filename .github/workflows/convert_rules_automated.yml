@@ -21,7 +21,7 @@ jobs:
 
       - name: Check for updates and process Sigma rules
         run: |
-          python convert_sigma_to_kql_automated.py
+          python \convert_sigma_to_kql_automated.py
 
       - name: Commit changes if any
         if: github.event_name != 'pull_request'
