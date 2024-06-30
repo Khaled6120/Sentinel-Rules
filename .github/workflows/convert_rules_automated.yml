@@ -34,6 +34,6 @@ jobs:
         run: |
           git config --global user.name 'Khaled6120'
           git config --global user.email 'khalednaes3@gmail.com'
-          git add .
+          git add KQL/Removal_of_Potential_COM_Hijacking_Registry_Keys.yaml last_commit_sha.txt
           git commit -m "Automated conversion of Sigma rules"
           git push
