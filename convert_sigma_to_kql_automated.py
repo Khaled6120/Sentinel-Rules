@@ -6,10 +6,11 @@ import yaml
 from sigma.rule import SigmaRule
 from sigma.backends.microsoft365defender import Microsoft365DefenderBackend
 from sigma.pipelines.microsoft365defender import microsoft_365_defender_pipeline
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
+
+load_dotenv()
 SUPER_SECRET_TOKEN = os.getenv('SUPER_SECRET_TOKEN')
 
-#load_dotenv()
 #github_token = os.getenv('SUPER_SECRET_TOKEN')  # This will fetch the token from the .env file
 #github_token = Github.SUPER_SECRET_TOKEN  # This will fetch the token from the .env file
 
