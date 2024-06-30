@@ -38,7 +38,9 @@ jobs:
         run: |
           git config --global user.name 'Khaled6120'
           git config --global user.email 'khalednaes3@gmail.com'
+          git remote add authenticated-origin https://x-access-token:${{ secrets.SUPER_SECRET_TOKEN }}@github.com/Khaled6120/Sentinel-Rules.git
+          git fetch authenticated-origin main
+          git reset --soft authenticated-origin/main
           git add .
           git commit -m "Automated conversion of Sigma rules"
-          git remote add authenticated-origin https://x-access-token:${{ secrets.SUPER_SECRET_TOKEN }}@github.com/Khaled6120/Sentinel-Rules.git
-          git push authenticated-origin main
+          git push authenticated-origin main --force
