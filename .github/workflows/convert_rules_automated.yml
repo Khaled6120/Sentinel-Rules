@@ -36,4 +36,4 @@ jobs:
           git config --global user.email 'khalednaes3@gmail.com'
           git add .
           git commit -m "Automated conversion of Sigma rules"
-          git push
+          git push origin main
