@@ -1,0 +1,148 @@
+import os
+import glob
+import sys
+import yaml
+from github import Github
+
+# Initialize GitHub API with your token
+github_token = os.getenv('SUPER_SECRET_TOKEN')  # Add your GitHub token as a secret in GitHub repository settings
+g = Github(github_token)
+repo = g.get_repo('SigmaHQ/sigma')  # Replace with the actual repo details
+
+
+from sigma.rule import SigmaRule
+from sigma.backends.microsoft365defender import Microsoft365DefenderBackend
+from sigma.pipelines.microsoft365defender import microsoft_365_defender_pipeline
+
+# Load the last known commit SHA
+commit_sha_file = 'last_commit_sha.txt'
+
+def get_last_commit_sha():
+    if os.path.exists(commit_sha_file):
+        with open(commit_sha_file, 'r') as file:
+            return file.read().strip()
+    return None
+
+def save_last_commit_sha(sha):
+    with open(commit_sha_file, 'w') as file:
+        file.write(sha)
+
+# Function to convert YAML dict to string with custom string style
+def convert_to_string(yaml_dict):
+    yaml.SafeDumper.org_represent_str = yaml.SafeDumper.represent_str
+
+    def repr_str(dumper, data):
+        if '\n' in data:
+            return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='|')
+        return dumper.org_represent_str(data)
+
+    yaml.add_representer(str, repr_str, Dumper=yaml.SafeDumper)
+    yaml_str = yaml.dump(yaml_dict, default_flow_style=False, Dumper=yaml.SafeDumper)
+
+    return yaml_str
+
+# Function to download and process Sigma rules
+def download_sigma_rules(path='sigma/rules'):
+    contents = repo.get_contents(path)
+    for file in contents:
+        if file.type == 'dir':
+            # Recursively call download_sigma_rules() for nested folders
+            download_sigma_rules(file.path)
+        elif file.name.endswith('.yml'):
+            process_yaml_file(file)
+
+
+def process_techniques(techniques_list):
+    processed_techniques = set()
+    for technique in techniques_list:
+        main_technique = technique.split('.')[0].replace('t', 'T', 1)
+        processed_techniques.add(main_technique)
+    return sorted(processed_techniques)
+
+
+# Function to process each YAML file
+def process_yaml_file(file):
+        try:
+            yaml_contents = yaml.safe_load(yaml_file)
+            sigma_rule = SigmaRule.from_yaml(convert_to_string(yaml_contents))
+            print(yaml_contents)
+            m365def_backend = Microsoft365DefenderBackend()
+
+            pipeline = microsoft_365_defender_pipeline()
+            pipeline.apply(sigma_rule)
+
+            kql_query = m365def_backend.convert_rule(sigma_rule)[0]
+            print("\n \n ")
+
+            # Initialize sets to hold unique tactics and techniques
+            tactics = set()
+            techniques = set()
+
+            # Separate tags into tactics and techniques
+            tags = yaml_contents.get('tags', [])
+            for tag in tags:
+                if (parts := tag.split('.')) and tag.startswith('attack.'):
+                    if len(parts) == 2 and not parts[1].startswith('t'):
+                        # Transform the tactic to capitalize and replace underscores with spaces
+                        transformed_tactic = ' '.join(word.capitalize() for word in parts[1].split('_'))
+                        tactics.add(transformed_tactic)
+                    elif len(parts) >= 2 and parts[1].startswith('t'):
+                        techniques.add(parts[1])
+
+            # Convert sets to sorted lists and process techniques
+            sorted_tactics = sorted(tactics)
+            sorted_techniques = process_techniques(techniques)
+
+            yaml_content = {
+                'name': yaml_contents.get("title", ""),
+                'id': yaml_contents.get("id", ""),
+                'author': yaml_contents.get("author", ""),
+                'date': yaml_contents.get("date", ""),
+                'severity': yaml_contents.get("level", ""),
+                'description': yaml_contents.get("description", ""),
+                'status': yaml_contents.get("status", ""),
+                'modified': yaml_contents.get("modified", ""),
+                'logsource': {
+                    'category': yaml_contents.get("logsource", {}).get("category", ""),
+                    'product': yaml_contents.get("logsource", {}).get("product", "")
+                },
+                'tactics': sorted_tactics,
+                'relevantTechniques': sorted_techniques,
+                'query': kql_query,
+                'eventGroupingSettings': {
+                    'aggregationKind': 'SingleAlert'
+                },
+                'queryFrequency': 'P1D',
+                'queryPeriod': 'P1D',
+                'enabled': True,
+                'entityMappings': None,
+                'sentinelEntitiesMappings': None,
+                'triggerThreshold': 0,
+                'suppressionDuration': 'PT5H',
+                'suppressionEnabled': False,
+                'triggerOperator': 'GreaterThan',
+                'kind': 'Scheduled'
+            }
+
+            # Write the dictionary to a YAML file
+            output_file = f'KQL/{sigma_rule.title.replace(" ", "_")}.yaml'
+            with open(output_file, 'w') as yaml_file:
+                yaml.dump(yaml_content, yaml_file, sort_keys=False, default_flow_style=False)
+            
+            print(f'{sigma_rule.title} rule converted successfully')
+        except Exception as e:
+            print(f'SigmaTransformationError: Rule category not yet supported by the Microsoft 365 Defender Sigma backend. {str(e)}')
+
+def main():
+    latest_commit = repo.get_commits(path='sigma/rules')[0]
+    last_commit_sha = get_last_commit_sha()
+
+    if latest_commit.sha != last_commit_sha:
+        print(f"New commit detected: {latest_commit.sha}")
+        download_sigma_rules()
+        save_last_commit_sha(latest_commit.sha)
+    else:
+        print("No new commits detected.")
+
+if __name__ == "__main__":
+    main()

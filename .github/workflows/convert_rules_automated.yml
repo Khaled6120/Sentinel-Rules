@@ -1,0 +1,35 @@
+name: Check and Process Sigma Rules
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour
+  workflow_dispatch:
+jobs:
+  check_and_process:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml pygithub
+
+      - name: Check for updates and process Sigma rules
+        env:
+          GITHUB_TOKEN: ${{ secrets.SUPER_SECRET_TOKEN }}
+        run: |
+          python convert_sigma_to_kql_automated.py
+
+      - name: Commit changes if any
+        if: github.event_name != 'pull_request'
+        run: |
+          git config --global user.name 'Khaled6120'
+          git config --global user.email 'khalednaes3@gmail.com'
+          git add KQL/*.yaml
+          git commit -m "Automated conversion of Sigma rules"
+          git push
