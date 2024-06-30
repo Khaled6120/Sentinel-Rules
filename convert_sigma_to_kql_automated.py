@@ -7,7 +7,7 @@ from sigma.rule import SigmaRule
 from sigma.backends.microsoft365defender import Microsoft365DefenderBackend
 from sigma.pipelines.microsoft365defender import microsoft_365_defender_pipeline
 #from dotenv import load_dotenv
-SUPER_SECRET_TOKEN = os.environ['SUPER_SECRET_TOKEN']
+
 #load_dotenv()
 #github_token = os.getenv('SUPER_SECRET_TOKEN')  # This will fetch the token from the .env file
 #github_token = Github.SUPER_SECRET_TOKEN  # This will fetch the token from the .env file
@@ -61,7 +61,7 @@ def convert_to_string(yaml_dict):
 def download_sigma_rules(repo='SigmaHQ/sigma', path='rules/windows'):
     headers = {
         'Accept': 'application/vnd.github.v3+json',
-        'Authorization': f'token {SUPER_SECRET_TOKEN}'
+        'Authorization': f'token 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'
 
     }
     url = f'https://api.github.com/repos/{repo}/contents/{path}'
@@ -172,7 +172,7 @@ def fetch_commits_with_retries(max_retries=5, retry_delay=10):
         try:
             headers = {
                 'Accept': 'application/vnd.github.v3+json',
-                'Authorization': f'token {SUPER_SECRET_TOKEN}'
+                'Authorization': f'token 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'
 
             }
             response = requests.get(f'https://api.github.com/repos/SigmaHQ/sigma/commits', headers=headers)
