@@ -31,10 +31,9 @@ jobs:
           python convert_sigma_to_kql_automated.py
 
       - name: Commit changes if any
-        if: github.event_name != 'pull_request'
         run: |
           git config --global user.name 'Khaled6120'
           git config --global user.email 'khalednaes3@gmail.com'
-          git add KQL/*.yaml
+          git add .
           git commit -m "Automated conversion of Sigma rules"
           git push
