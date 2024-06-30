@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false  # Ensure credentials are not persisted
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -31,9 +33,12 @@ jobs:
           python convert_sigma_to_kql_automated.py
 
       - name: Commit changes if any
+        env:
+          GITHUB_TOKEN: ${{ secrets.SUPER_SECRET_TOKEN }}
         run: |
           git config --global user.name 'Khaled6120'
           git config --global user.email 'khalednaes3@gmail.com'
           git add .
           git commit -m "Automated conversion of Sigma rules"
-          git push origin main
+          git remote add authenticated-origin https://x-access-token:${{ secrets.SUPER_SECRET_TOKEN }}@github.com/Khaled6120/Sentinel-Rules.git
+          git push authenticated-origin main
