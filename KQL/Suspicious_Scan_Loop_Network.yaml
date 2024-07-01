@@ -1,0 +1,35 @@
+name: Suspicious Scan Loop Network
+id: f8ad2e2c-40b6-4117-84d7-20b89896ab23
+author: frack113
+date: 2022/03/12
+severity: medium
+description: Adversaries may attempt to get a listing of other systems by IP address,
+  hostname, or other logical identifier on a network that may be used for Lateral
+  Movement from the current system
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Discovery
+- Execution
+relevantTechniques:
+- T1018
+- T1059
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "for " or ProcessCommandLine contains "foreach
+  ") and (ProcessCommandLine contains "nslookup" or ProcessCommandLine contains "ping")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

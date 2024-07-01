@@ -1,0 +1,52 @@
+name: Suspicious Manipulation Of Default Accounts Via Net.EXE
+id: 5b768e71-86f2-4879-b448-81061cbae951
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/09/01
+severity: high
+description: Detects suspicious manipulations of default accounts such as 'administrator'
+  and 'guest'. For example 'enable' or 'disable' accounts or change the password...etc
+status: test
+modified: 2023/02/21
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Collection
+relevantTechniques:
+- T1560
+query: "DeviceProcessEvents\n| where (((FolderPath endswith \"\\\\net.exe\" or FolderPath\
+  \ endswith \"\\\\net1.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"net.exe\"\
+  , \"net1.exe\"))) and ProcessCommandLine contains \" user \" and (ProcessCommandLine\
+  \ contains \" J\xE4rjestelm\xE4nvalvoja \" or ProcessCommandLine contains \" Rendszergazda\
+  \ \" or ProcessCommandLine contains \" \u0410\u0434\u043C\u0438\u043D\u0438\u0441\
+  \u0442\u0440\u0430\u0442\u043E\u0440 \" or ProcessCommandLine contains \" Administrateur\
+  \ \" or ProcessCommandLine contains \" Administrador \" or ProcessCommandLine contains\
+  \ \" Administrat\xF6r \" or ProcessCommandLine contains \" Administrator \" or ProcessCommandLine\
+  \ contains \" guest \" or ProcessCommandLine contains \" DefaultAccount \" or ProcessCommandLine\
+  \ contains \" \\\"J\xE4rjestelm\xE4nvalvoja\\\" \" or ProcessCommandLine contains\
+  \ \" \\\"Rendszergazda\\\" \" or ProcessCommandLine contains \" \\\"\u0410\u0434\
+  \u043C\u0438\u043D\u0438\u0441\u0442\u0440\u0430\u0442\u043E\u0440\\\" \" or ProcessCommandLine\
+  \ contains \" \\\"Administrateur\\\" \" or ProcessCommandLine contains \" \\\"Administrador\\\
+  \" \" or ProcessCommandLine contains \" \\\"Administrat\xF6r\\\" \" or ProcessCommandLine\
+  \ contains \" \\\"Administrator\\\" \" or ProcessCommandLine contains \" \\\"guest\\\
+  \" \" or ProcessCommandLine contains \" \\\"DefaultAccount\\\" \" or ProcessCommandLine\
+  \ contains \" 'J\xE4rjestelm\xE4nvalvoja' \" or ProcessCommandLine contains \" 'Rendszergazda'\
+  \ \" or ProcessCommandLine contains \" '\u0410\u0434\u043C\u0438\u043D\u0438\u0441\
+  \u0442\u0440\u0430\u0442\u043E\u0440' \" or ProcessCommandLine contains \" 'Administrateur'\
+  \ \" or ProcessCommandLine contains \" 'Administrador' \" or ProcessCommandLine\
+  \ contains \" 'Administrat\xF6r' \" or ProcessCommandLine contains \" 'Administrator'\
+  \ \" or ProcessCommandLine contains \" 'guest' \" or ProcessCommandLine contains\
+  \ \" 'DefaultAccount' \")) and (not((ProcessCommandLine contains \"guest\" and ProcessCommandLine\
+  \ contains \"/active no\")))"
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

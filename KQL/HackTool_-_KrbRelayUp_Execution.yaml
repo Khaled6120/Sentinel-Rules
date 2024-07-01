@@ -1,0 +1,38 @@
+name: HackTool - KrbRelayUp Execution
+id: 12827a56-61a4-476a-a9cb-f3068f191073
+author: Florian Roth (Nextron Systems)
+date: 2022/04/26
+severity: high
+description: Detects KrbRelayUp used to perform a universal no-fix local privilege
+  escalation in Windows domain environments where LDAP signing is not enforced
+status: test
+modified: 2023/02/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Credential Access
+- Lateral Movement
+relevantTechniques:
+- T1550
+- T1558
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " relay " and ProcessCommandLine contains "
+  -Domain " and ProcessCommandLine contains " -ComputerName ") or (ProcessCommandLine
+  contains " krbscm " and ProcessCommandLine contains " -sc ") or (ProcessCommandLine
+  contains " spawn " and ProcessCommandLine contains " -d " and ProcessCommandLine
+  contains " -cn " and ProcessCommandLine contains " -cp ") or (FolderPath endswith
+  "\\KrbRelayUp.exe" or ProcessVersionInfoOriginalFileName =~ "KrbRelayUp.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

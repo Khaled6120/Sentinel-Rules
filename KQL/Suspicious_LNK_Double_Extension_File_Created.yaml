@@ -1,0 +1,44 @@
+name: Suspicious LNK Double Extension File Created
+id: 3215aa19-f060-4332-86d5-5602511f3ca8
+author: Nasreddine Bencherchali (Nextron Systems), frack113
+date: 2022/11/07
+severity: medium
+description: 'Detects the creation of files with an "LNK" as a second extension. This
+  is sometimes used by malware as a method to abuse the fact that Windows hides the
+  "LNK" extension by default.
+
+  '
+status: experimental
+modified: 2023/10/18
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1036
+query: 'DeviceFileEvents
+
+  | where ((FolderPath contains ".doc." or FolderPath contains ".docx." or FolderPath
+  contains ".jpg." or FolderPath contains ".pdf." or FolderPath contains ".ppt." or
+  FolderPath contains ".pptx." or FolderPath contains ".xls." or FolderPath contains
+  ".xlsx.") and FolderPath endswith ".lnk") and (not(FolderPath contains "\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\"))
+  and (not(((InitiatingProcessFolderPath endswith "\\excel.exe" and FolderPath contains
+  "\\AppData\\Roaming\\Microsoft\\Excel") or (InitiatingProcessFolderPath endswith
+  "\\powerpnt.exe" and FolderPath contains "\\AppData\\Roaming\\Microsoft\\PowerPoint")
+  or ((InitiatingProcessFolderPath endswith "\\excel.exe" or InitiatingProcessFolderPath
+  endswith "\\powerpnt.exe" or InitiatingProcessFolderPath endswith "\\winword.exe")
+  and FolderPath contains "\\AppData\\Roaming\\Microsoft\\Office\\Recent\\") or (InitiatingProcessFolderPath
+  endswith "\\winword.exe" and FolderPath contains "\\AppData\\Roaming\\Microsoft\\Word"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -1,0 +1,33 @@
+name: Email Exifiltration Via Powershell
+id: 312d0384-401c-4b8b-abdf-685ffba9a332
+author: Nasreddine Bencherchali (Nextron Systems),  Azure-Sentinel (idea)
+date: 2022/09/09
+severity: high
+description: Detects email exfiltration via powershell cmdlets
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Exfiltration
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "Add-PSSnapin" and ProcessCommandLine contains
+  "Get-Recipient" and ProcessCommandLine contains "-ExpandProperty" and ProcessCommandLine
+  contains "EmailAddresses" and ProcessCommandLine contains "SmtpAddress" and ProcessCommandLine
+  contains "-hidetableheaders") and (FolderPath endswith "\\powershell.exe" or FolderPath
+  endswith "\\pwsh.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

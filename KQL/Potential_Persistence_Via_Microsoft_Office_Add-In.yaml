@@ -1,0 +1,35 @@
+name: Potential Persistence Via Microsoft Office Add-In
+id: 8e1cb247-6cf6-42fa-b440-3f27d57e9936
+author: NVISO
+date: 2020/05/11
+severity: high
+description: Detects potential persistence activity via startup add-ins that load
+  when Microsoft Office starts (.wll/.xll are simply .dll fit for Word or Excel).
+status: test
+modified: 2023/02/08
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Persistence
+relevantTechniques:
+- T1137
+query: 'DeviceFileEvents
+
+  | where (FolderPath contains "\\Microsoft\\Addins\\" and (FolderPath endswith ".xlam"
+  or FolderPath endswith ".xla" or FolderPath endswith ".ppam")) or (FolderPath contains
+  "\\Microsoft\\Word\\Startup\\" and FolderPath endswith ".wll") or (FolderPath contains
+  "Microsoft\\Excel\\XLSTART\\" and FolderPath endswith ".xlam") or (FolderPath contains
+  "\\Microsoft\\Excel\\Startup\\" and FolderPath endswith ".xll")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

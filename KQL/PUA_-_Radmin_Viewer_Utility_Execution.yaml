@@ -1,0 +1,33 @@
+name: PUA - Radmin Viewer Utility Execution
+id: 5817e76f-4804-41e6-8f1d-5fa0b3ecae2d
+author: frack113
+date: 2022/01/22
+severity: medium
+description: Detects the execution of Radmin which can be abused by an adversary to
+  remotely control Windows machines
+status: test
+modified: 2023/12/11
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Execution
+- Lateral Movement
+relevantTechniques:
+- T1072
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoFileDescription =~ "Radmin Viewer" or ProcessVersionInfoProductName
+  =~ "Radmin Viewer" or ProcessVersionInfoOriginalFileName =~ "Radmin.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

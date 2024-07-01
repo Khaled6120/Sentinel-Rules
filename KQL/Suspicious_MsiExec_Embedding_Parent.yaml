@@ -1,0 +1,37 @@
+name: Suspicious MsiExec Embedding Parent
+id: 4a2a2c3e-209f-4d01-b513-4155a540b469
+author: frack113
+date: 2022/04/16
+severity: medium
+description: Adversaries may abuse msiexec.exe to proxy the execution of malicious
+  payloads
+status: test
+modified: 2022/07/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1218
+query: 'DeviceProcessEvents
+
+  | where ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"
+  or FolderPath endswith "\\cmd.exe") and (InitiatingProcessCommandLine contains "MsiExec.exe"
+  and InitiatingProcessCommandLine contains "-Embedding ")) and (not(((ProcessCommandLine
+  contains "C:\\Program Files\\SplunkUniversalForwarder\\bin\\" and FolderPath endswith
+  ":\\Windows\\System32\\cmd.exe") or (ProcessCommandLine contains "\\DismFoDInstall.cmd"
+  or (InitiatingProcessCommandLine contains "\\MsiExec.exe -Embedding " and InitiatingProcessCommandLine
+  contains "Global\\MSI0000")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

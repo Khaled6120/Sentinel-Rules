@@ -1,0 +1,32 @@
+name: Suspicious Creation with Colorcpl
+id: e15b518d-b4ce-4410-a9cd-501f23ce4a18
+author: frack113
+date: 2022/01/21
+severity: high
+description: Once executed, colorcpl.exe will copy the arbitrary file to c:\windows\system32\spool\drivers\color\
+status: test
+modified: 2023/01/05
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1564
+query: 'DeviceFileEvents
+
+  | where InitiatingProcessFolderPath endswith "\\colorcpl.exe" and (not((FolderPath
+  endswith ".icm" or FolderPath endswith ".gmmp" or FolderPath endswith ".cdmp" or
+  FolderPath endswith ".camp")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

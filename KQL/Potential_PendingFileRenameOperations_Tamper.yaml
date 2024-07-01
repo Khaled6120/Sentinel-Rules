@@ -1,0 +1,35 @@
+name: Potential PendingFileRenameOperations Tamper
+id: 4eec988f-7bf0-49f1-8675-1e6a510b3a2a
+author: frack113
+date: 2023/01/27
+severity: medium
+description: Detect changes to the "PendingFileRenameOperations" registry key from
+  uncommon or suspicious images lcoations to stage currently used files for rename
+  after reboot.
+status: test
+modified: ''
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1036
+query: 'DeviceRegistryEvents
+
+  | where (ActionType =~ "RegistryValueSet" and RegistryKey contains "\\CurrentControlSet\\Control\\Session
+  Manager\\PendingFileRenameOperations") and ((InitiatingProcessFolderPath endswith
+  "\\reg.exe" or InitiatingProcessFolderPath endswith "\\regedit.exe") or (InitiatingProcessFolderPath
+  contains "\\AppData\\Local\\Temp\\" or InitiatingProcessFolderPath contains "\\Users\\Public\\"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

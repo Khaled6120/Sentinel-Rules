@@ -1,0 +1,35 @@
+name: Uncommon Child Process Of BgInfo.EXE
+id: aaf46cdc-934e-4284-b329-34aa701e3771
+author: Nasreddine Bencherchali (Nextron Systems), Beyu Denis, oscd.community
+date: 2019/10/26
+severity: medium
+description: Detects uncommon child processes of "BgInfo.exe" which could be a sign
+  of potential abuse of the binary to proxy execution via external VBScript
+status: test
+modified: 2023/08/16
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+- Execution
+relevantTechniques:
+- T1059
+- T1202
+- T1218
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\bginfo.exe" or InitiatingProcessFolderPath
+  endswith "\\bginfo64.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

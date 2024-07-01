@@ -1,0 +1,37 @@
+name: PowerShell Logging Disabled Via Registry Key Tampering
+id: fecfd1a1-cc78-4313-a1ea-2ee2e8ec27a7
+author: frack113
+date: 2022/04/02
+severity: high
+description: Detects changes to the registry for the currently logged-in user. In
+  order to disable PowerShell module logging, script block logging or transcription
+  and script execution logging
+status: test
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1564
+query: 'DeviceRegistryEvents
+
+  | where RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey contains "\\Microsoft\\Windows\\PowerShell"
+  or RegistryKey contains "\\Microsoft\\PowerShellCore") and (RegistryKey endswith
+  "\\ModuleLogging\\EnableModuleLogging" or RegistryKey endswith "\\ScriptBlockLogging\\EnableScriptBlockLogging"
+  or RegistryKey endswith "\\ScriptBlockLogging\\EnableScriptBlockInvocationLogging"
+  or RegistryKey endswith "\\Transcription\\EnableTranscripting" or RegistryKey endswith
+  "\\Transcription\\EnableInvocationHeader" or RegistryKey endswith "\\EnableScripts")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

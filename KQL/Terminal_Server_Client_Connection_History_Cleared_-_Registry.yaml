@@ -1,0 +1,34 @@
+name: Terminal Server Client Connection History Cleared - Registry
+id: 07bdd2f5-9c58-4f38-aec8-e101bb79ef8d
+author: Christian Burkard (Nextron Systems)
+date: 2021/10/19
+severity: high
+description: Detects the deletion of registry keys containing the MSTSC connection
+  history
+status: test
+modified: 2023/02/08
+logsource:
+  category: registry_delete
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1070
+- T1112
+query: 'DeviceRegistryEvents
+
+  | where (ActionType =~ "DeleteValue" and RegistryKey contains "\\Microsoft\\Terminal
+  Server Client\\Default\\MRU") or ((ActionType in~ ("RegistryKeyDeleted", "RegistryValueDeleted"))
+  and RegistryKey contains "\\Microsoft\\Terminal Server Client\\Servers")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

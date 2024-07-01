@@ -1,0 +1,41 @@
+name: Communication To LocaltoNet Tunneling Service Initiated
+id: 3ab65069-d82a-4d44-a759-466661a082d1
+author: Andreas Braathen (mnemonic.io)
+date: 2024/06/17
+severity: high
+description: 'Detects an executable initiating a network connection to "LocaltoNet"
+  tunneling sub-domains.
+
+  LocaltoNet is a reverse proxy that enables localhost services to be exposed to the
+  Internet.
+
+  Attackers have been seen to use this service for command-and-control activities
+  to bypass MFA and perimeter controls.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: network_connection
+  product: windows
+tactics:
+- Command And Control
+relevantTechniques:
+- T1090
+- T1102
+- T1572
+query: 'DeviceNetworkEvents
+
+  | where RemoteUrl endswith ".localto.net" or RemoteUrl endswith ".localtonet.com"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

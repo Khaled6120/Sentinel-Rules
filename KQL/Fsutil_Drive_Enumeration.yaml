@@ -1,0 +1,31 @@
+name: Fsutil Drive Enumeration
+id: 63de06b9-a385-40b5-8b32-73f2b9ef84b6
+author: Christopher Peacock '@securepeacock', SCYTHE '@scythe_io'
+date: 2022/03/29
+severity: low
+description: Attackers may leverage fsutil to enumerated connected drives.
+status: test
+modified: 2022/07/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Discovery
+relevantTechniques:
+- T1120
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "drives" and (FolderPath endswith "\\fsutil.exe"
+  or ProcessVersionInfoOriginalFileName =~ "fsutil.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

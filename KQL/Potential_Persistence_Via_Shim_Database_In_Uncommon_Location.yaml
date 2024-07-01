@@ -1,0 +1,32 @@
+name: Potential Persistence Via Shim Database In Uncommon Location
+id: 6b6976a3-b0e6-4723-ac24-ae38a737af41
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/08/01
+severity: high
+description: Detects the installation of a new shim database where the file is located
+  in a non-default location
+status: test
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Persistence
+relevantTechniques:
+- T1546
+query: 'DeviceRegistryEvents
+
+  | where (RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\InstalledSDB"
+  and RegistryKey contains "\\DatabasePath") and (not(RegistryValueData contains ":\\Windows\\AppPatch\\Custom"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

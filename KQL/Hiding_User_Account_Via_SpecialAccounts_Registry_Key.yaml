@@ -1,0 +1,33 @@
+name: Hiding User Account Via SpecialAccounts Registry Key
+id: f8aebc67-a56d-4ec9-9fbe-7b0e8b7b4efd
+author: Nasreddine Bencherchali (Nextron Systems), frack113
+date: 2022/07/12
+severity: high
+description: Detects modifications to the registry key "HKLM\Software\Microsoft\Windows
+  NT\CurrentVersion\Winlogon\SpecialAccounts\Userlist" where the value is set to "0"
+  in order to hide user account from being listed on the logon screen.
+status: test
+modified: 2023/01/26
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1564
+query: 'DeviceRegistryEvents
+
+  | where RegistryValueData =~ "DWORD (0x00000000)" and ActionType =~ "RegistryValueSet"
+  and RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\SpecialAccounts\\UserList"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

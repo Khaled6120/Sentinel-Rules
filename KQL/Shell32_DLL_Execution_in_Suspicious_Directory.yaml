@@ -1,0 +1,36 @@
+name: Shell32 DLL Execution in Suspicious Directory
+id: 32b96012-7892-429e-b26c-ac2bf46066ff
+author: Christian Burkard (Nextron Systems)
+date: 2021/11/24
+severity: high
+description: Detects shell32.dll executing a DLL in a suspicious directory
+status: test
+modified: 2023/02/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+- Execution
+relevantTechniques:
+- T1218
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "%AppData%" or ProcessCommandLine contains
+  "%LocalAppData%" or ProcessCommandLine contains "%Temp%" or ProcessCommandLine contains
+  "%tmp%" or ProcessCommandLine contains "\\AppData\\" or ProcessCommandLine contains
+  "\\Temp\\" or ProcessCommandLine contains "\\Users\\Public\\") and (ProcessCommandLine
+  contains "shell32.dll" and ProcessCommandLine contains "Control_RunDLL")) and (FolderPath
+  endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName =~ "RUNDLL32.EXE")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

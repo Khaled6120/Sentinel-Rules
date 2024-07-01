@@ -1,0 +1,36 @@
+name: Sysmon Driver Altitude Change
+id: 4916a35e-bfc4-47d0-8e25-a003d7067061
+author: B.Talebi
+date: 2022/07/28
+severity: high
+description: 'Detects changes in Sysmon driver altitude value.
+
+  If the Sysmon driver is configured to load at an altitude of another registered
+  service, it will fail to load at boot.
+
+  '
+status: experimental
+modified: 2024/03/25
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1562
+query: 'DeviceRegistryEvents
+
+  | where RegistryKey contains "\\Services" and RegistryKey endswith "\\Instances\\Sysmon
+  Instance\\Altitude"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

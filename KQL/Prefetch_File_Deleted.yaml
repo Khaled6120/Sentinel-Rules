@@ -1,0 +1,33 @@
+name: Prefetch File Deleted
+id: 0a1f9d29-6465-4776-b091-7f43b26e4c89
+author: Cedric MAURUGEON
+date: 2021/09/29
+severity: high
+description: Detects the deletion of a prefetch file which may indicate an attempt
+  to destroy forensic evidence
+status: test
+modified: 2024/01/25
+logsource:
+  category: file_delete
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1070
+query: 'DeviceFileEvents
+
+  | where (FolderPath contains ":\\Windows\\Prefetch\\" and FolderPath endswith ".pf")
+  and (not((InitiatingProcessFolderPath endswith ":\\windows\\system32\\svchost.exe"
+  and (RequestAccountName contains "AUTHORI" or RequestAccountName contains "AUTORI"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

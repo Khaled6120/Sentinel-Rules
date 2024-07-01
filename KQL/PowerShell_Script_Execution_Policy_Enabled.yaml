@@ -1,0 +1,30 @@
+name: PowerShell Script Execution Policy Enabled
+id: 8218c875-90b9-42e2-b60d-0b0069816d10
+author: Nasreddine Bencherchali (Nextron Systems), Thurein Oo
+date: 2023/10/18
+severity: low
+description: Detects the enabling of the PowerShell script execution policy. Once
+  enabled, this policy allows scripts to be executed.
+status: experimental
+modified: ''
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Execution
+relevantTechniques: []
+query: 'DeviceRegistryEvents
+
+  | where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "\\Policies\\Microsoft\\Windows\\PowerShell\\EnableScripts"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

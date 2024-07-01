@@ -1,0 +1,34 @@
+name: Suspicious Keyboard Layout Load
+id: 34aa0252-6039-40ff-951f-939fd6ce47d8
+author: Florian Roth (Nextron Systems)
+date: 2019/10/12
+severity: medium
+description: Detects the keyboard preload installation with a suspicious keyboard
+  layout, e.g. Chinese, Iranian or Vietnamese layout load in user session on systems
+  maintained by US staff only
+status: test
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Resource Development
+relevantTechniques:
+- T1588
+query: 'DeviceRegistryEvents
+
+  | where (RegistryValueData contains "00000429" or RegistryValueData contains "00050429"
+  or RegistryValueData contains "0000042a") and (RegistryKey contains "\\Keyboard
+  Layout\\Preload" or RegistryKey contains "\\Keyboard Layout\\Substitutes")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

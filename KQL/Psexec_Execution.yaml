@@ -1,0 +1,32 @@
+name: Psexec Execution
+id: 730fc21b-eaff-474b-ad23-90fd265d4988
+author: omkar72
+date: 2020/10/30
+severity: medium
+description: Detects user accept agreement execution in psexec commandline
+status: test
+modified: 2023/02/28
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Execution
+relevantTechniques:
+- T1021
+- T1569
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\psexec.exe" or ProcessVersionInfoOriginalFileName
+  =~ "psexec.c"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

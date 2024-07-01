@@ -1,0 +1,34 @@
+name: Potential Persistence Via Netsh Helper DLL - Registry
+id: c90362e0-2df3-4e61-94fe-b37615814cb1
+author: Anish Bogati
+date: 2023/11/28
+severity: medium
+description: 'Detects changes to the Netsh registry key to add a new DLL value. This
+  change might be an indication of a potential persistence attempt by adding a malicious
+  Netsh helper
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Persistence
+relevantTechniques:
+- T1546
+query: 'DeviceRegistryEvents
+
+  | where RegistryValueData contains ".dll" and RegistryKey contains "\\SOFTWARE\\Microsoft\\NetSh"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

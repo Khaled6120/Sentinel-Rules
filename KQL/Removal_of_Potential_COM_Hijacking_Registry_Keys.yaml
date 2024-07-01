@@ -1,0 +1,52 @@
+name: Removal of Potential COM Hijacking Registry Keys
+id: 96f697b0-b499-4e5d-9908-a67bec11cdb6
+author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+date: 2020/05/02
+severity: medium
+description: 'Detects any deletion of entries in ".*\shell\open\command" registry
+  keys.
+
+  These registry keys might have been used for COM hijacking activities by a threat
+  actor or an attacker and the deletion could indicate steps to remove its tracks.
+
+  '
+status: test
+modified: 2023/01/19
+logsource:
+  category: registry_delete
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1112
+query: 'DeviceRegistryEvents
+
+  | where ((ActionType in~ ("RegistryKeyDeleted", "RegistryValueDeleted")) and RegistryKey
+  endswith "\\shell\\open\\command") and (not(((InitiatingProcessFolderPath endswith
+  "\\Dropbox.exe" and RegistryKey contains "\\Dropbox.") or (InitiatingProcessFolderPath
+  endswith "\\Everything.exe" and RegistryKey contains "\\Everything.") or InitiatingProcessFolderPath
+  =~ "C:\\Program Files (x86)\\Microsoft Office\\root\\integration\\integrator.exe"
+  or (InitiatingProcessFolderPath endswith "\\installer.exe" and InitiatingProcessFolderPath
+  startswith "C:\\Program Files (x86)\\Java\\" and RegistryKey contains "\\Classes\\WOW6432Node\\CLSID\\{4299124F-F2C3-41b4-9C73-9236B2AD0E8F}")
+  or (InitiatingProcessFolderPath endswith "\\OfficeClickToRun.exe" and (InitiatingProcessFolderPath
+  startswith "C:\\Program Files\\Common Files\\Microsoft Shared\\ClickToRun\\" or
+  InitiatingProcessFolderPath startswith "C:\\Program Files\\Common Files\\Microsoft
+  Shared\\ClickToRun\\Updates\\")) or (InitiatingProcessFolderPath endswith "\\installer.exe"
+  and (InitiatingProcessFolderPath startswith "C:\\Program Files\\Opera\\" or InitiatingProcessFolderPath
+  startswith "C:\\Program Files (x86)\\Opera\\")) or (InitiatingProcessFolderPath
+  contains "peazip" and RegistryKey contains "\\PeaZip.") or InitiatingProcessFolderPath
+  =~ "C:\\Windows\\system32\\svchost.exe" or InitiatingProcessFolderPath startswith
+  "C:\\Windows\\Installer\\MSI" or (InitiatingProcessFolderPath endswith "\\AppData\\Local\\Temp\\Wireshark_uninstaller.exe"
+  and RegistryKey contains "\\wireshark-capture-file"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

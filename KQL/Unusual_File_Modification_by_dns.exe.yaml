@@ -1,0 +1,33 @@
+name: Unusual File Modification by dns.exe
+id: 9f383dc0-fdeb-4d56-acbc-9f9f4f8f20f3
+author: Tim Rauch (Nextron Systems), Elastic (idea)
+date: 2022/09/27
+severity: high
+description: Detects an unexpected file being modified by dns.exe which my indicate
+  activity related to remote code execution or other forms of exploitation as seen
+  in CVE-2020-1350 (SigRed)
+status: test
+modified: ''
+logsource:
+  category: file_change
+  product: windows
+tactics:
+- Initial Access
+relevantTechniques:
+- T1133
+query: 'DeviceFileEvents
+
+  | where InitiatingProcessFolderPath endswith "\\dns.exe" and (not(FolderPath endswith
+  "\\dns.log"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

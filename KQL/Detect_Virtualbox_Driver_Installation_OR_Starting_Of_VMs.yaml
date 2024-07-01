@@ -1,0 +1,34 @@
+name: Detect Virtualbox Driver Installation OR Starting Of VMs
+id: bab049ca-7471-4828-9024-38279a4c04da
+author: Janantha Marasinghe
+date: 2020/09/26
+severity: low
+description: Adversaries can carry out malicious operations using a virtual instance
+  to avoid detection. This rule is built to detect the registration of the Virtualbox
+  driver or start of a Virtualbox VM.
+status: test
+modified: 2022/07/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1564
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "VBoxRT.dll,RTR3Init" or ProcessCommandLine
+  contains "VBoxC.dll" or ProcessCommandLine contains "VBoxDrv.sys") or (ProcessCommandLine
+  contains "startvm" or ProcessCommandLine contains "controlvm")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

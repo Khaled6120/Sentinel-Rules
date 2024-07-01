@@ -1,0 +1,35 @@
+name: Sideloading Link.EXE
+id: 6e968eb1-5f05-4dac-94e9-fd0c5cb49fd6
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/22
+severity: medium
+description: Detects the execution utitilies often found in Visual Studio tools that
+  hardcode the call to the binary "link.exe". They can be abused to sideload any binary
+  with the same name
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "LINK /" and FolderPath endswith "\\link.exe")
+  and (not((InitiatingProcessFolderPath contains "\\VC\\Tools\\MSVC\\" and (InitiatingProcessFolderPath
+  startswith "C:\\Program Files\\Microsoft Visual Studio\\" or InitiatingProcessFolderPath
+  startswith "C:\\Program Files (x86)\\Microsoft Visual Studio\\"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

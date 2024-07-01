@@ -1,0 +1,33 @@
+name: Nltest.EXE Execution
+id: 903076ff-f442-475a-b667-4f246bcc203b
+author: Arun Chauhan
+date: 2023/02/03
+severity: low
+description: Detects nltest commands that can be used for information discovery
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Discovery
+relevantTechniques:
+- T1016
+- T1018
+- T1482
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\nltest.exe" or ProcessVersionInfoOriginalFileName
+  =~ "nltestrk.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled
