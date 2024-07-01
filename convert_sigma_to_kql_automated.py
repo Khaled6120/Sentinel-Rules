@@ -2,35 +2,15 @@ import os
 import time
 import requests
 import yaml
-#from github import Github, GithubException
 from sigma.rule import SigmaRule
 from sigma.backends.microsoft365defender import Microsoft365DefenderBackend
 from sigma.pipelines.microsoft365defender import microsoft_365_defender_pipeline
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
+#from github import Github, GithubException
 
-load_dotenv()
+#load_dotenv()
 GITHUB_TOKEN = os.getenv('SUPER_SECRET_TOKEN')
 
-#github_token = os.getenv('SUPER_SECRET_TOKEN')  # This will fetch the token from the .env file
-#github_token = Github.SUPER_SECRET_TOKEN  # This will fetch the token from the .env file
-
-# Initialize GitHub API with your token
-# github_token = os.getenv('SUPER_SECRET_TOKEN')  # Add your GitHub token as a secret in GitHub repository settings
-
-# def get_github_repo_with_retries(repo_name, max_retries=5, retry_delay=10):
-#    retries = 0
-#    while retries < max_retries:
-#        try:
-#            g = Github(github_token)
-#            return g.get_repo(repo_name)
-#        except (requests.exceptions.ConnectionError, GithubException) as e:
-#            print(f"Error accessing GitHub API: {e}")
-#            print(f"Retrying in {retry_delay} seconds...")
-#            retries += 1
-#            time.sleep(retry_delay)
-#    raise Exception(f"Failed to access GitHub API after {max_retries} retries")
-
-# repo = get_github_repo_with_retries('SigmaHQ/sigma')
 
 # Load the last known commit SHA
 commit_sha_file = 'last_commit_sha.txt'
@@ -76,8 +56,6 @@ def download_sigma_rules(repo='SigmaHQ/sigma', path='rules/windows'):
                 download_sigma_rules(repo, file['path'])  # Recursively process directories
             elif file['name'].endswith('.yml'):
                 download_url = file['download_url']
-                print(file['name'])
-
                 process_yaml_file(download_url)
     else:
         print(f"Failed to fetch contents from GitHub API. Status code: {response.status_code}")
@@ -96,12 +74,11 @@ def process_yaml_file(download_url):
         try:
             yaml_contents = yaml.safe_load(response.text)
             sigma_rule = SigmaRule.from_yaml(convert_to_string(yaml_contents))
-            print(yaml_contents)
+            #print(yaml_contents)
             m365def_backend = Microsoft365DefenderBackend()
 
             pipeline = microsoft_365_defender_pipeline()
             pipeline.apply(sigma_rule)
-            print("HEEEEEEEEEEEEY")
             kql_query = m365def_backend.convert_rule(sigma_rule)[0]
             print("\n \n ")
 
@@ -123,7 +100,6 @@ def process_yaml_file(download_url):
             # Convert sets to sorted lists and process techniques
             sorted_tactics = sorted(tactics)
             sorted_techniques = process_techniques(techniques)
-            print(sorted_techniques)
             yaml_content = {
                 'name': yaml_contents.get("title", ""),
                 'id': yaml_contents.get("id", ""),
@@ -154,7 +130,7 @@ def process_yaml_file(download_url):
                 'triggerOperator': 'GreaterThan',
                 'kind': 'Scheduled'
             }
-            print(f'fdfdf {yaml_content}')
+            print(yaml_content)
 
 
             # Write the dictionary to a YAML file
@@ -162,7 +138,7 @@ def process_yaml_file(download_url):
             with open(output_file, 'w') as yaml_file:
                 yaml.dump(yaml_content, yaml_file, sort_keys=False, default_flow_style=False)
 
-            print(f'{sigma_rule.title} rule converted successfully')
+            print(f'{sigma_rule.title} -> rule converted successfully')
         except Exception as e:
             print(f'SigmaTransformationError: Rule category not yet supported by the Microsoft 365 Defender Sigma backend. {str(e)}')
     else:
