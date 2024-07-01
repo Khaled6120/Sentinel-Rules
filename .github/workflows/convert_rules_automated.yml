@@ -1,4 +1,4 @@
-name: Check and Process Sigma Rules
+name: Convert Sigma Rules to yaml files (KQL)
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyyaml pygithub python-dotenv pysigma-backend-microsoft365defender
 
-      - name: Check for updates and process Sigma rules
+      - name: Check for updates and convert Sigma rules
         env:
           SUPER_SECRET_TOKEN: ${{ secrets.SUPER_SECRET_TOKEN }}
         run: |
