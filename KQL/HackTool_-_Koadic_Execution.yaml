@@ -1,0 +1,32 @@
+name: HackTool - Koadic Execution
+id: 5cddf373-ef00-4112-ad72-960ac29bac34
+author: wagga, Jonhnathan Ribeiro, oscd.community
+date: 2020/01/12
+severity: high
+description: Detects command line parameters used by Koadic hack tool
+status: test
+modified: 2023/02/11
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Execution
+relevantTechniques:
+- T1059
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "/q" and ProcessCommandLine contains "/c" and
+  ProcessCommandLine contains "chcp") and (FolderPath endswith "\\cmd.exe" or ProcessVersionInfoOriginalFileName
+  =~ "Cmd.Exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

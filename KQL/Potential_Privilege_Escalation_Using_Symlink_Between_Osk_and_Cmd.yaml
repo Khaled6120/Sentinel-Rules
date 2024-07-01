@@ -1,0 +1,35 @@
+name: Potential Privilege Escalation Using Symlink Between Osk and Cmd
+id: e9b61244-893f-427c-b287-3e708f321c6b
+author: frack113
+date: 2022/12/11
+severity: high
+description: Detects the creation of a symbolic link between "cmd.exe" and the accessibility
+  on-screen keyboard binary (osk.exe) using "mklink". This technique provides an elevated
+  command prompt to the user from the login screen without the need to log in.
+status: test
+modified: 2022/12/20
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Persistence
+- Privilege Escalation
+relevantTechniques:
+- T1546
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "mklink" and ProcessCommandLine contains "\\osk.exe"
+  and ProcessCommandLine contains "\\cmd.exe") and (FolderPath endswith "\\cmd.exe"
+  or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

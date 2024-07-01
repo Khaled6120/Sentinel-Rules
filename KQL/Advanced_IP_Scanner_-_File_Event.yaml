@@ -1,0 +1,31 @@
+name: Advanced IP Scanner - File Event
+id: fed85bf9-e075-4280-9159-fbe8a023d6fa
+author: '@ROxPinTeddy'
+date: 2020/05/12
+severity: medium
+description: Detects the use of Advanced IP Scanner. Seems to be a popular tool for
+  ransomware groups.
+status: test
+modified: 2022/11/29
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Discovery
+relevantTechniques:
+- T1046
+query: 'DeviceFileEvents
+
+  | where FolderPath contains "\\AppData\\Local\\Temp\\Advanced IP Scanner 2"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

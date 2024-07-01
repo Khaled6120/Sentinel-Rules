@@ -1,0 +1,32 @@
+name: PowerShell Module File Created
+id: e36941d0-c0f0-443f-bc6f-cb2952eb69ea
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/09
+severity: low
+description: Detects the creation of a new PowerShell module ".psm1", ".psd1", ".dll",
+  ".ps1", etc.
+status: test
+modified: ''
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Persistence
+relevantTechniques: []
+query: 'DeviceFileEvents
+
+  | where (InitiatingProcessFolderPath endswith "\\powershell.exe" or InitiatingProcessFolderPath
+  endswith "\\pwsh.exe") and (FolderPath contains "\\WindowsPowerShell\\Modules\\"
+  or FolderPath contains "\\PowerShell\\7\\Modules\\")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

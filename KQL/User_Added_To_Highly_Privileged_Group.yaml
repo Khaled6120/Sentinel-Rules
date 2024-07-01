@@ -1,0 +1,33 @@
+name: User Added To Highly Privileged Group
+id: 10fb649c-3600-4d37-b1e6-56ea90bb7e09
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2024/02/23
+severity: high
+description: Detects addition of users to highly privileged groups via "Net" or "Add-LocalGroupMember".
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Persistence
+relevantTechniques:
+- T1098
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "Group Policy Creator Owners" or ProcessCommandLine
+  contains "Schema Admins") and ((ProcessCommandLine contains "localgroup " and ProcessCommandLine
+  contains " /add") or (ProcessCommandLine contains "Add-LocalGroupMember " and ProcessCommandLine
+  contains " -Group "))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -1,0 +1,35 @@
+name: Security Support Provider (SSP) Added to LSA Configuration
+id: eeb30123-9fbd-4ee8-aaa0-2e545bbed6dc
+author: iwillkeepwatch
+date: 2019/01/18
+severity: high
+description: 'Detects the addition of a SSP to the registry. Upon a reboot or API
+  call, SSP DLLs gain access to encrypted and plaintext passwords stored in Windows.
+
+  '
+status: test
+modified: 2022/08/09
+logsource:
+  category: registry_event
+  product: windows
+tactics:
+- Persistence
+relevantTechniques:
+- T1547
+query: 'DeviceRegistryEvents
+
+  | where (RegistryKey endswith "\\Control\\Lsa\\Security Packages" or RegistryKey
+  endswith "\\Control\\Lsa\\OSConfig\\Security Packages") and (not((InitiatingProcessFolderPath
+  in~ ("C:\\Windows\\system32\\msiexec.exe", "C:\\Windows\\syswow64\\MsiExec.exe"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -1,0 +1,32 @@
+name: Enable Local Manifest Installation With Winget
+id: fa277e82-9b78-42dd-b05c-05555c7b6015
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/04/17
+severity: medium
+description: Detects changes to the AppInstaller (winget) policy. Specifically the
+  activation of the local manifest installation, which allows a user to install new
+  packages via custom manifests.
+status: experimental
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+- Persistence
+relevantTechniques: []
+query: 'DeviceRegistryEvents
+
+  | where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "\\AppInstaller\\EnableLocalManifestFiles"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

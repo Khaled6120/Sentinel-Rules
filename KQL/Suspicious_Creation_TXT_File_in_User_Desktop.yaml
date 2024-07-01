@@ -1,0 +1,31 @@
+name: Suspicious Creation TXT File in User Desktop
+id: caf02a0a-1e1c-4552-9b48-5e070bd88d11
+author: frack113
+date: 2021/12/26
+severity: high
+description: Ransomware create txt file in the user Desktop
+status: test
+modified: ''
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Impact
+relevantTechniques:
+- T1486
+query: 'DeviceFileEvents
+
+  | where InitiatingProcessFolderPath endswith "\\cmd.exe" and (FolderPath contains
+  "\\Users\\" and FolderPath contains "\\Desktop\\") and FolderPath endswith ".txt"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

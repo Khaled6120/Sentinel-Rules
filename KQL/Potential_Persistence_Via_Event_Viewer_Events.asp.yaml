@@ -1,0 +1,40 @@
+name: Potential Persistence Via Event Viewer Events.asp
+id: a1e11042-a74a-46e6-b07c-c4ce8ecc239b
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/02/17
+severity: medium
+description: Detects potential registry persistence technique using the Event Viewer
+  "Events.asp" technique
+status: test
+modified: 2023/03/05
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+- Persistence
+relevantTechniques:
+- T1112
+query: 'DeviceRegistryEvents
+
+  | where (RegistryKey contains "\\Microsoft\\Windows NT\\CurrentVersion\\Event Viewer\\MicrosoftRedirectionProgram"
+  or RegistryKey contains "\\Microsoft\\Windows NT\\CurrentVersion\\Event Viewer\\MicrosoftRedirectionURL")
+  and (not((RegistryValueData =~ "(Empty)" or (RegistryValueData =~ "%%SystemRoot%%\\PCHealth\\HelpCtr\\Binaries\\HelpCtr.exe"
+  and InitiatingProcessFolderPath endswith "C:\\WINDOWS\\system32\\svchost.exe" and
+  RegistryKey endswith "\\Microsoft\\Windows NT\\CurrentVersion\\Event Viewer\\MicrosoftRedirectionProgram")
+  or (RegistryValueData =~ "-url hcp://services/centers/support*topic=%%s" and InitiatingProcessFolderPath
+  endswith "C:\\WINDOWS\\system32\\svchost.exe" and RegistryKey endswith "\\Microsoft\\Windows
+  NT\\CurrentVersion\\Event Viewer\\MicrosoftRedirectionProgramCommandLineParameters")
+  or RegistryValueData =~ "http://go.microsoft.com/fwlink/events.asp")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

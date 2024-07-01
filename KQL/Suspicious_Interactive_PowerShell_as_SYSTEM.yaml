@@ -1,0 +1,32 @@
+name: Suspicious Interactive PowerShell as SYSTEM
+id: 5b40a734-99b6-4b98-a1d0-1cea51a08ab2
+author: Florian Roth (Nextron Systems)
+date: 2021/12/07
+severity: high
+description: Detects the creation of files that indicator an interactive use of PowerShell
+  in the SYSTEM user context
+status: test
+modified: 2022/08/13
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Execution
+relevantTechniques:
+- T1059
+query: 'DeviceFileEvents
+
+  | where FolderPath in~ ("C:\\Windows\\System32\\config\\systemprofile\\AppData\\Roaming\\Microsoft\\Windows\\PowerShell\\PSReadLine\\ConsoleHost_history.txt",
+  "C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Microsoft\\Windows\\PowerShell\\StartupProfileData-Interactive")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

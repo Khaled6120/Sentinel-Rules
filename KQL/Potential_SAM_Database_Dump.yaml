@@ -1,0 +1,39 @@
+name: Potential SAM Database Dump
+id: 4e87b8e2-2ee9-4b2a-a715-4727d297ece0
+author: Florian Roth (Nextron Systems)
+date: 2022/02/11
+severity: high
+description: Detects the creation of files that look like exports of the local SAM
+  (Security Account Manager)
+status: test
+modified: 2023/01/05
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Credential Access
+relevantTechniques:
+- T1003
+query: 'DeviceFileEvents
+
+  | where (FolderPath endswith "\\Temp\\sam" or FolderPath endswith "\\sam.sav" or
+  FolderPath endswith "\\Intel\\sam" or FolderPath endswith "\\sam.hive" or FolderPath
+  endswith "\\Perflogs\\sam" or FolderPath endswith "\\ProgramData\\sam" or FolderPath
+  endswith "\\Users\\Public\\sam" or FolderPath endswith "\\AppData\\Local\\sam" or
+  FolderPath endswith "\\AppData\\Roaming\\sam" or FolderPath endswith "_ShadowSteal.zip"
+  or FolderPath endswith "\\Documents\\SAM.export" or FolderPath endswith ":\\sam")
+  or (FolderPath contains "\\hive_sam_" or FolderPath contains "\\sam.save" or FolderPath
+  contains "\\sam.export" or FolderPath contains "\\~reg_sam.save" or FolderPath contains
+  "\\sam_backup" or FolderPath contains "\\sam.bck" or FolderPath contains "\\sam.backup")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

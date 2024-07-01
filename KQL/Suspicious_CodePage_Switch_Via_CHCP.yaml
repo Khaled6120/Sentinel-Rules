@@ -1,0 +1,32 @@
+name: Suspicious CodePage Switch Via CHCP
+id: c7942406-33dd-4377-a564-0f62db0593a3
+author: Florian Roth (Nextron Systems), Jonhnathan Ribeiro, oscd.community
+date: 2019/10/14
+severity: medium
+description: Detects a code page switch in command line or batch scripts to a rare
+  language
+status: test
+modified: 2023/03/07
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1036
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine endswith " 936" or ProcessCommandLine endswith " 1258")
+  and FolderPath endswith "\\chcp.com"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

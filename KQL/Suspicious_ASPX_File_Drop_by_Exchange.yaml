@@ -1,0 +1,34 @@
+name: Suspicious ASPX File Drop by Exchange
+id: bd1212e5-78da-431e-95fa-c58e3237a8e6
+author: Florian Roth (Nextron Systems), MSTI (query, idea)
+date: 2022/10/01
+severity: high
+description: Detects suspicious file type dropped by an Exchange component in IIS
+  into a suspicious folder
+status: test
+modified: ''
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Persistence
+relevantTechniques:
+- T1505
+query: 'DeviceFileEvents
+
+  | where (InitiatingProcessCommandLine contains "MSExchange" and InitiatingProcessFolderPath
+  endswith "\\w3wp.exe" and (FolderPath contains "FrontEnd\\HttpProxy\\" or FolderPath
+  contains "\\inetpub\\wwwroot\\aspnet_client\\")) and (FolderPath endswith ".aspx"
+  or FolderPath endswith ".asp" or FolderPath endswith ".ashx")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

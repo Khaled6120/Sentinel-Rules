@@ -1,0 +1,32 @@
+name: UtilityFunctions.ps1 Proxy Dll
+id: 0403d67d-6227-4ea8-8145-4e72db7da120
+author: frack113
+date: 2022/05/28
+severity: medium
+description: Detects the use of a Microsoft signed script executing a managed DLL
+  with PowerShell.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1216
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "UtilityFunctions.ps1" or ProcessCommandLine
+  contains "RegSnapin "'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

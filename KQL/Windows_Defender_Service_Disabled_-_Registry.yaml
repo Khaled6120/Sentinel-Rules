@@ -1,0 +1,31 @@
+name: Windows Defender Service Disabled - Registry
+id: e1aa95de-610a-427d-b9e7-9b46cfafbe6a
+author: "J\xE1n Tren\u010Dansk\xFD, frack113, AlertIQ, Nasreddine Bencherchali"
+date: 2022/08/01
+severity: high
+description: Detects when an attacker or tool disables the  Windows Defender service
+  (WinDefend) via the registry
+status: experimental
+modified: 2024/03/25
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1562
+query: 'DeviceRegistryEvents
+
+  | where RegistryValueData =~ "DWORD (0x00000004)" and RegistryKey endswith "\\Services\\WinDefend\\Start"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

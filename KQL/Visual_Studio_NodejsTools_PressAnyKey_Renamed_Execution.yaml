@@ -1,0 +1,33 @@
+name: Visual Studio NodejsTools PressAnyKey Renamed Execution
+id: 65c3ca2c-525f-4ced-968e-246a713d164f
+author: Nasreddine Bencherchali (Nextron Systems), Florian Roth (Nextron Systems)
+date: 2023/04/11
+severity: medium
+description: Detects renamed execution of "Microsoft.NodejsTools.PressAnyKey.exe",
+  which can be abused as a LOLBIN to execute arbitrary binaries
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+- Execution
+relevantTechniques:
+- T1218
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoOriginalFileName =~ "Microsoft.NodejsTools.PressAnyKey.exe"
+  and (not(FolderPath endswith "\\Microsoft.NodejsTools.PressAnyKey.exe"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

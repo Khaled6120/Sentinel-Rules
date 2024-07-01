@@ -1,0 +1,31 @@
+name: Base64 MZ Header In CommandLine
+id: 22e58743-4ac8-4a9f-bf19-00a0428d8c5f
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/07/12
+severity: high
+description: Detects encoded base64 MZ header in the commandline
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Execution
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "TVqQAAMAAAAEAAAA" or ProcessCommandLine contains
+  "TVpQAAIAAAAEAA8A" or ProcessCommandLine contains "TVqAAAEAAAAEABAA" or ProcessCommandLine
+  contains "TVoAAAAAAAAAAAAA" or ProcessCommandLine contains "TVpTAQEAAAAEAAAA"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -1,0 +1,31 @@
+name: QuarksPwDump Dump File
+id: 847def9e-924d-4e90-b7c4-5f581395a2b4
+author: Florian Roth (Nextron Systems)
+date: 2018/02/10
+severity: critical
+description: Detects a dump file written by QuarksPwDump password dumper
+status: test
+modified: 2021/11/27
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Credential Access
+relevantTechniques:
+- T1003
+query: 'DeviceFileEvents
+
+  | where FolderPath contains "\\AppData\\Local\\Temp\\SAM-" and FolderPath contains
+  ".dmp"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

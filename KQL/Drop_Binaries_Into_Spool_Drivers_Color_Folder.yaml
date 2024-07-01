@@ -1,0 +1,31 @@
+name: Drop Binaries Into Spool Drivers Color Folder
+id: ce7066a6-508a-42d3-995b-2952c65dc2ce
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/07/28
+severity: medium
+description: Detects the creation of suspcious binary files inside the "\windows\system32\spool\drivers\color\"
+  as seen in the blog referenced below
+status: test
+modified: ''
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques: []
+query: 'DeviceFileEvents
+
+  | where (FolderPath endswith ".dll" or FolderPath endswith ".exe" or FolderPath
+  endswith ".sys") and FolderPath startswith "C:\\Windows\\System32\\spool\\drivers\\color\\"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -1,0 +1,32 @@
+name: Add Debugger Entry To AeDebug For Persistence
+id: 092af964-4233-4373-b4ba-d86ea2890288
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/07/21
+severity: medium
+description: Detects when an attacker adds a new "Debugger" value to the "AeDebug"
+  key in order to achieve persistence which will get invoked when an application crashes
+status: experimental
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Persistence
+relevantTechniques: []
+query: 'DeviceRegistryEvents
+
+  | where (RegistryValueData endswith ".dll" and RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows
+  NT\\CurrentVersion\\AeDebug\\Debugger") and (not(RegistryValueData =~ "\"C:\\WINDOWS\\system32\\vsjitdebugger.exe\"
+  -p %ld -e %ld -j 0x%p"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

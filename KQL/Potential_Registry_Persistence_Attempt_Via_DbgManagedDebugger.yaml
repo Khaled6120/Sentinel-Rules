@@ -1,0 +1,34 @@
+name: Potential Registry Persistence Attempt Via DbgManagedDebugger
+id: 9827ae57-3802-418f-994b-d5ecf5cd974b
+author: frack113
+date: 2022/08/07
+severity: medium
+description: Detects the addition of the "Debugger" value to the "DbgManagedDebugger"
+  key in order to achieve persistence. Which will get invoked when an application
+  crashes
+status: experimental
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Persistence
+relevantTechniques:
+- T1574
+query: 'DeviceRegistryEvents
+
+  | where RegistryKey endswith "\\Microsoft\\.NETFramework\\DbgManagedDebugger" and
+  (not(RegistryValueData =~ "\"C:\\Windows\\system32\\vsjitdebugger.exe\" PID %d APPDOM
+  %d EXTEXT \"%s\" EVTHDL %d"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled
