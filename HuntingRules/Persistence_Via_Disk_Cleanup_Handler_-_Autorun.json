@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Persistence_Via_Disk_Cleanup_Handler_-_Autorun')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Persistence Via Disk Cleanup Handler - Autorun",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryKey contains \"\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Explorer\\\\VolumeCaches\" and ((RegistryValueData =~ \"DWORD (0x00000001)\" and RegistryKey contains \"\\\\Autorun\") or ((RegistryValueData contains \"cmd\" or RegistryValueData contains \"powershell\" or RegistryValueData contains \"rundll32\" or RegistryValueData contains \"mshta\" or RegistryValueData contains \"cscript\" or RegistryValueData contains \"wscript\" or RegistryValueData contains \"wsl\" or RegistryValueData contains \"\\\\Users\\\\Public\\\\\" or RegistryValueData contains \"\\\\Windows\\\\TEMP\\\\\" or RegistryValueData contains \"\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\Startup\\\\\") and (RegistryKey contains \"\\\\CleanupString\" or RegistryKey contains \"\\\\PreCleanupString\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects when an attacker modifies values of the Disk Cleanup Handler in the registry to achieve persistence via autorun.\nThe disk cleanup manager is part of the operating system.\nIt displays the dialog box […] The user has the option of enabling or disab"
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          }
+        ]
+      }
+    }
+  ]
+}

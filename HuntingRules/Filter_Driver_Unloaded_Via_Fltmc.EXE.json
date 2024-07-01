@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Filter_Driver_Unloaded_Via_Fltmc.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Filter Driver Unloaded Via Fltmc.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"unload\" and (FolderPath endswith \"\\\\fltMC.exe\" or ProcessVersionInfoOriginalFileName =~ \"fltMC.exe\")) and (not(((ProcessCommandLine endswith \"unload rtp_filesystem_filter\" and InitiatingProcessFolderPath contains \"\\\\AppData\\\\Local\\\\Temp\\\\\" and InitiatingProcessFolderPath endswith \"\\\\endpoint-protection-installer-x64.tmp\" and InitiatingProcessFolderPath startswith \"C:\\\\Users\\\\\") or (ProcessCommandLine endswith \"unload DFMFilter\" and InitiatingProcessFolderPath =~ \"C:\\\\Program Files (x86)\\\\ManageEngine\\\\uems_agent\\\\bin\\\\dcfaservice64.exe\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detect filter driver unloading activity via fltmc.exe"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1070,T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

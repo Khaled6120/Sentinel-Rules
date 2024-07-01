@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_AVKkid.DLL_Sideloading')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential AVKkid.DLL Sideloading",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\AVKkid.dll\" and (not(((FolderPath startswith \"C:\\\\Program Files (x86)\\\\G DATA\\\\\" or FolderPath startswith \"C:\\\\Program Files\\\\G DATA\\\\\") and (InitiatingProcessFolderPath contains \"C:\\\\Program Files (x86)\\\\G DATA\\\\\" or InitiatingProcessFolderPath contains \"C:\\\\Program Files\\\\G DATA\\\\\") and InitiatingProcessFolderPath endswith \"\\\\AVKKid.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potential DLL sideloading of \"AVKkid.dll\""
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion,Privilege Escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

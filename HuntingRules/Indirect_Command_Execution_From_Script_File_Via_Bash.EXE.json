@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Indirect_Command_Execution_From_Script_File_Via_Bash.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Indirect Command Execution From Script File Via Bash.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \":\\\\Windows\\\\System32\\\\bash.exe\" or FolderPath endswith \":\\\\Windows\\\\SysWOW64\\\\bash.exe\") or ProcessVersionInfoOriginalFileName =~ \"Bash.exe\") and (not(((ProcessCommandLine contains \"bash.exe -\" or ProcessCommandLine contains \"bash -\") or ProcessCommandLine =~ \"\" or isnull(ProcessCommandLine) or (ProcessCommandLine in~ (\"bash.exe\", \"bash\")))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects execution of Microsoft bash launcher without any flags to execute the content of a bash script directly.\nThis can be used to potentially bypass defenses and execute Linux or Windows-based binaries directly via bash.\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1202"
+          }
+        ]
+      }
+    }
+  ]
+}

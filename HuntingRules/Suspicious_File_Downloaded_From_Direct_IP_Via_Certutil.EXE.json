@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_File_Downloaded_From_Direct_IP_Via_Certutil.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious File Downloaded From Direct IP Via Certutil.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"urlcache \" or ProcessCommandLine contains \"verifyctl \") and (ProcessCommandLine contains \"://1\" or ProcessCommandLine contains \"://2\" or ProcessCommandLine contains \"://3\" or ProcessCommandLine contains \"://4\" or ProcessCommandLine contains \"://5\" or ProcessCommandLine contains \"://6\" or ProcessCommandLine contains \"://7\" or ProcessCommandLine contains \"://8\" or ProcessCommandLine contains \"://9\") and (FolderPath endswith \"\\\\certutil.exe\" or ProcessVersionInfoOriginalFileName =~ \"CertUtil.exe\")) and (not(ProcessCommandLine contains \"://7-\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of certutil with certain flags that allow the utility to download files from direct IPs."
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1027"
+          }
+        ]
+      }
+    }
+  ]
+}

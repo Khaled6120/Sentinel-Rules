@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Active_Directory_Structure_Export_Via_Csvde.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Active Directory Structure Export Via Csvde.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\csvde.exe\" or ProcessVersionInfoOriginalFileName =~ \"csvde.exe\") and ProcessCommandLine contains \" -f\") and (not(ProcessCommandLine contains \" -i\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of \"csvde.exe\" in order to export organizational Active Directory structure."
+          },
+          {
+            "name": "tactics",
+            "value": "Discovery,Exfiltration"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1087"
+          }
+        ]
+      }
+    }
+  ]
+}

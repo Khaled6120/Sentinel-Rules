@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Execution_of_Sysinternals_Tools')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Execution of Sysinternals Tools",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \" -accepteula\" or ProcessCommandLine contains \" /accepteula\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects command lines that contain the 'accepteula' flag which could be a sign of execution of one of the Sysinternals tools"
+          },
+          {
+            "name": "tactics",
+            "value": "Resource Development"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1588"
+          }
+        ]
+      }
+    }
+  ]
+}

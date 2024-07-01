@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_HWP_Sub_Processes')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious HWP Sub Processes",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\gbb.exe\" and InitiatingProcessFolderPath endswith \"\\\\Hwp.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious Hangul Word Processor (Hanword) sub processes that could indicate an exploitation"
+          },
+          {
+            "name": "tactics",
+            "value": "Execution,G0032,Initial Access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059,T1203,T1566"
+          }
+        ]
+      }
+    }
+  ]
+}

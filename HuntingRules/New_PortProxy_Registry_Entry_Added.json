@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/New_PortProxy_Registry_Entry_Added')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "New PortProxy Registry Entry Added",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryKey contains \"\\\\Services\\\\PortProxy\\\\v4tov4\\\\tcp\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the modification of the PortProxy registry key which is used for port forwarding."
+          },
+          {
+            "name": "tactics",
+            "value": "Command And Control,Defense Evasion,Lateral Movement"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1090"
+          }
+        ]
+      }
+    }
+  ]
+}

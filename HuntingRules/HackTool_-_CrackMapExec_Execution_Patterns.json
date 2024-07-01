@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/HackTool_-_CrackMapExec_Execution_Patterns')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "HackTool - CrackMapExec Execution Patterns",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"cmd.exe /Q /c \" and ProcessCommandLine contains \" 1> \\\\\" and ProcessCommandLine contains \"\\\\\" and ProcessCommandLine contains \"\\\\\" and ProcessCommandLine contains \" 2>&1\") or (ProcessCommandLine contains \"cmd.exe /C \" and ProcessCommandLine contains \" > \\\\\" and ProcessCommandLine contains \"\\\\\" and ProcessCommandLine contains \"\\\\\" and ProcessCommandLine contains \" 2>&1\") or (ProcessCommandLine contains \"cmd.exe /C \" and ProcessCommandLine contains \" > \" and ProcessCommandLine contains \"\\\\Temp\\\\\" and ProcessCommandLine contains \" 2>&1\") or ProcessCommandLine contains \"powershell.exe -exec bypass -noni -nop -w 1 -C \\\"\" or ProcessCommandLine contains \"powershell.exe -noni -nop -w 1 -enc \"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects various execution patterns of the CrackMapExec pentesting framework"
+          },
+          {
+            "name": "tactics",
+            "value": "Execution,S0106"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1047,T1053,T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

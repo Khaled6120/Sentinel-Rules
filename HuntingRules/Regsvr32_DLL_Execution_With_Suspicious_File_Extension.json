@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Regsvr32_DLL_Execution_With_Suspicious_File_Extension')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Regsvr32 DLL Execution With Suspicious File Extension",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine endswith \".bin\" or ProcessCommandLine endswith \".bmp\" or ProcessCommandLine endswith \".cr2\" or ProcessCommandLine endswith \".dat\" or ProcessCommandLine endswith \".eps\" or ProcessCommandLine endswith \".gif\" or ProcessCommandLine endswith \".ico\" or ProcessCommandLine endswith \".jpeg\" or ProcessCommandLine endswith \".jpg\" or ProcessCommandLine endswith \".nef\" or ProcessCommandLine endswith \".orf\" or ProcessCommandLine endswith \".png\" or ProcessCommandLine endswith \".raw\" or ProcessCommandLine endswith \".sr2\" or ProcessCommandLine endswith \".temp\" or ProcessCommandLine endswith \".tif\" or ProcessCommandLine endswith \".tiff\" or ProcessCommandLine endswith \".tmp\" or ProcessCommandLine endswith \".rtf\" or ProcessCommandLine endswith \".txt\") and (FolderPath endswith \"\\\\regsvr32.exe\" or ProcessVersionInfoOriginalFileName =~ \"REGSVR32.EXE\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of REGSVR32.exe with DLL files masquerading as other files"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

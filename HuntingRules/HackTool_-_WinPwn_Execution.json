@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/HackTool_-_WinPwn_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "HackTool - WinPwn Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"Offline_Winpwn\" or ProcessCommandLine contains \"WinPwn \" or ProcessCommandLine contains \"WinPwn.exe\" or ProcessCommandLine contains \"WinPwn.ps1\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects commandline keywords indicative of potential usge of the tool WinPwn. A tool for Windows and Active Directory reconnaissance and exploitation.\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Credential Access,Defense Evasion,Discovery,Execution,Privilege Escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1046,T1082,T1106,T1518,T1548,T1552,T1555"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Renamed_VsCode_Code_Tunnel_Execution_-_File_Indicator')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Renamed VsCode Code Tunnel Execution - File Indicator",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where FolderPath endswith \"\\\\code_tunnel.json\" and (not((InitiatingProcessFolderPath endswith \"\\\\code-tunnel.exe\" or InitiatingProcessFolderPath endswith \"\\\\code.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the creation of a file with the name \"code_tunnel.json\" which indicate execution and usage of VsCode tunneling utility by an \"Image\" or \"Process\" other than VsCode.\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Command And Control"
+          }
+        ]
+      }
+    }
+  ]
+}

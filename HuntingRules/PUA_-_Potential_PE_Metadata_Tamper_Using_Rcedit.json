@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/PUA_-_Potential_PE_Metadata_Tamper_Using_Rcedit')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "PUA - Potential PE Metadata Tamper Using Rcedit",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"OriginalFileName\" or ProcessCommandLine contains \"CompanyName\" or ProcessCommandLine contains \"FileDescription\" or ProcessCommandLine contains \"ProductName\" or ProcessCommandLine contains \"ProductVersion\" or ProcessCommandLine contains \"LegalCopyright\") and ProcessCommandLine contains \"--set-\" and ((FolderPath endswith \"\\\\rcedit-x64.exe\" or FolderPath endswith \"\\\\rcedit-x86.exe\") or ProcessVersionInfoFileDescription =~ \"Edit resources of exe\" or ProcessVersionInfoProductName =~ \"rcedit\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the use of rcedit to potentially alter executable PE metadata properties, which could conceal efforts to rename system utilities for defense evasion."
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1027,T1036"
+          }
+        ]
+      }
+    }
+  ]
+}

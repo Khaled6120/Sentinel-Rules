@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/DumpMinitool_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "DumpMinitool Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" Full\" or ProcessCommandLine contains \" Mini\" or ProcessCommandLine contains \" WithHeap\") and ((FolderPath endswith \"\\\\DumpMinitool.exe\" or FolderPath endswith \"\\\\DumpMinitool.x86.exe\" or FolderPath endswith \"\\\\DumpMinitool.arm64.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"DumpMinitool.exe\", \"DumpMinitool.x86.exe\", \"DumpMinitool.arm64.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the use of \"DumpMinitool.exe\" a tool that allows the dump of process memory via the use of the \"MiniDumpWriteDump\""
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1003,T1036"
+          }
+        ]
+      }
+    }
+  ]
+}

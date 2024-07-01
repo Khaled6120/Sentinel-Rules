@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Privilege_Escalation_Attempt_Via_.Exe.Local_Technique')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Privilege Escalation Attempt Via .Exe.Local Technique",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where FolderPath endswith \"\\\\comctl32.dll\" and (FolderPath startswith \"C:\\\\Windows\\\\System32\\\\logonUI.exe.local\" or FolderPath startswith \"C:\\\\Windows\\\\System32\\\\werFault.exe.local\" or FolderPath startswith \"C:\\\\Windows\\\\System32\\\\consent.exe.local\" or FolderPath startswith \"C:\\\\Windows\\\\System32\\\\narrator.exe.local\" or FolderPath startswith \"C:\\\\Windows\\\\System32\\\\wermgr.exe.local\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potential privilege escalation attempt via the creation of the \"*.Exe.Local\" folder inside the \"System32\" directory in order to sideload \"comctl32.dll\""
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion,Persistence,Privilege Escalation"
+          }
+        ]
+      }
+    }
+  ]
+}

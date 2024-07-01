@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Legitimate_Application_Dropped_Executable')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Legitimate Application Dropped Executable",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where (InitiatingProcessFolderPath endswith \"\\\\eqnedt32.exe\" or InitiatingProcessFolderPath endswith \"\\\\wordpad.exe\" or InitiatingProcessFolderPath endswith \"\\\\wordview.exe\" or InitiatingProcessFolderPath endswith \"\\\\certutil.exe\" or InitiatingProcessFolderPath endswith \"\\\\certoc.exe\" or InitiatingProcessFolderPath endswith \"\\\\CertReq.exe\" or InitiatingProcessFolderPath endswith \"\\\\Desktopimgdownldr.exe\" or InitiatingProcessFolderPath endswith \"\\\\esentutl.exe\" or InitiatingProcessFolderPath endswith \"\\\\mshta.exe\" or InitiatingProcessFolderPath endswith \"\\\\AcroRd32.exe\" or InitiatingProcessFolderPath endswith \"\\\\RdrCEF.exe\" or InitiatingProcessFolderPath endswith \"\\\\hh.exe\" or InitiatingProcessFolderPath endswith \"\\\\finger.exe\") and (FolderPath endswith \".exe\" or FolderPath endswith \".dll\" or FolderPath endswith \".ocx\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects programs on a Windows system that should not write executables to disk"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

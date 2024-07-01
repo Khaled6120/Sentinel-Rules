@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Malicious_DLL_File_Dropped_in_the_Teams_or_OneDrive_Folder')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Malicious DLL File Dropped in the Teams or OneDrive Folder",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where FolderPath contains \"iphlpapi.dll\" and FolderPath contains \"\\\\AppData\\\\Local\\\\Microsoft\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects creation of a malicious DLL file in the location where the OneDrive or Team applications\nUpon execution of the Teams or OneDrive application, the dropped malicious DLL file (\"iphlpapi.dll\") is sideloaded\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion,Persistence,Privilege Escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

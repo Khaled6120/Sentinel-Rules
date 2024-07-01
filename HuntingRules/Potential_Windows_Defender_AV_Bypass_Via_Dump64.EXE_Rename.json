@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Windows_Defender_AV_Bypass_Via_Dump64.EXE_Rename')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Windows Defender AV Bypass Via Dump64.EXE Rename",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath contains \"\\\\Microsoft Visual Studio\\\\\" and FolderPath endswith \"\\\\dump64.exe\" and FolderPath startswith \":\\\\Program Files\") and (ProcessVersionInfoOriginalFileName =~ \"procdump\" or (ProcessCommandLine contains \" -ma \" or ProcessCommandLine contains \" -mp \"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects when a user is potentially trying to bypass the Windows Defender AV by renaming a tool to dump64.exe and placing it in the Visual Studio folder.\nCurrently the rule is covering only usage of procdump but other utilities can be added in order to in"
+          },
+          {
+            "name": "tactics",
+            "value": "Credential Access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1003"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Service_Binary_Directory')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Service Binary Directory",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath contains \"\\\\Users\\\\Public\\\\\" or FolderPath contains \"\\\\$Recycle.bin\" or FolderPath contains \"\\\\Users\\\\All Users\\\\\" or FolderPath contains \"\\\\Users\\\\Default\\\\\" or FolderPath contains \"\\\\Users\\\\Contacts\\\\\" or FolderPath contains \"\\\\Users\\\\Searches\\\\\" or FolderPath contains \"C:\\\\Perflogs\\\\\" or FolderPath contains \"\\\\config\\\\systemprofile\\\\\" or FolderPath contains \"\\\\Windows\\\\Fonts\\\\\" or FolderPath contains \"\\\\Windows\\\\IME\\\\\" or FolderPath contains \"\\\\Windows\\\\addins\\\\\") and (InitiatingProcessFolderPath endswith \"\\\\services.exe\" or InitiatingProcessFolderPath endswith \"\\\\svchost.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects a service binary running in a suspicious directory"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1202"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/OceanLotus_Registry_Activity')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "OceanLotus Registry Activity",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryKey contains \"\\\\SOFTWARE\\\\Classes\\\\CLSID\\\\{E08A0F4B-1F65-4D4D-9A09-BD4625B9C5A1}\\\\Model\" or (RegistryKey contains \"Classes\\\\AppXc52346ec40fb4061ad96be0e6cb7d16a\" or RegistryKey contains \"Classes\\\\AppX3bbba44c6cae4d9695755183472171e2\" or RegistryKey contains \"Classes\\\\CLSID\\\\{E3517E26-8E93-458D-A6DF-8030BC80528B}\" or RegistryKey contains \"Classes\\\\CLSID\\\\{E08A0F4B-1F65-4D4D-9A09-BD4625B9C5A1}\\\\Model\") or (RegistryKey contains \"\\\\SOFTWARE\\\\App\" and ((RegistryKey contains \"AppXbf13d4ea2945444d8b13e2121cb6b663\" or RegistryKey contains \"AppX70162486c7554f7f80f481985d67586d\" or RegistryKey contains \"AppX37cc7fdccd644b4f85f4b22d5a3f105a\") and (RegistryKey endswith \"Application\" or RegistryKey endswith \"DefaultIcon\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects registry keys created in OceanLotus (also known as APT32) attacks"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112"
+          }
+        ]
+      }
+    }
+  ]
+}

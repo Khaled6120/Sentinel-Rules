@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Arbitrary_File_Download_Via_Cmdl32.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Arbitrary File Download Via Cmdl32.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"/vpn\" and ProcessCommandLine contains \"/lan\") and (FolderPath endswith \"\\\\cmdl32.exe\" or ProcessVersionInfoOriginalFileName =~ \"CMDL32.EXE\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects execution of Cmdl32 with the \"/vpn\" and \"/lan\" flags.\nAttackers can abuse this utility in order to download arbitrary files via a configuration file.\nInspect the location and the content of the file passed as an argument in order to determine if "
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion,Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1202,T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

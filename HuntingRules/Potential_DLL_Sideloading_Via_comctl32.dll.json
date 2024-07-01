@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_DLL_Sideloading_Via_comctl32.dll')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential DLL Sideloading Via comctl32.dll",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\comctl32.dll\" and (FolderPath startswith \"C:\\\\Windows\\\\System32\\\\logonUI.exe.local\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\System32\\\\werFault.exe.local\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\System32\\\\consent.exe.local\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\System32\\\\narrator.exe.local\\\\\" or FolderPath startswith \"C:\\\\windows\\\\system32\\\\wermgr.exe.local\\\\\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potential DLL sideloading using comctl32.dll to obtain system privileges"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion,Persistence,Privilege Escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

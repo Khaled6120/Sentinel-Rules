@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Non_Interactive_PowerShell_Process_Spawned')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Non Interactive PowerShell Process Spawned",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\", \"pwsh.dll\"))) and (not(((InitiatingProcessFolderPath endswith \":\\\\Windows\\\\explorer.exe\" or InitiatingProcessFolderPath endswith \":\\\\Windows\\\\System32\\\\CompatTelRunner.exe\" or InitiatingProcessFolderPath endswith \":\\\\Windows\\\\SysWOW64\\\\explorer.exe\") or InitiatingProcessFolderPath =~ \":\\\\$WINDOWS.~BT\\\\Sources\\\\SetupHost.exe\"))) and (not(((InitiatingProcessFolderPath contains \":\\\\Program Files\\\\WindowsApps\\\\Microsoft.WindowsTerminal_\" and InitiatingProcessFolderPath endswith \"\\\\WindowsTerminal.exe\") or (InitiatingProcessCommandLine contains \" --ms-enable-electron-run-as-node \" and InitiatingProcessFolderPath endswith \"\\\\AppData\\\\Local\\\\Programs\\\\Microsoft VS Code\\\\Code.exe\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects non-interactive PowerShell activity by looking at the \"powershell\" process with a non-user GUI process such as \"explorer.exe\" as a parent."
+          },
+          {
+            "name": "tactics",
+            "value": "Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

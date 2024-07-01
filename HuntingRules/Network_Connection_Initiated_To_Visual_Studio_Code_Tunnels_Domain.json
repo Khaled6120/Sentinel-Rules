@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Network_Connection_Initiated_To_Visual_Studio_Code_Tunnels_Domain')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Network Connection Initiated To Visual Studio Code Tunnels Domain",
+        "category": "Hunting Queries",
+        "query": "DeviceNetworkEvents\n| where RemoteUrl endswith \".tunnels.api.visualstudio.com\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects network connections to Visual Studio Code tunnel domains initiated by a process on a system. Attackers can abuse that feature to establish a reverse shell or persistence on a machine.\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Exfiltration"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1567"
+          }
+        ]
+      }
+    }
+  ]
+}

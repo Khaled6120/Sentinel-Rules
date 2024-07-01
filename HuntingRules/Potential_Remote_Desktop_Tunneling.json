@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Remote_Desktop_Tunneling')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Remote Desktop Tunneling",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \":3389\" and (ProcessCommandLine contains \" -L \" or ProcessCommandLine contains \" -P \" or ProcessCommandLine contains \" -R \" or ProcessCommandLine contains \" -pw \" or ProcessCommandLine contains \" -ssh \")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potential use of an SSH utility to establish RDP over a reverse SSH Tunnel. This can be used by attackers to enable routing of network packets that would otherwise not reach their intended destination."
+          },
+          {
+            "name": "tactics",
+            "value": "Lateral Movement"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1021"
+          }
+        ]
+      }
+    }
+  ]
+}

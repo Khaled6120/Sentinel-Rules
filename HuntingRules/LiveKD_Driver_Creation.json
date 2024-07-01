@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/LiveKD_Driver_Creation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "LiveKD Driver Creation",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where (InitiatingProcessFolderPath endswith \"\\\\livekd.exe\" or InitiatingProcessFolderPath endswith \"\\\\livek64.exe\") and FolderPath =~ \"C:\\\\Windows\\\\System32\\\\drivers\\\\LiveKdD.SYS\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the creation of the LiveKD driver, which is used for live kernel debugging"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion,Privilege Escalation"
+          }
+        ]
+      }
+    }
+  ]
+}

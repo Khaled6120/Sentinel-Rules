@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Unattend.xml_File_Access')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Unattend.xml File Access",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where FolderPath endswith \"\\\\unattend.xml\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Attempts to access unattend.xml, where credentials are commonly stored, within the Panther directory where installation logs are stored.\nIf these files exist, their contents will be displayed. They are used to store credentials/answers during the unatten"
+          },
+          {
+            "name": "tactics",
+            "value": "Credential Access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1552"
+          }
+        ]
+      }
+    }
+  ]
+}

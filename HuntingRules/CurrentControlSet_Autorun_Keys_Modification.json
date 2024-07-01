@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/CurrentControlSet_Autorun_Keys_Modification')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "CurrentControlSet Autorun Keys Modification",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (RegistryKey contains \"\\\\SYSTEM\\\\CurrentControlSet\\\\Control\" and (RegistryKey contains \"\\\\Terminal Server\\\\WinStations\\\\RDP-Tcp\\\\InitialProgram\" or RegistryKey contains \"\\\\Terminal Server\\\\Wds\\\\rdpwd\\\\StartupPrograms\" or RegistryKey contains \"\\\\SecurityProviders\\\\SecurityProviders\" or RegistryKey contains \"\\\\SafeBoot\\\\AlternateShell\" or RegistryKey contains \"\\\\Print\\\\Providers\" or RegistryKey contains \"\\\\Print\\\\Monitors\" or RegistryKey contains \"\\\\NetworkProvider\\\\Order\" or RegistryKey contains \"\\\\Lsa\\\\Notification Packages\" or RegistryKey contains \"\\\\Lsa\\\\Authentication Packages\" or RegistryKey contains \"\\\\BootVerificationProgram\\\\ImagePath\")) and (not((((RegistryValueData in~ (\"cpwmon64_v40.dll\", \"CutePDF Writer\")) and InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\System32\\\\spoolsv.exe\" and RegistryKey contains \"\\\\Print\\\\Monitors\\\\CutePDF Writer Monitor\") or RegistryValueData =~ \"(Empty)\" or (InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\System32\\\\spoolsv.exe\" and RegistryKey contains \"Print\\\\Monitors\\\\Appmon\\\\Ports\\\\Microsoft.Office.OneNote_\" and (InitiatingProcessAccountName contains \"AUTHORI\" or InitiatingProcessAccountName contains \"AUTORI\")) or (InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\System32\\\\poqexec.exe\" and RegistryKey endswith \"\\\\NetworkProvider\\\\Order\\\\ProviderOrder\") or (RegistryValueData =~ \"VNCpm.dll\" and InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\System32\\\\spoolsv.exe\" and RegistryKey endswith \"\\\\Print\\\\Monitors\\\\MONVNC\\\\Driver\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects modification of autostart extensibility point (ASEP) in registry."
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1547"
+          }
+        ]
+      }
+    }
+  ]
+}

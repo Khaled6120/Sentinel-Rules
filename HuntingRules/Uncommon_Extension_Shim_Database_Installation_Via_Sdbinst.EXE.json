@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Uncommon_Extension_Shim_Database_Installation_Via_Sdbinst.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Uncommon Extension Shim Database Installation Via Sdbinst.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\sdbinst.exe\" or ProcessVersionInfoOriginalFileName =~ \"sdbinst.exe\") and (not((ProcessCommandLine =~ \"\" or ProcessCommandLine contains \".sdb\" or isnull(ProcessCommandLine) or ((ProcessCommandLine endswith \" -c\" or ProcessCommandLine endswith \" -f\" or ProcessCommandLine endswith \" -mm\" or ProcessCommandLine endswith \" -t\") or ProcessCommandLine contains \" -m -bg\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects installation of a potentially suspicious new shim with an uncommon extension using sdbinst.exe.\nAdversaries may establish persistence and/or elevate privileges by executing malicious content triggered by application shims\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence,Privilege Escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

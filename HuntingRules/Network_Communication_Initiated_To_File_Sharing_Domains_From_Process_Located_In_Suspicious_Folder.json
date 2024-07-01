@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Network_Communication_Initiated_To_File_Sharing_Domains_From_Process_Located_In_Suspicious_Folder')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Network Communication Initiated To File Sharing Domains From Process Located In Suspicious Folder",
+        "category": "Hunting Queries",
+        "query": "DeviceNetworkEvents\n| where (RemoteUrl endswith \".githubusercontent.com\" or RemoteUrl endswith \"anonfiles.com\" or RemoteUrl endswith \"cdn.discordapp.com\" or RemoteUrl endswith \"cdn.discordapp.com/attachments/\" or RemoteUrl endswith \"ddns.net\" or RemoteUrl endswith \"dl.dropboxusercontent.com\" or RemoteUrl endswith \"ghostbin.co\" or RemoteUrl endswith \"glitch.me\" or RemoteUrl endswith \"gofile.io\" or RemoteUrl endswith \"hastebin.com\" or RemoteUrl endswith \"mediafire.com\" or RemoteUrl endswith \"mega.co.nz\" or RemoteUrl endswith \"mega.nz\" or RemoteUrl endswith \"onrender.com\" or RemoteUrl endswith \"paste.ee\" or RemoteUrl endswith \"pastebin.com\" or RemoteUrl endswith \"pastebin.pl\" or RemoteUrl endswith \"pastetext.net\" or RemoteUrl endswith \"privatlab.com\" or RemoteUrl endswith \"privatlab.net\" or RemoteUrl endswith \"send.exploit.in\" or RemoteUrl endswith \"sendspace.com\" or RemoteUrl endswith \"storage.googleapis.com\" or RemoteUrl endswith \"storjshare.io\" or RemoteUrl endswith \"supabase.co\" or RemoteUrl endswith \"temp.sh\" or RemoteUrl endswith \"transfer.sh\" or RemoteUrl endswith \"ufile.io\") and (InitiatingProcessFolderPath contains \":\\\\$Recycle.bin\" or InitiatingProcessFolderPath contains \":\\\\Perflogs\\\\\" or InitiatingProcessFolderPath contains \":\\\\Temp\\\\\" or InitiatingProcessFolderPath contains \":\\\\Users\\\\Default\\\\\" or InitiatingProcessFolderPath contains \":\\\\Users\\\\Public\\\\\" or InitiatingProcessFolderPath contains \":\\\\Windows\\\\Fonts\\\\\" or InitiatingProcessFolderPath contains \":\\\\Windows\\\\IME\\\\\" or InitiatingProcessFolderPath contains \":\\\\Windows\\\\System32\\\\Tasks\\\\\" or InitiatingProcessFolderPath contains \":\\\\Windows\\\\Tasks\\\\\" or InitiatingProcessFolderPath contains \":\\\\Windows\\\\Temp\\\\\" or InitiatingProcessFolderPath contains \"\\\\AppData\\\\Temp\\\\\" or InitiatingProcessFolderPath contains \"\\\\config\\\\systemprofile\\\\\" or InitiatingProcessFolderPath contains \"\\\\Windows\\\\addins\\\\\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects executables located in potentially suspicious directories initiating network connections towards file sharing domains."
+          },
+          {
+            "name": "tactics",
+            "value": "Command And Control"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1105"
+          }
+        ]
+      }
+    }
+  ]
+}

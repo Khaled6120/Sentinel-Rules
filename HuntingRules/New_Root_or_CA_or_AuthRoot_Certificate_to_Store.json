@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/New_Root_or_CA_or_AuthRoot_Certificate_to_Store')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "New Root or CA or AuthRoot Certificate to Store",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryValueData =~ \"Binary Data\" and (RegistryKey contains \"\\\\SOFTWARE\\\\Microsoft\\\\SystemCertificates\\\\Root\\\\Certificates\" or RegistryKey contains \"\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\SystemCertificates\\\\Root\\\\Certificates\" or RegistryKey contains \"\\\\SOFTWARE\\\\Microsoft\\\\EnterpriseCertificates\\\\Root\\\\Certificates\" or RegistryKey contains \"\\\\SOFTWARE\\\\Microsoft\\\\SystemCertificates\\\\CA\\\\Certificates\" or RegistryKey contains \"\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\SystemCertificates\\\\CA\\\\Certificates\" or RegistryKey contains \"\\\\SOFTWARE\\\\Microsoft\\\\EnterpriseCertificates\\\\CA\\\\Certificates\" or RegistryKey contains \"\\\\SOFTWARE\\\\Microsoft\\\\SystemCertificates\\\\AuthRoot\\\\Certificates\" or RegistryKey contains \"\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\SystemCertificates\\\\AuthRoot\\\\Certificates\" or RegistryKey contains \"\\\\SOFTWARE\\\\Microsoft\\\\EnterpriseCertificates\\\\AuthRoot\\\\Certificates\") and RegistryKey endswith \"\\\\Blob\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the addition of new root, CA or AuthRoot certificates to the Windows registry"
+          },
+          {
+            "name": "tactics",
+            "value": "Impact"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1490"
+          }
+        ]
+      }
+    }
+  ]
+}

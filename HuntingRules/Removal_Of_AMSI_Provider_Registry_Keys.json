@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Removal_Of_AMSI_Provider_Registry_Keys')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Removal Of AMSI Provider Registry Keys",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (ActionType in~ (\"RegistryKeyDeleted\", \"RegistryValueDeleted\")) and (RegistryKey endswith \"{2781761E-28E0-4109-99FE-B9D127C57AFE}\" or RegistryKey endswith \"{A7C452EF-8E9F-42EB-9F2B-245613CA0DC9}\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the deletion of AMSI provider registry key entries in HKLM\\Software\\Microsoft\\AMSI. This technique could be used by an attacker in order to disable AMSI inspection."
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

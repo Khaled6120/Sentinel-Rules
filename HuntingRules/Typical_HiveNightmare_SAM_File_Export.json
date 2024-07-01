@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Typical_HiveNightmare_SAM_File_Export')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Typical HiveNightmare SAM File Export",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where (FolderPath contains \"\\\\hive_sam_\" or FolderPath contains \"\\\\SAM-2021-\" or FolderPath contains \"\\\\SAM-2022-\" or FolderPath contains \"\\\\SAM-2023-\" or FolderPath contains \"\\\\SAM-haxx\" or FolderPath contains \"\\\\Sam.save\") or FolderPath =~ \"C:\\\\windows\\\\temp\\\\sam\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects files written by the different tools that exploit HiveNightmare"
+          },
+          {
+            "name": "tactics",
+            "value": "Credential Access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1552"
+          }
+        ]
+      }
+    }
+  ]
+}
