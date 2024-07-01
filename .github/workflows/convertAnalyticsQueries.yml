@@ -13,7 +13,7 @@ permissions:
 name: Build ARM Analytic Rules
 
 jobs:
-  convert YAML to Analytics Rules:
+  convert-YAML-to-Analytics-Rules:
     runs-on: ubuntu-latest
     name: Build ARM Analytic Rules
     steps:

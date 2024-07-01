@@ -10,7 +10,7 @@ permissions:
   contents: write
   
 jobs:
-  convert YAML to Hunting Rules:
+  convert-YAML-to-Hunting-Rules:
     runs-on: ubuntu-latest  
 
     steps:

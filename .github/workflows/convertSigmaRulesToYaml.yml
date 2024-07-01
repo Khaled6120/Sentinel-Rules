@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Convert Sigma rules:
+  convert-sigma-rules:
     runs-on: ubuntu-latest
 
     steps:
