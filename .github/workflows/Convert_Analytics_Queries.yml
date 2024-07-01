@@ -1,0 +1,43 @@
+name: Convert YAML to ARM Template (Analytics Rules)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "KQL/*.yaml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+name: Build ARM Analytic Rules
+
+jobs:
+  convert YAML to Analytics Rules:
+    runs-on: ubuntu-latest
+    name: Build ARM Analytic Rules
+    steps:
+      - uses: actions/checkout@v3
+      - name: Convert yaml rules to JSON/arm
+        run: |
+          Install-Module SentinelARConverter -AcceptLicense -Force
+          # Create AnalyticsRules folder if it doesn't exist
+          if (-not (Test-Path -Path 'AnalyticsRules')) {
+              New-Item -ItemType Directory -Path 'AnalyticsRules'
+          }
+          Get-ChildItem -Path 'KQL' -Filter '*.yaml' | ForEach-Object {
+              Write-Output "Processing file: $($_.Name)"
+              $jsonFilePath = "AnalyticsRules/$($_.Name.Replace('.yaml', '.json'))"
+              if (-not (Test-Path $jsonFilePath) -or (Get-Item $jsonFilePath).LastWriteTime -lt $_.LastWriteTime) {
+                  Write-Host "Converting $($_.FullName) to $jsonFilePath"
+                  Convert-SentinelARYamlToArm -Filename $_.FullName -OutFile $jsonFilePath
+              }
+          }
+        shell: pwsh
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'Khaled6120'
+          git config --global user.email 'khalednaes3@gmail.com'
+          git add AnalyticsRules
+          git commit -am "SentinelARConverter"
+          git push

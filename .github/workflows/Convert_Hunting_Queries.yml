@@ -1,0 +1,53 @@
+name: Convert YAML to ARM Template (Hunting Rules)
+on:
+  push:
+    branches: [main]
+    paths:
+      - "KQL/*.yaml"
+  workflow_dispatch:
+  
+permissions:
+  contents: write
+  
+jobs:
+  convert YAML to Hunting Rules:
+    runs-on: ubuntu-latest  
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2 
+
+    - name: Install PowerShell module powershell-yaml
+      run: |
+        pwsh -c "Install-Module -Name powershell-yaml -Force -Scope CurrentUser -AllowClobber"
+
+    - name: Convert YAML to ARM Template
+      shell: pwsh 
+      run: |
+        Import-Module .\ConvertHuntingQueryFromYamlToArm.ps1
+        
+        # Check if 'HuntingRules' directory exists; create if not
+        if (-not (Test-Path -Path './HuntingRules')) {
+          New-Item -ItemType Directory -Path './HuntingRules'
+          Write-Host "Created directory: ./HuntingRules"
+        } else {
+          Write-Host "Directory './HuntingRules' already exists."
+        }
+
+        # Iterate through each YAML file in the 'KQL' directory
+        Get-ChildItem -Path './KQL' -Filter '*.yaml' | ForEach-Object {
+            $yamlFilePath = $_.FullName
+            $outputFilePath = Join-Path -Path './HuntingRules' -ChildPath "$($_.BaseName).json"
+            
+            # Call your conversion function with appropriate parameters
+            ConvertHuntingQueryFromYamlToArm -inputFilePath KQL/$($_.Name) -outputFilePath $outputFilePath
+            
+            Write-Host "Converted $($_.Name) to $($outputFilePath)"
+        }
+    - name: Commit and push changes
+      run: |
+         git config --global user.name 'Khaled6120'
+         git config --global user.email 'khalednaes3@gmail.com'
+         git add HuntingRules
+         git commit -am "HuntingRules"
+         git push

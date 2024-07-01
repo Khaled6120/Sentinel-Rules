@@ -138,9 +138,9 @@ def process_yaml_file(download_url):
             with open(output_file, 'w') as yaml_file:
                 yaml.dump(yaml_content, yaml_file, sort_keys=False, default_flow_style=False)
 
-            print(f'{sigma_rule.title} -> rule converted successfully')
+            print(f'✅ {sigma_rule.title} -> rule converted successfully')
         except Exception as e:
-            print(f'SigmaTransformationError: Rule category not yet supported by the Microsoft 365 Defender Sigma backend. {str(e)}')
+            print(f'⭕ SigmaTransformationError: Rule category not yet supported by the Microsoft 365 Defender Sigma backend. {str(e)}')
     else:
         print(f"Failed to download YAML file. Status code: {response.status_code}")
 

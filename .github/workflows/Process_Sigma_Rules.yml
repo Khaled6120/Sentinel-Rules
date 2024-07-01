@@ -1,0 +1,45 @@
+name: Convert Sigma Rules to yaml files (KQL)
+
+on:
+  schedule:
+    - cron: '0 0 * * *' #  at 00:00 UTC every day
+  workflow_dispatch:
+
+jobs:
+  Convert Sigma rules:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false  # Ensure credentials are not persisted
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml pygithub python-dotenv pysigma-backend-microsoft365defender
+
+      - name: Check for updates and convert Sigma rules
+        env:
+          SUPER_SECRET_TOKEN: ${{ secrets.SUPER_SECRET_TOKEN }}
+        run: |
+          python convert_sigma_to_kql_automated.py
+
+      - name: Commit changes if any
+        env:
+          GITHUB_TOKEN: ${{ secrets.SUPER_SECRET_TOKEN }}
+        run: |
+          git config --global user.name 'Khaled6120'
+          git config --global user.email 'khalednaes3@gmail.com'
+          git remote add authenticated-origin https://x-access-token:${{ secrets.SUPER_SECRET_TOKEN }}@github.com/Khaled6120/Sentinel-Rules.git
+          git fetch authenticated-origin main
+          git reset --soft authenticated-origin/main
+          git add .
+          git commit -m "Automated conversion of Sigma rules"
+          git push authenticated-origin main --force
