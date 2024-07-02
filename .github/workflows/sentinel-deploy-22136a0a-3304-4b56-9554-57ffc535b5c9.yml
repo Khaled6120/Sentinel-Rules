@@ -38,7 +38,7 @@ jobs:
     - name: Login to Azure (Attempt 1)
       continue-on-error: true
       id: login1
-      uses: azure/login@v1
+      uses: azure/login@v2.1.1
       if: ${{ env.cloudEnv == 'AzureCloud' }}
       with:
         creds: ${{ secrets.AZURE_SENTINEL_CREDENTIALS_22136a0a33044b56955457ffc535b5c9 }}
@@ -51,7 +51,7 @@ jobs:
     - name: Login to Azure (Attempt 2)
       continue-on-error: true
       id: login2
-      uses: azure/login@v1
+      uses: azure/login@v2.1.1
       if: ${{ env.cloudEnv == 'AzureCloud' && steps.login1.outcome=='failure' }}
       with:
         creds: ${{ secrets.AZURE_SENTINEL_CREDENTIALS_22136a0a33044b56955457ffc535b5c9 }}
@@ -64,7 +64,7 @@ jobs:
     - name: Login to Azure (Attempt 3)
       continue-on-error: false
       id: login3
-      uses: azure/login@v1
+      uses: azure/login@v2.1.1
       if: ${{ env.cloudEnv == 'AzureCloud' && steps.login2.outcome=='failure'  }}
       with:
         creds: ${{ secrets.AZURE_SENTINEL_CREDENTIALS_22136a0a33044b56955457ffc535b5c9 }}
