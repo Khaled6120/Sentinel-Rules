@@ -51,7 +51,7 @@ jobs:
     - name: Login to Azure (Attempt 2)
       continue-on-error: true
       id: login2
-      uses: azure/login@v1
+      uses: azure/login@v2.1.1
       if: ${{ env.cloudEnv == 'AzureCloud' && steps.login1.outcome=='failure' }}
       with:
         creds: ${{ secrets.AZURE_SENTINEL_CREDENTIALS_60e63d19244a4d96857e5daed0dbff1e }}
@@ -64,7 +64,7 @@ jobs:
     - name: Login to Azure (Attempt 3)
       continue-on-error: false
       id: login3
-      uses: azure/login@v1
+      uses: azure/login@v2.1.1
       if: ${{ env.cloudEnv == 'AzureCloud' && steps.login2.outcome=='failure'  }}
       with:
         creds: ${{ secrets.AZURE_SENTINEL_CREDENTIALS_60e63d19244a4d96857e5daed0dbff1e }}
@@ -74,7 +74,7 @@ jobs:
       uses: actions/checkout@v3
     
     - name: Deploy Content to Azure Sentinel
-      uses: azure/powershell@v1
+      uses: azure/powershell@v2.1.1
       with:
         azPSVersion: 'latest'
         inlineScript: |
