@@ -73,9 +73,9 @@ function ConvertHuntingQueryFromYamlToArm {
             name  = "tactics";
             value = $yaml.tactics -join ","
         }
-        #if ($tacticsObj.value.ToString() -match ' ') {
-        #    $tacticsObj.value = $tacticsObj.value -replace ' ', ''
-        #}
+        if ($tacticsObj.value.ToString() -match ' ') {
+            $tacticsObj.value = $tacticsObj.value -replace ' ', ''
+        }
         $huntingQueryObj.properties.tags += $tacticsObj
     }
 
