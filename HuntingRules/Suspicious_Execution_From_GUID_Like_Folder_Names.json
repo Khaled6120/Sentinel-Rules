@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Execution_From_GUID_Like_Folder_Names')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Execution From GUID Like Folder Names",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"\\\\AppData\\\\Roaming\\\\\" or ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Temp\\\\\") and (ProcessCommandLine contains \"\\\\{\" and ProcessCommandLine contains \"}\\\\\")) and (not(((FolderPath contains \"\\\\{\" and FolderPath contains \"}\\\\\") or FolderPath =~ \"C:\\\\Windows\\\\System32\\\\drvinst.exe\" or isnull(FolderPath))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potential suspicious execution of a GUID like folder name located in a suspicious location such as %TEMP% as seen being used in IcedID attacks"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1027"
+          }
+        ]
+      }
+    }
+  ]
+}

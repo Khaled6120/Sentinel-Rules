@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Renamed_Plink_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Renamed Plink Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessVersionInfoOriginalFileName =~ \"Plink\" or (ProcessCommandLine contains \" -l forward\" and ProcessCommandLine contains \" -P \" and ProcessCommandLine contains \" -R \")) and (not(FolderPath endswith \"\\\\plink.exe\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of a renamed version of the Plink binary"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1036"
+          }
+        ]
+      }
+    }
+  ]
+}

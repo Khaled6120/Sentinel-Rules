@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Windows_Recall_Feature_Enabled_-_DisableAIDataAnalysis_Value_Deleted')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Windows Recall Feature Enabled - DisableAIDataAnalysis Value Deleted",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where ActionType =~ \"DeleteValue\" and RegistryKey endswith \"\\\\Microsoft\\\\Windows\\\\WindowsAI\\\\DisableAIDataAnalysis\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the enabling of the Windows Recall feature via registry manipulation. Windows Recall can be enabled by deleting the existing \"DisableAIDataAnalysis\" registry value.\nAdversaries may enable Windows Recall as part of post-exploitation discovery and "
+          },
+          {
+            "name": "tactics",
+            "value": "Collection"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1113"
+          }
+        ]
+      }
+    }
+  ]
+}

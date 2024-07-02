@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Sysmon_Driver_Unloaded_Via_Fltmc.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Sysmon Driver Unloaded Via Fltmc.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"unload\" and ProcessCommandLine contains \"sysmon\") and (FolderPath endswith \"\\\\fltMC.exe\" or ProcessVersionInfoOriginalFileName =~ \"fltMC.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects possible Sysmon filter driver unloaded via fltmc.exe"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1070,T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_MSTSC_Shadowing_Activity')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential MSTSC Shadowing Activity",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"noconsentprompt\" and ProcessCommandLine contains \"shadow:\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects RDP session hijacking by using MSTSC shadowing"
+          },
+          {
+            "name": "tactics",
+            "value": "LateralMovement"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1563"
+          }
+        ]
+      }
+    }
+  ]
+}

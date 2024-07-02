@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potentially_Suspicious_CMD_Shell_Output_Redirect')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potentially Suspicious CMD Shell Output Redirect",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\cmd.exe\" or ProcessVersionInfoOriginalFileName =~ \"Cmd.Exe\") and (((ProcessCommandLine contains \">\" and ProcessCommandLine contains \"%APPDATA%\\\\\") or (ProcessCommandLine contains \">\" and ProcessCommandLine contains \"%TEMP%\\\\\") or (ProcessCommandLine contains \">\" and ProcessCommandLine contains \"%TMP%\\\\\") or (ProcessCommandLine contains \">\" and ProcessCommandLine contains \"%USERPROFILE%\\\\\") or (ProcessCommandLine contains \">\" and ProcessCommandLine contains \"C:\\\\ProgramData\\\\\") or (ProcessCommandLine contains \">\" and ProcessCommandLine contains \"C:\\\\Temp\\\\\") or (ProcessCommandLine contains \">\" and ProcessCommandLine contains \"C:\\\\Users\\\\Public\\\\\") or (ProcessCommandLine contains \">\" and ProcessCommandLine contains \"C:\\\\Windows\\\\Temp\\\\\")) or ((ProcessCommandLine contains \" >\" or ProcessCommandLine contains \"\\\">\" or ProcessCommandLine contains \"'>\") and (ProcessCommandLine contains \"C:\\\\Users\\\\\" and ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects inline Windows shell commands redirecting output via the \">\" symbol to a suspicious location.\nThis technique is sometimes used by malicious actors in order to redirect the output of reconnaissance commands such as \"hostname\" and \"dir\" to files fo"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

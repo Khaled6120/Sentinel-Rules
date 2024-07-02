@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/File_Creation_In_Suspicious_Directory_By_Msdt.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "File Creation In Suspicious Directory By Msdt.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where InitiatingProcessFolderPath endswith \"\\\\msdt.exe\" and (FolderPath contains \"\\\\Desktop\\\\\" or FolderPath contains \"\\\\Start Menu\\\\Programs\\\\Startup\\\\\" or FolderPath contains \"C:\\\\PerfLogs\\\\\" or FolderPath contains \"C:\\\\ProgramData\\\\\" or FolderPath contains \"C:\\\\Users\\\\Public\\\\\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects msdt.exe creating files in suspicious directories which could be a sign of exploitation of either Follina or Dogwalk vulnerabilities"
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1547"
+          }
+        ]
+      }
+    }
+  ]
+}

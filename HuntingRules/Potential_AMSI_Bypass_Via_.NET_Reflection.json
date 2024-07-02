@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_AMSI_Bypass_Via_.NET_Reflection')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential AMSI Bypass Via .NET Reflection",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"System.Management.Automation.AmsiUtils\" or ProcessCommandLine contains \"amsiInitFailed\") or (ProcessCommandLine contains \"[Ref].Assembly.GetType\" and ProcessCommandLine contains \"SetValue($null,$true)\" and ProcessCommandLine contains \"NonPublic,Static\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects Request to \"amsiInitFailed\" that can be used to disable AMSI Scanning"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

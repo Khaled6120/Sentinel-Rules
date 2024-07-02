@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_XOR_Encoded_PowerShell_Command')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious XOR Encoded PowerShell Command",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"ForEach\" or ProcessCommandLine contains \"for(\" or ProcessCommandLine contains \"for \" or ProcessCommandLine contains \"-join \" or ProcessCommandLine contains \"-join'\" or ProcessCommandLine contains \"-join\\\"\" or ProcessCommandLine contains \"-join`\" or ProcessCommandLine contains \"::Join\" or ProcessCommandLine contains \"[char]\") and ProcessCommandLine contains \"bxor\" and ((FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\", \"pwsh.dll\")) or ProcessVersionInfoFileDescription =~ \"Windows PowerShell\" or ProcessVersionInfoProductName =~ \"PowerShell Core 6\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects presence of a potentially xor encoded powershell command"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1027,T1059,T1140"
+          }
+        ]
+      }
+    }
+  ]
+}

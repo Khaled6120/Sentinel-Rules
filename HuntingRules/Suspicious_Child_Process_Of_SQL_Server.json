@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Child_Process_Of_SQL_Server')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Child Process Of SQL Server",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\bash.exe\" or FolderPath endswith \"\\\\bitsadmin.exe\" or FolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\netstat.exe\" or FolderPath endswith \"\\\\nltest.exe\" or FolderPath endswith \"\\\\ping.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\regsvr32.exe\" or FolderPath endswith \"\\\\rundll32.exe\" or FolderPath endswith \"\\\\sh.exe\" or FolderPath endswith \"\\\\systeminfo.exe\" or FolderPath endswith \"\\\\tasklist.exe\" or FolderPath endswith \"\\\\wsl.exe\") and InitiatingProcessFolderPath endswith \"\\\\sqlservr.exe\") and (not((ProcessCommandLine startswith \"\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" \" and FolderPath =~ \"C:\\\\Windows\\\\System32\\\\cmd.exe\" and InitiatingProcessFolderPath endswith \"DATEV_DBENGINE\\\\MSSQL\\\\Binn\\\\sqlservr.exe\" and InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\Microsoft SQL Server\\\\\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious child processes of the SQLServer process. This could indicate potential RCE or SQL Injection."
+          },
+          {
+            "name": "tactics",
+            "value": "InitialAccess,Persistence,PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1190,T1505"
+          }
+        ]
+      }
+    }
+  ]
+}

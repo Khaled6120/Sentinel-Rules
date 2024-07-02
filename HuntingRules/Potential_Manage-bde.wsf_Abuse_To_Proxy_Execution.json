@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Manage-bde.wsf_Abuse_To_Proxy_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Manage-bde.wsf Abuse To Proxy Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"manage-bde.wsf\" and (FolderPath endswith \"\\\\wscript.exe\" or ProcessVersionInfoOriginalFileName =~ \"wscript.exe\")) or ((InitiatingProcessCommandLine contains \"manage-bde.wsf\" and (InitiatingProcessFolderPath endswith \"\\\\cscript.exe\" or InitiatingProcessFolderPath endswith \"\\\\wscript.exe\")) and (not(FolderPath endswith \"\\\\cmd.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potential abuse of the \"manage-bde.wsf\" script as a LOLBIN to proxy execution"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1216"
+          }
+        ]
+      }
+    }
+  ]
+}

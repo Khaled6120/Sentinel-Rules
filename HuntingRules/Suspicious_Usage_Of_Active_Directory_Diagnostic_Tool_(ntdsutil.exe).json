@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Usage_Of_Active_Directory_Diagnostic_Tool_(ntdsutil.exe)')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Usage Of Active Directory Diagnostic Tool (ntdsutil.exe)",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"snapshot\" and ProcessCommandLine contains \"mount \") or (ProcessCommandLine contains \"ac\" and ProcessCommandLine contains \" i\" and ProcessCommandLine contains \" ntds\")) and (FolderPath endswith \"\\\\ntdsutil.exe\" or ProcessVersionInfoOriginalFileName =~ \"ntdsutil.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects execution of ntdsutil.exe to perform different actions such as restoring snapshots...etc."
+          },
+          {
+            "name": "tactics",
+            "value": "CredentialAccess"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1003"
+          }
+        ]
+      }
+    }
+  ]
+}

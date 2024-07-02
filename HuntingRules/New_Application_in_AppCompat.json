@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/New_Application_in_AppCompat')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "New Application in AppCompat",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryKey contains \"\\\\AppCompatFlags\\\\Compatibility Assistant\\\\Store\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "A General detection for a new application in AppCompat. This indicates an application executing for the first time on an endpoint."
+          },
+          {
+            "name": "tactics",
+            "value": "Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1204"
+          }
+        ]
+      }
+    }
+  ]
+}

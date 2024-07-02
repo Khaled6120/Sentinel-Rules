@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Enabling_COR_Profiler_Environment_Variables')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Enabling COR Profiler Environment Variables",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (RegistryKey endswith \"\\\\COR_ENABLE_PROFILING\" or RegistryKey endswith \"\\\\COR_PROFILER\" or RegistryKey endswith \"\\\\CORECLR_ENABLE_PROFILING\") or RegistryKey contains \"\\\\CORECLR_PROFILER_PATH\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects .NET Framework CLR and .NET Core CLR \"cor_enable_profiling\" and \"cor_profiler\" variables being set and configured."
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,Persistence,PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

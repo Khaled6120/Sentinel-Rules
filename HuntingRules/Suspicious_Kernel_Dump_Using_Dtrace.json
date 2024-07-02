@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Kernel_Dump_Using_Dtrace')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Kernel Dump Using Dtrace",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"syscall:::return\" and ProcessCommandLine contains \"lkd(\") or (ProcessCommandLine contains \"lkd(0)\" and FolderPath endswith \"\\\\dtrace.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious way to dump the kernel on Windows systems using dtrace.exe, which is available on Windows systems since Windows 10 19H1"
+          },
+          {
+            "name": "tactics",
+            "value": "Discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1082"
+          }
+        ]
+      }
+    }
+  ]
+}

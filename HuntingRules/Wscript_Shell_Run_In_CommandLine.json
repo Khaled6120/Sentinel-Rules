@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Wscript_Shell_Run_In_CommandLine')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Wscript Shell Run In CommandLine",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"Wscript.\" and ProcessCommandLine contains \".Shell\" and ProcessCommandLine contains \".Run\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the presence of the keywords \"Wscript\", \"Shell\" and \"Run\" in the command, which could indicate a suspicious activity"
+          },
+          {
+            "name": "tactics",
+            "value": "Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

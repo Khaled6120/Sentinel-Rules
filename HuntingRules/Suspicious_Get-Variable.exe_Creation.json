@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Get-Variable.exe_Creation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Get-Variable.exe Creation",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where FolderPath endswith \"Local\\\\Microsoft\\\\WindowsApps\\\\Get-Variable.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Get-Variable is a valid PowerShell cmdlet\nWindowsApps is by default in the path where PowerShell is executed.\nSo when the Get-Variable command is issued on PowerShell execution, the system first looks for the Get-Variable executable in the path and execu"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1027,T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

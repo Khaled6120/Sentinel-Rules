@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_appverifUI.DLL_Sideloading')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential appverifUI.DLL Sideloading",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where FolderPath endswith \"\\\\appverifUI.dll\" and (not(((InitiatingProcessFolderPath in~ (\"C:\\\\Windows\\\\SysWOW64\\\\appverif.exe\", \"C:\\\\Windows\\\\System32\\\\appverif.exe\")) and (FolderPath startswith \"C:\\\\Windows\\\\System32\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\SysWOW64\\\\\" or FolderPath startswith \"C:\\\\Windows\\\\WinSxS\\\\\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potential DLL sideloading of \"appverifUI.dll\""
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

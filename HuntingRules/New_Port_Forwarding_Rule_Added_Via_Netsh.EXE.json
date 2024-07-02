@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/New_Port_Forwarding_Rule_Added_Via_Netsh.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "New Port Forwarding Rule Added Via Netsh.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\netsh.exe\" or ProcessVersionInfoOriginalFileName =~ \"netsh.exe\") and ((ProcessCommandLine contains \"interface\" and ProcessCommandLine contains \"portproxy\" and ProcessCommandLine contains \"add\" and ProcessCommandLine contains \"v4tov4\") or (ProcessCommandLine contains \"i \" and ProcessCommandLine contains \"p \" and ProcessCommandLine contains \"a \" and ProcessCommandLine contains \"v \") or (ProcessCommandLine contains \"connectp\" and ProcessCommandLine contains \"listena\" and ProcessCommandLine contains \"c=\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of netsh commands that configure a new port forwarding (PortProxy) rule"
+          },
+          {
+            "name": "tactics",
+            "value": "CommandAndControl,DefenseEvasion,LateralMovement"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1090"
+          }
+        ]
+      }
+    }
+  ]
+}

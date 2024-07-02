@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Suspicious_PowerShell_Module_File_Created')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Suspicious PowerShell Module File Created",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where (FolderPath contains \"\\\\WindowsPowerShell\\\\Modules\\\\\" and FolderPath contains \"\\\\.ps\") or (FolderPath contains \"\\\\WindowsPowerShell\\\\Modules\\\\\" and FolderPath contains \"\\\\.dll\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the creation of a new PowerShell module in the first folder of the module directory structure \"\\WindowsPowerShell\\Modules\\malware\\malware.psm1\". This is somewhat an uncommon practice as legitimate modules often includes a version folder."
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          }
+        ]
+      }
+    }
+  ]
+}

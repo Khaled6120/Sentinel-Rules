@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Cred_Dump_Tools_Dropped_Files')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Cred Dump Tools Dropped Files",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where (FolderPath contains \"\\\\fgdump-log\" or FolderPath contains \"\\\\kirbi\" or FolderPath contains \"\\\\pwdump\" or FolderPath contains \"\\\\pwhashes\" or FolderPath contains \"\\\\wce_ccache\" or FolderPath contains \"\\\\wce_krbtkts\") or (FolderPath endswith \"\\\\cachedump.exe\" or FolderPath endswith \"\\\\cachedump64.exe\" or FolderPath endswith \"\\\\DumpExt.dll\" or FolderPath endswith \"\\\\DumpSvc.exe\" or FolderPath endswith \"\\\\Dumpy.exe\" or FolderPath endswith \"\\\\fgexec.exe\" or FolderPath endswith \"\\\\lsremora.dll\" or FolderPath endswith \"\\\\lsremora64.dll\" or FolderPath endswith \"\\\\NTDS.out\" or FolderPath endswith \"\\\\procdump64.exe\" or FolderPath endswith \"\\\\pstgdump.exe\" or FolderPath endswith \"\\\\pwdump.exe\" or FolderPath endswith \"\\\\SAM.out\" or FolderPath endswith \"\\\\SECURITY.out\" or FolderPath endswith \"\\\\servpw.exe\" or FolderPath endswith \"\\\\servpw64.exe\" or FolderPath endswith \"\\\\SYSTEM.out\" or FolderPath endswith \"\\\\test.pwd\" or FolderPath endswith \"\\\\wceaux.dll\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Files with well-known filenames (parts of credential dump software or files produced by them) creation"
+          },
+          {
+            "name": "tactics",
+            "value": "CredentialAccess"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1003"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Rundll32_Execution_With_Image_Extension')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Rundll32 Execution With Image Extension",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \".bmp\" or ProcessCommandLine contains \".cr2\" or ProcessCommandLine contains \".eps\" or ProcessCommandLine contains \".gif\" or ProcessCommandLine contains \".ico\" or ProcessCommandLine contains \".jpeg\" or ProcessCommandLine contains \".jpg\" or ProcessCommandLine contains \".nef\" or ProcessCommandLine contains \".orf\" or ProcessCommandLine contains \".png\" or ProcessCommandLine contains \".raw\" or ProcessCommandLine contains \".sr2\" or ProcessCommandLine contains \".tif\" or ProcessCommandLine contains \".tiff\") and (FolderPath endswith \"\\\\rundll32.exe\" or ProcessVersionInfoOriginalFileName =~ \"RUNDLL32.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of Rundll32.exe with DLL files masquerading as image files"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

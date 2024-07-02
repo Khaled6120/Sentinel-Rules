@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/LSA_PPL_Protection_Disabled_Via_Reg.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "LSA PPL Protection Disabled Via Reg.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\" and (ProcessCommandLine contains \" add \" and ProcessCommandLine contains \" /d 0\" and ProcessCommandLine contains \" /v RunAsPPL \")) and (FolderPath endswith \"\\\\reg.exe\" or ProcessVersionInfoOriginalFileName =~ \"reg.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the usage of the \"reg.exe\" utility to disable PPL protection on the LSA process"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

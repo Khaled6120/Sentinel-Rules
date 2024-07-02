@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Wow6432Node_Classes_Autorun_Keys_Modification')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Wow6432Node Classes Autorun Keys Modification",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryKey contains \"\\\\Software\\\\Wow6432Node\\\\Classes\" and (RegistryKey contains \"\\\\Folder\\\\ShellEx\\\\ExtShellFolderViews\" or RegistryKey contains \"\\\\Folder\\\\ShellEx\\\\DragDropHandlers\" or RegistryKey contains \"\\\\Folder\\\\ShellEx\\\\ColumnHandlers\" or RegistryKey contains \"\\\\Directory\\\\Shellex\\\\DragDropHandlers\" or RegistryKey contains \"\\\\Directory\\\\Shellex\\\\CopyHookHandlers\" or RegistryKey contains \"\\\\CLSID\\\\{AC757296-3522-4E11-9862-C17BE5A1767E}\\\\Instance\" or RegistryKey contains \"\\\\CLSID\\\\{ABE3B9A4-257D-4B97-BD1A-294AF496222E}\\\\Instance\" or RegistryKey contains \"\\\\CLSID\\\\{7ED96837-96F0-4812-B211-F13C24117ED3}\\\\Instance\" or RegistryKey contains \"\\\\CLSID\\\\{083863F1-70DE-11d0-BD40-00A0C911CE86}\\\\Instance\" or RegistryKey contains \"\\\\AllFileSystemObjects\\\\ShellEx\\\\DragDropHandlers\" or RegistryKey contains \"\\\\ShellEx\\\\PropertySheetHandlers\" or RegistryKey contains \"\\\\ShellEx\\\\ContextMenuHandlers\") and (not(RegistryValueData =~ \"(Empty)\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects modification of autostart extensibility point (ASEP) in registry."
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1547"
+          }
+        ]
+      }
+    }
+  ]
+}

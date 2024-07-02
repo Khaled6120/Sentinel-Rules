@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Privilege_Escalation_Using_Symlink_Between_Osk_and_Cmd')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Privilege Escalation Using Symlink Between Osk and Cmd",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"mklink\" and ProcessCommandLine contains \"\\\\osk.exe\" and ProcessCommandLine contains \"\\\\cmd.exe\") and (FolderPath endswith \"\\\\cmd.exe\" or ProcessVersionInfoOriginalFileName =~ \"Cmd.Exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the creation of a symbolic link between \"cmd.exe\" and the accessibility on-screen keyboard binary (osk.exe) using \"mklink\". This technique provides an elevated command prompt to the user from the login screen without the need to log in."
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence,PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

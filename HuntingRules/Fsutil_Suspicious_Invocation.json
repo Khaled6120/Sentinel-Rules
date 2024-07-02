@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Fsutil_Suspicious_Invocation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Fsutil Suspicious Invocation",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"deletejournal\" or ProcessCommandLine contains \"createjournal\" or ProcessCommandLine contains \"setZeroData\") and (FolderPath endswith \"\\\\fsutil.exe\" or ProcessVersionInfoOriginalFileName =~ \"fsutil.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious parameters of fsutil (deleting USN journal, configuring it with small size, etc).\nMight be used by ransomwares during the attack (seen by NotPetya and others).\n"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,Impact"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1070,T1485"
+          }
+        ]
+      }
+    }
+  ]
+}

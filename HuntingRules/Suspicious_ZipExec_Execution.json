@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_ZipExec_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious ZipExec Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"/generic:Microsoft_Windows_Shell_ZipFolder:filename=\" and ProcessCommandLine contains \".zip\" and ProcessCommandLine contains \"/pass:\" and ProcessCommandLine contains \"/user:\") or (ProcessCommandLine contains \"/delete\" and ProcessCommandLine contains \"Microsoft_Windows_Shell_ZipFolder:filename=\" and ProcessCommandLine contains \".zip\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "ZipExec is a Proof-of-Concept (POC) tool to wrap binary-based tools into a password-protected zip file."
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1202,T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

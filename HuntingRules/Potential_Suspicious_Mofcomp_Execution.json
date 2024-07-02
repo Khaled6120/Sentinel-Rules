@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Suspicious_Mofcomp_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Suspicious Mofcomp Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (((InitiatingProcessFolderPath endswith \"\\\\cmd.exe\" or InitiatingProcessFolderPath endswith \"\\\\powershell.exe\" or InitiatingProcessFolderPath endswith \"\\\\pwsh.exe\" or InitiatingProcessFolderPath endswith \"\\\\wsl.exe\" or InitiatingProcessFolderPath endswith \"\\\\wscript.exe\" or InitiatingProcessFolderPath endswith \"\\\\cscript.exe\") or (ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Temp\" or ProcessCommandLine contains \"\\\\Users\\\\Public\\\\\" or ProcessCommandLine contains \"\\\\WINDOWS\\\\Temp\\\\\" or ProcessCommandLine contains \"%temp%\" or ProcessCommandLine contains \"%tmp%\" or ProcessCommandLine contains \"%appdata%\")) and (FolderPath endswith \"\\\\mofcomp.exe\" or ProcessVersionInfoOriginalFileName =~ \"mofcomp.exe\")) and (not((ProcessCommandLine contains \"C:\\\\Windows\\\\TEMP\\\\\" and ProcessCommandLine endswith \".mof\" and InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\System32\\\\wbem\\\\WmiPrvSE.exe\"))) and (not((ProcessCommandLine contains \"C:\\\\Windows\\\\TEMP\\\\\" and ProcessCommandLine endswith \".mof\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects execution of the \"mofcomp\" utility as a child of a suspicious shell or script running utility or by having a suspicious path in the commandline.\nThe \"mofcomp\" utility parses a file containing MOF statements and adds the classes and class instance"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/UAC_Bypass_Using_Consent_and_Comctl32_-_Process')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "UAC Bypass Using Consent and Comctl32 - Process",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\werfault.exe\" and (ProcessIntegrityLevel in~ (\"High\", \"System\")) and InitiatingProcessFolderPath endswith \"\\\\consent.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the pattern of UAC Bypass using consent.exe and comctl32.dll (UACMe 22)"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1548"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/DLL_Loaded_From_Suspicious_Location_Via_Cmspt.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "DLL Loaded From Suspicious Location Via Cmspt.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where (FolderPath contains \"\\\\PerfLogs\\\\\" or FolderPath contains \"\\\\ProgramData\\\\\" or FolderPath contains \"\\\\Users\\\\\" or FolderPath contains \"\\\\Windows\\\\Temp\\\\\" or FolderPath contains \"C:\\\\Temp\\\\\") and (FolderPath endswith \".dll\" or FolderPath endswith \".ocx\") and InitiatingProcessFolderPath endswith \"\\\\cmstp.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects cmstp loading \"dll\" or \"ocx\" files from suspicious locations"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

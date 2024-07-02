@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Run_Once_Task_Configuration_in_Registry')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Run Once Task Configuration in Registry",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (RegistryKey contains \"\\\\Microsoft\\\\Active Setup\\\\Installed Components\" and RegistryKey endswith \"\\\\StubPath\") and (not(((RegistryValueData contains \"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\\" and RegistryValueData contains \"\\\\Installer\\\\chrmstp.exe\\\" --configure-user-settings --verbose-logging --system-level\") or ((RegistryValueData contains \"C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\\" or RegistryValueData contains \"C:\\\\Program Files\\\\Microsoft\\\\Edge\\\\Application\\\\\") and RegistryValueData endswith \"\\\\Installer\\\\setup.exe\\\" --configure-user-settings --verbose-logging --system-level --msedge --channel=stable\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Rule to detect the configuration of Run Once registry key. Configured payload can be run by runonce.exe /AlternateShellStartup"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/File_Deleted_Via_Sysinternals_SDelete')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "File Deleted Via Sysinternals SDelete",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where (FolderPath endswith \".AAA\" or FolderPath endswith \".ZZZ\") and (not(FolderPath endswith \"\\\\Wireshark\\\\radius\\\\dictionary.alcatel-lucent.aaa\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the deletion of files by the Sysinternals SDelete utility. It looks for the common name pattern used to rename files."
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1070"
+          }
+        ]
+      }
+    }
+  ]
+}

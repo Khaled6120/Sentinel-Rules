@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potentially_Suspicious_Command_Targeting_Teams_Sensitive_Files')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potentially Suspicious Command Targeting Teams Sensitive Files",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"\\\\Microsoft\\\\Teams\\\\Cookies\" or ProcessCommandLine contains \"\\\\Microsoft\\\\Teams\\\\Local Storage\\\\leveldb\") and (not(FolderPath endswith \"\\\\Microsoft\\\\Teams\\\\current\\\\Teams.exe\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects a commandline containing references to the Microsoft Teams database or cookies files from a process other than Teams.\nThe database might contain authentication tokens and other sensitive information about the logged in accounts.\n"
+          },
+          {
+            "name": "tactics",
+            "value": "CredentialAccess"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1528"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_RDP_Tunneling_Via_Plink')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential RDP Tunneling Via Plink",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \":127.0.0.1:3389\" and FolderPath endswith \"\\\\plink.exe\") or ((ProcessCommandLine contains \":3389\" and FolderPath endswith \"\\\\plink.exe\") and (ProcessCommandLine contains \" -P 443\" or ProcessCommandLine contains \" -P 22\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Execution of plink to perform data exfiltration and tunneling"
+          },
+          {
+            "name": "tactics",
+            "value": "CommandAndControl"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1572"
+          }
+        ]
+      }
+    }
+  ]
+}

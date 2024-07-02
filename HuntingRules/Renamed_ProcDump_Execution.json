@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Renamed_ProcDump_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Renamed ProcDump Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessVersionInfoOriginalFileName =~ \"procdump\" or ((ProcessCommandLine contains \" -ma \" or ProcessCommandLine contains \" /ma \" or ProcessCommandLine contains \" -mp \" or ProcessCommandLine contains \" /mp \") and (ProcessCommandLine contains \" -accepteula\" or ProcessCommandLine contains \" /accepteula\"))) and (not((FolderPath endswith \"\\\\procdump.exe\" or FolderPath endswith \"\\\\procdump64.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of a renamed ProcDump executable.\nThis often done by attackers or malware in order to evade defensive mechanisms.\n"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1036"
+          }
+        ]
+      }
+    }
+  ]
+}

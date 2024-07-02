@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Shim_Database_Patching_Activity')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Shim Database Patching Activity",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryKey contains \"\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\AppCompatFlags\\\\Custom\" and (RegistryKey endswith \"\\\\csrss.exe\" or RegistryKey endswith \"\\\\dllhost.exe\" or RegistryKey endswith \"\\\\explorer.exe\" or RegistryKey endswith \"\\\\RuntimeBroker.exe\" or RegistryKey endswith \"\\\\services.exe\" or RegistryKey endswith \"\\\\sihost.exe\" or RegistryKey endswith \"\\\\svchost.exe\" or RegistryKey endswith \"\\\\taskhostw.exe\" or RegistryKey endswith \"\\\\winlogon.exe\" or RegistryKey endswith \"\\\\WmiPrvSe.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects installation of new shim databases that try to patch sections of known processes for potential process injection or persistence."
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

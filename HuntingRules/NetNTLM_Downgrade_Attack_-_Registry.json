@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/NetNTLM_Downgrade_Attack_-_Registry')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "NetNTLM Downgrade Attack - Registry",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (RegistryKey contains \"SYSTEM\" and RegistryKey contains \"ControlSet\" and RegistryKey contains \"\\\\Control\\\\Lsa\") and (RegistryKey endswith \"\\\\lmcompatibilitylevel\" or RegistryKey endswith \"\\\\NtlmMinClientSec\" or RegistryKey endswith \"\\\\RestrictSendingNTLMTraffic\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects NetNTLM downgrade attack"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112,T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

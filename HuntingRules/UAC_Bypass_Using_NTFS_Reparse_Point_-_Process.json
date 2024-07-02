@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/UAC_Bypass_Using_NTFS_Reparse_Point_-_Process')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "UAC Bypass Using NTFS Reparse Point - Process",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine endswith \"\\\\AppData\\\\Local\\\\Temp\\\\update.msu\" and ProcessCommandLine startswith \"\\\"C:\\\\Windows\\\\system32\\\\wusa.exe\\\"  /quiet C:\\\\Users\\\\\" and (ProcessIntegrityLevel in~ (\"High\", \"System\"))) or ((ProcessCommandLine contains \"C:\\\\Users\\\\\" and ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Temp\\\\\" and ProcessCommandLine contains \"\\\\dismhost.exe {\") and FolderPath endswith \"\\\\DismHost.exe\" and (ProcessIntegrityLevel in~ (\"High\", \"System\")) and InitiatingProcessCommandLine =~ \"\\\"C:\\\\Windows\\\\system32\\\\dism.exe\\\" /online /quiet /norestart /add-package /packagepath:\\\"C:\\\\Windows\\\\system32\\\\pe386\\\" /ignorecheck\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the pattern of UAC Bypass using NTFS reparse point and wusa.exe DLL hijacking (UACMe 36)"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1548"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Change_Default_File_Association_To_Executable_Via_Assoc')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Change Default File Association To Executable Via Assoc",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"assoc \" and ProcessCommandLine contains \"exefile\") and (FolderPath endswith \"\\\\cmd.exe\" or ProcessVersionInfoOriginalFileName =~ \"Cmd.Exe\")) and (not(ProcessCommandLine contains \".exe=exefile\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects when a program changes the default file association of any extension to an executable.\nWhen a file is opened, the default program used to open the file (also called the file association or handler) is checked. File association selections are stor"
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

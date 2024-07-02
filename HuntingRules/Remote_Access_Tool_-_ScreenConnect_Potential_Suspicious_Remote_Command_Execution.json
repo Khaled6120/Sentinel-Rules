@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Remote_Access_Tool_-_ScreenConnect_Potential_Suspicious_Remote_Command_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Remote Access Tool - ScreenConnect Potential Suspicious Remote Command Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\bitsadmin.exe\" or FolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\curl.exe\" or FolderPath endswith \"\\\\dllhost.exe\" or FolderPath endswith \"\\\\net.exe\" or FolderPath endswith \"\\\\nltest.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\rundll32.exe\" or FolderPath endswith \"\\\\wevtutil.exe\") and (InitiatingProcessCommandLine contains \":\\\\Windows\\\\TEMP\\\\ScreenConnect\\\\\" and InitiatingProcessCommandLine contains \"run.cmd\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potentially suspicious child processes launched via the ScreenConnect client service.\n"
+          },
+          {
+            "name": "tactics",
+            "value": "CommandAndControl"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1219"
+          }
+        ]
+      }
+    }
+  ]
+}

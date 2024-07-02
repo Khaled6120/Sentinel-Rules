@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Macro_Enabled_In_A_Potentially_Suspicious_Document')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Macro Enabled In A Potentially Suspicious Document",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (RegistryKey contains \"/AppData/Local/Microsoft/Windows/INetCache/\" or RegistryKey contains \"/AppData/Local/Temp/\" or RegistryKey contains \"/PerfLogs/\" or RegistryKey contains \"C:/Users/Public/\" or RegistryKey contains \"file:///D:/\" or RegistryKey contains \"file:///E:/\") and RegistryKey contains \"\\\\Security\\\\Trusted Documents\\\\TrustRecords\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects registry changes to Office trust records where the path is located in a potentially suspicious location"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112"
+          }
+        ]
+      }
+    }
+  ]
+}

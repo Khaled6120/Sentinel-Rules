@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_desktop.ini_Action')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious desktop.ini Action",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where FolderPath endswith \"\\\\desktop.ini\" and (not(((InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Program Files (x86)\\\\\") or (InitiatingProcessFolderPath endswith \"\\\\AppData\\\\Local\\\\JetBrains\\\\Toolbox\\\\bin\\\\7z.exe\" and FolderPath contains \"\\\\JetBrains\\\\apps\\\\\") or FolderPath startswith \"C:\\\\$WINDOWS.~BT\\\\NewOS\\\\\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects unusual processes accessing desktop.ini, which can be leveraged to alter how Explorer displays a folder's content (i.e. renaming files) without changing them on disk."
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1547"
+          }
+        ]
+      }
+    }
+  ]
+}

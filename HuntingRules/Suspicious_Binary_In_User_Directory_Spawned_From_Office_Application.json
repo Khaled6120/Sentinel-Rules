@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Binary_In_User_Directory_Spawned_From_Office_Application')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Binary In User Directory Spawned From Office Application",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \".exe\" and FolderPath startswith \"C:\\\\users\\\\\" and (InitiatingProcessFolderPath endswith \"\\\\WINWORD.EXE\" or InitiatingProcessFolderPath endswith \"\\\\EXCEL.EXE\" or InitiatingProcessFolderPath endswith \"\\\\POWERPNT.exe\" or InitiatingProcessFolderPath endswith \"\\\\MSPUB.exe\" or InitiatingProcessFolderPath endswith \"\\\\VISIO.exe\" or InitiatingProcessFolderPath endswith \"\\\\MSACCESS.exe\" or InitiatingProcessFolderPath endswith \"\\\\EQNEDT32.exe\")) and (not(FolderPath endswith \"\\\\Teams.exe\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects an executable in the users directory started from one of the Microsoft Office suite applications (Word, Excel, PowerPoint, Publisher, Visio)"
+          },
+          {
+            "name": "tactics",
+            "value": "Execution,G0046"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1204"
+          }
+        ]
+      }
+    }
+  ]
+}

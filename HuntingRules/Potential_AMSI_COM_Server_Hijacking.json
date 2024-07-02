@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_AMSI_COM_Server_Hijacking')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential AMSI COM Server Hijacking",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryKey endswith \"\\\\CLSID\\\\{fdb00e52-a214-4aa1-8fba-4357bb0072ec}\\\\InProcServer32\\\\(Default)\" and (not(RegistryValueData =~ \"%windir%\\\\system32\\\\amsi.dll\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects changes to the AMSI come server registry key in order disable AMSI scanning functionalities. When AMSI attempts to starts its COM component, it will query its registered CLSID and return a non-existent COM server. This causes a load failure and p"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

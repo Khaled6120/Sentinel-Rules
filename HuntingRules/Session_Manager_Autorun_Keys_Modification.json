@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Session_Manager_Autorun_Keys_Modification')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Session Manager Autorun Keys Modification",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryKey contains \"\\\\System\\\\CurrentControlSet\\\\Control\\\\Session Manager\" and (RegistryKey contains \"\\\\SetupExecute\" or RegistryKey contains \"\\\\S0InitialCommand\" or RegistryKey contains \"\\\\KnownDlls\" or RegistryKey contains \"\\\\Execute\" or RegistryKey contains \"\\\\BootExecute\" or RegistryKey contains \"\\\\AppCertDlls\") and (not(RegistryValueData =~ \"(Empty)\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects modification of autostart extensibility point (ASEP) in registry."
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546,T1547"
+          }
+        ]
+      }
+    }
+  ]
+}

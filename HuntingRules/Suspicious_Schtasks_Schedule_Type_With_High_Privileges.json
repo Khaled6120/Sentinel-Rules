@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Schtasks_Schedule_Type_With_High_Privileges')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Schtasks Schedule Type With High Privileges",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\schtasks.exe\" or ProcessVersionInfoOriginalFileName =~ \"schtasks.exe\") and (ProcessCommandLine contains \"NT AUT\" or ProcessCommandLine contains \" SYSTEM\" or ProcessCommandLine contains \"HIGHEST\") and (ProcessCommandLine contains \" ONLOGON \" or ProcessCommandLine contains \" ONSTART \" or ProcessCommandLine contains \" ONCE \" or ProcessCommandLine contains \" ONIDLE \")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects scheduled task creations or modification to be run with high privileges on a suspicious schedule type"
+          },
+          {
+            "name": "tactics",
+            "value": "Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1053"
+          }
+        ]
+      }
+    }
+  ]
+}

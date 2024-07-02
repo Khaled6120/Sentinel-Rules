@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/VBA_DLL_Loaded_Via_Office_Application')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "VBA DLL Loaded Via Office Application",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where (FolderPath endswith \"\\\\VBE7.DLL\" or FolderPath endswith \"\\\\VBEUI.DLL\" or FolderPath endswith \"\\\\VBE7INTL.DLL\") and (InitiatingProcessFolderPath endswith \"\\\\excel.exe\" or InitiatingProcessFolderPath endswith \"\\\\mspub.exe\" or InitiatingProcessFolderPath endswith \"\\\\onenote.exe\" or InitiatingProcessFolderPath endswith \"\\\\onenoteim.exe\" or InitiatingProcessFolderPath endswith \"\\\\outlook.exe\" or InitiatingProcessFolderPath endswith \"\\\\powerpnt.exe\" or InitiatingProcessFolderPath endswith \"\\\\winword.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects VB DLL's loaded by an office application. Which could indicate the presence of VBA Macros."
+          },
+          {
+            "name": "tactics",
+            "value": "Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1204"
+          }
+        ]
+      }
+    }
+  ]
+}

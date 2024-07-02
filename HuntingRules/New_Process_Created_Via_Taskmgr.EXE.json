@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/New_Process_Created_Via_Taskmgr.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "New Process Created Via Taskmgr.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where InitiatingProcessFolderPath endswith \"\\\\taskmgr.exe\" and (not((FolderPath endswith \":\\\\Windows\\\\System32\\\\mmc.exe\" or FolderPath endswith \":\\\\Windows\\\\System32\\\\resmon.exe\" or FolderPath endswith \":\\\\Windows\\\\System32\\\\Taskmgr.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the creation of a process via the Windows task manager. This might be an attempt to bypass UAC"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1036"
+          }
+        ]
+      }
+    }
+  ]
+}

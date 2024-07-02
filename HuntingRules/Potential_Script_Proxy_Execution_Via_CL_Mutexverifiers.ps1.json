@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Script_Proxy_Execution_Via_CL_Mutexverifiers.ps1')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Script Proxy Execution Via CL_Mutexverifiers.ps1",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -nologo -windowstyle minimized -file \" and FolderPath endswith \"\\\\powershell.exe\" and (InitiatingProcessFolderPath endswith \"\\\\powershell.exe\" or InitiatingProcessFolderPath endswith \"\\\\pwsh.exe\")) and (ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Temp\\\\\" or ProcessCommandLine contains \"\\\\Windows\\\\Temp\\\\\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the use of the Microsoft signed script \"CL_mutexverifiers\" to proxy the execution of additional PowerShell script commands"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1216"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Query_of_MachineGUID')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Query of MachineGUID",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"SOFTWARE\\\\Microsoft\\\\Cryptography\" and ProcessCommandLine contains \"/v \" and ProcessCommandLine contains \"MachineGuid\") and FolderPath endswith \"\\\\reg.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Use of reg to get MachineGuid information"
+          },
+          {
+            "name": "tactics",
+            "value": "Discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1082"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_PFX_File_Creation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious PFX File Creation",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where FolderPath endswith \".pfx\" and (not((FolderPath contains \"\\\\Templates\\\\Windows\\\\Windows_TemporaryKey.pfx\" and FolderPath contains \"\\\\CMake\\\\\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "A general detection for processes creating PFX files. This could be an indicator of an adversary exporting a local certificate to a PFX file."
+          },
+          {
+            "name": "tactics",
+            "value": "CredentialAccess"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1552"
+          }
+        ]
+      }
+    }
+  ]
+}

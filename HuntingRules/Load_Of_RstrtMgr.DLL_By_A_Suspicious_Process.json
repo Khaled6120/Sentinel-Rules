@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Load_Of_RstrtMgr.DLL_By_A_Suspicious_Process')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Load Of RstrtMgr.DLL By A Suspicious Process",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where (FolderPath endswith \"\\\\RstrtMgr.dll\" or InitiatingProcessVersionInfoOriginalFileName =~ \"RstrtMgr.dll\") and ((InitiatingProcessFolderPath contains \":\\\\Perflogs\\\\\" or InitiatingProcessFolderPath contains \":\\\\Users\\\\Public\\\\\" or InitiatingProcessFolderPath contains \"\\\\Temporary Internet\") or ((InitiatingProcessFolderPath contains \":\\\\Users\\\\\" and InitiatingProcessFolderPath contains \"\\\\Favorites\\\\\") or (InitiatingProcessFolderPath contains \":\\\\Users\\\\\" and InitiatingProcessFolderPath contains \"\\\\Favourites\\\\\") or (InitiatingProcessFolderPath contains \":\\\\Users\\\\\" and InitiatingProcessFolderPath contains \"\\\\Contacts\\\\\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the load of RstrtMgr DLL (Restart Manager) by a suspicious process.\nThis library has been used during ransomware campaigns to kill processes that would prevent file encryption by locking them (e.g. Conti ransomware, Cactus ransomware). It has als"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,Impact"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1486,T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

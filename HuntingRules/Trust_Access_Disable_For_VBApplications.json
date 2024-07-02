@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Trust_Access_Disable_For_VBApplications')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Trust Access Disable For VBApplications",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryValueData =~ \"DWORD (0x00000001)\" and RegistryKey endswith \"\\\\Security\\\\AccessVBOM\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects registry changes to Microsoft Office \"AccessVBOM\" to a value of \"1\" which disables trust access for VBA on the victim machine and lets attackers execute malicious macros without any Microsoft Office warnings."
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112"
+          }
+        ]
+      }
+    }
+  ]
+}

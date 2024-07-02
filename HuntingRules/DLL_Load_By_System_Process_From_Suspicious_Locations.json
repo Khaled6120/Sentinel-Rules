@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/DLL_Load_By_System_Process_From_Suspicious_Locations')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "DLL Load By System Process From Suspicious Locations",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where (FolderPath startswith \"C:\\\\Users\\\\Public\\\\\" or FolderPath startswith \"C:\\\\PerfLogs\\\\\") and InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects when a system process (i.e. located in system32, syswow64, etc.) loads a DLL from a suspicious location or a location with permissive permissions such as \"C:\\Users\\Public\""
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1070"
+          }
+        ]
+      }
+    }
+  ]
+}

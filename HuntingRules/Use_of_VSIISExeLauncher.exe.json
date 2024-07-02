@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Use_of_VSIISExeLauncher.exe')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Use of VSIISExeLauncher.exe",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -p \" or ProcessCommandLine contains \" -a \") and (FolderPath endswith \"\\\\VSIISExeLauncher.exe\" or ProcessVersionInfoOriginalFileName =~ \"VSIISExeLauncher.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "The \"VSIISExeLauncher.exe\" binary part of the Visual Studio/VS Code can be used to execute arbitrary binaries"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1127"
+          }
+        ]
+      }
+    }
+  ]
+}

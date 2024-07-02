@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/SCR_File_Write_Event')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "SCR File Write Event",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where FolderPath endswith \".scr\" and (not((FolderPath contains \":\\\\$WINDOWS.~BT\\\\NewOS\\\\\" or FolderPath contains \":\\\\Windows\\\\System32\\\\\" or FolderPath contains \":\\\\Windows\\\\SysWOW64\\\\\" or FolderPath contains \":\\\\Windows\\\\WinSxS\\\\\" or FolderPath contains \":\\\\WUDownloadCache\\\\\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the creation of screensaver files (.scr) outside of system folders. Attackers may execute an application as an \".SCR\" file using \"rundll32.exe desk.cpl,InstallScreenSaver\" for example."
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

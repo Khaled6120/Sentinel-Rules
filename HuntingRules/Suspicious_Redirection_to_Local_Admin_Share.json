@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Redirection_to_Local_Admin_Share')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Redirection to Local Admin Share",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \">\" and (ProcessCommandLine contains \"\\\\\\\\127.0.0.1\\\\admin$\\\\\" or ProcessCommandLine contains \"\\\\\\\\localhost\\\\admin$\\\\\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects a suspicious output redirection to the local admins share, this technique is often found in malicious scripts or hacktool stagers"
+          },
+          {
+            "name": "tactics",
+            "value": "Exfiltration"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1048"
+          }
+        ]
+      }
+    }
+  ]
+}

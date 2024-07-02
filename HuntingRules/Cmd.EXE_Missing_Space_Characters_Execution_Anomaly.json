@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Cmd.EXE_Missing_Space_Characters_Execution_Anomaly')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Cmd.EXE Missing Space Characters Execution Anomaly",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"cmd.exe/c\" or ProcessCommandLine contains \"\\\\cmd/c\" or ProcessCommandLine contains \"\\\"cmd/c\" or ProcessCommandLine contains \"cmd.exe/k\" or ProcessCommandLine contains \"\\\\cmd/k\" or ProcessCommandLine contains \"\\\"cmd/k\" or ProcessCommandLine contains \"cmd.exe/r\" or ProcessCommandLine contains \"\\\\cmd/r\" or ProcessCommandLine contains \"\\\"cmd/r\") or (ProcessCommandLine contains \"/cwhoami\" or ProcessCommandLine contains \"/cpowershell\" or ProcessCommandLine contains \"/cschtasks\" or ProcessCommandLine contains \"/cbitsadmin\" or ProcessCommandLine contains \"/ccertutil\" or ProcessCommandLine contains \"/kwhoami\" or ProcessCommandLine contains \"/kpowershell\" or ProcessCommandLine contains \"/kschtasks\" or ProcessCommandLine contains \"/kbitsadmin\" or ProcessCommandLine contains \"/kcertutil\") or (ProcessCommandLine contains \"cmd.exe /c\" or ProcessCommandLine contains \"cmd /c\" or ProcessCommandLine contains \"cmd.exe /k\" or ProcessCommandLine contains \"cmd /k\" or ProcessCommandLine contains \"cmd.exe /r\" or ProcessCommandLine contains \"cmd /r\")) and (not(((ProcessCommandLine in~ (\"cmd.exe /c\") or ProcessCommandLine contains \"AppData\\\\Local\\\\Programs\\\\Microsoft VS Code\\\\resources\\\\app\\\\node_modules\" or ProcessCommandLine endswith \"cmd.exe/c .\") or (ProcessCommandLine contains \"cmd.exe /c \" or ProcessCommandLine contains \"cmd /c \" or ProcessCommandLine contains \"cmd.exe /k \" or ProcessCommandLine contains \"cmd /k \" or ProcessCommandLine contains \"cmd.exe /r \" or ProcessCommandLine contains \"cmd /r \"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects Windows command lines that miss a space before or after the /c flag when running a command using the cmd.exe.\nThis could be a sign of obfuscation of a fat finger problem (typo by the developer).\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

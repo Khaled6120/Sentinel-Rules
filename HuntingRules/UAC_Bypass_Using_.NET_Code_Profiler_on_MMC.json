@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/UAC_Bypass_Using_.NET_Code_Profiler_on_MMC')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "UAC Bypass Using .NET Code Profiler on MMC",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where FolderPath endswith \"\\\\AppData\\\\Local\\\\Temp\\\\pe386.dll\" and FolderPath startswith \"C:\\\\Users\\\\\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the pattern of UAC Bypass using .NET Code Profiler and mmc.exe DLL hijacking (UACMe 39)"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1548"
+          }
+        ]
+      }
+    }
+  ]
+}

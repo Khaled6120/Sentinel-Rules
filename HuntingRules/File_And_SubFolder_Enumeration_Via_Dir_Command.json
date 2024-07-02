@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/File_And_SubFolder_Enumeration_Via_Dir_Command')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "File And SubFolder Enumeration Via Dir Command",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine =~ \"*dir*-s*\" or ProcessCommandLine =~ \"*dir*/s*\") and (FolderPath endswith \"\\\\cmd.exe\" or ProcessVersionInfoOriginalFileName =~ \"Cmd.Exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects usage of the \"dir\" command part of Widows CMD with the \"/S\" command line flag in order to enumerate files in a specified directory and all subdirectories.\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1217"
+          }
+        ]
+      }
+    }
+  ]
+}

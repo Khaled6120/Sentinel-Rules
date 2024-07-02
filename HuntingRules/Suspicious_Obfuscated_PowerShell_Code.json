@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Obfuscated_PowerShell_Code')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Obfuscated PowerShell Code",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"IAAtAGIAeABvAHIAIAAwAHgA\" or ProcessCommandLine contains \"AALQBiAHgAbwByACAAMAB4A\" or ProcessCommandLine contains \"gAC0AYgB4AG8AcgAgADAAeA\" or ProcessCommandLine contains \"AC4ASQBuAHYAbwBrAGUAKAApACAAfAAg\" or ProcessCommandLine contains \"AuAEkAbgB2AG8AawBlACgAKQAgAHwAI\" or ProcessCommandLine contains \"ALgBJAG4AdgBvAGsAZQAoACkAIAB8AC\" or ProcessCommandLine contains \"AHsAMQB9AHsAMAB9ACIAIAAtAGYAI\" or ProcessCommandLine contains \"B7ADEAfQB7ADAAfQAiACAALQBmAC\" or ProcessCommandLine contains \"AewAxAH0AewAwAH0AIgAgAC0AZgAg\" or ProcessCommandLine contains \"AHsAMAB9AHsAMwB9ACIAIAAtAGYAI\" or ProcessCommandLine contains \"B7ADAAfQB7ADMAfQAiACAALQBmAC\" or ProcessCommandLine contains \"AewAwAH0AewAzAH0AIgAgAC0AZgAg\" or ProcessCommandLine contains \"AHsAMgB9AHsAMAB9ACIAIAAtAGYAI\" or ProcessCommandLine contains \"B7ADIAfQB7ADAAfQAiACAALQBmAC\" or ProcessCommandLine contains \"AewAyAH0AewAwAH0AIgAgAC0AZgAg\" or ProcessCommandLine contains \"AHsAMQB9AHsAMAB9ACcAIAAtAGYAI\" or ProcessCommandLine contains \"B7ADEAfQB7ADAAfQAnACAALQBmAC\" or ProcessCommandLine contains \"AewAxAH0AewAwAH0AJwAgAC0AZgAg\" or ProcessCommandLine contains \"AHsAMAB9AHsAMwB9ACcAIAAtAGYAI\" or ProcessCommandLine contains \"B7ADAAfQB7ADMAfQAnACAALQBmAC\" or ProcessCommandLine contains \"AewAwAH0AewAzAH0AJwAgAC0AZgAg\" or ProcessCommandLine contains \"AHsAMgB9AHsAMAB9ACcAIAAtAGYAI\" or ProcessCommandLine contains \"B7ADIAfQB7ADAAfQAnACAALQBmAC\" or ProcessCommandLine contains \"AewAyAH0AewAwAH0AJwAgAC0AZgAg\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious UTF16 and base64 encoded and often obfuscated PowerShell code often used in command lines"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          }
+        ]
+      }
+    }
+  ]
+}

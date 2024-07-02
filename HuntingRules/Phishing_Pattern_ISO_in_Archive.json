@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Phishing_Pattern_ISO_in_Archive')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Phishing Pattern ISO in Archive",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\isoburn.exe\" or FolderPath endswith \"\\\\PowerISO.exe\" or FolderPath endswith \"\\\\ImgBurn.exe\") and (InitiatingProcessFolderPath endswith \"\\\\Winrar.exe\" or InitiatingProcessFolderPath endswith \"\\\\7zFM.exe\" or InitiatingProcessFolderPath endswith \"\\\\peazip.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects cases in which an ISO files is opend within an archiver like 7Zip or Winrar, which is a sign of phishing as threat actors put small ISO files in archives as email attachments to bypass certain filters and protective measures (mark of web)"
+          },
+          {
+            "name": "tactics",
+            "value": "InitialAccess"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1566"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/UAC_Bypass_Using_IEInstal_-_File')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "UAC Bypass Using IEInstal - File",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where InitiatingProcessFolderPath =~ \"C:\\\\Program Files\\\\Internet Explorer\\\\IEInstal.exe\" and FolderPath contains \"\\\\AppData\\\\Local\\\\Temp\\\\\" and FolderPath endswith \"consent.exe\" and FolderPath startswith \"C:\\\\Users\\\\\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the pattern of UAC Bypass using IEInstal.exe (UACMe 64)"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1548"
+          }
+        ]
+      }
+    }
+  ]
+}

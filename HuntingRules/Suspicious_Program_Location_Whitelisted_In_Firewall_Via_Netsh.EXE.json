@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Program_Location_Whitelisted_In_Firewall_Via_Netsh.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Program Location Whitelisted In Firewall Via Netsh.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"firewall\" and ProcessCommandLine contains \"add\" and ProcessCommandLine contains \"allowedprogram\") or (ProcessCommandLine contains \"advfirewall\" and ProcessCommandLine contains \"firewall\" and ProcessCommandLine contains \"add\" and ProcessCommandLine contains \"rule\" and ProcessCommandLine contains \"action=allow\" and ProcessCommandLine contains \"program=\")) and (FolderPath endswith \"\\\\netsh.exe\" or ProcessVersionInfoOriginalFileName =~ \"netsh.exe\") and (ProcessCommandLine contains \":\\\\$Recycle.bin\\\\\" or ProcessCommandLine contains \":\\\\RECYCLER.BIN\\\\\" or ProcessCommandLine contains \":\\\\RECYCLERS.BIN\\\\\" or ProcessCommandLine contains \":\\\\SystemVolumeInformation\\\\\" or ProcessCommandLine contains \":\\\\Temp\\\\\" or ProcessCommandLine contains \":\\\\Users\\\\Default\\\\\" or ProcessCommandLine contains \":\\\\Users\\\\Desktop\\\\\" or ProcessCommandLine contains \":\\\\Users\\\\Public\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\addins\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\cursors\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\debug\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\drivers\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\fonts\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\help\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\system32\\\\tasks\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\Tasks\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\Temp\\\\\" or ProcessCommandLine contains \"\\\\Downloads\\\\\" or ProcessCommandLine contains \"\\\\Local Settings\\\\Temporary Internet Files\\\\\" or ProcessCommandLine contains \"\\\\Temporary Internet Files\\\\Content.Outlook\\\\\" or ProcessCommandLine contains \"%Public%\\\\\" or ProcessCommandLine contains \"%TEMP%\" or ProcessCommandLine contains \"%TMP%\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects Netsh command execution that whitelists a program located in a suspicious location in the Windows Firewall"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

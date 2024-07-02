@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Office_Autorun_Keys_Modification')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Office Autorun Keys Modification",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (RegistryKey contains \"\\\\Software\\\\Wow6432Node\\\\Microsoft\\\\Office\" or RegistryKey contains \"\\\\Software\\\\Microsoft\\\\Office\") and (RegistryKey contains \"\\\\Word\\\\Addins\" or RegistryKey contains \"\\\\PowerPoint\\\\Addins\" or RegistryKey contains \"\\\\Outlook\\\\Addins\" or RegistryKey contains \"\\\\Onenote\\\\Addins\" or RegistryKey contains \"\\\\Excel\\\\Addins\" or RegistryKey contains \"\\\\Access\\\\Addins\" or RegistryKey contains \"test\\\\Special\\\\Perf\") and (not(((InitiatingProcessFolderPath =~ \"C:\\\\Program Files\\\\AVG\\\\Antivirus\\\\RegSvr.exe\" and RegistryKey contains \"\\\\Microsoft\\\\Office\\\\Outlook\\\\Addins\\\\Antivirus.AsOutExt\") or RegistryValueData =~ \"(Empty)\" or ((InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\Microsoft Office\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Program Files (x86)\\\\Microsoft Office\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\System32\\\\msiexec.exe\" or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\System32\\\\regsvr32.exe\") and (RegistryKey contains \"\\\\Excel\\\\Addins\\\\AdHocReportingExcelClientLib.AdHocReportingExcelClientAddIn.1\" or RegistryKey contains \"\\\\Excel\\\\Addins\\\\ExcelPlugInShell.PowerMapConnect\" or RegistryKey contains \"\\\\Excel\\\\Addins\\\\NativeShim\" or RegistryKey contains \"\\\\Excel\\\\Addins\\\\NativeShim.InquireConnector.1\" or RegistryKey contains \"\\\\Excel\\\\Addins\\\\PowerPivotExcelClientAddIn.NativeEntry.1\" or RegistryKey contains \"\\\\Outlook\\\\AddIns\\\\AccessAddin.DC\" or RegistryKey contains \"\\\\Outlook\\\\AddIns\\\\ColleagueImport.ColleagueImportAddin\" or RegistryKey contains \"\\\\Outlook\\\\AddIns\\\\EvernoteCC.EvernoteContactConnector\" or RegistryKey contains \"\\\\Outlook\\\\AddIns\\\\EvernoteOLRD.Connect\" or RegistryKey contains \"\\\\Outlook\\\\Addins\\\\Microsoft.VbaAddinForOutlook.1\" or RegistryKey contains \"\\\\Outlook\\\\Addins\\\\OcOffice.OcForms\" or RegistryKey contains \"\\\\Outlook\\\\Addins\\\\OneNote.OutlookAddin\" or RegistryKey contains \"\\\\Outlook\\\\Addins\\\\OscAddin.Connect\" or RegistryKey contains \"\\\\Outlook\\\\Addins\\\\OutlookChangeNotifier.Connect\" or RegistryKey contains \"\\\\Outlook\\\\Addins\\\\UCAddin.LyncAddin.1\" or RegistryKey contains \"\\\\Outlook\\\\Addins\\\\UCAddin.UCAddin.1\" or RegistryKey contains \"\\\\Outlook\\\\Addins\\\\UmOutlookAddin.FormRegionAddin\")) or (InitiatingProcessFolderPath endswith \"\\\\OfficeClickToRun.exe\" and (InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\Common Files\\\\Microsoft Shared\\\\ClickToRun\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\Common Files\\\\Microsoft Shared\\\\ClickToRun\\\\Updates\\\\\")))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects modification of autostart extensibility point (ASEP) in registry."
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1547"
+          }
+        ]
+      }
+    }
+  ]
+}

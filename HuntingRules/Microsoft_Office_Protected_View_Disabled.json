@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Microsoft_Office_Protected_View_Disabled')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Microsoft Office Protected View Disabled",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (RegistryKey contains \"\\\\SOFTWARE\\\\Microsoft\\\\Office\" and RegistryKey contains \"\\\\Security\\\\ProtectedView\") and ((RegistryValueData =~ \"DWORD (0x00000000)\" and (RegistryKey endswith \"\\\\enabledatabasefileprotectedview\" or RegistryKey endswith \"\\\\enableforeigntextfileprotectedview\")) or (RegistryValueData =~ \"DWORD (0x00000001)\" and (RegistryKey endswith \"\\\\DisableAttachementsInPV\" or RegistryKey endswith \"\\\\DisableInternetFilesInPV\" or RegistryKey endswith \"\\\\DisableIntranetCheck\" or RegistryKey endswith \"\\\\DisableUnsafeLocationsInPV\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects changes to Microsoft Office protected view registry keys with which the attacker disables this feature."
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

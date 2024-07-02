@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/BloodHound_Collection_Files')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "BloodHound Collection Files",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where (FolderPath endswith \"BloodHound.zip\" or FolderPath endswith \"_computers.json\" or FolderPath endswith \"_containers.json\" or FolderPath endswith \"_domains.json\" or FolderPath endswith \"_gpos.json\" or FolderPath endswith \"_groups.json\" or FolderPath endswith \"_ous.json\" or FolderPath endswith \"_users.json\") and (not((InitiatingProcessFolderPath endswith \"\\\\svchost.exe\" and FolderPath endswith \"\\\\pocket_containers.json\" and FolderPath startswith \"C:\\\\Program Files\\\\WindowsApps\\\\Microsoft.\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects default file names outputted by the BloodHound collection tool SharpHound"
+          },
+          {
+            "name": "tactics",
+            "value": "Discovery,Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059,T1069,T1087,T1482"
+          }
+        ]
+      }
+    }
+  ]
+}

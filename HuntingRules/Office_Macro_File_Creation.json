@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Office_Macro_File_Creation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Office Macro File Creation",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where FolderPath endswith \".docm\" or FolderPath endswith \".dotm\" or FolderPath endswith \".xlsm\" or FolderPath endswith \".xltm\" or FolderPath endswith \".potm\" or FolderPath endswith \".pptm\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the creation of a new office macro files on the systems"
+          },
+          {
+            "name": "tactics",
+            "value": "InitialAccess"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1566"
+          }
+        ]
+      }
+    }
+  ]
+}

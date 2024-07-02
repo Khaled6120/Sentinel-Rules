@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Arbitrary_File_Download_Via_ConfigSecurityPolicy.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Arbitrary File Download Via ConfigSecurityPolicy.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"ConfigSecurityPolicy.exe\" or FolderPath endswith \"\\\\ConfigSecurityPolicy.exe\" or ProcessVersionInfoOriginalFileName =~ \"ConfigSecurityPolicy.exe\") and (ProcessCommandLine contains \"ftp://\" or ProcessCommandLine contains \"http://\" or ProcessCommandLine contains \"https://\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of \"ConfigSecurityPolicy.EXE\", a binary part of Windows Defender used to manage settings in Windows Defender.\nUsers can configure different pilot collections for each of the co-management workloads.\nIt can be abused by attackers in "
+          },
+          {
+            "name": "tactics",
+            "value": "Exfiltration"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1567"
+          }
+        ]
+      }
+    }
+  ]
+}
