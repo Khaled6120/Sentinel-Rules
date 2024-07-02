@@ -16,6 +16,7 @@ on:
     - '**'
     - '!.github/workflows/**'  # this filter prevents other workflow changes from triggering this workflow
     - '.github/workflows/sentinel-deploy-60e63d19-244a-4d96-857e-5daed0dbff1e.yml'
+  workflow_dispatch:
 
 jobs:
   deploy-content:
