@@ -38,7 +38,7 @@ jobs:
     - name: Login to Azure (Attempt 1)
       continue-on-error: true
       id: login1
-      uses: azure/login@v1
+      uses: azure/login@v2.1.1
       if: ${{ env.cloudEnv == 'AzureCloud' }}
       with:
         creds: ${{ secrets.AZURE_SENTINEL_CREDENTIALS_60e63d19244a4d96857e5daed0dbff1e }}
