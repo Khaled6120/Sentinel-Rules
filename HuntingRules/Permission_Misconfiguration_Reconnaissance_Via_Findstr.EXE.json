@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Permission_Misconfiguration_Reconnaissance_Via_Findstr.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Permission Misconfiguration Reconnaissance Via Findstr.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"\\\"Everyone\\\"\" or ProcessCommandLine contains \"'Everyone'\" or ProcessCommandLine contains \"\\\"BUILTIN\\\\\\\"\" or ProcessCommandLine contains \"'BUILTIN\\\\'\") and ((FolderPath endswith \"\\\\find.exe\" or FolderPath endswith \"\\\\findstr.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"FIND.EXE\", \"FINDSTR.EXE\")))) or (ProcessCommandLine contains \"icacls \" and ProcessCommandLine contains \"findstr \" and ProcessCommandLine contains \"Everyone\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects usage of findstr with the \"EVERYONE\" or \"BUILTIN\" keywords. This is seen being used in combination with \"icacls\" to look for misconfigured files or folders permissions"
+          },
+          {
+            "name": "tactics",
+            "value": "Credential Access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1552"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Possible_Privilege_Escalation_via_Weak_Service_Permissions')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Possible Privilege Escalation via Weak Service Permissions",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\sc.exe\" and ProcessIntegrityLevel =~ \"Medium\") and ((ProcessCommandLine contains \"config\" and ProcessCommandLine contains \"binPath\") or (ProcessCommandLine contains \"failure\" and ProcessCommandLine contains \"command\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detection of sc.exe utility spawning by user with Medium integrity level to change service ImagePath or FailureCommand"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion,Persistence,Privilege Escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

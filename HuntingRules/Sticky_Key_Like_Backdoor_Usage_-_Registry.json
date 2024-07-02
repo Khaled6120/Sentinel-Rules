@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Sticky_Key_Like_Backdoor_Usage_-_Registry')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Sticky Key Like Backdoor Usage - Registry",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryKey endswith \"\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe\\\\Debugger\" or RegistryKey endswith \"\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\utilman.exe\\\\Debugger\" or RegistryKey endswith \"\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\osk.exe\\\\Debugger\" or RegistryKey endswith \"\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\Magnify.exe\\\\Debugger\" or RegistryKey endswith \"\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\Narrator.exe\\\\Debugger\" or RegistryKey endswith \"\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\DisplaySwitch.exe\\\\Debugger\" or RegistryKey endswith \"\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\atbroker.exe\\\\Debugger\" or RegistryKey endswith \"\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\HelpPane.exe\\\\Debugger\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the usage and installation of a backdoor that uses an option to register a malicious debugger for built-in tools that are accessible in the login screen"
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence,Privilege Escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

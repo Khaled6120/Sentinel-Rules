@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Execution_of_InstallUtil_Without_Log')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Execution of InstallUtil Without Log",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"/logfile= \" and ProcessCommandLine contains \"/LogToConsole=false\") and FolderPath contains \"Microsoft.NET\\\\Framework\" and FolderPath endswith \"\\\\InstallUtil.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Uses the .NET InstallUtil.exe application in order to execute image without log"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_X509Enrollment_-_Process_Creation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious X509Enrollment - Process Creation",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"X509Enrollment.CBinaryConverter\" or ProcessCommandLine contains \"884e2002-217d-11da-b2a4-000e7bbb2b09\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detect use of X509Enrollment"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1553"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Invoke-WebRequest_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Invoke-WebRequest Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"curl \" or ProcessCommandLine contains \"Invoke-WebRequest\" or ProcessCommandLine contains \"iwr \" or ProcessCommandLine contains \"wget \") and (ProcessCommandLine contains \" -ur\" or ProcessCommandLine contains \" -o\") and ((FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\", \"pwsh.dll\"))) and (ProcessCommandLine contains \"\\\\AppData\\\\\" or ProcessCommandLine contains \"\\\\Desktop\\\\\" or ProcessCommandLine contains \"\\\\Temp\\\\\" or ProcessCommandLine contains \"\\\\Users\\\\Public\\\\\" or ProcessCommandLine contains \"%AppData%\" or ProcessCommandLine contains \"%Public%\" or ProcessCommandLine contains \"%Temp%\" or ProcessCommandLine contains \"%tmp%\" or ProcessCommandLine contains \":\\\\Windows\\\\\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects a suspicious call to Invoke-WebRequest cmdlet where the and output is located in a suspicious location"
+          },
+          {
+            "name": "tactics",
+            "value": "Command And Control"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1105"
+          }
+        ]
+      }
+    }
+  ]
+}

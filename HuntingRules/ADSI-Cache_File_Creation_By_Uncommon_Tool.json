@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/ADSI-Cache_File_Creation_By_Uncommon_Tool')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "ADSI-Cache File Creation By Uncommon Tool",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where (FolderPath contains \"\\\\Local\\\\Microsoft\\\\Windows\\\\SchCache\\\\\" and FolderPath endswith \".sch\") and (not((((InitiatingProcessFolderPath endswith \":\\\\Program Files\\\\Cylance\\\\Desktop\\\\CylanceSvc.exe\" or InitiatingProcessFolderPath endswith \":\\\\Windows\\\\CCM\\\\CcmExec.exe\" or InitiatingProcessFolderPath endswith \":\\\\windows\\\\system32\\\\dllhost.exe\" or InitiatingProcessFolderPath endswith \":\\\\Windows\\\\system32\\\\dsac.exe\" or InitiatingProcessFolderPath endswith \":\\\\Windows\\\\system32\\\\efsui.exe\" or InitiatingProcessFolderPath endswith \":\\\\windows\\\\system32\\\\mmc.exe\" or InitiatingProcessFolderPath endswith \":\\\\windows\\\\system32\\\\svchost.exe\" or InitiatingProcessFolderPath endswith \":\\\\Windows\\\\System32\\\\wbem\\\\WmiPrvSE.exe\" or InitiatingProcessFolderPath endswith \":\\\\windows\\\\system32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\") or (InitiatingProcessFolderPath contains \":\\\\Windows\\\\ccmsetup\\\\autoupgrade\\\\ccmsetup\" or InitiatingProcessFolderPath contains \":\\\\Program Files\\\\SentinelOne\\\\Sentinel Agent\")) or ((InitiatingProcessFolderPath contains \":\\\\Program Files\\\\\" and InitiatingProcessFolderPath contains \"\\\\Microsoft Office\") and InitiatingProcessFolderPath endswith \"\\\\OUTLOOK.EXE\")))) and (not((InitiatingProcessFolderPath endswith \":\\\\Program Files\\\\Citrix\\\\Receiver StoreFront\\\\Services\\\\DefaultDomainServices\\\\Citrix.DeliveryServices.DomainServices.ServiceHost.exe\" or InitiatingProcessFolderPath endswith \"\\\\LANDesk\\\\LDCLient\\\\ldapwhoami.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the creation of an \"Active Directory Schema Cache File\" (.sch) file by an uncommon tool."
+          },
+          {
+            "name": "tactics",
+            "value": "Command And Control"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1001"
+          }
+        ]
+      }
+    }
+  ]
+}

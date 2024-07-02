@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/New_Network_Trace_Capture_Started_Via_Netsh.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "New Network Trace Capture Started Via Netsh.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"trace\" and ProcessCommandLine contains \"start\") and (FolderPath endswith \"\\\\netsh.exe\" or ProcessVersionInfoOriginalFileName =~ \"netsh.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of netsh with the \"trace\" flag in order to start a network capture"
+          },
+          {
+            "name": "tactics",
+            "value": "Credential Access,Discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1040"
+          }
+        ]
+      }
+    }
+  ]
+}

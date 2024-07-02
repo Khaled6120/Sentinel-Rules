@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Custom_File_Open_Handler_Executes_PowerShell')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Custom File Open Handler Executes PowerShell",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (RegistryValueData contains \"powershell\" and RegistryValueData contains \"-command\") and RegistryKey contains \"shell\\\\open\\\\command\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the abuse of custom file open handler, executing powershell"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1202"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Console_CodePage_Lookup_Via_CHCP')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Console CodePage Lookup Via CHCP",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine endswith \"chcp\" or ProcessCommandLine endswith \"chcp \" or ProcessCommandLine endswith \"chcp  \") and FolderPath endswith \"\\\\chcp.com\" and (InitiatingProcessCommandLine contains \" -c \" or InitiatingProcessCommandLine contains \" /c \" or InitiatingProcessCommandLine contains \" -r \" or InitiatingProcessCommandLine contains \" /r \" or InitiatingProcessCommandLine contains \" -k \" or InitiatingProcessCommandLine contains \" /k \") and InitiatingProcessFolderPath endswith \"\\\\cmd.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects use of chcp to look up the system locale value as part of host discovery"
+          },
+          {
+            "name": "tactics",
+            "value": "Discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1614"
+          }
+        ]
+      }
+    }
+  ]
+}

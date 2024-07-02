@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Response_File_Execution_Via_Odbcconf.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Response File Execution Via Odbcconf.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -f \" or ProcessCommandLine contains \" /f \") and (FolderPath endswith \"\\\\odbcconf.exe\" or ProcessVersionInfoOriginalFileName =~ \"odbcconf.exe\") and ProcessCommandLine contains \".rsp\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects execution of \"odbcconf\" with the \"-f\" flag in order to load a response file which might contain a malicious action."
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

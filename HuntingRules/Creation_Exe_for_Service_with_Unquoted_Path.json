@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Creation_Exe_for_Service_with_Unquoted_Path')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Creation Exe for Service with Unquoted Path",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where FolderPath =~ \"C:\\\\program.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Adversaries may execute their own malicious payloads by hijacking vulnerable file path references.\nAdversaries can take advantage of paths that lack surrounding quotations by placing an executable in a higher level directory within the path, so that Wind"
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1547"
+          }
+        ]
+      }
+    }
+  ]
+}

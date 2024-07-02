@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Sticky_Key_Like_Backdoor_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Sticky Key Like Backdoor Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"sethc.exe\" or ProcessCommandLine contains \"utilman.exe\" or ProcessCommandLine contains \"osk.exe\" or ProcessCommandLine contains \"Magnify.exe\" or ProcessCommandLine contains \"Narrator.exe\" or ProcessCommandLine contains \"DisplaySwitch.exe\") and (FolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\cscript.exe\" or FolderPath endswith \"\\\\mshta.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\regsvr32.exe\" or FolderPath endswith \"\\\\rundll32.exe\" or FolderPath endswith \"\\\\wscript.exe\" or FolderPath endswith \"\\\\wt.exe\") and InitiatingProcessFolderPath endswith \"\\\\winlogon.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the usage and installation of a backdoor that uses an option to register a malicious debugger for built-in tools that are accessible in the login screen"
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence,Privilege Escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

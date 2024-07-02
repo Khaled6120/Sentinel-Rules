@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Hypervisor_Enforced_Code_Integrity_Disabled')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Hypervisor Enforced Code Integrity Disabled",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryValueData =~ \"DWORD (0x00000000)\" and ActionType =~ \"RegistryValueSet\" and (RegistryKey endswith \"\\\\Microsoft\\\\Windows\\\\DeviceGuard\\\\HypervisorEnforcedCodeIntegrity\" or RegistryKey endswith \"\\\\Control\\\\DeviceGuard\\\\HypervisorEnforcedCodeIntegrity\" or RegistryKey endswith \"\\\\Control\\\\DeviceGuard\\\\Scenarios\\\\HypervisorEnforcedCodeIntegrity\\\\Enabled\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects changes to the HypervisorEnforcedCodeIntegrity registry key and the \"Enabled\" value being set to 0 in order to disable the Hypervisor Enforced Code Integrity feature. This allows an attacker to load unsigned and untrusted code to be run in the ke"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

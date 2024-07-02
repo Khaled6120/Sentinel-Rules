@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Mftrace.EXE_Abuse')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Mftrace.EXE Abuse",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where InitiatingProcessFolderPath endswith \"\\\\mftrace.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects child processes of the \"Trace log generation tool for Media Foundation Tools\" (Mftrace.exe) which can abused to execute arbitrary binaries."
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1127"
+          }
+        ]
+      }
+    }
+  ]
+}

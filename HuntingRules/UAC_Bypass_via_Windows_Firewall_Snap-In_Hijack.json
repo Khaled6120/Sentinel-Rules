@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/UAC_Bypass_via_Windows_Firewall_Snap-In_Hijack')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "UAC Bypass via Windows Firewall Snap-In Hijack",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (InitiatingProcessCommandLine contains \"WF.msc\" and InitiatingProcessFolderPath endswith \"\\\\mmc.exe\") and (not(FolderPath endswith \"\\\\WerFault.exe\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects attempts to bypass User Account Control (UAC) by hijacking the Microsoft Management Console (MMC) Windows Firewall snap-in"
+          },
+          {
+            "name": "tactics",
+            "value": "Privilege Escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1548"
+          }
+        ]
+      }
+    }
+  ]
+}

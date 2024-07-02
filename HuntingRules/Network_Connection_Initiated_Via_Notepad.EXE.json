@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Network_Connection_Initiated_Via_Notepad.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Network Connection Initiated Via Notepad.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceNetworkEvents\n| where InitiatingProcessFolderPath endswith \"\\\\notepad.exe\" and (not(RemotePort == 9100))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects a network connection that is initiated by the \"notepad.exe\" process.\nThis might be a sign of process injection from a beacon process or something similar.\nNotepad rarely initiates a network communication except when printing documents for example"
+          },
+          {
+            "name": "tactics",
+            "value": "Command And Control,Defense Evasion,Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1055"
+          }
+        ]
+      }
+    }
+  ]
+}

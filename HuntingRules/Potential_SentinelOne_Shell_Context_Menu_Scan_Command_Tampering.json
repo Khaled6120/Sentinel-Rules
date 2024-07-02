@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_SentinelOne_Shell_Context_Menu_Scan_Command_Tampering')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential SentinelOne Shell Context Menu Scan Command Tampering",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryKey contains \"\\\\shell\\\\SentinelOneScan\\\\command\" and (not(((InitiatingProcessFolderPath endswith \"C:\\\\Program Files\\\\SentinelOne\\\\\" or InitiatingProcessFolderPath endswith \"C:\\\\Program Files (x86)\\\\SentinelOne\\\\\") or (RegistryValueData contains \"\\\\SentinelScanFromContextMenu.exe\" and (RegistryValueData startswith \"C:\\\\Program Files\\\\SentinelOne\\\\Sentinel Agent\" or RegistryValueData startswith \"C:\\\\Program Files (x86)\\\\SentinelOne\\\\Sentinel Agent\")))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potentially suspicious changes to the SentinelOne context menu scan command by a process other than SentinelOne."
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          }
+        ]
+      }
+    }
+  ]
+}

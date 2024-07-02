@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Registry_Modification_Via_Regini.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Registry Modification Via Regini.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\regini.exe\" or ProcessVersionInfoOriginalFileName =~ \"REGINI.EXE\") and (not(ProcessCommandLine matches regex \":[^ \\\\\\\\]\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of regini.exe which can be used to modify registry keys, the changes are imported from one or more text files."
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112"
+          }
+        ]
+      }
+    }
+  ]
+}

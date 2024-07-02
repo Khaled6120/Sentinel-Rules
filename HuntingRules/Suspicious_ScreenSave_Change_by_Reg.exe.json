@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_ScreenSave_Change_by_Reg.exe')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious ScreenSave Change by Reg.exe",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"HKEY_CURRENT_USER\\\\Control Panel\\\\Desktop\" or ProcessCommandLine contains \"HKCU\\\\Control Panel\\\\Desktop\") and FolderPath endswith \"\\\\reg.exe\") and ((ProcessCommandLine contains \"/v ScreenSaveActive\" and ProcessCommandLine contains \"/t REG_SZ\" and ProcessCommandLine contains \"/d 1\" and ProcessCommandLine contains \"/f\") or (ProcessCommandLine contains \"/v ScreenSaveTimeout\" and ProcessCommandLine contains \"/t REG_SZ\" and ProcessCommandLine contains \"/d \" and ProcessCommandLine contains \"/f\") or (ProcessCommandLine contains \"/v ScreenSaverIsSecure\" and ProcessCommandLine contains \"/t REG_SZ\" and ProcessCommandLine contains \"/d 0\" and ProcessCommandLine contains \"/f\") or (ProcessCommandLine contains \"/v SCRNSAVE.EXE\" and ProcessCommandLine contains \"/t REG_SZ\" and ProcessCommandLine contains \"/d \" and ProcessCommandLine contains \".scr\" and ProcessCommandLine contains \"/f\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Adversaries may establish persistence by executing malicious content triggered by user inactivity.\nScreensavers are programs that execute after a configurable time of user inactivity and consist of Portable Executable (PE) files with a .scr file extensio"
+          },
+          {
+            "name": "tactics",
+            "value": "Privilege Escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

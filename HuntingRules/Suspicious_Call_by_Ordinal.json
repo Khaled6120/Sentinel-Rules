@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Call_by_Ordinal')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Call by Ordinal",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \",#\" or ProcessCommandLine contains \", #\" or ProcessCommandLine contains \".dll #\" or ProcessCommandLine contains \".ocx #\") and (FolderPath endswith \"\\\\rundll32.exe\" or ProcessVersionInfoOriginalFileName =~ \"RUNDLL32.EXE\")) and (not(((ProcessCommandLine contains \"EDGEHTML.dll\" and ProcessCommandLine contains \"#141\") or ((ProcessCommandLine contains \"\\\\FileTracker32.dll,#1\" or ProcessCommandLine contains \"\\\\FileTracker32.dll\\\",#1\" or ProcessCommandLine contains \"\\\\FileTracker64.dll,#1\" or ProcessCommandLine contains \"\\\\FileTracker64.dll\\\",#1\") and (InitiatingProcessFolderPath contains \"\\\\Msbuild\\\\Current\\\\Bin\\\\\" or InitiatingProcessFolderPath contains \"\\\\VC\\\\Tools\\\\MSVC\\\\\" or InitiatingProcessFolderPath contains \"\\\\Tracker.exe\")))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious calls of DLLs in rundll32.dll exports by ordinal"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

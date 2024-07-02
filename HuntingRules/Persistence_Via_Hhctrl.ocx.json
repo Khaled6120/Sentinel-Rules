@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Persistence_Via_Hhctrl.ocx')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Persistence Via Hhctrl.ocx",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryKey contains \"\\\\CLSID\\\\{52A2AAAE-085D-4187-97EA-8C30DB990436}\\\\InprocServer32\\\\(Default)\" and (not(RegistryValueData =~ \"C:\\\\Windows\\\\System32\\\\hhctrl.ocx\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects when an attacker modifies the registry value of the \"hhctrl\" to point to a custom binary"
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          }
+        ]
+      }
+    }
+  ]
+}

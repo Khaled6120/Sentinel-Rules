@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Persistence_Via_Excel_Add-in_-_Registry')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Persistence Via Excel Add-in - Registry",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryValueData endswith \".xll\" and RegistryValueData startswith \"/R \" and RegistryKey contains \"Software\\\\Microsoft\\\\Office\" and RegistryKey endswith \"\\\\Excel\\\\Options\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detect potential persistence via the creation of an excel add-in (XLL) file to make it run automatically when Excel is started."
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1137"
+          }
+        ]
+      }
+    }
+  ]
+}

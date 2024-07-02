@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_FromBase64String_Usage_On_Gzip_Archive_-_Process_Creation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious FromBase64String Usage On Gzip Archive - Process Creation",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"FromBase64String\" and ProcessCommandLine contains \"MemoryStream\" and ProcessCommandLine contains \"H4sI\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects attempts of decoding a base64 Gzip archive via PowerShell. This technique is often used as a method to load malicious content into memory afterward."
+          },
+          {
+            "name": "tactics",
+            "value": "Command And Control"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1132"
+          }
+        ]
+      }
+    }
+  ]
+}

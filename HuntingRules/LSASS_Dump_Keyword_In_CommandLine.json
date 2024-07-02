@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/LSASS_Dump_Keyword_In_CommandLine')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "LSASS Dump Keyword In CommandLine",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"lsass.dmp\" or ProcessCommandLine contains \"lsass.zip\" or ProcessCommandLine contains \"lsass.rar\" or ProcessCommandLine contains \"Andrew.dmp\" or ProcessCommandLine contains \"Coredump.dmp\" or ProcessCommandLine contains \"NotLSASS.zip\" or ProcessCommandLine contains \"lsass_2\" or ProcessCommandLine contains \"lsassdump\" or ProcessCommandLine contains \"lsassdmp\") or (ProcessCommandLine contains \"lsass\" and ProcessCommandLine contains \".dmp\") or (ProcessCommandLine contains \"SQLDmpr\" and ProcessCommandLine contains \".mdmp\") or (ProcessCommandLine contains \"nanodump\" and ProcessCommandLine contains \".dmp\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the presence of the keywords \"lsass\" and \".dmp\" in the commandline, which could indicate a potential attempt to dump or create a dump of the lsass process.\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Credential Access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1003"
+          }
+        ]
+      }
+    }
+  ]
+}

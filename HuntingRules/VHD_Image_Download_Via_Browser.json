@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/VHD_Image_Download_Via_Browser')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "VHD Image Download Via Browser",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where (InitiatingProcessFolderPath endswith \"\\\\brave.exe\" or InitiatingProcessFolderPath endswith \"\\\\chrome.exe\" or InitiatingProcessFolderPath endswith \"\\\\firefox.exe\" or InitiatingProcessFolderPath endswith \"\\\\iexplore.exe\" or InitiatingProcessFolderPath endswith \"\\\\maxthon.exe\" or InitiatingProcessFolderPath endswith \"\\\\MicrosoftEdge.exe\" or InitiatingProcessFolderPath endswith \"\\\\msedge.exe\" or InitiatingProcessFolderPath endswith \"\\\\msedgewebview2.exe\" or InitiatingProcessFolderPath endswith \"\\\\opera.exe\" or InitiatingProcessFolderPath endswith \"\\\\safari.exe\" or InitiatingProcessFolderPath endswith \"\\\\seamonkey.exe\" or InitiatingProcessFolderPath endswith \"\\\\vivaldi.exe\" or InitiatingProcessFolderPath endswith \"\\\\whale.exe\") and FolderPath contains \".vhd\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects creation of \".vhd\"/\".vhdx\" files by browser processes.\nMalware can use mountable Virtual Hard Disk \".vhd\" files to encapsulate payloads and evade security controls.\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Resource Development"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1587"
+          }
+        ]
+      }
+    }
+  ]
+}

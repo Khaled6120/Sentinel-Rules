@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/PUA_-_Wsudo_Suspicious_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "PUA - Wsudo Suspicious Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-u System\" or ProcessCommandLine contains \"-uSystem\" or ProcessCommandLine contains \"-u TrustedInstaller\" or ProcessCommandLine contains \"-uTrustedInstaller\" or ProcessCommandLine contains \" --ti \") or (FolderPath endswith \"\\\\wsudo.exe\" or ProcessVersionInfoOriginalFileName =~ \"wsudo.exe\" or ProcessVersionInfoFileDescription =~ \"Windows sudo utility\" or InitiatingProcessFolderPath endswith \"\\\\wsudo-bridge.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects usage of wsudo (Windows Sudo Utility). Which is a tool that let the user execute programs with different permissions (System, Trusted Installer, Administrator...etc)"
+          },
+          {
+            "name": "tactics",
+            "value": "Execution,Privilege Escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

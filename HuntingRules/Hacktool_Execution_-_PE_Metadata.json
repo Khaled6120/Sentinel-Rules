@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Hacktool_Execution_-_PE_Metadata')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Hacktool Execution - PE Metadata",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessVersionInfoCompanyName =~ \"Cube0x0\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of different Windows based hacktools via PE metadata (company, product, etc.) even if the files have been renamed"
+          },
+          {
+            "name": "tactics",
+            "value": "Credential Access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1003,T1588"
+          }
+        ]
+      }
+    }
+  ]
+}

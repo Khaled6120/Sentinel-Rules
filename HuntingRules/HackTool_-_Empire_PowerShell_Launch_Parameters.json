@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/HackTool_-_Empire_PowerShell_Launch_Parameters')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "HackTool - Empire PowerShell Launch Parameters",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \" -NoP -sta -NonI -W Hidden -Enc \" or ProcessCommandLine contains \" -noP -sta -w 1 -enc \" or ProcessCommandLine contains \" -NoP -NonI -W Hidden -enc \" or ProcessCommandLine contains \" -noP -sta -w 1 -enc\" or ProcessCommandLine contains \" -enc  SQB\" or ProcessCommandLine contains \" -nop -exec bypass -EncodedCommand \"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious powershell command line parameters used in Empire"
+          },
+          {
+            "name": "tactics",
+            "value": "Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

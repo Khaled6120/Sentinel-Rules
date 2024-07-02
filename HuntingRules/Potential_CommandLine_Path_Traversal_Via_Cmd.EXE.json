@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_CommandLine_Path_Traversal_Via_Cmd.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential CommandLine Path Traversal Via Cmd.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (((InitiatingProcessCommandLine contains \"/c\" or InitiatingProcessCommandLine contains \"/k\" or InitiatingProcessCommandLine contains \"/r\") or (ProcessCommandLine contains \"/c\" or ProcessCommandLine contains \"/k\" or ProcessCommandLine contains \"/r\")) and (InitiatingProcessFolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\cmd.exe\" or ProcessVersionInfoOriginalFileName =~ \"cmd.exe\") and (InitiatingProcessCommandLine =~ \"/../../\" or ProcessCommandLine contains \"/../../\")) and (not(ProcessCommandLine contains \"\\\\Tasktop\\\\keycloak\\\\bin\\\\/../../jre\\\\bin\\\\java\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potential path traversal attempt via cmd.exe. Could indicate possible command/argument confusion/hijacking"
+          },
+          {
+            "name": "tactics",
+            "value": "Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

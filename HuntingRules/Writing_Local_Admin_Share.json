@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Writing_Local_Admin_Share')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Writing Local Admin Share",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where FolderPath contains \"\\\\\\\\127.0.0\" and FolderPath contains \"\\\\ADMIN$\\\\\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Aversaries may use to interact with a remote network share using Server Message Block (SMB).\nThis technique is used by post-exploitation frameworks.\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Lateral Movement"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

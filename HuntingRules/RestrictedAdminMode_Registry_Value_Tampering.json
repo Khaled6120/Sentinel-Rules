@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/RestrictedAdminMode_Registry_Value_Tampering')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "RestrictedAdminMode Registry Value Tampering",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryKey endswith \"System\\\\CurrentControlSet\\\\Control\\\\Lsa\\\\DisableRestrictedAdmin\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects changes to the \"DisableRestrictedAdmin\" registry value in order to disable or enable RestrictedAdmin mode.\nRestrictedAdmin mode prevents the transmission of reusable credentials to the remote system to which you connect using Remote Desktop.\nThis"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112"
+          }
+        ]
+      }
+    }
+  ]
+}

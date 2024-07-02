@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_NTLM_Coercion_Via_Certutil.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential NTLM Coercion Via Certutil.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -syncwithWU \" and ProcessCommandLine contains \" \\\\\\\\\") and (FolderPath endswith \"\\\\certutil.exe\" or ProcessVersionInfoOriginalFileName =~ \"CertUtil.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects possible NTLM coercion via certutil using the 'syncwithWU' flag"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

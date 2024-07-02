@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potentially_Suspicious_ODBC_Driver_Registered')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potentially Suspicious ODBC Driver Registered",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (RegistryValueData contains \":\\\\PerfLogs\\\\\" or RegistryValueData contains \":\\\\ProgramData\\\\\" or RegistryValueData contains \":\\\\Temp\\\\\" or RegistryValueData contains \":\\\\Users\\\\Public\\\\\" or RegistryValueData contains \":\\\\Windows\\\\Registration\\\\CRMLog\" or RegistryValueData contains \":\\\\Windows\\\\System32\\\\com\\\\dmp\\\\\" or RegistryValueData contains \":\\\\Windows\\\\System32\\\\FxsTmp\\\\\" or RegistryValueData contains \":\\\\Windows\\\\System32\\\\Microsoft\\\\Crypto\\\\RSA\\\\MachineKeys\\\\\" or RegistryValueData contains \":\\\\Windows\\\\System32\\\\spool\\\\drivers\\\\color\\\\\" or RegistryValueData contains \":\\\\Windows\\\\System32\\\\spool\\\\PRINTERS\\\\\" or RegistryValueData contains \":\\\\Windows\\\\System32\\\\spool\\\\SERVERS\\\\\" or RegistryValueData contains \":\\\\Windows\\\\System32\\\\Tasks_Migrated\\\\\" or RegistryValueData contains \":\\\\Windows\\\\System32\\\\Tasks\\\\Microsoft\\\\Windows\\\\SyncCenter\\\\\" or RegistryValueData contains \":\\\\Windows\\\\SysWOW64\\\\com\\\\dmp\\\\\" or RegistryValueData contains \":\\\\Windows\\\\SysWOW64\\\\FxsTmp\\\\\" or RegistryValueData contains \":\\\\Windows\\\\SysWOW64\\\\Tasks\\\\Microsoft\\\\Windows\\\\PLA\\\\System\\\\\" or RegistryValueData contains \":\\\\Windows\\\\SysWOW64\\\\Tasks\\\\Microsoft\\\\Windows\\\\SyncCenter\\\\\" or RegistryValueData contains \":\\\\Windows\\\\Tasks\\\\\" or RegistryValueData contains \":\\\\Windows\\\\Temp\\\\\" or RegistryValueData contains \":\\\\Windows\\\\Tracing\\\\\" or RegistryValueData contains \"\\\\AppData\\\\Local\\\\Temp\\\\\" or RegistryValueData contains \"\\\\AppData\\\\Roaming\\\\\") and RegistryKey contains \"\\\\SOFTWARE\\\\ODBC\\\\ODBCINST.INI\" and (RegistryKey endswith \"\\\\Driver\" or RegistryKey endswith \"\\\\Setup\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the registration of a new ODBC driver where the driver is located in a potentially suspicious location"
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1003"
+          }
+        ]
+      }
+    }
+  ]
+}

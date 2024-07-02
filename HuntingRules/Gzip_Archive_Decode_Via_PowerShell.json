@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Gzip_Archive_Decode_Via_PowerShell')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Gzip Archive Decode Via PowerShell",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"GZipStream\" and ProcessCommandLine contains \"::Decompress\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects attempts of decoding encoded Gzip archives via PowerShell."
+          },
+          {
+            "name": "tactics",
+            "value": "Command And Control"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1132"
+          }
+        ]
+      }
+    }
+  ]
+}

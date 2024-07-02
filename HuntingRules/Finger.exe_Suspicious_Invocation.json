@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Finger.exe_Suspicious_Invocation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Finger.exe Suspicious Invocation",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessVersionInfoOriginalFileName =~ \"finger.exe\" or FolderPath endswith \"\\\\finger.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious aged finger.exe tool execution often used in malware attacks nowadays"
+          },
+          {
+            "name": "tactics",
+            "value": "Command And Control"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1105"
+          }
+        ]
+      }
+    }
+  ]
+}

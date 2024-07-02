@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Bypass_UAC_Using_SilentCleanup_Task')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Bypass UAC Using SilentCleanup Task",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryKey endswith \"\\\\Environment\\\\windir\" and (not(RegistryValueData =~ \"%SystemRoot%\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the setting of the environement variable \"windir\" to a non default value.\nAttackers often abuse this variable in order to trigger a UAC bypass via the \"SilentCleanup\" task.\nThe SilentCleanup task located in %windir%\\system32\\cleanmgr.exe is an au"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion,Privilege Escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1548"
+          }
+        ]
+      }
+    }
+  ]
+}

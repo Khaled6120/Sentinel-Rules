@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/DNS_Exfiltration_and_Tunneling_Tools_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "DNS Exfiltration and Tunneling Tools Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\iodine.exe\" or FolderPath contains \"\\\\dnscat2\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Well-known DNS Exfiltration tools execution"
+          },
+          {
+            "name": "tactics",
+            "value": "Command And Control,Exfiltration"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1048,T1071,T1132"
+          }
+        ]
+      }
+    }
+  ]
+}

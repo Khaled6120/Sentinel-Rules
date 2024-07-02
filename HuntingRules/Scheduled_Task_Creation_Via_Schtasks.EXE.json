@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Scheduled_Task_Creation_Via_Schtasks.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Scheduled Task Creation Via Schtasks.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" /create \" and FolderPath endswith \"\\\\schtasks.exe\") and (not((AccountName contains \"AUTHORI\" or AccountName contains \"AUTORI\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the creation of scheduled tasks by user accounts via the \"schtasks\" utility."
+          },
+          {
+            "name": "tactics",
+            "value": "Execution,Persistence,Privilege Escalation,S0111"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1053"
+          }
+        ]
+      }
+    }
+  ]
+}

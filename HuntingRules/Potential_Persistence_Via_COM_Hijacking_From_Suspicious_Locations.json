@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Persistence_Via_COM_Hijacking_From_Suspicious_Locations')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Persistence Via COM Hijacking From Suspicious Locations",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (RegistryValueData contains \"\\\\AppData\\\\Local\\\\Temp\\\\\" or RegistryValueData contains \"\\\\Desktop\\\\\" or RegistryValueData contains \"\\\\Downloads\\\\\" or RegistryValueData contains \"\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\Startup\\\\\" or RegistryValueData contains \"\\\\System32\\\\spool\\\\drivers\\\\color\\\\\" or RegistryValueData contains \"\\\\Users\\\\Public\\\\\" or RegistryValueData contains \"\\\\Windows\\\\Temp\\\\\" or RegistryValueData contains \"%appdata%\" or RegistryValueData contains \"%temp%\" or RegistryValueData contains \"%tmp%\") and RegistryKey contains \"\\\\CLSID\" and (RegistryKey endswith \"\\\\InprocServer32\\\\(Default)\" or RegistryKey endswith \"\\\\LocalServer32\\\\(Default)\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potential COM object hijacking where the \"Server\" (In/Out) is pointing to a suspicious or unsuale location"
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

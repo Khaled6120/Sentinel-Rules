@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_File_Event_With_Teams_Objects')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious File Event With Teams Objects",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where (FolderPath contains \"\\\\Microsoft\\\\Teams\\\\Cookies\" or FolderPath contains \"\\\\Microsoft\\\\Teams\\\\Local Storage\\\\leveldb\") and (not(InitiatingProcessFolderPath contains \"\\\\Microsoft\\\\Teams\\\\current\\\\Teams.exe\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects an access to authentication tokens and accounts of Microsoft Teams desktop application."
+          },
+          {
+            "name": "tactics",
+            "value": "Credential Access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1528"
+          }
+        ]
+      }
+    }
+  ]
+}

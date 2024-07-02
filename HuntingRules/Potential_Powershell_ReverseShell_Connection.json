@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Powershell_ReverseShell_Connection')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Powershell ReverseShell Connection",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \" Net.Sockets.TCPClient\" and ProcessCommandLine contains \".GetStream(\" and ProcessCommandLine contains \".Write(\") and ((ProcessVersionInfoOriginalFileName in~ (\"PowerShell.EXE\", \"pwsh.dll\")) or (FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects usage of the \"TcpClient\" class. Which can be abused to establish remote connections and reverse-shells. As seen used by the Nishang \"Invoke-PowerShellTcpOneLine\" reverse shell and other."
+          },
+          {
+            "name": "tactics",
+            "value": "Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

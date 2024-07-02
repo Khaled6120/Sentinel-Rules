@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Lsass_Full_Dump_Request_Via_DumpType_Registry_Settings')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Lsass Full Dump Request Via DumpType Registry Settings",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryValueData =~ \"DWORD (0x00000002)\" and (RegistryKey contains \"\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\Windows Error Reporting\\\\LocalDumps\\\\DumpType\" or RegistryKey contains \"\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\Windows Error Reporting\\\\LocalDumps\\\\lsass.exe\\\\DumpType\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the setting of the \"DumpType\" registry value to \"2\" which stands for a \"Full Dump\". Technique such as LSASS Shtinkering requires this value to be \"2\" in order to dump LSASS."
+          },
+          {
+            "name": "tactics",
+            "value": "Credential Access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1003"
+          }
+        ]
+      }
+    }
+  ]
+}

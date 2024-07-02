@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Usage_of_Renamed_Sysinternals_Tools_-_RegistrySet')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Usage of Renamed Sysinternals Tools - RegistrySet",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where ((RegistryKey contains \"\\\\PsExec\" or RegistryKey contains \"\\\\ProcDump\" or RegistryKey contains \"\\\\Handle\" or RegistryKey contains \"\\\\LiveKd\" or RegistryKey contains \"\\\\Process Explorer\" or RegistryKey contains \"\\\\PsLoglist\" or RegistryKey contains \"\\\\PsPasswd\" or RegistryKey contains \"\\\\Active Directory Explorer\") and RegistryKey endswith \"\\\\EulaAccepted\") and (not((InitiatingProcessFolderPath endswith \"\\\\PsExec.exe\" or InitiatingProcessFolderPath endswith \"\\\\PsExec64.exe\" or InitiatingProcessFolderPath endswith \"\\\\procdump.exe\" or InitiatingProcessFolderPath endswith \"\\\\procdump64.exe\" or InitiatingProcessFolderPath endswith \"\\\\handle.exe\" or InitiatingProcessFolderPath endswith \"\\\\handle64.exe\" or InitiatingProcessFolderPath endswith \"\\\\livekd.exe\" or InitiatingProcessFolderPath endswith \"\\\\livekd64.exe\" or InitiatingProcessFolderPath endswith \"\\\\procexp.exe\" or InitiatingProcessFolderPath endswith \"\\\\procexp64.exe\" or InitiatingProcessFolderPath endswith \"\\\\psloglist.exe\" or InitiatingProcessFolderPath endswith \"\\\\psloglist64.exe\" or InitiatingProcessFolderPath endswith \"\\\\pspasswd.exe\" or InitiatingProcessFolderPath endswith \"\\\\pspasswd64.exe\" or InitiatingProcessFolderPath endswith \"\\\\ADExplorer.exe\" or InitiatingProcessFolderPath endswith \"\\\\ADExplorer64.exe\"))) and (not(isnull(InitiatingProcessFolderPath)))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects non-sysinternals tools setting the \"accepteula\" key which normally is set on sysinternals tool execution"
+          },
+          {
+            "name": "tactics",
+            "value": "Resource Development"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1588"
+          }
+        ]
+      }
+    }
+  ]
+}

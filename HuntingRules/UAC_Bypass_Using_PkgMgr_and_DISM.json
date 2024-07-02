@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/UAC_Bypass_Using_PkgMgr_and_DISM')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "UAC Bypass Using PkgMgr and DISM",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\dism.exe\" and (ProcessIntegrityLevel in~ (\"High\", \"System\")) and InitiatingProcessFolderPath endswith \"\\\\pkgmgr.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the pattern of UAC Bypass using pkgmgr.exe and dism.exe (UACMe 23)"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion,Privilege Escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1548"
+          }
+        ]
+      }
+    }
+  ]
+}

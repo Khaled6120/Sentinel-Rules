@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Prefetch_File_Deleted')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Prefetch File Deleted",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where (FolderPath contains \":\\\\Windows\\\\Prefetch\\\\\" and FolderPath endswith \".pf\") and (not((InitiatingProcessFolderPath endswith \":\\\\windows\\\\system32\\\\svchost.exe\" and (RequestAccountName contains \"AUTHORI\" or RequestAccountName contains \"AUTORI\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the deletion of a prefetch file which may indicate an attempt to destroy forensic evidence"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1070"
+          }
+        ]
+      }
+    }
+  ]
+}

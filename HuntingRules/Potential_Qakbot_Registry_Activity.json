@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Qakbot_Registry_Activity')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Qakbot Registry Activity",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryKey endswith \"\\\\Software\\\\firm\\\\soft\\\\Name\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects a registry key used by IceID in a campaign that distributes malicious OneNote files"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112"
+          }
+        ]
+      }
+    }
+  ]
+}

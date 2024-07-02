@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Windows_Spooler_Service_Suspicious_Binary_Load')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Windows Spooler Service Suspicious Binary Load",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where (FolderPath contains \"\\\\Windows\\\\System32\\\\spool\\\\drivers\\\\x64\\\\3\\\\\" or FolderPath contains \"\\\\Windows\\\\System32\\\\spool\\\\drivers\\\\x64\\\\4\\\\\") and FolderPath endswith \".dll\" and InitiatingProcessFolderPath endswith \"\\\\spoolsv.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detect DLL Load from Spooler Service backup folder"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion,Persistence,Privilege Escalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/New_DLL_Registered_Via_Odbcconf.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "New DLL Registered Via Odbcconf.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"REGSVR \" and ProcessCommandLine contains \".dll\") and (FolderPath endswith \"\\\\odbcconf.exe\" or ProcessVersionInfoOriginalFileName =~ \"odbcconf.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects execution of \"odbcconf\" with \"REGSVR\" in order to register a new DLL (equivalent to running regsvr32). Attackers abuse this to install and run malicious DLLs."
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

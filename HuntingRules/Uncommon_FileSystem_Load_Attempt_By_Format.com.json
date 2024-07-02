@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Uncommon_FileSystem_Load_Attempt_By_Format.com')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Uncommon FileSystem Load Attempt By Format.com",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"/fs:\" and FolderPath endswith \"\\\\format.com\") and (not((ProcessCommandLine contains \"/fs:exFAT\" or ProcessCommandLine contains \"/fs:FAT\" or ProcessCommandLine contains \"/fs:NTFS\" or ProcessCommandLine contains \"/fs:ReFS\" or ProcessCommandLine contains \"/fs:UDF\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the execution of format.com with an uncommon filesystem selection that could indicate a defense evasion activity in which \"format.com\" is used to load malicious DLL files or other programs.\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          }
+        ]
+      }
+    }
+  ]
+}

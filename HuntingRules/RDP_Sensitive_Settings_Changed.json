@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/RDP_Sensitive_Settings_Changed')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "RDP Sensitive Settings Changed",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where ((RegistryValueData in~ (\"DWORD (0x00000001)\", \"DWORD (0x00000002)\", \"DWORD (0x00000003)\", \"DWORD (0x00000004)\")) and (RegistryKey contains \"\\\\Control\\\\Terminal Server\" or RegistryKey contains \"\\\\Windows NT\\\\Terminal Services\") and RegistryKey endswith \"\\\\Shadow\") or (RegistryValueData =~ \"DWORD (0x00000001)\" and (RegistryKey contains \"\\\\Control\\\\Terminal Server\" or RegistryKey contains \"\\\\Windows NT\\\\Terminal Services\") and (RegistryKey endswith \"\\\\DisableRemoteDesktopAntiAlias\" or RegistryKey endswith \"\\\\DisableSecuritySettings\" or RegistryKey endswith \"\\\\fAllowUnsolicited\" or RegistryKey endswith \"\\\\fAllowUnsolicitedFullControl\")) or (RegistryKey contains \"\\\\Control\\\\Terminal Server\\\\InitialProgram\" or RegistryKey contains \"\\\\Control\\\\Terminal Server\\\\WinStations\\\\RDP-Tcp\\\\InitialProgram\" or RegistryKey contains \"\\\\services\\\\TermService\\\\Parameters\\\\ServiceDll\" or RegistryKey contains \"\\\\Windows NT\\\\Terminal Services\\\\InitialProgram\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects tampering of RDP Terminal Service/Server sensitive settings.\nSuch as allowing unauthorized users access to a system via the 'fAllowUnsolicited' or enabling RDP via 'fDenyTSConnections'...etc\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion,Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112"
+          }
+        ]
+      }
+    }
+  ]
+}

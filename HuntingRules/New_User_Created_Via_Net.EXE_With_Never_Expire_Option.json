@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/New_User_Created_Via_Net.EXE_With_Never_Expire_Option')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "New User Created Via Net.EXE With Never Expire Option",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"user\" and ProcessCommandLine contains \"add\" and ProcessCommandLine contains \"expires:never\") and ((FolderPath endswith \"\\\\net.exe\" or FolderPath endswith \"\\\\net1.exe\") or (ProcessVersionInfoOriginalFileName in~ (\"net.exe\", \"net1.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects creation of local users via the net.exe command with the option \"never expire\""
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1136"
+          }
+        ]
+      }
+    }
+  ]
+}

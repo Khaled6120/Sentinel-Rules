@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/PUA_-_DefenderCheck_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "PUA - DefenderCheck Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where FolderPath endswith \"\\\\DefenderCheck.exe\" or ProcessVersionInfoFileDescription =~ \"DefenderCheck\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the use of DefenderCheck, a tool to evaluate the signatures used in Microsoft Defender. It can be used to figure out the strings / byte chains used in Microsoft Defender to detect a tool and thus used for AV evasion."
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1027"
+          }
+        ]
+      }
+    }
+  ]
+}

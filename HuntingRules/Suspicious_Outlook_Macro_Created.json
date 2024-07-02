@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Outlook_Macro_Created')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Outlook Macro Created",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where FolderPath endswith \"\\\\Microsoft\\\\Outlook\\\\VbaProject.OTM\" and (not(InitiatingProcessFolderPath endswith \"\\\\outlook.exe\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the creation of a macro file for Outlook."
+          },
+          {
+            "name": "tactics",
+            "value": "Command And Control,Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1008,T1137,T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

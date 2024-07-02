@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Reg_Add_Suspicious_Paths')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Reg Add Suspicious Paths",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"\\\\AppDataLow\\\\Software\\\\Microsoft\\\\\" or ProcessCommandLine contains \"\\\\Policies\\\\Microsoft\\\\Windows\\\\OOBE\" or ProcessCommandLine contains \"\\\\Policies\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\" or ProcessCommandLine contains \"\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\Currentversion\\\\Winlogon\" or ProcessCommandLine contains \"\\\\CurrentControlSet\\\\Control\\\\SecurityProviders\\\\WDigest\" or ProcessCommandLine contains \"\\\\Microsoft\\\\Windows Defender\\\\\") and (FolderPath endswith \"\\\\reg.exe\" or ProcessVersionInfoOriginalFileName =~ \"reg.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects when an adversary uses the reg.exe utility to add or modify new keys or subkeys"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112,T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

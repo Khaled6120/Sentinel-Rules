@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Uninstall_Crowdstrike_Falcon_Sensor')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Uninstall Crowdstrike Falcon Sensor",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessCommandLine contains \"\\\\WindowsSensor.exe\" and ProcessCommandLine contains \" /uninstall\" and ProcessCommandLine contains \" /quiet\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Adversaries may disable security tools to avoid possible detection of their tools and activities by uninstalling Crowdstrike Falcon"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1562"
+          }
+        ]
+      }
+    }
+  ]
+}

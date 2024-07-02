@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Persistence_Via_Custom_Protocol_Handler')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Persistence Via Custom Protocol Handler",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (RegistryValueData startswith \"URL:\" and RegistryKey startswith \"HKEY_LOCAL_MACHINE\\\\CLASSES\") and (not(((InitiatingProcessFolderPath startswith \"C:\\\\Program Files (x86)\" or InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\System32\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\SysWOW64\\\\\") or RegistryValueData startswith \"URL:ms-\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potential persistence activity via the registering of a new custom protocole handlers. While legitimate applications register protocole handlers often times during installation. And attacker can abuse this by setting a custom handler to be used a"
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112"
+          }
+        ]
+      }
+    }
+  ]
+}

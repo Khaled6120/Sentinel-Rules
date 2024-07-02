@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/ISO_or_Image_Mount_Indicator_in_Recent_Files')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "ISO or Image Mount Indicator in Recent Files",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where FolderPath contains \"\\\\Microsoft\\\\Windows\\\\Recent\\\\\" and (FolderPath endswith \".iso.lnk\" or FolderPath endswith \".img.lnk\" or FolderPath endswith \".vhd.lnk\" or FolderPath endswith \".vhdx.lnk\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the creation of recent element file that points to an .ISO, .IMG, .VHD or .VHDX file as often used in phishing attacks.\nThis can be a false positive on server systems but on workstations users should rarely mount .iso or .img files.\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Initial Access"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1566"
+          }
+        ]
+      }
+    }
+  ]
+}

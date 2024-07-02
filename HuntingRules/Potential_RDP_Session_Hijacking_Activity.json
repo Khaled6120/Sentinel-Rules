@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_RDP_Session_Hijacking_Activity')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential RDP Session Hijacking Activity",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\tscon.exe\" or ProcessVersionInfoOriginalFileName =~ \"tscon.exe\") and ProcessIntegrityLevel =~ \"SYSTEM\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potential RDP Session Hijacking activity on Windows systems"
+          },
+          {
+            "name": "tactics",
+            "value": "Execution"
+          }
+        ]
+      }
+    }
+  ]
+}

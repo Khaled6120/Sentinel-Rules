@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Change_Winevt_Channel_Access_Permission_Via_Registry')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Change Winevt Channel Access Permission Via Registry",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where ((RegistryValueData contains \"(A;;0x1;;;LA)\" or RegistryValueData contains \"(A;;0x1;;;SY)\" or RegistryValueData contains \"(A;;0x5;;;BA)\") and RegistryKey contains \"\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\WINEVT\\\\Channels\" and RegistryKey endswith \"\\\\ChannelAccess\") and (not(((InitiatingProcessFolderPath endswith \"\\\\TiWorker.exe\" and InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\WinSxS\\\\\") or InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\servicing\\\\TrustedInstaller.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects tampering with the \"ChannelAccess\" registry key in order to change access to Windows event channel."
+          },
+          {
+            "name": "tactics",
+            "value": "Defense Evasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1562"
+          }
+        ]
+      }
+    }
+  ]
+}
