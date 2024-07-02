@@ -1,0 +1,30 @@
+name: NTDS.DIT Created
+id: 0b8baa3f-575c-46ee-8715-d6f28cc7d33c
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/05
+severity: low
+description: Detects creation of a file named "ntds.dit" (Active Directory Database)
+status: test
+modified: ''
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Credential Access
+relevantTechniques:
+- T1003
+query: 'DeviceFileEvents
+
+  | where FolderPath endswith "ntds.dit"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

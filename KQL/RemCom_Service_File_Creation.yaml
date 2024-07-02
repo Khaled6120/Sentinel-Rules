@@ -1,0 +1,32 @@
+name: RemCom Service File Creation
+id: 7eff1a7f-dd45-4c20-877a-f21e342a7611
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/08/04
+severity: medium
+description: Detects default RemCom service filename which indicates RemCom service
+  installation and execution
+status: test
+modified: ''
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Execution
+- S0029
+relevantTechniques:
+- T1569
+query: 'DeviceFileEvents
+
+  | where FolderPath endswith "\\RemComSvc.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

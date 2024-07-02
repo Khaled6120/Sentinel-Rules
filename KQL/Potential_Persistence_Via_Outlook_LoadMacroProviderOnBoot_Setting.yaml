@@ -1,0 +1,34 @@
+name: Potential Persistence Via Outlook LoadMacroProviderOnBoot Setting
+id: 396ae3eb-4174-4b9b-880e-dc0364d78a19
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2021/04/05
+severity: high
+description: Detects the modification of Outlook setting "LoadMacroProviderOnBoot"
+  which if enabled allows the automatic loading of any configured VBA project/module
+status: test
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Command And Control
+- Persistence
+relevantTechniques:
+- T1008
+- T1137
+- T1546
+query: 'DeviceRegistryEvents
+
+  | where RegistryValueData contains "0x00000001" and RegistryKey endswith "\\Outlook\\LoadMacroProviderOnBoot"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

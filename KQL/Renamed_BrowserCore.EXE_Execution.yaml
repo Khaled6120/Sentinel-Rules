@@ -1,0 +1,32 @@
+name: Renamed BrowserCore.EXE Execution
+id: 8a4519e8-e64a-40b6-ae85-ba8ad2177559
+author: Max Altgelt (Nextron Systems)
+date: 2022/06/02
+severity: high
+description: Detects process creation with a renamed BrowserCore.exe (used to extract
+  Azure tokens)
+status: test
+modified: 2023/02/03
+logsource:
+  category: process_creation
+  product: windows
+tactics: []
+relevantTechniques:
+- T1036
+- T1528
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoOriginalFileName =~ "BrowserCore.exe" and (not(FolderPath
+  endswith "\\BrowserCore.exe"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

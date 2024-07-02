@@ -1,0 +1,35 @@
+name: File Download Using ProtocolHandler.exe
+id: 104cdb48-a7a8-4ca7-a453-32942c6e5dcb
+author: frack113
+date: 2021/07/13
+severity: medium
+description: 'Detects usage of "ProtocolHandler" to download files. Downloaded files
+  will be located in the cache folder (for example - %LOCALAPPDATA%\Microsoft\Windows\INetCache\IE)
+
+  '
+status: test
+modified: 2023/11/09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "ftp://" or ProcessCommandLine contains "http://"
+  or ProcessCommandLine contains "https://") and (FolderPath endswith "\\protocolhandler.exe"
+  or ProcessVersionInfoOriginalFileName =~ "ProtocolHandler.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

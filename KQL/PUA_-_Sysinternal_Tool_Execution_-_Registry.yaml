@@ -1,0 +1,31 @@
+name: PUA - Sysinternal Tool Execution - Registry
+id: 25ffa65d-76d8-4da5-a832-3f2b0136e133
+author: Markus Neis
+date: 2017/08/28
+severity: low
+description: Detects the execution of a Sysinternals Tool via the creation of the
+  "accepteula" registry key
+status: test
+modified: 2023/02/07
+logsource:
+  category: registry_add
+  product: windows
+tactics:
+- Resource Development
+relevantTechniques:
+- T1588
+query: 'DeviceRegistryEvents
+
+  | where ActionType =~ "RegistryKeyCreated" and RegistryKey endswith "\\EulaAccepted"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

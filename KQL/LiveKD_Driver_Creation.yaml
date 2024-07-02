@@ -1,0 +1,32 @@
+name: LiveKD Driver Creation
+id: 16fe46bb-4f64-46aa-817d-ff7bec4a2352
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/05/16
+severity: medium
+description: Detects the creation of the LiveKD driver, which is used for live kernel
+  debugging
+status: test
+modified: ''
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Defense Evasion
+- Privilege Escalation
+relevantTechniques: []
+query: 'DeviceFileEvents
+
+  | where (InitiatingProcessFolderPath endswith "\\livekd.exe" or InitiatingProcessFolderPath
+  endswith "\\livek64.exe") and FolderPath =~ "C:\\Windows\\System32\\drivers\\LiveKdD.SYS"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

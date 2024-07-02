@@ -1,0 +1,35 @@
+name: HackTool - KrbRelay Execution
+id: e96253b8-6b3b-4f90-9e59-3b24b99cf9b4
+author: Florian Roth (Nextron Systems)
+date: 2022/04/27
+severity: high
+description: Detects the use of KrbRelay, a Kerberos relaying tool
+status: test
+modified: 2023/02/04
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Credential Access
+relevantTechniques:
+- T1558
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " -spn " and ProcessCommandLine contains "
+  -clsid " and ProcessCommandLine contains " -rbcd ") or (ProcessCommandLine contains
+  "shadowcred" and ProcessCommandLine contains "clsid" and ProcessCommandLine contains
+  "spn") or (ProcessCommandLine contains "spn " and ProcessCommandLine contains "session
+  " and ProcessCommandLine contains "clsid ") or (FolderPath endswith "\\KrbRelay.exe"
+  or ProcessVersionInfoOriginalFileName =~ "KrbRelay.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

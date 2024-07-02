@@ -1,0 +1,39 @@
+name: Access To Potentially Sensitive Sysvol Files By Uncommon Application
+id: d51694fe-484a-46ac-92d6-969e76d60d10
+author: frack113
+date: 2023/12/21
+severity: medium
+description: Detects file access requests to potentially sensitive files hosted on
+  the Windows Sysvol share.
+status: experimental
+modified: ''
+logsource:
+  category: file_access
+  product: windows
+tactics:
+- Credential Access
+relevantTechniques:
+- T1552
+query: 'DeviceFileEvents
+
+  | where ((FileName contains "\\sysvol\\" and FileName contains "\\Policies\\") and
+  (FileName endswith "audit.csv" or FileName endswith "Files.xml" or FileName endswith
+  "GptTmpl.inf" or FileName endswith "groups.xml" or FileName endswith "Registry.pol"
+  or FileName endswith "Registry.xml" or FileName endswith "scheduledtasks.xml" or
+  FileName endswith "scripts.ini" or FileName endswith "services.xml") and FileName
+  startswith "\\") and (not((InitiatingProcessFolderPath startswith ":\\Program Files
+  (x86)\\" or InitiatingProcessFolderPath startswith ":\\Program Files\\" or InitiatingProcessFolderPath
+  startswith ":\\Windows\\explorer.exe" or InitiatingProcessFolderPath startswith
+  ":\\Windows\\system32\\" or InitiatingProcessFolderPath startswith ":\\Windows\\SysWOW64\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -1,0 +1,32 @@
+name: IIS WebServer Access Logs Deleted
+id: 3eb8c339-a765-48cc-a150-4364c04652bf
+author: Tim Rauch (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+date: 2022/09/16
+severity: medium
+description: Detects the deletion of IIS WebServer access logs which may indicate
+  an attempt to destroy forensic evidence
+status: test
+modified: 2023/02/15
+logsource:
+  category: file_delete
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1070
+query: 'DeviceFileEvents
+
+  | where FolderPath contains "\\inetpub\\logs\\LogFiles\\" and FolderPath endswith
+  ".log"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

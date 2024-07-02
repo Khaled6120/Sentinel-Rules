@@ -1,0 +1,30 @@
+name: Devtoolslauncher.exe Executes Specified Binary
+id: cc268ac1-42d9-40fd-9ed3-8c4e1a5b87e6
+author: Beyu Denis, oscd.community (rule), @_felamos (idea)
+date: 2019/10/12
+severity: high
+description: The Devtoolslauncher.exe executes other binary
+status: test
+modified: 2021/11/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1218
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "LaunchForDeploy" and FolderPath endswith "\\devtoolslauncher.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

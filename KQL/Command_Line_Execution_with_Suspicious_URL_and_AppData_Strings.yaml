@@ -1,0 +1,35 @@
+name: Command Line Execution with Suspicious URL and AppData Strings
+id: 1ac8666b-046f-4201-8aba-1951aaec03a3
+author: Florian Roth (Nextron Systems), Jonhnathan Ribeiro, oscd.community
+date: 2019/01/16
+severity: medium
+description: Detects a suspicious command line execution that includes an URL and
+  AppData string in the command line parameters as used by several droppers (js/vbs
+  > powershell)
+status: test
+modified: 2021/11/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Command And Control
+- Execution
+relevantTechniques:
+- T1059
+- T1105
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "http" and ProcessCommandLine contains "://"
+  and ProcessCommandLine contains "%AppData%") and FolderPath endswith "\\cmd.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

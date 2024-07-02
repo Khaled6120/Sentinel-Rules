@@ -1,0 +1,35 @@
+name: Potential AMSI COM Server Hijacking
+id: 160d2780-31f7-4922-8b3a-efce30e63e96
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/01/04
+severity: high
+description: Detects changes to the AMSI come server registry key in order disable
+  AMSI scanning functionalities. When AMSI attempts to starts its COM component, it
+  will query its registered CLSID and return a non-existent COM server. This causes
+  a load failure and prevents any scanning methods from being accessed, ultimately
+  rendering AMSI useless
+status: test
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1562
+query: 'DeviceRegistryEvents
+
+  | where RegistryKey endswith "\\CLSID\\{fdb00e52-a214-4aa1-8fba-4357bb0072ec}\\InProcServer32\\(Default)"
+  and (not(RegistryValueData =~ "%windir%\\system32\\amsi.dll"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

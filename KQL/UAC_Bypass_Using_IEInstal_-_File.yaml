@@ -1,0 +1,33 @@
+name: UAC Bypass Using IEInstal - File
+id: bdd8157d-8e85-4397-bb82-f06cc9c71dbb
+author: Christian Burkard (Nextron Systems)
+date: 2021/08/30
+severity: high
+description: Detects the pattern of UAC Bypass using IEInstal.exe (UACMe 64)
+status: test
+modified: 2022/10/09
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Defense Evasion
+- Privilege Escalation
+relevantTechniques:
+- T1548
+query: 'DeviceFileEvents
+
+  | where InitiatingProcessFolderPath =~ "C:\\Program Files\\Internet Explorer\\IEInstal.exe"
+  and FolderPath contains "\\AppData\\Local\\Temp\\" and FolderPath endswith "consent.exe"
+  and FolderPath startswith "C:\\Users\\"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

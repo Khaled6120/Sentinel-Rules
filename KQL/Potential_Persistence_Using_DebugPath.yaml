@@ -1,0 +1,32 @@
+name: Potential Persistence Using DebugPath
+id: df4dc653-1029-47ba-8231-3c44238cc0ae
+author: frack113
+date: 2022/07/27
+severity: medium
+description: Detects potential persistence using Appx DebugPath
+status: test
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Persistence
+relevantTechniques:
+- T1546
+query: 'DeviceRegistryEvents
+
+  | where (RegistryKey contains "Classes\\ActivatableClasses\\Package\\Microsoft."
+  and RegistryKey endswith "\\DebugPath") or (RegistryKey contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\PackagedAppXDebug\\Microsoft."
+  and RegistryKey endswith "\\(Default)")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

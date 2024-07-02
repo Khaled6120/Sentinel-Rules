@@ -1,0 +1,31 @@
+name: Bypass UAC Using DelegateExecute
+id: 46dd5308-4572-4d12-aa43-8938f0184d4f
+author: frack113
+date: 2022/01/05
+severity: high
+description: Bypasses User Account Control using a fileless method
+status: test
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+- Privilege Escalation
+relevantTechniques:
+- T1548
+query: 'DeviceRegistryEvents
+
+  | where RegistryValueData =~ "(Empty)" and RegistryKey endswith "\\open\\command\\DelegateExecute"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

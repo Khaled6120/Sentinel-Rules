@@ -1,0 +1,34 @@
+name: Creation of an WerFault.exe in Unusual Folder
+id: 28a452f3-786c-4fd8-b8f2-bddbe9d616d1
+author: frack113
+date: 2022/05/09
+severity: high
+description: Detects WerFault copoed to a suspicious folder, which could be a sign
+  of WerFault DLL hijacking
+status: test
+modified: ''
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Defense Evasion
+- Persistence
+relevantTechniques:
+- T1574
+query: 'DeviceFileEvents
+
+  | where (FolderPath endswith "\\WerFault.exe" or FolderPath endswith "\\wer.dll")
+  and (not((FolderPath contains "\\System32\\" or FolderPath contains "\\SysWOW64\\"
+  or FolderPath contains "\\WinSxS\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

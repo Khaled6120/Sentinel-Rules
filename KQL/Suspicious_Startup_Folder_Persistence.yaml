@@ -1,0 +1,35 @@
+name: Suspicious Startup Folder Persistence
+id: 28208707-fe31-437f-9a7f-4b1108b94d2e
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/10
+severity: high
+description: Detects when a file with a suspicious extension is created in the startup
+  folder
+status: test
+modified: 2023/01/06
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Persistence
+relevantTechniques:
+- T1547
+query: 'DeviceFileEvents
+
+  | where FolderPath contains "\\Windows\\Start Menu\\Programs\\Startup\\" and (FolderPath
+  endswith ".vbs" or FolderPath endswith ".vbe" or FolderPath endswith ".bat" or FolderPath
+  endswith ".ps1" or FolderPath endswith ".hta" or FolderPath endswith ".dll" or FolderPath
+  endswith ".jar" or FolderPath endswith ".msi" or FolderPath endswith ".scr" or FolderPath
+  endswith ".cmd")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled
