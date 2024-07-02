@@ -1,0 +1,35 @@
+# Deploy Content to aljazeera-media-network-log01 [68a01498-6df6-465d-a53c-d511d939613b]
+
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    exclude:
+    - .sentinel/*
+    include:
+    - HuntingRules
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: AzurePowerShell@5
+  inputs:
+    azureSubscription: 'Sentinel_Deploy_ServiceConnection_68a01498-6df6-465d-a53c-d511d939613b'
+    ScriptType: 'FilePath'
+    ScriptPath: '.github/workflows/azureDevopsDeploymentScript.ps1'
+    ScriptArguments: 
+      -ResourceGroupName 'aljazeera_media_network_logworkspace'
+      -ContentTypes 'Workbook,Playbook,Parser,HuntingQuery,AutomationRule,AnalyticsRule'
+      -WorkSpaceName 'aljazeera-media-network-log01'
+      -WorkSpaceId 'cd7354a4-b481-41c5-a765-baf66ade9ba3'
+      -systemAccessToken '$(System.AccessToken)'
+      -branchName '$(Build.SourceBranchName)'
+      -repositoryName '$(Build.Repository.Name)'
+      -collectionUri '$(System.CollectionUri)'
+      -projectId '$(System.TeamProject)'
+      -sourceControlId '68a01498-6df6-465d-a53c-d511d939613b'
+      -rootDirectory '$(Build.SourcesDirectory)'
+      -smartDeployment 'true'
+    azurePowerShellVersion: 'LatestVersion'
