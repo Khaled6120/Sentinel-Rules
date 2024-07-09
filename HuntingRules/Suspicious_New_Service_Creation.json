@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_New_Service_Creation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious New Service Creation",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"New-Service\" and ProcessCommandLine contains \"-BinaryPathName\") or ((ProcessCommandLine contains \"create\" and ProcessCommandLine contains \"binPath=\") and FolderPath endswith \"\\\\sc.exe\")) and (ProcessCommandLine contains \"powershell\" or ProcessCommandLine contains \"mshta\" or ProcessCommandLine contains \"wscript\" or ProcessCommandLine contains \"cscript\" or ProcessCommandLine contains \"svchost\" or ProcessCommandLine contains \"dllhost\" or ProcessCommandLine contains \"cmd \" or ProcessCommandLine contains \"cmd.exe /c\" or ProcessCommandLine contains \"cmd.exe /k\" or ProcessCommandLine contains \"cmd.exe /r\" or ProcessCommandLine contains \"rundll32\" or ProcessCommandLine contains \"C:\\\\Users\\\\Public\" or ProcessCommandLine contains \"\\\\Downloads\\\\\" or ProcessCommandLine contains \"\\\\Desktop\\\\\" or ProcessCommandLine contains \"\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\Startup\\\\\" or ProcessCommandLine contains \"C:\\\\Windows\\\\TEMP\\\\\" or ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Temp\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects creation of a new service via \"sc\" command or the powershell \"new-service\" cmdlet with suspicious binary paths"
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence,PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1543"
+          }
+        ]
+      }
+    }
+  ]
+}

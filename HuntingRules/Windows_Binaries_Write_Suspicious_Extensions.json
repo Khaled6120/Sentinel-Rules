@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Windows_Binaries_Write_Suspicious_Extensions')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Windows Binaries Write Suspicious Extensions",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where (((InitiatingProcessFolderPath endswith \"\\\\csrss.exe\" or InitiatingProcessFolderPath endswith \"\\\\lsass.exe\" or InitiatingProcessFolderPath endswith \"\\\\RuntimeBroker.exe\" or InitiatingProcessFolderPath endswith \"\\\\sihost.exe\" or InitiatingProcessFolderPath endswith \"\\\\smss.exe\" or InitiatingProcessFolderPath endswith \"\\\\wininit.exe\" or InitiatingProcessFolderPath endswith \"\\\\winlogon.exe\") and (FolderPath endswith \".bat\" or FolderPath endswith \".dll\" or FolderPath endswith \".exe\" or FolderPath endswith \".hta\" or FolderPath endswith \".iso\" or FolderPath endswith \".ps1\" or FolderPath endswith \".txt\" or FolderPath endswith \".vbe\" or FolderPath endswith \".vbs\")) or ((InitiatingProcessFolderPath endswith \"\\\\dllhost.exe\" or InitiatingProcessFolderPath endswith \"\\\\rundll32.exe\" or InitiatingProcessFolderPath endswith \"\\\\svchost.exe\") and (FolderPath endswith \".bat\" or FolderPath endswith \".hta\" or FolderPath endswith \".iso\" or FolderPath endswith \".ps1\" or FolderPath endswith \".vbe\" or FolderPath endswith \".vbs\"))) and (not(((InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\System32\\\\dllhost.exe\" and (FolderPath contains \":\\\\Users\\\\\" and FolderPath contains \"\\\\AppData\\\\Local\\\\Temp\\\\__PSScriptPolicyTest_\") and FolderPath endswith \".ps1\") or (InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\system32\\\\svchost.exe\" and (FolderPath contains \"C:\\\\Windows\\\\System32\\\\GroupPolicy\\\\DataStore\\\\\" and FolderPath contains \"\\\\sysvol\\\\\" and FolderPath contains \"\\\\Policies\\\\\" and FolderPath contains \"\\\\Machine\\\\Scripts\\\\Startup\\\\\") and (FolderPath endswith \".ps1\" or FolderPath endswith \".bat\")))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects Windows executables that write files with suspicious extensions"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1036"
+          }
+        ]
+      }
+    }
+  ]
+}

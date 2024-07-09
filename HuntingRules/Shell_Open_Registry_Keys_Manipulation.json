@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Shell_Open_Registry_Keys_Manipulation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Shell Open Registry Keys Manipulation",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (RegistryValueData contains \"\\\\Software\\\\Classes\\\\{\" and ActionType =~ \"RegistryValueSet\" and RegistryKey endswith \"Classes\\\\ms-settings\\\\shell\\\\open\\\\command\\\\SymbolicLinkValue\") or RegistryKey endswith \"Classes\\\\ms-settings\\\\shell\\\\open\\\\command\\\\DelegateExecute\" or ((ActionType =~ \"RegistryValueSet\" and (RegistryKey endswith \"Classes\\\\ms-settings\\\\shell\\\\open\\\\command\\\\(Default)\" or RegistryKey endswith \"Classes\\\\exefile\\\\shell\\\\open\\\\command\\\\(Default)\")) and (not(RegistryValueData =~ \"(Empty)\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the shell open key manipulation (exefile and ms-settings) used for persistence and the pattern of UAC Bypass using fodhelper.exe, computerdefaults.exe, slui.exe via registry keys (e.g. UACMe 33 or 62)"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546,T1548"
+          }
+        ]
+      }
+    }
+  ]
+}

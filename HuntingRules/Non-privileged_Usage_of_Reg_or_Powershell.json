@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Non-privileged_Usage_of_Reg_or_Powershell')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Non-privileged Usage of Reg or Powershell",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"reg \" and ProcessCommandLine contains \"add\") or (ProcessCommandLine contains \"powershell\" or ProcessCommandLine contains \"set-itemproperty\" or ProcessCommandLine contains \" sp \" or ProcessCommandLine contains \"new-itemproperty\")) and ((ProcessCommandLine contains \"ImagePath\" or ProcessCommandLine contains \"FailureCommand\" or ProcessCommandLine contains \"ServiceDLL\") and (ProcessCommandLine contains \"ControlSet\" and ProcessCommandLine contains \"Services\") and ProcessIntegrityLevel =~ \"Medium\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Search for usage of reg or Powershell by non-privileged users to modify service configuration in registry"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112"
+          }
+        ]
+      }
+    }
+  ]
+}

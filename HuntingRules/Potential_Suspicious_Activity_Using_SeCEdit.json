@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Suspicious_Activity_Using_SeCEdit')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Suspicious Activity Using SeCEdit",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\secedit.exe\" or ProcessVersionInfoOriginalFileName =~ \"SeCEdit\") and ((ProcessCommandLine contains \"/configure\" and ProcessCommandLine contains \"/db\") or (ProcessCommandLine contains \"/export\" and ProcessCommandLine contains \"/cfg\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects potential suspicious behaviour using secedit.exe. Such as exporting or modifying the security policy"
+          },
+          {
+            "name": "tactics",
+            "value": "CredentialAccess,DefenseEvasion,Discovery,Persistence,PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1082,T1505,T1546,T1547,T1556,T1557,T1562,T1564,T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

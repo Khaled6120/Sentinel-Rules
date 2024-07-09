@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Child_Process_Of_Manage_Engine_ServiceDesk')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Child Process Of Manage Engine ServiceDesk",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\AppVLP.exe\" or FolderPath endswith \"\\\\bash.exe\" or FolderPath endswith \"\\\\bitsadmin.exe\" or FolderPath endswith \"\\\\calc.exe\" or FolderPath endswith \"\\\\certutil.exe\" or FolderPath endswith \"\\\\cscript.exe\" or FolderPath endswith \"\\\\curl.exe\" or FolderPath endswith \"\\\\forfiles.exe\" or FolderPath endswith \"\\\\mftrace.exe\" or FolderPath endswith \"\\\\mshta.exe\" or FolderPath endswith \"\\\\net.exe\" or FolderPath endswith \"\\\\net1.exe\" or FolderPath endswith \"\\\\notepad.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\query.exe\" or FolderPath endswith \"\\\\reg.exe\" or FolderPath endswith \"\\\\schtasks.exe\" or FolderPath endswith \"\\\\scrcons.exe\" or FolderPath endswith \"\\\\sh.exe\" or FolderPath endswith \"\\\\systeminfo.exe\" or FolderPath endswith \"\\\\whoami.exe\" or FolderPath endswith \"\\\\wmic.exe\" or FolderPath endswith \"\\\\wscript.exe\") and (InitiatingProcessFolderPath contains \"\\\\ManageEngine\\\\ServiceDesk\\\\\" and InitiatingProcessFolderPath contains \"\\\\java.exe\")) and (not((ProcessCommandLine contains \" stop\" and (FolderPath endswith \"\\\\net.exe\" or FolderPath endswith \"\\\\net1.exe\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects suspicious child processes of the \"Manage Engine ServiceDesk Plus\" Java web service"
+          },
+          {
+            "name": "tactics",
+            "value": "CommandAndControl"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1102"
+          }
+        ]
+      }
+    }
+  ]
+}

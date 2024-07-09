@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Communication_To_LocaltoNet_Tunneling_Service_Initiated')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Communication To LocaltoNet Tunneling Service Initiated",
+        "category": "Hunting Queries",
+        "query": "DeviceNetworkEvents\n| where RemoteUrl endswith \".localto.net\" or RemoteUrl endswith \".localtonet.com\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects an executable initiating a network connection to \"LocaltoNet\" tunneling sub-domains.\nLocaltoNet is a reverse proxy that enables localhost services to be exposed to the Internet.\nAttackers have been seen to use this service for command-and-control"
+          },
+          {
+            "name": "tactics",
+            "value": "CommandAndControl"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1090,T1102,T1572"
+          }
+        ]
+      }
+    }
+  ]
+}

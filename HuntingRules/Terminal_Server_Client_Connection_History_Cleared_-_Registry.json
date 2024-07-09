@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Terminal_Server_Client_Connection_History_Cleared_-_Registry')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Terminal Server Client Connection History Cleared - Registry",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (ActionType =~ \"DeleteValue\" and RegistryKey contains \"\\\\Microsoft\\\\Terminal Server Client\\\\Default\\\\MRU\") or ((ActionType in~ (\"RegistryKeyDeleted\", \"RegistryValueDeleted\")) and RegistryKey contains \"\\\\Microsoft\\\\Terminal Server Client\\\\Servers\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the deletion of registry keys containing the MSTSC connection history"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1070,T1112"
+          }
+        ]
+      }
+    }
+  ]
+}

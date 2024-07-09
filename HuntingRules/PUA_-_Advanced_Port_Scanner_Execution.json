@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/PUA_-_Advanced_Port_Scanner_Execution')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "PUA - Advanced Port Scanner Execution",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"/portable\" and ProcessCommandLine contains \"/lng\") or (FolderPath contains \"\\\\advanced_port_scanner\" or ProcessVersionInfoOriginalFileName contains \"advanced_port_scanner\" or ProcessVersionInfoFileDescription contains \"Advanced Port Scanner\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the use of Advanced Port Scanner."
+          },
+          {
+            "name": "tactics",
+            "value": "Discovery"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1046,T1135"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/ClickOnce_Trust_Prompt_Tampering')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "ClickOnce Trust Prompt Tampering",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryValueData =~ \"Enabled\" and RegistryKey contains \"\\\\SOFTWARE\\\\MICROSOFT\\\\.NETFramework\\\\Security\\\\TrustManager\\\\PromptingLevel\" and (RegistryKey endswith \"\\\\Internet\" or RegistryKey endswith \"\\\\LocalIntranet\" or RegistryKey endswith \"\\\\MyComputer\" or RegistryKey endswith \"\\\\TrustedSites\" or RegistryKey endswith \"\\\\UntrustedSites\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects changes to the ClickOnce trust prompt registry key in order to enable an installation from different locations such as the Internet."
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112"
+          }
+        ]
+      }
+    }
+  ]
+}

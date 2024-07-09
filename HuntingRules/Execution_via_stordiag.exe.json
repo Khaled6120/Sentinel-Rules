@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Execution_via_stordiag.exe')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Execution via stordiag.exe",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\schtasks.exe\" or FolderPath endswith \"\\\\systeminfo.exe\" or FolderPath endswith \"\\\\fltmc.exe\") and InitiatingProcessFolderPath endswith \"\\\\stordiag.exe\") and (not((InitiatingProcessFolderPath startswith \"c:\\\\windows\\\\system32\\\\\" or InitiatingProcessFolderPath startswith \"c:\\\\windows\\\\syswow64\\\\\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the use of stordiag.exe to execute schtasks.exe systeminfo.exe and fltmc.exe"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

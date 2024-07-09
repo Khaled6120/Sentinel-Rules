@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Azure_Browser_SSO_Abuse')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Azure Browser SSO Abuse",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where FolderPath =~ \"C:\\\\Windows\\\\System32\\\\MicrosoftAccountTokenProvider.dll\" and (not((InitiatingProcessFolderPath endswith \"\\\\BackgroundTaskHost.exe\" and (InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\System32\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Windows\\\\SysWOW64\\\\\")))) and (not(((InitiatingProcessFolderPath endswith \"\\\\IDE\\\\devenv.exe\" and (InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\\")) or (InitiatingProcessFolderPath startswith \"C:\\\\Program Files (x86)\\\\Microsoft\\\\EdgeWebView\\\\Application\\\\\" or InitiatingProcessFolderPath endswith \"\\\\WindowsApps\\\\MicrosoftEdge.exe\" or (InitiatingProcessFolderPath in~ (\"C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\", \"C:\\\\Program Files\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"))) or ((InitiatingProcessFolderPath endswith \"\\\\msedge.exe\" or InitiatingProcessFolderPath endswith \"\\\\msedgewebview2.exe\") and (InitiatingProcessFolderPath startswith \"C:\\\\Program Files (x86)\\\\Microsoft\\\\EdgeCore\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\Microsoft\\\\EdgeCore\\\\\")) or (InitiatingProcessFolderPath in~ (\"C:\\\\Program Files (x86)\\\\Internet Explorer\\\\iexplore.exe\", \"C:\\\\Program Files\\\\Internet Explorer\\\\iexplore.exe\")) or isnull(InitiatingProcessFolderPath) or InitiatingProcessFolderPath endswith \"\\\\AppData\\\\Local\\\\Microsoft\\\\OneDrive\\\\OneDrive.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects abusing Azure Browser SSO by requesting OAuth 2.0 refresh tokens for an Azure-AD-authenticated Windows user (i.e. the machine is joined to Azure AD and a user logs in with their Azure AD account) wanting to perform SSO authentication in the brows"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

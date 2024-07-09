@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Fsutil_Behavior_Set_SymlinkEvaluation')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Fsutil Behavior Set SymlinkEvaluation",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"behavior \" and ProcessCommandLine contains \"set \" and ProcessCommandLine contains \"SymlinkEvaluation\") and (FolderPath endswith \"\\\\fsutil.exe\" or ProcessVersionInfoOriginalFileName =~ \"fsutil.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "A symbolic link is a type of file that contains a reference to another file.\nThis is probably done to make sure that the ransomware is able to follow shortcuts on the machine in order to find the original file to encrypt\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

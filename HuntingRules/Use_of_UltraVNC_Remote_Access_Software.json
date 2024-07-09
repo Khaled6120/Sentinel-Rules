@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Use_of_UltraVNC_Remote_Access_Software')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Use of UltraVNC Remote Access Software",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ProcessVersionInfoFileDescription =~ \"VNCViewer\" or ProcessVersionInfoProductName =~ \"UltraVNC VNCViewer\" or ProcessVersionInfoCompanyName =~ \"UltraVNC\" or ProcessVersionInfoOriginalFileName =~ \"VNCViewer.exe\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "An adversary may use legitimate desktop support and remote access software,to establish an interactive command and control channel to target systems within networks"
+          },
+          {
+            "name": "tactics",
+            "value": "CommandAndControl"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1219"
+          }
+        ]
+      }
+    }
+  ]
+}

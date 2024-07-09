@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Process_Proxy_Execution_Via_Squirrel.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Process Proxy Execution Via Squirrel.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"--processStart\" or ProcessCommandLine contains \"--processStartAndWait\" or ProcessCommandLine contains \"--createShortcut\") and (FolderPath endswith \"\\\\squirrel.exe\" or FolderPath endswith \"\\\\update.exe\")) and (not(((ProcessCommandLine contains \":\\\\Users\\\\\" and ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Discord\\\\Update.exe\" and ProcessCommandLine contains \" --processStart\" and ProcessCommandLine contains \"Discord.exe\") or ((ProcessCommandLine contains \"--createShortcut\" or ProcessCommandLine contains \"--processStartAndWait\") and (ProcessCommandLine contains \":\\\\Users\\\\\" and ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\GitHubDesktop\\\\Update.exe\" and ProcessCommandLine contains \"GitHubDesktop.exe\")) or ((ProcessCommandLine contains \"--processStart\" or ProcessCommandLine contains \"--createShortcut\") and (ProcessCommandLine contains \":\\\\Users\\\\\" and ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Microsoft\\\\Teams\\\\Update.exe\" and ProcessCommandLine contains \"Teams.exe\")) or ((ProcessCommandLine contains \"--processStart\" or ProcessCommandLine contains \"--createShortcut\") and (ProcessCommandLine contains \":\\\\Users\\\\\" and ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\yammerdesktop\\\\Update.exe\" and ProcessCommandLine contains \"Yammer.exe\")))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the usage of the \"Squirrel.exe\" binary to execute arbitrary processes. This binary is part of multiple Electron based software installations (Slack, Teams, Discord, etc.)\n"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

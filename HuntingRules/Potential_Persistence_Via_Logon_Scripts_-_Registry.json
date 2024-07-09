@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Persistence_Via_Logon_Scripts_-_Registry')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Persistence Via Logon Scripts - Registry",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where ActionType =~ \"RegistryKeyCreated\" and RegistryKey contains \"UserInitMprLogonScript\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects creation of \"UserInitMprLogonScript\" registry value which can be used as a persistence method by malicious actors"
+          },
+          {
+            "name": "tactics",
+            "value": "LateralMovement,Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1037"
+          }
+        ]
+      }
+    }
+  ]
+}

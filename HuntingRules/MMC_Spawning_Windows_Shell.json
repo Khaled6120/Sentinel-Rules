@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/MMC_Spawning_Windows_Shell')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "MMC Spawning Windows Shell",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where InitiatingProcessFolderPath endswith \"\\\\mmc.exe\" and ((FolderPath endswith \"\\\\cmd.exe\" or FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\wscript.exe\" or FolderPath endswith \"\\\\cscript.exe\" or FolderPath endswith \"\\\\sh.exe\" or FolderPath endswith \"\\\\bash.exe\" or FolderPath endswith \"\\\\reg.exe\" or FolderPath endswith \"\\\\regsvr32.exe\") or FolderPath contains \"\\\\BITSADMIN\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects a Windows command line executable started from MMC"
+          },
+          {
+            "name": "tactics",
+            "value": "LateralMovement"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1021"
+          }
+        ]
+      }
+    }
+  ]
+}

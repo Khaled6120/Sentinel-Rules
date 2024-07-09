@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Change_the_Fax_Dll')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Change the Fax Dll",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (RegistryKey contains \"\\\\Software\\\\Microsoft\\\\Fax\\\\Device Providers\" and RegistryKey contains \"\\\\ImageName\") and (not(RegistryValueData =~ \"%systemroot%\\\\system32\\\\fxst30.dll\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detect possible persistence using Fax DLL load when service restart"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112"
+          }
+        ]
+      }
+    }
+  ]
+}

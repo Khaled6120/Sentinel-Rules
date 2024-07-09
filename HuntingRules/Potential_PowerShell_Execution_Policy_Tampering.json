@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_PowerShell_Execution_Policy_Tampering')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential PowerShell Execution Policy Tampering",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where ((RegistryValueData contains \"Bypass\" or RegistryValueData contains \"Unrestricted\") and (RegistryKey endswith \"\\\\ShellIds\\\\Microsoft.PowerShell\\\\ExecutionPolicy\" or RegistryKey endswith \"\\\\Policies\\\\Microsoft\\\\Windows\\\\PowerShell\\\\ExecutionPolicy\")) and (not((InitiatingProcessFolderPath contains \":\\\\Windows\\\\System32\\\\\" or InitiatingProcessFolderPath contains \":\\\\Windows\\\\SysWOW64\\\\\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects changes to the PowerShell execution policy in order to bypass signing requirements for script execution"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          }
+        ]
+      }
+    }
+  ]
+}

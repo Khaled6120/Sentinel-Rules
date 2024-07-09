@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Shim_Database_Persistence_via_Sdbinst.EXE')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Shim Database Persistence via Sdbinst.EXE",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \".sdb\" and (FolderPath endswith \"\\\\sdbinst.exe\" or ProcessVersionInfoOriginalFileName =~ \"sdbinst.exe\")) and (not(((ProcessCommandLine contains \":\\\\Program Files (x86)\\\\IIS Express\\\\iisexpressshim.sdb\" or ProcessCommandLine contains \":\\\\Program Files\\\\IIS Express\\\\iisexpressshim.sdb\") and InitiatingProcessFolderPath endswith \"\\\\msiexec.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects installation of a new shim using sdbinst.exe.\nAdversaries may establish persistence and/or elevate privileges by executing malicious content triggered by application shims\n"
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence,PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1546"
+          }
+        ]
+      }
+    }
+  ]
+}

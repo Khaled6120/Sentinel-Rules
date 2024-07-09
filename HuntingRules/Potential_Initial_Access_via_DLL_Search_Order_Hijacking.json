@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Initial_Access_via_DLL_Search_Order_Hijacking')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Initial Access via DLL Search Order Hijacking",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where ((InitiatingProcessFolderPath endswith \"\\\\winword.exe\" or InitiatingProcessFolderPath endswith \"\\\\excel.exe\" or InitiatingProcessFolderPath endswith \"\\\\powerpnt.exe\" or InitiatingProcessFolderPath endswith \"\\\\MSACCESS.EXE\" or InitiatingProcessFolderPath endswith \"\\\\MSPUB.EXE\" or InitiatingProcessFolderPath endswith \"\\\\fltldr.exe\" or InitiatingProcessFolderPath endswith \"\\\\cmd.exe\" or InitiatingProcessFolderPath endswith \"\\\\certutil.exe\" or InitiatingProcessFolderPath endswith \"\\\\mshta.exe\" or InitiatingProcessFolderPath endswith \"\\\\cscript.exe\" or InitiatingProcessFolderPath endswith \"\\\\wscript.exe\" or InitiatingProcessFolderPath endswith \"\\\\curl.exe\" or InitiatingProcessFolderPath endswith \"\\\\powershell.exe\" or InitiatingProcessFolderPath endswith \"\\\\pwsh.exe\") and (FolderPath contains \"\\\\Microsoft\\\\OneDrive\\\\\" or FolderPath contains \"\\\\Microsoft OneDrive\\\\\" or FolderPath contains \"\\\\Microsoft\\\\Teams\\\\\" or FolderPath contains \"\\\\Local\\\\slack\\\\app-\" or FolderPath contains \"\\\\Local\\\\Programs\\\\Microsoft VS Code\\\\\") and (FolderPath contains \"\\\\Users\\\\\" and FolderPath contains \"\\\\AppData\\\\\") and FolderPath endswith \".dll\") and (not((InitiatingProcessFolderPath endswith \"\\\\cmd.exe\" and (FolderPath contains \"\\\\Users\\\\\" and FolderPath contains \"\\\\AppData\\\\\" and FolderPath contains \"\\\\Microsoft\\\\OneDrive\\\\\" and FolderPath contains \"\\\\api-ms-win-core-\"))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects attempts to create a DLL file to a known desktop application dependencies folder such as Slack, Teams or OneDrive and by an unusual process. This may indicate an attempt to load a malicious module via DLL search order hijacking."
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,InitialAccess"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1566,T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

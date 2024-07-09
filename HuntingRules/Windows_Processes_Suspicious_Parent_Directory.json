@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Windows_Processes_Suspicious_Parent_Directory')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Windows Processes Suspicious Parent Directory",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\svchost.exe\" or FolderPath endswith \"\\\\taskhost.exe\" or FolderPath endswith \"\\\\lsm.exe\" or FolderPath endswith \"\\\\lsass.exe\" or FolderPath endswith \"\\\\services.exe\" or FolderPath endswith \"\\\\lsaiso.exe\" or FolderPath endswith \"\\\\csrss.exe\" or FolderPath endswith \"\\\\wininit.exe\" or FolderPath endswith \"\\\\winlogon.exe\") and (not((((InitiatingProcessFolderPath contains \"\\\\Windows Defender\\\\\" or InitiatingProcessFolderPath contains \"\\\\Microsoft Security Client\\\\\") and InitiatingProcessFolderPath endswith \"\\\\MsMpEng.exe\") or (isnull(InitiatingProcessFolderPath) or InitiatingProcessFolderPath =~ \"-\") or ((InitiatingProcessFolderPath endswith \"\\\\SavService.exe\" or InitiatingProcessFolderPath endswith \"\\\\ngen.exe\") or (InitiatingProcessFolderPath contains \"\\\\System32\\\\\" or InitiatingProcessFolderPath contains \"\\\\SysWOW64\\\\\")))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detect suspicious parent processes of well-known Windows processes"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1036"
+          }
+        ]
+      }
+    }
+  ]
+}

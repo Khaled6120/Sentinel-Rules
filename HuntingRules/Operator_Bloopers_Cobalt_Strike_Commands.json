@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Operator_Bloopers_Cobalt_Strike_Commands')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Operator Bloopers Cobalt Strike Commands",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"psinject\" or ProcessCommandLine contains \"spawnas\" or ProcessCommandLine contains \"make_token\" or ProcessCommandLine contains \"remote-exec\" or ProcessCommandLine contains \"rev2self\" or ProcessCommandLine contains \"dcsync\" or ProcessCommandLine contains \"logonpasswords\" or ProcessCommandLine contains \"execute-assembly\" or ProcessCommandLine contains \"getsystem\") and (ProcessCommandLine startswith \"cmd \" or ProcessCommandLine startswith \"cmd.exe\" or ProcessCommandLine startswith \"c:\\\\windows\\\\system32\\\\cmd.exe\")) and (ProcessVersionInfoOriginalFileName =~ \"Cmd.Exe\" or FolderPath endswith \"\\\\cmd.exe\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects use of Cobalt Strike commands accidentally entered in the CMD shell"
+          },
+          {
+            "name": "tactics",
+            "value": "Execution"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1059"
+          }
+        ]
+      }
+    }
+  ]
+}

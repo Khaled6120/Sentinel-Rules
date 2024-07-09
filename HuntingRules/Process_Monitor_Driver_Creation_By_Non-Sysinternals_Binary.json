@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Process_Monitor_Driver_Creation_By_Non-Sysinternals_Binary')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Process Monitor Driver Creation By Non-Sysinternals Binary",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where (FolderPath contains \"\\\\procmon\" and FolderPath endswith \".sys\") and (not((InitiatingProcessFolderPath endswith \"\\\\procmon.exe\" or InitiatingProcessFolderPath endswith \"\\\\procmon64.exe\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects creation of the Process Monitor driver by processes other than Process Monitor (procmon) itself."
+          },
+          {
+            "name": "tactics",
+            "value": "Persistence,PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1068"
+          }
+        ]
+      }
+    }
+  ]
+}

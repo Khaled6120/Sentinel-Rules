@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Tasks_Folder_Evasion')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Tasks Folder Evasion",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"echo \" or ProcessCommandLine contains \"copy \" or ProcessCommandLine contains \"type \" or ProcessCommandLine contains \"file createnew\") and (ProcessCommandLine contains \" C:\\\\Windows\\\\System32\\\\Tasks\\\\\" or ProcessCommandLine contains \" C:\\\\Windows\\\\SysWow64\\\\Tasks\\\\\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "The Tasks folder in system32 and syswow64 are globally writable paths.\nAdversaries can take advantage of this and load or influence any script hosts or ANY .NET Application\nin Tasks to load and execute a custom assembly into cscript, wscript, regsvr32, m"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,Execution,Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

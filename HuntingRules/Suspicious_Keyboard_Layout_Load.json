@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_Keyboard_Layout_Load')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious Keyboard Layout Load",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where (RegistryValueData contains \"00000429\" or RegistryValueData contains \"00050429\" or RegistryValueData contains \"0000042a\") and (RegistryKey contains \"\\\\Keyboard Layout\\\\Preload\" or RegistryKey contains \"\\\\Keyboard Layout\\\\Substitutes\")",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the keyboard preload installation with a suspicious keyboard layout, e.g. Chinese, Iranian or Vietnamese layout load in user session on systems maintained by US staff only"
+          },
+          {
+            "name": "tactics",
+            "value": "ResourceDevelopment"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1588"
+          }
+        ]
+      }
+    }
+  ]
+}

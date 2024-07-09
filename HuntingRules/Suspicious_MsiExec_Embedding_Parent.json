@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Suspicious_MsiExec_Embedding_Parent')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Suspicious MsiExec Embedding Parent",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\powershell.exe\" or FolderPath endswith \"\\\\pwsh.exe\" or FolderPath endswith \"\\\\cmd.exe\") and (InitiatingProcessCommandLine contains \"MsiExec.exe\" and InitiatingProcessCommandLine contains \"-Embedding \")) and (not(((ProcessCommandLine contains \"C:\\\\Program Files\\\\SplunkUniversalForwarder\\\\bin\\\\\" and FolderPath endswith \":\\\\Windows\\\\System32\\\\cmd.exe\") or (ProcessCommandLine contains \"\\\\DismFoDInstall.cmd\" or (InitiatingProcessCommandLine contains \"\\\\MsiExec.exe -Embedding \" and InitiatingProcessCommandLine contains \"Global\\\\MSI0000\")))))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Adversaries may abuse msiexec.exe to proxy the execution of malicious payloads"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1218"
+          }
+        ]
+      }
+    }
+  ]
+}

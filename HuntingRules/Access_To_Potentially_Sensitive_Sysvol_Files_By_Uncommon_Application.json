@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Access_To_Potentially_Sensitive_Sysvol_Files_By_Uncommon_Application')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Access To Potentially Sensitive Sysvol Files By Uncommon Application",
+        "category": "Hunting Queries",
+        "query": "DeviceFileEvents\n| where ((FileName contains \"\\\\sysvol\\\\\" and FileName contains \"\\\\Policies\\\\\") and (FileName endswith \"audit.csv\" or FileName endswith \"Files.xml\" or FileName endswith \"GptTmpl.inf\" or FileName endswith \"groups.xml\" or FileName endswith \"Registry.pol\" or FileName endswith \"Registry.xml\" or FileName endswith \"scheduledtasks.xml\" or FileName endswith \"scripts.ini\" or FileName endswith \"services.xml\") and FileName startswith \"\\\\\") and (not((InitiatingProcessFolderPath startswith \":\\\\Program Files (x86)\\\\\" or InitiatingProcessFolderPath startswith \":\\\\Program Files\\\\\" or InitiatingProcessFolderPath startswith \":\\\\Windows\\\\explorer.exe\" or InitiatingProcessFolderPath startswith \":\\\\Windows\\\\system32\\\\\" or InitiatingProcessFolderPath startswith \":\\\\Windows\\\\SysWOW64\\\\\")))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects file access requests to potentially sensitive files hosted on the Windows Sysvol share."
+          },
+          {
+            "name": "tactics",
+            "value": "CredentialAccess"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1552"
+          }
+        ]
+      }
+    }
+  ]
+}

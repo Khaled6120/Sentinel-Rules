@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Potential_Privilege_Escalation_via_Service_Permissions_Weakness')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Potential Privilege Escalation via Service Permissions Weakness",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where (ProcessCommandLine contains \"\\\\ImagePath\" or ProcessCommandLine contains \"\\\\FailureCommand\" or ProcessCommandLine contains \"\\\\ServiceDll\") and (ProcessCommandLine contains \"ControlSet\" and ProcessCommandLine contains \"services\") and ProcessIntegrityLevel =~ \"Medium\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detect modification of services configuration (ImagePath, FailureCommand and ServiceDLL) in registry by processes with Medium integrity level"
+          },
+          {
+            "name": "tactics",
+            "value": "PrivilegeEscalation"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1574"
+          }
+        ]
+      }
+    }
+  ]
+}

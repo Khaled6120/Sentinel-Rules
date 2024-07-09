@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Python_Image_Load_By_Non-Python_Process')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Python Image Load By Non-Python Process",
+        "category": "Hunting Queries",
+        "query": "DeviceImageLoadEvents\n| where InitiatingProcessVersionInfoFileDescription =~ \"Python Core\" and (not((InitiatingProcessFolderPath contains \"Python\" or (InitiatingProcessFolderPath startswith \"C:\\\\Program Files\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\Program Files (x86)\\\\\" or InitiatingProcessFolderPath startswith \"C:\\\\ProgramData\\\\Anaconda3\\\\\")))) and (not(isnull(InitiatingProcessFolderPath)))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects the image load of \"Python Core\" by a non-Python process. This might be indicative of a Python script bundled with Py2Exe."
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1027"
+          }
+        ]
+      }
+    }
+  ]
+}

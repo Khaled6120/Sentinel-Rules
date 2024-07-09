@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Process_Memory_Dump_Via_Comsvcs.DLL')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Process Memory Dump Via Comsvcs.DLL",
+        "category": "Hunting Queries",
+        "query": "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\rundll32.exe\" or ProcessVersionInfoOriginalFileName =~ \"RUNDLL32.EXE\" or ProcessCommandLine contains \"rundll32\") and ((ProcessCommandLine contains \"#-\" or ProcessCommandLine contains \"#+\" or ProcessCommandLine contains \"#24\" or ProcessCommandLine contains \"24 \" or ProcessCommandLine contains \"MiniDump\") and (ProcessCommandLine contains \"comsvcs\" and ProcessCommandLine contains \"full\"))) or ((ProcessCommandLine contains \" #\" or ProcessCommandLine contains \",#\" or ProcessCommandLine contains \", #\") and (ProcessCommandLine contains \"24\" and ProcessCommandLine contains \"comsvcs\" and ProcessCommandLine contains \"full\"))",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects a process memory dump via \"comsvcs.dll\" using rundll32, covering multiple different techniques (ordinal, minidump function, etc.)"
+          },
+          {
+            "name": "tactics",
+            "value": "CredentialAccess,DefenseEvasion"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1003,T1036"
+          }
+        ]
+      }
+    }
+  ]
+}

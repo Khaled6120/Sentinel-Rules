@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/Winlogon_AllowMultipleTSSessions_Enable')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "eTag": "*",
+        "displayName": "Winlogon AllowMultipleTSSessions Enable",
+        "category": "Hunting Queries",
+        "query": "DeviceRegistryEvents\n| where RegistryValueData endswith \"DWORD (0x00000001)\" and RegistryKey endswith \"\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\\\\AllowMultipleTSSessions\"",
+        "version": 1,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Detects when the 'AllowMultipleTSSessions' value is enabled.\nWhich allows for multiple Remote Desktop connection sessions to be opened at once.\nThis is often used by attacker as a way to connect to an RDP session without disconnecting the other users\n"
+          },
+          {
+            "name": "tactics",
+            "value": "DefenseEvasion,Persistence"
+          },
+          {
+            "name": "relevantTechniques",
+            "value": "T1112"
+          }
+        ]
+      }
+    }
+  ]
+}
