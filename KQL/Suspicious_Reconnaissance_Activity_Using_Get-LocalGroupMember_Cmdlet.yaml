@@ -1,0 +1,35 @@
+name: Suspicious Reconnaissance Activity Using Get-LocalGroupMember Cmdlet
+id: c8a180d6-47a3-4345-a609-53f9c3d834fc
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/10/10
+severity: medium
+description: Detects suspicious reconnaissance command line activity on Windows systems
+  using the PowerShell Get-LocalGroupMember Cmdlet
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Discovery
+relevantTechniques:
+- T1087
+query: "DeviceProcessEvents\n| where ProcessCommandLine contains \"Get-LocalGroupMember\
+  \ \" and (ProcessCommandLine contains \"domain admins\" or ProcessCommandLine contains\
+  \ \" administrator\" or ProcessCommandLine contains \" administrateur\" or ProcessCommandLine\
+  \ contains \"enterprise admins\" or ProcessCommandLine contains \"Exchange Trusted\
+  \ Subsystem\" or ProcessCommandLine contains \"Remote Desktop Users\" or ProcessCommandLine\
+  \ contains \"Utilisateurs du Bureau \xE0 distance\" or ProcessCommandLine contains\
+  \ \"Usuarios de escritorio remoto\")"
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -1,0 +1,30 @@
+name: PCRE.NET Package Temp Files
+id: 6e90ae7a-7cd3-473f-a035-4ebb72d961da
+author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+date: 2020/10/29
+severity: high
+description: Detects processes creating temp files related to PCRE.NET package
+status: test
+modified: 2022/10/09
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Execution
+relevantTechniques:
+- T1059
+query: 'DeviceFileEvents
+
+  | where FolderPath contains "\\AppData\\Local\\Temp\\ba9ea7344a4a5f591d6e5dc32a13494b\\"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

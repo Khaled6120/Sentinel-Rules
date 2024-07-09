@@ -1,0 +1,31 @@
+name: UAC Bypass via Event Viewer
+id: 7c81fec3-1c1d-43b0-996a-46753041b1b6
+author: Florian Roth (Nextron Systems)
+date: 2017/03/19
+severity: high
+description: Detects UAC bypass method using Windows event viewer
+status: experimental
+modified: 2023/09/28
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+- Privilege Escalation
+relevantTechniques:
+- T1548
+query: 'DeviceRegistryEvents
+
+  | where RegistryKey endswith "\\mscfile\\shell\\open\\command"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

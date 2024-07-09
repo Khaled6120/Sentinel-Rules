@@ -1,0 +1,36 @@
+name: Suspicious File Drop by Exchange
+id: 6b269392-9eba-40b5-acb6-55c882b20ba6
+author: Florian Roth (Nextron Systems)
+date: 2022/10/04
+severity: medium
+description: Detects suspicious file type dropped by an Exchange component in IIS
+status: test
+modified: ''
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Initial Access
+- Persistence
+relevantTechniques:
+- T1190
+- T1505
+query: 'DeviceFileEvents
+
+  | where (InitiatingProcessCommandLine contains "MSExchange" and InitiatingProcessFolderPath
+  endswith "\\w3wp.exe") and (FolderPath endswith ".aspx" or FolderPath endswith ".asp"
+  or FolderPath endswith ".ashx" or FolderPath endswith ".ps1" or FolderPath endswith
+  ".bat" or FolderPath endswith ".exe" or FolderPath endswith ".dll" or FolderPath
+  endswith ".vbs")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

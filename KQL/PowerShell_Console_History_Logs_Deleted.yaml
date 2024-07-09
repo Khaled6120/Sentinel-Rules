@@ -1,0 +1,31 @@
+name: PowerShell Console History Logs Deleted
+id: ff301988-c231-4bd0-834c-ac9d73b86586
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/02/15
+severity: medium
+description: Detects the deletion of the PowerShell console History logs which may
+  indicate an attempt to destroy forensic evidence
+status: test
+modified: ''
+logsource:
+  category: file_delete
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1070
+query: 'DeviceFileEvents
+
+  | where FolderPath endswith "\\PSReadLine\\ConsoleHost_history.txt"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

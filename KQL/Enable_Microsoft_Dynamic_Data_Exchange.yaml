@@ -1,0 +1,33 @@
+name: Enable Microsoft Dynamic Data Exchange
+id: 63647769-326d-4dde-a419-b925cc0caf42
+author: frack113
+date: 2022/02/26
+severity: medium
+description: Enable Dynamic Data Exchange protocol (DDE) in all supported editions
+  of Microsoft Word or Excel.
+status: test
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Execution
+relevantTechniques:
+- T1559
+query: 'DeviceRegistryEvents
+
+  | where (RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey endswith "\\Excel\\Security\\DisableDDEServerLaunch"
+  or RegistryKey endswith "\\Excel\\Security\\DisableDDEServerLookup")) or ((RegistryValueData
+  in~ ("DWORD (0x00000001)", "DWORD (0x00000002)")) and RegistryKey endswith "\\Word\\Security\\AllowDDE")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

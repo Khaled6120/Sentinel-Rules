@@ -1,0 +1,33 @@
+name: PUA - RunXCmd Execution
+id: 93199800-b52a-4dec-b762-75212c196542
+author: Florian Roth (Nextron Systems)
+date: 2022/01/24
+severity: high
+description: Detects the use of the RunXCmd tool to execute commands with System or
+  TrustedInstaller accounts
+status: test
+modified: 2023/02/14
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Execution
+- S0029
+relevantTechniques:
+- T1569
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " /account=system " or ProcessCommandLine contains
+  " /account=ti ") and ProcessCommandLine contains "/exec="'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

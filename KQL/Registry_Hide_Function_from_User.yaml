@@ -1,0 +1,37 @@
+name: Registry Hide Function from User
+id: 5a93eb65-dffa-4543-b761-94aa60098fb6
+author: frack113
+date: 2022/03/18
+severity: medium
+description: Detects registry modifications that hide internal tools or functions
+  from the user (malware like Agent Tesla, Hermetic Wiper uses this technique)
+status: test
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1112
+query: 'DeviceRegistryEvents
+
+  | where (RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowInfoTip"
+  or RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowCompColor"))
+  or (RegistryValueData =~ "DWORD (0x00000001)" and (RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\HideClock"
+  or RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\HideSCAHealth"
+  or RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\HideSCANetwork"
+  or RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\HideSCAPower"
+  or RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\HideSCAVolume"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

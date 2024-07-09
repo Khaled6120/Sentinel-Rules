@@ -1,0 +1,30 @@
+name: DumpStack.log Defender Evasion
+id: 4f647cfa-b598-4e12-ad69-c68dd16caef8
+author: Florian Roth (Nextron Systems)
+date: 2022/01/06
+severity: critical
+description: Detects the use of the filename DumpStack.log to evade Microsoft Defender
+status: test
+modified: 2022/06/17
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\DumpStack.log" or ProcessCommandLine contains " -o
+  DumpStack.log"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

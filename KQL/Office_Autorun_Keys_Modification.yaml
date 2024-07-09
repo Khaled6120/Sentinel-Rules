@@ -1,0 +1,58 @@
+name: Office Autorun Keys Modification
+id: baecf8fb-edbf-429f-9ade-31fc3f22b970
+author: Victor Sergeev, Daniil Yugoslavskiy, Gleb Sukhodolskiy, Timur Zinniatullin,
+  oscd.community, Tim Shelton, frack113 (split)
+date: 2019/10/25
+severity: medium
+description: Detects modification of autostart extensibility point (ASEP) in registry.
+status: test
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Persistence
+relevantTechniques:
+- T1547
+query: 'DeviceRegistryEvents
+
+  | where (RegistryKey contains "\\Software\\Wow6432Node\\Microsoft\\Office" or RegistryKey
+  contains "\\Software\\Microsoft\\Office") and (RegistryKey contains "\\Word\\Addins"
+  or RegistryKey contains "\\PowerPoint\\Addins" or RegistryKey contains "\\Outlook\\Addins"
+  or RegistryKey contains "\\Onenote\\Addins" or RegistryKey contains "\\Excel\\Addins"
+  or RegistryKey contains "\\Access\\Addins" or RegistryKey contains "test\\Special\\Perf")
+  and (not(((InitiatingProcessFolderPath =~ "C:\\Program Files\\AVG\\Antivirus\\RegSvr.exe"
+  and RegistryKey contains "\\Microsoft\\Office\\Outlook\\Addins\\Antivirus.AsOutExt")
+  or RegistryValueData =~ "(Empty)" or ((InitiatingProcessFolderPath startswith "C:\\Program
+  Files\\Microsoft Office\\" or InitiatingProcessFolderPath startswith "C:\\Program
+  Files (x86)\\Microsoft Office\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\System32\\msiexec.exe"
+  or InitiatingProcessFolderPath startswith "C:\\Windows\\System32\\regsvr32.exe")
+  and (RegistryKey contains "\\Excel\\Addins\\AdHocReportingExcelClientLib.AdHocReportingExcelClientAddIn.1"
+  or RegistryKey contains "\\Excel\\Addins\\ExcelPlugInShell.PowerMapConnect" or RegistryKey
+  contains "\\Excel\\Addins\\NativeShim" or RegistryKey contains "\\Excel\\Addins\\NativeShim.InquireConnector.1"
+  or RegistryKey contains "\\Excel\\Addins\\PowerPivotExcelClientAddIn.NativeEntry.1"
+  or RegistryKey contains "\\Outlook\\AddIns\\AccessAddin.DC" or RegistryKey contains
+  "\\Outlook\\AddIns\\ColleagueImport.ColleagueImportAddin" or RegistryKey contains
+  "\\Outlook\\AddIns\\EvernoteCC.EvernoteContactConnector" or RegistryKey contains
+  "\\Outlook\\AddIns\\EvernoteOLRD.Connect" or RegistryKey contains "\\Outlook\\Addins\\Microsoft.VbaAddinForOutlook.1"
+  or RegistryKey contains "\\Outlook\\Addins\\OcOffice.OcForms" or RegistryKey contains
+  "\\Outlook\\Addins\\OneNote.OutlookAddin" or RegistryKey contains "\\Outlook\\Addins\\OscAddin.Connect"
+  or RegistryKey contains "\\Outlook\\Addins\\OutlookChangeNotifier.Connect" or RegistryKey
+  contains "\\Outlook\\Addins\\UCAddin.LyncAddin.1" or RegistryKey contains "\\Outlook\\Addins\\UCAddin.UCAddin.1"
+  or RegistryKey contains "\\Outlook\\Addins\\UmOutlookAddin.FormRegionAddin")) or
+  (InitiatingProcessFolderPath endswith "\\OfficeClickToRun.exe" and (InitiatingProcessFolderPath
+  startswith "C:\\Program Files\\Common Files\\Microsoft Shared\\ClickToRun\\" or
+  InitiatingProcessFolderPath startswith "C:\\Program Files\\Common Files\\Microsoft
+  Shared\\ClickToRun\\Updates\\")))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

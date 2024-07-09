@@ -1,0 +1,41 @@
+name: Legitimate Application Dropped Script
+id: 7d604714-e071-49ff-8726-edeb95a70679
+author: frack113, Florian Roth (Nextron Systems)
+date: 2022/08/21
+severity: high
+description: Detects programs on a Windows system that should not write scripts to
+  disk
+status: test
+modified: 2023/06/22
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1218
+query: 'DeviceFileEvents
+
+  | where (InitiatingProcessFolderPath endswith "\\eqnedt32.exe" or InitiatingProcessFolderPath
+  endswith "\\wordpad.exe" or InitiatingProcessFolderPath endswith "\\wordview.exe"
+  or InitiatingProcessFolderPath endswith "\\certutil.exe" or InitiatingProcessFolderPath
+  endswith "\\certoc.exe" or InitiatingProcessFolderPath endswith "\\CertReq.exe"
+  or InitiatingProcessFolderPath endswith "\\Desktopimgdownldr.exe" or InitiatingProcessFolderPath
+  endswith "\\esentutl.exe" or InitiatingProcessFolderPath endswith "\\mshta.exe"
+  or InitiatingProcessFolderPath endswith "\\AcroRd32.exe" or InitiatingProcessFolderPath
+  endswith "\\RdrCEF.exe" or InitiatingProcessFolderPath endswith "\\hh.exe" or InitiatingProcessFolderPath
+  endswith "\\finger.exe") and (FolderPath endswith ".ps1" or FolderPath endswith
+  ".bat" or FolderPath endswith ".vbs" or FolderPath endswith ".scf" or FolderPath
+  endswith ".wsf" or FolderPath endswith ".wsh")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

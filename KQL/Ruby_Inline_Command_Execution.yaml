@@ -1,0 +1,32 @@
+name: Ruby Inline Command Execution
+id: 20a5ffa1-3848-4584-b6f8-c7c7fd9f69c8
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2023/01/02
+severity: medium
+description: Detects execution of ruby using the "-e" flag. This is could be used
+  as a way to launch a reverse shell or execute live ruby code.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Execution
+relevantTechniques:
+- T1059
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " -e" and (FolderPath endswith "\\ruby.exe"
+  or ProcessVersionInfoOriginalFileName =~ "ruby.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

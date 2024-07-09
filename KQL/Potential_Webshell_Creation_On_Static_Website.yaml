@@ -1,0 +1,36 @@
+name: Potential Webshell Creation On Static Website
+id: 39f1f9f2-9636-45de-98f6-a4046aa8e4b9
+author: Beyu Denis, oscd.community, Tim Shelton, Thurein Oo
+date: 2019/10/22
+severity: medium
+description: Detects the creation of files with certain extensions on a static web
+  site. This can be indicative of potential uploads of a web shell.
+status: test
+modified: 2023/10/15
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Persistence
+relevantTechniques:
+- T1505
+query: 'DeviceFileEvents
+
+  | where (((FolderPath contains ".ashx" or FolderPath contains ".asp" or FolderPath
+  contains ".ph" or FolderPath contains ".soap") and FolderPath contains "\\inetpub\\wwwroot\\")
+  or (FolderPath contains ".ph" and (FolderPath contains "\\www\\" or FolderPath contains
+  "\\htdocs\\" or FolderPath contains "\\html\\"))) and (not((FolderPath contains
+  "\\xampp" or InitiatingProcessFolderPath =~ "System" or (FolderPath contains "\\AppData\\Local\\Temp\\"
+  or FolderPath contains "\\Windows\\Temp\\"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

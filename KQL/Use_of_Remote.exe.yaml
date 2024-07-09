@@ -1,0 +1,32 @@
+name: Use of Remote.exe
+id: 4eddc365-79b4-43ff-a9d7-99422dc34b93
+author: Christopher Peacock @SecurePeacock, SCYTHE @scythe_io
+date: 2022/06/02
+severity: medium
+description: Remote.exe is part of WinDbg in the Windows SDK and can be used for AWL
+  bypass and running remote files.
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1127
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\remote.exe" or ProcessVersionInfoOriginalFileName
+  =~ "remote.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

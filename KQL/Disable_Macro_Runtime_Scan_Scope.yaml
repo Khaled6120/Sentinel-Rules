@@ -1,0 +1,32 @@
+name: Disable Macro Runtime Scan Scope
+id: ab871450-37dc-4a3a-997f-6662aa8ae0f1
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/10/25
+severity: high
+description: Detects tampering with the MacroRuntimeScanScope registry key to disable
+  runtime scanning of enabled macros
+status: test
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques: []
+query: 'DeviceRegistryEvents
+
+  | where RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey contains "\\SOFTWARE"
+  and RegistryKey contains "\\Microsoft\\Office" and RegistryKey contains "\\Common\\Security")
+  and RegistryKey endswith "\\MacroRuntimeScanScope"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

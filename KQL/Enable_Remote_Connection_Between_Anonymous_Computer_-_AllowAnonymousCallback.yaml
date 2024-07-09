@@ -1,0 +1,31 @@
+name: Enable Remote Connection Between Anonymous Computer - AllowAnonymousCallback
+id: 4d431012-2ab5-4db7-a84e-b29809da2172
+author: X__Junior (Nextron Systems)
+date: 2023/11/03
+severity: medium
+description: Detects enabling of the "AllowAnonymousCallback" registry value, which
+  allows a remote connection between computers that do not have a trust relationship.
+status: experimental
+modified: ''
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1562
+query: 'DeviceRegistryEvents
+
+  | where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey contains "\\Microsoft\\WBEM\\CIMOM\\AllowAnonymousCallback"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

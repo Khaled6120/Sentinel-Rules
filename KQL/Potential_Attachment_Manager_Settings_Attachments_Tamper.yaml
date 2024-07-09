@@ -1,0 +1,33 @@
+name: Potential Attachment Manager Settings Attachments Tamper
+id: ee77a5db-b0f3-4be2-bfd4-b58be1c6b15a
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/01
+severity: high
+description: Detects tampering with attachment manager settings policies attachments
+  (See reference for more information)
+status: test
+modified: 2023/08/17
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques: []
+query: 'DeviceRegistryEvents
+
+  | where RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments"
+  and ((RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "\\HideZoneInfoOnProperties")
+  or (RegistryValueData =~ "DWORD (0x00000002)" and RegistryKey endswith "\\SaveZoneInformation")
+  or (RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "\\ScanWithAntiVirus"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

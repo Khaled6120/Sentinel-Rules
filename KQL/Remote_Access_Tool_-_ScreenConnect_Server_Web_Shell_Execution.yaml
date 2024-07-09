@@ -1,0 +1,31 @@
+name: Remote Access Tool - ScreenConnect Server Web Shell Execution
+id: b19146a3-25d4-41b4-928b-1e2a92641b1b
+author: Jason Rathbun (Blackpoint Cyber)
+date: 2024/02/26
+severity: high
+description: Detects potential web shell execution from the ScreenConnect server process.
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Initial Access
+relevantTechniques:
+- T1190
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\csc.exe") and
+  InitiatingProcessFolderPath endswith "\\ScreenConnect.Service.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled
