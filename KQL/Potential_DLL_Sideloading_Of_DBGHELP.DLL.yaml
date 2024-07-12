@@ -3,7 +3,7 @@ id: 6414b5cd-b19d-447e-bb5e-9f03940b5784
 author: Nasreddine Bencherchali (Nextron Systems), Wietze Beukema (project and research)
 date: 2022/10/25
 severity: medium
-description: Detects DLL sideloading of "dbghelp.dll"
+description: Detects potential DLL sideloading of "dbghelp.dll"
 status: test
 modified: 2023/05/05
 logsource:

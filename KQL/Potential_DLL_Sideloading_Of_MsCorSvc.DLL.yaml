@@ -1,0 +1,32 @@
+name: Potential DLL Sideloading Of MsCorSvc.DLL
+id: cdb15e19-c2d0-432a-928e-e49c8c60dcf2
+author: Wietze Beukema
+date: 2024/07/11
+severity: medium
+description: Detects potential DLL sideloading of "mscorsvc.dll".
+status: experimental
+modified: ''
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1574
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\mscorsvc.dll" and (not((FolderPath startswith "C:\\Windows\\Microsoft.NET\\Framework\\"
+  or FolderPath startswith "C:\\Windows\\Microsoft.NET\\Framework64\\" or FolderPath
+  startswith "C:\\Windows\\WinSxS\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

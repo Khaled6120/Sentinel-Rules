@@ -1,0 +1,32 @@
+name: Potential DLL Sideloading Of MpSvc.DLL
+id: 5ba243e5-8165-4cf7-8c69-e1d3669654c1
+author: Nasreddine Bencherchali (Nextron Systems), Wietze Beukema
+date: 2024/07/11
+severity: medium
+description: Detects potential DLL sideloading of "MpSvc.dll".
+status: experimental
+modified: ''
+logsource:
+  category: image_load
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1574
+query: 'DeviceImageLoadEvents
+
+  | where FolderPath endswith "\\MpSvc.dll" and (not((FolderPath startswith "C:\\Program
+  Files\\Windows Defender\\" or FolderPath startswith "C:\\ProgramData\\Microsoft\\Windows
+  Defender\\Platform\\" or FolderPath startswith "C:\\Windows\\WinSxS\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled
