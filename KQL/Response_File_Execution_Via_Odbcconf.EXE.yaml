@@ -15,11 +15,11 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1218
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains " -f " or ProcessCommandLine contains " /f
-  ") and (FolderPath endswith "\\odbcconf.exe" or ProcessVersionInfoOriginalFileName
-  =~ "odbcconf.exe") and ProcessCommandLine contains ".rsp"'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -f \" or ProcessCommandLine\
+  \ contains \" /f \" or ProcessCommandLine contains \" \u2013f \" or ProcessCommandLine\
+  \ contains \" \u2014f \" or ProcessCommandLine contains \" \u2015f \") and (FolderPath\
+  \ endswith \"\\\\odbcconf.exe\" or ProcessVersionInfoOriginalFileName =~ \"odbcconf.exe\"\
+  ) and ProcessCommandLine contains \".rsp\""
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

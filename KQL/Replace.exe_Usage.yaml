@@ -14,10 +14,10 @@ tactics:
 - Command And Control
 relevantTechniques:
 - T1105
-query: 'DeviceProcessEvents
-
-  | where FolderPath endswith "\\replace.exe" and (ProcessCommandLine contains "-a"
-  or ProcessCommandLine contains "/a")'
+query: "DeviceProcessEvents\n| where FolderPath endswith \"\\\\replace.exe\" and (ProcessCommandLine\
+  \ contains \"-a\" or ProcessCommandLine contains \"/a\" or ProcessCommandLine contains\
+  \ \"\u2013a\" or ProcessCommandLine contains \"\u2014a\" or ProcessCommandLine contains\
+  \ \"\u2015a\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

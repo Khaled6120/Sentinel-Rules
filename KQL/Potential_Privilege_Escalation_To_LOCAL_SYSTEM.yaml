@@ -14,26 +14,116 @@ tactics:
 - Resource Development
 relevantTechniques:
 - T1587
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains " -s cmd" or ProcessCommandLine contains "
-  /s cmd" or ProcessCommandLine contains " -s -i cmd" or ProcessCommandLine contains
-  " -s /i cmd" or ProcessCommandLine contains " /s -i cmd" or ProcessCommandLine contains
-  " /s /i cmd" or ProcessCommandLine contains " -i -s cmd" or ProcessCommandLine contains
-  " -i /s cmd" or ProcessCommandLine contains " /i -s cmd" or ProcessCommandLine contains
-  " /i /s cmd" or ProcessCommandLine contains " -s pwsh" or ProcessCommandLine contains
-  " /s pwsh" or ProcessCommandLine contains " -s -i pwsh" or ProcessCommandLine contains
-  " -s /i pwsh" or ProcessCommandLine contains " /s -i pwsh" or ProcessCommandLine
-  contains " /s /i pwsh" or ProcessCommandLine contains " -i -s pwsh" or ProcessCommandLine
-  contains " -i /s pwsh" or ProcessCommandLine contains " /i -s pwsh" or ProcessCommandLine
-  contains " /i /s pwsh" or ProcessCommandLine contains " -s powershell" or ProcessCommandLine
-  contains " /s powershell" or ProcessCommandLine contains " -s -i powershell" or
-  ProcessCommandLine contains " -s /i powershell" or ProcessCommandLine contains "
-  /s -i powershell" or ProcessCommandLine contains " /s /i powershell" or ProcessCommandLine
-  contains " -i -s powershell" or ProcessCommandLine contains " -i /s powershell"
-  or ProcessCommandLine contains " /i -s powershell" or ProcessCommandLine contains
-  " /i /s powershell") and (not((ProcessCommandLine contains "paexec" or ProcessCommandLine
-  contains "PsExec" or ProcessCommandLine contains "accepteula")))'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -s cmd\" or ProcessCommandLine\
+  \ contains \" /s cmd\" or ProcessCommandLine contains \" \u2013s cmd\" or ProcessCommandLine\
+  \ contains \" \u2014s cmd\" or ProcessCommandLine contains \" \u2015s cmd\" or ProcessCommandLine\
+  \ contains \" -s -i cmd\" or ProcessCommandLine contains \" -s /i cmd\" or ProcessCommandLine\
+  \ contains \" -s \u2013i cmd\" or ProcessCommandLine contains \" -s \u2014i cmd\"\
+  \ or ProcessCommandLine contains \" -s \u2015i cmd\" or ProcessCommandLine contains\
+  \ \" /s -i cmd\" or ProcessCommandLine contains \" /s /i cmd\" or ProcessCommandLine\
+  \ contains \" /s \u2013i cmd\" or ProcessCommandLine contains \" /s \u2014i cmd\"\
+  \ or ProcessCommandLine contains \" /s \u2015i cmd\" or ProcessCommandLine contains\
+  \ \" \u2013s -i cmd\" or ProcessCommandLine contains \" \u2013s /i cmd\" or ProcessCommandLine\
+  \ contains \" \u2013s \u2013i cmd\" or ProcessCommandLine contains \" \u2013s \u2014\
+  i cmd\" or ProcessCommandLine contains \" \u2013s \u2015i cmd\" or ProcessCommandLine\
+  \ contains \" \u2014s -i cmd\" or ProcessCommandLine contains \" \u2014s /i cmd\"\
+  \ or ProcessCommandLine contains \" \u2014s \u2013i cmd\" or ProcessCommandLine\
+  \ contains \" \u2014s \u2014i cmd\" or ProcessCommandLine contains \" \u2014s \u2015\
+  i cmd\" or ProcessCommandLine contains \" \u2015s -i cmd\" or ProcessCommandLine\
+  \ contains \" \u2015s /i cmd\" or ProcessCommandLine contains \" \u2015s \u2013\
+  i cmd\" or ProcessCommandLine contains \" \u2015s \u2014i cmd\" or ProcessCommandLine\
+  \ contains \" \u2015s \u2015i cmd\" or ProcessCommandLine contains \" -i -s cmd\"\
+  \ or ProcessCommandLine contains \" -i /s cmd\" or ProcessCommandLine contains \"\
+  \ -i \u2013s cmd\" or ProcessCommandLine contains \" -i \u2014s cmd\" or ProcessCommandLine\
+  \ contains \" -i \u2015s cmd\" or ProcessCommandLine contains \" /i -s cmd\" or\
+  \ ProcessCommandLine contains \" /i /s cmd\" or ProcessCommandLine contains \" /i\
+  \ \u2013s cmd\" or ProcessCommandLine contains \" /i \u2014s cmd\" or ProcessCommandLine\
+  \ contains \" /i \u2015s cmd\" or ProcessCommandLine contains \" \u2013i -s cmd\"\
+  \ or ProcessCommandLine contains \" \u2013i /s cmd\" or ProcessCommandLine contains\
+  \ \" \u2013i \u2013s cmd\" or ProcessCommandLine contains \" \u2013i \u2014s cmd\"\
+  \ or ProcessCommandLine contains \" \u2013i \u2015s cmd\" or ProcessCommandLine\
+  \ contains \" \u2014i -s cmd\" or ProcessCommandLine contains \" \u2014i /s cmd\"\
+  \ or ProcessCommandLine contains \" \u2014i \u2013s cmd\" or ProcessCommandLine\
+  \ contains \" \u2014i \u2014s cmd\" or ProcessCommandLine contains \" \u2014i \u2015\
+  s cmd\" or ProcessCommandLine contains \" \u2015i -s cmd\" or ProcessCommandLine\
+  \ contains \" \u2015i /s cmd\" or ProcessCommandLine contains \" \u2015i \u2013\
+  s cmd\" or ProcessCommandLine contains \" \u2015i \u2014s cmd\" or ProcessCommandLine\
+  \ contains \" \u2015i \u2015s cmd\" or ProcessCommandLine contains \" -s pwsh\"\
+  \ or ProcessCommandLine contains \" /s pwsh\" or ProcessCommandLine contains \"\
+  \ \u2013s pwsh\" or ProcessCommandLine contains \" \u2014s pwsh\" or ProcessCommandLine\
+  \ contains \" \u2015s pwsh\" or ProcessCommandLine contains \" -s -i pwsh\" or ProcessCommandLine\
+  \ contains \" -s /i pwsh\" or ProcessCommandLine contains \" -s \u2013i pwsh\" or\
+  \ ProcessCommandLine contains \" -s \u2014i pwsh\" or ProcessCommandLine contains\
+  \ \" -s \u2015i pwsh\" or ProcessCommandLine contains \" /s -i pwsh\" or ProcessCommandLine\
+  \ contains \" /s /i pwsh\" or ProcessCommandLine contains \" /s \u2013i pwsh\" or\
+  \ ProcessCommandLine contains \" /s \u2014i pwsh\" or ProcessCommandLine contains\
+  \ \" /s \u2015i pwsh\" or ProcessCommandLine contains \" \u2013s -i pwsh\" or ProcessCommandLine\
+  \ contains \" \u2013s /i pwsh\" or ProcessCommandLine contains \" \u2013s \u2013\
+  i pwsh\" or ProcessCommandLine contains \" \u2013s \u2014i pwsh\" or ProcessCommandLine\
+  \ contains \" \u2013s \u2015i pwsh\" or ProcessCommandLine contains \" \u2014s -i\
+  \ pwsh\" or ProcessCommandLine contains \" \u2014s /i pwsh\" or ProcessCommandLine\
+  \ contains \" \u2014s \u2013i pwsh\" or ProcessCommandLine contains \" \u2014s \u2014\
+  i pwsh\" or ProcessCommandLine contains \" \u2014s \u2015i pwsh\" or ProcessCommandLine\
+  \ contains \" \u2015s -i pwsh\" or ProcessCommandLine contains \" \u2015s /i pwsh\"\
+  \ or ProcessCommandLine contains \" \u2015s \u2013i pwsh\" or ProcessCommandLine\
+  \ contains \" \u2015s \u2014i pwsh\" or ProcessCommandLine contains \" \u2015s \u2015\
+  i pwsh\" or ProcessCommandLine contains \" -i -s pwsh\" or ProcessCommandLine contains\
+  \ \" -i /s pwsh\" or ProcessCommandLine contains \" -i \u2013s pwsh\" or ProcessCommandLine\
+  \ contains \" -i \u2014s pwsh\" or ProcessCommandLine contains \" -i \u2015s pwsh\"\
+  \ or ProcessCommandLine contains \" /i -s pwsh\" or ProcessCommandLine contains\
+  \ \" /i /s pwsh\" or ProcessCommandLine contains \" /i \u2013s pwsh\" or ProcessCommandLine\
+  \ contains \" /i \u2014s pwsh\" or ProcessCommandLine contains \" /i \u2015s pwsh\"\
+  \ or ProcessCommandLine contains \" \u2013i -s pwsh\" or ProcessCommandLine contains\
+  \ \" \u2013i /s pwsh\" or ProcessCommandLine contains \" \u2013i \u2013s pwsh\"\
+  \ or ProcessCommandLine contains \" \u2013i \u2014s pwsh\" or ProcessCommandLine\
+  \ contains \" \u2013i \u2015s pwsh\" or ProcessCommandLine contains \" \u2014i -s\
+  \ pwsh\" or ProcessCommandLine contains \" \u2014i /s pwsh\" or ProcessCommandLine\
+  \ contains \" \u2014i \u2013s pwsh\" or ProcessCommandLine contains \" \u2014i \u2014\
+  s pwsh\" or ProcessCommandLine contains \" \u2014i \u2015s pwsh\" or ProcessCommandLine\
+  \ contains \" \u2015i -s pwsh\" or ProcessCommandLine contains \" \u2015i /s pwsh\"\
+  \ or ProcessCommandLine contains \" \u2015i \u2013s pwsh\" or ProcessCommandLine\
+  \ contains \" \u2015i \u2014s pwsh\" or ProcessCommandLine contains \" \u2015i \u2015\
+  s pwsh\" or ProcessCommandLine contains \" -s powershell\" or ProcessCommandLine\
+  \ contains \" /s powershell\" or ProcessCommandLine contains \" \u2013s powershell\"\
+  \ or ProcessCommandLine contains \" \u2014s powershell\" or ProcessCommandLine contains\
+  \ \" \u2015s powershell\" or ProcessCommandLine contains \" -s -i powershell\" or\
+  \ ProcessCommandLine contains \" -s /i powershell\" or ProcessCommandLine contains\
+  \ \" -s \u2013i powershell\" or ProcessCommandLine contains \" -s \u2014i powershell\"\
+  \ or ProcessCommandLine contains \" -s \u2015i powershell\" or ProcessCommandLine\
+  \ contains \" /s -i powershell\" or ProcessCommandLine contains \" /s /i powershell\"\
+  \ or ProcessCommandLine contains \" /s \u2013i powershell\" or ProcessCommandLine\
+  \ contains \" /s \u2014i powershell\" or ProcessCommandLine contains \" /s \u2015\
+  i powershell\" or ProcessCommandLine contains \" \u2013s -i powershell\" or ProcessCommandLine\
+  \ contains \" \u2013s /i powershell\" or ProcessCommandLine contains \" \u2013s\
+  \ \u2013i powershell\" or ProcessCommandLine contains \" \u2013s \u2014i powershell\"\
+  \ or ProcessCommandLine contains \" \u2013s \u2015i powershell\" or ProcessCommandLine\
+  \ contains \" \u2014s -i powershell\" or ProcessCommandLine contains \" \u2014s\
+  \ /i powershell\" or ProcessCommandLine contains \" \u2014s \u2013i powershell\"\
+  \ or ProcessCommandLine contains \" \u2014s \u2014i powershell\" or ProcessCommandLine\
+  \ contains \" \u2014s \u2015i powershell\" or ProcessCommandLine contains \" \u2015\
+  s -i powershell\" or ProcessCommandLine contains \" \u2015s /i powershell\" or ProcessCommandLine\
+  \ contains \" \u2015s \u2013i powershell\" or ProcessCommandLine contains \" \u2015\
+  s \u2014i powershell\" or ProcessCommandLine contains \" \u2015s \u2015i powershell\"\
+  \ or ProcessCommandLine contains \" -i -s powershell\" or ProcessCommandLine contains\
+  \ \" -i /s powershell\" or ProcessCommandLine contains \" -i \u2013s powershell\"\
+  \ or ProcessCommandLine contains \" -i \u2014s powershell\" or ProcessCommandLine\
+  \ contains \" -i \u2015s powershell\" or ProcessCommandLine contains \" /i -s powershell\"\
+  \ or ProcessCommandLine contains \" /i /s powershell\" or ProcessCommandLine contains\
+  \ \" /i \u2013s powershell\" or ProcessCommandLine contains \" /i \u2014s powershell\"\
+  \ or ProcessCommandLine contains \" /i \u2015s powershell\" or ProcessCommandLine\
+  \ contains \" \u2013i -s powershell\" or ProcessCommandLine contains \" \u2013i\
+  \ /s powershell\" or ProcessCommandLine contains \" \u2013i \u2013s powershell\"\
+  \ or ProcessCommandLine contains \" \u2013i \u2014s powershell\" or ProcessCommandLine\
+  \ contains \" \u2013i \u2015s powershell\" or ProcessCommandLine contains \" \u2014\
+  i -s powershell\" or ProcessCommandLine contains \" \u2014i /s powershell\" or ProcessCommandLine\
+  \ contains \" \u2014i \u2013s powershell\" or ProcessCommandLine contains \" \u2014\
+  i \u2014s powershell\" or ProcessCommandLine contains \" \u2014i \u2015s powershell\"\
+  \ or ProcessCommandLine contains \" \u2015i -s powershell\" or ProcessCommandLine\
+  \ contains \" \u2015i /s powershell\" or ProcessCommandLine contains \" \u2015i\
+  \ \u2013s powershell\" or ProcessCommandLine contains \" \u2015i \u2014s powershell\"\
+  \ or ProcessCommandLine contains \" \u2015i \u2015s powershell\") and (not((ProcessCommandLine\
+  \ contains \"paexec\" or ProcessCommandLine contains \"PsExec\" or ProcessCommandLine\
+  \ contains \"accepteula\")))"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

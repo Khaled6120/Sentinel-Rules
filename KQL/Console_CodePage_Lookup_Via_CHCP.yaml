@@ -14,14 +14,18 @@ tactics:
 - Discovery
 relevantTechniques:
 - T1614
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine endswith "chcp" or ProcessCommandLine endswith "chcp
-  " or ProcessCommandLine endswith "chcp  ") and FolderPath endswith "\\chcp.com"
-  and (InitiatingProcessCommandLine contains " -c " or InitiatingProcessCommandLine
-  contains " /c " or InitiatingProcessCommandLine contains " -r " or InitiatingProcessCommandLine
-  contains " /r " or InitiatingProcessCommandLine contains " -k " or InitiatingProcessCommandLine
-  contains " /k ") and InitiatingProcessFolderPath endswith "\\cmd.exe"'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine endswith \"chcp\" or ProcessCommandLine\
+  \ endswith \"chcp \" or ProcessCommandLine endswith \"chcp  \") and FolderPath endswith\
+  \ \"\\\\chcp.com\" and (InitiatingProcessCommandLine contains \" -c \" or InitiatingProcessCommandLine\
+  \ contains \" /c \" or InitiatingProcessCommandLine contains \" \u2013c \" or InitiatingProcessCommandLine\
+  \ contains \" \u2014c \" or InitiatingProcessCommandLine contains \" \u2015c \"\
+  \ or InitiatingProcessCommandLine contains \" -r \" or InitiatingProcessCommandLine\
+  \ contains \" /r \" or InitiatingProcessCommandLine contains \" \u2013r \" or InitiatingProcessCommandLine\
+  \ contains \" \u2014r \" or InitiatingProcessCommandLine contains \" \u2015r \"\
+  \ or InitiatingProcessCommandLine contains \" -k \" or InitiatingProcessCommandLine\
+  \ contains \" /k \" or InitiatingProcessCommandLine contains \" \u2013k \" or InitiatingProcessCommandLine\
+  \ contains \" \u2014k \" or InitiatingProcessCommandLine contains \" \u2015k \"\
+  ) and InitiatingProcessFolderPath endswith \"\\\\cmd.exe\""
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

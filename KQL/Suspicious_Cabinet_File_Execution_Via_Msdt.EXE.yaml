@@ -14,11 +14,11 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1202
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains " -cab " or ProcessCommandLine contains " /cab
-  ") and (FolderPath endswith "\\msdt.exe" or ProcessVersionInfoOriginalFileName =~
-  "msdt.exe")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -cab \" or ProcessCommandLine\
+  \ contains \" /cab \" or ProcessCommandLine contains \" \u2013cab \" or ProcessCommandLine\
+  \ contains \" \u2014cab \" or ProcessCommandLine contains \" \u2015cab \") and (FolderPath\
+  \ endswith \"\\\\msdt.exe\" or ProcessVersionInfoOriginalFileName =~ \"msdt.exe\"\
+  )"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

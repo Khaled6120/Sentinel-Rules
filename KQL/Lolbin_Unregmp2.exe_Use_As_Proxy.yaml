@@ -14,11 +14,11 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1218
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains " -HideWMP" or ProcessCommandLine contains
-  " /HideWMP") and (FolderPath endswith "\\unregmp2.exe" or ProcessVersionInfoOriginalFileName
-  =~ "unregmp2.exe")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -HideWMP\" or\
+  \ ProcessCommandLine contains \" /HideWMP\" or ProcessCommandLine contains \" \u2013\
+  HideWMP\" or ProcessCommandLine contains \" \u2014HideWMP\" or ProcessCommandLine\
+  \ contains \" \u2015HideWMP\") and (FolderPath endswith \"\\\\unregmp2.exe\" or\
+  \ ProcessVersionInfoOriginalFileName =~ \"unregmp2.exe\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

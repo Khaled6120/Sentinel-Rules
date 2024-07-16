@@ -13,13 +13,13 @@ tactics:
 - Exfiltration
 relevantTechniques:
 - T1012
-query: 'DeviceProcessEvents
-
-  | where ((ProcessCommandLine contains " -E " or ProcessCommandLine contains " /E
-  ") and (FolderPath endswith "\\regedit.exe" or ProcessVersionInfoOriginalFileName
-  =~ "REGEDIT.EXE")) and (not(((ProcessCommandLine contains "hklm" or ProcessCommandLine
-  contains "hkey_local_machine") and (ProcessCommandLine endswith "\\system" or ProcessCommandLine
-  endswith "\\sam" or ProcessCommandLine endswith "\\security"))))'
+query: "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" -E \" or ProcessCommandLine\
+  \ contains \" /E \" or ProcessCommandLine contains \" \u2013E \" or ProcessCommandLine\
+  \ contains \" \u2014E \" or ProcessCommandLine contains \" \u2015E \") and (FolderPath\
+  \ endswith \"\\\\regedit.exe\" or ProcessVersionInfoOriginalFileName =~ \"REGEDIT.EXE\"\
+  )) and (not(((ProcessCommandLine contains \"hklm\" or ProcessCommandLine contains\
+  \ \"hkey_local_machine\") and (ProcessCommandLine endswith \"\\\\system\" or ProcessCommandLine\
+  \ endswith \"\\\\sam\" or ProcessCommandLine endswith \"\\\\security\"))))"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

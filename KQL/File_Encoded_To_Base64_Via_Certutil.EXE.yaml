@@ -15,11 +15,11 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1027
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains "-encode" or ProcessCommandLine contains "/encode")
-  and (FolderPath endswith "\\certutil.exe" or ProcessVersionInfoOriginalFileName
-  =~ "CertUtil.exe")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-encode\" or ProcessCommandLine\
+  \ contains \"/encode\" or ProcessCommandLine contains \"\u2013encode\" or ProcessCommandLine\
+  \ contains \"\u2014encode\" or ProcessCommandLine contains \"\u2015encode\") and\
+  \ (FolderPath endswith \"\\\\certutil.exe\" or ProcessVersionInfoOriginalFileName\
+  \ =~ \"CertUtil.exe\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

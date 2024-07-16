@@ -16,10 +16,10 @@ tactics:
 - Discovery
 relevantTechniques:
 - T1217
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine =~ "*dir*-s*" or ProcessCommandLine =~ "*dir*/s*") and
-  (FolderPath endswith "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine =~ \"*dir*-s*\" or ProcessCommandLine\
+  \ =~ \"*dir*/s*\" or ProcessCommandLine =~ \"*dir*\u2013s*\" or ProcessCommandLine\
+  \ =~ \"*dir*\u2014s*\" or ProcessCommandLine =~ \"*dir*\u2015s*\") and (FolderPath\
+  \ endswith \"\\\\cmd.exe\" or ProcessVersionInfoOriginalFileName =~ \"Cmd.Exe\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

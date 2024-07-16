@@ -21,11 +21,11 @@ tactics:
 - Execution
 relevantTechniques:
 - T1059
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains " -c " or ProcessCommandLine contains " /c
-  ") and (FolderPath endswith "\\forfiles.exe" or ProcessVersionInfoOriginalFileName
-  =~ "forfiles.exe")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -c \" or ProcessCommandLine\
+  \ contains \" /c \" or ProcessCommandLine contains \" \u2013c \" or ProcessCommandLine\
+  \ contains \" \u2014c \" or ProcessCommandLine contains \" \u2015c \") and (FolderPath\
+  \ endswith \"\\\\forfiles.exe\" or ProcessVersionInfoOriginalFileName =~ \"forfiles.exe\"\
+  )"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

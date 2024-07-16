@@ -14,12 +14,11 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1202
-query: 'DeviceProcessEvents
-
-  | where (FolderPath endswith "\\msdt.exe" or ProcessVersionInfoOriginalFileName
-  =~ "msdt.exe") and (ProcessCommandLine contains "IT_BrowseForFile=" or (ProcessCommandLine
-  contains " PCWDiagnostic" and (ProcessCommandLine contains " -af " or ProcessCommandLine
-  contains " /af ")))'
+query: "DeviceProcessEvents\n| where (FolderPath endswith \"\\\\msdt.exe\" or ProcessVersionInfoOriginalFileName\
+  \ =~ \"msdt.exe\") and (ProcessCommandLine contains \"IT_BrowseForFile=\" or (ProcessCommandLine\
+  \ contains \" PCWDiagnostic\" and (ProcessCommandLine contains \" -af \" or ProcessCommandLine\
+  \ contains \" /af \" or ProcessCommandLine contains \" \u2013af \" or ProcessCommandLine\
+  \ contains \" \u2014af \" or ProcessCommandLine contains \" \u2015af \")))"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

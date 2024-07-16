@@ -14,13 +14,14 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1218
-query: 'DeviceProcessEvents
-
-  | where ((ProcessCommandLine contains " -f " or ProcessCommandLine contains " /f
-  ") and (FolderPath endswith "\\odbcconf.exe" or ProcessVersionInfoOriginalFileName
-  =~ "odbcconf.exe")) and (not((ProcessCommandLine contains ".rsp" or (ProcessCommandLine
-  contains ".exe /E /F \"C:\\WINDOWS\\system32\\odbcconf.tmp\"" and FolderPath =~
-  "C:\\Windows\\System32\\odbcconf.exe" and InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\runonce.exe"))))'
+query: "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" -f \" or ProcessCommandLine\
+  \ contains \" /f \" or ProcessCommandLine contains \" \u2013f \" or ProcessCommandLine\
+  \ contains \" \u2014f \" or ProcessCommandLine contains \" \u2015f \") and (FolderPath\
+  \ endswith \"\\\\odbcconf.exe\" or ProcessVersionInfoOriginalFileName =~ \"odbcconf.exe\"\
+  )) and (not((ProcessCommandLine contains \".rsp\" or (ProcessCommandLine contains\
+  \ \".exe /E /F \\\"C:\\\\WINDOWS\\\\system32\\\\odbcconf.tmp\\\"\" and FolderPath\
+  \ =~ \"C:\\\\Windows\\\\System32\\\\odbcconf.exe\" and InitiatingProcessFolderPath\
+  \ =~ \"C:\\\\Windows\\\\System32\\\\runonce.exe\"))))"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

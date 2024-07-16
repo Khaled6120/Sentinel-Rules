@@ -15,11 +15,11 @@ logsource:
 tactics:
 - Execution
 relevantTechniques: []
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains " -r" or ProcessCommandLine contains " /r")
-  and (FolderPath endswith "\\lodctr.exe" and ProcessVersionInfoOriginalFileName =~
-  "LODCTR.EXE")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -r\" or ProcessCommandLine\
+  \ contains \" /r\" or ProcessCommandLine contains \" \u2013r\" or ProcessCommandLine\
+  \ contains \" \u2014r\" or ProcessCommandLine contains \" \u2015r\") and (FolderPath\
+  \ endswith \"\\\\lodctr.exe\" and ProcessVersionInfoOriginalFileName =~ \"LODCTR.EXE\"\
+  )"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

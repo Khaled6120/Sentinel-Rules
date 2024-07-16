@@ -14,11 +14,11 @@ tactics:
 - Collection
 relevantTechniques:
 - T1005
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains "-r" or ProcessCommandLine contains "/r") and
-  (FolderPath endswith "\\esentutl.exe" or ProcessVersionInfoOriginalFileName =~ "esentutl.exe")
-  and ProcessCommandLine contains "\\Windows\\WebCache"'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-r\" or ProcessCommandLine\
+  \ contains \"/r\" or ProcessCommandLine contains \"\u2013r\" or ProcessCommandLine\
+  \ contains \"\u2014r\" or ProcessCommandLine contains \"\u2015r\") and (FolderPath\
+  \ endswith \"\\\\esentutl.exe\" or ProcessVersionInfoOriginalFileName =~ \"esentutl.exe\"\
+  ) and ProcessCommandLine contains \"\\\\Windows\\\\WebCache\""
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

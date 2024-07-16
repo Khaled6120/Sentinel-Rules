@@ -15,10 +15,10 @@ tactics:
 relevantTechniques:
 - T1021
 - T1572
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains " -R " or ProcessCommandLine contains " /R
-  ") and FolderPath endswith "\\ssh.exe"'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -R \" or ProcessCommandLine\
+  \ contains \" /R \" or ProcessCommandLine contains \" \u2013R \" or ProcessCommandLine\
+  \ contains \" \u2014R \" or ProcessCommandLine contains \" \u2015R \") and FolderPath\
+  \ endswith \"\\\\ssh.exe\""
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

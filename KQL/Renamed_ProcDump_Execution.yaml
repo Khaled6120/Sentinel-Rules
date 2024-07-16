@@ -17,13 +17,17 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1036
-query: 'DeviceProcessEvents
-
-  | where (ProcessVersionInfoOriginalFileName =~ "procdump" or ((ProcessCommandLine
-  contains " -ma " or ProcessCommandLine contains " /ma " or ProcessCommandLine contains
-  " -mp " or ProcessCommandLine contains " /mp ") and (ProcessCommandLine contains
-  " -accepteula" or ProcessCommandLine contains " /accepteula"))) and (not((FolderPath
-  endswith "\\procdump.exe" or FolderPath endswith "\\procdump64.exe")))'
+query: "DeviceProcessEvents\n| where (ProcessVersionInfoOriginalFileName =~ \"procdump\"\
+  \ or ((ProcessCommandLine contains \" -ma \" or ProcessCommandLine contains \" /ma\
+  \ \" or ProcessCommandLine contains \" \u2013ma \" or ProcessCommandLine contains\
+  \ \" \u2014ma \" or ProcessCommandLine contains \" \u2015ma \" or ProcessCommandLine\
+  \ contains \" -mp \" or ProcessCommandLine contains \" /mp \" or ProcessCommandLine\
+  \ contains \" \u2013mp \" or ProcessCommandLine contains \" \u2014mp \" or ProcessCommandLine\
+  \ contains \" \u2015mp \") and (ProcessCommandLine contains \" -accepteula\" or\
+  \ ProcessCommandLine contains \" /accepteula\" or ProcessCommandLine contains \"\
+  \ \u2013accepteula\" or ProcessCommandLine contains \" \u2014accepteula\" or ProcessCommandLine\
+  \ contains \" \u2015accepteula\"))) and (not((FolderPath endswith \"\\\\procdump.exe\"\
+  \ or FolderPath endswith \"\\\\procdump64.exe\")))"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

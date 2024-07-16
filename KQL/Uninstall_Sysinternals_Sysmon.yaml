@@ -14,11 +14,11 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1562
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains "-u" or ProcessCommandLine contains "/u") and
-  ((FolderPath endswith "\\Sysmon64.exe" or FolderPath endswith "\\Sysmon.exe") or
-  ProcessVersionInfoFileDescription =~ "System activity monitor")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-u\" or ProcessCommandLine\
+  \ contains \"/u\" or ProcessCommandLine contains \"\u2013u\" or ProcessCommandLine\
+  \ contains \"\u2014u\" or ProcessCommandLine contains \"\u2015u\") and ((FolderPath\
+  \ endswith \"\\\\Sysmon64.exe\" or FolderPath endswith \"\\\\Sysmon.exe\") or ProcessVersionInfoFileDescription\
+  \ =~ \"System activity monitor\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

@@ -14,19 +14,21 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1218
-query: 'DeviceProcessEvents
-
-  | where ((ProcessCommandLine contains "-F:" or ProcessCommandLine contains "/F:")
-  and FolderPath endswith "\\expand.exe") and ((ProcessCommandLine contains ":\\Perflogs\\"
-  or ProcessCommandLine contains ":\\Users\\Public\\" or ProcessCommandLine contains
-  "\\Temporary Internet" or ProcessCommandLine contains ":\\ProgramData" or ProcessCommandLine
-  contains "\\AppData\\Local\\Temp" or ProcessCommandLine contains "\\AppData\\Roaming\\Temp"
-  or ProcessCommandLine contains ":\\Windows\\Temp") or ((ProcessCommandLine contains
-  ":\\Users\\" and ProcessCommandLine contains "\\Favorites\\") or (ProcessCommandLine
-  contains ":\\Users\\" and ProcessCommandLine contains "\\Favourites\\") or (ProcessCommandLine
-  contains ":\\Users\\" and ProcessCommandLine contains "\\Contacts\\"))) and (not((ProcessCommandLine
-  contains "C:\\ProgramData\\Dell\\UpdateService\\Temp\\" and InitiatingProcessFolderPath
-  =~ "C:\\Program Files (x86)\\Dell\\UpdateService\\ServiceShell.exe")))'
+query: "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"-F:\" or ProcessCommandLine\
+  \ contains \"/F:\" or ProcessCommandLine contains \"\u2013F:\" or ProcessCommandLine\
+  \ contains \"\u2014F:\" or ProcessCommandLine contains \"\u2015F:\") and FolderPath\
+  \ endswith \"\\\\expand.exe\") and ((ProcessCommandLine contains \":\\\\Perflogs\\\
+  \\\" or ProcessCommandLine contains \":\\\\Users\\\\Public\\\\\" or ProcessCommandLine\
+  \ contains \"\\\\Temporary Internet\" or ProcessCommandLine contains \":\\\\ProgramData\"\
+  \ or ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\Temp\" or ProcessCommandLine\
+  \ contains \"\\\\AppData\\\\Roaming\\\\Temp\" or ProcessCommandLine contains \"\
+  :\\\\Windows\\\\Temp\") or ((ProcessCommandLine contains \":\\\\Users\\\\\" and\
+  \ ProcessCommandLine contains \"\\\\Favorites\\\\\") or (ProcessCommandLine contains\
+  \ \":\\\\Users\\\\\" and ProcessCommandLine contains \"\\\\Favourites\\\\\") or\
+  \ (ProcessCommandLine contains \":\\\\Users\\\\\" and ProcessCommandLine contains\
+  \ \"\\\\Contacts\\\\\"))) and (not((ProcessCommandLine contains \"C:\\\\ProgramData\\\
+  \\Dell\\\\UpdateService\\\\Temp\\\\\" and InitiatingProcessFolderPath =~ \"C:\\\\\
+  Program Files (x86)\\\\Dell\\\\UpdateService\\\\ServiceShell.exe\")))"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

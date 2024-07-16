@@ -22,11 +22,12 @@ tactics:
 - Persistence
 relevantTechniques:
 - T1574
-query: 'DeviceProcessEvents
-
-  | where ((ProcessCommandLine contains "add " and ProcessCommandLine contains "SYSTEM\\CurrentControlSet\\Services\\"
-  and ProcessCommandLine contains " ImagePath ") and FolderPath endswith "\\reg.exe")
-  and (ProcessCommandLine contains " -d " or ProcessCommandLine contains " /d ")'
+query: "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"add \" and ProcessCommandLine\
+  \ contains \"SYSTEM\\\\CurrentControlSet\\\\Services\\\\\" and ProcessCommandLine\
+  \ contains \" ImagePath \") and FolderPath endswith \"\\\\reg.exe\") and (ProcessCommandLine\
+  \ contains \" -d \" or ProcessCommandLine contains \" /d \" or ProcessCommandLine\
+  \ contains \" \u2013d \" or ProcessCommandLine contains \" \u2014d \" or ProcessCommandLine\
+  \ contains \" \u2015d \")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

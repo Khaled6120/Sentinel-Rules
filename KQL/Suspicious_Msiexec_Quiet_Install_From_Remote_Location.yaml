@@ -13,15 +13,22 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1218
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains "-i" or ProcessCommandLine contains "/i" or
-  ProcessCommandLine contains "-package" or ProcessCommandLine contains "/package"
-  or ProcessCommandLine contains "-a" or ProcessCommandLine contains "/a" or ProcessCommandLine
-  contains "-j" or ProcessCommandLine contains "/j") and (FolderPath endswith "\\msiexec.exe"
-  or ProcessVersionInfoOriginalFileName =~ "msiexec.exe") and (ProcessCommandLine
-  contains "-q" or ProcessCommandLine contains "/q") and (ProcessCommandLine contains
-  "http" or ProcessCommandLine contains "\\\\")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-i\" or ProcessCommandLine\
+  \ contains \"/i\" or ProcessCommandLine contains \"\u2013i\" or ProcessCommandLine\
+  \ contains \"\u2014i\" or ProcessCommandLine contains \"\u2015i\" or ProcessCommandLine\
+  \ contains \"-package\" or ProcessCommandLine contains \"/package\" or ProcessCommandLine\
+  \ contains \"\u2013package\" or ProcessCommandLine contains \"\u2014package\" or\
+  \ ProcessCommandLine contains \"\u2015package\" or ProcessCommandLine contains \"\
+  -a\" or ProcessCommandLine contains \"/a\" or ProcessCommandLine contains \"\u2013\
+  a\" or ProcessCommandLine contains \"\u2014a\" or ProcessCommandLine contains \"\
+  \u2015a\" or ProcessCommandLine contains \"-j\" or ProcessCommandLine contains \"\
+  /j\" or ProcessCommandLine contains \"\u2013j\" or ProcessCommandLine contains \"\
+  \u2014j\" or ProcessCommandLine contains \"\u2015j\") and (FolderPath endswith \"\
+  \\\\msiexec.exe\" or ProcessVersionInfoOriginalFileName =~ \"msiexec.exe\") and\
+  \ (ProcessCommandLine contains \"-q\" or ProcessCommandLine contains \"/q\" or ProcessCommandLine\
+  \ contains \"\u2013q\" or ProcessCommandLine contains \"\u2014q\" or ProcessCommandLine\
+  \ contains \"\u2015q\") and (ProcessCommandLine contains \"http\" or ProcessCommandLine\
+  \ contains \"\\\\\\\\\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

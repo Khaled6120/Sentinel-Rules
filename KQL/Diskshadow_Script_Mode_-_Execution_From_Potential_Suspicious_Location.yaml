@@ -14,14 +14,14 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1218
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains "-s " or ProcessCommandLine contains "/s ")
-  and (ProcessVersionInfoOriginalFileName =~ "diskshadow.exe" or FolderPath endswith
-  "\\diskshadow.exe") and (ProcessCommandLine contains ":\\Temp\\" or ProcessCommandLine
-  contains ":\\Windows\\Temp\\" or ProcessCommandLine contains "\\AppData\\Local\\"
-  or ProcessCommandLine contains "\\AppData\\Roaming\\" or ProcessCommandLine contains
-  "\\ProgramData\\" or ProcessCommandLine contains "\\Users\\Public\\")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-s \" or ProcessCommandLine\
+  \ contains \"/s \" or ProcessCommandLine contains \"\u2013s \" or ProcessCommandLine\
+  \ contains \"\u2014s \" or ProcessCommandLine contains \"\u2015s \") and (ProcessVersionInfoOriginalFileName\
+  \ =~ \"diskshadow.exe\" or FolderPath endswith \"\\\\diskshadow.exe\") and (ProcessCommandLine\
+  \ contains \":\\\\Temp\\\\\" or ProcessCommandLine contains \":\\\\Windows\\\\Temp\\\
+  \\\" or ProcessCommandLine contains \"\\\\AppData\\\\Local\\\\\" or ProcessCommandLine\
+  \ contains \"\\\\AppData\\\\Roaming\\\\\" or ProcessCommandLine contains \"\\\\\
+  ProgramData\\\\\" or ProcessCommandLine contains \"\\\\Users\\\\Public\\\\\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

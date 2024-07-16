@@ -20,11 +20,11 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1036
-query: 'DeviceProcessEvents
-
-  | where ProcessCommandLine contains "/factory,{75dff2b7-6936-4c06-a8bb-676a7b00b24b}"
-  or ((ProcessCommandLine contains "explorer.exe") and (ProcessCommandLine contains
-  " -root," or ProcessCommandLine contains " /root,"))'
+query: "DeviceProcessEvents\n| where ProcessCommandLine contains \"/factory,{75dff2b7-6936-4c06-a8bb-676a7b00b24b}\"\
+  \ or ((ProcessCommandLine contains \"explorer.exe\") and (ProcessCommandLine contains\
+  \ \" -root,\" or ProcessCommandLine contains \" /root,\" or ProcessCommandLine contains\
+  \ \" \u2013root,\" or ProcessCommandLine contains \" \u2014root,\" or ProcessCommandLine\
+  \ contains \" \u2015root,\"))"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

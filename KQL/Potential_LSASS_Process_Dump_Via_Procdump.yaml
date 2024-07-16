@@ -21,10 +21,10 @@ tactics:
 relevantTechniques:
 - T1003
 - T1036
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains " -ma " or ProcessCommandLine contains " /ma
-  ") and ProcessCommandLine contains " ls"'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -ma \" or ProcessCommandLine\
+  \ contains \" /ma \" or ProcessCommandLine contains \" \u2013ma \" or ProcessCommandLine\
+  \ contains \" \u2014ma \" or ProcessCommandLine contains \" \u2015ma \") and ProcessCommandLine\
+  \ contains \" ls\""
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

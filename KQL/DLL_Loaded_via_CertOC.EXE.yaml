@@ -14,11 +14,11 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1218
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains " -LoadDLL " or ProcessCommandLine contains
-  " /LoadDLL ") and (FolderPath endswith "\\certoc.exe" or ProcessVersionInfoOriginalFileName
-  =~ "CertOC.exe")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -LoadDLL \" or\
+  \ ProcessCommandLine contains \" /LoadDLL \" or ProcessCommandLine contains \" \u2013\
+  LoadDLL \" or ProcessCommandLine contains \" \u2014LoadDLL \" or ProcessCommandLine\
+  \ contains \" \u2015LoadDLL \") and (FolderPath endswith \"\\\\certoc.exe\" or ProcessVersionInfoOriginalFileName\
+  \ =~ \"CertOC.exe\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

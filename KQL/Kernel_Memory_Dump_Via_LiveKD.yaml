@@ -13,11 +13,11 @@ logsource:
 tactics:
 - Defense Evasion
 relevantTechniques: []
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains " -m" or ProcessCommandLine contains " /m")
-  and ((FolderPath endswith "\\livekd.exe" or FolderPath endswith "\\livekd64.exe")
-  or ProcessVersionInfoOriginalFileName =~ "livekd.exe")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -m\" or ProcessCommandLine\
+  \ contains \" /m\" or ProcessCommandLine contains \" \u2013m\" or ProcessCommandLine\
+  \ contains \" \u2014m\" or ProcessCommandLine contains \" \u2015m\") and ((FolderPath\
+  \ endswith \"\\\\livekd.exe\" or FolderPath endswith \"\\\\livekd64.exe\") or ProcessVersionInfoOriginalFileName\
+  \ =~ \"livekd.exe\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

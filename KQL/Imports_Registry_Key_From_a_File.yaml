@@ -13,15 +13,18 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1112
-query: 'DeviceProcessEvents
-
-  | where ((ProcessCommandLine contains " /i " or ProcessCommandLine contains " /s
-  " or ProcessCommandLine contains ".reg") and (FolderPath endswith "\\regedit.exe"
-  or ProcessVersionInfoOriginalFileName =~ "REGEDIT.EXE")) and (not(((ProcessCommandLine
-  contains " -e " or ProcessCommandLine contains " /e " or ProcessCommandLine contains
-  " -a " or ProcessCommandLine contains " /a " or ProcessCommandLine contains " -c
-  " or ProcessCommandLine contains " /c ") and ProcessCommandLine matches regex ":[^
-  \\\\]")))'
+query: "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" /i \" or ProcessCommandLine\
+  \ contains \" /s \" or ProcessCommandLine contains \".reg\") and (FolderPath endswith\
+  \ \"\\\\regedit.exe\" or ProcessVersionInfoOriginalFileName =~ \"REGEDIT.EXE\"))\
+  \ and (not(((ProcessCommandLine contains \" -e \" or ProcessCommandLine contains\
+  \ \" /e \" or ProcessCommandLine contains \" \u2013e \" or ProcessCommandLine contains\
+  \ \" \u2014e \" or ProcessCommandLine contains \" \u2015e \" or ProcessCommandLine\
+  \ contains \" -a \" or ProcessCommandLine contains \" /a \" or ProcessCommandLine\
+  \ contains \" \u2013a \" or ProcessCommandLine contains \" \u2014a \" or ProcessCommandLine\
+  \ contains \" \u2015a \" or ProcessCommandLine contains \" -c \" or ProcessCommandLine\
+  \ contains \" /c \" or ProcessCommandLine contains \" \u2013c \" or ProcessCommandLine\
+  \ contains \" \u2014c \" or ProcessCommandLine contains \" \u2015c \") and ProcessCommandLine\
+  \ matches regex \":[^ \\\\\\\\]\")))"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

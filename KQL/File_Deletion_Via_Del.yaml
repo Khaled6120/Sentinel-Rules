@@ -24,13 +24,16 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1070
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains "del " or ProcessCommandLine contains "erase
-  ") and (ProcessCommandLine contains " -f" or ProcessCommandLine contains " /f" or
-  ProcessCommandLine contains " -s" or ProcessCommandLine contains " /s" or ProcessCommandLine
-  contains " -q" or ProcessCommandLine contains " /q") and (FolderPath endswith "\\cmd.exe"
-  or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"del \" or ProcessCommandLine\
+  \ contains \"erase \") and (ProcessCommandLine contains \" -f\" or ProcessCommandLine\
+  \ contains \" /f\" or ProcessCommandLine contains \" \u2013f\" or ProcessCommandLine\
+  \ contains \" \u2014f\" or ProcessCommandLine contains \" \u2015f\" or ProcessCommandLine\
+  \ contains \" -s\" or ProcessCommandLine contains \" /s\" or ProcessCommandLine\
+  \ contains \" \u2013s\" or ProcessCommandLine contains \" \u2014s\" or ProcessCommandLine\
+  \ contains \" \u2015s\" or ProcessCommandLine contains \" -q\" or ProcessCommandLine\
+  \ contains \" /q\" or ProcessCommandLine contains \" \u2013q\" or ProcessCommandLine\
+  \ contains \" \u2014q\" or ProcessCommandLine contains \" \u2015q\") and (FolderPath\
+  \ endswith \"\\\\cmd.exe\" or ProcessVersionInfoOriginalFileName =~ \"Cmd.Exe\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

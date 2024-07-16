@@ -14,15 +14,18 @@ tactics:
 - Credential Access
 relevantTechniques:
 - T1552
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains "lsass" and ((FolderPath endswith "\\find.exe"
-  or FolderPath endswith "\\findstr.exe") or (ProcessVersionInfoOriginalFileName in~
-  ("FIND.EXE", "FINDSTR.EXE")))) or (ProcessCommandLine contains " -i \"lsass" or
-  ProcessCommandLine contains " /i \"lsass" or ProcessCommandLine contains " -i lsass.exe"
-  or ProcessCommandLine contains " /i lsass.exe" or ProcessCommandLine contains "findstr
-  \"lsass" or ProcessCommandLine contains "findstr lsass" or ProcessCommandLine contains
-  "findstr.exe \"lsass" or ProcessCommandLine contains "findstr.exe lsass")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"lsass\" and ((FolderPath\
+  \ endswith \"\\\\find.exe\" or FolderPath endswith \"\\\\findstr.exe\") or (ProcessVersionInfoOriginalFileName\
+  \ in~ (\"FIND.EXE\", \"FINDSTR.EXE\")))) or (ProcessCommandLine contains \" -i \\\
+  \"lsass\" or ProcessCommandLine contains \" /i \\\"lsass\" or ProcessCommandLine\
+  \ contains \" \u2013i \\\"lsass\" or ProcessCommandLine contains \" \u2014i \\\"\
+  lsass\" or ProcessCommandLine contains \" \u2015i \\\"lsass\" or ProcessCommandLine\
+  \ contains \" -i lsass.exe\" or ProcessCommandLine contains \" /i lsass.exe\" or\
+  \ ProcessCommandLine contains \" \u2013i lsass.exe\" or ProcessCommandLine contains\
+  \ \" \u2014i lsass.exe\" or ProcessCommandLine contains \" \u2015i lsass.exe\" or\
+  \ ProcessCommandLine contains \"findstr \\\"lsass\" or ProcessCommandLine contains\
+  \ \"findstr lsass\" or ProcessCommandLine contains \"findstr.exe \\\"lsass\" or\
+  \ ProcessCommandLine contains \"findstr.exe lsass\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

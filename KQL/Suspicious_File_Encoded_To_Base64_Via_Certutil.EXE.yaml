@@ -14,16 +14,17 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1027
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains "-encode" or ProcessCommandLine contains "/encode")
-  and (ProcessCommandLine contains ".acl" or ProcessCommandLine contains ".bat" or
-  ProcessCommandLine contains ".doc" or ProcessCommandLine contains ".gif" or ProcessCommandLine
-  contains ".jpeg" or ProcessCommandLine contains ".jpg" or ProcessCommandLine contains
-  ".mp3" or ProcessCommandLine contains ".pdf" or ProcessCommandLine contains ".png"
-  or ProcessCommandLine contains ".ppt" or ProcessCommandLine contains ".tmp" or ProcessCommandLine
-  contains ".xls" or ProcessCommandLine contains ".xml") and (FolderPath endswith
-  "\\certutil.exe" or ProcessVersionInfoOriginalFileName =~ "CertUtil.exe")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-encode\" or ProcessCommandLine\
+  \ contains \"/encode\" or ProcessCommandLine contains \"\u2013encode\" or ProcessCommandLine\
+  \ contains \"\u2014encode\" or ProcessCommandLine contains \"\u2015encode\") and\
+  \ (ProcessCommandLine contains \".acl\" or ProcessCommandLine contains \".bat\"\
+  \ or ProcessCommandLine contains \".doc\" or ProcessCommandLine contains \".gif\"\
+  \ or ProcessCommandLine contains \".jpeg\" or ProcessCommandLine contains \".jpg\"\
+  \ or ProcessCommandLine contains \".mp3\" or ProcessCommandLine contains \".pdf\"\
+  \ or ProcessCommandLine contains \".png\" or ProcessCommandLine contains \".ppt\"\
+  \ or ProcessCommandLine contains \".tmp\" or ProcessCommandLine contains \".xls\"\
+  \ or ProcessCommandLine contains \".xml\") and (FolderPath endswith \"\\\\certutil.exe\"\
+  \ or ProcessVersionInfoOriginalFileName =~ \"CertUtil.exe\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

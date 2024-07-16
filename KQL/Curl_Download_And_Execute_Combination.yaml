@@ -16,11 +16,11 @@ tactics:
 relevantTechniques:
 - T1105
 - T1218
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains "curl " and ProcessCommandLine contains "http"
-  and ProcessCommandLine contains "-o" and ProcessCommandLine contains "&") and (ProcessCommandLine
-  contains " -c " or ProcessCommandLine contains " /c ")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"curl \" and ProcessCommandLine\
+  \ contains \"http\" and ProcessCommandLine contains \"-o\" and ProcessCommandLine\
+  \ contains \"&\") and (ProcessCommandLine contains \" -c \" or ProcessCommandLine\
+  \ contains \" /c \" or ProcessCommandLine contains \" \u2013c \" or ProcessCommandLine\
+  \ contains \" \u2014c \" or ProcessCommandLine contains \" \u2015c \")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

@@ -14,10 +14,10 @@ tactics:
 - Resource Development
 relevantTechniques:
 - T1588
-query: 'DeviceProcessEvents
-
-  | where ProcessCommandLine contains " -accepteula" or ProcessCommandLine contains
-  " /accepteula"'
+query: "DeviceProcessEvents\n| where ProcessCommandLine contains \" -accepteula\"\
+  \ or ProcessCommandLine contains \" /accepteula\" or ProcessCommandLine contains\
+  \ \" \u2013accepteula\" or ProcessCommandLine contains \" \u2014accepteula\" or\
+  \ ProcessCommandLine contains \" \u2015accepteula\""
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

@@ -19,12 +19,13 @@ tactics:
 - Lateral Movement
 relevantTechniques:
 - T1021
-query: 'DeviceProcessEvents
-
-  | where ((ProcessCommandLine contains " -v:" or ProcessCommandLine contains " /v:")
-  and (FolderPath endswith "\\mstsc.exe" or ProcessVersionInfoOriginalFileName =~
-  "mstsc.exe")) and (not((ProcessCommandLine contains "C:\\ProgramData\\Microsoft\\WSL\\wslg.rdp"
-  and InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\lxss\\wslhost.exe")))'
+query: "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" -v:\" or ProcessCommandLine\
+  \ contains \" /v:\" or ProcessCommandLine contains \" \u2013v:\" or ProcessCommandLine\
+  \ contains \" \u2014v:\" or ProcessCommandLine contains \" \u2015v:\") and (FolderPath\
+  \ endswith \"\\\\mstsc.exe\" or ProcessVersionInfoOriginalFileName =~ \"mstsc.exe\"\
+  )) and (not((ProcessCommandLine contains \"C:\\\\ProgramData\\\\Microsoft\\\\WSL\\\
+  \\wslg.rdp\" and InitiatingProcessFolderPath =~ \"C:\\\\Windows\\\\System32\\\\\
+  lxss\\\\wslhost.exe\")))"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

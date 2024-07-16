@@ -16,11 +16,11 @@ tactics:
 relevantTechniques:
 - T1059
 - T1202
-query: 'DeviceProcessEvents
-
-  | where InitiatingProcessFolderPath endswith "\\ftp.exe" or ((ProcessCommandLine
-  contains "-s:" or ProcessCommandLine contains "/s:") and (FolderPath endswith "\\ftp.exe"
-  or ProcessVersionInfoOriginalFileName =~ "ftp.exe"))'
+query: "DeviceProcessEvents\n| where InitiatingProcessFolderPath endswith \"\\\\ftp.exe\"\
+  \ or ((ProcessCommandLine contains \"-s:\" or ProcessCommandLine contains \"/s:\"\
+  \ or ProcessCommandLine contains \"\u2013s:\" or ProcessCommandLine contains \"\u2014\
+  s:\" or ProcessCommandLine contains \"\u2015s:\") and (FolderPath endswith \"\\\\\
+  ftp.exe\" or ProcessVersionInfoOriginalFileName =~ \"ftp.exe\"))"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

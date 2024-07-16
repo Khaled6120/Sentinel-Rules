@@ -19,11 +19,12 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1553
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains "-addstore" or ProcessCommandLine contains
-  "/addstore") and ProcessCommandLine contains "root" and (FolderPath endswith "\\certutil.exe"
-  or ProcessVersionInfoOriginalFileName =~ "CertUtil.exe")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-addstore\" or\
+  \ ProcessCommandLine contains \"/addstore\" or ProcessCommandLine contains \"\u2013\
+  addstore\" or ProcessCommandLine contains \"\u2014addstore\" or ProcessCommandLine\
+  \ contains \"\u2015addstore\") and ProcessCommandLine contains \"root\" and (FolderPath\
+  \ endswith \"\\\\certutil.exe\" or ProcessVersionInfoOriginalFileName =~ \"CertUtil.exe\"\
+  )"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

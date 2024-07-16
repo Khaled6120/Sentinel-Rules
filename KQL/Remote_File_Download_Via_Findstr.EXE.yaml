@@ -21,12 +21,14 @@ relevantTechniques:
 - T1218
 - T1552
 - T1564
-query: 'DeviceProcessEvents
-
-  | where (ProcessCommandLine contains "findstr" or FolderPath endswith "findstr.exe"
-  or ProcessVersionInfoOriginalFileName =~ "FINDSTR.EXE") and ((ProcessCommandLine
-  contains " -v " or ProcessCommandLine contains " /v ") and (ProcessCommandLine contains
-  " -l " or ProcessCommandLine contains " /l ") and ProcessCommandLine contains "\\\\")'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"findstr\" or FolderPath\
+  \ endswith \"findstr.exe\" or ProcessVersionInfoOriginalFileName =~ \"FINDSTR.EXE\"\
+  ) and ((ProcessCommandLine contains \" -v \" or ProcessCommandLine contains \" /v\
+  \ \" or ProcessCommandLine contains \" \u2013v \" or ProcessCommandLine contains\
+  \ \" \u2014v \" or ProcessCommandLine contains \" \u2015v \") and (ProcessCommandLine\
+  \ contains \" -l \" or ProcessCommandLine contains \" /l \" or ProcessCommandLine\
+  \ contains \" \u2013l \" or ProcessCommandLine contains \" \u2014l \" or ProcessCommandLine\
+  \ contains \" \u2015l \") and ProcessCommandLine contains \"\\\\\\\\\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D
