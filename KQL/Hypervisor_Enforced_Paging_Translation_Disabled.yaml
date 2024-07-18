@@ -1,0 +1,34 @@
+name: Hypervisor Enforced Paging Translation Disabled
+id: 7f2954d2-99c2-4d42-a065-ca36740f187b
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2024/07/05
+severity: high
+description: 'Detects changes to the "DisableHypervisorEnforcedPagingTranslation"
+  registry value. Where the it is set to "1" in order to disable the Hypervisor Enforced
+  Paging Translation feature.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1562
+query: 'DeviceRegistryEvents
+
+  | where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "\\DisableHypervisorEnforcedPagingTranslation"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

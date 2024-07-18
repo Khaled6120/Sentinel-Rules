@@ -1,0 +1,42 @@
+name: HackTool - RemoteKrbRelay Execution
+id: a7664b14-75fb-4a50-a223-cb9bc0afbacf
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2024/06/27
+severity: high
+description: 'Detects the use of RemoteKrbRelay, a Kerberos relaying tool via CommandLine
+  flags and PE metadata.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Credential Access
+relevantTechniques:
+- T1558
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\RemoteKrbRelay.exe" or ProcessVersionInfoOriginalFileName
+  =~ "RemoteKrbRelay.exe") or (ProcessCommandLine contains " -clsid " and ProcessCommandLine
+  contains " -target " and ProcessCommandLine contains " -victim ") or (ProcessCommandLine
+  contains "-rbcd " and (ProcessCommandLine contains "-cn " or ProcessCommandLine
+  contains "--computername ")) or (ProcessCommandLine contains "-chp " and (ProcessCommandLine
+  contains "-chpPass " and ProcessCommandLine contains "-chpUser ")) or (ProcessCommandLine
+  contains "-addgroupmember " and ProcessCommandLine contains "-group " and ProcessCommandLine
+  contains "-groupuser ") or ((ProcessCommandLine contains "interactive" or ProcessCommandLine
+  contains "secrets" or ProcessCommandLine contains "service-add") and (ProcessCommandLine
+  contains "-smb " and ProcessCommandLine contains "--smbkeyword "))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

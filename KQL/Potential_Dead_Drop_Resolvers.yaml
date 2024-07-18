@@ -12,7 +12,7 @@ description: 'Detects an executable, which is not an internet browser or known a
 
   '
 status: test
-modified: 2024/02/06
+modified: 2024/07/16
 logsource:
   category: network_connection
   product: windows
@@ -67,15 +67,15 @@ query: 'DeviceNetworkEvents
   endswith "\\msedge.exe" or InitiatingProcessFolderPath endswith "\\msedgewebview2.exe")
   and (InitiatingProcessFolderPath startswith "C:\\Program Files (x86)\\Microsoft\\EdgeCore\\"
   or InitiatingProcessFolderPath startswith "C:\\Program Files\\Microsoft\\EdgeCore\\"))
-  or (InitiatingProcessFolderPath endswith "\\falkon.exe" and (InitiatingProcessFolderPath
-  startswith "C:\\Program Files\\Falkon\\" or InitiatingProcessFolderPath startswith
-  "C:\\Program Files (x86)\\Falkon\\")) or (InitiatingProcessFolderPath in~ ("C:\\Program
-  Files\\Mozilla Firefox\\firefox.exe", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe"))
-  or (InitiatingProcessFolderPath endswith "\\AppData\\Local\\Mozilla Firefox\\firefox.exe"
-  and InitiatingProcessFolderPath startswith "C:\\Users\\") or (InitiatingProcessFolderPath
-  contains "\\AppData\\Local\\Flock\\" and InitiatingProcessFolderPath endswith "\\Flock.exe")
-  or (RemoteUrl endswith "drive.google.com" and (InitiatingProcessFolderPath contains
-  "C:\\Program Files\\Google\\Drive File Stream\\" or InitiatingProcessFolderPath
+  or InitiatingProcessFolderPath =~ "" or (InitiatingProcessFolderPath endswith "\\falkon.exe"
+  and (InitiatingProcessFolderPath startswith "C:\\Program Files\\Falkon\\" or InitiatingProcessFolderPath
+  startswith "C:\\Program Files (x86)\\Falkon\\")) or (InitiatingProcessFolderPath
+  in~ ("C:\\Program Files\\Mozilla Firefox\\firefox.exe", "C:\\Program Files (x86)\\Mozilla
+  Firefox\\firefox.exe")) or (InitiatingProcessFolderPath endswith "\\AppData\\Local\\Mozilla
+  Firefox\\firefox.exe" and InitiatingProcessFolderPath startswith "C:\\Users\\")
+  or (InitiatingProcessFolderPath contains "\\AppData\\Local\\Flock\\" and InitiatingProcessFolderPath
+  endswith "\\Flock.exe") or (RemoteUrl endswith "drive.google.com" and (InitiatingProcessFolderPath
+  contains "C:\\Program Files\\Google\\Drive File Stream\\" or InitiatingProcessFolderPath
   contains "C:\\Program Files (x86)\\Google\\Drive File Stream\\") and InitiatingProcessFolderPath
   endswith "GoogleDriveFS.exe") or (InitiatingProcessFolderPath in~ ("C:\\Program
   Files (x86)\\Internet Explorer\\iexplore.exe", "C:\\Program Files\\Internet Explorer\\iexplore.exe"))
@@ -86,8 +86,8 @@ query: 'DeviceNetworkEvents
   or InitiatingProcessFolderPath endswith "\\MEGAsyncSetup32.exe" or InitiatingProcessFolderPath
   endswith "\\MEGAsyncSetup64.exe" or InitiatingProcessFolderPath endswith "\\MEGAupdater.exe"))
   or (InitiatingProcessFolderPath contains "\\AppData\\Local\\Programs\\midori-ng\\"
-  and InitiatingProcessFolderPath endswith "\\Midori Next Generation.exe") or (RemoteUrl
-  endswith "onedrive.com" and InitiatingProcessFolderPath contains "\\AppData\\Local\\Microsoft\\OneDrive\\"
+  and InitiatingProcessFolderPath endswith "\\Midori Next Generation.exe") or isnull(InitiatingProcessFolderPath)
+  or (RemoteUrl endswith "onedrive.com" and InitiatingProcessFolderPath contains "\\AppData\\Local\\Microsoft\\OneDrive\\"
   and InitiatingProcessFolderPath endswith "\\OneDrive.exe") or (InitiatingProcessFolderPath
   contains "\\AppData\\Local\\Programs\\Opera\\" and InitiatingProcessFolderPath endswith
   "\\opera.exe") or (InitiatingProcessFolderPath contains "\\AppData\\Local\\Phoebe\\"

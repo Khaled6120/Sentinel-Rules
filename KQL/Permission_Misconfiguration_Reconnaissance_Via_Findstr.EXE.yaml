@@ -3,9 +3,12 @@ id: 47e4bab7-c626-47dc-967b-255608c9a920
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2022/08/12
 severity: medium
-description: Detects usage of findstr with the "EVERYONE" or "BUILTIN" keywords. This
-  is seen being used in combination with "icacls" to look for misconfigured files
-  or folders permissions
+description: 'Detects usage of findstr with the "EVERYONE" or "BUILTIN" keywords.
+
+  This was seen being used in combination with "icacls" and other utilities to spot
+  misconfigured files or folders permissions.
+
+  '
 status: experimental
 modified: 2023/11/11
 logsource:

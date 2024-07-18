@@ -1,0 +1,33 @@
+name: HackTool - CrackMapExec File Indicators
+id: 736ffa74-5f6f-44ca-94ef-1c0df4f51d2a
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2024/03/11
+severity: high
+description: Detects file creation events with filename patterns used by CrackMapExec.
+status: experimental
+modified: 2024/06/27
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Credential Access
+relevantTechniques:
+- T1003
+query: 'DeviceFileEvents
+
+  | where FolderPath startswith "C:\\Windows\\Temp\\" and ((FolderPath matches regex
+  "\\\\[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.txt$" or FolderPath
+  matches regex "\\\\[a-zA-Z]{8}\\.tmp$") or (FolderPath endswith "\\temp.ps1" or
+  FolderPath endswith "\\msol.ps1"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -24,9 +24,9 @@ query: 'DeviceProcessEvents
 
   | where (FolderPath endswith "\\sdbinst.exe" or ProcessVersionInfoOriginalFileName
   =~ "sdbinst.exe") and (not((ProcessCommandLine =~ "" or ProcessCommandLine contains
-  ".sdb" or isnull(ProcessCommandLine) or ((ProcessCommandLine endswith " -c" or ProcessCommandLine
-  endswith " -f" or ProcessCommandLine endswith " -mm" or ProcessCommandLine endswith
-  " -t") or ProcessCommandLine contains " -m -bg"))))'
+  ".sdb" or ((ProcessCommandLine endswith " -c" or ProcessCommandLine endswith " -f"
+  or ProcessCommandLine endswith " -mm" or ProcessCommandLine endswith " -t") or ProcessCommandLine
+  contains " -m -bg") or isnull(ProcessCommandLine))))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

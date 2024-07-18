@@ -6,7 +6,7 @@ severity: high
 description: Detects suspicious new RUN key element pointing to an executable in a
   suspicious folder
 status: experimental
-modified: 2024/03/18
+modified: 2024/07/16
 logsource:
   category: registry_set
   product: windows
@@ -25,8 +25,10 @@ query: 'DeviceRegistryEvents
   startswith "wscript" or RegistryValueData startswith "cscript")) and (RegistryKey
   contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run" or RegistryKey contains
   "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunOnce")) and (not(((RegistryValueData
-  contains "rundll32.exe C:\\WINDOWS\\system32\\advpack.dll,DelNodeRunDLL32" and RegistryValueData
-  contains "C:\\Windows\\Temp\\") and InitiatingProcessFolderPath startswith "C:\\Windows\\SoftwareDistribution\\Download\\")))'
+  contains "\\AppData\\Local\\Temp\\" or RegistryValueData contains "C:\\Windows\\Temp\\")
+  and (RegistryValueData contains "rundll32.exe " and RegistryValueData contains "C:\\WINDOWS\\system32\\advpack.dll,DelNodeRunDLL32")
+  and InitiatingProcessFolderPath startswith "C:\\Windows\\SoftwareDistribution\\Download\\"
+  and RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\RunOnce")))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

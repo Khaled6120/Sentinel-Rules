@@ -1,0 +1,46 @@
+name: HackTool - SharpDPAPI Execution
+id: c7d33b50-f690-4b51-8cfb-0fb912a31e57
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2024/06/26
+severity: high
+description: 'Detects the execution of the SharpDPAPI tool based on CommandLine flags
+  and PE metadata.
+
+  SharpDPAPI is a C# port of some DPAPI functionality from the Mimikatz project.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+- Privilege Escalation
+relevantTechniques:
+- T1134
+query: 'DeviceProcessEvents
+
+  | where (FolderPath endswith "\\SharpDPAPI.exe" or ProcessVersionInfoOriginalFileName
+  =~ "SharpDPAPI.exe") or ((ProcessCommandLine contains " backupkey " or ProcessCommandLine
+  contains " blob " or ProcessCommandLine contains " certificates " or ProcessCommandLine
+  contains " credentials " or ProcessCommandLine contains " keepass " or ProcessCommandLine
+  contains " masterkeys " or ProcessCommandLine contains " rdg " or ProcessCommandLine
+  contains " vaults ") and ((ProcessCommandLine contains " /file:" or ProcessCommandLine
+  contains " /machine" or ProcessCommandLine contains " /mkfile:" or ProcessCommandLine
+  contains " /password:" or ProcessCommandLine contains " /pvk:" or ProcessCommandLine
+  contains " /server:" or ProcessCommandLine contains " /target:" or ProcessCommandLine
+  contains " /unprotect") or (ProcessCommandLine contains " {" and ProcessCommandLine
+  contains "}:")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

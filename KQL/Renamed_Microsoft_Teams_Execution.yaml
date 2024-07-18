@@ -1,0 +1,30 @@
+name: Renamed Microsoft Teams Execution
+id: 88f46b67-14d4-4f45-ac2c-d66984f22191
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2024/07/12
+severity: medium
+description: Detects the execution of a renamed Microsoft Teams binary.
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques: []
+query: 'DeviceProcessEvents
+
+  | where (ProcessVersionInfoOriginalFileName in~ ("msteams.exe", "teams.exe")) and
+  (not((FolderPath endswith "\\msteams.exe" or FolderPath endswith "\\teams.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

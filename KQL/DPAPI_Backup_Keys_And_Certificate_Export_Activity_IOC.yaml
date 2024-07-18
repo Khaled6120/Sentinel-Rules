@@ -1,0 +1,36 @@
+name: DPAPI Backup Keys And Certificate Export Activity IOC
+id: 7892ec59-c5bb-496d-8968-e5d210ca3ac4
+author: Nounou Mbeiri, Nasreddine Bencherchali (Nextron Systems)
+date: 2024/06/26
+severity: high
+description: 'Detects file names with specific patterns seen generated and used by
+  tools such as Mimikatz and DSInternals related to exported or stolen DPAPI backup
+  keys and certificates.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: file_event
+  product: windows
+tactics: []
+relevantTechniques:
+- T1552
+- T1555
+query: 'DeviceFileEvents
+
+  | where (FolderPath contains "ntds_capi_" or FolderPath contains "ntds_legacy_"
+  or FolderPath contains "ntds_unknown_") and (FolderPath endswith ".cer" or FolderPath
+  endswith ".key" or FolderPath endswith ".pfx" or FolderPath endswith ".pvk")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

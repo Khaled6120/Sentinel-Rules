@@ -1,0 +1,32 @@
+name: HackTool - Typical HiveNightmare SAM File Export
+id: 6ea858a8-ba71-4a12-b2cc-5d83312404c7
+author: Florian Roth (Nextron Systems)
+date: 2021/07/23
+severity: high
+description: Detects files written by the different tools that exploit HiveNightmare
+status: test
+modified: 2024/06/27
+logsource:
+  category: file_event
+  product: windows
+tactics:
+- Credential Access
+relevantTechniques:
+- T1552
+query: 'DeviceFileEvents
+
+  | where (FolderPath contains "\\hive_sam_" or FolderPath contains "\\SAM-2021-"
+  or FolderPath contains "\\SAM-2022-" or FolderPath contains "\\SAM-2023-" or FolderPath
+  contains "\\SAM-haxx" or FolderPath contains "\\Sam.save") or FolderPath =~ "C:\\windows\\temp\\sam"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -2,14 +2,14 @@ name: Network Connection Initiated To AzureWebsites.NET By Non-Browser Process
 id: 5c80b618-0dbb-46e6-acbb-03d90bcb6d83
 author: Nasreddine Bencherchali (Nextron Systems)
 date: 2024/06/24
-severity: high
+severity: medium
 description: 'Detects an initiated network connection by a non browser process on
   the system to "azurewebsites.net". The latter was often used by threat actors as
   a malware hosting and exfiltration site.
 
   '
 status: experimental
-modified: ''
+modified: 2024/07/16
 logsource:
   category: network_connection
   product: windows
@@ -41,38 +41,39 @@ query: 'DeviceNetworkEvents
   endswith "\\msedge.exe" or InitiatingProcessFolderPath endswith "\\msedgewebview2.exe")
   and (InitiatingProcessFolderPath startswith "C:\\Program Files (x86)\\Microsoft\\EdgeCore\\"
   or InitiatingProcessFolderPath startswith "C:\\Program Files\\Microsoft\\EdgeCore\\"))
-  or (InitiatingProcessFolderPath endswith "\\falkon.exe" and (InitiatingProcessFolderPath
-  startswith "C:\\Program Files\\Falkon\\" or InitiatingProcessFolderPath startswith
-  "C:\\Program Files (x86)\\Falkon\\")) or (InitiatingProcessFolderPath in~ ("C:\\Program
-  Files\\Mozilla Firefox\\firefox.exe", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe"))
-  or (InitiatingProcessFolderPath endswith "\\AppData\\Local\\Mozilla Firefox\\firefox.exe"
-  and InitiatingProcessFolderPath startswith "C:\\Users\\") or (InitiatingProcessFolderPath
-  contains "\\AppData\\Local\\Flock\\" and InitiatingProcessFolderPath endswith "\\Flock.exe")
-  or (InitiatingProcessFolderPath in~ ("C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe",
-  "C:\\Program Files\\Internet Explorer\\iexplore.exe")) or (InitiatingProcessFolderPath
-  contains "\\AppData\\Local\\Maxthon\\" and InitiatingProcessFolderPath endswith
-  "\\maxthon.exe") or (InitiatingProcessFolderPath contains "\\AppData\\Local\\Programs\\Opera\\"
-  and InitiatingProcessFolderPath endswith "\\opera.exe") or (InitiatingProcessFolderPath
-  contains "\\AppData\\Local\\Phoebe\\" and InitiatingProcessFolderPath endswith "\\Phoebe.exe")
-  or (InitiatingProcessFolderPath endswith "C:\\Program Files (x86)\\PRTG Network
-  Monitor\\PRTG Probe.exe" or InitiatingProcessFolderPath endswith "C:\\Program Files\\PRTG
-  Network Monitor\\PRTG Probe.exe") or (InitiatingProcessFolderPath endswith "\\QtWeb.exe"
-  and (InitiatingProcessFolderPath startswith "C:\\Program Files (x86)\\QtWeb\\" or
-  InitiatingProcessFolderPath startswith "C:\\Program Files\\QtWeb\\")) or ((InitiatingProcessFolderPath
-  contains "C:\\Program Files (x86)\\Safari\\" or InitiatingProcessFolderPath contains
-  "C:\\Program Files\\Safari\\") and InitiatingProcessFolderPath endswith "\\safari.exe")
-  or (InitiatingProcessFolderPath endswith "\\seamonkey.exe" and (InitiatingProcessFolderPath
-  startswith "C:\\Program Files\\SeaMonkey\\" or InitiatingProcessFolderPath startswith
-  "C:\\Program Files (x86)\\SeaMonkey\\")) or (InitiatingProcessFolderPath endswith
-  "\\slimbrowser.exe" and (InitiatingProcessFolderPath startswith "C:\\Program Files\\SlimBrowser\\"
-  or InitiatingProcessFolderPath startswith "C:\\Program Files (x86)\\SlimBrowser\\"))
-  or (InitiatingProcessFolderPath contains "\\AppData\\Local\\Vivaldi\\" and InitiatingProcessFolderPath
-  endswith "\\vivaldi.exe") or (InitiatingProcessFolderPath endswith "\\whale.exe"
-  and (InitiatingProcessFolderPath startswith "C:\\Program Files\\Naver\\Naver Whale\\"
-  or InitiatingProcessFolderPath startswith "C:\\Program Files (x86)\\Naver\\Naver
-  Whale\\")) or (InitiatingProcessFolderPath endswith "\\Waterfox.exe" and (InitiatingProcessFolderPath
-  startswith "C:\\Program Files\\Waterfox\\" or InitiatingProcessFolderPath startswith
-  "C:\\Program Files (x86)\\Waterfox\\")))))'
+  or InitiatingProcessFolderPath =~ "" or (InitiatingProcessFolderPath endswith "\\falkon.exe"
+  and (InitiatingProcessFolderPath startswith "C:\\Program Files\\Falkon\\" or InitiatingProcessFolderPath
+  startswith "C:\\Program Files (x86)\\Falkon\\")) or (InitiatingProcessFolderPath
+  in~ ("C:\\Program Files\\Mozilla Firefox\\firefox.exe", "C:\\Program Files (x86)\\Mozilla
+  Firefox\\firefox.exe")) or (InitiatingProcessFolderPath endswith "\\AppData\\Local\\Mozilla
+  Firefox\\firefox.exe" and InitiatingProcessFolderPath startswith "C:\\Users\\")
+  or (InitiatingProcessFolderPath contains "\\AppData\\Local\\Flock\\" and InitiatingProcessFolderPath
+  endswith "\\Flock.exe") or (InitiatingProcessFolderPath in~ ("C:\\Program Files
+  (x86)\\Internet Explorer\\iexplore.exe", "C:\\Program Files\\Internet Explorer\\iexplore.exe"))
+  or (InitiatingProcessFolderPath contains "\\AppData\\Local\\Maxthon\\" and InitiatingProcessFolderPath
+  endswith "\\maxthon.exe") or isnull(InitiatingProcessFolderPath) or (InitiatingProcessFolderPath
+  contains "\\AppData\\Local\\Programs\\Opera\\" and InitiatingProcessFolderPath endswith
+  "\\opera.exe") or (InitiatingProcessFolderPath contains "\\AppData\\Local\\Phoebe\\"
+  and InitiatingProcessFolderPath endswith "\\Phoebe.exe") or (InitiatingProcessFolderPath
+  endswith "C:\\Program Files (x86)\\PRTG Network Monitor\\PRTG Probe.exe" or InitiatingProcessFolderPath
+  endswith "C:\\Program Files\\PRTG Network Monitor\\PRTG Probe.exe") or (InitiatingProcessFolderPath
+  endswith "\\QtWeb.exe" and (InitiatingProcessFolderPath startswith "C:\\Program
+  Files (x86)\\QtWeb\\" or InitiatingProcessFolderPath startswith "C:\\Program Files\\QtWeb\\"))
+  or ((InitiatingProcessFolderPath contains "C:\\Program Files (x86)\\Safari\\" or
+  InitiatingProcessFolderPath contains "C:\\Program Files\\Safari\\") and InitiatingProcessFolderPath
+  endswith "\\safari.exe") or (InitiatingProcessFolderPath endswith "\\seamonkey.exe"
+  and (InitiatingProcessFolderPath startswith "C:\\Program Files\\SeaMonkey\\" or
+  InitiatingProcessFolderPath startswith "C:\\Program Files (x86)\\SeaMonkey\\"))
+  or (InitiatingProcessFolderPath endswith "\\slimbrowser.exe" and (InitiatingProcessFolderPath
+  startswith "C:\\Program Files\\SlimBrowser\\" or InitiatingProcessFolderPath startswith
+  "C:\\Program Files (x86)\\SlimBrowser\\")) or (InitiatingProcessFolderPath contains
+  "\\AppData\\Local\\Vivaldi\\" and InitiatingProcessFolderPath endswith "\\vivaldi.exe")
+  or (InitiatingProcessFolderPath endswith "\\whale.exe" and (InitiatingProcessFolderPath
+  startswith "C:\\Program Files\\Naver\\Naver Whale\\" or InitiatingProcessFolderPath
+  startswith "C:\\Program Files (x86)\\Naver\\Naver Whale\\")) or (InitiatingProcessFolderPath
+  endswith "\\Waterfox.exe" and (InitiatingProcessFolderPath startswith "C:\\Program
+  Files\\Waterfox\\" or InitiatingProcessFolderPath startswith "C:\\Program Files
+  (x86)\\Waterfox\\")))))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

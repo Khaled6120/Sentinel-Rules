@@ -1,0 +1,48 @@
+name: Uncommon Link.EXE Parent Process
+id: 6e968eb1-5f05-4dac-94e9-fd0c5cb49fd6
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/08/22
+severity: medium
+description: 'Detects an uncommon parent process of "LINK.EXE".
+
+  Link.EXE in Microsoft incremental linker. Its a utility usually bundled with Visual
+  Studio installation.
+
+  Multiple utilities often found in the same folder (editbin.exe, dumpbin.exe, lib.exe,
+  etc) have a hardcode call to the "LINK.EXE" binary without checking its validity.
+
+  This would allow an attacker to sideload any binary with the name "link.exe" if
+  one of the aforementioned tools get executed from a different location.
+
+  By filtering the known locations of such utilities we can spot uncommon parent process
+  of LINK.EXE that might be suspicious or malicious.
+
+  '
+status: test
+modified: 2024/06/27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1218
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "LINK /" and FolderPath endswith "\\link.exe")
+  and (not(((InitiatingProcessFolderPath contains "\\VC\\bin\\" or InitiatingProcessFolderPath
+  contains "\\VC\\Tools\\") and (InitiatingProcessFolderPath startswith "C:\\Program
+  Files\\Microsoft Visual Studio\\" or InitiatingProcessFolderPath startswith "C:\\Program
+  Files (x86)\\Microsoft Visual Studio\\"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

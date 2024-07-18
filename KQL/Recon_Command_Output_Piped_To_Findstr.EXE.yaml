@@ -3,14 +3,16 @@ id: ccb5742c-c248-4982-8c5c-5571b9275ad3
 author: Nasreddine Bencherchali (Nextron Systems), frack113
 date: 2023/07/06
 severity: medium
-description: 'Detects the excution of a potential recon command where the results
+description: 'Detects the execution of a potential recon command where the results
   are piped to "findstr". This is meant to trigger on inline calls of "cmd.exe" via
-  the "/c" or "/k" for example. Attackers often time use this to extract specific
-  information they require in their chain.
+  the "/c" or "/k" for example.
+
+  Attackers often time use this technique to extract specific information they require
+  in their reconnaissance phase.
 
   '
 status: experimental
-modified: 2023/11/11
+modified: 2024/06/27
 logsource:
   category: process_creation
   product: windows
@@ -20,33 +22,16 @@ relevantTechniques:
 - T1057
 query: 'DeviceProcessEvents
 
-  | where ProcessCommandLine contains "ipconfig /all | find " or ProcessCommandLine
-  contains "ipconfig /all | findstr " or ProcessCommandLine contains "ipconfig | find
-  " or ProcessCommandLine contains "ipconfig | findstr " or ProcessCommandLine contains
-  "ipconfig.exe /all | find " or ProcessCommandLine contains "ipconfig.exe /all |
-  findstr " or ProcessCommandLine contains "ipconfig.exe | find " or ProcessCommandLine
-  contains "ipconfig.exe | findstr " or ProcessCommandLine contains "net start | find"
-  or ProcessCommandLine contains "net start | findstr" or ProcessCommandLine contains
-  "net.exe start | find" or ProcessCommandLine contains "net.exe start | findstr"
-  or ProcessCommandLine contains "net1 start | find" or ProcessCommandLine contains
-  "net1 start | findstr" or ProcessCommandLine contains "net1.exe start | find" or
-  ProcessCommandLine contains "net1.exe start | findstr" or ProcessCommandLine contains
-  "netstat -ano | find" or ProcessCommandLine contains "netstat -ano | findstr" or
-  ProcessCommandLine contains "netstat | find" or ProcessCommandLine contains "netstat
-  | findstr" or ProcessCommandLine contains "netstat.exe -ano | find" or ProcessCommandLine
-  contains "netstat.exe -ano | findstr" or ProcessCommandLine contains "netstat.exe
-  | find" or ProcessCommandLine contains "netstat.exe | findstr" or ProcessCommandLine
-  contains "ping | find" or ProcessCommandLine contains "ping | findstr" or ProcessCommandLine
-  contains "ping.exe | find" or ProcessCommandLine contains "ping.exe | findstr" or
-  ProcessCommandLine contains "systeminfo | find " or ProcessCommandLine contains
-  "systeminfo | findstr " or ProcessCommandLine contains "systeminfo.exe | find "
-  or ProcessCommandLine contains "systeminfo.exe | findstr " or ProcessCommandLine
-  contains "tasklist | find " or ProcessCommandLine contains "tasklist | findstr "
-  or ProcessCommandLine contains "tasklist.exe | find " or ProcessCommandLine contains
-  "tasklist.exe | findstr " or ProcessCommandLine contains "whoami /all | find " or
-  ProcessCommandLine contains "whoami /all | findstr " or ProcessCommandLine contains
-  "whoami.exe /all | find " or ProcessCommandLine contains "whoami.exe /all | findstr
-  "'
+  | where (ProcessCommandLine contains "ipconfig" and ProcessCommandLine contains
+  "|" and ProcessCommandLine contains "find") or (ProcessCommandLine contains "net"
+  and ProcessCommandLine contains "|" and ProcessCommandLine contains "find") or (ProcessCommandLine
+  contains "netstat" and ProcessCommandLine contains "|" and ProcessCommandLine contains
+  "find") or (ProcessCommandLine contains "ping" and ProcessCommandLine contains "|"
+  and ProcessCommandLine contains "find") or (ProcessCommandLine contains "systeminfo"
+  and ProcessCommandLine contains "|" and ProcessCommandLine contains "find") or (ProcessCommandLine
+  contains "tasklist" and ProcessCommandLine contains "|" and ProcessCommandLine contains
+  "find") or (ProcessCommandLine contains "whoami" and ProcessCommandLine contains
+  "|" and ProcessCommandLine contains "find")'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

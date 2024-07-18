@@ -1,0 +1,41 @@
+name: Uncommon Child Process Of Setres.EXE
+id: 835e75bf-4bfd-47a4-b8a6-b766cac8bcb7
+author: '@gott_cyber, Nasreddine Bencherchali (Nextron Systems)'
+date: 2022/12/11
+severity: high
+description: 'Detects uncommon child process of Setres.EXE.
+
+  Setres.EXE is a Windows server only process and tool that can be used to set the
+  screen resolution.
+
+  It can potentially be abused in order to launch any arbitrary file with a name containing
+  the word "choice" from the current execution path.
+
+  '
+status: test
+modified: 2024/06/26
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1202
+- T1218
+query: 'DeviceProcessEvents
+
+  | where (FolderPath contains "\\choice" and InitiatingProcessFolderPath endswith
+  "\\setres.exe") and (not((FolderPath endswith "C:\\Windows\\System32\\choice.exe"
+  or FolderPath endswith "C:\\Windows\\SysWOW64\\choice.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

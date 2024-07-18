@@ -1,0 +1,41 @@
+name: Process Execution From A Potentially Suspicious Folder
+id: 3dfd06d2-eaf4-4532-9555-68aca59f57c4
+author: Florian Roth (Nextron Systems), Tim Shelton
+date: 2019/01/16
+severity: high
+description: Detects a potentially suspicious execution from an uncommon folder.
+status: test
+modified: 2024/07/12
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1036
+query: 'DeviceProcessEvents
+
+  | where (FolderPath contains ":\\Perflogs\\" or FolderPath contains ":\\Users\\All
+  Users\\" or FolderPath contains ":\\Users\\Default\\" or FolderPath contains ":\\Users\\NetworkService\\"
+  or FolderPath contains ":\\Windows\\addins\\" or FolderPath contains ":\\Windows\\debug\\"
+  or FolderPath contains ":\\Windows\\Fonts\\" or FolderPath contains ":\\Windows\\Help\\"
+  or FolderPath contains ":\\Windows\\IME\\" or FolderPath contains ":\\Windows\\Media\\"
+  or FolderPath contains ":\\Windows\\repair\\" or FolderPath contains ":\\Windows\\security\\"
+  or FolderPath contains ":\\Windows\\System32\\Tasks\\" or FolderPath contains ":\\Windows\\Tasks\\"
+  or FolderPath contains "$Recycle.bin" or FolderPath contains "\\config\\systemprofile\\"
+  or FolderPath contains "\\Intel\\Logs\\" or FolderPath contains "\\RSA\\MachineKeys\\")
+  and (not(((FolderPath endswith "\\CitrixReceiverUpdater.exe" and FolderPath startswith
+  "C:\\Windows\\SysWOW64\\config\\systemprofile\\Citrix\\UpdaterBinaries\\") or FolderPath
+  startswith "C:\\Users\\Public\\IBM\\ClientSolutions\\Start_Programs\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled
