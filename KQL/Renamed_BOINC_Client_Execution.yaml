@@ -1,0 +1,31 @@
+name: Renamed BOINC Client Execution
+id: 30d07da2-83ab-45d8-ae75-ec7c0edcaffc
+author: Matt Anderson (Huntress)
+date: 2024/07/23
+severity: medium
+description: Detects the execution of a renamed BOINC binary.
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1553
+query: 'DeviceProcessEvents
+
+  | where ProcessVersionInfoOriginalFileName =~ "BOINC.exe" and (not(FolderPath endswith
+  "\\BOINC.exe"))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

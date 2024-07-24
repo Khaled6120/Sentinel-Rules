@@ -1,0 +1,36 @@
+name: Powershell Executed From Headless ConHost Process
+id: 056c7317-9a09-4bd4-9067-d051312752ea
+author: Matt Anderson (Huntress)
+date: 2024/07/23
+severity: medium
+description: 'Detects the use of powershell commands from headless ConHost window.
+
+  The "--headless" flag hides the windows from the user upon execution.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1059
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "--headless" and ProcessCommandLine contains
+  "powershell") and (FolderPath endswith "\\conhost.exe" or ProcessVersionInfoOriginalFileName
+  =~ "CONHOST.EXE")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

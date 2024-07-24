@@ -16,7 +16,7 @@ description: 'An adversary may use legitimate desktop support and remote access 
 
   '
 status: test
-modified: ''
+modified: 2024/07/20
 logsource:
   category: file_event
   product: windows
@@ -26,8 +26,8 @@ relevantTechniques:
 - T1219
 query: 'DeviceFileEvents
 
-  | where (FolderPath contains "\\AppData\\Roaming\\AnyDesk\\user.conf" or FolderPath
-  contains "\\AppData\\Roaming\\AnyDesk\\system.conf") and FolderPath endswith ".temp"'
+  | where FolderPath contains "\\AppData\\Roaming\\AnyDesk\\user.conf" or FolderPath
+  contains "\\AppData\\Roaming\\AnyDesk\\system.conf"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D
