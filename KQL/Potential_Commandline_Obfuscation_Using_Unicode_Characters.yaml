@@ -11,7 +11,7 @@ description: 'Detects potential commandline obfuscation using unicode characters
 
   '
 status: test
-modified: 2023/03/03
+modified: 2024/07/22
 logsource:
   category: process_creation
   product: windows
@@ -19,10 +19,8 @@ tactics:
 - Defense Evasion
 relevantTechniques:
 - T1027
-query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"\xE2\" or ProcessCommandLine\
-  \ contains \"\u20AC\" or ProcessCommandLine contains \"\xA3\" or ProcessCommandLine\
-  \ contains \"\xAF\" or ProcessCommandLine contains \"\xAE\" or ProcessCommandLine\
-  \ contains \"\xB5\" or ProcessCommandLine contains \"\xB6\") or (ProcessCommandLine\
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"\xAF\" or ProcessCommandLine\
+  \ contains \"\xAE\" or ProcessCommandLine contains \"\xB6\") or (ProcessCommandLine\
   \ contains \"\u02E3\" or ProcessCommandLine contains \"\u02EA\" or ProcessCommandLine\
   \ contains \"\u02E2\") or (ProcessCommandLine contains \"\u2015\" or ProcessCommandLine\
   \ contains \"\u2014\") or (ProcessCommandLine contains \"\u2215\" or ProcessCommandLine\
