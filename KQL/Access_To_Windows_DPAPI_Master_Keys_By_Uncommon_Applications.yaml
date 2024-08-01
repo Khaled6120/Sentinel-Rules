@@ -1,0 +1,40 @@
+name: Access To Windows DPAPI Master Keys By Uncommon Applications
+id: 46612ae6-86be-4802-bc07-39b59feb1309
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022/10/17
+severity: medium
+description: 'Detects file access requests to the the Windows Data Protection API
+  Master keys by an uncommon application.
+
+  This can be a sign of credential stealing. Example case would be usage of mimikatz
+  "dpapi::masterkey" function
+
+  '
+status: experimental
+modified: 2024/07/29
+logsource:
+  category: file_access
+  product: windows
+tactics:
+- Credential Access
+relevantTechniques:
+- T1555
+query: 'DeviceFileEvents
+
+  | where (FileName contains "\\Microsoft\\Protect\\S-1-5-18\\" or FileName contains
+  "\\Microsoft\\Protect\\S-1-5-21-") and (not((InitiatingProcessFolderPath startswith
+  "C:\\Program Files\\" or InitiatingProcessFolderPath startswith "C:\\Program Files
+  (x86)\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\system32\\" or
+  InitiatingProcessFolderPath startswith "C:\\Windows\\SysWOW64\\")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled
