@@ -9,7 +9,7 @@ description: 'Detects execution of the Add-In deployment cache updating utility 
   payload.
 
   '
-status: experimental
+status: test
 modified: ''
 logsource:
   category: process_creation

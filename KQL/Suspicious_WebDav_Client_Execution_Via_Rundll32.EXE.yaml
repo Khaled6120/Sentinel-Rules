@@ -9,7 +9,7 @@ description: 'Detects "svchost.exe" spawning "rundll32.exe" with command argumen
   a sign of exploitation of CVE-2023-23397
 
   '
-status: experimental
+status: test
 modified: 2023/09/18
 logsource:
   category: process_creation

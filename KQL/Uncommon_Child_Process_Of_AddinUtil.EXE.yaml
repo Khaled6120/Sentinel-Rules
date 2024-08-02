@@ -8,7 +8,7 @@ description: 'Detects uncommon child processes of the Add-In deployment cache up
   proxy execution via a custom Addins.Store payload.
 
   '
-status: experimental
+status: test
 modified: ''
 logsource:
   category: process_creation

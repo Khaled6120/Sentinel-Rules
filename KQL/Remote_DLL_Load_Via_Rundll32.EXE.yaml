@@ -4,7 +4,7 @@ author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023/09/18
 severity: medium
 description: Detects a remote DLL load event via "rundll32.exe".
-status: experimental
+status: test
 modified: ''
 logsource:
   category: image_load

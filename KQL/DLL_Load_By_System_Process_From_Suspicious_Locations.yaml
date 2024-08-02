@@ -6,7 +6,7 @@ severity: medium
 description: Detects when a system process (i.e. located in system32, syswow64, etc.)
   loads a DLL from a suspicious location or a location with permissive permissions
   such as "C:\Users\Public"
-status: experimental
+status: test
 modified: 2023/09/18
 logsource:
   category: image_load

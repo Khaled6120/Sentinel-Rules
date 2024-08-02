@@ -5,7 +5,7 @@ date: 2022/09/27
 severity: medium
 description: Detects execution of 7z in order to compress a file with a ".dmp"/".dump"
   extension, which could be a step in a process of dump file exfiltration.
-status: experimental
+status: test
 modified: 2023/09/12
 logsource:
   category: process_creation

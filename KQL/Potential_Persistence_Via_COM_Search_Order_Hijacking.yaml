@@ -4,7 +4,7 @@ author: "Maxime Thiebaut (@0xThiebaut), oscd.community, C\xE9dric Hien"
 date: 2020/04/14
 severity: medium
 description: Detects potential COM object hijacking leveraging the COM Search Order
-status: experimental
+status: test
 modified: 2023/09/28
 logsource:
   category: registry_set

@@ -5,7 +5,7 @@ date: 2023/01/22
 severity: medium
 description: Detects creation of files with the ".one"/".onepkg" extension in suspicious
   or uncommon locations. This could be a sign of attackers abusing OneNote attachments
-status: experimental
+status: test
 modified: 2023/09/19
 logsource:
   category: file_event

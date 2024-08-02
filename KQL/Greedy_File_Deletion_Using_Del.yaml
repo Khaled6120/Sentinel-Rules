@@ -6,7 +6,7 @@ severity: medium
 description: Detects execution of the "del" builtin command to remove files using
   greedy/wildcard expression. This is often used by malware to delete content of folders
   that perhaps contains the initial malware infection or to delete evidence.
-status: experimental
+status: test
 modified: 2023/09/11
 logsource:
   category: process_creation

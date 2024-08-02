@@ -5,7 +5,7 @@ date: 2023/06/01
 severity: medium
 description: Detects loading of "Amsi.dll" by a living of the land process. This could
   be an indication of a "PowerShell without PowerShell" attack
-status: experimental
+status: test
 modified: 2023/09/20
 logsource:
   category: image_load

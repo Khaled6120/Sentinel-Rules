@@ -5,7 +5,7 @@ date: 2023/09/28
 severity: high
 description: Detects renamed Visual Studio Code tunnel execution. Attackers can abuse
   this functionality to establish a C2 channel
-status: experimental
+status: test
 modified: ''
 logsource:
   category: process_creation

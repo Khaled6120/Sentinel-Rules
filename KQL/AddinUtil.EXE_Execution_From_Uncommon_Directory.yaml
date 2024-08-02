@@ -5,7 +5,7 @@ date: 2023/09/18
 severity: medium
 description: Detects execution of the Add-In deployment cache updating utility (AddInutil.exe)
   from a non-standard directory.
-status: experimental
+status: test
 modified: ''
 logsource:
   category: process_creation
