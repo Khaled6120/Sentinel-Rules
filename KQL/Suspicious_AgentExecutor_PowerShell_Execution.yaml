@@ -7,7 +7,7 @@ description: Detects execution of the AgentExecutor.exe binary. Which can be abu
   as a LOLBIN to execute powershell scripts with the ExecutionPolicy "Bypass" or any
   binary named "powershell.exe" located in the path provided by 6th positional argument
 status: test
-modified: ''
+modified: 2024/08/07
 logsource:
   category: process_creation
   product: windows
@@ -19,8 +19,9 @@ query: 'DeviceProcessEvents
 
   | where ((ProcessCommandLine contains " -powershell" or ProcessCommandLine contains
   " -remediationScript") and (FolderPath endswith "\\AgentExecutor.exe" or ProcessVersionInfoOriginalFileName
-  =~ "AgentExecutor.exe")) and (not((ProcessCommandLine contains "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\"
-  or ProcessCommandLine contains "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\")))'
+  =~ "AgentExecutor.exe")) and (not((InitiatingProcessFolderPath endswith "\\Microsoft.Management.Services.IntuneWindowsAgent.exe"
+  or (ProcessCommandLine contains "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+  or ProcessCommandLine contains "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\"))))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

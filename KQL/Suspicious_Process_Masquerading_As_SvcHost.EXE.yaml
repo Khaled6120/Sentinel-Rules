@@ -1,0 +1,39 @@
+name: Suspicious Process Masquerading As SvcHost.EXE
+id: be58d2e2-06c8-4f58-b666-b99f6dc3b6cd
+author: Swachchhanda Shrawan Poudel
+date: 2024/08/07
+severity: high
+description: 'Detects a suspicious process that is masquerading as the legitimate
+  "svchost.exe" by naming its binary "svchost.exe" and executing from an uncommon
+  location.
+
+  Adversaries often disguise their malicious binaries by naming them after legitimate
+  system processes like "svchost.exe" to evade detection.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense Evasion
+relevantTechniques:
+- T1036
+query: 'DeviceProcessEvents
+
+  | where FolderPath endswith "\\svchost.exe" and (not(((FolderPath in~ ("C:\\Windows\\System32\\svchost.exe",
+  "C:\\Windows\\SysWOW64\\svchost.exe")) or ProcessVersionInfoOriginalFileName =~
+  "svchost.exe")))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled
