@@ -5,7 +5,7 @@ date: 2022/12/27
 severity: high
 description: Detects TOKEN OBFUSCATION technique from Invoke-Obfuscation
 status: test
-modified: 2024/08/09
+modified: 2024/08/11
 logsource:
   category: process_creation
   product: windows
@@ -15,8 +15,9 @@ relevantTechniques:
 - T1027
 query: 'DeviceProcessEvents
 
-  | where ProcessCommandLine matches regex "\\w+`(\\w+|-|.)`[\\w+|\\s]" or ProcessCommandLine
-  matches regex ""(\\{\\d\\})+"\\s*-f" or ProcessCommandLine matches regex "(?i)\\$\\{(?=.*`)+?`?e`?n`?v`?:`?p`?a`?t`?h`?\\}"'
+  | where (ProcessCommandLine matches regex "\\w+`(\\w+|-|.)`[\\w+|\\s]" or ProcessCommandLine
+  matches regex ""(\\{\\d\\})+"\\s*-f" or ProcessCommandLine matches regex "(?i)\\$\\{`?e`?n`?v`?:`?p`?a`?t`?h`?\\}")
+  and (not(ProcessCommandLine contains "${env:path}"))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D
