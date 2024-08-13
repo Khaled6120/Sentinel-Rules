@@ -1,7 +1,7 @@
 name: Remote Access Tool - AnyDesk Execution With Known Revoked Signing Certificate
 id: 41f407b5-3096-44ea-a74f-96d04fbc41be
 author: Sai Prashanth Pulisetti, Nasreddine Bencherchali (Nextron Systems)
-date: 2024/02/08
+date: 2024-02-08
 severity: medium
 description: 'Detects the execution of an AnyDesk binary with a version prior to 8.0.8.
 
@@ -22,7 +22,7 @@ logsource:
   product: windows
 tactics:
 - Execution
-- Initial Access
+- Initial-access
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

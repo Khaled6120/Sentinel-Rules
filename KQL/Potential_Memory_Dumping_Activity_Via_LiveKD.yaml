@@ -1,7 +1,7 @@
 name: Potential Memory Dumping Activity Via LiveKD
 id: a85f7765-698a-4088-afa0-ecfbf8d01fa4
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/15
+date: 2023-05-15
 severity: medium
 description: Detects execution of LiveKD based on PE metadata or image name
 status: test
@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

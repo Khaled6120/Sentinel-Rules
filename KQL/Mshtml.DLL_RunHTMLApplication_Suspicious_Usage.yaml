@@ -2,7 +2,7 @@ name: Mshtml.DLL RunHTMLApplication Suspicious Usage
 id: 4782eb5a-a513-4523-a0ac-f3082b26ac5c
 author: Nasreddine Bencherchali (Nextron Systems),  Florian Roth (Nextron Systems),
   Josh Nickels, frack113, Zaw Min Htun (ZETA)
-date: 2022/08/14
+date: 2022-08-14
 severity: high
 description: 'Detects execution of commands that leverage the "mshtml.dll" RunHTMLApplication
   export to run arbitrary code via different protocol handlers (vbscript, javascript,
@@ -10,12 +10,12 @@ description: 'Detects execution of commands that leverage the "mshtml.dll" RunHT
 
   '
 status: test
-modified: 2024/02/23
+modified: 2024-02-23
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques: []
 query: 'DeviceProcessEvents

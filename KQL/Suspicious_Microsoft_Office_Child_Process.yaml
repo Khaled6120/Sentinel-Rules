@@ -2,17 +2,17 @@ name: Suspicious Microsoft Office Child Process
 id: 438025f9-5856-4663-83f7-52f878a70a50
 author: Florian Roth (Nextron Systems), Markus Neis, FPT.EagleEye Team, Vadim Khrykov,
   Cyb3rEng, Michael Haag, Christopher Peacock @securepeacock, @scythe_io
-date: 2018/04/06
+date: 2018-04-06
 severity: high
 description: Detects a suspicious process spawning from one of the Microsoft Office
   suite products (Word, Excel, PowerPoint, Publisher, Visio, etc.)
 status: test
-modified: 2023/04/24
+modified: 2023-04-24
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1047

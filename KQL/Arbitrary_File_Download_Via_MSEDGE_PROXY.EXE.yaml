@@ -1,7 +1,7 @@
 name: Arbitrary File Download Via MSEDGE_PROXY.EXE
 id: e84d89c4-f544-41ca-a6af-4b92fd38b023
 author: Swachchhanda Shrawan Poudel
-date: 2023/11/09
+date: 2023-11-09
 severity: medium
 description: Detects usage of "msedge_proxy.exe" to download arbitrary files
 status: experimental
@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1218

@@ -1,7 +1,7 @@
 name: Windows Recall Feature Enabled - DisableAIDataAnalysis Value Deleted
 id: 5dfc1465-8f65-4fde-8eb5-6194380c6a62
 author: Sajid Nawaz Khan
-date: 2024/06/02
+date: 2024-06-02
 severity: medium
 description: 'Detects the enabling of the Windows Recall feature via registry manipulation.
   Windows Recall can be enabled by deleting the existing "DisableAIDataAnalysis" registry

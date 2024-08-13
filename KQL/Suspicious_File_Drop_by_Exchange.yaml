@@ -1,7 +1,7 @@
 name: Suspicious File Drop by Exchange
 id: 6b269392-9eba-40b5-acb6-55c882b20ba6
 author: Florian Roth (Nextron Systems)
-date: 2022/10/04
+date: 2022-10-04
 severity: medium
 description: Detects suspicious file type dropped by an Exchange component in IIS
 status: test
@@ -10,7 +10,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 - Persistence
 relevantTechniques:
 - T1190

@@ -1,17 +1,17 @@
 name: Execute From Alternate Data Streams
 id: 7f43c430-5001-4f8b-aaa9-c3b88f18fa5c
 author: frack113
-date: 2021/09/01
+date: 2021-09-01
 severity: medium
 description: Detects execution from an Alternate Data Stream (ADS). Adversaries may
   use NTFS file attributes to hide their malicious data in order to evade detection
 status: test
-modified: 2022/10/09
+modified: 2022-10-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1564
 query: 'DeviceProcessEvents

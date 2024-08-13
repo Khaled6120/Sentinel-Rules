@@ -1,7 +1,7 @@
 name: Indirect Inline Command Execution Via Bash.EXE
 id: 5edc2273-c26f-406c-83f3-f4d948e740dd
 author: frack113
-date: 2021/11/24
+date: 2021-11-24
 severity: medium
 description: 'Detects execution of Microsoft bash launcher with the "-c" flag.
 
@@ -10,12 +10,12 @@ description: 'Detects execution of Microsoft bash launcher with the "-c" flag.
 
   '
 status: test
-modified: 2023/08/15
+modified: 2023-08-15
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1202
 query: 'DeviceProcessEvents

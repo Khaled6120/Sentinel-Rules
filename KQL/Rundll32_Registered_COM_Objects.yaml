@@ -1,17 +1,17 @@
 name: Rundll32 Registered COM Objects
 id: f1edd233-30b5-4823-9e6a-c4171b24d316
 author: frack113
-date: 2022/02/13
+date: 2022-02-13
 severity: high
 description: load malicious registered COM objects
 status: test
-modified: 2023/02/09
+modified: 2023-02-09
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1546
 query: 'DeviceProcessEvents

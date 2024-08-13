@@ -1,7 +1,7 @@
 name: DPAPI Backup Keys And Certificate Export Activity IOC
 id: 7892ec59-c5bb-496d-8968-e5d210ca3ac4
 author: Nounou Mbeiri, Nasreddine Bencherchali (Nextron Systems)
-date: 2024/06/26
+date: 2024-06-26
 severity: high
 description: 'Detects file names with specific patterns seen generated and used by
   tools such as Mimikatz and DSInternals related to exported or stolen DPAPI backup

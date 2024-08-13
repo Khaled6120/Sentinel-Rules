@@ -1,16 +1,16 @@
 name: DllUnregisterServer Function Call Via Msiexec.EXE
 id: 84f52741-8834-4a8c-a413-2eb2269aa6c8
 author: frack113
-date: 2022/04/24
+date: 2022-04-24
 severity: medium
 description: Detects MsiExec loading a DLL and calling its DllUnregisterServer function
 status: test
-modified: 2024/03/13
+modified: 2024-03-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: "DeviceProcessEvents\n| where ProcessCommandLine contains \".dll\" and (ProcessCommandLine\

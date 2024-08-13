@@ -1,7 +1,7 @@
 name: Potentially Suspicious Desktop Background Change Using Reg.EXE
 id: 8cbc9475-8d05-4e27-9c32-df960716c701
 author: Stephen Lincoln @slincoln-aiq (AttackIQ)
-date: 2023/12/21
+date: 2023-12-21
 severity: medium
 description: 'Detects the execution of "reg.exe" to alter registry keys that would
   replace the user''s desktop background.
@@ -16,7 +16,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Impact
 relevantTechniques:
 - T1112

@@ -1,17 +1,17 @@
 name: Blackbyte Ransomware Registry
 id: 83314318-052a-4c90-a1ad-660ece38d276
 author: frack113
-date: 2022/01/24
+date: 2022-01-24
 severity: high
 description: BlackByte set three different registry values to escalate privileges
   and begin setting the stage for lateral movement and encryption
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

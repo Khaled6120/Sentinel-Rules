@@ -1,7 +1,7 @@
 name: ShimCache Flush
 id: b0524451-19af-4efa-a46f-562a977f792e
 author: Florian Roth (Nextron Systems)
-date: 2021/02/01
+date: 2021-02-01
 severity: high
 description: Detects actions that clear the local ShimCache and remove forensic evidence
 status: stable
@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceProcessEvents

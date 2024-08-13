@@ -1,17 +1,17 @@
 name: Outbound Network Connection Initiated By Script Interpreter
 id: 992a6cae-db6a-43c8-9cec-76d7195c96fc
 author: frack113, Florian Roth (Nextron Systems)
-date: 2022/08/28
+date: 2022-08-28
 severity: high
 description: Detects a script interpreter wscript/cscript opening a network connection
   to a non-local network. Adversaries may use script to download malicious payloads.
 status: test
-modified: 2024/03/13
+modified: 2024-03-13
 logsource:
   category: network_connection
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1105
 query: 'DeviceNetworkEvents

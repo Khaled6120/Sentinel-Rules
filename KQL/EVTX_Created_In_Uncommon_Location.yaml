@@ -1,7 +1,7 @@
 name: EVTX Created In Uncommon Location
 id: 65236ec7-ace0-4f0c-82fd-737b04fd4dcb
 author: D3F7A5105
-date: 2023/01/02
+date: 2023-01-02
 severity: medium
 description: 'Detects the creation of new files with the ".evtx" extension in non-common
   or non-standard location.
@@ -15,12 +15,12 @@ description: 'Detects the creation of new files with the ".evtx" extension in no
 
   '
 status: experimental
-modified: 2024/03/26
+modified: 2024-03-26
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceFileEvents

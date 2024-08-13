@@ -1,17 +1,17 @@
 name: LSASS Process Memory Dump Files
 id: a5a2d357-1ab8-4675-a967-ef9990a59391
 author: Florian Roth (Nextron Systems)
-date: 2021/11/15
+date: 2021-11-15
 severity: high
 description: Detects creation of files with names used by different memory dumping
   tools to create a memory dump of the LSASS process memory, which contains user credentials.
 status: test
-modified: 2023/09/05
+modified: 2023-09-05
 logsource:
   category: file_event
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceFileEvents

@@ -1,12 +1,12 @@
 name: VBScript Payload Stored in Registry
 id: 46490193-1b22-4c29-bdd6-5bf63907216f
 author: Florian Roth (Nextron Systems)
-date: 2021/03/05
+date: 2021-03-05
 severity: high
 description: Detects VBScript content stored into registry keys as seen being used
   by UNC2452 group
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

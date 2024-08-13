@@ -1,17 +1,17 @@
 name: Potential Signing Bypass Via Windows Developer Features - Registry
 id: b110ebaf-697f-4da1-afd5-b536fa27a2c1
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/01/12
+date: 2023-01-12
 severity: high
 description: Detects when the enablement of developer features such as "Developer
   Mode" or "Application Sideloading". Which allows the user to install untrusted packages.
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 

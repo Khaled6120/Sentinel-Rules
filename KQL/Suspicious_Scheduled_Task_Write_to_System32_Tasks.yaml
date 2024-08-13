@@ -1,12 +1,12 @@
 name: Suspicious Scheduled Task Write to System32 Tasks
 id: 80e1f67a-4596-4351-98f5-a9c3efabac95
 author: Florian Roth (Nextron Systems)
-date: 2021/11/16
+date: 2021-11-16
 severity: high
 description: Detects the creation of tasks from processes executed from suspicious
   locations
 status: test
-modified: 2022/01/12
+modified: 2022-01-12
 logsource:
   category: file_event
   product: windows

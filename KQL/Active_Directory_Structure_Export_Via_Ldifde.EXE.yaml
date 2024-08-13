@@ -1,7 +1,7 @@
 name: Active Directory Structure Export Via Ldifde.EXE
 id: 4f7a6757-ff79-46db-9687-66501a02d9ec
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/03/14
+date: 2023-03-14
 severity: medium
 description: Detects the execution of "ldifde.exe" in order to export organizational
   Active Directory structure.

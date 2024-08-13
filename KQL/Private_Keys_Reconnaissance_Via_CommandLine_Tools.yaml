@@ -1,17 +1,17 @@
 name: Private Keys Reconnaissance Via CommandLine Tools
 id: 213d6a77-3d55-4ce8-ba74-fcfef741974e
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
-date: 2021/07/20
+date: 2021-07-20
 severity: medium
 description: Adversaries may search for private key certificate files on compromised
   systems for insecurely stored credential
 status: test
-modified: 2023/03/06
+modified: 2023-03-06
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1552
 query: 'DeviceProcessEvents

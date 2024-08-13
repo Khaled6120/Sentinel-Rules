@@ -1,7 +1,7 @@
 name: Microsoft Excel Add-In Loaded From Uncommon Location
 id: af4c4609-5755-42fe-8075-4effb49f5d44
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/12
+date: 2023-05-12
 severity: medium
 description: Detects Microsoft Excel loading an Add-In (.xll) file from an uncommon
   location

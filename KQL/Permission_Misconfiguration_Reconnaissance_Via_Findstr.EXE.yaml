@@ -1,7 +1,7 @@
 name: Permission Misconfiguration Reconnaissance Via Findstr.EXE
 id: 47e4bab7-c626-47dc-967b-255608c9a920
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/12
+date: 2022-08-12
 severity: medium
 description: 'Detects usage of findstr with the "EVERYONE" or "BUILTIN" keywords.
 
@@ -10,12 +10,12 @@ description: 'Detects usage of findstr with the "EVERYONE" or "BUILTIN" keywords
 
   '
 status: experimental
-modified: 2023/11/11
+modified: 2023-11-11
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1552
 query: 'DeviceProcessEvents

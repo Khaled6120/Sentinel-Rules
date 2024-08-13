@@ -1,7 +1,7 @@
 name: Msxsl.EXE Execution
 id: 9e50a8b3-dd05-4eb8-9153-bdb6b79d50b0
 author: Timur Zinniatullin, oscd.community
-date: 2019/10/21
+date: 2019-10-21
 severity: medium
 description: 'Detects the execution of the MSXSL utility. This can be used to execute
   Extensible Stylesheet Language (XSL) files. These files are commonly used to describe
@@ -12,12 +12,12 @@ description: 'Detects the execution of the MSXSL utility. This can be used to ex
 
   '
 status: test
-modified: 2023/11/09
+modified: 2023-11-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1220
 query: 'DeviceProcessEvents

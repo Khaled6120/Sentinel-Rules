@@ -1,12 +1,12 @@
 name: Potential Persistence Via New AMSI Providers - Registry
 id: 33efc23c-6ea2-4503-8cfe-bdf82ce8f705
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/07/21
+date: 2022-07-21
 severity: high
 description: Detects when an attacker registers a new AMSI provider in order to achieve
   persistence
 status: test
-modified: 2023/02/07
+modified: 2023-02-07
 logsource:
   category: registry_add
   product: windows

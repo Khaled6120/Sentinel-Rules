@@ -1,16 +1,16 @@
 name: HackTool - Quarks PwDump Execution
 id: 0685b176-c816-4837-8e7b-1216f346636b
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/09/05
+date: 2022-09-05
 severity: high
 description: Detects usage of the Quarks PwDump tool via commandline arguments
 status: test
-modified: 2023/02/05
+modified: 2023-02-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceProcessEvents

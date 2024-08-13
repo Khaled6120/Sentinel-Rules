@@ -1,17 +1,17 @@
 name: Windows Defender Definition Files Removed
 id: 9719a8aa-401c-41af-8108-ced7ec9cd75c
 author: frack113
-date: 2021/07/07
+date: 2021-07-07
 severity: high
 description: Adversaries may disable security tools to avoid possible detection of
   their tools and activities by removing Windows Defender Definition Files
 status: test
-modified: 2023/07/18
+modified: 2023-07-18
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

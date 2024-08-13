@@ -1,12 +1,12 @@
 name: DLL Load via LSASS
 id: b3503044-60ce-4bf4-bbcb-e3db98788823
 author: Florian Roth (Nextron Systems)
-date: 2019/10/16
+date: 2019-10-16
 severity: high
 description: Detects a method to load DLL via LSASS process using an undocumented
   Registry key
 status: test
-modified: 2022/04/21
+modified: 2022-04-21
 logsource:
   category: registry_event
   product: windows

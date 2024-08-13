@@ -1,17 +1,17 @@
 name: Potential RDP Tunneling Via SSH
 id: f7d7ebd5-a016-46e2-9c54-f9932f2d386d
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/10/12
+date: 2022-10-12
 severity: high
 description: Execution of ssh.exe to perform data exfiltration and tunneling through
   RDP
 status: test
-modified: 2023/01/25
+modified: 2023-01-25
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1572
 query: 'DeviceProcessEvents

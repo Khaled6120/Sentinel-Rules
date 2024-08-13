@@ -1,19 +1,19 @@
 name: Suspicious Shells Spawn by Java Utility Keytool
 id: 90fb5e62-ca1f-4e22-b42e-cc521874c938
 author: Andreas Hunkeler (@Karneades)
-date: 2021/12/22
+date: 2021-12-22
 severity: high
 description: Detects suspicious shell spawn from Java utility keytool process (e.g.
   adselfservice plus exploitation)
 status: test
-modified: 2023/01/21
+modified: 2023-01-21
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

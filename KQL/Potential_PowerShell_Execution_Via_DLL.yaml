@@ -1,7 +1,7 @@
 name: Potential PowerShell Execution Via DLL
 id: 6812a10b-60ea-420c-832f-dfcc33b646ba
 author: Markus Neis, Nasreddine Bencherchali (Nextron Systems)
-date: 2018/08/25
+date: 2018-08-25
 severity: high
 description: 'Detects potential PowerShell execution from a DLL instead of the usual
   PowerShell process as seen used in PowerShdll.
@@ -10,12 +10,12 @@ description: 'Detects potential PowerShell execution from a DLL instead of the u
 
   '
 status: test
-modified: 2024/03/07
+modified: 2024-03-07
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

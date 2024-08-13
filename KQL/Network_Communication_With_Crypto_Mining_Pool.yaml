@@ -1,11 +1,11 @@
 name: Network Communication With Crypto Mining Pool
 id: fa5b1358-b040-4403-9868-15f7d9ab6329
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2021/10/26
+date: 2021-10-26
 severity: high
 description: Detects initiated network connections to crypto mining pools
 status: stable
-modified: 2024/01/19
+modified: 2024-01-19
 logsource:
   category: network_connection
   product: windows

@@ -1,19 +1,19 @@
 name: Enabling COR Profiler Environment Variables
 id: ad89044a-8f49-4673-9a55-cbd88a1b374f
 author: Jose Rodriguez (@Cyb3rPandaH), OTR (Open Threat Research), Jimmy Bayne (@bohops)
-date: 2020/09/10
+date: 2020-09-10
 severity: medium
 description: Detects .NET Framework CLR and .NET Core CLR "cor_enable_profiling" and
   "cor_profiler" variables being set and configured.
 status: test
-modified: 2023/11/24
+modified: 2023-11-24
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceRegistryEvents

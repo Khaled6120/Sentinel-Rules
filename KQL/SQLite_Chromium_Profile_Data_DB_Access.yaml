@@ -1,18 +1,18 @@
 name: SQLite Chromium Profile Data DB Access
 id: 24c77512-782b-448a-8950-eddb0785fc71
 author: TropChaud
-date: 2022/12/19
+date: 2022-12-19
 severity: high
 description: Detect usage of the "sqlite" binary to query databases in Chromium-based
   browsers for potential data stealing.
 status: test
-modified: 2023/01/19
+modified: 2023-01-19
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Collection
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1005
 - T1539

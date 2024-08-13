@@ -1,7 +1,7 @@
 name: Potentially Suspicious Child Process Of ClickOnce Application
 id: 67bc0e75-c0a9-4cfc-8754-84a505b63c04
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/06/12
+date: 2023-06-12
 severity: medium
 description: Detects potentially suspicious child processes of a ClickOnce deployment
   application
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques: []
 query: 'DeviceProcessEvents

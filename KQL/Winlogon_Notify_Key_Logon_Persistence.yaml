@@ -1,7 +1,7 @@
 name: Winlogon Notify Key Logon Persistence
 id: bbf59793-6efb-4fa1-95ca-a7d288e52c88
 author: frack113
-date: 2021/12/30
+date: 2021-12-30
 severity: high
 description: 'Adversaries may abuse features of Winlogon to execute DLLs and/or executables
   when a user logs in.
@@ -11,7 +11,7 @@ description: 'Adversaries may abuse features of Winlogon to execute DLLs and/or 
 
   '
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

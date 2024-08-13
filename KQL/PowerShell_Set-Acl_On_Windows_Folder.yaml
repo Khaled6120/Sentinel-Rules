@@ -1,7 +1,7 @@
 name: PowerShell Set-Acl On Windows Folder
 id: 0944e002-e3f6-4eb5-bf69-3a3067b53d73
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/10/18
+date: 2022-10-18
 severity: high
 description: Detects PowerShell scripts to set the ACL to a file in the Windows folder
 status: test
@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

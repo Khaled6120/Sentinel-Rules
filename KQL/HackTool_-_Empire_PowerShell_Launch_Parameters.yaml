@@ -1,11 +1,11 @@
 name: HackTool - Empire PowerShell Launch Parameters
 id: 79f4ede3-402e-41c8-bc3e-ebbf5f162581
 author: Florian Roth (Nextron Systems)
-date: 2019/04/20
+date: 2019-04-20
 severity: high
 description: Detects suspicious powershell command line parameters used in Empire
 status: test
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows

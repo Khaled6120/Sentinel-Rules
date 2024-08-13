@@ -1,17 +1,17 @@
 name: Change Winevt Channel Access Permission Via Registry
 id: 7d9263bd-dc47-4a58-bc92-5474abab390c
 author: frack113
-date: 2022/09/17
+date: 2022-09-17
 severity: high
 description: Detects tampering with the "ChannelAccess" registry key in order to change
   access to Windows event channel.
 status: experimental
-modified: 2024/03/25
+modified: 2024-03-25
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

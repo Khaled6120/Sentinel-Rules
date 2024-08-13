@@ -1,18 +1,18 @@
 name: UAC Bypass via Sdclt
 id: 5b872a46-3b90-45c1-8419-f675db8053aa
 author: Omer Yampel, Christian Burkard (Nextron Systems)
-date: 2017/03/17
+date: 2017-03-17
 severity: high
 description: Detects the pattern of UAC Bypass using registry key manipulation of
   sdclt.exe (e.g. UACMe 53)
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1548
 query: 'DeviceRegistryEvents

@@ -1,17 +1,17 @@
 name: Windows Kernel Debugger Execution
 id: 27ee9438-90dc-4bef-904b-d3ef927f5e7e
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/15
+date: 2023-05-15
 severity: medium
 description: Detects execution of the Windows Kernel Debugger "kd.exe".
 status: test
-modified: 2024/04/24
+modified: 2024-04-24
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

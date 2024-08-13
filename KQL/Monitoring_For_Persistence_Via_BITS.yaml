@@ -1,7 +1,7 @@
 name: Monitoring For Persistence Via BITS
 id: b9cbbc17-d00d-4e3d-a827-b06d03d2380d
 author: Sreeman
-date: 2020/10/29
+date: 2020-10-29
 severity: medium
 description: 'BITS will allow you to schedule a command to execute after a successful
   download to notify you that the job is finished.
@@ -15,12 +15,12 @@ description: 'BITS will allow you to schedule a command to execute after a succe
 
   '
 status: test
-modified: 2024/01/25
+modified: 2024-01-25
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1197
 query: 'DeviceProcessEvents

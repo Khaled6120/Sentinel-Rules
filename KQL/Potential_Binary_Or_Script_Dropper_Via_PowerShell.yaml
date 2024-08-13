@@ -1,11 +1,11 @@
 name: Potential Binary Or Script Dropper Via PowerShell
 id: 7047d730-036f-4f40-b9d8-1c63e36d5e62
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
-date: 2023/03/17
+date: 2023-03-17
 severity: medium
 description: Detects PowerShell creating a binary executable or a script file.
 status: test
-modified: 2023/05/09
+modified: 2023-05-09
 logsource:
   category: file_event
   product: windows

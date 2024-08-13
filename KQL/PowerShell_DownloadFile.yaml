@@ -1,17 +1,17 @@
 name: PowerShell DownloadFile
 id: 8f70ac5f-1f6f-4f8e-b454-db19561216c5
 author: Florian Roth (Nextron Systems)
-date: 2020/08/28
+date: 2020-08-28
 severity: high
 description: Detects the execution of powershell, a WebClient object creation and
   the invocation of DownloadFile in a single command line
 status: test
-modified: 2021/11/27
+modified: 2021-11-27
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 - Execution
 relevantTechniques:
 - T1059

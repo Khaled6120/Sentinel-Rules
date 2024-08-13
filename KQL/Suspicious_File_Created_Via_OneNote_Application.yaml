@@ -1,18 +1,18 @@
 name: Suspicious File Created Via OneNote Application
 id: fcc6d700-68d9-4241-9a1a-06874d621b06
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/02/09
+date: 2023-02-09
 severity: high
 description: Detects suspicious files created via the OneNote application. This could
   indicate a potential malicious ".one"/".onepkg" file was executed as seen being
   used in malware activity in the wild
 status: test
-modified: 2023/02/27
+modified: 2023-02-27
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceFileEvents
 

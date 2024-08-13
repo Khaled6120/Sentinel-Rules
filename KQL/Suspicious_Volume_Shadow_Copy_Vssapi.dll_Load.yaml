@@ -1,16 +1,16 @@
 name: Suspicious Volume Shadow Copy Vssapi.dll Load
 id: 37774c23-25a1-4adb-bb6d-8bb9fd59c0f8
 author: frack113
-date: 2022/10/31
+date: 2022-10-31
 severity: high
 description: Detects the image load of VSS DLL by uncommon executables
 status: test
-modified: 2023/05/03
+modified: 2023-05-03
 logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Impact
 relevantTechniques:
 - T1490

@@ -2,16 +2,16 @@ name: Potential PowerShell Command Line Obfuscation
 id: d7bcd677-645d-4691-a8d4-7a5602b780d1
 author: Teymur Kheirkhabarov (idea), Vasiliy Burov (rule), oscd.community, Tim Shelton
   (fp)
-date: 2020/10/15
+date: 2020-10-15
 severity: high
 description: Detects the PowerShell command lines with special characters
 status: test
-modified: 2024/04/15
+modified: 2024-04-15
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1027

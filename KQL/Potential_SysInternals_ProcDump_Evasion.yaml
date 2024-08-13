@@ -1,17 +1,17 @@
 name: Potential SysInternals ProcDump Evasion
 id: 79b06761-465f-4f88-9ef2-150e24d3d737
 author: Florian Roth (Nextron Systems)
-date: 2022/01/11
+date: 2022-01-11
 severity: high
 description: Detects uses of the SysInternals ProcDump utility in which ProcDump or
   its output get renamed, or a dump file is moved or copied to a different name
 status: test
-modified: 2023/05/09
+modified: 2023-05-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1003
 - T1036

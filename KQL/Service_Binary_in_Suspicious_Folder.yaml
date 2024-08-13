@@ -1,17 +1,17 @@
 name: Service Binary in Suspicious Folder
 id: a07f0359-4c90-4dc4-a681-8ffea40b4f47
 author: Florian Roth (Nextron Systems), frack113
-date: 2022/05/02
+date: 2022-05-02
 severity: high
 description: Detect the creation of a service with a service binary located in a suspicious
   directory
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

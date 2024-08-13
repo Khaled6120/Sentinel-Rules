@@ -1,17 +1,17 @@
 name: HackTool - SharpEvtMute Execution
 id: bedfc8ad-d1c7-4e37-a20e-e2b0dbee759c
 author: Florian Roth (Nextron Systems)
-date: 2022/09/07
+date: 2022-09-07
 severity: high
 description: Detects the use of SharpEvtHook, a tool that tampers with the Windows
   event logs
 status: test
-modified: 2023/02/14
+modified: 2023-02-14
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

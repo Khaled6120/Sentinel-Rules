@@ -1,7 +1,7 @@
 name: Process Memory Dump Via Dotnet-Dump
 id: 53d8d3e1-ca33-4012-adf3-e05a4d652e34
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/03/14
+date: 2023-03-14
 severity: medium
 description: 'Detects the execution of "dotnet-dump" with the "collect" flag. The
   execution could indicate potential process dumping of critical processes such as
@@ -14,7 +14,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

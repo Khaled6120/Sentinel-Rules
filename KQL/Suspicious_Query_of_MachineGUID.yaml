@@ -1,7 +1,7 @@
 name: Suspicious Query of MachineGUID
 id: f5240972-3938-4e56-8e4b-e33893176c1f
 author: frack113
-date: 2022/01/01
+date: 2022-01-01
 severity: low
 description: Use of reg to get MachineGuid information
 status: test

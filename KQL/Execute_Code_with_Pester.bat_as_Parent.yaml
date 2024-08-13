@@ -1,7 +1,7 @@
 name: Execute Code with Pester.bat as Parent
 id: 18988e1b-9087-4f8a-82fe-0414dce49878
 author: frack113, Nasreddine Bencherchali
-date: 2022/08/20
+date: 2022-08-20
 severity: medium
 description: Detects code execution via Pester.bat (Pester - Powershell Modulte for
   testing)
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1059

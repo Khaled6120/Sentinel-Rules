@@ -1,7 +1,7 @@
 name: BitLockerTogo.EXE Execution
 id: 7f2376f9-42ee-4dfc-9360-fecff9a88fc8
 author: Josh Nickels, mttaggart
-date: 2024/07/11
+date: 2024-07-11
 severity: low
 description: 'Detects the execution of "BitLockerToGo.EXE".
 
@@ -21,7 +21,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

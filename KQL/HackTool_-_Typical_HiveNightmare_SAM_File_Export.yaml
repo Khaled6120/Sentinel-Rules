@@ -1,16 +1,16 @@
 name: HackTool - Typical HiveNightmare SAM File Export
 id: 6ea858a8-ba71-4a12-b2cc-5d83312404c7
 author: Florian Roth (Nextron Systems)
-date: 2021/07/23
+date: 2021-07-23
 severity: high
 description: Detects files written by the different tools that exploit HiveNightmare
 status: test
-modified: 2024/06/27
+modified: 2024-06-27
 logsource:
   category: file_event
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1552
 query: 'DeviceFileEvents

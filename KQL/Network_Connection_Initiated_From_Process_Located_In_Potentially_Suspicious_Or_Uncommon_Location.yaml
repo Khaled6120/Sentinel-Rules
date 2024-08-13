@@ -2,19 +2,19 @@ name: Network Connection Initiated From Process Located In Potentially Suspiciou
   Or Uncommon Location
 id: 7b434893-c57d-4f41-908d-6a17bf1ae98f
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2017/03/19
+date: 2017-03-19
 severity: high
 description: 'Detects a network connection initiated by programs or processes running
   from suspicious or uncommon files system locations.
 
   '
 status: test
-modified: 2024/05/31
+modified: 2024-05-31
 logsource:
   category: network_connection
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1105
 query: 'DeviceNetworkEvents

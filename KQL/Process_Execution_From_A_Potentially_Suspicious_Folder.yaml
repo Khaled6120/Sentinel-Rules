@@ -1,16 +1,16 @@
 name: Process Execution From A Potentially Suspicious Folder
 id: 3dfd06d2-eaf4-4532-9555-68aca59f57c4
 author: Florian Roth (Nextron Systems), Tim Shelton
-date: 2019/01/16
+date: 2019-01-16
 severity: high
 description: Detects a potentially suspicious execution from an uncommon folder.
 status: test
-modified: 2024/07/12
+modified: 2024-07-12
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceProcessEvents

@@ -1,7 +1,7 @@
 name: Process Initiated Network  Connection To Ngrok Domain
 id: 18249279-932f-45e2-b37a-8925f2597670
 author: Florian Roth (Nextron Systems)
-date: 2022/07/16
+date: 2022-07-16
 severity: high
 description: 'Detects an executable initiating a network connection to "ngrok" domains.
 
@@ -13,7 +13,7 @@ description: 'Detects an executable initiating a network connection to "ngrok" d
 
   '
 status: test
-modified: 2023/11/17
+modified: 2023-11-17
 logsource:
   category: network_connection
   product: windows

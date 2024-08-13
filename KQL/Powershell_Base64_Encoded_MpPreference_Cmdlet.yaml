@@ -1,17 +1,17 @@
 name: Powershell Base64 Encoded MpPreference Cmdlet
 id: c6fb44c6-71f5-49e6-9462-1425d328aee3
 author: Florian Roth (Nextron Systems)
-date: 2022/03/04
+date: 2022-03-04
 severity: high
 description: Detects base64 encoded "MpPreference" PowerShell cmdlet code that tries
   to modifies or tamper with Windows Defender AV
 status: test
-modified: 2023/01/30
+modified: 2023-01-30
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

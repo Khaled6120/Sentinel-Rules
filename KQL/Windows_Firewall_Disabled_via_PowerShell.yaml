@@ -1,16 +1,16 @@
 name: Windows Firewall Disabled via PowerShell
 id: 12f6b752-042d-483e-bf9c-915a6d06ad75
 author: Tim Rauch, Elastic (idea)
-date: 2022/09/14
+date: 2022-09-14
 severity: medium
 description: Detects attempts to disable the Windows Firewall using PowerShell
 status: test
-modified: 2023/02/13
+modified: 2023-02-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

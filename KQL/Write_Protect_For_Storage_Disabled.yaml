@@ -1,7 +1,7 @@
 name: Write Protect For Storage Disabled
 id: 75f7a0e2-7154-4c4d-9eae-5cdb4e0a5c13
 author: Sreeman
-date: 2021/06/11
+date: 2021-06-11
 severity: medium
 description: 'Detects applications trying to modify the registry in order to disable
   any write-protect property for storage devices.
@@ -11,12 +11,12 @@ description: 'Detects applications trying to modify the registry in order to dis
 
   '
 status: test
-modified: 2024/01/18
+modified: 2024-01-18
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

@@ -1,19 +1,19 @@
 name: New PortProxy Registry Entry Added
 id: a54f842a-3713-4b45-8c84-5f136fdebd3c
 author: Andreas Hunkeler (@Karneades)
-date: 2021/06/22
+date: 2021-06-22
 severity: medium
 description: Detects the modification of the PortProxy registry key which is used
   for port forwarding.
 status: test
-modified: 2024/03/25
+modified: 2024-03-25
 logsource:
   category: registry_event
   product: windows
 tactics:
-- Command And Control
-- Defense Evasion
-- Lateral Movement
+- Command-and-control
+- Defense-evasion
+- Lateral-movement
 relevantTechniques:
 - T1090
 query: 'DeviceRegistryEvents

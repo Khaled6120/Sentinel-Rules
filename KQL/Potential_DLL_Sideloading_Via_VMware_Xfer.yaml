@@ -1,17 +1,17 @@
 name: Potential DLL Sideloading Via VMware Xfer
 id: 9313dc13-d04c-46d8-af4a-a930cc55d93b
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/02
+date: 2022-08-02
 severity: high
 description: Detects loading of a DLL by the VMware Xfer utility from the non-default
   directory which may be an attempt to sideload arbitrary DLL
 status: test
-modified: 2023/02/17
+modified: 2023-02-17
 logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

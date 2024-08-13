@@ -1,18 +1,18 @@
 name: Uncommon Microsoft Office Trusted Location Added
 id: f742bde7-9528-42e5-bd82-84f51a8387d2
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/06/21
+date: 2023-06-21
 severity: high
 description: Detects changes to registry keys related to "Trusted Location" of Microsoft
   Office where the path is set to something uncommon. Attackers might add additional
   trusted locations to avoid macro security restrictions.
 status: test
-modified: 2023/09/29
+modified: 2023-09-29
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

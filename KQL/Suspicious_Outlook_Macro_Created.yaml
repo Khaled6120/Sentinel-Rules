@@ -1,7 +1,7 @@
 name: Suspicious Outlook Macro Created
 id: 117d3d3a-755c-4a61-b23e-9171146d094c
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/02/08
+date: 2023-02-08
 severity: high
 description: Detects the creation of a macro file for Outlook.
 status: test
@@ -10,7 +10,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 - Persistence
 relevantTechniques:
 - T1008

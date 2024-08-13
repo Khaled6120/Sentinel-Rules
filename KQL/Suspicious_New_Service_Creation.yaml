@@ -1,18 +1,18 @@
 name: Suspicious New Service Creation
 id: 17a1be64-8d88-40bf-b5ff-a4f7a50ebcc8
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/07/14
+date: 2022-07-14
 severity: high
 description: Detects creation of a new service via "sc" command or the powershell
   "new-service" cmdlet with suspicious binary paths
 status: test
-modified: 2022/11/18
+modified: 2022-11-18
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1543
 query: 'DeviceProcessEvents

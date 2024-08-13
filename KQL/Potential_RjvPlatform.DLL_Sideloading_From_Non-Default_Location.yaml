@@ -1,7 +1,7 @@
 name: Potential RjvPlatform.DLL Sideloading From Non-Default Location
 id: 0e0bc253-07ed-43f1-816d-e1b220fe8971
 author: X__Junior (Nextron Systems)
-date: 2023/06/09
+date: 2023-06-09
 severity: high
 description: Detects potential DLL sideloading of "RjvPlatform.dll" by "SystemResetPlatform.exe"
   located in a non-default location.
@@ -11,8 +11,8 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

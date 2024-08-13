@@ -1,17 +1,17 @@
 name: Use Short Name Path in Command Line
 id: 349d891d-fef0-4fe4-bc53-eee623a15969
 author: frack113, Nasreddine Bencherchali
-date: 2022/08/07
+date: 2022-08-07
 severity: medium
 description: Detect use of the Windows 8.3 short name. Which could be used as a method
   to avoid command-line detection
 status: test
-modified: 2022/10/26
+modified: 2022-10-26
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1564
 query: 'DeviceProcessEvents

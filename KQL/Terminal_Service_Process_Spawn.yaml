@@ -1,18 +1,18 @@
 name: Terminal Service Process Spawn
 id: 1012f107-b8f1-4271-af30-5aed2de89b39
 author: Florian Roth (Nextron Systems)
-date: 2019/05/22
+date: 2019-05-22
 severity: high
 description: Detects a process spawned by the terminal service server process (this
   could be an indicator for an exploitation of CVE-2019-0708)
 status: test
-modified: 2023/01/25
+modified: 2023-01-25
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Initial Access
-- Lateral Movement
+- Initial-access
+- Lateral-movement
 relevantTechniques:
 - T1190
 - T1210

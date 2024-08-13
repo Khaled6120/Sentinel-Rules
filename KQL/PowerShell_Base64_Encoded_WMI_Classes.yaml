@@ -1,7 +1,7 @@
 name: PowerShell Base64 Encoded WMI Classes
 id: 1816994b-42e1-4fb1-afd2-134d88184f71
 author: Christian Burkard (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2023/01/30
+date: 2023-01-30
 severity: high
 description: Detects calls to base64 encoded WMI class such as "Win32_ShadowCopy",
   "Win32_ScheduledJob", etc.
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1027

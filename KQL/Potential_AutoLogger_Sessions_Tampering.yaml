@@ -1,17 +1,17 @@
 name: Potential AutoLogger Sessions Tampering
 id: f37b4bce-49d0-4087-9f5b-58bffda77316
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/01
+date: 2022-08-01
 severity: high
 description: Detects tampering with autologger trace sessions which is a technique
   used by attackers to disable logging
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 

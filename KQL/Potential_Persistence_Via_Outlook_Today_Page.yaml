@@ -2,7 +2,7 @@ name: Potential Persistence Via Outlook Today Page
 id: 487bb375-12ef-41f6-baae-c6a1572b4dd1
 author: Tobias Michalski (Nextron Systems), David Bertho (@dbertho) & Eirik Sveen
   (@0xSV1), Storebrand
-date: 2021/06/10
+date: 2021-06-10
 severity: high
 description: 'Detects potential persistence activity via outlook today page.
 
@@ -11,7 +11,7 @@ description: 'Detects potential persistence activity via outlook today page.
 
   '
 status: test
-modified: 2024/08/07
+modified: 2024-08-07
 logsource:
   category: registry_set
   product: windows

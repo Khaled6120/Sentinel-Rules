@@ -1,17 +1,17 @@
 name: Disable Internal Tools or Feature in Registry
 id: e2482f8d-3443-4237-b906-cc145d87a076
 author: frack113, Nasreddine Bencherchali (Nextron Systems), CrimpSec
-date: 2022/03/18
+date: 2022-03-18
 severity: medium
 description: Detects registry modifications that change features of internal Windows
   tools (malware like Agent Tesla uses this technique)
 status: experimental
-modified: 2023/11/20
+modified: 2023-11-20
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

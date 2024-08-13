@@ -1,7 +1,7 @@
 name: Potential AVKkid.DLL Sideloading
 id: 952ed57c-8f99-453d-aee0-53a49c22f95d
 author: X__Junior (Nextron Systems)
-date: 2023/08/03
+date: 2023-08-03
 severity: medium
 description: Detects potential DLL sideloading of "AVKkid.dll"
 status: test
@@ -10,8 +10,8 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

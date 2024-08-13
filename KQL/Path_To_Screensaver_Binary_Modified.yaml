@@ -1,18 +1,18 @@
 name: Path To Screensaver Binary Modified
 id: 67a6c006-3fbe-46a7-9074-2ba3b82c3000
 author: Bartlomiej Czyz @bczyz1, oscd.community
-date: 2020/10/11
+date: 2020-10-11
 severity: medium
 description: Detects value modification of registry key containing path to binary
   used as screensaver.
 status: test
-modified: 2021/11/27
+modified: 2021-11-27
 logsource:
   category: registry_event
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1546
 query: 'DeviceRegistryEvents

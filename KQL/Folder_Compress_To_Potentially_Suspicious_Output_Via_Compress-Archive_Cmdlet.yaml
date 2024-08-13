@@ -1,7 +1,7 @@
 name: Folder Compress To Potentially Suspicious Output Via Compress-Archive Cmdlet
 id: 85a8e5ba-bd03-4bfb-bbfa-a4409a8f8b98
 author: Nasreddine Bencherchali (Nextron Systems), frack113
-date: 2021/07/20
+date: 2021-07-20
 severity: medium
 description: 'Detects PowerShell scripts that make use of the "Compress-Archive" Cmdlet
   in order to compress folders and files where the output is stored in a potentially
@@ -13,7 +13,7 @@ description: 'Detects PowerShell scripts that make use of the "Compress-Archive"
 
   '
 status: test
-modified: 2022/10/09
+modified: 2022-10-09
 logsource:
   category: process_creation
   product: windows

@@ -1,19 +1,19 @@
 name: Renamed Remote Utilities RAT (RURAT) Execution
 id: 9ef27c24-4903-4192-881a-3adde7ff92a5
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/09/19
+date: 2022-09-19
 severity: medium
 description: Detects execution of renamed Remote Utilities (RURAT) via Product PE
   header field
 status: test
-modified: 2023/02/03
+modified: 2023-02-03
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Collection
-- Command And Control
-- Defense Evasion
+- Command-and-control
+- Defense-evasion
 - Discovery
 - S0592
 relevantTechniques: []

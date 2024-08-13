@@ -1,19 +1,19 @@
 name: Suspicious Calculator Usage
 id: 737e618a-a410-49b5-bec3-9e55ff7fbc15
 author: Florian Roth (Nextron Systems)
-date: 2019/02/09
+date: 2019-02-09
 severity: high
 description: 'Detects suspicious use of ''calc.exe'' with command line parameters
   or in a suspicious directory, which is likely caused by some PoC or detection evasion.
 
   '
 status: test
-modified: 2023/11/09
+modified: 2023-11-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceProcessEvents

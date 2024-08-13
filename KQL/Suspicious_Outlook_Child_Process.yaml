@@ -2,11 +2,11 @@ name: Suspicious Outlook Child Process
 id: 208748f7-881d-47ac-a29c-07ea84bf691d
 author: Michael Haag, Florian Roth (Nextron Systems), Markus Neis, Elastic, FPT.EagleEye
   Team
-date: 2022/02/28
+date: 2022-02-28
 severity: high
 description: Detects a suspicious process spawning from an Outlook process.
 status: test
-modified: 2023/02/04
+modified: 2023-02-04
 logsource:
   category: process_creation
   product: windows

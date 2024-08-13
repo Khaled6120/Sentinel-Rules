@@ -1,17 +1,17 @@
 name: MSHTA Suspicious Execution 01
 id: cc7abbd0-762b-41e3-8a26-57ad50d2eea3
 author: Diego Perez (@darkquassar), Markus Neis, Swisscom (Improve Rule)
-date: 2019/02/22
+date: 2019-02-22
 severity: high
 description: Detection for mshta.exe suspicious execution patterns sometimes involving
   file polyglotism
 status: test
-modified: 2022/11/07
+modified: 2022-11-07
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1059

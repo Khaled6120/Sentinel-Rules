@@ -1,7 +1,7 @@
 name: Potential RipZip Attack on Startup Folder
 id: a6976974-ea6f-4e97-818e-ea08625c52cb
 author: Greg (rule)
-date: 2022/07/21
+date: 2022-07-21
 severity: high
 description: 'Detects a phishing attack which expands a ZIP file containing a malicious
   shortcut.
@@ -15,7 +15,7 @@ description: 'Detects a phishing attack which expands a ZIP file containing a ma
 
   '
 status: test
-modified: 2023/01/05
+modified: 2023-01-05
 logsource:
   category: file_event
   product: windows

@@ -1,7 +1,7 @@
 name: Office Macro File Creation
 id: 91174a41-dc8f-401b-be89-7bfc140612a0
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/01/23
+date: 2022-01-23
 severity: low
 description: Detects the creation of a new office macro files on the systems
 status: test
@@ -10,7 +10,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 relevantTechniques:
 - T1566
 query: 'DeviceFileEvents

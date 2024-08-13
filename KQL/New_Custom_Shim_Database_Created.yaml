@@ -1,7 +1,7 @@
 name: New Custom Shim Database Created
 id: ee63c85c-6d51-4d12-ad09-04e25877a947
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
-date: 2021/12/29
+date: 2021-12-29
 severity: medium
 description: 'Adversaries may establish persistence and/or elevate privileges by executing
   malicious content triggered by application shims.
@@ -12,7 +12,7 @@ description: 'Adversaries may establish persistence and/or elevate privileges by
 
   '
 status: test
-modified: 2023/12/06
+modified: 2023-12-06
 logsource:
   category: file_event
   product: windows

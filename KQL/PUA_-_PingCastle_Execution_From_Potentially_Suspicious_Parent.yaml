@@ -1,7 +1,7 @@
 name: PUA - PingCastle Execution From Potentially Suspicious Parent
 id: b37998de-a70b-4f33-b219-ec36bf433dc0
 author: Nasreddine Bencherchali (Nextron Systems), X__Junior (Nextron Systems)
-date: 2024/01/11
+date: 2024-01-11
 severity: high
 description: 'Detects the execution of PingCastle, a tool designed to quickly assess
   the Active Directory security level via a script located in a potentially suspicious

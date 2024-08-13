@@ -1,17 +1,17 @@
 name: HackTool - winPEAS Execution
 id: 98b53e78-ebaf-46f8-be06-421aafd176d9
 author: Georg Lauenstein (sure[secure])
-date: 2022/09/19
+date: 2022-09-19
 severity: high
 description: WinPEAS is a script that search for possible paths to escalate privileges
   on Windows hosts. The checks are explained on book.hacktricks.xyz
 status: test
-modified: 2023/03/23
+modified: 2023-03-23
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1046
 - T1082

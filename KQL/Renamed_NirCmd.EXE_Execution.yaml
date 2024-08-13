@@ -1,7 +1,7 @@
 name: Renamed NirCmd.EXE Execution
 id: 264982dc-dbad-4dce-b707-1e0d3e0f73d9
 author: X__Junior (Nextron Systems)
-date: 2024/03/11
+date: 2024-03-11
 severity: high
 description: Detects the execution of a renamed "NirCmd.exe" binary based on the PE
   metadata fields.
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1059

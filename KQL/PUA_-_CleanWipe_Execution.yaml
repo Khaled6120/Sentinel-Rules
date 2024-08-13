@@ -1,16 +1,16 @@
 name: PUA - CleanWipe Execution
 id: f44800ac-38ec-471f-936e-3fa7d9c53100
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2021/12/18
+date: 2021-12-18
 severity: high
 description: Detects the use of CleanWipe a tool usually used to delete Symantec antivirus.
 status: test
-modified: 2023/02/14
+modified: 2023-02-14
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

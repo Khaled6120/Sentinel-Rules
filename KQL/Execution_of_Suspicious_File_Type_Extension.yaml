@@ -1,7 +1,7 @@
 name: Execution of Suspicious File Type Extension
 id: c09dad97-1c78-4f71-b127-7edb2b8e491a
 author: Max Altgelt (Nextron Systems)
-date: 2021/12/09
+date: 2021-12-09
 severity: medium
 description: 'Detects whether the image specified in a process creation event doesn''t
   refer to an ".exe" (or other known executable extension) file. This can be caused
@@ -12,12 +12,12 @@ description: 'Detects whether the image specified in a process creation event do
 
   '
 status: experimental
-modified: 2023/11/23
+modified: 2023-11-23
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

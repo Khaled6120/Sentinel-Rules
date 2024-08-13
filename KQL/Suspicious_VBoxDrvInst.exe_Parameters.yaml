@@ -1,7 +1,7 @@
 name: Suspicious VBoxDrvInst.exe Parameters
 id: b7b19cb6-9b32-4fc4-a108-73f19acfe262
 author: Konstantin Grishchenko, oscd.community
-date: 2020/10/06
+date: 2020-10-06
 severity: medium
 description: 'Detect VBoxDrvInst.exe run with parameters allowing processing INF file.
 
@@ -12,12 +12,12 @@ description: 'Detect VBoxDrvInst.exe run with parameters allowing processing INF
 
   '
 status: test
-modified: 2021/11/27
+modified: 2021-11-27
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceProcessEvents

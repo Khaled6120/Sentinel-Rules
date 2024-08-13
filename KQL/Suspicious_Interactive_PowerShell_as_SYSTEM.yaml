@@ -1,12 +1,12 @@
 name: Suspicious Interactive PowerShell as SYSTEM
 id: 5b40a734-99b6-4b98-a1d0-1cea51a08ab2
 author: Florian Roth (Nextron Systems)
-date: 2021/12/07
+date: 2021-12-07
 severity: high
 description: Detects the creation of files that indicator an interactive use of PowerShell
   in the SYSTEM user context
 status: test
-modified: 2022/08/13
+modified: 2022-08-13
 logsource:
   category: file_event
   product: windows

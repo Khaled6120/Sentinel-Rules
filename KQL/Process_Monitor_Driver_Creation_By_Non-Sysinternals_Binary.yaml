@@ -1,7 +1,7 @@
 name: Process Monitor Driver Creation By Non-Sysinternals Binary
 id: a05baa88-e922-4001-bc4d-8738135f27de
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/05
+date: 2023-05-05
 severity: medium
 description: Detects creation of the Process Monitor driver by processes other than
   Process Monitor (procmon) itself.
@@ -12,7 +12,7 @@ logsource:
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1068
 query: 'DeviceFileEvents

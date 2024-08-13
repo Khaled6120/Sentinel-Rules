@@ -1,7 +1,7 @@
 name: Renamed ProcDump Execution
 id: 4a0b2c7e-7cb2-495d-8b63-5f268e7bfd67
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2019/11/18
+date: 2019-11-18
 severity: high
 description: 'Detects the execution of a renamed ProcDump executable.
 
@@ -9,12 +9,12 @@ description: 'Detects the execution of a renamed ProcDump executable.
 
   '
 status: test
-modified: 2024/06/25
+modified: 2024-06-25
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: "DeviceProcessEvents\n| where (ProcessVersionInfoOriginalFileName =~ \"procdump\"\

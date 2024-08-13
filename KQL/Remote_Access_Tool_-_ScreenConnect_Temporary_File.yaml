@@ -1,7 +1,7 @@
 name: Remote Access Tool - ScreenConnect Temporary File
 id: 0afecb6e-6223-4a82-99fb-bf5b981e92a5
 author: Ali Alwashali
-date: 2023/10/10
+date: 2023-10-10
 severity: low
 description: 'Detects the creation of files in a specific location by ScreenConnect
   RMM.

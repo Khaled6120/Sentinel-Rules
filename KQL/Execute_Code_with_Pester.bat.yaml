@@ -1,17 +1,17 @@
 name: Execute Code with Pester.bat
 id: 59e938ff-0d6d-4dc3-b13f-36cc28734d4e
 author: Julia Fomina, oscd.community
-date: 2020/10/08
+date: 2020-10-08
 severity: medium
 description: Detects code execution via Pester.bat (Pester - Powershell Modulte for
   testing)
 status: test
-modified: 2023/11/09
+modified: 2023-11-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1059

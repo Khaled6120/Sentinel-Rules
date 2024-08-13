@@ -1,7 +1,7 @@
 name: UAC Bypass Using IDiagnostic Profile - File
 id: 48ea844d-19b1-4642-944e-fe39c2cc1fec
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/07/03
+date: 2022-07-03
 severity: high
 description: Detects the creation of a file by "dllhost.exe" in System32 directory
   part of "IDiagnosticProfileUAC" UAC bypass technique
@@ -11,9 +11,9 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1548
 query: 'DeviceFileEvents

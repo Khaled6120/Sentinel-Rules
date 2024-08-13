@@ -1,13 +1,13 @@
 name: Python Initiated Connection
 id: bef0bc5a-b9ae-425d-85c6-7b2d705980c6
 author: frack113
-date: 2021/12/10
+date: 2021-12-10
 severity: medium
 description: Detects a Python process initiating a network connection. While this
   often relates to package installation, it can also indicate a potential malicious
   script communicating with a C&C server.
 status: test
-modified: 2023/09/07
+modified: 2023-09-07
 logsource:
   category: network_connection
   product: windows

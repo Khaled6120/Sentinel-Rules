@@ -1,13 +1,13 @@
 name: Suspicious PowerShell Download and Execute Pattern
 id: e6c54d94-498c-4562-a37c-b469d8e9a275
 author: Florian Roth (Nextron Systems)
-date: 2022/02/28
+date: 2022-02-28
 severity: high
 description: Detects suspicious PowerShell download patterns that are often used in
   malicious scripts, stagers or downloaders (make sure that your backend applies the
   strings case-insensitive)
 status: test
-modified: 2022/03/01
+modified: 2022-03-01
 logsource:
   category: process_creation
   product: windows

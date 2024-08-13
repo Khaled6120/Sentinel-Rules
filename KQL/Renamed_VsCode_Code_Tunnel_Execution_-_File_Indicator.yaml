@@ -1,7 +1,7 @@
 name: Renamed VsCode Code Tunnel Execution - File Indicator
 id: d102b8f5-61dc-4e68-bd83-9a3187c67377
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/10/25
+date: 2023-10-25
 severity: high
 description: 'Detects the creation of a file with the name "code_tunnel.json" which
   indicate execution and usage of VsCode tunneling utility by an "Image" or "Process"
@@ -14,7 +14,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques: []
 query: 'DeviceFileEvents
 

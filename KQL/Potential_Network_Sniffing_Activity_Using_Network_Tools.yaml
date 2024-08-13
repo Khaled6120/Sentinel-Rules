@@ -1,7 +1,7 @@
 name: Potential Network Sniffing Activity Using Network Tools
 id: ba1f7802-adc7-48b4-9ecb-81e227fddfd5
 author: Timur Zinniatullin, oscd.community, Nasreddine Bencherchali (Nextron Systems)
-date: 2019/10/21
+date: 2019-10-21
 severity: medium
 description: 'Detects potential network sniffing via use of network tools such as
   "tshark", "windump".
@@ -15,12 +15,12 @@ description: 'Detects potential network sniffing via use of network tools such a
 
   '
 status: test
-modified: 2023/02/20
+modified: 2023-02-20
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 - Discovery
 relevantTechniques:
 - T1040

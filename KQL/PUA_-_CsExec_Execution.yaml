@@ -1,18 +1,18 @@
 name: PUA - CsExec Execution
 id: d08a2711-ee8b-4323-bdec-b7d85e892b31
 author: Florian Roth (Nextron Systems)
-date: 2022/08/22
+date: 2022-08-22
 severity: high
 description: Detects the use of the lesser known remote execution tool named CsExec
   a PsExec alternative
 status: test
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Execution
-- Resource Development
+- Resource-development
 relevantTechniques:
 - T1569
 - T1587

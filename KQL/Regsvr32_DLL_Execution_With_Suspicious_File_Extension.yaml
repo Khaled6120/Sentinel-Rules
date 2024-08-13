@@ -1,17 +1,17 @@
 name: Regsvr32 DLL Execution With Suspicious File Extension
 id: 089fc3d2-71e8-4763-a8a5-c97fbb0a403e
 author: Florian Roth (Nextron Systems), frack113
-date: 2021/11/29
+date: 2021-11-29
 severity: high
 description: Detects the execution of REGSVR32.exe with DLL files masquerading as
   other files
 status: test
-modified: 2023/05/24
+modified: 2023-05-24
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

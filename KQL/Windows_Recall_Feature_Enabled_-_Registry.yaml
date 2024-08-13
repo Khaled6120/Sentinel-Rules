@@ -1,7 +1,7 @@
 name: Windows Recall Feature Enabled - Registry
 id: 75180c5f-4ea1-461a-a4f6-6e4700c065d4
 author: Sajid Nawaz Khan
-date: 2024/06/02
+date: 2024-06-02
 severity: medium
 description: 'Detects the enabling of the Windows Recall feature via registry manipulation.
   Windows Recall can be enabled by setting the value of "DisableAIDataAnalysis" to

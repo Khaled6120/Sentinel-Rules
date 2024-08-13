@@ -1,7 +1,7 @@
 name: TeamViewer Remote Session
 id: 162ab1e4-6874-4564-853c-53ec3ab8be01
 author: Florian Roth (Nextron Systems)
-date: 2022/01/30
+date: 2022-01-30
 severity: medium
 description: Detects the creation of log files during a TeamViewer remote session
 status: test
@@ -10,7 +10,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1219
 query: 'DeviceFileEvents

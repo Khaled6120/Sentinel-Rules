@@ -1,7 +1,7 @@
 name: Internet Explorer DisableFirstRunCustomize Enabled
 id: ab567429-1dfb-4674-b6d2-979fd2f9d125
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/16
+date: 2023-05-16
 severity: medium
 description: 'Detects changes to the Internet Explorer "DisableFirstRunCustomize"
   value, which prevents Internet Explorer from running the first run wizard the first
@@ -9,12 +9,12 @@ description: 'Detects changes to the Internet Explorer "DisableFirstRunCustomize
 
   '
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 

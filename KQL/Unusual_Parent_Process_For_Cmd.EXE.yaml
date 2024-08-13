@@ -1,11 +1,11 @@
 name: Unusual Parent Process For Cmd.EXE
 id: 4b991083-3d0e-44ce-8fc4-b254025d8d4b
 author: Tim Rauch, Elastic (idea)
-date: 2022/09/21
+date: 2022-09-21
 severity: medium
 description: Detects suspicious parent process for cmd.exe
 status: experimental
-modified: 2023/12/05
+modified: 2023-12-05
 logsource:
   category: process_creation
   product: windows

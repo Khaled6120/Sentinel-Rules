@@ -1,17 +1,17 @@
 name: Suspicious File Encoded To Base64 Via Certutil.EXE
 id: ea0cdc3e-2239-4f26-a947-4e8f8224e464
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/15
+date: 2023-05-15
 severity: high
 description: Detects the execution of certutil with the "encode" flag to encode a
   file to base64 where the extensions of the file is suspicious
 status: experimental
-modified: 2024/03/05
+modified: 2024-03-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1027
 query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-encode\" or ProcessCommandLine\

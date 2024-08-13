@@ -1,16 +1,16 @@
 name: Tamper With Sophos AV Registry Keys
 id: 9f4662ac-17ca-43aa-8f12-5d7b989d0101
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/09/02
+date: 2022-09-02
 severity: high
 description: Detects tamper attempts to sophos av functionality via registry key modification
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

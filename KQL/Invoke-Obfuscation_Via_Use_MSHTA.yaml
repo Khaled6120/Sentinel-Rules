@@ -1,16 +1,16 @@
 name: Invoke-Obfuscation Via Use MSHTA
 id: ac20ae82-8758-4f38-958e-b44a3140ca88
 author: Nikita Nazarov, oscd.community
-date: 2020/10/08
+date: 2020-10-08
 severity: high
 description: Detects Obfuscated Powershell via use MSHTA in Scripts
 status: test
-modified: 2022/03/08
+modified: 2022-03-08
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1027

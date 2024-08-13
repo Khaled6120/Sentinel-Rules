@@ -1,16 +1,16 @@
 name: HackTool - SILENTTRINITY Stager Execution
 id: 03552375-cc2c-4883-bbe4-7958d5a980be
 author: Aleksey Potapov, oscd.community
-date: 2019/10/22
+date: 2019-10-22
 severity: high
 description: Detects SILENTTRINITY stager use via PE metadata
 status: test
-modified: 2023/02/13
+modified: 2023-02-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1071
 query: 'DeviceProcessEvents

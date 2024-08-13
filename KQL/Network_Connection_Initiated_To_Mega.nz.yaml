@@ -1,7 +1,7 @@
 name: Network Connection Initiated To Mega.nz
 id: fdeebdf0-9f3f-4d08-84a6-4c4d13e39fe4
 author: Florian Roth (Nextron Systems)
-date: 2021/12/06
+date: 2021-12-06
 severity: low
 description: 'Detects a network connection initiated by a binary to "api.mega.co.nz".
 
@@ -10,7 +10,7 @@ description: 'Detects a network connection initiated by a binary to "api.mega.co
 
   '
 status: test
-modified: 2024/05/31
+modified: 2024-05-31
 logsource:
   category: network_connection
   product: windows

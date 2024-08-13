@@ -1,17 +1,17 @@
 name: HackTool - CrackMapExec Process Patterns
 id: f26307d8-14cd-47e3-a26b-4b4769f24af6
 author: Florian Roth (Nextron Systems)
-date: 2022/03/12
+date: 2022-03-12
 severity: high
 description: Detects suspicious process patterns found in logs when CrackMapExec is
   used
 status: test
-modified: 2023/02/13
+modified: 2023-02-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceProcessEvents

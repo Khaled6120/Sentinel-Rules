@@ -1,7 +1,7 @@
 name: Potential Azure Browser SSO Abuse
 id: 50f852e6-af22-4c78-9ede-42ef36aa3453
 author: Den Iuzvyk
-date: 2020/07/15
+date: 2020-07-15
 severity: low
 description: 'Detects abusing Azure Browser SSO by requesting OAuth 2.0 refresh tokens
   for an Azure-AD-authenticated Windows user (i.e. the machine is joined to Azure
@@ -12,13 +12,13 @@ description: 'Detects abusing Azure Browser SSO by requesting OAuth 2.0 refresh 
 
   '
 status: test
-modified: 2023/04/18
+modified: 2023-04-18
 logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

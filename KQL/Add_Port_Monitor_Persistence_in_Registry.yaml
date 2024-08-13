@@ -1,7 +1,7 @@
 name: Add Port Monitor Persistence in Registry
 id: 944e8941-f6f6-4ee8-ac05-1c224e923c0e
 author: frack113
-date: 2021/12/30
+date: 2021-12-30
 severity: medium
 description: 'Adversaries may use port monitors to run an attacker supplied DLL during
   system boot for persistence or privilege escalation.
@@ -11,7 +11,7 @@ description: 'Adversaries may use port monitors to run an attacker supplied DLL 
 
   '
 status: experimental
-modified: 2024/03/25
+modified: 2024-03-25
 logsource:
   category: registry_set
   product: windows

@@ -1,16 +1,16 @@
 name: Execute Files with Msdeploy.exe
 id: 646bc99f-6682-4b47-a73a-17b1b64c9d34
 author: Beyu Denis, oscd.community
-date: 2020/10/18
+date: 2020-10-18
 severity: medium
 description: Detects file execution using the msdeploy.exe lolbin
 status: test
-modified: 2021/11/27
+modified: 2021-11-27
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

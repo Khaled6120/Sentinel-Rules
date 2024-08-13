@@ -1,7 +1,7 @@
 name: Local File Read Using Curl.EXE
 id: aa6f6ea6-0676-40dd-b510-6e46f02d8867
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/07/27
+date: 2023-07-27
 severity: medium
 description: Detects execution of "curl.exe" with the "file://" protocol handler in
   order to read local files.

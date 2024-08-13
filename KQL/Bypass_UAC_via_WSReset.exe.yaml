@@ -2,18 +2,18 @@ name: Bypass UAC via WSReset.exe
 id: d797268e-28a9-49a7-b9a8-2f5039011c5c
 author: E.M. Anhaus (originally from Atomic Blue Detections, Tony Lambert), oscd.community,
   Florian Roth
-date: 2019/10/24
+date: 2019-10-24
 severity: high
 description: Detects use of WSReset.exe to bypass User Account Control (UAC). Adversaries
   use this technique to execute privileged processes.
 status: test
-modified: 2022/05/13
+modified: 2022-05-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1548
 query: 'DeviceProcessEvents

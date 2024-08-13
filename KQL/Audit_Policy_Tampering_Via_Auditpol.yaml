@@ -1,7 +1,7 @@
 name: Audit Policy Tampering Via Auditpol
 id: 0a13e132-651d-11eb-ae93-0242ac130002
 author: Janantha Marasinghe (https://github.com/blueteam0ps)
-date: 2021/02/02
+date: 2021-02-02
 severity: high
 description: 'Threat actors can use auditpol binary to change audit policy configuration
   to impair detection capability.
@@ -11,12 +11,12 @@ description: 'Threat actors can use auditpol binary to change audit policy confi
 
   '
 status: test
-modified: 2023/02/22
+modified: 2023-02-22
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

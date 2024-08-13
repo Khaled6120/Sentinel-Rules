@@ -1,12 +1,12 @@
 name: PsExec Service File Creation
 id: 259e5a6a-b8d2-4c38-86e2-26c5e651361d
 author: Thomas Patzke
-date: 2017/06/12
+date: 2017-06-12
 severity: low
 description: Detects default PsExec service filename which indicates PsExec service
   installation and execution
 status: test
-modified: 2022/10/26
+modified: 2022-10-26
 logsource:
   category: file_event
   product: windows

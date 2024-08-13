@@ -1,7 +1,7 @@
 name: RegAsm.EXE Initiating Network Connection To Public IP
 id: 0531e43a-d77d-47c2-b89f-5fe50321c805
 author: frack113
-date: 2024/04/25
+date: 2024-04-25
 severity: medium
 description: Detects "RegAsm.exe" initiating a network connection to public IP adresses
 status: experimental
@@ -10,7 +10,7 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceNetworkEvents

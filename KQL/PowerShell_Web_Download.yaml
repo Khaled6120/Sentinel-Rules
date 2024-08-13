@@ -1,16 +1,16 @@
 name: PowerShell Web Download
 id: 6e897651-f157-4d8f-aaeb-df8151488385
 author: Florian Roth (Nextron Systems)
-date: 2022/03/24
+date: 2022-03-24
 severity: medium
 description: Detects suspicious ways to download files or content using PowerShell
 status: test
-modified: 2023/01/05
+modified: 2023-01-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 - Execution
 relevantTechniques:
 - T1059

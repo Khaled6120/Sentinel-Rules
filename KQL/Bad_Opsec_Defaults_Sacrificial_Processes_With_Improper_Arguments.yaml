@@ -2,7 +2,7 @@ name: Bad Opsec Defaults Sacrificial Processes With Improper Arguments
 id: a7c3d773-caef-227e-a7e7-c2f13c622329
 author: Oleg Kolesnikov @securonix invrep_de, oscd.community, Florian Roth (Nextron
   Systems), Christian Burkard (Nextron Systems)
-date: 2020/10/23
+date: 2020-10-23
 severity: high
 description: 'Detects attackers using tooling with bad opsec defaults.
 
@@ -15,12 +15,12 @@ description: 'Detects attackers using tooling with bad opsec defaults.
 
   '
 status: experimental
-modified: 2023/12/02
+modified: 2023-12-02
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

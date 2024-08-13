@@ -1,7 +1,7 @@
 name: Creation of an WerFault.exe in Unusual Folder
 id: 28a452f3-786c-4fd8-b8f2-bddbe9d616d1
 author: frack113
-date: 2022/05/09
+date: 2022-05-09
 severity: high
 description: Detects WerFault copoed to a suspicious folder, which could be a sign
   of WerFault DLL hijacking
@@ -11,7 +11,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 relevantTechniques:
 - T1574

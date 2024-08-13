@@ -1,18 +1,18 @@
 name: PUA - Sysinternals Tools Execution - Registry
 id: c7da8edc-49ae-45a2-9e61-9fd860e4e73d
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/24
+date: 2022-08-24
 severity: medium
 description: Detects the execution of some potentially unwanted tools such as PsExec,
   Procdump, etc. (part of the Sysinternals suite) via the creation of the "accepteula"
   registry key.
 status: test
-modified: 2023/02/07
+modified: 2023-02-07
 logsource:
   category: registry_add
   product: windows
 tactics:
-- Resource Development
+- Resource-development
 relevantTechniques:
 - T1588
 query: 'DeviceRegistryEvents

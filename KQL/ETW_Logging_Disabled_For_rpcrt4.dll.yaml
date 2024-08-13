@@ -1,17 +1,17 @@
 name: ETW Logging Disabled For rpcrt4.dll
 id: 90f342e1-1aaa-4e43-b092-39fda57ed11e
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/12/09
+date: 2022-12-09
 severity: low
 description: Detects changes to the "ExtErrorInformation" key in order to disable
   ETW logging for rpcrt4.dll
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 - T1562

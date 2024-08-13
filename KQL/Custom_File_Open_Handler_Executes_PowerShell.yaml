@@ -1,16 +1,16 @@
 name: Custom File Open Handler Executes PowerShell
 id: 7530b96f-ad8e-431d-a04d-ac85cc461fdc
 author: CD_R0M_
-date: 2022/06/11
+date: 2022-06-11
 severity: high
 description: Detects the abuse of custom file open handler, executing powershell
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1202
 query: 'DeviceRegistryEvents

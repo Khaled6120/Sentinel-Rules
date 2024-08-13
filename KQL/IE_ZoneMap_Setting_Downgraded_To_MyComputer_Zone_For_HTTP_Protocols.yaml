@@ -1,7 +1,7 @@
 name: IE ZoneMap Setting Downgraded To MyComputer Zone For HTTP Protocols
 id: 3fd4c8d7-8362-4557-a8e6-83b29cc0d724
 author: Nasreddine Bencherchali (Nextron Systems), Michael Haag (idea)
-date: 2023/09/05
+date: 2023-09-05
 severity: high
 description: 'Detects changes to Internet Explorer''s (IE / Windows Internet properties)
   ZoneMap configuration of the "HTTP" and "HTTPS" protocols to point to the "My Computer"
@@ -15,7 +15,7 @@ logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 

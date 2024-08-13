@@ -1,7 +1,7 @@
 name: Rundll32 UNC Path Execution
 id: 5cdb711b-5740-4fb2-ba88-f7945027afac
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/10
+date: 2022-08-10
 severity: high
 description: Detects rundll32 execution where the DLL is located on a remote location
   (share)
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1021

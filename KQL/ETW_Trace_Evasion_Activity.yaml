@@ -1,19 +1,19 @@
 name: ETW Trace Evasion Activity
 id: a238b5d0-ce2d-4414-a676-7a531b3d13d6
 author: '@neu5ron, Florian Roth (Nextron Systems), Jonhnathan Ribeiro, oscd.community'
-date: 2019/03/22
+date: 2019-03-22
 severity: high
 description: 'Detects command line activity that tries to clear or disable any ETW
   trace log which could be a sign of logging evasion.
 
   '
 status: test
-modified: 2022/06/28
+modified: 2022-06-28
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1070
 - T1562

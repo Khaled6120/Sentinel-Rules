@@ -1,17 +1,17 @@
 name: Root Certificate Installed From Susp Locations
 id: 5f6a601c-2ecb-498b-9c33-660362323afa
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/09/09
+date: 2022-09-09
 severity: high
 description: Adversaries may install a root certificate on a compromised system to
   avoid warnings when connecting to adversary controlled web servers.
 status: test
-modified: 2023/01/16
+modified: 2023-01-16
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1553
 query: 'DeviceProcessEvents

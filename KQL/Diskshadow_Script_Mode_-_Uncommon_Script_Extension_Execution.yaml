@@ -1,7 +1,7 @@
 name: Diskshadow Script Mode - Uncommon Script Extension Execution
 id: 1dde5376-a648-492e-9e54-4241dd9b0c7f
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/09/15
+date: 2023-09-15
 severity: medium
 description: 'Detects execution of "Diskshadow.exe" in script mode to execute an script
   with a potentially uncommon extension.
@@ -10,12 +10,12 @@ description: 'Detects execution of "Diskshadow.exe" in script mode to execute an
 
   '
 status: experimental
-modified: 2024/03/05
+modified: 2024-03-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"-s \" or ProcessCommandLine\

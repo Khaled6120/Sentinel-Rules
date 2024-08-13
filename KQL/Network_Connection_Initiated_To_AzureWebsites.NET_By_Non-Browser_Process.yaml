@@ -1,7 +1,7 @@
 name: Network Connection Initiated To AzureWebsites.NET By Non-Browser Process
 id: 5c80b618-0dbb-46e6-acbb-03d90bcb6d83
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2024/06/24
+date: 2024-06-24
 severity: medium
 description: 'Detects an initiated network connection by a non browser process on
   the system to "azurewebsites.net". The latter was often used by threat actors as
@@ -9,12 +9,12 @@ description: 'Detects an initiated network connection by a non browser process o
 
   '
 status: experimental
-modified: 2024/07/16
+modified: 2024-07-16
 logsource:
   category: network_connection
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1102
 query: 'DeviceNetworkEvents

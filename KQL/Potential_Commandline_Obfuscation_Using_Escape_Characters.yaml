@@ -1,16 +1,16 @@
 name: Potential Commandline Obfuscation Using Escape Characters
 id: f0cdd048-82dc-4f7a-8a7a-b87a52b6d0fd
 author: juju4
-date: 2018/12/11
+date: 2018-12-11
 severity: medium
 description: Detects potential commandline obfuscation using known escape characters
 status: test
-modified: 2023/03/03
+modified: 2023-03-03
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1140
 query: 'DeviceProcessEvents

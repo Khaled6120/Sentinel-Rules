@@ -1,7 +1,7 @@
 name: Outbound RDP Connections Over Non-Standard Tools
 id: ed74fe75-7594-4b4b-ae38-e38e3fd2eb23
 author: Markus Neis
-date: 2019/05/15
+date: 2019-05-15
 severity: high
 description: 'Detects Non-Standard tools initiating a connection over port 3389 indicating
   possible lateral movement.
@@ -11,12 +11,12 @@ description: 'Detects Non-Standard tools initiating a connection over port 3389 
 
   '
 status: test
-modified: 2024/02/09
+modified: 2024-02-09
 logsource:
   category: network_connection
   product: windows
 tactics:
-- Lateral Movement
+- Lateral-movement
 relevantTechniques:
 - T1021
 query: 'DeviceNetworkEvents

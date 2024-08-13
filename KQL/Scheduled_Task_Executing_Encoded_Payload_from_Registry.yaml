@@ -2,12 +2,12 @@ name: Scheduled Task Executing Encoded Payload from Registry
 id: c4eeeeae-89f4-43a7-8b48-8d1bdfa66c78
 author: pH-T (Nextron Systems), @Kostastsale, @TheDFIRReport, X__Junior (Nextron Systems),
   Nasreddine Bencherchali (Nextron Systems)
-date: 2022/02/12
+date: 2022-02-12
 severity: high
 description: Detects the creation of a schtask that potentially executes a base64
   encoded payload stored in the Windows Registry using PowerShell.
 status: test
-modified: 2023/02/04
+modified: 2023-02-04
 logsource:
   category: process_creation
   product: windows

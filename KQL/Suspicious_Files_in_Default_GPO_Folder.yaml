@@ -1,7 +1,7 @@
 name: Suspicious Files in Default GPO Folder
 id: 5f87308a-0a5b-4623-ae15-d8fa1809bc60
 author: elhoim
-date: 2022/04/28
+date: 2022-04-28
 severity: medium
 description: Detects the creation of copy of suspicious files (EXE/DLL) to the default
   GPO storage folder
@@ -11,7 +11,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceFileEvents

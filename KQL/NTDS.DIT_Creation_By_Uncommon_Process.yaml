@@ -1,17 +1,17 @@
 name: NTDS.DIT Creation By Uncommon Process
 id: 11b1ed55-154d-4e82-8ad7-83739298f720
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2022/01/11
+date: 2022-01-11
 severity: high
 description: Detects creation of a file named "ntds.dit" (Active Directory Database)
   by an uncommon process or a process located in a suspicious directory
 status: test
-modified: 2022/07/14
+modified: 2022-07-14
 logsource:
   category: file_event
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceFileEvents

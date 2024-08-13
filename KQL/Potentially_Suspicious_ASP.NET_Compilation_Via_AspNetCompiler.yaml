@@ -1,7 +1,7 @@
 name: Potentially Suspicious ASP.NET Compilation Via AspNetCompiler
 id: 9f50fe98-fe5c-4a2d-86c7-fad7f63ed622
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/08/14
+date: 2023-08-14
 severity: high
 description: Detects execution of "aspnet_compiler.exe" with potentially suspicious
   paths for compilation.
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1127
 query: 'DeviceProcessEvents

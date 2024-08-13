@@ -1,16 +1,16 @@
 name: Suspicious Process Start Locations
 id: 15b75071-74cc-47e0-b4c6-b43744a62a2b
 author: juju4, Jonhnathan Ribeiro, oscd.community
-date: 2019/01/16
+date: 2019-01-16
 severity: medium
 description: Detects suspicious process run from unusual locations
 status: test
-modified: 2022/01/07
+modified: 2022-01-07
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceProcessEvents

@@ -1,7 +1,7 @@
 name: Potentially Suspicious Wuauclt Network Connection
 id: c649a6c7-cd8c-4a78-9c04-000fc76df954
 author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-date: 2020/10/12
+date: 2020-10-12
 severity: medium
 description: 'Detects the use of the Windows Update Client binary (wuauclt.exe) to
   proxy execute code and making network connections.
@@ -11,12 +11,12 @@ description: 'Detects the use of the Windows Update Client binary (wuauclt.exe) 
 
   '
 status: test
-modified: 2024/03/12
+modified: 2024-03-12
 logsource:
   category: network_connection
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceNetworkEvents

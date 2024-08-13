@@ -1,17 +1,17 @@
 name: Renamed CURL.EXE Execution
 id: 7530cd3d-7671-43e3-b209-976966f6ea48
 author: X__Junior (Nextron Systems)
-date: 2023/09/11
+date: 2023-09-11
 severity: medium
 description: Detects the execution of a renamed "CURL.exe" binary based on the PE
   metadata fields
 status: experimental
-modified: 2023/10/12
+modified: 2023-10-12
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1059

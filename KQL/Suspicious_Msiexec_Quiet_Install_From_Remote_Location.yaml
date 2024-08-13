@@ -1,16 +1,16 @@
 name: Suspicious Msiexec Quiet Install From Remote Location
 id: 8150732a-0c9d-4a99-82b9-9efb9b90c40c
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/10/28
+date: 2022-10-28
 severity: medium
 description: Detects usage of Msiexec.exe to install packages hosted remotely quietly
 status: test
-modified: 2024/03/13
+modified: 2024-03-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-i\" or ProcessCommandLine\

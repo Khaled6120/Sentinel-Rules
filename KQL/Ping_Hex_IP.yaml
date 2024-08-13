@@ -1,16 +1,16 @@
 name: Ping Hex IP
 id: 1a0d4aba-7668-4365-9ce4-6d79ab088dfd
 author: Florian Roth (Nextron Systems)
-date: 2018/03/23
+date: 2018-03-23
 severity: high
 description: Detects a ping command that uses a hex encoded IP address
 status: test
-modified: 2022/01/07
+modified: 2022-01-07
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1027
 - T1140

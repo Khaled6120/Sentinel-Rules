@@ -1,16 +1,16 @@
 name: Suspicious Service Binary Directory
 id: 883faa95-175a-4e22-8181-e5761aeb373c
 author: Florian Roth (Nextron Systems)
-date: 2021/03/09
+date: 2021-03-09
 severity: high
 description: Detects a service binary running in a suspicious directory
 status: test
-modified: 2022/10/09
+modified: 2022-10-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1202
 query: 'DeviceProcessEvents

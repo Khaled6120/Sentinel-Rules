@@ -1,7 +1,7 @@
 name: Potentially Suspicious Command Targeting Teams Sensitive Files
 id: d2eb17db-1d39-41dc-b57f-301f6512fa75
 author: '@SerkinValery'
-date: 2022/09/16
+date: 2022-09-16
 severity: medium
 description: 'Detects a commandline containing references to the Microsoft Teams database
   or cookies files from a process other than Teams.
@@ -11,12 +11,12 @@ description: 'Detects a commandline containing references to the Microsoft Teams
 
   '
 status: experimental
-modified: 2023/12/18
+modified: 2023-12-18
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1528
 query: 'DeviceProcessEvents

@@ -1,7 +1,7 @@
 name: Suspicious Screensaver Binary File Creation
 id: 97aa2e88-555c-450d-85a6-229bcd87efb8
 author: frack113
-date: 2021/12/29
+date: 2021-12-29
 severity: medium
 description: 'Adversaries may establish persistence by executing malicious content
   triggered by user inactivity.
@@ -11,7 +11,7 @@ description: 'Adversaries may establish persistence by executing malicious conte
 
   '
 status: test
-modified: 2022/11/08
+modified: 2022-11-08
 logsource:
   category: file_event
   product: windows

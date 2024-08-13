@@ -1,16 +1,16 @@
 name: Disable PUA Protection on Windows Defender
 id: 8ffc5407-52e3-478f-9596-0a7371eafe13
 author: Austin Songer @austinsonger
-date: 2021/08/04
+date: 2021-08-04
 severity: high
 description: Detects disabling Windows Defender PUA protection
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

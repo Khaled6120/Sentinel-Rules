@@ -1,16 +1,16 @@
 name: Renamed Office Binary Execution
 id: 0b0cd537-fc77-4e6e-a973-e53495c1083d
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/12/20
+date: 2022-12-20
 severity: high
 description: Detects the execution of a renamed office binary
 status: test
-modified: 2023/11/13
+modified: 2023-11-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

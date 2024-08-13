@@ -1,12 +1,12 @@
 name: Suspicious Run Key from Download
 id: 9c5037d1-c568-49b3-88c7-9846a5bdc2be
 author: Florian Roth (Nextron Systems)
-date: 2019/10/01
+date: 2019-10-01
 severity: high
 description: Detects the suspicious RUN keys created by software located in Download
   or temporary Outlook/Internet Explorer directories
 status: test
-modified: 2021/11/27
+modified: 2021-11-27
 logsource:
   category: registry_event
   product: windows

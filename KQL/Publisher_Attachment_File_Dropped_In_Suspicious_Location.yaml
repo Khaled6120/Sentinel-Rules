@@ -1,7 +1,7 @@
 name: Publisher Attachment File Dropped In Suspicious Location
 id: 3d2a2d59-929c-4b78-8c1a-145dfe9e07b1
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/02/08
+date: 2023-02-08
 severity: medium
 description: Detects creation of files with the ".pub" extension in suspicious or
   uncommon locations. This could be a sign of attackers abusing Publisher documents
@@ -11,7 +11,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceFileEvents
 

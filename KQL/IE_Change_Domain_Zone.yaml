@@ -1,11 +1,11 @@
 name: IE Change Domain Zone
 id: 45e112d0-7759-4c2a-aa36-9f8fb79d3393
 author: frack113
-date: 2022/01/22
+date: 2022-01-22
 severity: medium
 description: Hides the file extension through modification of the registry
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

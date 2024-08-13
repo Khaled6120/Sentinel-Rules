@@ -1,17 +1,17 @@
 name: Potential Persistence Via Event Viewer Events.asp
 id: a1e11042-a74a-46e6-b07c-c4ce8ecc239b
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/02/17
+date: 2023-02-17
 severity: medium
 description: Detects potential registry persistence technique using the Event Viewer
   "Events.asp" technique
 status: test
-modified: 2023/03/05
+modified: 2023-03-05
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 relevantTechniques:
 - T1112

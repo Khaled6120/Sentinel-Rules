@@ -1,11 +1,11 @@
 name: Network Connection Initiated By Eqnedt32.EXE
 id: a66bc059-c370-472c-a0d7-f8fd1bf9d583
 author: Max Altgelt (Nextron Systems)
-date: 2022/04/14
+date: 2022-04-14
 severity: high
 description: Detects network connections from the Equation Editor process "eqnedt32.exe".
 status: test
-modified: 2024/05/31
+modified: 2024-05-31
 logsource:
   category: network_connection
   product: windows

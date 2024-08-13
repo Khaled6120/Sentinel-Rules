@@ -1,7 +1,7 @@
 name: Suspicious Network Connection Binary No CommandLine
 id: 20384606-a124-4fec-acbb-8bd373728613
 author: Florian Roth (Nextron Systems)
-date: 2022/07/03
+date: 2022-07-03
 severity: high
 description: Detects suspicious network connections made by a well-known Windows binary
   run with no command line parameters
@@ -11,7 +11,7 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceNetworkEvents
 

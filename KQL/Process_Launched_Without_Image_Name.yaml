@@ -1,7 +1,7 @@
 name: Process Launched Without Image Name
 id: f208d6d8-d83a-4c2c-960d-877c37da84e5
 author: Matt Anderson (Huntress)
-date: 2024/07/23
+date: 2024-07-23
 severity: medium
 description: Detect the use of processes with no name (".exe"), which can be used
   to evade Image-based detections.
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

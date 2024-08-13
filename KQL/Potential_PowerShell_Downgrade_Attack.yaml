@@ -1,17 +1,17 @@
 name: Potential PowerShell Downgrade Attack
 id: b3512211-c67e-4707-bedc-66efc7848863
 author: Harish Segar (rule)
-date: 2020/03/20
+date: 2020-03-20
 severity: medium
 description: Detects PowerShell downgrade attack by comparing the host versions with
   the actually used engine version 2.0
 status: test
-modified: 2023/01/04
+modified: 2023-01-04
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1059

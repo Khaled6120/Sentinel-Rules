@@ -1,17 +1,17 @@
 name: Suspicious Windows Trace ETW Session Tamper Via Logman.EXE
 id: cd1f961e-0b96-436b-b7c6-38da4583ec00
 author: Florian Roth (Nextron Systems)
-date: 2021/02/11
+date: 2021-02-11
 severity: high
 description: Detects the execution of "logman" utility in order to disable or delete
   Windows trace sessions
 status: test
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1070
 - T1562

@@ -1,17 +1,17 @@
 name: ClickOnce Trust Prompt Tampering
 id: ac9159cc-c364-4304-8f0a-d63fc1a0aabb
 author: '@SerkinValery, Nasreddine Bencherchali (Nextron Systems)'
-date: 2023/06/12
+date: 2023-06-12
 severity: medium
 description: Detects changes to the ClickOnce trust prompt registry key in order to
   enable an installation from different locations such as the Internet.
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

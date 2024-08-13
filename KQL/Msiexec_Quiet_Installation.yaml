@@ -1,7 +1,7 @@
 name: Msiexec Quiet Installation
 id: 79a87aa6-e4bd-42fc-a5bb-5e6fbdcd62f5
 author: frack113
-date: 2022/01/16
+date: 2022-01-16
 severity: medium
 description: 'Adversaries may abuse msiexec.exe to proxy execution of malicious payloads.
 
@@ -10,12 +10,12 @@ description: 'Adversaries may abuse msiexec.exe to proxy execution of malicious 
 
   '
 status: test
-modified: 2024/03/13
+modified: 2024-03-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"-i\" or ProcessCommandLine\

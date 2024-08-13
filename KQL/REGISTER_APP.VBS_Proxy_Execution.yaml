@@ -1,7 +1,7 @@
 name: REGISTER_APP.VBS Proxy Execution
 id: 1c8774a0-44d4-4db0-91f8-e792359c70bd
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/19
+date: 2022-08-19
 severity: medium
 description: Detects the use of a Microsoft signed script 'REGISTER_APP.VBS' to register
   a VSS/VDS Provider as a COM+ application.
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

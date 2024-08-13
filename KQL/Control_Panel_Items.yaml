@@ -1,16 +1,16 @@
 name: Control Panel Items
 id: 0ba863e6-def5-4e50-9cea-4dd8c7dc46a4
 author: Kyaw Min Thein, Furkan Caliskan (@caliskanfurkan_)
-date: 2020/06/22
+date: 2020-06-22
 severity: high
 description: Detects the malicious use of a control panel item
 status: test
-modified: 2023/10/11
+modified: 2023-10-11
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 - Persistence
 relevantTechniques:

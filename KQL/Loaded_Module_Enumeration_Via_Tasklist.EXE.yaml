@@ -1,7 +1,7 @@
 name: Loaded Module Enumeration Via Tasklist.EXE
 id: 34275eb8-fa19-436b-b959-3d9ecd53fa1f
 author: Swachchhanda Shrawan Poudel
-date: 2024/02/12
+date: 2024-02-12
 severity: medium
 description: 'Detects the enumeration of a specific DLL or EXE being used by a binary
   via "tasklist.exe".
@@ -13,7 +13,7 @@ description: 'Detects the enumeration of a specific DLL or EXE being used by a b
 
   '
 status: experimental
-modified: 2024/03/13
+modified: 2024-03-13
 logsource:
   category: process_creation
   product: windows

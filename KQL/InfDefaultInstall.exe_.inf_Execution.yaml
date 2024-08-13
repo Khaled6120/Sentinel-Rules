@@ -1,17 +1,17 @@
 name: InfDefaultInstall.exe .inf Execution
 id: ce7cf472-6fcc-490a-9481-3786840b5d9b
 author: frack113
-date: 2021/07/13
+date: 2021-07-13
 severity: medium
 description: Executes SCT script using scrobj.dll from a command in entered into a
   specially prepared INF file.
 status: test
-modified: 2022/10/09
+modified: 2022-10-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

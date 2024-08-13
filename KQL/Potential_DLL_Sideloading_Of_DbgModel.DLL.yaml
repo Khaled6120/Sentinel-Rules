@@ -1,26 +1,25 @@
 name: Potential DLL Sideloading Of DbgModel.DLL
 id: fef394cd-f44d-4040-9b18-95d92fe278c0
 author: Gary Lobermier
-date: 2024/07/11
+date: 2024-07-11
 severity: medium
 description: Detects potential DLL sideloading of "DbgModel.dll"
 status: experimental
-modified: 2024/08/06
+modified: 2024-07-22
 logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents
 
   | where FolderPath endswith "\\dbgmodel.dll" and (not((FolderPath startswith "C:\\Windows\\System32\\"
   or FolderPath startswith "C:\\Windows\\SysWOW64\\" or FolderPath startswith "C:\\Windows\\WinSxS\\")))
-  and (not((FolderPath startswith "C:\\Program Files\\Dell\\DTP\\InstrumentationSubAgent\\"
-  or FolderPath startswith "C:\\Program Files\\WindowsApps\\Microsoft.WinDbg_" or
-  (FolderPath startswith "C:\\Program Files (x86)\\Windows Kits\\" or FolderPath startswith
-  "C:\\Program Files\\Windows Kits\\"))))'
+  and (not((FolderPath startswith "C:\\Program Files\\WindowsApps\\Microsoft.WinDbg_"
+  or (FolderPath startswith "C:\\Program Files (x86)\\Windows Kits\\" or FolderPath
+  startswith "C:\\Program Files\\Windows Kits\\"))))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

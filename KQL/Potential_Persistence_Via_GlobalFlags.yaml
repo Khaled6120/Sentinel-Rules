@@ -1,19 +1,19 @@
 name: Potential Persistence Via GlobalFlags
 id: 36803969-5421-41ec-b92f-8500f79c23b0
 author: Karneades, Jonhnathan Ribeiro, Florian Roth
-date: 2018/04/11
+date: 2018-04-11
 severity: high
 description: Detects registry persistence technique using the GlobalFlags and SilentProcessExit
   keys
 status: test
-modified: 2023/06/05
+modified: 2023-06-05
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1546
 query: 'DeviceRegistryEvents

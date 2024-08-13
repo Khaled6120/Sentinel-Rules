@@ -1,7 +1,7 @@
 name: NET NGenAssemblyUsageLog Registry Key Tamper
 id: 28036918-04d3-423d-91c0-55ecf99fb892
 author: frack113
-date: 2022/11/18
+date: 2022-11-18
 severity: high
 description: 'Detects changes to the NGenAssemblyUsageLog registry key.
 
@@ -15,12 +15,12 @@ description: 'Detects changes to the NGenAssemblyUsageLog registry key.
 
   '
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

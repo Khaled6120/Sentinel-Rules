@@ -1,17 +1,17 @@
 name: HackTool - Inveigh Execution
 id: b99a1518-1ad5-4f65-bc95-1ffff97a8fd0
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/10/24
+date: 2022-10-24
 severity: critical
 description: Detects the use of Inveigh a cross-platform .NET IPv4/IPv6 machine-in-the-middle
   tool
 status: test
-modified: 2023/02/04
+modified: 2023-02-04
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceProcessEvents

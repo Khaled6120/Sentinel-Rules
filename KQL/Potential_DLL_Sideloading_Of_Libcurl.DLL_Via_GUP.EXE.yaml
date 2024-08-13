@@ -1,7 +1,7 @@
 name: Potential DLL Sideloading Of Libcurl.DLL Via GUP.EXE
 id: e49b5745-1064-4ac1-9a2e-f687bc2dd37e
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/05
+date: 2023-05-05
 severity: medium
 description: Detects potential DLL sideloading of "libcurl.dll" by the "gup.exe" process
   from an uncommon location
@@ -11,9 +11,9 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

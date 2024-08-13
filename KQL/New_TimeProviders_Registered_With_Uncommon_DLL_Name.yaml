@@ -1,7 +1,7 @@
 name: New TimeProviders Registered With Uncommon DLL Name
 id: e88a6ddc-74f7-463b-9b26-f69fc0d2ce85
 author: frack113
-date: 2022/06/19
+date: 2022-06-19
 severity: high
 description: 'Detects processes setting a new DLL in DllName in under HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\TimeProvider.
 
@@ -12,13 +12,13 @@ description: 'Detects processes setting a new DLL in DllName in under HKEY_LOCAL
 
   '
 status: experimental
-modified: 2024/03/26
+modified: 2024-03-26
 logsource:
   category: registry_set
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1547
 query: 'DeviceRegistryEvents

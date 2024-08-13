@@ -1,17 +1,17 @@
 name: HackTool - RedMimicry Winnti Playbook Execution
 id: 95022b85-ff2a-49fa-939a-d7b8f56eeb9b
 author: Alexander Rausch
-date: 2020/06/24
+date: 2020-06-24
 severity: high
 description: Detects actions caused by the RedMimicry Winnti playbook a automated
   breach emulations utility
 status: test
-modified: 2023/03/01
+modified: 2023-03-01
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1059

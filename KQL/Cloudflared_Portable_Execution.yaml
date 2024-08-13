@@ -1,7 +1,7 @@
 name: Cloudflared Portable Execution
 id: fadb84f0-4e84-4f6d-a1ce-9ef2bffb6ccd
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/12/20
+date: 2023-12-20
 severity: medium
 description: 'Detects the execution of the "cloudflared" binary from a non standard
   location.
@@ -13,7 +13,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1090
 query: 'DeviceProcessEvents

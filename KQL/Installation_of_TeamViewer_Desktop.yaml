@@ -1,7 +1,7 @@
 name: Installation of TeamViewer Desktop
 id: 9711de76-5d4f-4c50-a94f-21e4e8f8384d
 author: frack113
-date: 2022/01/28
+date: 2022-01-28
 severity: medium
 description: TeamViewer_Desktop.exe is create during install
 status: test
@@ -10,7 +10,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1219
 query: 'DeviceFileEvents

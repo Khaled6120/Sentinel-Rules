@@ -1,17 +1,17 @@
 name: Use Icacls to Hide File to Everyone
 id: 4ae81040-fc1c-4249-bfa3-938d260214d9
 author: frack113
-date: 2022/07/18
+date: 2022-07-18
 severity: medium
 description: Detect use of icacls to deny access for everyone in Users folder sometimes
   used to hide malicious files
 status: test
-modified: 2024/04/29
+modified: 2024-04-29
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1564
 query: 'DeviceProcessEvents

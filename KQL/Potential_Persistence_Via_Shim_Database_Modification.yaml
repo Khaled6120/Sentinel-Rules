@@ -1,7 +1,7 @@
 name: Potential Persistence Via Shim Database Modification
 id: dfb5b4e8-91d0-4291-b40a-e3b0d3942c45
 author: frack113
-date: 2021/12/30
+date: 2021-12-30
 severity: medium
 description: 'Adversaries may establish persistence and/or elevate privileges by executing
   malicious content triggered by application shims.
@@ -12,7 +12,7 @@ description: 'Adversaries may establish persistence and/or elevate privileges by
 
   '
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

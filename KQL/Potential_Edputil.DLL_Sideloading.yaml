@@ -1,7 +1,7 @@
 name: Potential Edputil.DLL Sideloading
 id: e4903324-1a10-4ed3-981b-f6fe3be3a2c2
 author: X__Junior (Nextron Systems)
-date: 2023/06/09
+date: 2023-06-09
 severity: high
 description: Detects potential DLL sideloading of "edputil.dll"
 status: test
@@ -10,8 +10,8 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

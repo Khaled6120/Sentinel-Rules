@@ -1,12 +1,12 @@
 name: Scheduled TaskCache Change by Uncommon Program
 id: 4720b7df-40c3-48fd-bbdf-fd4b3c464f0d
 author: Syed Hasan (@syedhasan009)
-date: 2021/06/18
+date: 2021-06-18
 severity: high
 description: Monitor the creation of a new key under 'TaskCache' when a new scheduled
   task is registered by a process that is not svchost.exe, which is suspicious
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

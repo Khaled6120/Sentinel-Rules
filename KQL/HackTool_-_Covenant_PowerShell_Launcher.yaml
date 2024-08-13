@@ -1,16 +1,16 @@
 name: HackTool - Covenant PowerShell Launcher
 id: c260b6db-48ba-4b4a-a76f-2f67644e99d2
 author: Florian Roth (Nextron Systems), Jonhnathan Ribeiro, oscd.community
-date: 2020/06/04
+date: 2020-06-04
 severity: high
 description: Detects suspicious command lines used in Covenant luanchers
 status: test
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1059

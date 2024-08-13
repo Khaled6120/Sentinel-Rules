@@ -1,11 +1,11 @@
 name: Suspicious Use of CSharp Interactive Console
 id: a9e416a8-e613-4f8b-88b8-a7d1d1af2f61
 author: Michael R. (@nahamike01)
-date: 2020/03/08
+date: 2020-03-08
 severity: high
 description: Detects the execution of CSharp interactive console by PowerShell
 status: test
-modified: 2022/07/14
+modified: 2022-07-14
 logsource:
   category: process_creation
   product: windows

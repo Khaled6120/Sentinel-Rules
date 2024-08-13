@@ -1,7 +1,7 @@
 name: PrintBrm ZIP Creation of Extraction
 id: cafeeba3-01da-4ab4-b6c4-a31b1d9730c7
 author: frack113
-date: 2022/05/02
+date: 2022-05-02
 severity: high
 description: Detects the execution of the LOLBIN PrintBrm.exe, which can be used to
   create or extract ZIP files. PrintBrm.exe should not be run on a normal workstation.
@@ -11,8 +11,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
-- Defense Evasion
+- Command-and-control
+- Defense-evasion
 relevantTechniques:
 - T1105
 - T1564

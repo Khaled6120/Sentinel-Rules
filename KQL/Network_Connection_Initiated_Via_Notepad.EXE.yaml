@@ -1,7 +1,7 @@
 name: Network Connection Initiated Via Notepad.EXE
 id: e81528db-fc02-45e8-8e98-4e84aba1f10b
 author: EagleEye Team
-date: 2020/05/14
+date: 2020-05-14
 severity: high
 description: 'Detects a network connection that is initiated by the "notepad.exe"
   process.
@@ -13,13 +13,13 @@ description: 'Detects a network connection that is initiated by the "notepad.exe
 
   '
 status: test
-modified: 2024/02/02
+modified: 2024-02-02
 logsource:
   category: network_connection
   product: windows
 tactics:
-- Command And Control
-- Defense Evasion
+- Command-and-control
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1055

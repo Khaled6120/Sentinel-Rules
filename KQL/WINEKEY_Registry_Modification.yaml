@@ -1,12 +1,12 @@
 name: WINEKEY Registry Modification
 id: b98968aa-dbc0-4a9c-ac35-108363cbf8d5
 author: omkar72
-date: 2020/10/30
+date: 2020-10-30
 severity: high
 description: Detects potential malicious modification of run keys by winekey or team9
   backdoor
 status: test
-modified: 2021/11/27
+modified: 2021-11-27
 logsource:
   category: registry_event
   product: windows

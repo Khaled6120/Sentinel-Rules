@@ -1,16 +1,16 @@
 name: Execution via WorkFolders.exe
 id: 0bbc6369-43e3-453d-9944-cae58821c173
 author: Maxime Thiebaut (@0xThiebaut)
-date: 2021/10/21
+date: 2021-10-21
 severity: high
 description: Detects using WorkFolders.exe to execute an arbitrary control.exe
 status: test
-modified: 2022/12/25
+modified: 2022-12-25
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

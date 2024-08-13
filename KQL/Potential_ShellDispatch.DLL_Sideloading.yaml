@@ -1,7 +1,7 @@
 name: Potential ShellDispatch.DLL Sideloading
 id: 844f8eb2-610b-42c8-89a4-47596e089663
 author: X__Junior (Nextron Systems)
-date: 2023/06/20
+date: 2023-06-20
 severity: medium
 description: Detects potential DLL sideloading of "ShellDispatch.dll"
 status: test
@@ -10,8 +10,8 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

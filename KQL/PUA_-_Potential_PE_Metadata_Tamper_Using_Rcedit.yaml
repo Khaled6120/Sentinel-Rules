@@ -1,17 +1,17 @@
 name: PUA - Potential PE Metadata Tamper Using Rcedit
 id: 0c92f2e6-f08f-4b73-9216-ecb0ca634689
 author: Micah Babinski
-date: 2022/12/11
+date: 2022-12-11
 severity: medium
 description: Detects the use of rcedit to potentially alter executable PE metadata
   properties, which could conceal efforts to rename system utilities for defense evasion.
 status: test
-modified: 2023/03/05
+modified: 2023-03-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1027
 - T1036

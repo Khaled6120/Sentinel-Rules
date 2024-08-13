@@ -2,7 +2,7 @@ name: RDP Sensitive Settings Changed
 id: 3f6b7b62-61aa-45db-96bd-9c31b36b653c
 author: Samir Bousseaden, David ANDRE, Roberto Rodriguez @Cyb3rWard0g, Nasreddine
   Bencherchali
-date: 2022/08/06
+date: 2022-08-06
 severity: high
 description: 'Detects tampering of RDP Terminal Service/Server sensitive settings.
 
@@ -11,12 +11,12 @@ description: 'Detects tampering of RDP Terminal Service/Server sensitive setting
 
   '
 status: test
-modified: 2024/02/08
+modified: 2024-02-08
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 relevantTechniques:
 - T1112

@@ -1,16 +1,16 @@
 name: Invoke-Obfuscation Via Use Clip
 id: e1561947-b4e3-4a74-9bdd-83baed21bdb5
 author: Nikita Nazarov, oscd.community
-date: 2020/10/09
+date: 2020-10-09
 severity: high
 description: Detects Obfuscated Powershell via use Clip.exe in Scripts
 status: test
-modified: 2024/04/15
+modified: 2024-04-15
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1027

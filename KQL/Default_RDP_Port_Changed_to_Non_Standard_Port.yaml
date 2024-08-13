@@ -1,7 +1,7 @@
 name: Default RDP Port Changed to Non Standard Port
 id: 509e84b9-a71a-40e0-834f-05470369bd1e
 author: frack113
-date: 2022/01/01
+date: 2022-01-01
 severity: high
 description: 'Detects changes to the default RDP port.
 
@@ -13,7 +13,7 @@ description: 'Detects changes to the default RDP port.
 
   '
 status: test
-modified: 2024/03/25
+modified: 2024-03-25
 logsource:
   category: registry_set
   product: windows

@@ -1,16 +1,16 @@
 name: Windows Processes Suspicious Parent Directory
 id: 96036718-71cc-4027-a538-d1587e0006a7
 author: vburov
-date: 2019/02/23
+date: 2019-02-23
 severity: low
 description: Detect suspicious parent processes of well-known Windows processes
 status: test
-modified: 2022/02/14
+modified: 2022-02-14
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceProcessEvents

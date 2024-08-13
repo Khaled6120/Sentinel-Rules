@@ -1,7 +1,7 @@
 name: Potential Suspicious Windows Feature Enabled - ProcCreation
 id: c740d4cf-a1e9-41de-bb16-8a46a4f57918
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/12/29
+date: 2022-12-29
 severity: medium
 description: 'Detects usage of the built-in PowerShell cmdlet "Enable-WindowsOptionalFeature"
   used as a Deployment Image Servicing and Management tool.
@@ -16,7 +16,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

@@ -1,7 +1,7 @@
 name: ETW Logging Tamper In .NET Processes Via CommandLine
 id: 41421f44-58f9-455d-838a-c398859841d4
 author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-date: 2020/05/02
+date: 2020-05-02
 severity: high
 description: 'Detects changes to environment variables related to ETW logging via
   the CommandLine.
@@ -11,12 +11,12 @@ description: 'Detects changes to environment variables related to ETW logging vi
 
   '
 status: test
-modified: 2022/12/09
+modified: 2022-12-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

@@ -1,7 +1,7 @@
 name: Renamed AutoHotkey.EXE Execution
 id: 0f16d9cf-0616-45c8-8fad-becc11b5a41c
 author: Nasreddine Bencherchali
-date: 2023/02/07
+date: 2023-02-07
 severity: medium
 description: Detects execution of a renamed autohotkey.exe binary based on PE metadata
   fields
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

@@ -2,7 +2,7 @@ name: Insensitive Subfolder Search Via Findstr.EXE
 id: 04936b66-3915-43ad-a8e5-809eadfd1141
 author: Furkan CALISKAN, @caliskanfurkan_, @oscd_initiative, Nasreddine Bencherchali
   (Nextron Systems)
-date: 2020/10/05
+date: 2020-10-05
 severity: low
 description: 'Detects execution of findstr with the "s" and "i" flags for a "subfolder"
   and "insensitive" search respectively. Attackers sometimes leverage this built-in
@@ -11,12 +11,12 @@ description: 'Detects execution of findstr with the "s" and "i" flags for a "sub
 
   '
 status: experimental
-modified: 2024/03/05
+modified: 2024-03-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1105
 - T1218

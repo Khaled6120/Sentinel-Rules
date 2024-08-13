@@ -1,7 +1,7 @@
 name: Lolbas OneDriveStandaloneUpdater.exe Proxy Download
 id: 3aff0be0-7802-4a7e-a4fa-c60c74bc5e1d
 author: frack113
-date: 2022/05/28
+date: 2022-05-28
 severity: high
 description: 'Detects setting a custom URL for OneDriveStandaloneUpdater.exe to download
   a file from the Internet without executing any
@@ -11,12 +11,12 @@ description: 'Detects setting a custom URL for OneDriveStandaloneUpdater.exe to 
 
   '
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1105
 query: 'DeviceRegistryEvents

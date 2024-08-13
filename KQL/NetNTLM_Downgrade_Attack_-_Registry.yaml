@@ -1,16 +1,16 @@
 name: NetNTLM Downgrade Attack - Registry
 id: d67572a0-e2ec-45d6-b8db-c100d14b8ef2
 author: Florian Roth (Nextron Systems), wagga
-date: 2018/03/20
+date: 2018-03-20
 severity: high
 description: Detects NetNTLM downgrade attack
 status: test
-modified: 2022/11/29
+modified: 2022-11-29
 logsource:
   category: registry_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 - T1562

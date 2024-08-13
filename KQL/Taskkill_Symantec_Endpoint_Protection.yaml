@@ -1,7 +1,7 @@
 name: Taskkill Symantec Endpoint Protection
 id: 4a6713f6-3331-11ed-a261-0242ac120002
 author: Ilya Krestinichev, Florian Roth (Nextron Systems)
-date: 2022/09/13
+date: 2022-09-13
 severity: high
 description: 'Detects one of the possible scenarios for disabling Symantec Endpoint
   Protection.
@@ -20,7 +20,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

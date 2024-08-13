@@ -1,7 +1,7 @@
 name: Detection of PowerShell Execution via Sqlps.exe
 id: 0152550d-3a26-4efd-9f0e-54a0b28ae2f3
 author: Agro (@agro_sev) oscd.community
-date: 2020/10/10
+date: 2020-10-10
 severity: medium
 description: 'This rule detects execution of a PowerShell code through the sqlps.exe
   utility, which is included in the standard set of utilities supplied with the MSSQL
@@ -12,12 +12,12 @@ description: 'This rule detects execution of a PowerShell code through the sqlps
 
   '
 status: test
-modified: 2022/12/09
+modified: 2022-12-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1059

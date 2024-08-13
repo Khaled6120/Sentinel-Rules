@@ -1,7 +1,7 @@
 name: Uncommon Extension In Keyboard Layout IME File Registry Value
 id: b888e3f2-224d-4435-b00b-9dd66e9ea1f1
 author: X__Junior (Nextron Systems)
-date: 2023/11/21
+date: 2023-11-21
 severity: high
 description: 'Detects usage of Windows Input Method Editor (IME) keyboard layout feature,
   which allows an attacker to load a DLL into the process after sending the WM_INPUTLANGCHANGEREQUEST
@@ -21,7 +21,7 @@ logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

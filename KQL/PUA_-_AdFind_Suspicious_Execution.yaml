@@ -2,11 +2,11 @@ name: PUA - AdFind Suspicious Execution
 id: 9a132afa-654e-11eb-ae93-0242ac130002
 author: Janantha Marasinghe (https://github.com/blueteam0ps), FPT.EagleEye Team, omkar72,
   oscd.community
-date: 2021/02/02
+date: 2021-02-02
 severity: high
 description: Detects AdFind execution with common flags seen used during attacks
 status: test
-modified: 2023/03/05
+modified: 2023-03-05
 logsource:
   category: process_creation
   product: windows

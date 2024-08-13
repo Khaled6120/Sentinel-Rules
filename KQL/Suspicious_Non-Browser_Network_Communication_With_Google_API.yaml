@@ -1,19 +1,19 @@
 name: Suspicious Non-Browser Network Communication With Google API
 id: 7e9cf7b6-e827-11ed-a05b-0242ac120003
 author: Gavin Knapp
-date: 2023/05/01
+date: 2023-05-01
 severity: medium
 description: 'Detects a non-browser process interacting with the Google API which
   could indicate the use of a covert C2 such as Google Sheet C2 (GC2-sheet)
 
   '
 status: experimental
-modified: 2024/07/16
+modified: 2024-07-16
 logsource:
   category: network_connection
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1102
 query: 'DeviceNetworkEvents

@@ -1,12 +1,12 @@
 name: Portable Gpg.EXE Execution
 id: 77df53a5-1d78-4f32-bc5a-0e7465bd8f41
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
-date: 2023/08/06
+date: 2023-08-06
 severity: medium
 description: Detects the execution of "gpg.exe" from uncommon location. Often used
   by ransomware and loaders to decrypt/encrypt data.
 status: experimental
-modified: 2023/11/10
+modified: 2023-11-10
 logsource:
   category: process_creation
   product: windows

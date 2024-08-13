@@ -1,18 +1,18 @@
 name: Aruba Network Service Potential DLL Sideloading
 id: 90ae0469-0cee-4509-b67f-e5efcef040f7
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/01/22
+date: 2023-01-22
 severity: high
 description: Detects potential DLL sideloading activity via the Aruba Networks Virtual
   Intranet Access "arubanetsvc.exe" process using DLL Search Order Hijacking
 status: test
-modified: 2023/03/15
+modified: 2023-03-15
 logsource:
   category: image_load
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

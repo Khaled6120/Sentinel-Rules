@@ -1,18 +1,18 @@
 name: Potential DLL Sideloading Of DBGCORE.DLL
 id: 9ca2bf31-0570-44d8-a543-534c47c33ed7
 author: Nasreddine Bencherchali (Nextron Systems), Wietze Beukema (project and research)
-date: 2022/10/25
+date: 2022-10-25
 severity: medium
 description: Detects DLL sideloading of "dbgcore.dll"
 status: test
-modified: 2023/05/05
+modified: 2023-05-05
 logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

@@ -2,17 +2,17 @@ name: Network Communication Initiated To File Sharing Domains From Process Locat
   In Suspicious Folder
 id: e0f8ab85-0ac9-423b-a73a-81b3c7b1aa97
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2018/08/30
+date: 2018-08-30
 severity: high
 description: Detects executables located in potentially suspicious directories initiating
   network connections towards file sharing domains.
 status: test
-modified: 2024/05/31
+modified: 2024-05-31
 logsource:
   category: network_connection
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1105
 query: 'DeviceNetworkEvents

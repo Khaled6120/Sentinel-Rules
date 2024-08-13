@@ -1,12 +1,12 @@
 name: Potential PSFactoryBuffer COM Hijacking
 id: 243380fa-11eb-4141-af92-e14925e77c1b
 author: BlackBerry Threat Research and Intelligence Team - @Joseliyo_Jstnk
-date: 2023/06/07
+date: 2023-06-07
 severity: high
 description: Detects changes to the PSFactory COM InProcServer32 registry. This technique
   was used by RomCom to create persistence storing a malicious DLL.
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

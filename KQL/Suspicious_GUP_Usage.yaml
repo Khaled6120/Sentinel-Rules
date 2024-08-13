@@ -1,17 +1,17 @@
 name: Suspicious GUP Usage
 id: 0a4f6091-223b-41f6-8743-f322ec84930b
 author: Florian Roth (Nextron Systems)
-date: 2019/02/06
+date: 2019-02-06
 severity: high
 description: Detects execution of the Notepad++ updater in a suspicious directory,
   which is often used in DLL side-loading attacks
 status: test
-modified: 2022/08/13
+modified: 2022-08-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1574
 query: 'DeviceProcessEvents

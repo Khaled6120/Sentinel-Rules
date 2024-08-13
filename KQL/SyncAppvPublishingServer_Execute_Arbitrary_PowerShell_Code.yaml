@@ -1,16 +1,16 @@
 name: SyncAppvPublishingServer Execute Arbitrary PowerShell Code
 id: fbd7c32d-db2a-4418-b92c-566eb8911133
 author: frack113
-date: 2021/07/12
+date: 2021-07-12
 severity: medium
 description: Executes arbitrary PowerShell code using SyncAppvPublishingServer.exe.
 status: test
-modified: 2022/10/04
+modified: 2022-10-04
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

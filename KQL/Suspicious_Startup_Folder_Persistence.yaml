@@ -1,12 +1,12 @@
 name: Suspicious Startup Folder Persistence
 id: 28208707-fe31-437f-9a7f-4b1108b94d2e
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/10
+date: 2022-08-10
 severity: high
 description: Detects when a file with a suspicious extension is created in the startup
   folder
 status: test
-modified: 2023/01/06
+modified: 2023-01-06
 logsource:
   category: file_event
   product: windows

@@ -1,17 +1,17 @@
 name: Renamed CreateDump Utility Execution
 id: 1a1ed54a-2ba4-4221-94d5-01dee560d71e
 author: Florian Roth (Nextron Systems)
-date: 2022/09/20
+date: 2022-09-20
 severity: high
 description: Detects uses of a renamed legitimate createdump.exe LOLOBIN utility to
   dump process memory
 status: test
-modified: 2023/02/14
+modified: 2023-02-14
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1003
 - T1036

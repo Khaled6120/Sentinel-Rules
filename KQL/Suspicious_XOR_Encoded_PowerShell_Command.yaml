@@ -2,16 +2,16 @@ name: Suspicious XOR Encoded PowerShell Command
 id: bb780e0c-16cf-4383-8383-1e5471db6cf9
 author: Sami Ruohonen, Harish Segar, Tim Shelton, Teymur Kheirkhabarov, Vasiliy Burov,
   oscd.community, Nasreddine Bencherchali
-date: 2018/09/05
+date: 2018-09-05
 severity: medium
 description: Detects presence of a potentially xor encoded powershell command
 status: test
-modified: 2023/01/30
+modified: 2023-01-30
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1027

@@ -1,11 +1,11 @@
 name: GAC DLL Loaded Via Office Applications
 id: 90217a70-13fc-48e4-b3db-0d836c5824ac
 author: Antonlovesdnb
-date: 2020/02/19
+date: 2020-02-19
 severity: high
 description: Detects any GAC DLL being loaded by an Office Product
 status: test
-modified: 2023/02/10
+modified: 2023-02-10
 logsource:
   category: image_load
   product: windows

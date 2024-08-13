@@ -1,12 +1,12 @@
 name: Add Debugger Entry To Hangs Key For Persistence
 id: 833ef470-fa01-4631-a79b-6f291c9ac498
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/07/21
+date: 2022-07-21
 severity: high
 description: Detects when an attacker adds a new "Debugger" value to the "Hangs" key
   in order to achieve persistence which will get invoked when an application crashes
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

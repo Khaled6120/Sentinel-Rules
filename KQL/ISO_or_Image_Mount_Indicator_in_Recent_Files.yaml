@@ -1,7 +1,7 @@
 name: ISO or Image Mount Indicator in Recent Files
 id: 4358e5a5-7542-4dcb-b9f3-87667371839b
 author: Florian Roth (Nextron Systems)
-date: 2022/02/11
+date: 2022-02-11
 severity: medium
 description: 'Detects the creation of recent element file that points to an .ISO,
   .IMG, .VHD or .VHDX file as often used in phishing attacks.
@@ -16,7 +16,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 relevantTechniques:
 - T1566
 query: 'DeviceFileEvents

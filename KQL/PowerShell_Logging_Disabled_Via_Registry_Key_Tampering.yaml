@@ -1,18 +1,18 @@
 name: PowerShell Logging Disabled Via Registry Key Tampering
 id: fecfd1a1-cc78-4313-a1ea-2ee2e8ec27a7
 author: frack113
-date: 2022/04/02
+date: 2022-04-02
 severity: high
 description: Detects changes to the registry for the currently logged-in user. In
   order to disable PowerShell module logging, script block logging or transcription
   and script execution logging
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1564
 query: 'DeviceRegistryEvents

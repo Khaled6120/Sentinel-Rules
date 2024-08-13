@@ -1,7 +1,7 @@
 name: Potential Persistence Via Netsh Helper DLL - Registry
 id: c90362e0-2df3-4e61-94fe-b37615814cb1
 author: Anish Bogati
-date: 2023/11/28
+date: 2023-11-28
 severity: medium
 description: 'Detects changes to the Netsh registry key to add a new DLL value. This
   change might be an indication of a potential persistence attempt by adding a malicious

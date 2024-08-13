@@ -1,19 +1,19 @@
 name: Shell Process Spawned by Java.EXE
 id: dff1e1cc-d3fd-47c8-bfc2-aeb878a754c0
 author: Andreas Hunkeler (@Karneades), Nasreddine Bencherchali
-date: 2021/12/17
+date: 2021-12-17
 severity: medium
 description: Detects shell spawned from Java host process, which could be a sign of
   exploitation (e.g. log4j exploitation)
 status: test
-modified: 2024/01/18
+modified: 2024-01-18
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

@@ -1,16 +1,16 @@
 name: Invoke-Obfuscation CLIP+ Launcher
 id: b222df08-0e07-11eb-adc1-0242ac120002
 author: Jonathan Cheong, oscd.community
-date: 2020/10/13
+date: 2020-10-13
 severity: high
 description: Detects Obfuscated use of Clip.exe to execute PowerShell
 status: test
-modified: 2022/11/17
+modified: 2022-11-17
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1027

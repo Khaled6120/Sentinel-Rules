@@ -1,7 +1,7 @@
 name: COM Object Hijacking Via Modification Of Default System CLSID Default Value
 id: 790317c0-0a36-4a6a-a105-6e576bf99a14
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2024/07/16
+date: 2024-07-16
 severity: high
 description: Detects potential COM object hijacking via modification of default system
   CLSID.

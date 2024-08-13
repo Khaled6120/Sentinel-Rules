@@ -1,7 +1,7 @@
 name: Python Spawning Pretty TTY on Windows
 id: 480e7e51-e797-47e3-8d72-ebfce65b6d8d
 author: Nextron Systems
-date: 2022/06/03
+date: 2022-06-03
 severity: high
 description: Detects python spawning a pretty tty
 status: test

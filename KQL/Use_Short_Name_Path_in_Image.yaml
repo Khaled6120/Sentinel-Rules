@@ -1,17 +1,17 @@
 name: Use Short Name Path in Image
 id: a96970af-f126-420d-90e1-d37bf25e50e1
 author: frack113, Nasreddine Bencherchali
-date: 2022/08/07
+date: 2022-08-07
 severity: medium
 description: Detect use of the Windows 8.3 short name. Which could be used as a method
   to avoid Image detection
 status: test
-modified: 2023/03/21
+modified: 2023-03-21
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1564
 query: 'DeviceProcessEvents

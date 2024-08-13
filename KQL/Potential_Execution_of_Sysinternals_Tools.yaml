@@ -1,17 +1,17 @@
 name: Potential Execution of Sysinternals Tools
 id: 7cccd811-7ae9-4ebe-9afd-cb5c406b824b
 author: Markus Neis
-date: 2017/08/28
+date: 2017-08-28
 severity: low
 description: Detects command lines that contain the 'accepteula' flag which could
   be a sign of execution of one of the Sysinternals tools
 status: test
-modified: 2024/03/13
+modified: 2024-03-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Resource Development
+- Resource-development
 relevantTechniques:
 - T1588
 query: "DeviceProcessEvents\n| where ProcessCommandLine contains \" -accepteula\"\

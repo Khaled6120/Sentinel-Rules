@@ -1,7 +1,7 @@
 name: Fsutil Suspicious Invocation
 id: add64136-62e5-48ea-807e-88638d02df1e
 author: Ecco, E.M. Anhaus, oscd.community
-date: 2019/09/26
+date: 2019-09-26
 severity: high
 description: 'Detects suspicious parameters of fsutil (deleting USN journal, configuring
   it with small size, etc).
@@ -10,12 +10,12 @@ description: 'Detects suspicious parameters of fsutil (deleting USN journal, con
 
   '
 status: stable
-modified: 2023/09/09
+modified: 2023-09-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Impact
 relevantTechniques:
 - T1070

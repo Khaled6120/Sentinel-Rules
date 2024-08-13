@@ -1,7 +1,7 @@
 name: Suspicious Process Masquerading As SvcHost.EXE
 id: be58d2e2-06c8-4f58-b666-b99f6dc3b6cd
 author: Swachchhanda Shrawan Poudel
-date: 2024/08/07
+date: 2024-08-07
 severity: high
 description: 'Detects a suspicious process that is masquerading as the legitimate
   "svchost.exe" by naming its binary "svchost.exe" and executing from an uncommon
@@ -17,7 +17,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceProcessEvents

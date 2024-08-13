@@ -1,17 +1,17 @@
 name: Findstr Launching .lnk File
 id: 33339be3-148b-4e16-af56-ad16ec6c7e7b
 author: Trent Liffick
-date: 2020/05/01
+date: 2020-05-01
 severity: medium
 description: Detects usage of findstr to identify and execute a lnk file as seen within
   the HHS redirect attack
 status: test
-modified: 2024/01/15
+modified: 2024-01-15
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1027
 - T1036

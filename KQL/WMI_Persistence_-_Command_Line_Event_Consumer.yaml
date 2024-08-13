@@ -1,11 +1,11 @@
 name: WMI Persistence - Command Line Event Consumer
 id: 05936ce2-ee05-4dae-9d03-9a391cf2d2c6
 author: Thomas Patzke
-date: 2018/03/07
+date: 2018-03-07
 severity: high
 description: Detects WMI command line event consumers
 status: test
-modified: 2021/11/27
+modified: 2021-11-27
 logsource:
   category: image_load
   product: windows

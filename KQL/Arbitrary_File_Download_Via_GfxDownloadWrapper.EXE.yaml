@@ -1,17 +1,17 @@
 name: Arbitrary File Download Via GfxDownloadWrapper.EXE
 id: eee00933-a761-4cd0-be70-c42fe91731e7
 author: Victor Sergeev, oscd.community
-date: 2020/10/09
+date: 2020-10-09
 severity: medium
 description: Detects execution of GfxDownloadWrapper.exe with a URL as an argument
   to download file.
 status: test
-modified: 2023/10/18
+modified: 2023-10-18
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1105
 query: 'DeviceProcessEvents

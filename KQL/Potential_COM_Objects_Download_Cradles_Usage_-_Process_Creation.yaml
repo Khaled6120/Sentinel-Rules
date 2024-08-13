@@ -1,7 +1,7 @@
 name: Potential COM Objects Download Cradles Usage - Process Creation
 id: 02b64f1b-3f33-4e67-aede-ef3b0a5a8fcf
 author: frack113
-date: 2022/12/25
+date: 2022-12-25
 severity: medium
 description: Detects usage of COM objects that can be abused to download files in
   PowerShell by CLSID
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1105
 query: 'DeviceProcessEvents

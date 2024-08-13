@@ -1,7 +1,7 @@
 name: Suspicious CustomShellHost Execution
 id: 84b14121-9d14-416e-800b-f3b829c5a14d
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/19
+date: 2022-08-19
 severity: medium
 description: Detects the execution of CustomShellHost binary where the child isn't
   located in 'C:\Windows\explorer.exe'
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1216
 query: 'DeviceProcessEvents

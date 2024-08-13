@@ -1,7 +1,7 @@
 name: Potential Homoglyph Attack Using Lookalike Characters in Filename
 id: 4f1707b1-b50b-45b4-b5a2-3978b5a5d0d6
 author: Micah Babinski, @micahbabinski
-date: 2023/05/08
+date: 2023-05-08
 severity: medium
 description: 'Detects the presence of unicode characters which are homoglyphs, or
   identical in appearance, to ASCII letter characters.
@@ -19,7 +19,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: "DeviceFileEvents\n| where (FolderPath contains \"\u0430\" or FolderPath contains\

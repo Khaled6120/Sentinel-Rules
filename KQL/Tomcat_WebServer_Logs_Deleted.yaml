@@ -1,7 +1,7 @@
 name: Tomcat WebServer Logs Deleted
 id: 270185ff-5f50-4d6d-a27f-24c3b8c9fef8
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/02/16
+date: 2023-02-16
 severity: medium
 description: Detects the deletion of tomcat WebServer logs which may indicate an attempt
   to destroy forensic evidence
@@ -11,7 +11,7 @@ logsource:
   category: file_delete
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1070
 query: 'DeviceFileEvents

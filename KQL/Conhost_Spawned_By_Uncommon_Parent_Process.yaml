@@ -1,13 +1,13 @@
 name: Conhost Spawned By Uncommon Parent Process
 id: cbb9e3d1-2386-4e59-912e-62f1484f7a89
 author: Tim Rauch, Elastic (idea)
-date: 2022/09/28
+date: 2022-09-28
 severity: medium
 description: Detects when the Console Window Host (conhost.exe) process is spawned
   by an uncommon parent process, which could be indicative of potential code injection
   activity.
 status: test
-modified: 2023/03/29
+modified: 2023-03-29
 logsource:
   category: process_creation
   product: windows

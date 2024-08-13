@@ -1,17 +1,17 @@
 name: Microsoft Sync Center Suspicious Network Connections
 id: 9f2cc74d-78af-4eb2-bb64-9cd1d292b87b
 author: elhoim
-date: 2022/04/28
+date: 2022-04-28
 severity: medium
 description: Detects suspicious connections from Microsoft Sync Center to non-private
   IPs.
 status: test
-modified: 2024/03/12
+modified: 2024-03-12
 logsource:
   category: network_connection
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1055

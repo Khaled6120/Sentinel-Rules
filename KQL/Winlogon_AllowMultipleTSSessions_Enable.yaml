@@ -1,7 +1,7 @@
 name: Winlogon AllowMultipleTSSessions Enable
 id: f7997770-92c3-4ec9-b112-774c4ef96f96
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/09/09
+date: 2022-09-09
 severity: medium
 description: 'Detects when the ''AllowMultipleTSSessions'' value is enabled.
 
@@ -12,12 +12,12 @@ description: 'Detects when the ''AllowMultipleTSSessions'' value is enabled.
 
   '
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 relevantTechniques:
 - T1112

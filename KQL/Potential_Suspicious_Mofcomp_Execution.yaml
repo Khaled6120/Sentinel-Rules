@@ -1,7 +1,7 @@
 name: Potential Suspicious Mofcomp Execution
 id: 1dd05363-104e-4b4a-b963-196a534b03a1
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/07/12
+date: 2022-07-12
 severity: high
 description: 'Detects execution of the "mofcomp" utility as a child of a suspicious
   shell or script running utility or by having a suspicious path in the commandline.
@@ -13,12 +13,12 @@ description: 'Detects execution of the "mofcomp" utility as a child of a suspici
 
   '
 status: test
-modified: 2023/04/11
+modified: 2023-04-11
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

@@ -1,16 +1,16 @@
 name: Change the Fax Dll
 id: 9e3357ba-09d4-4fbd-a7c5-ad6386314513
 author: frack113
-date: 2022/07/17
+date: 2022-07-17
 severity: high
 description: Detect possible persistence using Fax DLL load when service restart
 status: test
-modified: 2022/12/30
+modified: 2022-12-30
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

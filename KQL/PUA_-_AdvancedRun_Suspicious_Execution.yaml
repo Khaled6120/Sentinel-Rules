@@ -1,18 +1,18 @@
 name: PUA - AdvancedRun Suspicious Execution
 id: fa00b701-44c6-4679-994d-5a18afa8a707
 author: Florian Roth (Nextron Systems)
-date: 2022/01/20
+date: 2022-01-20
 severity: high
 description: Detects the execution of AdvancedRun utility in the context of the TrustedInstaller,
   SYSTEM, Local Service or Network Service accounts
 status: test
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1134
 query: 'DeviceProcessEvents

@@ -1,7 +1,7 @@
 name: Dynamic CSharp Compile Artefact
 id: e4a74e34-ecde-4aab-b2fb-9112dd01aed0
 author: frack113
-date: 2022/01/09
+date: 2022-01-09
 severity: low
 description: 'When C# is compiled dynamically, a .cmdline file will be created as
   a part of the process.
@@ -13,12 +13,12 @@ description: 'When C# is compiled dynamically, a .cmdline file will be created a
 
   '
 status: test
-modified: 2023/02/17
+modified: 2023-02-17
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1027
 query: 'DeviceFileEvents

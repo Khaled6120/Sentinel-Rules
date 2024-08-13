@@ -1,17 +1,17 @@
 name: Potential Privilege Escalation To LOCAL SYSTEM
 id: 207b0396-3689-42d9-8399-4222658efc99
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2021/05/22
+date: 2021-05-22
 severity: high
 description: Detects unknown program using commandline flags usually used by tools
   such as PsExec and PAExec to start programs with SYSTEM Privileges
 status: test
-modified: 2024/03/05
+modified: 2024-03-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Resource Development
+- Resource-development
 relevantTechniques:
 - T1587
 query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" -s cmd\" or ProcessCommandLine\

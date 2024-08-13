@@ -1,17 +1,17 @@
 name: Microsoft Office Protected View Disabled
 id: a5c7a43f-6009-4a8c-80c5-32abf1c53ecc
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
-date: 2021/06/08
+date: 2021-06-08
 severity: high
 description: Detects changes to Microsoft Office protected view registry keys with
   which the attacker disables this feature.
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

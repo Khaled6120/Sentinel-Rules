@@ -1,17 +1,17 @@
 name: Port Forwarding Activity Via SSH.EXE
 id: 327f48c1-a6db-4eb8-875a-f6981f1b0183
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/10/12
+date: 2022-10-12
 severity: medium
 description: Detects port forwarding activity via SSH.exe
 status: experimental
-modified: 2024/03/05
+modified: 2024-03-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
-- Lateral Movement
+- Command-and-control
+- Lateral-movement
 relevantTechniques:
 - T1021
 - T1572

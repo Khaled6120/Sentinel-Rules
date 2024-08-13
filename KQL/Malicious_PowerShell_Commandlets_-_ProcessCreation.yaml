@@ -1,11 +1,11 @@
 name: Malicious PowerShell Commandlets - ProcessCreation
 id: 02030f2f-6199-49ec-b258-ea71b07e03dc
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/01/02
+date: 2023-01-02
 severity: high
 description: Detects Commandlet names from well-known PowerShell exploitation frameworks
 status: experimental
-modified: 2024/01/25
+modified: 2024-01-25
 logsource:
   category: process_creation
   product: windows

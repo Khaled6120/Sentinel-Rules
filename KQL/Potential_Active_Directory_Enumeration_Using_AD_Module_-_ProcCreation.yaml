@@ -1,7 +1,7 @@
 name: Potential Active Directory Enumeration Using AD Module - ProcCreation
 id: 70bc5215-526f-4477-963c-a47a5c9ebd12
 author: frack113
-date: 2023/01/22
+date: 2023-01-22
 severity: medium
 description: Detects usage of the "Import-Module" cmdlet to load the "Microsoft.ActiveDirectory.Management.dl"
   DLL. Which is often used by attackers to perform AD enumeration.

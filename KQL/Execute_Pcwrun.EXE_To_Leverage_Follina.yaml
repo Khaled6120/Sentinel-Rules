@@ -1,7 +1,7 @@
 name: Execute Pcwrun.EXE To Leverage Follina
 id: 6004abd0-afa4-4557-ba90-49d172e0a299
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/06/13
+date: 2022-06-13
 severity: high
 description: Detects indirect command execution via Program Compatibility Assistant
   "pcwrun.exe" leveraging the follina (CVE-2022-30190) vulnerability
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1218

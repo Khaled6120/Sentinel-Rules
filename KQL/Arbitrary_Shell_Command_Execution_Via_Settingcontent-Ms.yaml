@@ -1,19 +1,19 @@
 name: Arbitrary Shell Command Execution Via Settingcontent-Ms
 id: 24de4f3b-804c-4165-b442-5a06a2302c7e
 author: Sreeman
-date: 2020/03/13
+date: 2020-03-13
 severity: medium
 description: The .SettingContent-ms file type was introduced in Windows 10 and allows
   a user to create "shortcuts" to various Windows 10 setting pages. These files are
   simply XML and contain paths to various Windows 10 settings binaries.
 status: test
-modified: 2022/04/14
+modified: 2022-04-14
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Execution
-- Initial Access
+- Initial-access
 relevantTechniques:
 - T1204
 - T1566

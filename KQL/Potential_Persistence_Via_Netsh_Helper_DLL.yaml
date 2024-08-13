@@ -1,7 +1,7 @@
 name: Potential Persistence Via Netsh Helper DLL
 id: 56321594-9087-49d9-bf10-524fe8479452
 author: Victor Sergeev, oscd.community
-date: 2019/10/25
+date: 2019-10-25
 severity: medium
 description: 'Detects the execution of netsh with "add helper" flag in order to add
   a custom helper DLL. This technique can be abused to add a malicious helper DLL
@@ -9,13 +9,13 @@ description: 'Detects the execution of netsh with "add helper" flag in order to 
 
   '
 status: test
-modified: 2023/11/28
+modified: 2023-11-28
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 - S0108
 relevantTechniques:
 - T1546

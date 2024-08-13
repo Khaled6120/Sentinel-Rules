@@ -1,16 +1,16 @@
 name: Dumping Process via Sqldumper.exe
 id: 23ceaf5c-b6f1-4a32-8559-f2ff734be516
 author: Kirill Kiryanov, oscd.community
-date: 2020/10/08
+date: 2020-10-08
 severity: medium
 description: Detects process dump via legitimate sqldumper.exe binary
 status: test
-modified: 2021/11/27
+modified: 2021-11-27
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceProcessEvents

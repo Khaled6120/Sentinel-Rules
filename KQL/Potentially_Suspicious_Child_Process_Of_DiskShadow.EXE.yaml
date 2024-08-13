@@ -1,7 +1,7 @@
 name: Potentially Suspicious Child Process Of DiskShadow.EXE
 id: 9f546b25-5f12-4c8d-8532-5893dcb1e4b8
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/09/15
+date: 2023-09-15
 severity: medium
 description: Detects potentially suspicious child processes of "Diskshadow.exe". This
   could be an attempt to bypass parent/child relationship detection or application
@@ -12,7 +12,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

@@ -1,17 +1,17 @@
 name: Disabled Windows Defender Eventlog
 id: fcddca7c-b9c0-4ddf-98da-e1e2d18b0157
 author: Florian Roth (Nextron Systems)
-date: 2022/07/04
+date: 2022-07-04
 severity: high
 description: Detects the disabling of the Windows Defender eventlog as seen in relation
   to Lockbit 3.0 infections
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

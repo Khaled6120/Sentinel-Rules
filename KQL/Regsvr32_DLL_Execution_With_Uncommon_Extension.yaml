@@ -1,17 +1,17 @@
 name: Regsvr32 DLL Execution With Uncommon Extension
 id: 50919691-7302-437f-8e10-1fe088afa145
 author: Florian Roth (Nextron Systems)
-date: 2019/07/17
+date: 2019-07-17
 severity: medium
 description: Detects a "regsvr32" execution where the DLL doesn't contain a common
   file extension.
 status: test
-modified: 2023/05/24
+modified: 2023-05-24
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1574

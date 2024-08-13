@@ -1,7 +1,7 @@
 name: Suspicious Creation TXT File in User Desktop
 id: caf02a0a-1e1c-4552-9b48-5e070bd88d11
 author: frack113
-date: 2021/12/26
+date: 2021-12-26
 severity: high
 description: Ransomware create txt file in the user Desktop
 status: test

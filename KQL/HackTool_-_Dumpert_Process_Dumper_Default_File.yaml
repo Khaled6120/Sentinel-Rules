@@ -1,17 +1,17 @@
 name: HackTool - Dumpert Process Dumper Default File
 id: 93d94efc-d7ad-4161-ad7d-1638c4f908d8
 author: Florian Roth (Nextron Systems)
-date: 2020/02/04
+date: 2020-02-04
 severity: critical
 description: Detects the creation of the default dump file used by Outflank Dumpert
   tool. A process dumper, which dumps the lsass process memory
 status: test
-modified: 2023/05/09
+modified: 2023-05-09
 logsource:
   category: file_event
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceFileEvents

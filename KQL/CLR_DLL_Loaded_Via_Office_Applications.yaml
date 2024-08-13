@@ -1,11 +1,11 @@
 name: CLR DLL Loaded Via Office Applications
 id: d13c43f0-f66b-4279-8b2c-5912077c1780
 author: Antonlovesdnb
-date: 2020/02/19
+date: 2020-02-19
 severity: medium
 description: Detects CLR DLL being loaded by an Office Product
 status: test
-modified: 2023/03/29
+modified: 2023-03-29
 logsource:
   category: image_load
   product: windows

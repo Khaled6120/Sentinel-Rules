@@ -1,16 +1,16 @@
 name: Run PowerShell Script from Redirected Input Stream
 id: c83bf4b5-cdf0-437c-90fa-43d734f7c476
 author: Moriarty Meng (idea), Anton Kutepov (rule), oscd.community
-date: 2020/10/17
+date: 2020-10-17
 severity: high
 description: Detects PowerShell script execution via input stream redirect
 status: test
-modified: 2021/11/27
+modified: 2021-11-27
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1059

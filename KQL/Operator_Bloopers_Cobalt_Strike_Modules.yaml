@@ -1,11 +1,11 @@
 name: Operator Bloopers Cobalt Strike Modules
 id: 4f154fb6-27d1-4813-a759-78b93e0b9c48
 author: _pete_0, TheDFIRReport
-date: 2022/05/06
+date: 2022-05-06
 severity: high
 description: Detects Cobalt Strike module/commands accidentally entered in CMD shell
 status: test
-modified: 2023/01/30
+modified: 2023-01-30
 logsource:
   category: process_creation
   product: windows

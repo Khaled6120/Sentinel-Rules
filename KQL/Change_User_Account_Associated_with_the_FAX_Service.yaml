@@ -1,17 +1,17 @@
 name: Change User Account Associated with the FAX Service
 id: e3fdf743-f05b-4051-990a-b66919be1743
 author: frack113
-date: 2022/07/17
+date: 2022-07-17
 severity: high
 description: Detect change of the user account associated with the FAX service to
   avoid the escalation problem.
 status: test
-modified: 2022/12/30
+modified: 2022-12-30
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

@@ -1,18 +1,18 @@
 name: SQLite Firefox Profile Data DB Access
 id: 4833155a-4053-4c9c-a997-777fcea0baa7
 author: frack113
-date: 2022/04/08
+date: 2022-04-08
 severity: high
 description: Detect usage of the "sqlite" binary to query databases in Firefox and
   other Gecko-based browsers for potential data stealing.
 status: test
-modified: 2023/01/19
+modified: 2023-01-19
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Collection
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1005
 - T1539

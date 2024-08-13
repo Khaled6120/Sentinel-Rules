@@ -1,7 +1,7 @@
 name: DLL Sideloading Of ShellChromeAPI.DLL
 id: ee4c5d06-3abc-48cc-8885-77f1c20f4451
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/12/01
+date: 2022-12-01
 severity: high
 description: 'Detects processes loading the non-existent DLL "ShellChromeAPI". One
   known example is the "DeviceEnroller" binary in combination with the "PhoneDeepLink"
@@ -17,9 +17,9 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

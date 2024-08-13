@@ -1,7 +1,7 @@
 name: New BgInfo.EXE Custom WMI Query Registry Configuration
 id: cd277474-5c52-4423-a52b-ac2d7969902f
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/08/16
+date: 2023-08-16
 severity: medium
 description: Detects setting of a new registry value related to BgInfo configuration,
   which can be abused to execute custom WMI query via "BgInfo.exe"
@@ -11,7 +11,7 @@ logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

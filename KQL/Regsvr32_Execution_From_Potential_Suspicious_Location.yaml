@@ -1,7 +1,7 @@
 name: Regsvr32 Execution From Potential Suspicious Location
 id: 9525dc73-0327-438c-8c04-13c0e037e9da
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/26
+date: 2023-05-26
 severity: medium
 description: Detects execution of regsvr32 where the DLL is located in a potentially
   suspicious location.
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

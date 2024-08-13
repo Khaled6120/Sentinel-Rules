@@ -1,20 +1,20 @@
 name: Uncommon Outbound Kerberos Connection
 id: e54979bd-c5f9-4d6c-967b-a04b19ac4c74
 author: Ilyas Ochkov, oscd.community
-date: 2019/10/24
+date: 2019-10-24
 severity: medium
 description: 'Detects uncommon outbound network activity via Kerberos default port
   indicating possible lateral movement or first stage PrivEsc via delegation.
 
   '
 status: test
-modified: 2024/03/15
+modified: 2024-03-15
 logsource:
   category: network_connection
   product: windows
 tactics:
-- Credential Access
-- Lateral Movement
+- Credential-access
+- Lateral-movement
 relevantTechniques:
 - T1550
 - T1558

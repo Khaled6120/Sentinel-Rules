@@ -1,17 +1,17 @@
 name: PUA- IOX Tunneling Tool Execution
 id: d7654f02-e04b-4934-9838-65c46f187ebc
 author: Florian Roth (Nextron Systems)
-date: 2022/10/08
+date: 2022-10-08
 severity: high
 description: Detects the use of IOX - a tool for port forwarding and intranet proxy
   purposes
 status: test
-modified: 2023/02/08
+modified: 2023-02-08
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1090
 query: 'DeviceProcessEvents

@@ -1,16 +1,16 @@
 name: Imports Registry Key From a File
 id: 73bba97f-a82d-42ce-b315-9182e76c57b1
 author: Oddvar Moe, Sander Wiebing, oscd.community
-date: 2020/10/07
+date: 2020-10-07
 severity: medium
 description: Detects the import of the specified file to the registry with regedit.exe.
 status: test
-modified: 2024/03/13
+modified: 2024-03-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" /i \" or ProcessCommandLine\

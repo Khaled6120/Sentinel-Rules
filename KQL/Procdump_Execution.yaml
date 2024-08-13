@@ -1,16 +1,16 @@
 name: Procdump Execution
 id: 2e65275c-8288-4ab4-aeb7-6274f58b6b20
 author: Florian Roth (Nextron Systems)
-date: 2021/08/16
+date: 2021-08-16
 severity: medium
 description: Detects usage of the SysInternals Procdump utility
 status: test
-modified: 2023/02/28
+modified: 2023-02-28
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1003
 - T1036

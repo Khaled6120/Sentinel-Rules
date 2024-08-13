@@ -1,7 +1,7 @@
 name: Potential EACore.DLL Sideloading
 id: edd3ddc3-386f-4ba5-9ada-4376b2cfa7b5
 author: X__Junior (Nextron Systems)
-date: 2023/08/03
+date: 2023-08-03
 severity: high
 description: Detects potential DLL sideloading of "EACore.dll"
 status: test
@@ -10,8 +10,8 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

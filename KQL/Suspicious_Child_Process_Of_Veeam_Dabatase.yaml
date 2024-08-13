@@ -1,7 +1,7 @@
 name: Suspicious Child Process Of Veeam Dabatase
 id: d55b793d-f847-4eea-b59a-5ab09908ac90
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/04
+date: 2023-05-04
 severity: critical
 description: Detects suspicious child processes of the Veeam service process. This
   could indicate potential RCE or SQL Injection.
@@ -11,9 +11,9 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

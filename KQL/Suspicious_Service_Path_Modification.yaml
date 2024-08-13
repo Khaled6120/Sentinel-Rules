@@ -1,18 +1,18 @@
 name: Suspicious Service Path Modification
 id: 138d3531-8793-4f50-a2cd-f291b2863d78
 author: Victor Sergeev, oscd.community, Nasreddine Bencherchali (Nextron Systems)
-date: 2019/10/21
+date: 2019-10-21
 severity: high
 description: Detects service path modification via the "sc" binary to a suspicious
   command or path
 status: test
-modified: 2022/11/18
+modified: 2022-11-18
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1543
 query: 'DeviceProcessEvents

@@ -1,16 +1,16 @@
 name: HackTool - QuarksPwDump Dump File
 id: 847def9e-924d-4e90-b7c4-5f581395a2b4
 author: Florian Roth (Nextron Systems)
-date: 2018/02/10
+date: 2018-02-10
 severity: critical
 description: Detects a dump file written by QuarksPwDump password dumper
 status: test
-modified: 2024/06/27
+modified: 2024-06-27
 logsource:
   category: file_event
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceFileEvents

@@ -1,7 +1,7 @@
 name: Files With System Process Name In Unsuspected Locations
 id: d5866ddf-ce8f-4aea-b28e-d96485a20d3d
 author: Sander Wiebing, Tim Shelton, Nasreddine Bencherchali (Nextron Systems)
-date: 2020/05/26
+date: 2020-05-26
 severity: medium
 description: 'Detects the creation of an executable with a system process name in
   folders other than the system ones (System32, SysWOW64, etc.).
@@ -11,12 +11,12 @@ description: 'Detects the creation of an executable with a system process name i
 
   '
 status: test
-modified: 2024/06/24
+modified: 2024-06-24
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceFileEvents

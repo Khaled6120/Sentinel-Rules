@@ -1,17 +1,17 @@
 name: Potentially Suspicious Cabinet File Expansion
 id: 9f107a84-532c-41af-b005-8d12a607639f
 author: Bhabesh Raj, X__Junior (Nextron Systems)
-date: 2021/07/30
+date: 2021-07-30
 severity: medium
 description: Detects the expansion or decompression of cabinet files from potentially
   suspicious or uncommon locations, e.g. seen in Iranian MeteorExpress related attacks
 status: test
-modified: 2024/03/05
+modified: 2024-03-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: "DeviceProcessEvents\n| where ((ProcessCommandLine contains \"-F:\" or ProcessCommandLine\

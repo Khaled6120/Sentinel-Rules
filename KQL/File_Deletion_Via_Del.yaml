@@ -1,7 +1,7 @@
 name: File Deletion Via Del
 id: 379fa130-190e-4c3f-b7bc-6c8e834485f3
 author: frack113
-date: 2022/01/15
+date: 2022-01-15
 severity: low
 description: 'Detects execution of the builtin "del"/"erase" commands in order to
   delete files.
@@ -16,12 +16,12 @@ description: 'Detects execution of the builtin "del"/"erase" commands in order t
 
   '
 status: test
-modified: 2024/03/05
+modified: 2024-03-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1070
 query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"del \" or ProcessCommandLine\

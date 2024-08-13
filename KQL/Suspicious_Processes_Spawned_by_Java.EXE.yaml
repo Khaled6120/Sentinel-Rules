@@ -1,19 +1,19 @@
 name: Suspicious Processes Spawned by Java.EXE
 id: 0d34ed8b-1c12-4ff2-828c-16fc860b766d
 author: Andreas Hunkeler (@Karneades), Florian Roth
-date: 2021/12/17
+date: 2021-12-17
 severity: high
 description: Detects suspicious processes spawned from a Java host process which could
   indicate a sign of exploitation (e.g. log4j)
 status: experimental
-modified: 2024/01/18
+modified: 2024-01-18
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

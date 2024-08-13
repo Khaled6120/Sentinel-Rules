@@ -1,7 +1,7 @@
 name: Suspicious Path In Keyboard Layout IME File Registry Value
 id: 9d8f9bb8-01af-4e15-a3a2-349071530530
 author: X__Junior (Nextron Systems)
-date: 2023/11/21
+date: 2023-11-21
 severity: high
 description: 'Detects usage of Windows Input Method Editor (IME) keyboard layout feature,
   which allows an attacker to load a DLL into the process after sending the WM_INPUTLANGCHANGEREQUEST
@@ -21,7 +21,7 @@ logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

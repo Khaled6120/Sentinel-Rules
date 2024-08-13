@@ -1,7 +1,7 @@
 name: Firewall Rule Update Via Netsh.EXE
 id: a70dcb37-3bee-453a-99df-d0c683151be6
 author: X__Junior (Nextron Systems)
-date: 2023/07/18
+date: 2023-07-18
 severity: medium
 description: Detects execution of netsh with the "advfirewall" and the "set" option
   in order to set new values for properties of a existing rule
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

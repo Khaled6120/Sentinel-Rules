@@ -1,12 +1,12 @@
 name: Suspicious Git Clone
 id: aef9d1f1-7396-4e92-a927-4567c7a495c1
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/01/03
+date: 2023-01-03
 severity: medium
 description: Detects execution of "git" in order to clone a remote repository that
   contain suspicious keywords which might be suspicious
 status: test
-modified: 2023/01/10
+modified: 2023-01-10
 logsource:
   category: process_creation
   product: windows

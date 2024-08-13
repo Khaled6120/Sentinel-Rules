@@ -1,17 +1,17 @@
 name: Legitimate Application Dropped Script
 id: 7d604714-e071-49ff-8726-edeb95a70679
 author: frack113, Florian Roth (Nextron Systems)
-date: 2022/08/21
+date: 2022-08-21
 severity: high
 description: Detects programs on a Windows system that should not write scripts to
   disk
 status: test
-modified: 2023/06/22
+modified: 2023-06-22
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceFileEvents

@@ -1,20 +1,20 @@
 name: CMSTP UAC Bypass via COM Object Access
 id: 4b60e6f2-bf39-47b4-b4ea-398e33cfe253
 author: Nik Seetharaman, Christian Burkard (Nextron Systems)
-date: 2019/07/31
+date: 2019-07-31
 severity: high
 description: Detects UAC Bypass Attempt Using Microsoft Connection Manager Profile
   Installer Autoelevate-capable COM Objects (e.g. UACMe ID of 41, 43, 58 or 65)
 status: stable
-modified: 2022/09/21
+modified: 2022-09-21
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 - G0069
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1218
 - T1548

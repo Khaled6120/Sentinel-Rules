@@ -1,12 +1,12 @@
 name: Suspicious Binary In User Directory Spawned From Office Application
 id: aa3a6f94-890e-4e22-b634-ffdfd54792cc
 author: Jason Lynch
-date: 2019/04/02
+date: 2019-04-02
 severity: high
 description: Detects an executable in the users directory started from one of the
   Microsoft Office suite applications (Word, Excel, PowerPoint, Publisher, Visio)
 status: test
-modified: 2023/02/04
+modified: 2023-02-04
 logsource:
   category: process_creation
   product: windows

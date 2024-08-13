@@ -1,7 +1,7 @@
 name: Unusual File Modification by dns.exe
 id: 9f383dc0-fdeb-4d56-acbc-9f9f4f8f20f3
 author: Tim Rauch (Nextron Systems), Elastic (idea)
-date: 2022/09/27
+date: 2022-09-27
 severity: high
 description: Detects an unexpected file being modified by dns.exe which my indicate
   activity related to remote code execution or other forms of exploitation as seen
@@ -12,7 +12,7 @@ logsource:
   category: file_change
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 relevantTechniques:
 - T1133
 query: 'DeviceFileEvents

@@ -1,7 +1,7 @@
 name: PDF File Created By RegEdit.EXE
 id: 145095eb-e273-443b-83d0-f9b519b7867b
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2024/07/08
+date: 2024-07-08
 severity: high
 description: 'Detects the creation of a file with the ".pdf" extension by the "RegEdit.exe"
   process.
@@ -16,7 +16,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceFileEvents
 

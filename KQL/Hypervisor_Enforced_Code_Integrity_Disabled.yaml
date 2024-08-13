@@ -1,7 +1,7 @@
 name: Hypervisor Enforced Code Integrity Disabled
 id: 8b7273a4-ba5d-4d8a-b04f-11f2900d043a
 author: Nasreddine Bencherchali (Nextron Systems), Anish Bogati
-date: 2023/03/14
+date: 2023-03-14
 severity: high
 description: 'Detects changes to the HypervisorEnforcedCodeIntegrity registry key
   and the "Enabled" value being set to 0 in order to disable the Hypervisor Enforced
@@ -10,12 +10,12 @@ description: 'Detects changes to the HypervisorEnforcedCodeIntegrity registry ke
 
   '
 status: experimental
-modified: 2024/07/05
+modified: 2024-07-05
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

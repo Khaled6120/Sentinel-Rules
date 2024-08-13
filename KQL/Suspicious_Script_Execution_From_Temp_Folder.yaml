@@ -1,11 +1,11 @@
 name: Suspicious Script Execution From Temp Folder
 id: a6a39bdb-935c-4f0a-ab77-35f4bbf44d33
 author: Florian Roth (Nextron Systems), Max Altgelt (Nextron Systems), Tim Shelton
-date: 2021/07/14
+date: 2021-07-14
 severity: high
 description: Detects a suspicious script executions from temporary folder
 status: test
-modified: 2022/10/05
+modified: 2022-10-05
 logsource:
   category: process_creation
   product: windows

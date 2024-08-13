@@ -1,19 +1,19 @@
 name: Suspicious Child Process Of SQL Server
 id: 869b9ca7-9ea2-4a5a-8325-e80e62f75445
 author: FPT.EagleEye Team, wagga
-date: 2020/12/11
+date: 2020-12-11
 severity: high
 description: Detects suspicious child processes of the SQLServer process. This could
   indicate potential RCE or SQL Injection.
 status: test
-modified: 2023/05/04
+modified: 2023-05-04
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1190
 - T1505

@@ -1,18 +1,18 @@
 name: Automated Collection Command Prompt
 id: f576a613-2392-4067-9d1a-9345fb58d8d1
 author: frack113
-date: 2021/07/28
+date: 2021-07-28
 severity: medium
 description: Once established within a system or network, an adversary may use automated
   techniques for collecting internal data.
 status: test
-modified: 2022/11/11
+modified: 2022-11-11
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Collection
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1119
 - T1552

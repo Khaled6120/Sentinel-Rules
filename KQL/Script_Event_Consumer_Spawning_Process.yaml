@@ -1,11 +1,11 @@
 name: Script Event Consumer Spawning Process
 id: f6d1dd2f-b8ce-40ca-bc23-062efb686b34
 author: Sittikorn S
-date: 2021/06/21
+date: 2021-06-21
 severity: high
 description: Detects a suspicious child process of Script Event Consumer (scrcons.exe).
 status: test
-modified: 2022/07/14
+modified: 2022-07-14
 logsource:
   category: process_creation
   product: windows

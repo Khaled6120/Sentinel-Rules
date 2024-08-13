@@ -1,7 +1,7 @@
 name: Change Default File Association Via Assoc
 id: 3d3aa6cd-6272-44d6-8afc-7e88dfef7061
 author: Timur Zinniatullin, oscd.community
-date: 2019/10/21
+date: 2019-10-21
 severity: low
 description: 'Detects file association changes using the builtin "assoc" command.
 
@@ -14,7 +14,7 @@ description: 'Detects file association changes using the builtin "assoc" command
 
   '
 status: test
-modified: 2023/03/06
+modified: 2023-03-06
 logsource:
   category: process_creation
   product: windows

@@ -1,7 +1,7 @@
 name: WerFault LSASS Process Memory Dump
 id: c3e76af5-4ce0-4a14-9c9a-25ceb8fda182
 author: Florian Roth (Nextron Systems)
-date: 2022/06/27
+date: 2022-06-27
 severity: high
 description: Detects WerFault creating a dump file with a name that indicates that
   the dump file could be an LSASS process memory, which contains user credentials
@@ -11,7 +11,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceFileEvents

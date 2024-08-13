@@ -1,17 +1,17 @@
 name: Scripted Diagnostics Turn Off Check Enabled - Registry
 id: 7d995e63-ec83-4aa3-89d5-8a17b5c87c86
 author: Christopher Peacock @securepeacock, SCYTHE @scythe_io
-date: 2022/06/15
+date: 2022-06-15
 severity: medium
 description: Detects enabling TurnOffCheck which can be used to bypass defense of
   MSDT Follina vulnerability
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

@@ -2,13 +2,13 @@ name: Permission Check Via Accesschk.EXE
 id: c625d754-6a3d-4f65-9c9a-536aea960d37
 author: Teymur Kheirkhabarov (idea), Mangatas Tondang, oscd.community, Nasreddine
   Bencherchali (Nextron Systems)
-date: 2020/10/13
+date: 2020-10-13
 severity: medium
 description: Detects the usage of the "Accesschk" utility, an access and privilege
   audit tool developed by SysInternal and often being abused by attacker to verify
   process privileges
 status: test
-modified: 2023/02/20
+modified: 2023-02-20
 logsource:
   category: process_creation
   product: windows

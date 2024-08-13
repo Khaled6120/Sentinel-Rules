@@ -1,11 +1,11 @@
 name: Creation of a Local Hidden User Account by Registry
 id: 460479f3-80b7-42da-9c43-2cc1d54dbccd
 author: Christian Burkard (Nextron Systems)
-date: 2021/05/03
+date: 2021-05-03
 severity: high
 description: Sysmon registry detection of a local hidden user account.
 status: test
-modified: 2022/08/05
+modified: 2022-08-05
 logsource:
   category: registry_event
   product: windows

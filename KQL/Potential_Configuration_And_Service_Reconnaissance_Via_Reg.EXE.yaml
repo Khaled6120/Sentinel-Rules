@@ -1,13 +1,13 @@
 name: Potential Configuration And Service Reconnaissance Via Reg.EXE
 id: 970007b7-ce32-49d0-a4a4-fbef016950bd
 author: Timur Zinniatullin, oscd.community
-date: 2019/10/21
+date: 2019-10-21
 severity: medium
 description: Detects the usage of "reg.exe" in order to query reconnaissance information
   from the registry. Adversaries may interact with the Windows registry to gather
   information about credentials, the system, configuration, and installed software.
 status: test
-modified: 2023/02/05
+modified: 2023-02-05
 logsource:
   category: process_creation
   product: windows

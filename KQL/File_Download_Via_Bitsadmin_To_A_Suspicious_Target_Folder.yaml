@@ -1,17 +1,17 @@
 name: File Download Via Bitsadmin To A Suspicious Target Folder
 id: 2ddef153-167b-4e89-86b6-757a9e65dcac
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2022/06/28
+date: 2022-06-28
 severity: high
 description: Detects usage of bitsadmin downloading a file to a suspicious target
   folder
 status: test
-modified: 2023/05/30
+modified: 2023-05-30
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 - S0190
 relevantTechniques:

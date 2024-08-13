@@ -1,7 +1,7 @@
 name: Communication To Ngrok Tunneling Service Initiated
 id: 1d08ac94-400d-4469-a82f-daee9a908849
 author: Florian Roth (Nextron Systems)
-date: 2022/11/03
+date: 2022-11-03
 severity: high
 description: 'Detects an executable initiating a network connection to "ngrok" tunneling
   domains.
@@ -14,12 +14,12 @@ description: 'Detects an executable initiating a network connection to "ngrok" t
 
   '
 status: test
-modified: 2024/02/02
+modified: 2024-02-02
 logsource:
   category: network_connection
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 - Exfiltration
 - S0508
 relevantTechniques:

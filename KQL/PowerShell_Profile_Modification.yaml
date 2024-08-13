@@ -1,18 +1,18 @@
 name: PowerShell Profile Modification
 id: b5b78988-486d-4a80-b991-930eff3ff8bf
 author: HieuTT35, Nasreddine Bencherchali (Nextron Systems)
-date: 2019/10/24
+date: 2019-10-24
 severity: medium
 description: Detects the creation or modification of a powershell profile which could
   indicate suspicious activity as the profile can be used as a mean of persistence
 status: test
-modified: 2023/10/23
+modified: 2023-10-23
 logsource:
   category: file_event
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1546
 query: 'DeviceFileEvents

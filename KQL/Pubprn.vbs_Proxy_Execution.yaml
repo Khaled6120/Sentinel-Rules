@@ -1,7 +1,7 @@
 name: Pubprn.vbs Proxy Execution
 id: 1fb76ab8-fa60-4b01-bddd-71e89bf555da
 author: frack113
-date: 2022/05/28
+date: 2022-05-28
 severity: medium
 description: Detects the use of the 'Pubprn.vbs' Microsoft signed script to execute
   commands.
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1216
 query: 'DeviceProcessEvents

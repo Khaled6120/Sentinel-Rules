@@ -1,7 +1,7 @@
 name: Renamed Cloudflared.EXE Execution
 id: e0c69ebd-b54f-4aed-8ae3-e3467843f3f0
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/12/20
+date: 2023-12-20
 severity: high
 description: Detects the execution of a renamed "cloudflared" binary.
 status: experimental
@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1090
 query: 'DeviceProcessEvents

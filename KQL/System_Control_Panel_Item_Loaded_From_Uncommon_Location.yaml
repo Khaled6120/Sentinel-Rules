@@ -1,7 +1,7 @@
 name: System Control Panel Item Loaded From Uncommon Location
 id: 2b140a5c-dc02-4bb8-b6b1-8bdb45714cde
 author: Anish Bogati
-date: 2024/01/09
+date: 2024-01-09
 severity: medium
 description: Detects image load events of system control panel items (.cpl) from uncommon
   or non-system locations which might be the result of sideloading.
@@ -11,7 +11,7 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceImageLoadEvents

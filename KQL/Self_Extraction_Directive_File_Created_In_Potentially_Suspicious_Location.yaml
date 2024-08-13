@@ -1,7 +1,7 @@
 name: Self Extraction Directive File Created In Potentially Suspicious Location
 id: 760e75d8-c3b5-409b-a9bf-6130b4c4603f
 author: Joseliyo Sanchez, @Joseliyo_Jstnk
-date: 2024/02/05
+date: 2024-02-05
 severity: medium
 description: 'Detects the creation of Self Extraction Directive files (.sed) in a
   potentially suspicious location.
@@ -19,7 +19,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceFileEvents

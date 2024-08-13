@@ -1,7 +1,7 @@
 name: Potential Shim Database Persistence via Sdbinst.EXE
 id: 517490a7-115a-48c6-8862-1a481504d5a8
 author: Markus Neis
-date: 2019/01/16
+date: 2019-01-16
 severity: medium
 description: 'Detects installation of a new shim using sdbinst.exe.
 
@@ -10,13 +10,13 @@ description: 'Detects installation of a new shim using sdbinst.exe.
 
   '
 status: test
-modified: 2023/12/06
+modified: 2023-12-06
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1546
 query: 'DeviceProcessEvents

@@ -1,7 +1,7 @@
 name: Process Explorer Driver Creation By Non-Sysinternals Binary
 id: de46c52b-0bf8-4936-a327-aace94f94ac6
 author: Florian Roth (Nextron Systems)
-date: 2023/05/05
+date: 2023-05-05
 severity: high
 description: 'Detects creation of the Process Explorer drivers by processes other
   than Process Explorer (procexp) itself.
@@ -18,7 +18,7 @@ logsource:
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1068
 query: 'DeviceFileEvents

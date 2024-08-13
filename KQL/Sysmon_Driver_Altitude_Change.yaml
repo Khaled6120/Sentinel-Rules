@@ -1,7 +1,7 @@
 name: Sysmon Driver Altitude Change
 id: 4916a35e-bfc4-47d0-8e25-a003d7067061
 author: B.Talebi
-date: 2022/07/28
+date: 2022-07-28
 severity: high
 description: 'Detects changes in Sysmon driver altitude value.
 
@@ -10,12 +10,12 @@ description: 'Detects changes in Sysmon driver altitude value.
 
   '
 status: experimental
-modified: 2024/03/25
+modified: 2024-03-25
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

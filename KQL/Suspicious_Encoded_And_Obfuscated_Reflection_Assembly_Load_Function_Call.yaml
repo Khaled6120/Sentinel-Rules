@@ -1,17 +1,17 @@
 name: Suspicious Encoded And Obfuscated Reflection Assembly Load Function Call
 id: 9c0295ce-d60d-40bd-bd74-84673b7592b1
 author: pH-T (Nextron Systems)
-date: 2022/03/01
+date: 2022-03-01
 severity: high
 description: Detects suspicious base64 encoded and obfuscated "LOAD" keyword used
   in .NET "reflection.assembly"
 status: test
-modified: 2023/04/06
+modified: 2023-04-06
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1027

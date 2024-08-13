@@ -1,17 +1,17 @@
 name: Powershell Defender Disable Scan Feature
 id: 1ec65a5f-9473-4f12-97da-622044d6df21
 author: Florian Roth (Nextron Systems)
-date: 2022/03/03
+date: 2022-03-03
 severity: high
 description: Detects requests to disable Microsoft Defender features using PowerShell
   commands
 status: test
-modified: 2024/01/02
+modified: 2024-01-02
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

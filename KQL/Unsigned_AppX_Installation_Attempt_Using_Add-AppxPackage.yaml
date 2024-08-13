@@ -1,7 +1,7 @@
 name: Unsigned AppX Installation Attempt Using Add-AppxPackage
 id: 37651c2a-42cd-4a69-ae0d-22a4349aa04a
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/01/31
+date: 2023-01-31
 severity: medium
 description: Detects usage of the "Add-AppxPackage" or it's alias "Add-AppPackage"
   to install unsigned AppX packages
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 relevantTechniques: []
 query: 'DeviceProcessEvents

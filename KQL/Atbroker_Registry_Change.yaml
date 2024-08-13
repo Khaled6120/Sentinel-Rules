@@ -1,17 +1,17 @@
 name: Atbroker Registry Change
 id: 9577edbb-851f-4243-8c91-1d5b50c1a39b
 author: Mateusz Wydra, oscd.community
-date: 2020/10/13
+date: 2020-10-13
 severity: medium
 description: Detects creation/modification of Assistive Technology applications and
   persistence with usage of 'at'
 status: test
-modified: 2023/01/19
+modified: 2023-01-19
 logsource:
   category: registry_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 relevantTechniques:
 - T1218

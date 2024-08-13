@@ -1,13 +1,13 @@
 name: Suspicious desktop.ini Action
 id: 81315b50-6b60-4d8f-9928-3466e1022515
 author: Maxime Thiebaut (@0xThiebaut), Tim Shelton (HAWK.IO)
-date: 2020/03/19
+date: 2020-03-19
 severity: medium
 description: Detects unusual processes accessing desktop.ini, which can be leveraged
   to alter how Explorer displays a folder's content (i.e. renaming files) without
   changing them on disk.
 status: test
-modified: 2022/10/07
+modified: 2022-10-07
 logsource:
   category: file_event
   product: windows

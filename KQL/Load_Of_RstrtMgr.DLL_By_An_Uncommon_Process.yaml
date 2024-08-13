@@ -1,7 +1,7 @@
 name: Load Of RstrtMgr.DLL By An Uncommon Process
 id: 3669afd2-9891-4534-a626-e5cf03810a61
 author: "Luc G\xE9naux"
-date: 2023/11/28
+date: 2023-11-28
 severity: low
 description: 'Detects the load of RstrtMgr DLL (Restart Manager) by an uncommon process.
 
@@ -18,7 +18,7 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Impact
 relevantTechniques:
 - T1486

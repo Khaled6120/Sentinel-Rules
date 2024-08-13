@@ -1,7 +1,7 @@
 name: Drop Binaries Into Spool Drivers Color Folder
 id: ce7066a6-508a-42d3-995b-2952c65dc2ce
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/07/28
+date: 2022-07-28
 severity: medium
 description: Detects the creation of suspcious binary files inside the "\windows\system32\spool\drivers\color\"
   as seen in the blog referenced below
@@ -11,7 +11,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceFileEvents
 

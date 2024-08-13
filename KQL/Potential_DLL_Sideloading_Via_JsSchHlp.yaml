@@ -1,7 +1,7 @@
 name: Potential DLL Sideloading Via JsSchHlp
 id: 68654bf0-4412-43d5-bfe8-5eaa393cd939
 author: frack113
-date: 2022/12/14
+date: 2022-12-14
 severity: medium
 description: Detects potential DLL sideloading using JUSTSYSTEMS Japanese word processor
 status: test
@@ -10,9 +10,9 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

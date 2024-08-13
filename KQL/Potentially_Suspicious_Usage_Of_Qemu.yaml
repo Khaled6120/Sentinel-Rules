@@ -1,7 +1,7 @@
 name: Potentially Suspicious Usage Of Qemu
 id: 5fc297ae-25b6-488a-8f25-cc12ac29b744
 author: Muhammad Faisal (@faisalusuf), Hunter Juhan (@threatHNTR)
-date: 2024/06/03
+date: 2024-06-03
 severity: medium
 description: 'Detects potentially suspicious execution of the Qemu utility in a Windows
   environment.
@@ -16,7 +16,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1090
 - T1572

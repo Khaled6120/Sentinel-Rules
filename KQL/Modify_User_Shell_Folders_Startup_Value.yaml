@@ -1,18 +1,18 @@
 name: Modify User Shell Folders Startup Value
 id: 9c226817-8dc9-46c2-a58d-66655aafd7dc
 author: frack113
-date: 2022/10/01
+date: 2022-10-01
 severity: high
 description: Detect modification of the startup key to a path where a payload could
   be stored to be launched during startup
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1547
 query: 'DeviceRegistryEvents

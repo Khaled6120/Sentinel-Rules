@@ -1,17 +1,17 @@
 name: Registry Explorer Policy Modification
 id: 1c3121ed-041b-4d97-a075-07f54f20fb4a
 author: frack113
-date: 2022/03/18
+date: 2022-03-18
 severity: medium
 description: Detects registry modifications that disable internal tools or functions
   in explorer (malware like Agent Tesla uses this technique)
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

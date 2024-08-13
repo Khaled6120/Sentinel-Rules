@@ -1,7 +1,7 @@
 name: Suspicious Child Process Of BgInfo.EXE
 id: 811f459f-9231-45d4-959a-0266c6311987
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/08/16
+date: 2023-08-16
 severity: high
 description: Detects suspicious child processes of "BgInfo.exe" which could be a sign
   of potential abuse of the binary to proxy execution via external VBScript
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1059

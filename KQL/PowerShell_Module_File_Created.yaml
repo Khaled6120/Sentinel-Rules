@@ -1,7 +1,7 @@
 name: PowerShell Module File Created
 id: e36941d0-c0f0-443f-bc6f-cb2952eb69ea
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/09
+date: 2023-05-09
 severity: low
 description: Detects the creation of a new PowerShell module ".psm1", ".psd1", ".dll",
   ".ps1", etc.

@@ -1,7 +1,7 @@
 name: Potentially Suspicious CMD Shell Output Redirect
 id: 8e0bb260-d4b2-4fff-bb8d-3f82118e6892
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/07/12
+date: 2022-07-12
 severity: medium
 description: 'Detects inline Windows shell commands redirecting output via the ">"
   symbol to a suspicious location.
@@ -11,12 +11,12 @@ description: 'Detects inline Windows shell commands redirecting output via the "
 
   '
 status: experimental
-modified: 2024/03/19
+modified: 2024-03-19
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

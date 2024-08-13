@@ -1,12 +1,12 @@
 name: Suspicious Schtasks From Env Var Folder
 id: 81325ce1-be01-4250-944f-b4789644556f
 author: Florian Roth (Nextron Systems)
-date: 2022/02/21
+date: 2022-02-21
 severity: medium
 description: Detects Schtask creations that point to a suspicious folder or an environment
   variable often used by malware
 status: experimental
-modified: 2023/11/30
+modified: 2023-11-30
 logsource:
   category: process_creation
   product: windows

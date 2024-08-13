@@ -1,12 +1,12 @@
 name: Suspicious File Download From File Sharing Domain Via Curl.EXE
 id: 56454143-524f-49fb-b1c6-3fb8b1ad41fb
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/05
+date: 2023-05-05
 severity: high
 description: Detects potentially suspicious file download from file sharing domains
   using curl.exe
 status: experimental
-modified: 2024/02/09
+modified: 2024-02-09
 logsource:
   category: process_creation
   product: windows

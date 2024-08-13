@@ -2,7 +2,7 @@ name: Potential Persistence Via Outlook Home Page
 id: ddd171b5-2cc6-4975-9e78-f0eccd08cc76
 author: Tobias Michalski (Nextron Systems), David Bertho (@dbertho) & Eirik Sveen
   (@0xSV1), Storebrand
-date: 2021/06/09
+date: 2021-06-09
 severity: high
 description: 'Detects potential persistence activity via outlook home page.
 
@@ -11,7 +11,7 @@ description: 'Detects potential persistence activity via outlook home page.
 
   '
 status: test
-modified: 2024/08/07
+modified: 2024-08-07
 logsource:
   category: registry_set
   product: windows

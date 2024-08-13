@@ -1,7 +1,7 @@
 name: VHD Image Download Via Browser
 id: 8468111a-ef07-4654-903b-b863a80bbc95
 author: frack113, Christopher Peacock '@securepeacock', SCYTHE '@scythe_io'
-date: 2021/10/25
+date: 2021-10-25
 severity: medium
 description: 'Detects creation of ".vhd"/".vhdx" files by browser processes.
 
@@ -10,12 +10,12 @@ description: 'Detects creation of ".vhd"/".vhdx" files by browser processes.
 
   '
 status: test
-modified: 2023/05/05
+modified: 2023-05-05
 logsource:
   category: file_event
   product: windows
 tactics:
-- Resource Development
+- Resource-development
 relevantTechniques:
 - T1587
 query: 'DeviceFileEvents

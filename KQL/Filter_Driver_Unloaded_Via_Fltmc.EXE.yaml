@@ -1,16 +1,16 @@
 name: Filter Driver Unloaded Via Fltmc.EXE
 id: 4931188c-178e-4ee7-a348-39e8a7a56821
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/02/13
+date: 2023-02-13
 severity: medium
 description: Detect filter driver unloading activity via fltmc.exe
 status: test
-modified: 2024/06/24
+modified: 2024-06-24
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1070
 - T1562

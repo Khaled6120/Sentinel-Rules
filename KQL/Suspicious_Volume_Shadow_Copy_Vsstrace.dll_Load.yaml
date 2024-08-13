@@ -1,16 +1,16 @@
 name: Suspicious Volume Shadow Copy Vsstrace.dll Load
 id: 48bfd177-7cf2-412b-ad77-baf923489e82
 author: frack113
-date: 2023/02/17
+date: 2023-02-17
 severity: high
 description: Detects the image load of VSS DLL by uncommon executables
 status: test
-modified: 2023/03/28
+modified: 2023-03-28
 logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Impact
 relevantTechniques:
 - T1490

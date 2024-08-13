@@ -1,19 +1,19 @@
 name: Potential Process Injection Via Msra.EXE
 id: 744a188b-0415-4792-896f-11ddb0588dbc
 author: Alexander McDonald
-date: 2022/06/24
+date: 2022-06-24
 severity: high
 description: Detects potential process injection via Microsoft Remote Asssistance
   (Msra.exe) by looking at suspicious child processes spawned from the aforementioned
   process. It has been a target used by many threat actors and used for discovery
   and persistence tactics
 status: test
-modified: 2023/02/03
+modified: 2023-02-03
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1055
 query: 'DeviceProcessEvents

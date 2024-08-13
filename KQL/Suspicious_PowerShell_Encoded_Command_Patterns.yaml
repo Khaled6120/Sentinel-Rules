@@ -1,12 +1,12 @@
 name: Suspicious PowerShell Encoded Command Patterns
 id: b9d9cc83-380b-4ba3-8d8f-60c0e7e2930c
 author: Florian Roth (Nextron Systems)
-date: 2022/05/24
+date: 2022-05-24
 severity: high
 description: Detects PowerShell command line patterns in combincation with encoded
   commands that often appear in malware infection chains
 status: test
-modified: 2023/01/05
+modified: 2023-01-05
 logsource:
   category: process_creation
   product: windows

@@ -1,18 +1,18 @@
 name: Potential EventLog File Location Tampering
 id: 0cb8d736-995d-4ce7-a31e-1e8d452a1459
 author: D3F7A5105
-date: 2023/01/02
+date: 2023-01-02
 severity: high
 description: Detects tampering with EventLog service "file" key. In order to change
   the default location of an Evtx file. This technique is used to tamper with log
   collection and alerting
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

@@ -1,7 +1,7 @@
 name: Outbound Network Connection Initiated By Microsoft Dialer
 id: 37e4024a-6c80-4d8f-b95d-2e7e94f3a8d1
 author: CertainlyP
-date: 2024/04/26
+date: 2024-04-26
 severity: high
 description: 'Detects outbound network connection initiated by Microsoft Dialer.
 

@@ -1,7 +1,7 @@
 name: Changing Existing Service ImagePath Value Via Reg.EXE
 id: 9b0b7ac3-6223-47aa-a3fd-e8f211e637db
 author: frack113
-date: 2021/12/30
+date: 2021-12-30
 severity: medium
 description: 'Adversaries may execute their own malicious payloads by hijacking the
   Registry entries used by services.
@@ -14,7 +14,7 @@ description: 'Adversaries may execute their own malicious payloads by hijacking 
 
   '
 status: test
-modified: 2024/03/13
+modified: 2024-03-13
 logsource:
   category: process_creation
   product: windows

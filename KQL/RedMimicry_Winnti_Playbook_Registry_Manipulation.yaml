@@ -1,16 +1,16 @@
 name: RedMimicry Winnti Playbook Registry Manipulation
 id: 5b175490-b652-4b02-b1de-5b5b4083c5f8
 author: Alexander Rausch
-date: 2020/06/24
+date: 2020-06-24
 severity: high
 description: Detects actions caused by the RedMimicry Winnti playbook
 status: test
-modified: 2021/11/27
+modified: 2021-11-27
 logsource:
   category: registry_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

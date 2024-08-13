@@ -1,7 +1,7 @@
 name: Potential LSASS Process Dump Via Procdump
 id: 5afee48e-67dd-4e03-a783-f74259dcf998
 author: Florian Roth (Nextron Systems)
-date: 2018/10/30
+date: 2018-10-30
 severity: high
 description: 'Detects suspicious uses of the SysInternals Procdump utility by using
   a special command line parameter in combination with the lsass.exe process.
@@ -11,13 +11,13 @@ description: 'Detects suspicious uses of the SysInternals Procdump utility by us
 
   '
 status: stable
-modified: 2024/03/13
+modified: 2024-03-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
-- Defense Evasion
+- Credential-access
+- Defense-evasion
 relevantTechniques:
 - T1003
 - T1036

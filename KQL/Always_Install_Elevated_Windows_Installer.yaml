@@ -1,17 +1,17 @@
 name: Always Install Elevated Windows Installer
 id: cd951fdc-4b2f-47f5-ba99-a33bf61e3770
 author: Teymur Kheirkhabarov (idea), Mangatas Tondang (rule), oscd.community
-date: 2020/10/13
+date: 2020-10-13
 severity: medium
 description: Detects Windows Installer service (msiexec.exe) trying to install MSI
   packages with SYSTEM privilege
 status: test
-modified: 2023/03/23
+modified: 2023-03-23
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1548
 query: 'DeviceProcessEvents

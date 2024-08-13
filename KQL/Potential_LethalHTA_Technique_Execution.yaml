@@ -1,17 +1,17 @@
 name: Potential LethalHTA Technique Execution
 id: ed5d72a6-f8f4-479d-ba79-02f6a80d7471
 author: Markus Neis
-date: 2018/06/07
+date: 2018-06-07
 severity: high
 description: Detects potential LethalHTA technique where the "mshta.exe" is spawned
   by an "svchost.exe" process
 status: test
-modified: 2023/02/07
+modified: 2023-02-07
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

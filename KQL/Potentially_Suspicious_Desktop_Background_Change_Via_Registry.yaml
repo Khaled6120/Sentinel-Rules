@@ -1,7 +1,7 @@
 name: Potentially Suspicious Desktop Background Change Via Registry
 id: 85b88e05-dadc-430b-8a9e-53ff1cd30aae
 author: Nasreddine Bencherchali (Nextron Systems), Stephen Lincoln @slincoln-aiq (AttackIQ)
-date: 2023/12/21
+date: 2023-12-21
 severity: medium
 description: 'Detects registry value settings that would replace the user''s desktop
   background.
@@ -16,7 +16,7 @@ logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Impact
 relevantTechniques:
 - T1112

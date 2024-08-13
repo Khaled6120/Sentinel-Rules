@@ -1,7 +1,7 @@
 name: Malicious Windows Script Components File Execution by TAEF Detection
 id: 634b00d5-ccc3-4a06-ae3b-0ec8444dd51b
 author: Agro (@agro_sev) oscd.community
-date: 2020/10/13
+date: 2020-10-13
 severity: low
 description: 'Windows Test Authoring and Execution Framework (TAEF) framework allows
   you to run automation by executing tests files written on different languages (C,
@@ -12,12 +12,12 @@ description: 'Windows Test Authoring and Execution Framework (TAEF) framework al
 
   '
 status: test
-modified: 2021/11/27
+modified: 2021-11-27
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

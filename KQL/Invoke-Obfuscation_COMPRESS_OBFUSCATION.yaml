@@ -1,16 +1,16 @@
 name: Invoke-Obfuscation COMPRESS OBFUSCATION
 id: 7eedcc9d-9fdb-4d94-9c54-474e8affc0c7
 author: Timur Zinniatullin, oscd.community
-date: 2020/10/18
+date: 2020-10-18
 severity: medium
 description: Detects Obfuscated Powershell via COMPRESS OBFUSCATION
 status: test
-modified: 2022/12/29
+modified: 2022-12-29
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1027

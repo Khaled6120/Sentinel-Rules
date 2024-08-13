@@ -1,7 +1,7 @@
 name: XBAP Execution From Uncommon Locations Via PresentationHost.EXE
 id: d22e2925-cfd8-463f-96f6-89cec9d9bc5f
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/07/01
+date: 2022-07-01
 severity: medium
 description: 'Detects the execution of ".xbap" (Browser Applications) files via PresentationHost.EXE
   from an uncommon location. These files can be abused to run malicious ".xbap" files
@@ -9,12 +9,12 @@ description: 'Detects the execution of ".xbap" (Browser Applications) files via 
 
   '
 status: test
-modified: 2023/11/09
+modified: 2023-11-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1218

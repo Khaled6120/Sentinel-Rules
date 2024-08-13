@@ -1,17 +1,17 @@
 name: Dynamic .NET Compilation Via Csc.EXE
 id: dcaa3f04-70c3-427a-80b4-b870d73c94c4
 author: Florian Roth (Nextron Systems), X__Junior (Nextron Systems)
-date: 2019/08/24
+date: 2019-08-24
 severity: medium
 description: Detects execution of "csc.exe" to compile .NET code. Attackers often
   leverage this to compile code on the fly and use it in other stages.
 status: test
-modified: 2024/05/27
+modified: 2024-05-27
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1027
 query: 'DeviceProcessEvents

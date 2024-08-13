@@ -1,7 +1,7 @@
 name: Remote Access Tool - Team Viewer Session Started On Windows Host
 id: ab70c354-d9ac-4e11-bbb6-ec8e3b153357
 author: Josh Nickels, Qi Nan
-date: 2024/03/11
+date: 2024-03-11
 severity: low
 description: 'Detects the command line executed when TeamViewer starts a session started
   by a remote host.
@@ -16,7 +16,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 relevantTechniques:
 - T1133
 query: 'DeviceProcessEvents

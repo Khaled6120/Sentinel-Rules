@@ -1,7 +1,7 @@
 name: LiveKD Driver Creation By Uncommon Process
 id: 059c5af9-5131-4d8d-92b2-de4ad6146712
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/16
+date: 2023-05-16
 severity: high
 description: Detects the creation of the LiveKD driver by a process image other than
   "livekd.exe".
@@ -11,8 +11,8 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques: []
 query: 'DeviceFileEvents
 

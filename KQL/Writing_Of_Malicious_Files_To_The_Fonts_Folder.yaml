@@ -1,18 +1,18 @@
 name: Writing Of Malicious Files To The Fonts Folder
 id: ae9b0bd7-8888-4606-b444-0ed7410cb728
 author: Sreeman
-date: 2020/04/21
+date: 2020-04-21
 severity: medium
 description: Monitors for the hiding possible malicious files in the C:\Windows\Fonts\
   location. This folder doesn't require admin privillege to be written and executed
   from.
 status: test
-modified: 2022/03/08
+modified: 2022-03-08
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 relevantTechniques:
 - T1059

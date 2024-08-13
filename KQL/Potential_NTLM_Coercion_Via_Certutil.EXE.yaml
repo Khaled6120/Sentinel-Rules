@@ -1,16 +1,16 @@
 name: Potential NTLM Coercion Via Certutil.EXE
 id: 6c6d9280-e6d0-4b9d-80ac-254701b64916
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/09/01
+date: 2022-09-01
 severity: high
 description: Detects possible NTLM coercion via certutil using the 'syncwithWU' flag
 status: test
-modified: 2023/02/14
+modified: 2023-02-14
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

@@ -2,17 +2,17 @@ name: Suspicious Child Process Created as System
 id: 590a5f4c-6c8c-4f10-8307-89afe9453a9d
 author: Teymur Kheirkhabarov, Roberto Rodriguez (@Cyb3rWard0g), Open Threat Research
   (OTR)
-date: 2019/10/26
+date: 2019-10-26
 severity: high
 description: Detection of child processes spawned with SYSTEM privileges by parents
   with LOCAL SERVICE or NETWORK SERVICE accounts
 status: test
-modified: 2022/12/15
+modified: 2022-12-15
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1134
 query: "DeviceProcessEvents\n| where (ProcessIntegrityLevel =~ \"System\" and (InitiatingProcessAccountName\

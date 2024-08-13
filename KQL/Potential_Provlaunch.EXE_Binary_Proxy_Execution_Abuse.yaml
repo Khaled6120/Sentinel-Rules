@@ -1,7 +1,7 @@
 name: Potential Provlaunch.EXE Binary Proxy Execution Abuse
 id: 7f5d1c9a-3e83-48df-95a7-2b98aae6c13c
 author: Nasreddine Bencherchali (Nextron Systems), Swachchhanda Shrawan Poudel
-date: 2023/08/08
+date: 2023-08-08
 severity: medium
 description: Detects child processes of "provlaunch.exe" which might indicate potential
   abuse to proxy execution.
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

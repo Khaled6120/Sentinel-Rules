@@ -1,18 +1,18 @@
 name: Suspicious HH.EXE Execution
 id: e8a95b5e-c891-46e2-b33a-93937d3abc31
 author: Maxim Pavlunin
-date: 2020/04/01
+date: 2020-04-01
 severity: high
 description: Detects a suspicious execution of a Microsoft HTML Help (HH.exe)
 status: test
-modified: 2023/04/12
+modified: 2023-04-12
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
-- Initial Access
+- Initial-access
 relevantTechniques:
 - T1047
 - T1059

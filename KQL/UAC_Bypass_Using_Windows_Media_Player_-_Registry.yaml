@@ -1,18 +1,18 @@
 name: UAC Bypass Using Windows Media Player - Registry
 id: 5f9db380-ea57-4d1e-beab-8a2d33397e93
 author: Christian Burkard (Nextron Systems)
-date: 2021/08/23
+date: 2021-08-23
 severity: high
 description: Detects the pattern of UAC Bypass using Windows Media Player osksupport.dll
   (UACMe 32)
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1548
 query: 'DeviceRegistryEvents

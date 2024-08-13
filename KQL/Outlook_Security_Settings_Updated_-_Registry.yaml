@@ -1,11 +1,11 @@
 name: Outlook Security Settings Updated - Registry
 id: c3cefdf4-6703-4e1c-bad8-bf422fc5015a
 author: frack113
-date: 2021/12/28
+date: 2021-12-28
 severity: medium
 description: Detects changes to the registry values related to outlook security settings
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

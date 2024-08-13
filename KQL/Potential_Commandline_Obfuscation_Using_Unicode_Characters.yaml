@@ -1,7 +1,7 @@
 name: Potential Commandline Obfuscation Using Unicode Characters
 id: e0552b19-5a83-4222-b141-b36184bb8d79
 author: frack113, Florian Roth (Nextron Systems)
-date: 2022/01/15
+date: 2022-01-15
 severity: high
 description: 'Detects potential commandline obfuscation using unicode characters.
 
@@ -11,12 +11,12 @@ description: 'Detects potential commandline obfuscation using unicode characters
 
   '
 status: test
-modified: 2024/07/22
+modified: 2024-07-22
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1027
 query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"\xAF\" or ProcessCommandLine\

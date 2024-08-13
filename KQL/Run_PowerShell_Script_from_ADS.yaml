@@ -1,16 +1,16 @@
 name: Run PowerShell Script from ADS
 id: 45a594aa-1fbd-4972-a809-ff5a99dd81b8
 author: Sergey Soldatov, Kaspersky Lab, oscd.community
-date: 2019/10/30
+date: 2019-10-30
 severity: high
 description: Detects PowerShell script execution from Alternate Data Stream (ADS)
 status: test
-modified: 2022/07/14
+modified: 2022-07-14
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1564
 query: 'DeviceProcessEvents

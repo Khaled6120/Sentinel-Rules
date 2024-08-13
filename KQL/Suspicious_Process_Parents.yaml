@@ -1,17 +1,17 @@
 name: Suspicious Process Parents
 id: cbec226f-63d9-4eca-9f52-dfb6652f24df
 author: Florian Roth (Nextron Systems)
-date: 2022/03/21
+date: 2022-03-21
 severity: high
 description: Detects suspicious parent processes that should not have any children
   or should only have a single possible child program
 status: test
-modified: 2022/09/08
+modified: 2022-09-08
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceProcessEvents

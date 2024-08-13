@@ -1,7 +1,7 @@
 name: TrustedPath UAC Bypass Pattern
 id: 4ac47ed3-44c2-4b1f-9d51-bf46e8914126
 author: Florian Roth (Nextron Systems)
-date: 2021/08/27
+date: 2021-08-27
 severity: critical
 description: Detects indicators of a UAC bypass method by mocking directories
 status: test
@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1548
 query: 'DeviceProcessEvents

@@ -1,7 +1,7 @@
 name: Potential DLL Sideloading Of MpSvc.DLL
 id: 5ba243e5-8165-4cf7-8c69-e1d3669654c1
 author: Nasreddine Bencherchali (Nextron Systems), Wietze Beukema
-date: 2024/07/11
+date: 2024-07-11
 severity: medium
 description: Detects potential DLL sideloading of "MpSvc.dll".
 status: experimental
@@ -10,7 +10,7 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

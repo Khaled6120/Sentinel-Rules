@@ -1,7 +1,7 @@
 name: Potential Libvlc.DLL Sideloading
 id: bf9808c4-d24f-44a2-8398-b65227d406b6
 author: X__Junior
-date: 2023/04/17
+date: 2023-04-17
 severity: medium
 description: Detects potential DLL sideloading of "libvlc.dll", a DLL that is legitimately
   used by "VLC.exe"
@@ -11,9 +11,9 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

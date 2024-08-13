@@ -1,17 +1,17 @@
 name: Registry Hide Function from User
 id: 5a93eb65-dffa-4543-b761-94aa60098fb6
 author: frack113
-date: 2022/03/18
+date: 2022-03-18
 severity: medium
 description: Detects registry modifications that hide internal tools or functions
   from the user (malware like Agent Tesla, Hermetic Wiper uses this technique)
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

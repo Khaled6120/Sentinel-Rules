@@ -1,16 +1,16 @@
 name: File Download Via Bitsadmin To An Uncommon Target Folder
 id: 6e30c82f-a9f8-4aab-b79c-7c12bce6f248
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2022/06/28
+date: 2022-06-28
 severity: medium
 description: Detects usage of bitsadmin downloading a file to uncommon target folder
 status: test
-modified: 2023/02/15
+modified: 2023-02-15
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 - S0190
 relevantTechniques:

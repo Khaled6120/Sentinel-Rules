@@ -1,7 +1,7 @@
 name: Compressed File Creation Via Tar.EXE
 id: 418a3163-3247-4b7b-9933-dcfcb7c52ea9
 author: Nasreddine Bencherchali (Nextron Systems), AdmU3
-date: 2023/12/19
+date: 2023-12-19
 severity: low
 description: 'Detects execution of "tar.exe" in order to create a compressed file.
 

@@ -1,16 +1,16 @@
 name: PUA - 3Proxy Execution
 id: f38a82d2-fba3-4781-b549-525efbec8506
 author: Florian Roth (Nextron Systems)
-date: 2022/09/13
+date: 2022-09-13
 severity: high
 description: Detects the use of 3proxy, a tiny free proxy server
 status: test
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1572
 query: 'DeviceProcessEvents

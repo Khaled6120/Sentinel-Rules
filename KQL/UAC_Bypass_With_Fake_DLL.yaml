@@ -1,18 +1,18 @@
 name: UAC Bypass With Fake DLL
 id: a5ea83a7-05a5-44c1-be2e-addccbbd8c03
 author: oscd.community, Dmitry Uchakin
-date: 2020/10/06
+date: 2020-10-06
 severity: high
 description: Attempts to load dismcore.dll after dropping it
 status: test
-modified: 2022/12/25
+modified: 2022-12-25
 logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1548
 - T1574

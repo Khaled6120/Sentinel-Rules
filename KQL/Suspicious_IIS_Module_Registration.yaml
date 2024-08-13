@@ -1,12 +1,12 @@
 name: Suspicious IIS Module Registration
 id: 043c4b8b-3a54-4780-9682-081cb6b8185c
 author: Florian Roth (Nextron Systems), Microsoft (idea)
-date: 2022/08/04
+date: 2022-08-04
 severity: high
 description: Detects a suspicious IIS module registration as described in Microsoft
   threat report on IIS backdoors
 status: test
-modified: 2023/01/23
+modified: 2023-01-23
 logsource:
   category: process_creation
   product: windows

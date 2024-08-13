@@ -1,7 +1,7 @@
 name: Suspicious High IntegrityLevel Conhost Legacy Option
 id: 3037d961-21e9-4732-b27a-637bcc7bf539
 author: frack113
-date: 2022/12/09
+date: 2022-12-09
 severity: informational
 description: ForceV1 asks for information directly from the kernel space. Conhost
   connects to the console application. High IntegrityLevel means the process is running
@@ -12,7 +12,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1202
 query: 'DeviceProcessEvents

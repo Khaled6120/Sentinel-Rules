@@ -2,12 +2,12 @@ name: Usage Of Web Request Commands And Cmdlets
 id: 9fc51a3c-81b3-4fa7-b35f-7c02cf10fd2d
 author: James Pemberton / @4A616D6573, Endgame, JHasenbusch, oscd.community, Austin
   Songer @austinsonger
-date: 2019/10/24
+date: 2019-10-24
 severity: medium
 description: Detects the use of various web request commands with commandline tools
   and Windows PowerShell cmdlets (including aliases) via CommandLine
 status: test
-modified: 2023/01/10
+modified: 2023-01-10
 logsource:
   category: process_creation
   product: windows

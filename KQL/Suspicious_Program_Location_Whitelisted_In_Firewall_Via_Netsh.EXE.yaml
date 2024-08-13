@@ -1,17 +1,17 @@
 name: Suspicious Program Location Whitelisted In Firewall Via Netsh.EXE
 id: a35f5a72-f347-4e36-8895-9869b0d5fc6d
 author: Sander Wiebing, Jonhnathan Ribeiro, Daniil Yugoslavskiy, oscd.community
-date: 2020/05/25
+date: 2020-05-25
 severity: high
 description: Detects Netsh command execution that whitelists a program located in
   a suspicious location in the Windows Firewall
 status: test
-modified: 2023/12/11
+modified: 2023-12-11
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

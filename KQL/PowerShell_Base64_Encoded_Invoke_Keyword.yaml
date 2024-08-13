@@ -1,16 +1,16 @@
 name: PowerShell Base64 Encoded Invoke Keyword
 id: 6385697e-9f1b-40bd-8817-f4a91f40508e
 author: pH-T (Nextron Systems), Harjot Singh, @cyb3rjy0t
-date: 2022/05/20
+date: 2022-05-20
 severity: high
 description: Detects UTF-8 and UTF-16 Base64 encoded powershell 'Invoke-' calls
 status: test
-modified: 2023/04/06
+modified: 2023-04-06
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1027

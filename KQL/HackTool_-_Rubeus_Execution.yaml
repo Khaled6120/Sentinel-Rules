@@ -1,18 +1,18 @@
 name: HackTool - Rubeus Execution
 id: 7ec2c172-dceb-4c10-92c9-87c1881b7e18
 author: Florian Roth (Nextron Systems)
-date: 2018/12/19
+date: 2018-12-19
 severity: critical
 description: Detects the execution of the hacktool Rubeus via PE information of command
   line parameters
 status: stable
-modified: 2023/04/20
+modified: 2023-04-20
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
-- Lateral Movement
+- Credential-access
+- Lateral-movement
 relevantTechniques:
 - T1003
 - T1550

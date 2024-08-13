@@ -1,12 +1,12 @@
 name: Suspicious Command Patterns In Scheduled Task Creation
 id: f2c64357-b1d2-41b7-849f-34d2682c0fad
 author: Florian Roth (Nextron Systems)
-date: 2022/02/23
+date: 2022-02-23
 severity: high
 description: Detects scheduled task creation using "schtasks" that contain potentially
   suspicious or uncommon commands
 status: experimental
-modified: 2024/03/19
+modified: 2024-03-19
 logsource:
   category: process_creation
   product: windows

@@ -1,18 +1,18 @@
 name: Process Access via TrolleyExpress Exclusion
 id: 4c0aaedc-154c-4427-ada0-d80ef9c9deb6
 author: Florian Roth (Nextron Systems)
-date: 2022/02/10
+date: 2022-02-10
 severity: high
 description: Detects a possible process memory dump that uses the white-listed Citrix
   TrolleyExpress.exe filename as a way to dump the lsass process memory
 status: test
-modified: 2022/05/13
+modified: 2022-05-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
-- Defense Evasion
+- Credential-access
+- Defense-evasion
 relevantTechniques:
 - T1003
 - T1218

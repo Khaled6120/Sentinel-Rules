@@ -1,11 +1,11 @@
 name: Exports Registry Key To a File
 id: f0e53e89-8d22-46ea-9db5-9d4796ee2f8a
 author: Oddvar Moe, Sander Wiebing, oscd.community
-date: 2020/10/07
+date: 2020-10-07
 severity: low
 description: Detects the export of the target Registry key to a file.
 status: test
-modified: 2024/03/13
+modified: 2024-03-13
 logsource:
   category: process_creation
   product: windows

@@ -1,17 +1,17 @@
 name: Suspicious File Downloaded From File-Sharing Website Via Certutil.EXE
 id: 42a5f1e7-9603-4f6d-97ae-3f37d130d794
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/02/15
+date: 2023-02-15
 severity: high
 description: Detects the execution of certutil with certain flags that allow the utility
   to download files from file-sharing websites.
 status: experimental
-modified: 2024/02/09
+modified: 2024-02-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1027
 query: 'DeviceProcessEvents

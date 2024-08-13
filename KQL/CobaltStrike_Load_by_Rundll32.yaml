@@ -1,17 +1,17 @@
 name: CobaltStrike Load by Rundll32
 id: ae9c6a7c-9521-42a6-915e-5aaa8689d529
 author: Wojciech Lesicki
-date: 2021/06/01
+date: 2021-06-01
 severity: high
 description: Rundll32 can be use by Cobalt Strike with StartW function to load DLLs
   from the command line.
 status: test
-modified: 2022/09/16
+modified: 2022-09-16
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

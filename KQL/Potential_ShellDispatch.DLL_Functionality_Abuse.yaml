@@ -1,7 +1,7 @@
 name: Potential ShellDispatch.DLL Functionality Abuse
 id: 82343930-652f-43f5-ab70-2ee9fdd6d5e9
 author: X__Junior (Nextron Systems)
-date: 2023/06/20
+date: 2023-06-20
 severity: medium
 description: Detects potential "ShellDispatch.dll" functionality abuse to execute
   arbitrary binaries via "ShellExecute"
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques: []
 query: 'DeviceProcessEvents

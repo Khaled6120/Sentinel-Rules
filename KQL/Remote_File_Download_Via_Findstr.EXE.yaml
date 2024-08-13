@@ -2,7 +2,7 @@ name: Remote File Download Via Findstr.EXE
 id: 587254ee-a24b-4335-b3cd-065c0f1f4baa
 author: Furkan CALISKAN, @caliskanfurkan_, @oscd_initiative, Nasreddine Bencherchali
   (Nextron Systems)
-date: 2020/10/05
+date: 2020-10-05
 severity: medium
 description: 'Detects execution of "findstr" with specific flags and a remote share
   path. This specific set of CLI flags would allow "findstr" to download the content
@@ -10,12 +10,12 @@ description: 'Detects execution of "findstr" with specific flags and a remote sh
 
   '
 status: experimental
-modified: 2024/03/05
+modified: 2024-03-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1105
 - T1218

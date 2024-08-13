@@ -1,16 +1,16 @@
 name: Arbitrary File Download Via MSOHTMED.EXE
 id: 459f2f98-397b-4a4a-9f47-6a5ec2f1c69d
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/19
+date: 2022-08-19
 severity: medium
 description: Detects usage of "MSOHTMED" to download arbitrary files
 status: test
-modified: 2023/11/09
+modified: 2023-11-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1218

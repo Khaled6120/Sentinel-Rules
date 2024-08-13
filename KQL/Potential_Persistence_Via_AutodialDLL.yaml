@@ -1,12 +1,12 @@
 name: Potential Persistence Via AutodialDLL
 id: e6fe26ee-d063-4f5b-b007-39e90aaf50e3
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/10
+date: 2022-08-10
 severity: high
 description: Detects change the the "AutodialDLL" key which could be used as a persistence
   method to load custom DLL via the "ws2_32" library
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

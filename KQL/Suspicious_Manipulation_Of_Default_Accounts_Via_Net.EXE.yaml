@@ -1,12 +1,12 @@
 name: Suspicious Manipulation Of Default Accounts Via Net.EXE
 id: 5b768e71-86f2-4879-b448-81061cbae951
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/09/01
+date: 2022-09-01
 severity: high
 description: Detects suspicious manipulations of default accounts such as 'administrator'
   and 'guest'. For example 'enable' or 'disable' accounts or change the password...etc
 status: test
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows

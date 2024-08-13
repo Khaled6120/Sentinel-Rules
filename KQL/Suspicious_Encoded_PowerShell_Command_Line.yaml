@@ -2,12 +2,12 @@ name: Suspicious Encoded PowerShell Command Line
 id: ca2092a1-c273-4878-9b4b-0d60115bf5ea
 author: Florian Roth (Nextron Systems), Markus Neis, Jonhnathan Ribeiro, Daniil Yugoslavskiy,
   Anton Kutepov, oscd.community
-date: 2018/09/03
+date: 2018-09-03
 severity: high
 description: Detects suspicious powershell process starts with base64 encoded commands
   (e.g. Emotet)
 status: test
-modified: 2023/04/06
+modified: 2023-04-06
 logsource:
   category: process_creation
   product: windows

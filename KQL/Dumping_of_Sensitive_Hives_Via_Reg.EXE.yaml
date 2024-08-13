@@ -2,17 +2,17 @@ name: Dumping of Sensitive Hives Via Reg.EXE
 id: fd877b94-9bb5-4191-bb25-d79cbd93c167
 author: Teymur Kheirkhabarov, Endgame, JHasenbusch, Daniil Yugoslavskiy, oscd.community,
   frack113
-date: 2019/10/22
+date: 2019-10-22
 severity: high
 description: Detects the usage of "reg.exe" in order to dump sensitive registry hives.
   This includes SAM, SYSTEM and SECURITY hives.
 status: test
-modified: 2023/12/13
+modified: 2023-12-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \" save \" or ProcessCommandLine\

@@ -1,18 +1,18 @@
 name: Potential Tampering With RDP Related Registry Keys Via Reg.EXE
 id: 0d5675be-bc88-4172-86d3-1e96a4476536
 author: pH-T (Nextron Systems), @Kostastsale, @TheDFIRReport
-date: 2022/02/12
+date: 2022-02-12
 severity: high
 description: Detects the execution of "reg.exe" for enabling/disabling the RDP service
   on the host by tampering with the 'CurrentControlSet\Control\Terminal Server' values
 status: test
-modified: 2023/02/05
+modified: 2023-02-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
-- Lateral Movement
+- Defense-evasion
+- Lateral-movement
 relevantTechniques:
 - T1021
 - T1112

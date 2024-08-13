@@ -1,16 +1,16 @@
 name: HackTool - CrackMapExec File Indicators
 id: 736ffa74-5f6f-44ca-94ef-1c0df4f51d2a
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2024/03/11
+date: 2024-03-11
 severity: high
 description: Detects file creation events with filename patterns used by CrackMapExec.
 status: experimental
-modified: 2024/06/27
+modified: 2024-06-27
 logsource:
   category: file_event
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceFileEvents

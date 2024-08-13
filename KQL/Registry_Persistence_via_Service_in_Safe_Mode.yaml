@@ -1,17 +1,17 @@
 name: Registry Persistence via Service in Safe Mode
 id: 1547e27c-3974-43e2-a7d7-7f484fb928ec
 author: frack113
-date: 2022/04/04
+date: 2022-04-04
 severity: high
 description: Detects the modification of the registry to allow a driver or service
   to persist in Safe Mode.
 status: experimental
-modified: 2024/03/25
+modified: 2024-03-25
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1564
 query: 'DeviceRegistryEvents

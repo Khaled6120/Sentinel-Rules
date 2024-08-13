@@ -1,17 +1,17 @@
 name: HackTool - NPPSpy Hacktool Usage
 id: cad1fe90-2406-44dc-bd03-59d0b58fe722
 author: Florian Roth (Nextron Systems)
-date: 2021/11/29
+date: 2021-11-29
 severity: high
 description: Detects the use of NPPSpy hacktool that stores cleartext passwords of
   users that logged in to a local file
 status: test
-modified: 2024/06/27
+modified: 2024-06-27
 logsource:
   category: file_event
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques: []
 query: 'DeviceFileEvents
 

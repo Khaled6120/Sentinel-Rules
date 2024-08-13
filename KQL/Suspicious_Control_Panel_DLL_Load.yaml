@@ -1,17 +1,17 @@
 name: Suspicious Control Panel DLL Load
 id: d7eb979b-c2b5-4a6f-a3a7-c87ce6763819
 author: Florian Roth (Nextron Systems)
-date: 2017/04/15
+date: 2017-04-15
 severity: high
 description: Detects suspicious Rundll32 execution from control.exe as used by Equation
   Group and Exploit Kits
 status: test
-modified: 2023/02/09
+modified: 2023-02-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

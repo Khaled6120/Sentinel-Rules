@@ -1,17 +1,17 @@
 name: UAC Bypass Using EventVwr
 id: 63e4f530-65dc-49cc-8f80-ccfa95c69d43
 author: Antonio Cocomazzi (idea), Florian Roth (Nextron Systems)
-date: 2022/04/27
+date: 2022-04-27
 severity: high
 description: Detects the pattern of a UAC bypass using Windows Event Viewer
 status: test
-modified: 2022/11/22
+modified: 2022-11-22
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques: []
 query: 'DeviceFileEvents
 

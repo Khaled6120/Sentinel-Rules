@@ -1,12 +1,12 @@
 name: VMToolsd Suspicious Child Process
 id: 5687f942-867b-4578-ade7-1e341c46e99a
 author: bohops, Bhabesh Raj
-date: 2021/10/08
+date: 2021-10-08
 severity: high
 description: Detects suspicious child process creations of VMware Tools process which
   may indicate persistence setup
 status: test
-modified: 2023/07/25
+modified: 2023-07-25
 logsource:
   category: process_creation
   product: windows

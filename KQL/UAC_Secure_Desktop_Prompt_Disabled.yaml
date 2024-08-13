@@ -1,7 +1,7 @@
 name: UAC Secure Desktop Prompt Disabled
 id: 0d7ceeef-3539-4392-8953-3dc664912714
 author: frack113
-date: 2024/05/10
+date: 2024-05-10
 severity: medium
 description: 'Detects when an attacker tries to change User Account Control (UAC)
   elevation request destination via the "PromptOnSecureDesktop" value.
@@ -22,8 +22,8 @@ logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1548
 query: 'DeviceRegistryEvents

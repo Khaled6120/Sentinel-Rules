@@ -1,7 +1,7 @@
 name: HackTool - Stracciatella Execution
 id: 7a4d9232-92fc-404d-8ce1-4c92e7caf539
 author: pH-T (Nextron Systems)
-date: 2023/04/17
+date: 2023-04-17
 severity: high
 description: Detects Stracciatella which executes a Powershell runspace from within
   C# (aka SharpPick technique) with AMSI, ETW and Script Block Logging disabled based
@@ -12,7 +12,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1059

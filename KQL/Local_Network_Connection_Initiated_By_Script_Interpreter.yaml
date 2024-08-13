@@ -1,19 +1,19 @@
 name: Local Network Connection Initiated By Script Interpreter
 id: 08249dc0-a28d-4555-8ba5-9255a198e08c
 author: frack113
-date: 2022/08/28
+date: 2022-08-28
 severity: medium
 description: 'Detects a script interpreter (Wscript/Cscript) initiating a local network
   connection to download or execute a script hosted on a shared folder.
 
   '
 status: test
-modified: 2024/05/31
+modified: 2024-05-31
 logsource:
   category: network_connection
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1105
 query: 'DeviceNetworkEvents

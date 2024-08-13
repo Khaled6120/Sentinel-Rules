@@ -1,11 +1,11 @@
 name: Potential Crypto Mining Activity
 id: 66c3b204-9f88-4d0a-a7f7-8a57d521ca55
 author: Florian Roth (Nextron Systems)
-date: 2021/10/26
+date: 2021-10-26
 severity: high
 description: Detects command line parameters or strings often used by crypto miners
 status: stable
-modified: 2023/02/13
+modified: 2023-02-13
 logsource:
   category: process_creation
   product: windows

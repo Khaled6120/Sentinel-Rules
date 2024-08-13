@@ -1,21 +1,21 @@
 name: Potential CobaltStrike Service Installations - Registry
 id: 61a7697c-cb79-42a8-a2ff-5f0cdfae0130
 author: Wojciech Lesicki
-date: 2021/06/29
+date: 2021-06-29
 severity: high
 description: 'Detects known malicious service installs that appear in cases in which
   a Cobalt Strike beacon elevates privileges or lateral movement.
 
   '
 status: test
-modified: 2024/03/25
+modified: 2024-03-25
 logsource:
   category: registry_set
   product: windows
 tactics:
 - Execution
-- Lateral Movement
-- Privilege Escalation
+- Lateral-movement
+- Privilege-escalation
 relevantTechniques:
 - T1021
 - T1543

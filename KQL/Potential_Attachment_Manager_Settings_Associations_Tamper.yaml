@@ -1,17 +1,17 @@
 name: Potential Attachment Manager Settings Associations Tamper
 id: a9b6c011-ab69-4ddb-bc0a-c4f21c80ec47
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/01
+date: 2022-08-01
 severity: high
 description: Detects tampering with attachment manager settings policies associations
   to lower the default file type risks (See reference for more information)
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 

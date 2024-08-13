@@ -1,16 +1,16 @@
 name: Lolbin Ssh.exe Use As Proxy
 id: 7d6d30b8-5b91-4b90-a891-46cccaf29598
 author: frack113, Nasreddine Bencherchali
-date: 2022/12/29
+date: 2022-12-29
 severity: medium
 description: Detect usage of the "ssh.exe" binary as a proxy to launch other programs
 status: test
-modified: 2023/01/25
+modified: 2023-01-25
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1202
 query: 'DeviceProcessEvents

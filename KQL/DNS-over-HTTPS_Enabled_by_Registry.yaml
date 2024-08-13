@@ -1,7 +1,7 @@
 name: DNS-over-HTTPS Enabled by Registry
 id: 04b45a8a-d11d-49e4-9acc-4a1b524407a5
 author: Austin Songer
-date: 2021/07/22
+date: 2021-07-22
 severity: medium
 description: 'Detects when a user enables DNS-over-HTTPS.
 
@@ -13,12 +13,12 @@ description: 'Detects when a user enables DNS-over-HTTPS.
 
   '
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 - T1140

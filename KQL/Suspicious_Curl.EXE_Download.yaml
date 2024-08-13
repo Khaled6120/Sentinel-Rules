@@ -1,17 +1,17 @@
 name: Suspicious Curl.EXE Download
 id: e218595b-bbe7-4ee5-8a96-f32a24ad3468
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2020/07/03
+date: 2020-07-03
 severity: high
 description: Detects a suspicious curl process start on Windows and outputs the requested
   document to a local file
 status: test
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1105
 query: 'DeviceProcessEvents

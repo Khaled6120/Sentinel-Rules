@@ -1,7 +1,7 @@
 name: Malicious DLL File Dropped in the Teams or OneDrive Folder
 id: 1908fcc1-1b92-4272-8214-0fbaf2fa5163
 author: frack113
-date: 2022/08/12
+date: 2022-08-12
 severity: high
 description: 'Detects creation of a malicious DLL file in the location where the OneDrive
   or Team applications
@@ -16,9 +16,9 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceFileEvents

@@ -2,16 +2,16 @@ name: HackTool - Mimikatz Execution
 id: a642964e-bead-4bed-8910-1bb4d63e3b4d
 author: Teymur Kheirkhabarov, oscd.community, David ANDRE (additional keywords), Tim
   Shelton
-date: 2019/10/22
+date: 2019-10-22
 severity: high
 description: Detection well-known mimikatz command line arguments
 status: test
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceProcessEvents

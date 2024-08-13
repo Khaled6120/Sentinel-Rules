@@ -1,7 +1,7 @@
 name: HackTool - Powerup Write Hijack DLL
 id: 602a1f13-c640-4d73-b053-be9a2fa58b96
 author: Subhash Popuri (@pbssubhash)
-date: 2021/08/21
+date: 2021-08-21
 severity: high
 description: 'Powerup tool''s Write Hijack DLL exploits DLL hijacking for privilege
   escalation.
@@ -13,14 +13,14 @@ description: 'Powerup tool''s Write Hijack DLL exploits DLL hijacking for privil
 
   '
 status: test
-modified: 2024/06/27
+modified: 2024-06-27
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceFileEvents

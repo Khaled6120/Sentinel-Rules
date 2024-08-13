@@ -2,18 +2,18 @@ name: Suspicious Double Extension File Execution
 id: 1cdd9a09-06c9-4769-99ff-626e2b3991b8
 author: Florian Roth (Nextron Systems), @blu3_team (idea), Nasreddine Bencherchali
   (Nextron Systems)
-date: 2019/06/26
+date: 2019-06-26
 severity: critical
 description: Detects suspicious use of an .exe extension after a non-executable file
   extension like .pdf.exe, a set of spaces or underlines to cloak the executable file
   in spear phishing campaigns
 status: stable
-modified: 2023/02/28
+modified: 2023-02-28
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 relevantTechniques:
 - T1566
 query: 'DeviceProcessEvents

@@ -1,12 +1,12 @@
 name: HackTool - Impacket Tools Execution
 id: 4627c6ae-6899-46e2-aa0c-6ebcb1becd19
 author: Florian Roth (Nextron Systems)
-date: 2021/07/24
+date: 2021-07-24
 severity: high
 description: Detects the execution of different compiled Windows binaries of the impacket
   toolset (based on names or part of their names - could lead to false positives)
 status: test
-modified: 2023/02/07
+modified: 2023-02-07
 logsource:
   category: process_creation
   product: windows

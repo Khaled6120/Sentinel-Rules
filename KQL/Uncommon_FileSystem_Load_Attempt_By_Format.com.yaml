@@ -1,7 +1,7 @@
 name: Uncommon FileSystem Load Attempt By Format.com
 id: 9fb6b26e-7f9e-4517-a48b-8cac4a1b6c60
 author: Florian Roth (Nextron Systems)
-date: 2022/01/04
+date: 2022-01-04
 severity: high
 description: 'Detects the execution of format.com with an uncommon filesystem selection
   that could indicate a defense evasion activity in which "format.com" is used to
@@ -9,12 +9,12 @@ description: 'Detects the execution of format.com with an uncommon filesystem se
 
   '
 status: test
-modified: 2024/05/13
+modified: 2024-05-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

@@ -1,11 +1,11 @@
 name: Suspicious Execution of Powershell with Base64
 id: fb843269-508c-4b76-8b8d-88679db22ce7
 author: frack113
-date: 2022/01/02
+date: 2022-01-02
 severity: medium
 description: Commandline to launch powershell with a base64 payload
 status: test
-modified: 2023/01/05
+modified: 2023-01-05
 logsource:
   category: process_creation
   product: windows

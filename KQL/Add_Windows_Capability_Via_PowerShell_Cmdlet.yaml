@@ -1,12 +1,12 @@
 name: Add Windows Capability Via PowerShell Cmdlet
 id: b36d01a3-ddaf-4804-be18-18a6247adfcd
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/01/22
+date: 2023-01-22
 severity: medium
 description: Detects usage of the "Add-WindowsCapability" cmdlet to add Windows capabilities.
   Notable capabilities could be "OpenSSH" and others.
 status: test
-modified: 2023/05/09
+modified: 2023-05-09
 logsource:
   category: process_creation
   product: windows

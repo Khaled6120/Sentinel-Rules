@@ -1,17 +1,17 @@
 name: ADSI-Cache File Creation By Uncommon Tool
 id: 75bf09fa-1dd7-4d18-9af9-dd9e492562eb
 author: xknow @xknow_infosec, Tim Shelton
-date: 2019/03/24
+date: 2019-03-24
 severity: medium
 description: Detects the creation of an "Active Directory Schema Cache File" (.sch)
   file by an uncommon tool.
 status: test
-modified: 2023/10/18
+modified: 2023-10-18
 logsource:
   category: file_event
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1001
 query: 'DeviceFileEvents

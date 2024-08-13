@@ -1,7 +1,7 @@
 name: Fsutil Behavior Set SymlinkEvaluation
 id: c0b2768a-dd06-4671-8339-b16ca8d1f27f
 author: frack113
-date: 2022/03/02
+date: 2022-03-02
 severity: medium
 description: 'A symbolic link is a type of file that contains a reference to another
   file.
@@ -11,7 +11,7 @@ description: 'A symbolic link is a type of file that contains a reference to ano
 
   '
 status: test
-modified: 2023/01/19
+modified: 2023-01-19
 logsource:
   category: process_creation
   product: windows

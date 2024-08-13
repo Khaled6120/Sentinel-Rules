@@ -1,7 +1,7 @@
 name: Finger.EXE Execution
 id: af491bca-e752-4b44-9c86-df5680533dbc
 author: Florian Roth (Nextron Systems), omkar72, oscd.community
-date: 2021/02/24
+date: 2021-02-24
 severity: high
 description: 'Detects execution of the "finger.exe" utility.
 
@@ -16,12 +16,12 @@ description: 'Detects execution of the "finger.exe" utility.
 
   '
 status: test
-modified: 2024/06/27
+modified: 2024-06-27
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1105
 query: 'DeviceProcessEvents

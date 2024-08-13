@@ -2,19 +2,19 @@ name: System File Execution Location Anomaly
 id: e4a6b256-3e47-40fc-89d2-7a477edd6915
 author: Florian Roth (Nextron Systems), Patrick Bareiss, Anton Kutepov, oscd.community,
   Nasreddine Bencherchali (Nextron Systems)
-date: 2017/11/27
+date: 2017-11-27
 severity: high
 description: 'Detects the execution of a Windows system binary that is usually located
   in the system folder from an uncommon location.
 
   '
 status: experimental
-modified: 2024/07/16
+modified: 2024-07-16
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceProcessEvents

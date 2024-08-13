@@ -1,7 +1,7 @@
 name: Uncommon Link.EXE Parent Process
 id: 6e968eb1-5f05-4dac-94e9-fd0c5cb49fd6
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/22
+date: 2022-08-22
 severity: medium
 description: 'Detects an uncommon parent process of "LINK.EXE".
 
@@ -19,12 +19,12 @@ description: 'Detects an uncommon parent process of "LINK.EXE".
 
   '
 status: test
-modified: 2024/06/27
+modified: 2024-06-27
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

@@ -1,7 +1,7 @@
 name: Regsvr32 Execution From Highly Suspicious Location
 id: 327ff235-94eb-4f06-b9de-aaee571324be
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/26
+date: 2023-05-26
 severity: high
 description: Detects execution of regsvr32 where the DLL is located in a highly suspicious
   locations
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

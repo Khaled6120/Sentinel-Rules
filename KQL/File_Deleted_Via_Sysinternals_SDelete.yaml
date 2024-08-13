@@ -1,17 +1,17 @@
 name: File Deleted Via Sysinternals SDelete
 id: 6ddab845-b1b8-49c2-bbf7-1a11967f64bc
 author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-date: 2020/05/02
+date: 2020-05-02
 severity: medium
 description: Detects the deletion of files by the Sysinternals SDelete utility. It
   looks for the common name pattern used to rename files.
 status: test
-modified: 2023/02/15
+modified: 2023-02-15
 logsource:
   category: file_delete
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1070
 query: 'DeviceFileEvents

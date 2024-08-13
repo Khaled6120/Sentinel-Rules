@@ -1,7 +1,7 @@
 name: Potential Hidden Directory Creation Via NTFS INDEX_ALLOCATION Stream - CLI
 id: 0900463c-b33b-49a8-be1d-552a3b553dae
 author: Nasreddine Bencherchali (Nextron Systems), Scoubi (@ScoubiMtl)
-date: 2023/10/09
+date: 2023-10-09
 severity: medium
 description: 'Detects command line containing reference to the "::$index_allocation"
   stream, which can be used as a technique to prevent access to folders or files from
@@ -14,7 +14,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1564
 query: 'DeviceProcessEvents

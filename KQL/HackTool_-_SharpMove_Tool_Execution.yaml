@@ -1,7 +1,7 @@
 name: HackTool - SharpMove Tool Execution
 id: 055fb54c-a8f4-4aee-bd44-f74cf30a0d9d
 author: Luca Di Bartolomeo (CrimpSec)
-date: 2024/01/29
+date: 2024-01-29
 severity: high
 description: 'Detects the execution of SharpMove, a .NET utility performing multiple
   tasks such as "Task Creation", "SCM" query, VBScript execution using WMI via its
@@ -14,7 +14,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Lateral Movement
+- Lateral-movement
 relevantTechniques:
 - T1021
 query: 'DeviceProcessEvents

@@ -1,16 +1,16 @@
 name: Office Macro File Creation From Suspicious Process
 id: b1c50487-1967-4315-a026-6491686d860e
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
-date: 2022/01/23
+date: 2022-01-23
 severity: high
 description: Detects the creation of a office macro file from a a suspicious process
 status: test
-modified: 2023/02/22
+modified: 2023-02-22
 logsource:
   category: file_event
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 relevantTechniques:
 - T1566
 query: 'DeviceFileEvents

@@ -1,7 +1,7 @@
 name: Suspicious Scheduled Task Creation via Masqueraded XML File
 id: dd2a821e-3b07-4d3b-a9ac-929fe4c6ca0c
 author: Swachchhanda Shrawan Poudel, Elastic (idea)
-date: 2023/04/20
+date: 2023-04-20
 severity: medium
 description: Detects the creation of a scheduled task using the "-XML" flag with a
   file without the '.xml' extension. This behavior could be indicative of potential
@@ -12,7 +12,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 relevantTechniques:
 - T1036

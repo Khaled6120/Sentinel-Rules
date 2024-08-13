@@ -1,7 +1,7 @@
 name: RDP File Creation From Suspicious Application
 id: fccfb43e-09a7-4bd2-8b37-a5a7df33386d
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/04/18
+date: 2023-04-18
 severity: high
 description: Detects Rclone config file being created
 status: test
@@ -10,7 +10,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceFileEvents
 

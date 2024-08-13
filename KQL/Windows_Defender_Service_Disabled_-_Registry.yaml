@@ -1,17 +1,17 @@
 name: Windows Defender Service Disabled - Registry
 id: e1aa95de-610a-427d-b9e7-9b46cfafbe6a
 author: "J\xE1n Tren\u010Dansk\xFD, frack113, AlertIQ, Nasreddine Bencherchali"
-date: 2022/08/01
+date: 2022-08-01
 severity: high
 description: Detects when an attacker or tool disables the  Windows Defender service
   (WinDefend) via the registry
 status: experimental
-modified: 2024/03/25
+modified: 2024-03-25
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

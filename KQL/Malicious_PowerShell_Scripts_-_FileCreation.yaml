@@ -2,11 +2,11 @@ name: Malicious PowerShell Scripts - FileCreation
 id: f331aa1f-8c53-4fc3-b083-cc159bc971cb
 author: Markus Neis, Nasreddine Bencherchali (Nextron Systems), Mustafa Kaan Demir,
   Georg Lauenstein
-date: 2018/04/07
+date: 2018-04-07
 severity: high
 description: Detects the creation of known offensive powershell scripts used for exploitation
 status: test
-modified: 2024/01/25
+modified: 2024-01-25
 logsource:
   category: file_event
   product: windows

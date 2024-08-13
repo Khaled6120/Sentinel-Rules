@@ -1,7 +1,7 @@
 name: Potential DLL File Download Via PowerShell Invoke-WebRequest
 id: 0f0450f3-8b47-441e-a31b-15a91dc243e2
 author: Florian Roth (Nextron Systems), Hieu Tran
-date: 2023/03/13
+date: 2023-03-13
 severity: medium
 description: Detects potential DLL files being downloaded using the PowerShell Invoke-WebRequest
   cmdlet
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 - Execution
 relevantTechniques:
 - T1059

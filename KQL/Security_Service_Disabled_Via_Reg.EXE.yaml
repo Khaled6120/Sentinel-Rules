@@ -1,17 +1,17 @@
 name: Security Service Disabled Via Reg.EXE
 id: 5e95028c-5229-4214-afae-d653d573d0ec
 author: Florian Roth (Nextron Systems), John Lambert (idea), elhoim
-date: 2021/07/14
+date: 2021-07-14
 severity: high
 description: Detects execution of "reg.exe" to disable security services such as Windows
   Defender.
 status: test
-modified: 2023/06/05
+modified: 2023-06-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

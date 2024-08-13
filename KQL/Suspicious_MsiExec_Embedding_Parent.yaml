@@ -1,17 +1,17 @@
 name: Suspicious MsiExec Embedding Parent
 id: 4a2a2c3e-209f-4d01-b513-4155a540b469
 author: frack113
-date: 2022/04/16
+date: 2022-04-16
 severity: medium
 description: Adversaries may abuse msiexec.exe to proxy the execution of malicious
   payloads
 status: test
-modified: 2022/07/14
+modified: 2022-07-14
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

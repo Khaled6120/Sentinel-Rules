@@ -1,17 +1,17 @@
 name: Rundll32 Execution With Uncommon DLL Extension
 id: c3a99af4-35a9-4668-879e-c09aeb4f2bdf
 author: Tim Shelton, Florian Roth (Nextron Systems), Yassine Oukessou
-date: 2022/01/13
+date: 2022-01-13
 severity: medium
 description: Detects the execution of rundll32 with a command line that doesn't contain
   a common extension
 status: experimental
-modified: 2024/04/04
+modified: 2024-04-04
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

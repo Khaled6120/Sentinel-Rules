@@ -1,12 +1,12 @@
 name: Recon Information for Export with Command Prompt
 id: aa2efee7-34dd-446e-8a37-40790a66efd7
 author: frack113
-date: 2021/07/30
+date: 2021-07-30
 severity: medium
 description: Once established within a system or network, an adversary may use automated
   techniques for collecting internal data.
 status: test
-modified: 2022/09/13
+modified: 2022-09-13
 logsource:
   category: process_creation
   product: windows

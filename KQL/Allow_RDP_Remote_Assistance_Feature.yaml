@@ -1,17 +1,17 @@
 name: Allow RDP Remote Assistance Feature
 id: 37b437cf-3fc5-4c8e-9c94-1d7c9aff842b
 author: frack113
-date: 2022/08/19
+date: 2022-08-19
 severity: medium
 description: Detect enable rdp feature to allow specific user to rdp connect on the
   targeted machine
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

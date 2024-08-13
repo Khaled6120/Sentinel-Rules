@@ -1,7 +1,7 @@
 name: Suspicious Schtasks Schedule Types
 id: 24c8392b-aa3c-46b7-a545-43f71657fe98
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/09/09
+date: 2022-09-09
 severity: high
 description: Detects scheduled task creations or modification on a suspicious schedule
   type

@@ -1,7 +1,7 @@
 name: PowerShell Script Execution Policy Enabled
 id: 8218c875-90b9-42e2-b60d-0b0069816d10
 author: Nasreddine Bencherchali (Nextron Systems), Thurein Oo
-date: 2023/10/18
+date: 2023-10-18
 severity: low
 description: Detects the enabling of the PowerShell script execution policy. Once
   enabled, this policy allows scripts to be executed.

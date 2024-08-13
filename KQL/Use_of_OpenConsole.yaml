@@ -1,7 +1,7 @@
 name: Use of OpenConsole
 id: 814c95cc-8192-4378-a70a-f1aafd877af1
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/06/16
+date: 2022-06-16
 severity: medium
 description: Detects usage of OpenConsole binary as a LOLBIN to launch other binaries
   to bypass application Whitelisting

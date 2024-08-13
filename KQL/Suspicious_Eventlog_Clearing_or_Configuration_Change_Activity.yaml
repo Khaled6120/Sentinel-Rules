@@ -1,7 +1,7 @@
 name: Suspicious Eventlog Clearing or Configuration Change Activity
 id: cc36992a-4671-4f21-a91d-6c2b72a2edf5
 author: Ecco, Daniil Yugoslavskiy, oscd.community, D3F7A5105
-date: 2019/09/26
+date: 2019-09-26
 severity: high
 description: 'Detects the clearing or configuration tampering of EventLog using utilities
   such as "wevtutil", "powershell" and "wmic".
@@ -11,12 +11,12 @@ description: 'Detects the clearing or configuration tampering of EventLog using 
 
   '
 status: stable
-modified: 2023/07/13
+modified: 2023-07-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1070
 - T1562

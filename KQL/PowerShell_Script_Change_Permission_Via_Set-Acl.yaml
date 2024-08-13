@@ -1,7 +1,7 @@
 name: PowerShell Script Change Permission Via Set-Acl
 id: bdeb2cff-af74-4094-8426-724dc937f20a
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/10/18
+date: 2022-10-18
 severity: high
 description: Detects PowerShell execution to set the ACL of a file or a folder
 status: test
@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

@@ -1,18 +1,18 @@
 name: UAC Bypass Using Windows Media Player - Process
 id: 0058b9e5-bcd7-40d4-9205-95ca5a16d7b2
 author: Christian Burkard (Nextron Systems)
-date: 2021/08/23
+date: 2021-08-23
 severity: high
 description: Detects the pattern of UAC Bypass using Windows Media Player osksupport.dll
   (UACMe 32)
 status: test
-modified: 2022/10/09
+modified: 2022-10-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1548
 query: 'DeviceProcessEvents

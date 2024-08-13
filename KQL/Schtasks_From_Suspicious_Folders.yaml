@@ -1,12 +1,12 @@
 name: Schtasks From Suspicious Folders
 id: 8a8379b8-780b-4dbf-b1e9-31c8d112fefb
 author: Florian Roth (Nextron Systems)
-date: 2022/04/15
+date: 2022-04-15
 severity: high
 description: Detects scheduled task creations that have suspicious action command
   and folder combinations
 status: test
-modified: 2022/11/18
+modified: 2022-11-18
 logsource:
   category: process_creation
   product: windows

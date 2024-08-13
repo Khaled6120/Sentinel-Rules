@@ -1,7 +1,7 @@
 name: Enumeration for 3rd Party Creds From CLI
 id: 87a476dc-0079-4583-a985-dee7a20a03de
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/06/20
+date: 2022-06-20
 severity: medium
 description: Detects processes that query known 3rd party registry keys that holds
   credentials via commandline
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1552
 query: 'DeviceProcessEvents

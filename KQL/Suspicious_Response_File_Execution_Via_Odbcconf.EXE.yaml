@@ -1,17 +1,17 @@
 name: Suspicious Response File Execution Via Odbcconf.EXE
 id: 2d32dd6f-3196-4093-b9eb-1ad8ab088ca5
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/22
+date: 2023-05-22
 severity: high
 description: Detects execution of "odbcconf" with the "-f" flag in order to load a
   response file with a non-".rsp" extension.
 status: experimental
-modified: 2024/03/13
+modified: 2024-03-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" -f \" or ProcessCommandLine\

@@ -1,7 +1,7 @@
 name: Uncommon Extension Shim Database Installation Via Sdbinst.EXE
 id: 18ee686c-38a3-4f65-9f44-48a077141f42
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/08/01
+date: 2023-08-01
 severity: medium
 description: 'Detects installation of a potentially suspicious new shim with an uncommon
   extension using sdbinst.exe.
@@ -11,13 +11,13 @@ description: 'Detects installation of a potentially suspicious new shim with an 
 
   '
 status: test
-modified: 2024/01/10
+modified: 2024-01-10
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1546
 query: 'DeviceProcessEvents

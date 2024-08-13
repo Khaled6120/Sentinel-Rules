@@ -1,7 +1,7 @@
 name: Deleted Data Overwritten Via Cipher.EXE
 id: 4b046706-5789-4673-b111-66f25fe99534
 author: frack113
-date: 2021/12/26
+date: 2021-12-26
 severity: medium
 description: 'Detects usage of the "cipher" built-in utility in order to overwrite
   deleted data from disk.
@@ -14,7 +14,7 @@ description: 'Detects usage of the "cipher" built-in utility in order to overwri
 
   '
 status: test
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows

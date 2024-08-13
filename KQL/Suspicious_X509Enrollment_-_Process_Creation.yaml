@@ -1,7 +1,7 @@
 name: Suspicious X509Enrollment - Process Creation
 id: 114de787-4eb2-48cc-abdb-c0b449f93ea4
 author: frack113
-date: 2022/12/23
+date: 2022-12-23
 severity: medium
 description: Detect use of X509Enrollment
 status: test
@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1553
 query: 'DeviceProcessEvents

@@ -1,16 +1,16 @@
 name: Potential NetWire RAT Activity - Registry
 id: 1d218616-71b0-4c40-855b-9dbe75510f7f
 author: Christopher Peacock
-date: 2021/10/07
+date: 2021-10-07
 severity: high
 description: Detects registry keys related to NetWire RAT
 status: test
-modified: 2023/02/07
+modified: 2023-02-07
 logsource:
   category: registry_add
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

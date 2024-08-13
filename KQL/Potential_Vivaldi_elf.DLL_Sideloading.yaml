@@ -1,7 +1,7 @@
 name: Potential Vivaldi_elf.DLL Sideloading
 id: 2092cacb-d77b-4f98-ab0d-32b32f99a054
 author: X__Junior (Nextron Systems)
-date: 2023/08/03
+date: 2023-08-03
 severity: medium
 description: Detects potential DLL sideloading of "vivaldi_elf.dll"
 status: test
@@ -10,8 +10,8 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

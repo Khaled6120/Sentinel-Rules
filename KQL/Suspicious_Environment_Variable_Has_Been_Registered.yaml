@@ -1,17 +1,17 @@
 name: Suspicious Environment Variable Has Been Registered
 id: 966315ef-c5e1-4767-ba25-fce9c8de3660
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/12/20
+date: 2022-12-20
 severity: high
 description: Detects the creation of user-specific or system-wide environment variables
   via the registry. Which contains suspicious commands and strings
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 relevantTechniques: []
 query: 'DeviceRegistryEvents

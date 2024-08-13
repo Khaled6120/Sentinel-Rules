@@ -1,17 +1,17 @@
 name: Non-privileged Usage of Reg or Powershell
 id: 8f02c935-effe-45b3-8fc9-ef8696a9e41d
 author: Teymur Kheirkhabarov (idea), Ryan Plas (rule), oscd.community
-date: 2020/10/05
+date: 2020-10-05
 severity: high
 description: Search for usage of reg or Powershell by non-privileged users to modify
   service configuration in registry
 status: test
-modified: 2022/07/07
+modified: 2022-07-07
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceProcessEvents

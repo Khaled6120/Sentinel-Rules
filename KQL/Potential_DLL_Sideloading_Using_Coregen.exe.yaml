@@ -1,7 +1,7 @@
 name: Potential DLL Sideloading Using Coregen.exe
 id: 0fa66f66-e3f6-4a9c-93f8-4f2610b00171
 author: frack113
-date: 2022/12/31
+date: 2022-12-31
 severity: medium
 description: Detect usage of DLL "coregen.exe" (Microsoft CoreCLR Native Image Generator)
   binary to sideload arbitrary DLLs.
@@ -11,7 +11,7 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1055
 - T1218

@@ -1,7 +1,7 @@
 name: RestrictedAdminMode Registry Value Tampering - ProcCreation
 id: 28ac00d6-22d9-4a3c-927f-bbd770104573
 author: frack113
-date: 2023/01/13
+date: 2023-01-13
 severity: high
 description: 'Detects changes to the "DisableRestrictedAdmin" registry value in order
   to disable or enable RestrictedAdmin mode.
@@ -14,12 +14,12 @@ description: 'Detects changes to the "DisableRestrictedAdmin" registry value in 
 
   '
 status: test
-modified: 2023/12/15
+modified: 2023-12-15
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceProcessEvents

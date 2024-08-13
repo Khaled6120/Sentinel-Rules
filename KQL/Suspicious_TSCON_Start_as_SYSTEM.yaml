@@ -1,16 +1,16 @@
 name: Suspicious TSCON Start as SYSTEM
 id: 9847f263-4a81-424f-970c-875dab15b79b
 author: Florian Roth (Nextron Systems)
-date: 2018/03/17
+date: 2018-03-17
 severity: high
 description: Detects a tscon.exe start as LOCAL SYSTEM
 status: test
-modified: 2022/05/27
+modified: 2022-05-27
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1219
 query: 'DeviceProcessEvents

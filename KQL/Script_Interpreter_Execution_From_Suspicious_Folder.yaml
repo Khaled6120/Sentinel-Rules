@@ -1,12 +1,12 @@
 name: Script Interpreter Execution From Suspicious Folder
 id: 1228c958-e64e-4e71-92ad-7d429f4138ba
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2022/02/08
+date: 2022-02-08
 severity: high
 description: Detects a suspicious script execution in temporary folders or folders
   accessible by environment variables
 status: test
-modified: 2023/06/16
+modified: 2023-06-16
 logsource:
   category: process_creation
   product: windows

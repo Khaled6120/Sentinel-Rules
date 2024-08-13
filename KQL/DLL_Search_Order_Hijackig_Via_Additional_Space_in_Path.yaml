@@ -1,7 +1,7 @@
 name: DLL Search Order Hijackig Via Additional Space in Path
 id: b6f91281-20aa-446a-b986-38a92813a18f
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
-date: 2022/07/30
+date: 2022-07-30
 severity: high
 description: 'Detects when an attacker create a similar folder structure to windows
   system folders such as (Windows, Program Files...)
@@ -16,9 +16,9 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceFileEvents

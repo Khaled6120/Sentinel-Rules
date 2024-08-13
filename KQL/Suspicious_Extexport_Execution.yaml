@@ -1,17 +1,17 @@
 name: Suspicious Extexport Execution
 id: fb0b815b-f5f6-4f50-970f-ffe21f253f7a
 author: frack113
-date: 2021/11/26
+date: 2021-11-26
 severity: medium
 description: Extexport.exe loads dll and is execute from other folder the original
   path
 status: test
-modified: 2022/05/16
+modified: 2022-05-16
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

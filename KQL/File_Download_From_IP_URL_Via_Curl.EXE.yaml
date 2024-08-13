@@ -1,7 +1,7 @@
 name: File Download From IP URL Via Curl.EXE
 id: 9cc85849-3b02-4cb5-b371-3a1ff54f2218
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/10/18
+date: 2023-10-18
 severity: medium
 description: Detects file downloads directly from IP address URL using curl.exe
 status: experimental

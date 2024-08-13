@@ -1,7 +1,7 @@
 name: Security Tools Keyword Lookup Via Findstr.EXE
 id: 4fe074b4-b833-4081-8f24-7dcfeca72b42
 author: Nasreddine Bencherchali (Nextron Systems), frack113
-date: 2023/10/20
+date: 2023-10-20
 severity: medium
 description: 'Detects execution of "findstr" to search for common names of security
   tools. Attackers often pipe the results of recon commands such as "tasklist" or
@@ -11,7 +11,7 @@ description: 'Detects execution of "findstr" to search for common names of secur
 
   '
 status: experimental
-modified: 2023/11/14
+modified: 2023-11-14
 logsource:
   category: process_creation
   product: windows

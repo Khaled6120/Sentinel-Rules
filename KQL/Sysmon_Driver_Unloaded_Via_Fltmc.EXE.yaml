@@ -1,16 +1,16 @@
 name: Sysmon Driver Unloaded Via Fltmc.EXE
 id: 4d7cda18-1b12-4e52-b45c-d28653210df8
 author: Kirill Kiryanov, oscd.community
-date: 2019/10/23
+date: 2019-10-23
 severity: high
 description: Detects possible Sysmon filter driver unloaded via fltmc.exe
 status: test
-modified: 2023/02/13
+modified: 2023-02-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1070
 - T1562

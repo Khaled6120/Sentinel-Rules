@@ -1,11 +1,11 @@
 name: PowerShell Base64 Encoded IEX Cmdlet
 id: 88f680b8-070e-402c-ae11-d2914f2257f1
 author: Florian Roth (Nextron Systems)
-date: 2019/08/23
+date: 2019-08-23
 severity: high
 description: Detects usage of a base64 encoded "IEX" cmdlet in a process command line
 status: test
-modified: 2023/04/06
+modified: 2023-04-06
 logsource:
   category: process_creation
   product: windows

@@ -1,7 +1,7 @@
 name: HackTool - SharpDPAPI Execution
 id: c7d33b50-f690-4b51-8cfb-0fb912a31e57
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2024/06/26
+date: 2024-06-26
 severity: high
 description: 'Detects the execution of the SharpDPAPI tool based on CommandLine flags
   and PE metadata.
@@ -15,8 +15,8 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1134
 query: 'DeviceProcessEvents

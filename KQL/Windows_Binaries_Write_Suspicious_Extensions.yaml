@@ -1,16 +1,16 @@
 name: Windows Binaries Write Suspicious Extensions
 id: b8fd0e93-ff58-4cbd-8f48-1c114e342e62
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/12
+date: 2022-08-12
 severity: high
 description: Detects Windows executables that write files with suspicious extensions
 status: test
-modified: 2024/04/15
+modified: 2024-04-15
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceFileEvents

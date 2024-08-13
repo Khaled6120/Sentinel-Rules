@@ -1,12 +1,12 @@
 name: File Creation In Suspicious Directory By Msdt.EXE
 id: 318557a5-150c-4c8d-b70e-a9910e199857
 author: Vadim Varganov, Florian Roth (Nextron Systems)
-date: 2022/08/24
+date: 2022-08-24
 severity: high
 description: Detects msdt.exe creating files in suspicious directories which could
   be a sign of exploitation of either Follina or Dogwalk vulnerabilities
 status: test
-modified: 2023/02/23
+modified: 2023-02-23
 logsource:
   category: file_event
   product: windows

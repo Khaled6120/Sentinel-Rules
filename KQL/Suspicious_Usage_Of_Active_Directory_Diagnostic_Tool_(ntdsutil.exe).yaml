@@ -1,7 +1,7 @@
 name: Suspicious Usage Of Active Directory Diagnostic Tool (ntdsutil.exe)
 id: a58353df-af43-4753-bad0-cd83ef35eef5
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/09/14
+date: 2022-09-14
 severity: medium
 description: Detects execution of ntdsutil.exe to perform different actions such as
   restoring snapshots...etc.
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceProcessEvents

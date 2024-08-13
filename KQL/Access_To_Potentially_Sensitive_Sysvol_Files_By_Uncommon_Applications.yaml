@@ -1,17 +1,17 @@
 name: Access To Potentially Sensitive Sysvol Files By Uncommon Applications
 id: d51694fe-484a-46ac-92d6-969e76d60d10
 author: frack113
-date: 2023/12/21
+date: 2023-12-21
 severity: medium
 description: Detects file access requests to potentially sensitive files hosted on
   the Windows Sysvol share.
 status: experimental
-modified: 2024/07/29
+modified: 2024-07-29
 logsource:
   category: file_access
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1552
 query: 'DeviceFileEvents

@@ -1,7 +1,7 @@
 name: Enable Remote Connection Between Anonymous Computer - AllowAnonymousCallback
 id: 4d431012-2ab5-4db7-a84e-b29809da2172
 author: X__Junior (Nextron Systems)
-date: 2023/11/03
+date: 2023-11-03
 severity: medium
 description: Detects enabling of the "AllowAnonymousCallback" registry value, which
   allows a remote connection between computers that do not have a trust relationship.
@@ -11,7 +11,7 @@ logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

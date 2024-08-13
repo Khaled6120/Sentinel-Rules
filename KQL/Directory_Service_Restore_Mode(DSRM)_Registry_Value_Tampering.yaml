@@ -1,7 +1,7 @@
 name: Directory Service Restore Mode(DSRM) Registry Value Tampering
 id: b61e87c0-50db-4b2e-8986-6a2be94b33b0
 author: Nischal Khadgi
-date: 2024/07/11
+date: 2024-07-11
 severity: high
 description: "Detects changes to \"DsrmAdminLogonBehavior\" registry value.\nDuring\
   \ a Domain Controller (DC) promotion, administrators create a Directory Services\

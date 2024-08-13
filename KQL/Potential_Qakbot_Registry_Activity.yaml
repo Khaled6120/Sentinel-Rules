@@ -1,7 +1,7 @@
 name: Potential Qakbot Registry Activity
 id: 1c8e96cd-2bed-487d-9de0-b46c90cade56
 author: Hieu Tran
-date: 2023/03/13
+date: 2023-03-13
 severity: high
 description: Detects a registry key used by IceID in a campaign that distributes malicious
   OneNote files
@@ -11,7 +11,7 @@ logsource:
   category: registry_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

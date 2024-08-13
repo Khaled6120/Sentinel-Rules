@@ -1,16 +1,16 @@
 name: HackTool - F-Secure C3 Load by Rundll32
 id: b18c9d4c-fac9-4708-bd06-dd5bfacf200f
 author: Alfie Champion (ajpc500)
-date: 2021/06/02
+date: 2021-06-02
 severity: critical
 description: F-Secure C3 produces DLLs with a default exported StartNodeRelay function.
 status: test
-modified: 2023/03/05
+modified: 2023-03-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

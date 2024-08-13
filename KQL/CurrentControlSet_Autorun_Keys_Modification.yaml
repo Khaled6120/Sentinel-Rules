@@ -2,11 +2,11 @@ name: CurrentControlSet Autorun Keys Modification
 id: f674e36a-4b91-431e-8aef-f8a96c2aca35
 author: Victor Sergeev, Daniil Yugoslavskiy, Gleb Sukhodolskiy, Timur Zinniatullin,
   oscd.community, Tim Shelton, frack113 (split)
-date: 2019/10/25
+date: 2019-10-25
 severity: medium
 description: Detects modification of autostart extensibility point (ASEP) in registry.
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

@@ -1,7 +1,7 @@
 name: New Netsh Helper DLL Registered From A Suspicious Location
 id: e7b18879-676e-4a0e-ae18-27039185a8e7
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/11/28
+date: 2023-11-28
 severity: high
 description: 'Detects changes to the Netsh registry key to add a new DLL value that
   is located on a suspicious location. This change might be an indication of a potential

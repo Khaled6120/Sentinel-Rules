@@ -1,12 +1,12 @@
 name: PUA - Suspicious ActiveDirectory Enumeration Via AdFind.EXE
 id: 455b9d50-15a1-4b99-853f-8d37655a4c1b
 author: frack113
-date: 2021/12/13
+date: 2021-12-13
 severity: high
 description: Detects active directory enumeration activity using known AdFind CLI
   flags
 status: test
-modified: 2023/03/05
+modified: 2023-03-05
 logsource:
   category: process_creation
   product: windows

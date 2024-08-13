@@ -1,7 +1,7 @@
 name: Outbound Network Connection Initiated By Cmstp.EXE
 id: efafe0bf-4238-479e-af8f-797bd3490d2d
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/30
+date: 2022-08-30
 severity: high
 description: 'Detects a network connection initiated by Cmstp.EXE
 
@@ -10,12 +10,12 @@ description: 'Detects a network connection initiated by Cmstp.EXE
 
   '
 status: test
-modified: 2024/05/31
+modified: 2024-05-31
 logsource:
   category: network_connection
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceNetworkEvents

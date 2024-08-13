@@ -1,7 +1,7 @@
 name: Remote File Download Via Desktopimgdownldr Utility
 id: 214641c2-c579-4ecb-8427-0cf19df6842e
 author: Tim Rauch, Elastic (idea)
-date: 2022/09/27
+date: 2022-09-27
 severity: medium
 description: Detects the desktopimgdownldr utility being used to download a remote
   file. An adversary may use desktopimgdownldr to download arbitrary files as an alternative
@@ -12,7 +12,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1105
 query: 'DeviceProcessEvents

@@ -1,13 +1,13 @@
 name: Potential Persistence Attempt Via Existing Service Tampering
 id: 38879043-7e1e-47a9-8d46-6bec88e201df
 author: Sreeman
-date: 2020/09/29
+date: 2020-09-29
 severity: medium
 description: Detects the modification of an existing service in order to execute an
   arbitrary payload when the service is started or killed as a potential method for
   persistence.
 status: test
-modified: 2023/02/04
+modified: 2023-02-04
 logsource:
   category: process_creation
   product: windows

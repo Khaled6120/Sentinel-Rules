@@ -1,7 +1,7 @@
 name: Suspicious Get-Variable.exe Creation
 id: 0c3fac91-5627-46e8-a6a8-a0d7b9b8ae1b
 author: frack113
-date: 2022/04/23
+date: 2022-04-23
 severity: high
 description: 'Get-Variable is a valid PowerShell cmdlet
 
@@ -18,7 +18,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 relevantTechniques:
 - T1027

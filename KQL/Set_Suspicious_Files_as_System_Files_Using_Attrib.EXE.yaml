@@ -1,7 +1,7 @@
 name: Set Suspicious Files as System Files Using Attrib.EXE
 id: efec536f-72e8-4656-8960-5e85d091345b
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/06/28
+date: 2022-06-28
 severity: high
 description: 'Detects the usage of attrib with the "+s" option to set scripts or executables
   located in suspicious locations as system files to hide them from users and make
@@ -10,12 +10,12 @@ description: 'Detects the usage of attrib with the "+s" option to set scripts or
 
   '
 status: test
-modified: 2023/03/14
+modified: 2023-03-14
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1564
 query: 'DeviceProcessEvents

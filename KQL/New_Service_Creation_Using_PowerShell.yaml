@@ -1,7 +1,7 @@
 name: New Service Creation Using PowerShell
 id: c02e96b7-c63a-4c47-bd83-4a9f74afcfb2
 author: Timur Zinniatullin, Daniil Yugoslavskiy, oscd.community
-date: 2023/02/20
+date: 2023-02-20
 severity: low
 description: Detects the creation of a new service using powershell.
 status: test
@@ -11,7 +11,7 @@ logsource:
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1543
 query: 'DeviceProcessEvents

@@ -1,17 +1,17 @@
 name: Persistence Via New SIP Provider
 id: 5a2b21ee-6aaa-4234-ac9d-59a59edf90a1
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/07/21
+date: 2022-07-21
 severity: medium
 description: Detects when an attacker register a new SIP provider for persistence
   and defense evasion
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 relevantTechniques:
 - T1553

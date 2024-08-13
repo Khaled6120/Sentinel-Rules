@@ -1,17 +1,17 @@
 name: Outlook Macro Execution Without Warning Setting Enabled
 id: e3b50fa5-3c3f-444e-937b-0a99d33731cd
 author: '@ScoubiMtl'
-date: 2021/04/05
+date: 2021-04-05
 severity: high
 description: Detects the modification of Outlook security setting to allow unprompted
   execution of macros.
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 - Persistence
 relevantTechniques:
 - T1008

@@ -1,17 +1,17 @@
 name: LSA PPL Protection Disabled Via Reg.EXE
 id: 8c0eca51-0f88-4db2-9183-fdfb10c703f9
 author: Florian Roth (Nextron Systems)
-date: 2022/03/22
+date: 2022-03-22
 severity: high
 description: Detects the usage of the "reg.exe" utility to disable PPL protection
   on the LSA process
 status: test
-modified: 2023/03/26
+modified: 2023-03-26
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

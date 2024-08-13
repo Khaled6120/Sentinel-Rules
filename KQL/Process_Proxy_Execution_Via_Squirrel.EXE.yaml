@@ -2,7 +2,7 @@ name: Process Proxy Execution Via Squirrel.EXE
 id: 45239e6a-b035-4aaf-b339-8ad379fcb67e
 author: Nasreddine Bencherchali (Nextron Systems), Karneades / Markus Neis, Jonhnathan
   Ribeiro, oscd.community
-date: 2022/06/09
+date: 2022-06-09
 severity: medium
 description: 'Detects the usage of the "Squirrel.exe" binary to execute arbitrary
   processes. This binary is part of multiple Electron based software installations
@@ -10,12 +10,12 @@ description: 'Detects the usage of the "Squirrel.exe" binary to execute arbitrar
 
   '
 status: experimental
-modified: 2023/11/09
+modified: 2023-11-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1218

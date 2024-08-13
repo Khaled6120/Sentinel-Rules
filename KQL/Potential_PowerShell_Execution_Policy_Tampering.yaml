@@ -1,17 +1,17 @@
 name: Potential PowerShell Execution Policy Tampering
 id: fad91067-08c5-4d1a-8d8c-d96a21b37814
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/01/11
+date: 2023-01-11
 severity: medium
 description: Detects changes to the PowerShell execution policy in order to bypass
   signing requirements for script execution
 status: experimental
-modified: 2023/12/14
+modified: 2023-12-14
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 

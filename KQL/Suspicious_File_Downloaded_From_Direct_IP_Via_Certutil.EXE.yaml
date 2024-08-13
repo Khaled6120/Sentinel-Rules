@@ -1,7 +1,7 @@
 name: Suspicious File Downloaded From Direct IP Via Certutil.EXE
 id: 13e6fe51-d478-4c7e-b0f2-6da9b400a829
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/02/15
+date: 2023-02-15
 severity: high
 description: Detects the execution of certutil with certain flags that allow the utility
   to download files from direct IPs.
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1027
 query: 'DeviceProcessEvents

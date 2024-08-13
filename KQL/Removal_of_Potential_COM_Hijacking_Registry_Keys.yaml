@@ -1,7 +1,7 @@
 name: Removal of Potential COM Hijacking Registry Keys
 id: 96f697b0-b499-4e5d-9908-a67bec11cdb6
 author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-date: 2020/05/02
+date: 2020-05-02
 severity: medium
 description: 'Detects any deletion of entries in ".*\shell\open\command" registry
   keys.
@@ -11,12 +11,12 @@ description: 'Detects any deletion of entries in ".*\shell\open\command" registr
 
   '
 status: test
-modified: 2023/01/19
+modified: 2023-01-19
 logsource:
   category: registry_delete
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

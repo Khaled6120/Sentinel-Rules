@@ -1,17 +1,17 @@
 name: Suspicious Recursive Takeown
 id: 554601fb-9b71-4bcc-abf4-21a611be4fde
 author: frack113
-date: 2022/01/30
+date: 2022-01-30
 severity: medium
 description: Adversaries can interact with the DACLs using built-in Windows commands
   takeown which can grant adversaries higher permissions on specific files and folders
 status: test
-modified: 2022/11/21
+modified: 2022-11-21
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1222
 query: 'DeviceProcessEvents

@@ -1,7 +1,7 @@
 name: LSASS Process Dump Artefact In CrashDumps Folder
 id: 6902955a-01b7-432c-b32a-6f5f81d8f625
 author: '@pbssubhash'
-date: 2022/12/08
+date: 2022-12-08
 severity: high
 description: Detects the presence of an LSASS dump file in the "CrashDumps" folder.
   This could be a sign of LSASS credential dumping. Techniques such as the LSASS Shtinkering
@@ -12,7 +12,7 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceFileEvents

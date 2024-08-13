@@ -1,19 +1,19 @@
 name: WMI ActiveScriptEventConsumers Activity Via Scrcons.EXE DLL Load
 id: b439f47d-ef52-4b29-9a2f-57d8a96cb6b8
 author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-date: 2020/09/02
+date: 2020-09-02
 severity: medium
 description: Detects signs of the WMI script host process "scrcons.exe" loading scripting
   DLLs which could indicates WMI ActiveScriptEventConsumers EventConsumers activity.
 status: test
-modified: 2023/02/22
+modified: 2023-02-22
 logsource:
   category: image_load
   product: windows
 tactics:
-- Lateral Movement
+- Lateral-movement
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1546
 query: 'DeviceImageLoadEvents

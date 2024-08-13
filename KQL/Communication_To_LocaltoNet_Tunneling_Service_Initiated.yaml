@@ -1,7 +1,7 @@
 name: Communication To LocaltoNet Tunneling Service Initiated
 id: 3ab65069-d82a-4d44-a759-466661a082d1
 author: Andreas Braathen (mnemonic.io)
-date: 2024/06/17
+date: 2024-06-17
 severity: high
 description: 'Detects an executable initiating a network connection to "LocaltoNet"
   tunneling sub-domains.
@@ -19,7 +19,7 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1090
 - T1102

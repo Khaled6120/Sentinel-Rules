@@ -1,7 +1,7 @@
 name: PUA - PingCastle Execution
 id: b1cb4ab6-ac31-43f4-adf1-d9d08957419c
 author: Nasreddine Bencherchali (Nextron Systems), frack113
-date: 2024/01/11
+date: 2024-01-11
 severity: medium
 description: Detects the execution of PingCastle, a tool designed to quickly assess
   the Active Directory security level.

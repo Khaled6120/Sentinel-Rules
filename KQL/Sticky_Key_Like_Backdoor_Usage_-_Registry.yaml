@@ -1,19 +1,19 @@
 name: Sticky Key Like Backdoor Usage - Registry
 id: baca5663-583c-45f9-b5dc-ea96a22ce542
 author: Florian Roth (Nextron Systems), @twjackomo, Jonhnathan Ribeiro, oscd.community
-date: 2018/03/15
+date: 2018-03-15
 severity: critical
 description: Detects the usage and installation of a backdoor that uses an option
   to register a malicious debugger for built-in tools that are accessible in the login
   screen
 status: test
-modified: 2022/11/26
+modified: 2022-11-26
 logsource:
   category: registry_event
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1546
 query: 'DeviceRegistryEvents

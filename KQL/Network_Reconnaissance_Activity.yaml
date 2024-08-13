@@ -1,7 +1,7 @@
 name: Network Reconnaissance Activity
 id: e6313acd-208c-44fc-a0ff-db85d572e90e
 author: Florian Roth (Nextron Systems)
-date: 2022/02/07
+date: 2022-02-07
 severity: high
 description: Detects a set of suspicious network related commands often used in recon
   stages

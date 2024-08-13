@@ -1,11 +1,11 @@
 name: Rclone Config File Creation
 id: 34986307-b7f4-49be-92f3-e7a4d01ac5db
 author: Aaron Greetham (@beardofbinary) - NCC Group
-date: 2021/05/26
+date: 2021-05-26
 severity: medium
 description: Detects Rclone config files being created
 status: test
-modified: 2023/05/09
+modified: 2023-05-09
 logsource:
   category: file_event
   product: windows

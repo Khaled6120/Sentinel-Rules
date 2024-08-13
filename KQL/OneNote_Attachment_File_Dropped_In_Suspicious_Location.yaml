@@ -1,17 +1,17 @@
 name: OneNote Attachment File Dropped In Suspicious Location
 id: 7fd164ba-126a-4d9c-9392-0d4f7c243df0
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/01/22
+date: 2023-01-22
 severity: medium
 description: Detects creation of files with the ".one"/".onepkg" extension in suspicious
   or uncommon locations. This could be a sign of attackers abusing OneNote attachments
 status: test
-modified: 2023/09/19
+modified: 2023-09-19
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceFileEvents
 

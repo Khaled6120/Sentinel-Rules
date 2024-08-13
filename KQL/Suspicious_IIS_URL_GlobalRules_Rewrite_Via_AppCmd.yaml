@@ -1,7 +1,7 @@
 name: Suspicious IIS URL GlobalRules Rewrite Via AppCmd
 id: 7c8af9b2-dcae-41a2-a9db-b28c288b5f08
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/01/22
+date: 2023-01-22
 severity: medium
 description: Detects usage of "appcmd" to create new global URL rewrite rules. This
   behaviour has been observed being used by threat actors to add new rules so they
@@ -12,7 +12,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

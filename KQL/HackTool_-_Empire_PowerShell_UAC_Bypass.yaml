@@ -1,17 +1,17 @@
 name: HackTool - Empire PowerShell UAC Bypass
 id: 3268b746-88d8-4cd3-bffc-30077d02c787
 author: Ecco
-date: 2019/08/30
+date: 2019-08-30
 severity: critical
 description: Detects some Empire PowerShell UAC bypass methods
 status: stable
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1548
 query: 'DeviceProcessEvents

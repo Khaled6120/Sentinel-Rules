@@ -1,11 +1,11 @@
 name: DotNET Assembly DLL Loaded Via Office Application
 id: ff0f2b05-09db-4095-b96d-1b75ca24894a
 author: Antonlovesdnb
-date: 2020/02/19
+date: 2020-02-19
 severity: medium
 description: Detects any assembly DLL being loaded by an Office Product
 status: test
-modified: 2023/03/29
+modified: 2023-03-29
 logsource:
   category: image_load
   product: windows

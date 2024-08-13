@@ -1,16 +1,16 @@
 name: Windows Defender Exclusions Added - Registry
 id: a982fc9c-6333-4ffb-a51d-addb04e8b529
 author: Christian Burkard (Nextron Systems)
-date: 2021/07/06
+date: 2021-07-06
 severity: medium
 description: Detects the Setting of Windows Defender Exclusions
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

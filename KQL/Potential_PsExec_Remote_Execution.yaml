@@ -1,7 +1,7 @@
 name: Potential PsExec Remote Execution
 id: ea011323-7045-460b-b2d7-0f7442ea6b38
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2023/02/28
+date: 2023-02-28
 severity: high
 description: Detects potential psexec command that initiate execution on a remote
   systems via common commandline flags used by the utility
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Resource Development
+- Resource-development
 relevantTechniques:
 - T1587
 query: 'DeviceProcessEvents

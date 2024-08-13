@@ -1,7 +1,7 @@
 name: Potential PowerShell Execution Policy Tampering - ProcCreation
 id: cf2e938e-9a3e-4fe8-a347-411642b28a9f
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/01/11
+date: 2023-01-11
 severity: high
 description: Detects changes to the PowerShell execution policy registry key in order
   to bypass signing requirements for script execution from the CommandLine
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

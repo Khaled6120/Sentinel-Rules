@@ -1,7 +1,7 @@
 name: Third Party Software DLL Sideloading
 id: f9df325d-d7bc-4a32-8a1a-2cc61dcefc63
 author: Nasreddine Bencherchali (Nextron Systems), Wietze Beukema (project and research)
-date: 2022/08/17
+date: 2022-08-17
 severity: medium
 description: Detects DLL sideloading of DLLs that are part of third party software
   (zoom, discord....etc)
@@ -11,9 +11,9 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

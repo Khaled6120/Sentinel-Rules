@@ -1,7 +1,7 @@
 name: Directory Removal Via Rmdir
 id: 41ca393d-538c-408a-ac27-cf1e038be80c
 author: frack113
-date: 2022/01/15
+date: 2022-01-15
 severity: low
 description: 'Detects execution of the builtin "rmdir" command in order to delete
   directories.
@@ -16,12 +16,12 @@ description: 'Detects execution of the builtin "rmdir" command in order to delet
 
   '
 status: test
-modified: 2023/03/07
+modified: 2023-03-07
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1070
 query: 'DeviceProcessEvents

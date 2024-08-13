@@ -1,16 +1,16 @@
 name: Suspicious DumpMinitool Execution
 id: eb1c4225-1c23-4241-8dd4-051389fde4ce
 author: Florian Roth (Nextron Systems)
-date: 2022/04/06
+date: 2022-04-06
 severity: high
 description: Detects suspicious ways to use the "DumpMinitool.exe" binary
 status: test
-modified: 2023/04/12
+modified: 2023-04-12
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1003
 - T1036

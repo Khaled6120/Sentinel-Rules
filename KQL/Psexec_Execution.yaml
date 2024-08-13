@@ -1,11 +1,11 @@
 name: Psexec Execution
 id: 730fc21b-eaff-474b-ad23-90fd265d4988
 author: omkar72
-date: 2020/10/30
+date: 2020-10-30
 severity: medium
 description: Detects user accept agreement execution in psexec commandline
 status: test
-modified: 2023/02/28
+modified: 2023-02-28
 logsource:
   category: process_creation
   product: windows

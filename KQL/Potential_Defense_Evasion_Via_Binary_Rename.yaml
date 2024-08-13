@@ -2,17 +2,17 @@ name: Potential Defense Evasion Via Binary Rename
 id: 36480ae1-a1cb-4eaa-a0d6-29801d7e9142
 author: Matthew Green @mgreen27, Ecco, James Pemberton @4A616D6573, oscd.community,
   Andreas Hunkeler (@Karneades)
-date: 2019/06/15
+date: 2019-06-15
 severity: medium
 description: Detects the execution of a renamed binary often used by attackers or
   malware leveraging new Sysmon OriginalFileName datapoint.
 status: test
-modified: 2023/01/18
+modified: 2023-01-18
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceProcessEvents

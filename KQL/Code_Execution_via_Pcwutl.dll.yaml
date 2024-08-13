@@ -1,17 +1,17 @@
 name: Code Execution via Pcwutl.dll
 id: 9386d78a-7207-4048-9c9f-a93a7c2d1c05
 author: Julia Fomina, oscd.community
-date: 2020/10/05
+date: 2020-10-05
 severity: medium
 description: Detects launch of executable by calling the LaunchApplication function
   from pcwutl.dll library.
 status: test
-modified: 2023/02/09
+modified: 2023-02-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

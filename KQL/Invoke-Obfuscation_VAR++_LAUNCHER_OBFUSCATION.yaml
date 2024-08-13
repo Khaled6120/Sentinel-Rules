@@ -1,16 +1,16 @@
 name: Invoke-Obfuscation VAR++ LAUNCHER OBFUSCATION
 id: e9f55347-2928-4c06-88e5-1a7f8169942e
 author: Timur Zinniatullin, oscd.community
-date: 2020/10/13
+date: 2020-10-13
 severity: high
 description: Detects Obfuscated Powershell via VAR++ LAUNCHER
 status: test
-modified: 2022/11/16
+modified: 2022-11-16
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1027

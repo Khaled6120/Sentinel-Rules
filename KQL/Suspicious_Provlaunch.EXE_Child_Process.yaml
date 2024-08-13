@@ -1,7 +1,7 @@
 name: Suspicious Provlaunch.EXE Child Process
 id: f9999590-1f94-4a34-a91e-951e47bedefd
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/08/08
+date: 2023-08-08
 severity: high
 description: Detects suspicious child processes of "provlaunch.exe" which might indicate
   potential abuse to proxy execution.
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

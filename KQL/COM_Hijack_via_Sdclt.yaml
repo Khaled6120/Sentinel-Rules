@@ -1,16 +1,16 @@
 name: COM Hijack via Sdclt
 id: 07743f65-7ec9-404a-a519-913db7118a8d
 author: Omkar Gudhate
-date: 2020/09/27
+date: 2020-09-27
 severity: high
 description: Detects changes to 'HKCU\Software\Classes\Folder\shell\open\command\DelegateExecute'
 status: test
-modified: 2023/09/28
+modified: 2023-09-28
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1546
 - T1548

@@ -1,7 +1,7 @@
 name: Abuse of Service Permissions to Hide Services Via Set-Service
 id: 514e4c3a-c77d-4cde-a00f-046425e2301e
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/10/17
+date: 2022-10-17
 severity: high
 description: Detects usage of the "Set-Service" powershell cmdlet to configure a new
   SecurityDescriptor that allows a service to be hidden from other utilities such
@@ -12,9 +12,9 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceProcessEvents

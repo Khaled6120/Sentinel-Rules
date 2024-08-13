@@ -1,7 +1,7 @@
 name: SQL Client Tools PowerShell Session Detection
 id: a746c9b8-a2fb-4ee5-a428-92bee9e99060
 author: Agro (@agro_sev) oscd.communitly
-date: 2020/10/13
+date: 2020-10-13
 severity: medium
 description: 'This rule detects execution of a PowerShell code through the sqltoolsps.exe
   utility, which is included in the standard set of utilities supplied with the Microsoft
@@ -12,12 +12,12 @@ description: 'This rule detects execution of a PowerShell code through the sqlto
 
   '
 status: test
-modified: 2022/02/25
+modified: 2022-02-25
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1059

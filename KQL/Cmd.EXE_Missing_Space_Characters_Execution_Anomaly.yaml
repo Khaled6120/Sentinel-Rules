@@ -1,7 +1,7 @@
 name: Cmd.EXE Missing Space Characters Execution Anomaly
 id: a16980c2-0c56-4de0-9a79-17971979efdd
 author: Florian Roth (Nextron Systems)
-date: 2022/08/23
+date: 2022-08-23
 severity: high
 description: 'Detects Windows command lines that miss a space before or after the
   /c flag when running a command using the cmd.exe.
@@ -10,7 +10,7 @@ description: 'Detects Windows command lines that miss a space before or after th
 
   '
 status: test
-modified: 2023/03/06
+modified: 2023-03-06
 logsource:
   category: process_creation
   product: windows

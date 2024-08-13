@@ -1,18 +1,18 @@
 name: Suspicious WSMAN Provider Image Loads
 id: ad1f4bb9-8dfb-4765-adb6-2a7cfb6c0f94
 author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-date: 2020/06/24
+date: 2020-06-24
 severity: medium
 description: Detects signs of potential use of the WSMAN provider from uncommon processes
   locally and remote execution.
 status: test
-modified: 2022/10/07
+modified: 2022-10-07
 logsource:
   category: image_load
   product: windows
 tactics:
 - Execution
-- Lateral Movement
+- Lateral-movement
 relevantTechniques:
 - T1021
 - T1059

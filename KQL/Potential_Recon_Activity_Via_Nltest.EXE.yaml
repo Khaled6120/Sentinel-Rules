@@ -1,11 +1,11 @@
 name: Potential Recon Activity Via Nltest.EXE
 id: 5cc90652-4cbd-4241-aa3b-4b462fa5a248
 author: Craig Young, oscd.community, Georg Lauenstein
-date: 2021/07/24
+date: 2021-07-24
 severity: medium
 description: Detects nltest commands that can be used for information discovery
 status: test
-modified: 2023/12/15
+modified: 2023-12-15
 logsource:
   category: process_creation
   product: windows

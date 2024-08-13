@@ -1,17 +1,17 @@
 name: HackTool - Potential Impacket Lateral Movement Activity
 id: 10c14723-61c7-4c75-92ca-9af245723ad2
 author: Ecco, oscd.community, Jonhnathan Ribeiro, Tim Rauch
-date: 2019/09/03
+date: 2019-09-03
 severity: high
 description: Detects wmiexec/dcomexec/atexec/smbexec from Impacket framework
 status: stable
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Execution
-- Lateral Movement
+- Lateral-movement
 relevantTechniques:
 - T1021
 - T1047

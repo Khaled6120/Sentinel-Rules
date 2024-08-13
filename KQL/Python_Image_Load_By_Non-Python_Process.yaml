@@ -1,17 +1,17 @@
 name: Python Image Load By Non-Python Process
 id: cbb56d62-4060-40f7-9466-d8aaf3123f83
 author: Patrick St. John, OTR (Open Threat Research)
-date: 2020/05/03
+date: 2020-05-03
 severity: medium
 description: Detects the image load of "Python Core" by a non-Python process. This
   might be indicative of a Python script bundled with Py2Exe.
 status: test
-modified: 2023/09/18
+modified: 2023-09-18
 logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1027
 query: 'DeviceImageLoadEvents

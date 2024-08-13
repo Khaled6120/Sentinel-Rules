@@ -1,11 +1,11 @@
 name: HackTool - Koadic Execution
 id: 5cddf373-ef00-4112-ad72-960ac29bac34
 author: wagga, Jonhnathan Ribeiro, oscd.community
-date: 2020/01/12
+date: 2020-01-12
 severity: high
 description: Detects command line parameters used by Koadic hack tool
 status: test
-modified: 2023/02/11
+modified: 2023-02-11
 logsource:
   category: process_creation
   product: windows

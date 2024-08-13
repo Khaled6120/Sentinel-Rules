@@ -1,17 +1,17 @@
 name: Wmiexec Default Output File
 id: 8d5aca11-22b3-4f22-b7ba-90e60533e1fb
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/06/02
+date: 2022-06-02
 severity: critical
 description: Detects the creation of the default output filename used by the wmiexec
   tool
 status: test
-modified: 2023/03/08
+modified: 2023-03-08
 logsource:
   category: file_event
   product: windows
 tactics:
-- Lateral Movement
+- Lateral-movement
 relevantTechniques:
 - T1047
 query: 'DeviceFileEvents

@@ -1,17 +1,17 @@
 name: Service StartupType Change Via Sc.EXE
 id: 85c312b7-f44d-4a51-a024-d671c40b49fc
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/01
+date: 2022-08-01
 severity: medium
 description: Detect the use of "sc.exe" to change the startup type of a service to
   "disabled" or "demand"
 status: test
-modified: 2023/03/04
+modified: 2023-03-04
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1562

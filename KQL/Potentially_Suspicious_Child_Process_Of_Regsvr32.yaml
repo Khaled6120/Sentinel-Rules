@@ -1,16 +1,16 @@
 name: Potentially Suspicious Child Process Of Regsvr32
 id: 6f0947a4-1c5e-4e0d-8ac7-53159b8f23ca
 author: elhoim, Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2022/05/05
+date: 2022-05-05
 severity: high
 description: Detects potentially suspicious child processes of "regsvr32.exe".
 status: test
-modified: 2023/05/26
+modified: 2023-05-26
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

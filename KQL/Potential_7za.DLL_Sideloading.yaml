@@ -1,7 +1,7 @@
 name: Potential 7za.DLL Sideloading
 id: 4f6edb78-5c21-42ab-a558-fd2a6fc1fd57
 author: X__Junior
-date: 2023/06/09
+date: 2023-06-09
 severity: low
 description: Detects potential DLL sideloading of "7za.dll"
 status: test
@@ -10,9 +10,9 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

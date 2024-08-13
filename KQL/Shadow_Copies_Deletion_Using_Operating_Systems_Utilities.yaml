@@ -2,16 +2,16 @@ name: Shadow Copies Deletion Using Operating Systems Utilities
 id: c947b146-0abc-4c87-9c64-b17e9d7274a2
 author: Florian Roth (Nextron Systems), Michael Haag, Teymur Kheirkhabarov, Daniil
   Yugoslavskiy, oscd.community, Andreas Hunkeler (@Karneades)
-date: 2019/10/22
+date: 2019-10-22
 severity: high
 description: Shadow Copies deletion using operating systems utilities
 status: stable
-modified: 2022/11/03
+modified: 2022-11-03
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Impact
 relevantTechniques:
 - T1070

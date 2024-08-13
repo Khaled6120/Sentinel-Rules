@@ -1,7 +1,7 @@
 name: Writing Local Admin Share
 id: 4aafb0fa-bff5-4b9d-b99e-8093e659c65f
 author: frack113
-date: 2022/01/01
+date: 2022-01-01
 severity: medium
 description: 'Aversaries may use to interact with a remote network share using Server
   Message Block (SMB).
@@ -10,12 +10,12 @@ description: 'Aversaries may use to interact with a remote network share using S
 
   '
 status: test
-modified: 2022/08/13
+modified: 2022-08-13
 logsource:
   category: file_event
   product: windows
 tactics:
-- Lateral Movement
+- Lateral-movement
 relevantTechniques:
 - T1546
 query: 'DeviceFileEvents

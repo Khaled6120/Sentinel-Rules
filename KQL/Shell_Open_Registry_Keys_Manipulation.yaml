@@ -1,19 +1,19 @@
 name: Shell Open Registry Keys Manipulation
 id: 152f3630-77c1-4284-bcc0-4cc68ab2f6e7
 author: Christian Burkard (Nextron Systems)
-date: 2021/08/30
+date: 2021-08-30
 severity: high
 description: Detects the shell open key manipulation (exefile and ms-settings) used
   for persistence and the pattern of UAC Bypass using fodhelper.exe, computerdefaults.exe,
   slui.exe via registry keys (e.g. UACMe 33 or 62)
 status: test
-modified: 2022/01/13
+modified: 2022-01-13
 logsource:
   category: registry_event
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1546
 - T1548

@@ -1,7 +1,7 @@
 name: Suspicious Dropbox API Usage
 id: 25eabf56-22f0-4915-a1ed-056b8dae0a68
 author: Florian Roth (Nextron Systems)
-date: 2022/04/20
+date: 2022-04-20
 severity: high
 description: Detects an executable that isn't dropbox but communicates with the Dropbox
   API
@@ -11,7 +11,7 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1105
 query: 'DeviceNetworkEvents

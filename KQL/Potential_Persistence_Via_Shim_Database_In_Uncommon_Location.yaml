@@ -1,12 +1,12 @@
 name: Potential Persistence Via Shim Database In Uncommon Location
 id: 6b6976a3-b0e6-4723-ac24-ae38a737af41
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/08/01
+date: 2023-08-01
 severity: high
 description: Detects the installation of a new shim database where the file is located
   in a non-default location
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

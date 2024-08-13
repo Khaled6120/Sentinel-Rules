@@ -1,7 +1,7 @@
 name: Load Of RstrtMgr.DLL By A Suspicious Process
 id: b48492dc-c5ef-4572-8dff-32bc241c15c8
 author: "Luc G\xE9naux"
-date: 2023/11/28
+date: 2023-11-28
 severity: high
 description: 'Detects the load of RstrtMgr DLL (Restart Manager) by a suspicious process.
 
@@ -18,7 +18,7 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Impact
 relevantTechniques:
 - T1486

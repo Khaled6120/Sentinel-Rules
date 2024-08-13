@@ -1,19 +1,19 @@
 name: Potential Privilege Escalation Attempt Via .Exe.Local Technique
 id: 07a99744-56ac-40d2-97b7-2095967b0e03
 author: Nasreddine Bencherchali (Nextron Systems), Subhash P (@pbssubhash)
-date: 2022/12/16
+date: 2022-12-16
 severity: high
 description: Detects potential privilege escalation attempt via the creation of the
   "*.Exe.Local" folder inside the "System32" directory in order to sideload "comctl32.dll"
 status: test
-modified: 2022/12/19
+modified: 2022-12-19
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques: []
 query: 'DeviceFileEvents
 

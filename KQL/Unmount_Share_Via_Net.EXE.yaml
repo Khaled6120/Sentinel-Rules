@@ -1,18 +1,18 @@
 name: Unmount Share Via Net.EXE
 id: cb7c4a03-2871-43c0-9bbb-18bbdb079896
 author: oscd.community, @redcanary, Zach Stanford @svch0st
-date: 2020/10/08
+date: 2020-10-08
 severity: low
 description: Detects when when a mounted share is removed. Adversaries may remove
   share connections that are no longer useful in order to clean up traces of their
   operation
 status: test
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1070
 query: 'DeviceProcessEvents

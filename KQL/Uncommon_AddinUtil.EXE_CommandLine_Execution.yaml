@@ -1,7 +1,7 @@
 name: Uncommon AddinUtil.EXE CommandLine Execution
 id: 4f2cd9b6-4a17-440f-bb2a-687abb65993a
 author: Michael McKinley (@McKinleyMike), Tony Latteri (@TheLatteri)
-date: 2023/09/18
+date: 2023-09-18
 severity: medium
 description: 'Detects execution of the Add-In deployment cache updating utility (AddInutil.exe)
   with uncommon Addinroot or Pipelineroot paths. An adversary may execute AddinUtil.exe
@@ -15,7 +15,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

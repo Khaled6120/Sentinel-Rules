@@ -1,16 +1,16 @@
 name: Disable Tamper Protection on Windows Defender
 id: 93d298a1-d28f-47f1-a468-d971e7796679
 author: Austin Songer @austinsonger
-date: 2021/08/04
+date: 2021-08-04
 severity: medium
 description: Detects disabling Windows Defender Tamper Protection
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

@@ -1,14 +1,14 @@
 name: Rebuild Performance Counter Values Via Lodctr.EXE
 id: cc9d3712-6310-4320-b2df-7cb408274d53
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/06/15
+date: 2023-06-15
 severity: medium
 description: Detects the execution of "lodctr.exe" to rebuild the performance counter
   registry values. This can be abused by attackers by providing a malicious config
   file to overwrite performance counter configuration to confuse and evade monitoring
   and security solutions.
 status: experimental
-modified: 2024/03/05
+modified: 2024-03-05
 logsource:
   category: process_creation
   product: windows

@@ -2,11 +2,11 @@ name: Suspicious PowerShell Parameter Substring
 id: 36210e0d-5b19-485d-a087-c096088885f0
 author: Florian Roth (Nextron Systems), Daniel Bohannon (idea), Roberto Rodriguez
   (Fix)
-date: 2019/01/16
+date: 2019-01-16
 severity: high
 description: Detects suspicious PowerShell invocation with a parameter substring
 status: test
-modified: 2022/07/14
+modified: 2022-07-14
 logsource:
   category: process_creation
   product: windows

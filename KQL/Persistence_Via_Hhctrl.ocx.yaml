@@ -1,12 +1,12 @@
 name: Persistence Via Hhctrl.ocx
 id: f10ed525-97fe-4fed-be7c-2feecca941b1
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/07/21
+date: 2022-07-21
 severity: high
 description: Detects when an attacker modifies the registry value of the "hhctrl"
   to point to a custom binary
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

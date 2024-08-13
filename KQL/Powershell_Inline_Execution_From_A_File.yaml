@@ -1,7 +1,7 @@
 name: Powershell Inline Execution From A File
 id: ee218c12-627a-4d27-9e30-d6fb2fe22ed2
 author: frack113
-date: 2022/12/25
+date: 2022-12-25
 severity: medium
 description: Detects inline execution of PowerShell code from a file
 status: test

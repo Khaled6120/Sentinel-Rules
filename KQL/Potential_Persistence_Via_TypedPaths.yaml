@@ -1,13 +1,13 @@
 name: Potential Persistence Via TypedPaths
 id: 086ae989-9ca6-4fe7-895a-759c5544f247
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/22
+date: 2022-08-22
 severity: high
 description: Detects modification addition to the 'TypedPaths' key in the user or
   admin registry from a non standard application. Which might indicate persistence
   attempt
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

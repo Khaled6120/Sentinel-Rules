@@ -1,16 +1,16 @@
 name: Disable Windows Defender AV Security Monitoring
 id: a7ee1722-c3c5-aeff-3212-c777e4733217
 author: ok @securonix invrep-de, oscd.community, frack113
-date: 2020/10/12
+date: 2020-10-12
 severity: high
 description: Detects attackers attempting to disable Windows Defender using Powershell
 status: test
-modified: 2022/11/18
+modified: 2022-11-18
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

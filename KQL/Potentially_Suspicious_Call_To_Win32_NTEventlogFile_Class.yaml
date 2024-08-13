@@ -1,7 +1,7 @@
 name: Potentially Suspicious Call To Win32_NTEventlogFile Class
 id: caf201a9-c2ce-4a26-9c3a-2b9525413711
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/07/13
+date: 2023-07-13
 severity: high
 description: Detects usage of the WMI class "Win32_NTEventlogFile" in a potentially
   suspicious way (delete, backup, change permissions, etc.) from a PowerShell script
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

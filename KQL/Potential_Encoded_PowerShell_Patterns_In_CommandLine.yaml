@@ -1,17 +1,17 @@
 name: Potential Encoded PowerShell Patterns In CommandLine
 id: cdf05894-89e7-4ead-b2b0-0a5f97a90f2f
 author: Teymur Kheirkhabarov (idea), Vasiliy Burov (rule), oscd.community, Tim Shelton
-date: 2020/10/11
+date: 2020-10-11
 severity: low
 description: Detects specific combinations of encoding methods in PowerShell via the
   commandline
 status: test
-modified: 2023/01/26
+modified: 2023-01-26
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1027

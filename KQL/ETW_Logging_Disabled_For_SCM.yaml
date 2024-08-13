@@ -1,17 +1,17 @@
 name: ETW Logging Disabled For SCM
 id: 4f281b83-0200-4b34-bf35-d24687ea57c2
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/12/09
+date: 2022-12-09
 severity: low
 description: Detects changes to the "TracingDisabled" key in order to disable ETW
   logging for services.exe (SCM)
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 - T1562

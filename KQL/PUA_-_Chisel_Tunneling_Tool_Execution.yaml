@@ -1,16 +1,16 @@
 name: PUA - Chisel Tunneling Tool Execution
 id: 8b0e12da-d3c3-49db-bb4f-256703f380e5
 author: Florian Roth (Nextron Systems)
-date: 2022/09/13
+date: 2022-09-13
 severity: high
 description: Detects usage of the Chisel tunneling tool via the commandline arguments
 status: test
-modified: 2023/02/13
+modified: 2023-02-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1090
 query: 'DeviceProcessEvents

@@ -1,7 +1,7 @@
 name: New Root Certificate Installed Via CertMgr.EXE
 id: ff992eac-6449-4c60-8c1d-91c9722a1d48
 author: oscd.community, @redcanary, Zach Stanford @svch0st
-date: 2023/03/05
+date: 2023-03-05
 severity: medium
 description: 'Detects execution of "certmgr" with the "add" flag in order to install
   a new certificate on the system.
@@ -16,7 +16,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1553
 query: 'DeviceProcessEvents

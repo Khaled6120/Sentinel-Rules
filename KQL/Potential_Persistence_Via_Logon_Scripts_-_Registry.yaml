@@ -1,17 +1,17 @@
 name: Potential Persistence Via Logon Scripts - Registry
 id: 9ace0707-b560-49b8-b6ca-5148b42f39fb
 author: Tom Ueltschi (@c_APT_ure)
-date: 2019/01/12
+date: 2019-01-12
 severity: medium
 description: Detects creation of "UserInitMprLogonScript" registry value which can
   be used as a persistence method by malicious actors
 status: test
-modified: 2023/06/09
+modified: 2023-06-09
 logsource:
   category: registry_add
   product: windows
 tactics:
-- Lateral Movement
+- Lateral-movement
 - Persistence
 relevantTechniques:
 - T1037

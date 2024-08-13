@@ -1,19 +1,19 @@
 name: Modification of IE Registry Settings
 id: d88d0ab2-e696-4d40-a2ed-9790064e66b3
 author: frack113
-date: 2022/01/22
+date: 2022-01-22
 severity: low
 description: Detects modification of the registry settings used for Internet Explorer
   and other Windows components that use these settings. An attacker can abuse this
   registry key to add a domain to the trusted sites Zone or insert javascript for
   persistence
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

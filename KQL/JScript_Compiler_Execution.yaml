@@ -1,7 +1,7 @@
 name: JScript Compiler Execution
 id: 52788a70-f1da-40dd-8fbd-73b5865d6568
 author: frack113
-date: 2022/05/02
+date: 2022-05-02
 severity: low
 description: 'Detects the execution of the "jsc.exe" (JScript Compiler).
 
@@ -10,12 +10,12 @@ description: 'Detects the execution of the "jsc.exe" (JScript Compiler).
 
   '
 status: test
-modified: 2024/04/24
+modified: 2024-04-24
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1127
 query: 'DeviceProcessEvents

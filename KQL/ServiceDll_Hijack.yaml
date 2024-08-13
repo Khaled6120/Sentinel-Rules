@@ -1,7 +1,7 @@
 name: ServiceDll Hijack
 id: 612e47e9-8a59-43a6-b404-f48683f45bd6
 author: frack113
-date: 2022/02/04
+date: 2022-02-04
 severity: medium
 description: 'Detects changes to the "ServiceDLL" value related to a service in the
   registry.
@@ -10,13 +10,13 @@ description: 'Detects changes to the "ServiceDLL" value related to a service in 
 
   '
 status: experimental
-modified: 2024/04/03
+modified: 2024-04-03
 logsource:
   category: registry_set
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1543
 query: 'DeviceRegistryEvents

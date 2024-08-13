@@ -1,7 +1,7 @@
 name: HackTool - WinPwn Execution
 id: d557dc06-62e8-4468-a8e8-7984124908ce
 author: Swachchhanda Shrawan Poudel
-date: 2023/12/04
+date: 2023-12-04
 severity: high
 description: 'Detects commandline keywords indicative of potential usge of the tool
   WinPwn. A tool for Windows and Active Directory reconnaissance and exploitation.
@@ -13,11 +13,11 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
-- Defense Evasion
+- Credential-access
+- Defense-evasion
 - Discovery
 - Execution
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1046
 - T1082

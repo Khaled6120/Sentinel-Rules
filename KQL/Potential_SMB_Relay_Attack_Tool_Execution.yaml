@@ -1,12 +1,12 @@
 name: Potential SMB Relay Attack Tool Execution
 id: 5589ab4f-a767-433c-961d-c91f3f704db1
 author: Florian Roth (Nextron Systems)
-date: 2021/07/24
+date: 2021-07-24
 severity: critical
 description: Detects different hacktools used for relay attacks on Windows for privilege
   escalation
 status: test
-modified: 2023/02/14
+modified: 2023-02-14
 logsource:
   category: process_creation
   product: windows

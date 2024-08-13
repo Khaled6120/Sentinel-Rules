@@ -1,7 +1,7 @@
 name: Potential Cookies Session Hijacking
 id: 5a6e1e16-07de-48d8-8aae-faa766c05e88
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/07/27
+date: 2023-07-27
 severity: medium
 description: Detects execution of "curl.exe" with the "-c" flag in order to save cookie
   data.

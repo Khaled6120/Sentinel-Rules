@@ -1,7 +1,7 @@
 name: Potential Persistence Via Microsoft Compatibility Appraiser
 id: f548a603-c9f2-4c89-b511-b089f7e94549
 author: Sreeman
-date: 2020/09/29
+date: 2020-09-29
 severity: medium
 description: 'Detects manual execution of the "Microsoft Compatibility Appraiser"
   task via schtasks.
@@ -11,7 +11,7 @@ description: 'Detects manual execution of the "Microsoft Compatibility Appraiser
 
   '
 status: test
-modified: 2023/02/10
+modified: 2023-02-10
 logsource:
   category: process_creation
   product: windows

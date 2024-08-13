@@ -1,16 +1,16 @@
 name: Potential DLL Injection Or Execution Using Tracker.exe
 id: 148431ce-4b70-403d-8525-fcc2993f29ea
 author: Avneet Singh @v3t0_, oscd.community
-date: 2020/10/18
+date: 2020-10-18
 severity: medium
 description: Detects potential DLL injection and execution using "Tracker.exe"
 status: test
-modified: 2023/01/09
+modified: 2023-01-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1055
 query: 'DeviceProcessEvents

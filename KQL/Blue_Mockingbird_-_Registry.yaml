@@ -1,11 +1,11 @@
 name: Blue Mockingbird - Registry
 id: 92b0b372-a939-44ed-a11b-5136cf680e27
 author: Trent Liffick (@tliffick)
-date: 2020/05/14
+date: 2020-05-14
 severity: high
 description: Attempts to detect system changes made by Blue Mockingbird
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

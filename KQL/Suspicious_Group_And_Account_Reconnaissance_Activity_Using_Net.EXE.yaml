@@ -2,7 +2,7 @@ name: Suspicious Group And Account Reconnaissance Activity Using Net.EXE
 id: d95de845-b83c-4a9a-8a6a-4fc802ebf6c0
 author: Florian Roth (Nextron Systems), omkar72, @svch0st, Nasreddine Bencherchali
   (Nextron Systems)
-date: 2019/01/16
+date: 2019-01-16
 severity: medium
 description: 'Detects suspicious reconnaissance command line activity on Windows systems
   using Net.EXE
@@ -12,7 +12,7 @@ description: 'Detects suspicious reconnaissance command line activity on Windows
 
   '
 status: test
-modified: 2023/03/02
+modified: 2023-03-02
 logsource:
   category: process_creation
   product: windows

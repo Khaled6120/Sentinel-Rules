@@ -1,7 +1,7 @@
 name: Creation Of Non-Existent System DLL
 id: df6ecb8b-7822-4f4b-b412-08f524b4576c
 author: Nasreddine Bencherchali (Nextron Systems), fornotes
-date: 2022/12/01
+date: 2022-12-01
 severity: medium
 description: 'Detects the creation of system DLLs that are usually not present on
   the system (or at least not in system directories).
@@ -10,14 +10,14 @@ description: 'Detects the creation of system DLLs that are usually not present o
 
   '
 status: test
-modified: 2024/01/10
+modified: 2024-01-10
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceFileEvents

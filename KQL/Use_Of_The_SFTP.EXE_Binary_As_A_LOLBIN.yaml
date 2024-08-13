@@ -1,7 +1,7 @@
 name: Use Of The SFTP.EXE Binary As A LOLBIN
 id: a85ffc3a-e8fd-4040-93bf-78aff284d801
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/11/10
+date: 2022-11-10
 severity: medium
 description: Detects the usage of the "sftp.exe" binary as a LOLBIN by abusing the
   "-D" flag
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1218

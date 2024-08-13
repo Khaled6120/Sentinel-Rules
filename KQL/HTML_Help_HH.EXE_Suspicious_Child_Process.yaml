@@ -1,18 +1,18 @@
 name: HTML Help HH.EXE Suspicious Child Process
 id: 52cad028-0ff0-4854-8f67-d25dfcbc78b4
 author: Maxim Pavlunin, Nasreddine Bencherchali (Nextron Systems)
-date: 2020/04/01
+date: 2020-04-01
 severity: high
 description: Detects a suspicious child process of a Microsoft HTML Help (HH.exe)
 status: test
-modified: 2023/04/12
+modified: 2023-04-12
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
-- Initial Access
+- Initial-access
 relevantTechniques:
 - T1047
 - T1059

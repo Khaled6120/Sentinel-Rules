@@ -1,18 +1,18 @@
 name: Potentially Suspicious Child Process Of VsCode
 id: 5a3164f2-b373-4152-93cf-090b13c12d27
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/01/26
+date: 2023-01-26
 severity: medium
 description: Detects uncommon or suspicious child processes spawning from a VsCode
   "code.exe" process. This could indicate an attempt of persistence via VsCode tasks
   or terminal profiles.
 status: experimental
-modified: 2023/10/25
+modified: 2023-10-25
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1202

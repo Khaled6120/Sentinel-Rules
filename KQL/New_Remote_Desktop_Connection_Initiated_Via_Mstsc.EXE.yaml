@@ -1,7 +1,7 @@
 name: New Remote Desktop Connection Initiated Via Mstsc.EXE
 id: 954f0af7-62dd-418f-b3df-a84bc2c7a774
 author: frack113
-date: 2022/01/07
+date: 2022-01-07
 severity: medium
 description: 'Detects the usage of "mstsc.exe" with the "/v" flag to initiate a connection
   to a remote server.
@@ -11,12 +11,12 @@ description: 'Detects the usage of "mstsc.exe" with the "/v" flag to initiate a 
 
   '
 status: test
-modified: 2024/06/04
+modified: 2024-06-04
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Lateral Movement
+- Lateral-movement
 relevantTechniques:
 - T1021
 query: "DeviceProcessEvents\n| where ((ProcessCommandLine contains \" -v:\" or ProcessCommandLine\

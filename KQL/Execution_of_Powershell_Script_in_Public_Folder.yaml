@@ -1,12 +1,12 @@
 name: Execution of Powershell Script in Public Folder
 id: fb9d3ff7-7348-46ab-af8c-b55f5fbf39b4
 author: Max Altgelt (Nextron Systems)
-date: 2022/04/06
+date: 2022-04-06
 severity: high
 description: This rule detects execution of PowerShell scripts located in the "C:\Users\Public"
   folder
 status: test
-modified: 2022/07/14
+modified: 2022-07-14
 logsource:
   category: process_creation
   product: windows

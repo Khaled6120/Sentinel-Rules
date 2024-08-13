@@ -1,17 +1,17 @@
 name: Gpscript Execution
 id: 1e59c230-6670-45bf-83b0-98903780607e
 author: frack113
-date: 2022/05/16
+date: 2022-05-16
 severity: medium
 description: Detects the execution of the LOLBIN gpscript, which executes logon or
   startup scripts configured in Group Policy
 status: test
-modified: 2023/06/14
+modified: 2023-06-14
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

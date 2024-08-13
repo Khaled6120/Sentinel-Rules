@@ -1,11 +1,11 @@
 name: Exports Critical Registry Keys To a File
 id: 82880171-b475-4201-b811-e9c826cd5eaa
 author: Oddvar Moe, Sander Wiebing, oscd.community
-date: 2020/10/12
+date: 2020-10-12
 severity: high
 description: Detects the export of a crital Registry key to a file.
 status: test
-modified: 2024/03/13
+modified: 2024-03-13
 logsource:
   category: process_creation
   product: windows

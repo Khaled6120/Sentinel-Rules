@@ -1,7 +1,7 @@
 name: Register New IFiltre For Persistence
 id: b23818c7-e575-4d13-8012-332075ec0a2b
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/07/21
+date: 2022-07-21
 severity: medium
 description: 'Detects when an attacker registers a new IFilter for an extension. Microsoft
   Windows Search uses filters to extract the content of items for inclusion in a full-text
@@ -13,7 +13,7 @@ description: 'Detects when an attacker registers a new IFilter for an extension.
 
   '
 status: experimental
-modified: 2024/03/26
+modified: 2024-03-26
 logsource:
   category: registry_set
   product: windows

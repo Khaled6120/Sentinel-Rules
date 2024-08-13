@@ -1,7 +1,7 @@
 name: WinSxS Executable File Creation By Non-System Process
 id: 34746e8c-5fb8-415a-b135-0abc167e912a
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/11
+date: 2023-05-11
 severity: medium
 description: Detects the creation of binaries in the WinSxS folder by non-system processes
 status: test

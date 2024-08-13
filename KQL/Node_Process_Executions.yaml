@@ -1,7 +1,7 @@
 name: Node Process Executions
 id: df1f26d3-bea7-4700-9ea2-ad3e990cf90e
 author: Max Altgelt (Nextron Systems)
-date: 2022/04/06
+date: 2022-04-06
 severity: medium
 description: Detects the execution of other scripts using the Node executable packaged
   with Adobe Creative Cloud
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1059
 - T1127

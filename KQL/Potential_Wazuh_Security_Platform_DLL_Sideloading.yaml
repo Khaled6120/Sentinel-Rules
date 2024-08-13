@@ -1,19 +1,19 @@
 name: Potential Wazuh Security Platform DLL Sideloading
 id: db77ce78-7e28-4188-9337-cf30e2b3ba9f
 author: X__Junior (Nextron Systems)
-date: 2023/03/13
+date: 2023-03-13
 severity: medium
 description: Detects potential DLL side loading of DLLs that are part of the Wazuh
   security platform
 status: test
-modified: 2023/05/12
+modified: 2023-05-12
 logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

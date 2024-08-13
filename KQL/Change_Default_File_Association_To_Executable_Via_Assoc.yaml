@@ -1,7 +1,7 @@
 name: Change Default File Association To Executable Via Assoc
 id: ae6f14e6-14de-45b0-9f44-c0986f50dc89
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/06/28
+date: 2022-06-28
 severity: high
 description: 'Detects when a program changes the default file association of any extension
   to an executable.
@@ -15,7 +15,7 @@ description: 'Detects when a program changes the default file association of any
 
   '
 status: test
-modified: 2023/03/06
+modified: 2023-03-06
 logsource:
   category: process_creation
   product: windows

@@ -1,11 +1,11 @@
 name: Suspicious Mshta.EXE Execution Patterns
 id: e32f92d1-523e-49c3-9374-bdb13b46a3ba
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-date: 2021/07/17
+date: 2021-07-17
 severity: high
 description: Detects suspicious mshta process execution patterns
 status: test
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows

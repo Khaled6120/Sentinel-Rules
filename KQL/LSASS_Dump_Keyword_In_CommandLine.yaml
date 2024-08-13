@@ -2,19 +2,19 @@ name: LSASS Dump Keyword In CommandLine
 id: ffa6861c-4461-4f59-8a41-578c39f3f23e
 author: E.M. Anhaus, Tony Lambert, oscd.community, Nasreddine Bencherchali (Nextron
   Systems)
-date: 2019/10/24
+date: 2019-10-24
 severity: high
 description: 'Detects the presence of the keywords "lsass" and ".dmp" in the commandline,
   which could indicate a potential attempt to dump or create a dump of the lsass process.
 
   '
 status: test
-modified: 2023/08/29
+modified: 2023-08-29
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceProcessEvents

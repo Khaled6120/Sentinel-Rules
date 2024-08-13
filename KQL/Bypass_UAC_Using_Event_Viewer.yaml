@@ -1,12 +1,12 @@
 name: Bypass UAC Using Event Viewer
 id: 674202d0-b22a-4af4-ae5f-2eda1f3da1af
 author: frack113
-date: 2022/01/05
+date: 2022-01-05
 severity: high
 description: Bypasses User Account Control using Event Viewer and a relevant Windows
   Registry modification
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

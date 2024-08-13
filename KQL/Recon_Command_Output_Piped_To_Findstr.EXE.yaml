@@ -1,7 +1,7 @@
 name: Recon Command Output Piped To Findstr.EXE
 id: ccb5742c-c248-4982-8c5c-5571b9275ad3
 author: Nasreddine Bencherchali (Nextron Systems), frack113
-date: 2023/07/06
+date: 2023-07-06
 severity: medium
 description: 'Detects the execution of a potential recon command where the results
   are piped to "findstr". This is meant to trigger on inline calls of "cmd.exe" via
@@ -12,7 +12,7 @@ description: 'Detects the execution of a potential recon command where the resul
 
   '
 status: experimental
-modified: 2024/06/27
+modified: 2024-06-27
 logsource:
   category: process_creation
   product: windows

@@ -1,7 +1,7 @@
 name: Email Exifiltration Via Powershell
 id: 312d0384-401c-4b8b-abdf-685ffba9a332
 author: Nasreddine Bencherchali (Nextron Systems),  Azure-Sentinel (idea)
-date: 2022/09/09
+date: 2022-09-09
 severity: high
 description: Detects email exfiltration via powershell cmdlets
 status: test

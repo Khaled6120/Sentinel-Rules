@@ -1,16 +1,16 @@
 name: Suspicious Volume Shadow Copy VSS_PS.dll Load
 id: 333cdbe8-27bb-4246-bf82-b41a0dca4b70
 author: Markus Neis, @markus_neis
-date: 2021/07/07
+date: 2021-07-07
 severity: high
 description: Detects the image load of vss_ps.dll by uncommon executables
 status: test
-modified: 2024/03/28
+modified: 2024-03-28
 logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Impact
 relevantTechniques:
 - T1490

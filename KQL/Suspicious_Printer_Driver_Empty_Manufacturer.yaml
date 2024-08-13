@@ -1,17 +1,17 @@
 name: Suspicious Printer Driver Empty Manufacturer
 id: e0813366-0407-449a-9869-a2db1119dc41
 author: Florian Roth (Nextron Systems)
-date: 2020/07/01
+date: 2020-07-01
 severity: high
 description: Detects a suspicious printer driver installation with an empty Manufacturer
   value
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceRegistryEvents

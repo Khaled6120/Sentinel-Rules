@@ -2,7 +2,7 @@ name: Suspicious Copy From or To System Directory
 id: fff9d2b7-e11c-4a69-93d3-40ef66189767
 author: Florian Roth (Nextron Systems), Markus Neis, Tim Shelton (HAWK.IO), Nasreddine
   Bencherchali (Nextron Systems)
-date: 2020/07/03
+date: 2020-07-03
 severity: medium
 description: 'Detects a suspicious copy operation that tries to copy a program from
   system (System32, SysWOW64, WinSxS) directories to another on disk.
@@ -12,12 +12,12 @@ description: 'Detects a suspicious copy operation that tries to copy a program f
 
   '
 status: test
-modified: 2023/08/29
+modified: 2023-08-29
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceProcessEvents

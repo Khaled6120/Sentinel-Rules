@@ -1,11 +1,11 @@
 name: PowerShell Download and Execution Cradles
 id: 85b0b087-eddf-4a2b-b033-d771fa2b9775
 author: Florian Roth (Nextron Systems)
-date: 2022/03/24
+date: 2022-03-24
 severity: high
 description: Detects PowerShell download and execution cradles.
 status: test
-modified: 2023/05/04
+modified: 2023-05-04
 logsource:
   category: process_creation
   product: windows

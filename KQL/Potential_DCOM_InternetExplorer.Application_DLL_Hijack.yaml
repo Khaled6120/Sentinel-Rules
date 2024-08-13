@@ -1,17 +1,17 @@
 name: Potential DCOM InternetExplorer.Application DLL Hijack
 id: 2f7979ae-f82b-45af-ac1d-2b10e93b0baa
 author: Roberto Rodriguez @Cyb3rWard0g, Open Threat Research (OTR), wagga
-date: 2020/10/12
+date: 2020-10-12
 severity: critical
 description: Detects potential DLL hijack of "iertutil.dll" found in the DCOM InternetExplorer.Application
   Class over the network
 status: test
-modified: 2022/12/18
+modified: 2022-12-18
 logsource:
   category: file_event
   product: windows
 tactics:
-- Lateral Movement
+- Lateral-movement
 relevantTechniques:
 - T1021
 query: 'DeviceFileEvents

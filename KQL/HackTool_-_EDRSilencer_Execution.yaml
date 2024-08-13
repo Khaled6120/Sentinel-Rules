@@ -1,7 +1,7 @@
 name: HackTool - EDRSilencer Execution
 id: eb2d07d4-49cb-4523-801a-da002df36602
 author: '@gott_cyber'
-date: 2024/01/02
+date: 2024-01-02
 severity: high
 description: 'Detects the execution of EDRSilencer, a tool that leverages Windows
   Filtering Platform (WFP) to block Endpoint Detection and Response (EDR) agents from
@@ -14,7 +14,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

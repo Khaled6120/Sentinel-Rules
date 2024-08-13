@@ -1,17 +1,17 @@
 name: Sdiagnhost Calling Suspicious Child Process
 id: f3d39c45-de1a-4486-a687-ab126124f744
 author: Nextron Systems
-date: 2022/06/01
+date: 2022-06-01
 severity: high
 description: Detects sdiagnhost.exe calling a suspicious child process (e.g. used
   in exploits for Follina / CVE-2022-30190)
 status: test
-modified: 2022/10/31
+modified: 2022-10-31
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 - T1218

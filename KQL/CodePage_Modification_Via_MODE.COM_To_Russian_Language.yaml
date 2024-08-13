@@ -1,7 +1,7 @@
 name: CodePage Modification Via MODE.COM To Russian Language
 id: 12fbff88-16b5-4b42-9754-cd001a789fb3
 author: Joseliyo Sanchez, @Joseliyo_Jstnk
-date: 2024/01/17
+date: 2024-01-17
 severity: medium
 description: 'Detects a CodePage modification using the "mode.com" utility to Russian
   language.
@@ -15,7 +15,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceProcessEvents

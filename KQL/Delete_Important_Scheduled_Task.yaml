@@ -1,7 +1,7 @@
 name: Delete Important Scheduled Task
 id: dbc1f800-0fe0-4bc0-9c66-292c2abe3f78
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/09/09
+date: 2022-09-09
 severity: high
 description: Detects when adversaries stop services or processes by deleting their
   respective scheduled tasks in order to conduct data destructive activities

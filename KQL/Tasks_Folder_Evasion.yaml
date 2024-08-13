@@ -1,7 +1,7 @@
 name: Tasks Folder Evasion
 id: cc4e02ba-9c06-48e2-b09e-2500cace9ae0
 author: Sreeman
-date: 2020/01/13
+date: 2020-01-13
 severity: high
 description: 'The Tasks folder in system32 and syswow64 are globally writable paths.
 
@@ -13,12 +13,12 @@ description: 'The Tasks folder in system32 and syswow64 are globally writable pa
 
   '
 status: test
-modified: 2022/12/25
+modified: 2022-12-25
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 - Persistence
 relevantTechniques:

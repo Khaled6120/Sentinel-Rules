@@ -1,16 +1,16 @@
 name: Disable Privacy Settings Experience in Registry
 id: 0372e1f9-0fd2-40f7-be1b-a7b2b848fa7b
 author: frack113
-date: 2022/10/02
+date: 2022-10-02
 severity: medium
 description: Detects registry modifications that disable Privacy Settings Experience
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

@@ -1,16 +1,16 @@
 name: Invoke-Obfuscation VAR+ Launcher
 id: 27aec9c9-dbb0-4939-8422-1742242471d0
 author: Jonathan Cheong, oscd.community
-date: 2020/10/15
+date: 2020-10-15
 severity: high
 description: Detects Obfuscated use of Environment Variables to execute PowerShell
 status: test
-modified: 2024/04/15
+modified: 2024-04-15
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1027

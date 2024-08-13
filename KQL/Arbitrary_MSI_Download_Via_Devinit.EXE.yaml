@@ -1,18 +1,18 @@
 name: Arbitrary MSI Download Via Devinit.EXE
 id: 90d50722-0483-4065-8e35-57efaadd354d
 author: Florian Roth (Nextron Systems)
-date: 2022/01/11
+date: 2022-01-11
 severity: medium
 description: Detects a certain command line flag combination used by "devinit.exe",
   which can be abused as a LOLBIN to download arbitrary MSI packages on a Windows
   system
 status: test
-modified: 2023/04/06
+modified: 2023-04-06
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1218

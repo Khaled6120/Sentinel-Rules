@@ -1,17 +1,17 @@
 name: ConvertTo-SecureString Cmdlet Usage Via CommandLine
 id: 74403157-20f5-415d-89a7-c505779585cf
 author: Teymur Kheirkhabarov (idea), Vasiliy Burov (rule), oscd.community, Tim Shelton
-date: 2020/10/11
+date: 2020-10-11
 severity: medium
 description: Detects usage of the "ConvertTo-SecureString" cmdlet via the commandline.
   Which is fairly uncommon and could indicate potential suspicious activity
 status: test
-modified: 2023/02/01
+modified: 2023-02-01
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1027

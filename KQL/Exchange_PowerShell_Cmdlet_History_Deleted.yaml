@@ -1,17 +1,17 @@
 name: Exchange PowerShell Cmdlet History Deleted
 id: a55349d8-9588-4c5a-8e3b-1925fe2a4ffe
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/10/26
+date: 2022-10-26
 severity: high
 description: Detects the deletion of the Exchange PowerShell cmdlet History logs which
   may indicate an attempt to destroy forensic evidence
 status: test
-modified: 2022/12/30
+modified: 2022-12-30
 logsource:
   category: file_delete
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1070
 query: 'DeviceFileEvents

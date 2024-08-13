@@ -1,18 +1,18 @@
 name: Potential DLL Sideloading Of DBGHELP.DLL
 id: 6414b5cd-b19d-447e-bb5e-9f03940b5784
 author: Nasreddine Bencherchali (Nextron Systems), Wietze Beukema (project and research)
-date: 2022/10/25
+date: 2022-10-25
 severity: medium
 description: Detects potential DLL sideloading of "dbghelp.dll"
 status: test
-modified: 2023/05/05
+modified: 2023-05-05
 logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

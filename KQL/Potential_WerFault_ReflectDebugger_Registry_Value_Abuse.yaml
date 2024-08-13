@@ -1,7 +1,7 @@
 name: Potential WerFault ReflectDebugger Registry Value Abuse
 id: 0cf2e1c6-8d10-4273-8059-738778f981ad
 author: X__Junior
-date: 2023/05/18
+date: 2023-05-18
 severity: high
 description: Detects potential WerFault "ReflectDebugger" registry value abuse for
   persistence.
@@ -11,7 +11,7 @@ logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceRegistryEvents

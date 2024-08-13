@@ -1,12 +1,12 @@
 name: DriverQuery.EXE Execution
 id: a20def93-0709-4eae-9bd2-31206e21e6b2
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/01/19
+date: 2023-01-19
 severity: medium
 description: Detect usage of the "driverquery" utility. Which can be used to perform
   reconnaissance on installed drivers
 status: test
-modified: 2023/09/29
+modified: 2023-09-29
 logsource:
   category: process_creation
   product: windows

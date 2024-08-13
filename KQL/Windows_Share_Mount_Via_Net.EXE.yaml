@@ -1,16 +1,16 @@
 name: Windows Share Mount Via Net.EXE
 id: f117933c-980c-4f78-b384-e3d838111165
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/02/02
+date: 2023-02-02
 severity: low
 description: Detects when a share is mounted using the "net.exe" utility
 status: test
-modified: 2023/02/21
+modified: 2023-02-21
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Lateral Movement
+- Lateral-movement
 relevantTechniques:
 - T1021
 query: 'DeviceProcessEvents

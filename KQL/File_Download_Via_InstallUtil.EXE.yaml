@@ -1,19 +1,19 @@
 name: File Download Via InstallUtil.EXE
 id: 75edd216-1939-4c73-8d61-7f3a0d85b5cc
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/19
+date: 2022-08-19
 severity: medium
 description: 'Detects use of .NET InstallUtil.exe in order to download arbitrary files.
   The files will be written to "%LOCALAPPDATA%\Microsoft\Windows\INetCache\IE\"
 
   '
 status: test
-modified: 2023/11/09
+modified: 2023-11-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

@@ -1,16 +1,16 @@
 name: Created Files by Microsoft Sync Center
 id: 409f8a98-4496-4aaa-818a-c931c0a8b832
 author: elhoim
-date: 2022/04/28
+date: 2022-04-28
 severity: medium
 description: This rule detects suspicious files created by Microsoft Sync Center (mobsync)
 status: test
-modified: 2022/06/02
+modified: 2022-06-02
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1055

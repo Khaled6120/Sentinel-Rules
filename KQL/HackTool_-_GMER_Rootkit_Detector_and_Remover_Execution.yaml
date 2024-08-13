@@ -1,16 +1,16 @@
 name: HackTool - GMER Rootkit Detector and Remover Execution
 id: 9082ff1f-88ab-4678-a3cc-5bcff99fc74d
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/10/05
+date: 2022-10-05
 severity: high
 description: Detects the execution GMER tool based on image and hash fields.
 status: test
-modified: 2023/02/13
+modified: 2023-02-13
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

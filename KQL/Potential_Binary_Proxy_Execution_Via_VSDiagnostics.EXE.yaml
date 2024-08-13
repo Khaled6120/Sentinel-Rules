@@ -1,7 +1,7 @@
 name: Potential Binary Proxy Execution Via VSDiagnostics.EXE
 id: ac1c92b4-ac81-405a-9978-4604d78cc47e
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/08/03
+date: 2023-08-03
 severity: medium
 description: Detects execution of "VSDiagnostics.exe" with the "start" command in
   order to launch and proxy arbitrary binaries.
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

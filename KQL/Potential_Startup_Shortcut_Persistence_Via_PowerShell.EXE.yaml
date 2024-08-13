@@ -1,7 +1,7 @@
 name: Potential Startup Shortcut Persistence Via PowerShell.EXE
 id: 92fa78e7-4d39-45f1-91a3-8b23f3f1088d
 author: Christopher Peacock '@securepeacock', SCYTHE
-date: 2021/10/24
+date: 2021-10-24
 severity: high
 description: 'Detects PowerShell writing startup shortcuts.
 
@@ -17,7 +17,7 @@ description: 'Detects PowerShell writing startup shortcuts.
 
   '
 status: test
-modified: 2023/02/23
+modified: 2023-02-23
 logsource:
   category: file_event
   product: windows

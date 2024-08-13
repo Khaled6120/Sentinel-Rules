@@ -1,19 +1,19 @@
 name: CredUI.DLL Loaded By Uncommon Process
 id: 9ae01559-cf7e-4f8e-8e14-4c290a1b4784
 author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-date: 2020/10/20
+date: 2020-10-20
 severity: medium
 description: Detects loading of "credui.dll" and related DLLs by an uncommon process.
   Attackers might leverage this DLL for potential use of "CredUIPromptForCredentials"
   or "CredUnPackAuthenticationBufferW".
 status: test
-modified: 2023/07/28
+modified: 2023-07-28
 logsource:
   category: image_load
   product: windows
 tactics:
 - Collection
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1056
 query: 'DeviceImageLoadEvents

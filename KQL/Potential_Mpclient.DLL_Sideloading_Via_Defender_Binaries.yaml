@@ -1,17 +1,17 @@
 name: Potential Mpclient.DLL Sideloading Via Defender Binaries
 id: 7002aa10-b8d4-47ae-b5ba-51ab07e228b9
 author: Bhabesh Raj
-date: 2022/08/01
+date: 2022-08-01
 severity: high
 description: Detects potential sideloading of "mpclient.dll" by Windows Defender processes
   ("MpCmdRun" and "NisSrv") from their non-default directory.
 status: test
-modified: 2023/08/04
+modified: 2023-08-04
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1574
 query: 'DeviceProcessEvents

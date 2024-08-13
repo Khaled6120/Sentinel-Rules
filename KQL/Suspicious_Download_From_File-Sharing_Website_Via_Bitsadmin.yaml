@@ -1,16 +1,16 @@
 name: Suspicious Download From File-Sharing Website Via Bitsadmin
 id: 8518ed3d-f7c9-4601-a26c-f361a4256a0c
 author: Florian Roth (Nextron Systems)
-date: 2022/06/28
+date: 2022-06-28
 severity: high
 description: Detects usage of bitsadmin downloading a file from a suspicious domain
 status: experimental
-modified: 2024/02/09
+modified: 2024-02-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 - S0190
 relevantTechniques:

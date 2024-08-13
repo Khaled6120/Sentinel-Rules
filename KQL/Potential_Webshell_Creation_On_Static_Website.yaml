@@ -1,12 +1,12 @@
 name: Potential Webshell Creation On Static Website
 id: 39f1f9f2-9636-45de-98f6-a4046aa8e4b9
 author: Beyu Denis, oscd.community, Tim Shelton, Thurein Oo
-date: 2019/10/22
+date: 2019-10-22
 severity: medium
 description: Detects the creation of files with certain extensions on a static web
   site. This can be indicative of potential uploads of a web shell.
 status: test
-modified: 2023/10/15
+modified: 2023-10-15
 logsource:
   category: file_event
   product: windows

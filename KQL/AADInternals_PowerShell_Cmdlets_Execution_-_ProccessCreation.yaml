@@ -1,7 +1,7 @@
 name: AADInternals PowerShell Cmdlets Execution - ProccessCreation
 id: c86500e9-a645-4680-98d7-f882c70c1ea3
 author: Austin Songer (@austinsonger), Nasreddine Bencherchali (Nextron Systems)
-date: 2022/12/23
+date: 2022-12-23
 severity: high
 description: Detects ADDInternals Cmdlet execution. A tool for administering Azure
   AD and Office 365. Which can be abused by threat actors to attack Azure AD or Office
@@ -12,7 +12,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 - Discovery
 - Execution
 - Impact

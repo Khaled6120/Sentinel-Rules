@@ -1,13 +1,13 @@
 name: Potentially Suspicious Electron Application CommandLine
 id: 378a05d8-963c-46c9-bcce-13c7657eac99
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
-date: 2023/09/05
+date: 2023-09-05
 severity: medium
 description: Detects potentially suspicious CommandLine of electron apps (teams, discord,
   slack, etc.). This could be a sign of abuse to proxy execution through a signed
   binary.
 status: experimental
-modified: 2023/11/09
+modified: 2023-11-09
 logsource:
   category: process_creation
   product: windows

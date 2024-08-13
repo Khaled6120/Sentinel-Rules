@@ -1,7 +1,7 @@
 name: Potential WWlib.DLL Sideloading
 id: e2e01011-5910-4267-9c3b-4149ed5479cf
 author: X__Junior (Nextron Systems)
-date: 2023/05/18
+date: 2023-05-18
 severity: medium
 description: Detects potential DLL sideloading of "wwlib.dll"
 status: test
@@ -10,8 +10,8 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

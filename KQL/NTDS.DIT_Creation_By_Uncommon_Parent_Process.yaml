@@ -1,17 +1,17 @@
 name: NTDS.DIT Creation By Uncommon Parent Process
 id: 4e7050dd-e548-483f-b7d6-527ab4fa784d
 author: Florian Roth (Nextron Systems)
-date: 2022/03/11
+date: 2022-03-11
 severity: high
 description: Detects creation of a file named "ntds.dit" (Active Directory Database)
   by an uncommon parent process or directory
 status: test
-modified: 2023/01/05
+modified: 2023-01-05
 logsource:
   category: file_event
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 query: 'DeviceFileEvents

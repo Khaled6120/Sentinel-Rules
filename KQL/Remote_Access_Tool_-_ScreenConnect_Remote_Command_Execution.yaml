@@ -1,11 +1,11 @@
 name: Remote Access Tool - ScreenConnect Remote Command Execution
 id: b1f73849-6329-4069-bc8f-78a604bb8b23
 author: Ali Alwashali
-date: 2023/10/10
+date: 2023-10-10
 severity: low
 description: Detects the execution of a system command via the ScreenConnect RMM service.
 status: experimental
-modified: 2024/02/26
+modified: 2024-02-26
 logsource:
   category: process_creation
   product: windows

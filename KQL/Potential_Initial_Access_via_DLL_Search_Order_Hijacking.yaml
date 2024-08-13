@@ -1,7 +1,7 @@
 name: Potential Initial Access via DLL Search Order Hijacking
 id: dbbd9f66-2ed3-4ca2-98a4-6ea985dd1a1c
 author: Tim Rauch (rule), Elastic (idea)
-date: 2022/10/21
+date: 2022-10-21
 severity: medium
 description: Detects attempts to create a DLL file to a known desktop application
   dependencies folder such as Slack, Teams or OneDrive and by an unusual process.
@@ -12,8 +12,8 @@ logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
-- Initial Access
+- Defense-evasion
+- Initial-access
 relevantTechniques:
 - T1566
 - T1574

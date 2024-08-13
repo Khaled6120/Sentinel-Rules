@@ -1,16 +1,16 @@
 name: Suspicious Userinit Child Process
 id: b655a06a-31c0-477a-95c2-3726b83d649d
 author: Florian Roth (Nextron Systems), Samir Bousseaden (idea)
-date: 2019/06/17
+date: 2019-06-17
 severity: medium
 description: Detects a suspicious child process of userinit
 status: test
-modified: 2022/12/09
+modified: 2022-12-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1055
 query: 'DeviceProcessEvents

@@ -1,18 +1,18 @@
 name: Assembly Loading Via CL_LoadAssembly.ps1
 id: c57872c7-614f-4d7f-a40d-b78c8df2d30d
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
-date: 2022/05/21
+date: 2022-05-21
 severity: medium
 description: Detects calls to "LoadAssemblyFromPath" or "LoadAssemblyFromNS" that
   are part of the "CL_LoadAssembly.ps1" script. This can be abused to load different
   assemblies and bypass App locker controls.
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1216
 query: 'DeviceProcessEvents

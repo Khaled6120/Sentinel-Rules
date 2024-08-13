@@ -1,7 +1,7 @@
 name: Potential Suspicious PowerShell Module File Created
 id: e8a52bbd-bced-459f-bd93-64db45ce7657
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/09
+date: 2023-05-09
 severity: medium
 description: Detects the creation of a new PowerShell module in the first folder of
   the module directory structure "\WindowsPowerShell\Modules\malware\malware.psm1".

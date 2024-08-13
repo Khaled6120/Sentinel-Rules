@@ -1,16 +1,16 @@
 name: Renamed Plink Execution
 id: 1c12727d-02bf-45ff-a9f3-d49806a3cf43
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/06/06
+date: 2022-06-06
 severity: high
 description: Detects the execution of a renamed version of the Plink binary
 status: test
-modified: 2023/02/03
+modified: 2023-02-03
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceProcessEvents

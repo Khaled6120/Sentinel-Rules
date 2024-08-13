@@ -1,7 +1,7 @@
 name: Windows Terminal Profile Settings Modification By Uncommon Process
 id: 9b64de98-9db3-4033-bd7a-f51430105f00
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
-date: 2023/07/22
+date: 2023-07-22
 severity: medium
 description: Detects the creation or modification of the Windows Terminal Profile
   settings file "settings.json" by an uncommon process.

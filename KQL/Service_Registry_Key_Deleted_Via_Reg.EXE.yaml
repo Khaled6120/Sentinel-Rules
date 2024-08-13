@@ -1,17 +1,17 @@
 name: Service Registry Key Deleted Via Reg.EXE
 id: 05b2aa93-1210-42c8-8d9a-2fcc13b284f5
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/01
+date: 2022-08-01
 severity: high
 description: Detects execution of "reg.exe" commands with the "delete" flag on services
   registry key. Often used by attacker to remove AV software services
 status: test
-modified: 2023/02/04
+modified: 2023-02-04
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

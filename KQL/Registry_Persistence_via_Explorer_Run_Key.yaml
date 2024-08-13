@@ -1,12 +1,12 @@
 name: Registry Persistence via Explorer Run Key
 id: b7916c2a-fa2f-4795-9477-32b731f70f11
 author: Florian Roth (Nextron Systems), oscd.community
-date: 2018/07/18
+date: 2018-07-18
 severity: high
 description: Detects a possible persistence mechanism using RUN key for Windows Explorer
   and pointing to a suspicious folder
 status: test
-modified: 2023/12/11
+modified: 2023-12-11
 logsource:
   category: registry_set
   product: windows

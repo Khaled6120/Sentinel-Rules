@@ -1,17 +1,17 @@
 name: Potential Mftrace.EXE Abuse
 id: 3d48c9d3-1aa6-418d-98d3-8fd3c01a564e
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/06/09
+date: 2022-06-09
 severity: medium
 description: Detects child processes of the "Trace log generation tool for Media Foundation
   Tools" (Mftrace.exe) which can abused to execute arbitrary binaries.
 status: test
-modified: 2023/08/03
+modified: 2023-08-03
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1127
 query: 'DeviceProcessEvents

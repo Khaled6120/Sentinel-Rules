@@ -1,7 +1,7 @@
 name: Use of UltraVNC Remote Access Software
 id: 145322e4-0fd3-486b-81ca-9addc75736d8
 author: frack113
-date: 2022/10/02
+date: 2022-10-02
 severity: medium
 description: An adversary may use legitimate desktop support and remote access software,to
   establish an interactive command and control channel to target systems within networks
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1219
 query: 'DeviceProcessEvents

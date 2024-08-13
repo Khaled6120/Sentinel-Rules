@@ -1,17 +1,17 @@
 name: Suspicious Usage Of ShellExec_RunDLL
 id: d87bd452-6da1-456e-8155-7dc988157b7d
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/09/01
+date: 2022-09-01
 severity: high
 description: Detects suspicious usage of the ShellExec_RunDLL function to launch other
   commands as seen in the the raspberry-robin attack
 status: test
-modified: 2022/12/30
+modified: 2022-12-30
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

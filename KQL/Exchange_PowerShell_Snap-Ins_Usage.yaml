@@ -1,12 +1,12 @@
 name: Exchange PowerShell Snap-Ins Usage
 id: 25676e10-2121-446e-80a4-71ff8506af47
 author: FPT.EagleEye, Nasreddine Bencherchali (Nextron Systems)
-date: 2021/03/03
+date: 2021-03-03
 severity: high
 description: Detects adding and using Exchange PowerShell snap-ins to export mailbox
   data. As seen used by HAFNIUM and APT27
 status: test
-modified: 2023/03/24
+modified: 2023-03-24
 logsource:
   category: process_creation
   product: windows

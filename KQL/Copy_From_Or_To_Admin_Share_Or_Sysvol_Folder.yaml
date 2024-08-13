@@ -2,19 +2,19 @@ name: Copy From Or To Admin Share Or Sysvol Folder
 id: 855bc8b5-2ae8-402e-a9ed-b889e6df1900
 author: Florian Roth (Nextron Systems), oscd.community, Teymur Kheirkhabarov @HeirhabarovT,
   Zach Stanford @svch0st, Nasreddine Bencherchali
-date: 2019/12/30
+date: 2019-12-30
 severity: medium
 description: Detects a copy command or a copy utility execution to or from an Admin
   share or remote
 status: test
-modified: 2023/11/15
+modified: 2023-11-15
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Collection
 - Exfiltration
-- Lateral Movement
+- Lateral-movement
 relevantTechniques:
 - T1021
 - T1039

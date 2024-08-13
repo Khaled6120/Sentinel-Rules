@@ -1,17 +1,17 @@
 name: Mstsc.EXE Execution From Uncommon Parent
 id: ff3b6b39-e765-42f9-bb2c-ea6761e0e0f6
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/04/18
+date: 2023-04-18
 severity: high
 description: Detects potential RDP connection via Mstsc using a local ".rdp" file
   located in suspicious locations.
 status: test
-modified: 2023/04/18
+modified: 2023-04-18
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Lateral Movement
+- Lateral-movement
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

@@ -1,7 +1,7 @@
 name: Bypass UAC Using SilentCleanup Task
 id: 724ea201-6514-4f38-9739-e5973c34f49a
 author: frack113, Nextron Systems
-date: 2022/01/06
+date: 2022-01-06
 severity: high
 description: 'Detects the setting of the environement variable "windir" to a non default
   value.
@@ -15,13 +15,13 @@ description: 'Detects the setting of the environement variable "windir" to a non
 
   '
 status: test
-modified: 2024/01/30
+modified: 2024-01-30
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1548
 query: 'DeviceRegistryEvents

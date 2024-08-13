@@ -1,7 +1,7 @@
 name: Malicious PE Execution by Microsoft Visual Studio Debugger
 id: 15c7904e-6ad1-4a45-9b46-5fb25df37fd2
 author: "Agro (@agro_sev), Ensar \u015Eamil (@sblmsrsn), oscd.community"
-date: 2020/10/14
+date: 2020-10-14
 severity: medium
 description: 'There is an option for a MS VS Just-In-Time Debugger "vsjitdebugger.exe"
   to launch specified executable and attach a debugger.
@@ -13,12 +13,12 @@ description: 'There is an option for a MS VS Just-In-Time Debugger "vsjitdebugge
 
   '
 status: test
-modified: 2022/10/09
+modified: 2022-10-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

@@ -1,7 +1,7 @@
 name: Phishing Pattern ISO in Archive
 id: fcdf69e5-a3d3-452a-9724-26f2308bf2b1
 author: Florian Roth (Nextron Systems)
-date: 2022/06/07
+date: 2022-06-07
 severity: high
 description: Detects cases in which an ISO files is opend within an archiver like
   7Zip or Winrar, which is a sign of phishing as threat actors put small ISO files
@@ -13,7 +13,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 relevantTechniques:
 - T1566
 query: 'DeviceProcessEvents

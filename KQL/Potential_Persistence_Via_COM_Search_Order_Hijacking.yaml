@@ -1,11 +1,11 @@
 name: Potential Persistence Via COM Search Order Hijacking
 id: a0ff33d8-79e4-4cef-b4f3-9dc4133ccd12
 author: "Maxime Thiebaut (@0xThiebaut), oscd.community, C\xE9dric Hien"
-date: 2020/04/14
+date: 2020-04-14
 severity: medium
 description: Detects potential COM object hijacking leveraging the COM Search Order
 status: test
-modified: 2023/09/28
+modified: 2023-09-28
 logsource:
   category: registry_set
   product: windows

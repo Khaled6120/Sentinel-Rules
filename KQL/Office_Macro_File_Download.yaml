@@ -1,17 +1,17 @@
 name: Office Macro File Download
 id: 0e29e3a7-1ad8-40aa-b691-9f82ecd33d66
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/01/23
+date: 2022-01-23
 severity: medium
 description: Detects the creation of a new office macro files on the systems via an
   application (browser, mail client).
 status: test
-modified: 2023/04/18
+modified: 2023-04-18
 logsource:
   category: file_event
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 relevantTechniques:
 - T1566
 query: 'DeviceFileEvents

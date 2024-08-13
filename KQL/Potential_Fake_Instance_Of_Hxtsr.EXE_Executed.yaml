@@ -1,7 +1,7 @@
 name: Potential Fake Instance Of Hxtsr.EXE Executed
 id: 4e762605-34a8-406d-b72e-c1a089313320
 author: Sreeman
-date: 2020/04/17
+date: 2020-04-17
 severity: medium
 description: 'HxTsr.exe is a Microsoft compressed executable file called Microsoft
   Outlook Communications.
@@ -14,12 +14,12 @@ description: 'HxTsr.exe is a Microsoft compressed executable file called Microso
 
   '
 status: test
-modified: 2024/02/08
+modified: 2024-02-08
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceProcessEvents

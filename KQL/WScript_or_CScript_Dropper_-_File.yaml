@@ -1,12 +1,12 @@
 name: WScript or CScript Dropper - File
 id: 002bdb95-0cf1-46a6-9e08-d38c128a6127
 author: Tim Shelton
-date: 2022/01/10
+date: 2022-01-10
 severity: high
 description: Detects a file ending in jse, vbe, js, vba, vbs written by cscript.exe
   or wscript.exe
 status: test
-modified: 2022/12/02
+modified: 2022-12-02
 logsource:
   category: file_event
   product: windows

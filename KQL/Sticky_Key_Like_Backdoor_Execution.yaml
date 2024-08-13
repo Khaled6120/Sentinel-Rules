@@ -1,19 +1,19 @@
 name: Sticky Key Like Backdoor Execution
 id: 2fdefcb3-dbda-401e-ae23-f0db027628bc
 author: Florian Roth (Nextron Systems), @twjackomo, Jonhnathan Ribeiro, oscd.community
-date: 2018/03/15
+date: 2018-03-15
 severity: critical
 description: Detects the usage and installation of a backdoor that uses an option
   to register a malicious debugger for built-in tools that are accessible in the login
   screen
 status: test
-modified: 2023/03/07
+modified: 2023-03-07
 logsource:
   category: process_creation
   product: windows
 tactics:
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1546
 query: 'DeviceProcessEvents

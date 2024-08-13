@@ -2,7 +2,7 @@ name: New DLL Registered Via Odbcconf.EXE
 id: 9f0a8bf3-a65b-440a-8c1e-5cb1547c8e70
 author: Kirill Kiryanov, Beyu Denis, Daniil Yugoslavskiy, oscd.community, Nasreddine
   Bencherchali (Nextron Systems)
-date: 2023/05/22
+date: 2023-05-22
 severity: medium
 description: Detects execution of "odbcconf" with "REGSVR" in order to register a
   new DLL (equivalent to running regsvr32). Attackers abuse this to install and run
@@ -13,7 +13,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

@@ -1,7 +1,7 @@
 name: Network Connection Initiated By AddinUtil.EXE
 id: 5205613d-2a63-4412-a895-3a2458b587b3
 author: Michael McKinley (@McKinleyMike), Tony Latteri (@TheLatteri)
-date: 2023/09/18
+date: 2023-09-18
 severity: high
 description: 'Detects a network connection initiated by the Add-In deployment cache
   updating utility "AddInutil.exe".
@@ -11,12 +11,12 @@ description: 'Detects a network connection initiated by the Add-In deployment ca
 
   '
 status: test
-modified: 2024/07/16
+modified: 2024-07-16
 logsource:
   category: network_connection
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceNetworkEvents

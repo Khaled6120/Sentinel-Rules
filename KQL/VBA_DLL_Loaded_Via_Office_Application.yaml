@@ -1,12 +1,12 @@
 name: VBA DLL Loaded Via Office Application
 id: e6ce8457-68b1-485b-9bdd-3c2b5d679aa9
 author: Antonlovesdnb
-date: 2020/02/19
+date: 2020-02-19
 severity: high
 description: Detects VB DLL's loaded by an office application. Which could indicate
   the presence of VBA Macros.
 status: test
-modified: 2023/02/10
+modified: 2023-02-10
 logsource:
   category: image_load
   product: windows

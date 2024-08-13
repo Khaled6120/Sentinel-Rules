@@ -1,19 +1,19 @@
 name: Potential Persistence Via Custom Protocol Handler
 id: fdbf0b9d-0182-4c43-893b-a1eaab92d085
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/05/30
+date: 2022-05-30
 severity: medium
 description: Detects potential persistence activity via the registering of a new custom
   protocole handlers. While legitimate applications register protocole handlers often
   times during installation. And attacker can abuse this by setting a custom handler
   to be used as a persistence mechanism.
 status: test
-modified: 2023/05/12
+modified: 2023-05-12
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

@@ -1,7 +1,7 @@
 name: Active Directory Database Snapshot Via ADExplorer
 id: 9212f354-7775-4e28-9c9f-8f0a4544e664
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/03/14
+date: 2023-03-14
 severity: medium
 description: Detects the execution of Sysinternals ADExplorer with the "-snapshot"
   flag in order to save a local copy of the active directory database.
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1003
 - T1552

@@ -1,17 +1,17 @@
 name: Execution DLL of Choice Using WAB.EXE
 id: fc014922-5def-4da9-a0fc-28c973f41bfb
 author: oscd.community, Natalia Shornikova
-date: 2020/10/13
+date: 2020-10-13
 severity: high
 description: This rule detects that the path to the DLL written in the registry is
   different from the default one. Launched WAB.exe tries to load the DLL from Registry.
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceRegistryEvents

@@ -1,16 +1,16 @@
 name: Potentially Suspicious GoogleUpdate Child Process
 id: 84b1ecf9-6eff-4004-bafb-bae5c0e251b2
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/15
+date: 2023-05-15
 severity: high
 description: Detects potentially suspicious child processes of "GoogleUpdate.exe"
 status: test
-modified: 2023/05/22
+modified: 2023-05-22
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

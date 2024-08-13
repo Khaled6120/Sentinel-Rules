@@ -1,19 +1,19 @@
 name: Suspicious SYSTEM User Process Creation
 id: 2617e7ed-adb7-40ba-b0f3-8f9945fe6c09
 author: Florian Roth (Nextron Systems), David ANDRE (additional keywords)
-date: 2021/12/20
+date: 2021-12-20
 severity: high
 description: Detects a suspicious process creation as SYSTEM user (suspicious program
   or command line parameter)
 status: test
-modified: 2024/07/22
+modified: 2024-07-22
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
-- Defense Evasion
-- Privilege Escalation
+- Credential-access
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1003
 - T1027

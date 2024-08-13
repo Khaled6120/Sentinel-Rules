@@ -1,7 +1,7 @@
 name: Renamed Microsoft Teams Execution
 id: 88f46b67-14d4-4f45-ac2c-d66984f22191
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2024/07/12
+date: 2024-07-12
 severity: medium
 description: Detects the execution of a renamed Microsoft Teams binary.
 status: experimental
@@ -10,7 +10,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

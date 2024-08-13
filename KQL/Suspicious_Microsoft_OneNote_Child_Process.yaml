@@ -2,17 +2,17 @@ name: Suspicious Microsoft OneNote Child Process
 id: c27515df-97a9-4162-8a60-dc0eeb51b775
 author: Tim Rauch (Nextron Systems), Nasreddine Bencherchali (Nextron Systems), Elastic
   (idea)
-date: 2022/10/21
+date: 2022-10-21
 severity: high
 description: Detects suspicious child processes of the Microsoft OneNote application.
   This may indicate an attempt to execute malicious embedded objects from a .one file.
 status: test
-modified: 2023/02/10
+modified: 2023-02-10
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 relevantTechniques:
 - T1566
 query: 'DeviceProcessEvents

@@ -1,17 +1,17 @@
 name: Suspicious Obfuscated PowerShell Code
 id: 8d01b53f-456f-48ee-90f6-bc28e67d4e35
 author: Florian Roth (Nextron Systems)
-date: 2022/07/11
+date: 2022-07-11
 severity: high
 description: Detects suspicious UTF16 and base64 encoded and often obfuscated PowerShell
   code often used in command lines
 status: test
-modified: 2023/02/14
+modified: 2023-02-14
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques: []
 query: 'DeviceProcessEvents
 

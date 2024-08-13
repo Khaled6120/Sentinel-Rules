@@ -1,7 +1,7 @@
 name: MaxMpxCt Registry Value Changed
 id: 0e6a9e62-627e-496c-aef5-bfa39da29b5e
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2024/03/19
+date: 2024-03-19
 severity: low
 description: 'Detects changes to the "MaxMpxCt" registry value.
 
@@ -19,7 +19,7 @@ logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1070
 query: 'DeviceRegistryEvents

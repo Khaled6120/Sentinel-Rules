@@ -1,7 +1,7 @@
 name: Suspicious Executable File Creation
 id: 74babdd6-a758-4549-9632-26535279e654
 author: frack113
-date: 2022/09/05
+date: 2022-09-05
 severity: high
 description: 'Detect creation of suspicious executable file names.
 
@@ -10,12 +10,12 @@ description: 'Detect creation of suspicious executable file names.
 
   '
 status: test
-modified: 2023/12/11
+modified: 2023-12-11
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1564
 query: 'DeviceFileEvents

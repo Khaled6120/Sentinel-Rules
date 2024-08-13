@@ -1,17 +1,17 @@
 name: Use NTFS Short Name in Image
 id: 3ef5605c-9eb9-47b0-9a71-b727e6aa5c3b
 author: frack113, Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/06
+date: 2022-08-06
 severity: medium
 description: Detect use of the Windows 8.3 short name. Which could be used as a method
   to avoid Image based detection
 status: test
-modified: 2023/07/20
+modified: 2023-07-20
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1564
 query: 'DeviceProcessEvents

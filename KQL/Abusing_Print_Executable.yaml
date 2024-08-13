@@ -1,16 +1,16 @@
 name: Abusing Print Executable
 id: bafac3d6-7de9-4dd9-8874-4a1194b493ed
 author: Furkan CALISKAN, @caliskanfurkan_, @oscd_initiative
-date: 2020/10/05
+date: 2020-10-05
 severity: medium
 description: Attackers can use print.exe for remote file copy
 status: test
-modified: 2022/07/07
+modified: 2022-07-07
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

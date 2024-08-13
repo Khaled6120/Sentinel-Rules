@@ -1,17 +1,17 @@
 name: Suspicious Key Manager Access
 id: a4694263-59a8-4608-a3a0-6f8d3a51664c
 author: Florian Roth (Nextron Systems)
-date: 2022/04/21
+date: 2022-04-21
 severity: high
 description: Detects the invocation of the Stored User Names and Passwords dialogue
   (Key Manager)
 status: test
-modified: 2023/02/09
+modified: 2023-02-09
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Credential Access
+- Credential-access
 relevantTechniques:
 - T1555
 query: 'DeviceProcessEvents

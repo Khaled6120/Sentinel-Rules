@@ -1,7 +1,7 @@
 name: Network Connection Initiated To Cloudflared Tunnels Domains
 id: 7cd1dcdc-6edf-4896-86dc-d1f19ad64903
 author: Kamran Saifullah, Nasreddine Bencherchali (Nextron Systems)
-date: 2024/05/27
+date: 2024-05-27
 severity: medium
 description: 'Detects network connections to Cloudflared tunnels domains initiated
   by a process on the system.
@@ -16,7 +16,7 @@ logsource:
   category: network_connection
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 - Exfiltration
 relevantTechniques:
 - T1567

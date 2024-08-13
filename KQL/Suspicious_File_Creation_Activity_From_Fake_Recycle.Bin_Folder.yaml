@@ -1,17 +1,17 @@
 name: Suspicious File Creation Activity From Fake Recycle.Bin Folder
 id: cd8b36ac-8e4a-4c2f-a402-a29b8fbd5bca
 author: X__Junior (Nextron Systems)
-date: 2023/07/12
+date: 2023-07-12
 severity: high
 description: Detects file write event from/to a fake recycle bin folder that is often
   used as a staging directory for malware
 status: experimental
-modified: 2023/12/11
+modified: 2023-12-11
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
 relevantTechniques: []
 query: 'DeviceFileEvents

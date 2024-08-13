@@ -1,7 +1,7 @@
 name: AddinUtil.EXE Execution From Uncommon Directory
 id: 6120ac2a-a34b-42c0-a9bd-1fb9f459f348
 author: Michael McKinley (@McKinleyMike), Tony Latteri (@TheLatteri)
-date: 2023/09/18
+date: 2023-09-18
 severity: medium
 description: Detects execution of the Add-In deployment cache updating utility (AddInutil.exe)
   from a non-standard directory.
@@ -11,7 +11,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

@@ -1,12 +1,12 @@
 name: PowerShell Module File Created By Non-PowerShell Process
 id: e3845023-ca9a-4024-b2b2-5422156d5527
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/05/09
+date: 2023-05-09
 severity: medium
 description: Detects the creation of a new PowerShell module ".psm1", ".psd1", ".dll",
   ".ps1", etc. by a non-PowerShell process
 status: experimental
-modified: 2023/10/18
+modified: 2023-10-18
 logsource:
   category: file_event
   product: windows

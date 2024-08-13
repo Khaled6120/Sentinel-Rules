@@ -1,7 +1,7 @@
 name: Potential RDP Session Hijacking Activity
 id: 224f140f-3553-4cd1-af78-13d81bf9f7cc
 author: '@juju4'
-date: 2022/12/27
+date: 2022-12-27
 severity: medium
 description: Detects potential RDP Session Hijacking activity on Windows systems
 status: test

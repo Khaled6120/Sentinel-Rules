@@ -1,7 +1,7 @@
 name: Visual Studio Code Tunnel Shell Execution
 id: f4a623c2-4ef5-4c33-b811-0642f702c9f1
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/10/25
+date: 2023-10-25
 severity: medium
 description: Detects the execution of a shell (powershell, bash, wsl...) via Visual
   Studio Code tunnel. Attackers can abuse this functionality to establish a C2 channel
@@ -12,7 +12,7 @@ logsource:
   category: process_creation
   product: windows
 tactics:
-- Command And Control
+- Command-and-control
 relevantTechniques:
 - T1071
 query: 'DeviceProcessEvents

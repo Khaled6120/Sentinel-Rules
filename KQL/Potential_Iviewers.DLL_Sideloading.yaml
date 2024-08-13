@@ -1,7 +1,7 @@
 name: Potential Iviewers.DLL Sideloading
 id: 4c21b805-4dd7-469f-b47d-7383a8fcb437
 author: X__Junior (Nextron Systems)
-date: 2023/03/21
+date: 2023-03-21
 severity: high
 description: Detects potential DLL sideloading of "iviewers.dll" (OLE/COM Object Interface
   Viewer)
@@ -11,8 +11,8 @@ logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
-- Privilege Escalation
+- Defense-evasion
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

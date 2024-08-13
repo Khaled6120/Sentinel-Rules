@@ -1,7 +1,7 @@
 name: New BgInfo.EXE Custom DB Path Registry Configuration
 id: 53330955-dc52-487f-a3a2-da24dcff99b5
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2023/08/16
+date: 2023-08-16
 severity: medium
 description: Detects setting of a new registry database value related to BgInfo configuration.
   Attackers can for example set this value to save the results of the commands executed
@@ -12,7 +12,7 @@ logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents

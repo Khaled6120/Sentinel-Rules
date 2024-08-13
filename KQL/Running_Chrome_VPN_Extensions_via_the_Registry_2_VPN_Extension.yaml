@@ -1,11 +1,11 @@
 name: Running Chrome VPN Extensions via the Registry 2 VPN Extension
 id: b64a026b-8deb-4c1d-92fd-98893209dff1
 author: frack113
-date: 2021/12/28
+date: 2021-12-28
 severity: high
 description: Running Chrome VPN Extensions via the Registry install 2 vpn extension
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows

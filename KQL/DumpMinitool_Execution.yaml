@@ -1,17 +1,17 @@
 name: DumpMinitool Execution
 id: dee0a7a3-f200-4112-a99b-952196d81e42
 author: Nasreddine Bencherchali (Nextron Systems), Florian Roth (Nextron Systems)
-date: 2022/04/06
+date: 2022-04-06
 severity: medium
 description: Detects the use of "DumpMinitool.exe" a tool that allows the dump of
   process memory via the use of the "MiniDumpWriteDump"
 status: test
-modified: 2023/04/12
+modified: 2023-04-12
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1003
 - T1036

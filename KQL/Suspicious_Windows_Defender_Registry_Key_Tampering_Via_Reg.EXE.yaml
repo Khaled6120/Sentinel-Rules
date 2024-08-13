@@ -2,18 +2,18 @@ name: Suspicious Windows Defender Registry Key Tampering Via Reg.EXE
 id: 452bce90-6fb0-43cc-97a5-affc283139b3
 author: Florian Roth (Nextron Systems), Swachchhanda Shrawan Poudel, Nasreddine Bencherchali
   (Nextron Systems)
-date: 2022/03/22
+date: 2022-03-22
 severity: high
 description: Detects the usage of "reg.exe" to tamper with different Windows Defender
   registry keys in order to disable some important features related to protection
   and detection
 status: test
-modified: 2023/06/05
+modified: 2023-06-05
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents

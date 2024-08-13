@@ -1,12 +1,12 @@
 name: Potential Reconnaissance Activity Via GatherNetworkInfo.VBS
 id: 575dce0c-8139-4e30-9295-1ee75969f7fe
 author: blueteamer8699
-date: 2022/01/03
+date: 2022-01-03
 severity: medium
 description: Detects execution of the built-in script located in "C:\Windows\System32\gatherNetworkInfo.vbs".
   Which can be used to gather information about the target machine
 status: test
-modified: 2023/02/08
+modified: 2023-02-08
 logsource:
   category: process_creation
   product: windows

@@ -1,7 +1,7 @@
 name: Suspicious Electron Application Child Processes
 id: f26eb764-fd89-464b-85e2-dc4a8e6e77b8
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/10/21
+date: 2022-10-21
 severity: medium
 description: 'Detects suspicious child processes of electron apps (teams, discord,
   slack, etc.). This could be a potential sign of ".asar" file tampering (See reference
@@ -10,7 +10,7 @@ description: 'Detects suspicious child processes of electron apps (teams, discor
 
   '
 status: test
-modified: 2024/07/12
+modified: 2024-07-12
 logsource:
   category: process_creation
   product: windows

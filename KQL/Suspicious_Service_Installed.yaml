@@ -1,7 +1,7 @@
 name: Suspicious Service Installed
 id: f2485272-a156-4773-82d7-1d178bc4905b
 author: xknow (@xknow_infosec), xorxes (@xor_xes)
-date: 2019/04/08
+date: 2019-04-08
 severity: medium
 description: 'Detects installation of NalDrv or PROCEXP152 services via registry-keys
   to non-system32 folders.
@@ -11,12 +11,12 @@ description: 'Detects installation of NalDrv or PROCEXP152 services via registry
 
   '
 status: test
-modified: 2023/08/17
+modified: 2023-08-17
 logsource:
   category: registry_set
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents

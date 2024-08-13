@@ -1,7 +1,7 @@
 name: Suspicious PROCEXP152.sys File Created In TMP
 id: 3da70954-0f2c-4103-adff-b7440368f50e
 author: xknow (@xknow_infosec), xorxes (@xor_xes)
-date: 2019/04/08
+date: 2019-04-08
 severity: medium
 description: 'Detects the creation of the PROCEXP152.sys file in the application-data
   local temporary folder.
@@ -11,12 +11,12 @@ description: 'Detects the creation of the PROCEXP152.sys file in the application
 
   '
 status: test
-modified: 2022/11/22
+modified: 2022-11-22
 logsource:
   category: file_event
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1562
 query: 'DeviceFileEvents

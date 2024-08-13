@@ -2,17 +2,17 @@ name: Csc.EXE Execution Form Potentially Suspicious Parent
 id: b730a276-6b63-41b8-bcf8-55930c8fc6ee
 author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems),
   X__Junior (Nextron Systems)
-date: 2019/02/11
+date: 2019-02-11
 severity: high
 description: Detects a potentially suspicious parent of "csc.exe", which could be
   a sign of payload delivery.
 status: test
-modified: 2024/05/27
+modified: 2024-05-27
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Execution
 relevantTechniques:
 - T1027

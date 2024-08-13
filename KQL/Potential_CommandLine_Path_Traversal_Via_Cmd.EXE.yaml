@@ -1,12 +1,12 @@
 name: Potential CommandLine Path Traversal Via Cmd.EXE
 id: 087790e3-3287-436c-bccf-cbd0184a7db1
 author: xknow @xknow_infosec, Tim Shelton
-date: 2020/06/11
+date: 2020-06-11
 severity: high
 description: Detects potential path traversal attempt via cmd.exe. Could indicate
   possible command/argument confusion/hijacking
 status: test
-modified: 2023/03/06
+modified: 2023-03-06
 logsource:
   category: process_creation
   product: windows

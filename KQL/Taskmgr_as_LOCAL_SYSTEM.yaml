@@ -1,16 +1,16 @@
 name: Taskmgr as LOCAL_SYSTEM
 id: 9fff585c-c33e-4a86-b3cd-39312079a65f
 author: Florian Roth (Nextron Systems)
-date: 2018/03/18
+date: 2018-03-18
 severity: high
 description: Detects the creation of taskmgr.exe process in context of LOCAL_SYSTEM
 status: test
-modified: 2022/05/27
+modified: 2022-05-27
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1036
 query: 'DeviceProcessEvents

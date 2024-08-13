@@ -1,12 +1,12 @@
 name: User Discovery And Export Via Get-ADUser Cmdlet
 id: 1114e048-b69c-4f41-bc20-657245ae6e3f
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/09/09
+date: 2022-09-09
 severity: medium
 description: Detects usage of the Get-ADUser cmdlet to collect user information and
   output it to a file
 status: test
-modified: 2022/11/17
+modified: 2022-11-17
 logsource:
   category: process_creation
   product: windows

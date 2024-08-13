@@ -1,19 +1,19 @@
 name: Potential System DLL Sideloading From Non System Locations
 id: 4fc0deee-0057-4998-ab31-d24e46e0aba4
 author: Nasreddine Bencherchali (Nextron Systems)
-date: 2022/08/14
+date: 2022-08-14
 severity: high
 description: Detects DLL sideloading of DLLs usually located in system locations (System32,
   SysWOW64, etc.).
 status: experimental
-modified: 2024/07/11
+modified: 2024-07-11
 logsource:
   category: image_load
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 - Persistence
-- Privilege Escalation
+- Privilege-escalation
 relevantTechniques:
 - T1574
 query: 'DeviceImageLoadEvents

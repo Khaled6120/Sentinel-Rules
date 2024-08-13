@@ -2,17 +2,17 @@ name: Potentially Suspicious Rundll32 Activity
 id: e593cf51-88db-4ee1-b920-37e89012a3c9
 author: juju4, Jonhnathan Ribeiro, oscd.community, Nasreddine Bencherchali (Nextron
   Systems)
-date: 2019/01/16
+date: 2019-01-16
 severity: medium
 description: Detects suspicious execution of rundll32, with specific calls to some
   DLLs with known LOLBIN functionalities
 status: test
-modified: 2023/05/17
+modified: 2023-05-17
 logsource:
   category: process_creation
   product: windows
 tactics:
-- Defense Evasion
+- Defense-evasion
 relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents

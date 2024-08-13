@@ -1,18 +1,18 @@
 name: Unusual File Deletion by Dns.exe
 id: 8f0b1fb1-9bd4-4e74-8cdf-a8de4d2adfd0
 author: Tim Rauch (Nextron Systems), Elastic (idea)
-date: 2022/09/27
+date: 2022-09-27
 severity: high
 description: Detects an unexpected file being deleted by dns.exe which my indicate
   activity related to remote code execution or other forms of exploitation as seen
   in CVE-2020-1350 (SigRed)
 status: test
-modified: 2023/02/15
+modified: 2023-02-15
 logsource:
   category: file_delete
   product: windows
 tactics:
-- Initial Access
+- Initial-access
 relevantTechniques:
 - T1133
 query: 'DeviceFileEvents
