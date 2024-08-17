@@ -1,0 +1,41 @@
+name: Potentially Suspicious Rundll32.EXE Execution of UDL File
+id: 0ea52357-cd59-4340-9981-c46c7e900428
+author: '@kostastsale'
+date: 2024-08-16
+severity: medium
+description: 'Detects the execution of rundll32.exe with the oledb32.dll library to
+  open a UDL file.
+
+  Threat actors can abuse this technique as a phishing vector to capture authentication
+  credentials or other sensitive data.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Execution
+relevantTechniques:
+- T1071
+- T1218
+query: 'DeviceProcessEvents
+
+  | where ((ProcessCommandLine contains "oledb32.dll" and ProcessCommandLine contains
+  ",OpenDSLFile " and (ProcessCommandLine contains "\\Users\\" and ProcessCommandLine
+  contains "\\Downloads\\")) and ProcessCommandLine endswith ".udl") and (FolderPath
+  endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName =~ "RUNDLL32.EXE")
+  and InitiatingProcessFolderPath endswith "\\explorer.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

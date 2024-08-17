@@ -6,7 +6,7 @@ severity: medium
 description: Detects execution of "Diskshadow.exe" in script mode using the "/s" flag
   where the script is located in a potentially suspicious location.
 status: test
-modified: ''
+modified: 2024-03-05
 logsource:
   category: process_creation
   product: windows
