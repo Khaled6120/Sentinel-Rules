@@ -1,0 +1,35 @@
+name: New Capture Session Launched Via DXCap.EXE
+id: 60f16a96-db70-42eb-8f76-16763e333590
+author: Beyu Denis, oscd.community, Nasreddine Bencherchali (Nextron Systems)
+date: 2019-10-26
+severity: medium
+description: 'Detects the execution of "DXCap.EXE" with the "-c" flag, which allows
+  a user to launch any arbitrary binary or windows package through DXCap itself. This
+  can be abused to potentially bypass application whitelisting.
+
+  '
+status: test
+modified: 2022-06-09
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense-evasion
+relevantTechniques:
+- T1218
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains " -c " and (FolderPath endswith "\\DXCap.exe"
+  or ProcessVersionInfoOriginalFileName =~ "DXCap.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

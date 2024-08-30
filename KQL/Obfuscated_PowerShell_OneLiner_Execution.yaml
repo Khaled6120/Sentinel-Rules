@@ -1,0 +1,35 @@
+name: Obfuscated PowerShell OneLiner Execution
+id: 44e24481-6202-4c62-9127-5a0ae8e3fe3d
+author: '@Kostastsale, @TheDFIRReport'
+date: 2022-05-09
+severity: high
+description: Detects the execution of a specific OneLiner to download and execute
+  powershell modules in memory.
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense-evasion
+- Execution
+relevantTechniques:
+- T1059
+- T1562
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "http://127.0.0.1" and ProcessCommandLine contains
+  "%{(IRM $_)}" and ProcessCommandLine contains ".SubString.ToString()[67,72,64]-Join"
+  and ProcessCommandLine contains "Import-Module") and FolderPath endswith "\\powershell.exe"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

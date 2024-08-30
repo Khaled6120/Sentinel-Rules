@@ -1,0 +1,35 @@
+name: Uncommon Sigverif.EXE Child Process
+id: 7d4aaec2-08ed-4430-8b96-28420e030e04
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022-08-19
+severity: medium
+description: 'Detects uncommon child processes spawning from "sigverif.exe", which
+  could indicate potential abuse of the latter as a living of the land binary in order
+  to proxy execution.
+
+  '
+status: test
+modified: 2024-08-27
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense-evasion
+relevantTechniques:
+- T1216
+query: 'DeviceProcessEvents
+
+  | where InitiatingProcessFolderPath endswith "\\sigverif.exe" and (not((FolderPath
+  in~ ("C:\\Windows\\System32\\WerFault.exe", "C:\\Windows\\SysWOW64\\WerFault.exe"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

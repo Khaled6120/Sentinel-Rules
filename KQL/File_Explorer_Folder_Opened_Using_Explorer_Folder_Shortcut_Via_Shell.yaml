@@ -1,0 +1,35 @@
+name: File Explorer Folder Opened Using Explorer Folder Shortcut Via Shell
+id: c3d76afc-93df-461e-8e67-9b2bad3f2ac4
+author: '@Kostastsale'
+date: 2022-12-22
+severity: high
+description: 'Detects the initial execution of "cmd.exe" which spawns "explorer.exe"
+  with the appropriate command line arguments for opening the "My Computer" folder.
+
+  '
+status: experimental
+modified: 2024-08-23
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Discovery
+relevantTechniques:
+- T1135
+query: 'DeviceProcessEvents
+
+  | where ProcessCommandLine contains "shell:mycomputerfolder" and FolderPath endswith
+  "\\explorer.exe" and (InitiatingProcessFolderPath endswith "\\cmd.exe" or InitiatingProcessFolderPath
+  endswith "\\powershell.exe" or InitiatingProcessFolderPath endswith "\\pwsh.exe")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

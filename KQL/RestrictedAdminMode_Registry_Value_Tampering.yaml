@@ -13,8 +13,8 @@ description: 'Detects changes to the "DisableRestrictedAdmin" registry value in 
   process if the remote server has been compromise
 
   '
-status: experimental
-modified: 2023-12-15
+status: test
+modified: 2024-08-23
 logsource:
   category: registry_set
   product: windows

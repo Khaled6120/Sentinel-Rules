@@ -1,12 +1,12 @@
 name: Sdiagnhost Calling Suspicious Child Process
 id: f3d39c45-de1a-4486-a687-ab126124f744
-author: Nextron Systems
+author: Nextron Systems, @Kostastsale
 date: 2022-06-01
 severity: high
 description: Detects sdiagnhost.exe calling a suspicious child process (e.g. used
   in exploits for Follina / CVE-2022-30190)
 status: test
-modified: 2022-10-31
+modified: 2024-08-23
 logsource:
   category: process_creation
   product: windows
@@ -17,12 +17,14 @@ relevantTechniques:
 - T1218
 query: 'DeviceProcessEvents
 
-  | where (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"
+  | where ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"
   or FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\mshta.exe" or FolderPath
   endswith "\\cscript.exe" or FolderPath endswith "\\wscript.exe" or FolderPath endswith
   "\\taskkill.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith
   "\\rundll32.exe" or FolderPath endswith "\\calc.exe") and InitiatingProcessFolderPath
-  endswith "\\sdiagnhost.exe"'
+  endswith "\\sdiagnhost.exe") and (not(((ProcessCommandLine contains "bits" and FolderPath
+  endswith "\\cmd.exe") or ((ProcessCommandLine endswith "-noprofile -" or ProcessCommandLine
+  endswith "-noprofile") and FolderPath endswith "\\powershell.exe"))))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

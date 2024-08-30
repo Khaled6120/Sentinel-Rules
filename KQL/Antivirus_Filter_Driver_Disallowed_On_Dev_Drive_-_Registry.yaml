@@ -1,0 +1,33 @@
+name: Antivirus Filter Driver Disallowed On Dev Drive - Registry
+id: 31e124fb-5dc4-42a0-83b3-44a69c77b271
+author: '@kostastsale, Nasreddine Bencherchali (Nextron Systems)'
+date: 2023-11-05
+severity: high
+description: 'Detects activity that indicates a user disabling the ability for Antivirus
+  mini filter to inspect a "Dev Drive".
+
+  '
+status: experimental
+modified: 2024-08-16
+logsource:
+  category: registry_set
+  product: windows
+tactics:
+- Defense-evasion
+relevantTechniques:
+- T1562
+query: 'DeviceRegistryEvents
+
+  | where RegistryValueData =~ "DWORD (0x00000000)" and RegistryKey endswith "\\FilterManager\\FltmgrDevDriveAllowAntivirusFilter"'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

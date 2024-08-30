@@ -1,0 +1,38 @@
+name: HackTool - SOAPHound Execution
+id: e92a4287-e072-4a40-9739-370c106bb750
+author: '@kostastsale'
+date: 2024-01-26
+severity: high
+description: 'Detects the execution of SOAPHound, a .NET tool for collecting Active
+  Directory data, using specific command-line arguments that may indicate an attempt
+  to extract sensitive AD information.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Discovery
+relevantTechniques:
+- T1087
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains " --buildcache " or ProcessCommandLine contains
+  " --bhdump " or ProcessCommandLine contains " --certdump " or ProcessCommandLine
+  contains " --dnsdump ") and (ProcessCommandLine contains " -c " or ProcessCommandLine
+  contains " --cachefilename " or ProcessCommandLine contains " -o " or ProcessCommandLine
+  contains " --outputdirectory")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

@@ -7,7 +7,7 @@ severity: high
 description: Detects the use of the Microsoft Windows Resource Leak Diagnostic tool
   "rdrleakdiag.exe" to dump process memory
 status: test
-modified: 2023-04-24
+modified: 2024-08-15
 logsource:
   category: process_creation
   product: windows
@@ -15,15 +15,16 @@ tactics:
 - Credential-access
 relevantTechniques:
 - T1003
-query: 'DeviceProcessEvents
-
-  | where ((ProcessCommandLine contains "fullmemdmp" or ProcessCommandLine contains
-  "/memdmp" or ProcessCommandLine contains "-memdmp") and (ProcessCommandLine contains
-  " -o " or ProcessCommandLine contains " /o ") and (ProcessCommandLine contains "
-  -p " or ProcessCommandLine contains " /p ")) or ((FolderPath endswith "\\rdrleakdiag.exe"
-  or ProcessVersionInfoOriginalFileName =~ "RdrLeakDiag.exe") and (ProcessCommandLine
-  contains "fullmemdmp" or ProcessCommandLine contains "/memdmp" or ProcessCommandLine
-  contains "-memdmp"))'
+query: "DeviceProcessEvents\n| where (ProcessCommandLine contains \"-memdmp\" or ProcessCommandLine\
+  \ contains \"/memdmp\" or ProcessCommandLine contains \"\u2013memdmp\" or ProcessCommandLine\
+  \ contains \"\u2014memdmp\" or ProcessCommandLine contains \"\u2015memdmp\" or ProcessCommandLine\
+  \ contains \"fullmemdmp\") and (ProcessCommandLine contains \" -o \" or ProcessCommandLine\
+  \ contains \" /o \" or ProcessCommandLine contains \" \u2013o \" or ProcessCommandLine\
+  \ contains \" \u2014o \" or ProcessCommandLine contains \" \u2015o \" or ProcessCommandLine\
+  \ contains \" -p \" or ProcessCommandLine contains \" /p \" or ProcessCommandLine\
+  \ contains \" \u2013p \" or ProcessCommandLine contains \" \u2014p \" or ProcessCommandLine\
+  \ contains \" \u2015p \") and (FolderPath endswith \"\\\\rdrleakdiag.exe\" or ProcessVersionInfoOriginalFileName\
+  \ =~ \"RdrLeakDiag.exe\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

@@ -11,7 +11,7 @@ description: 'Detects execution of different log query utilities and commands to
 
   '
 status: experimental
-modified: 2024-07-12
+modified: 2024-08-15
 logsource:
   category: process_creation
   product: windows
@@ -22,16 +22,18 @@ relevantTechniques:
 - T1552
 query: 'DeviceProcessEvents
 
-  | where ((ProcessCommandLine contains "-InstanceId 4624" or ProcessCommandLine contains
-  "System[EventID=4624]" or (ProcessCommandLine contains "EventCode=" and ProcessCommandLine
-  contains "4624") or (ProcessCommandLine contains "EventIdentifier=" and ProcessCommandLine
-  contains "4624") or ProcessCommandLine contains "-InstanceId 4778" or ProcessCommandLine
-  contains "System[EventID=4778]" or (ProcessCommandLine contains "EventCode=" and
-  ProcessCommandLine contains "4778") or (ProcessCommandLine contains "EventIdentifier="
-  and ProcessCommandLine contains "4778") or ProcessCommandLine contains "-InstanceId
-  25" or ProcessCommandLine contains "System[EventID=25]" or (ProcessCommandLine contains
-  "EventCode=" and ProcessCommandLine contains "25") or (ProcessCommandLine contains
-  "EventIdentifier=" and ProcessCommandLine contains "25")) or (ProcessCommandLine
+  | where (((ProcessCommandLine contains "-InstanceId 462") or (ProcessCommandLine
+  contains ".eventid -eq 462") or (ProcessCommandLine contains "EventCode=" and ProcessCommandLine
+  contains "462") or (ProcessCommandLine contains "EventIdentifier=" and ProcessCommandLine
+  contains "462") or (ProcessCommandLine contains "System[EventID=462" and ProcessCommandLine
+  contains "]") or ProcessCommandLine contains "-InstanceId 4778" or ProcessCommandLine
+  contains ".eventid -eq 4778" or ProcessCommandLine contains "System[EventID=4778]"
+  or (ProcessCommandLine contains "EventCode=" and ProcessCommandLine contains "4778")
+  or (ProcessCommandLine contains "EventIdentifier=" and ProcessCommandLine contains
+  "4778") or ProcessCommandLine contains "-InstanceId 25" or ProcessCommandLine contains
+  ".eventid -eq 25" or ProcessCommandLine contains "System[EventID=25]" or (ProcessCommandLine
+  contains "EventCode=" and ProcessCommandLine contains "25") or (ProcessCommandLine
+  contains "EventIdentifier=" and ProcessCommandLine contains "25")) or (ProcessCommandLine
   contains "Microsoft-Windows-PowerShell" or ProcessCommandLine contains "Microsoft-Windows-Security-Auditing"
   or ProcessCommandLine contains "Microsoft-Windows-TerminalServices-LocalSessionManager"
   or ProcessCommandLine contains "Microsoft-Windows-TerminalServices-RemoteConnectionManager"

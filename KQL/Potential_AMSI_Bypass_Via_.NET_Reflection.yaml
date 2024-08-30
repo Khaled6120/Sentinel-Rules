@@ -16,7 +16,7 @@ relevantTechniques:
 - T1562
 query: 'DeviceProcessEvents
 
-  | where (ProcessCommandLine contains "System.Management.Automation.AmsiUtils" or
+  | where (ProcessCommandLine contains "System.Management.Automation.AmsiUtils" and
   ProcessCommandLine contains "amsiInitFailed") or (ProcessCommandLine contains "[Ref].Assembly.GetType"
   and ProcessCommandLine contains "SetValue($null,$true)" and ProcessCommandLine contains
   "NonPublic,Static")'

@@ -1,0 +1,709 @@
+name: Potential Defense Evasion Activity Via Emoji Usage In CommandLine - 1
+id: 4a30ac0c-b9d6-4e01-b71a-5f851bbf4259
+author: '@Kostastsale, @TheDFIRReport'
+date: 2022-12-05
+severity: high
+description: Detects the usage of emojis in the command line, this could be a sign
+  of potential defense evasion activity.
+status: experimental
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Defense-evasion
+relevantTechniques: []
+query: "DeviceProcessEvents\n| where ProcessCommandLine contains \"\U0001F600\" or\
+  \ ProcessCommandLine contains \"\U0001F603\" or ProcessCommandLine contains \"\U0001F604\
+  \" or ProcessCommandLine contains \"\U0001F601\" or ProcessCommandLine contains\
+  \ \"\U0001F606\" or ProcessCommandLine contains \"\U0001F605\" or ProcessCommandLine\
+  \ contains \"\U0001F602\" or ProcessCommandLine contains \"\U0001F923\" or ProcessCommandLine\
+  \ contains \"\U0001F972\" or ProcessCommandLine contains \"\U0001F979\" or ProcessCommandLine\
+  \ contains \"\u263A\uFE0F\" or ProcessCommandLine contains \"\U0001F60A\" or ProcessCommandLine\
+  \ contains \"\U0001F607\" or ProcessCommandLine contains \"\U0001F642\" or ProcessCommandLine\
+  \ contains \"\U0001F643\" or ProcessCommandLine contains \"\U0001F609\" or ProcessCommandLine\
+  \ contains \"\U0001F60C\" or ProcessCommandLine contains \"\U0001F60D\" or ProcessCommandLine\
+  \ contains \"\U0001F970\" or ProcessCommandLine contains \"\U0001F618\" or ProcessCommandLine\
+  \ contains \"\U0001F617\" or ProcessCommandLine contains \"\U0001F619\" or ProcessCommandLine\
+  \ contains \"\U0001F61A\" or ProcessCommandLine contains \"\U0001F60B\" or ProcessCommandLine\
+  \ contains \"\U0001F61B\" or ProcessCommandLine contains \"\U0001F61D\" or ProcessCommandLine\
+  \ contains \"\U0001F61C\" or ProcessCommandLine contains \"\U0001F92A\" or ProcessCommandLine\
+  \ contains \"\U0001F928\" or ProcessCommandLine contains \"\U0001F9D0\" or ProcessCommandLine\
+  \ contains \"\U0001F913\" or ProcessCommandLine contains \"\U0001F60E\" or ProcessCommandLine\
+  \ contains \"\U0001F978\" or ProcessCommandLine contains \"\U0001F929\" or ProcessCommandLine\
+  \ contains \"\U0001F973\" or ProcessCommandLine contains \"\U0001F60F\" or ProcessCommandLine\
+  \ contains \"\U0001F612\" or ProcessCommandLine contains \"\U0001F61E\" or ProcessCommandLine\
+  \ contains \"\U0001F614\" or ProcessCommandLine contains \"\U0001F61F\" or ProcessCommandLine\
+  \ contains \"\U0001F615\" or ProcessCommandLine contains \"\U0001F641\" or ProcessCommandLine\
+  \ contains \"\u2639\uFE0F\" or ProcessCommandLine contains \"\U0001F623\" or ProcessCommandLine\
+  \ contains \"\U0001F616\" or ProcessCommandLine contains \"\U0001F62B\" or ProcessCommandLine\
+  \ contains \"\U0001F629\" or ProcessCommandLine contains \"\U0001F97A\" or ProcessCommandLine\
+  \ contains \"\U0001F622\" or ProcessCommandLine contains \"\U0001F62D\" or ProcessCommandLine\
+  \ contains \"\U0001F62E\u200D\U0001F4A8\" or ProcessCommandLine contains \"\U0001F624\
+  \" or ProcessCommandLine contains \"\U0001F620\" or ProcessCommandLine contains\
+  \ \"\U0001F621\" or ProcessCommandLine contains \"\U0001F92C\" or ProcessCommandLine\
+  \ contains \"\U0001F92F\" or ProcessCommandLine contains \"\U0001F633\" or ProcessCommandLine\
+  \ contains \"\U0001F975\" or ProcessCommandLine contains \"\U0001F976\" or ProcessCommandLine\
+  \ contains \"\U0001F631\" or ProcessCommandLine contains \"\U0001F628\" or ProcessCommandLine\
+  \ contains \"\U0001F630\" or ProcessCommandLine contains \"\U0001F625\" or ProcessCommandLine\
+  \ contains \"\U0001F613\" or ProcessCommandLine contains \"\U0001FAE3\" or ProcessCommandLine\
+  \ contains \"\U0001F917\" or ProcessCommandLine contains \"\U0001FAE1\" or ProcessCommandLine\
+  \ contains \"\U0001F914\" or ProcessCommandLine contains \"\U0001FAE2\" or ProcessCommandLine\
+  \ contains \"\U0001F92D\" or ProcessCommandLine contains \"\U0001F92B\" or ProcessCommandLine\
+  \ contains \"\U0001F925\" or ProcessCommandLine contains \"\U0001F636\" or ProcessCommandLine\
+  \ contains \"\U0001F636\u200D\U0001F32B\uFE0F\" or ProcessCommandLine contains \"\
+  \U0001F610\" or ProcessCommandLine contains \"\U0001F611\" or ProcessCommandLine\
+  \ contains \"\U0001F62C\" or ProcessCommandLine contains \"\U0001FAE0\" or ProcessCommandLine\
+  \ contains \"\U0001F644\" or ProcessCommandLine contains \"\U0001F62F\" or ProcessCommandLine\
+  \ contains \"\U0001F626\" or ProcessCommandLine contains \"\U0001F627\" or ProcessCommandLine\
+  \ contains \"\U0001F62E\" or ProcessCommandLine contains \"\U0001F632\" or ProcessCommandLine\
+  \ contains \"\U0001F971\" or ProcessCommandLine contains \"\U0001F634\" or ProcessCommandLine\
+  \ contains \"\U0001F924\" or ProcessCommandLine contains \"\U0001F62A\" or ProcessCommandLine\
+  \ contains \"\U0001F635\" or ProcessCommandLine contains \"\U0001F635\u200D\U0001F4AB\
+  \" or ProcessCommandLine contains \"\U0001FAE5\" or ProcessCommandLine contains\
+  \ \"\U0001F910\" or ProcessCommandLine contains \"\U0001F974\" or ProcessCommandLine\
+  \ contains \"\U0001F922\" or ProcessCommandLine contains \"\U0001F92E\" or ProcessCommandLine\
+  \ contains \"\U0001F927\" or ProcessCommandLine contains \"\U0001F637\" or ProcessCommandLine\
+  \ contains \"\U0001F912\" or ProcessCommandLine contains \"\U0001F915\" or ProcessCommandLine\
+  \ contains \"\U0001F911\" or ProcessCommandLine contains \"\U0001F920\" or ProcessCommandLine\
+  \ contains \"\U0001F608\" or ProcessCommandLine contains \"\U0001F47F\" or ProcessCommandLine\
+  \ contains \"\U0001F479\" or ProcessCommandLine contains \"\U0001F47A\" or ProcessCommandLine\
+  \ contains \"\U0001F921\" or ProcessCommandLine contains \"\U0001F4A9\" or ProcessCommandLine\
+  \ contains \"\U0001F47B\" or ProcessCommandLine contains \"\U0001F480\" or ProcessCommandLine\
+  \ contains \"\u2620\uFE0F\" or ProcessCommandLine contains \"\U0001F47D\" or ProcessCommandLine\
+  \ contains \"\U0001F47E\" or ProcessCommandLine contains \"\U0001F916\" or ProcessCommandLine\
+  \ contains \"\U0001F383\" or ProcessCommandLine contains \"\U0001F63A\" or ProcessCommandLine\
+  \ contains \"\U0001F638\" or ProcessCommandLine contains \"\U0001F639\" or ProcessCommandLine\
+  \ contains \"\U0001F63B\" or ProcessCommandLine contains \"\U0001F63C\" or ProcessCommandLine\
+  \ contains \"\U0001F63D\" or ProcessCommandLine contains \"\U0001F640\" or ProcessCommandLine\
+  \ contains \"\U0001F63F\" or ProcessCommandLine contains \"\U0001F63E\" or ProcessCommandLine\
+  \ contains \"\U0001F44B\" or ProcessCommandLine contains \"\U0001F91A\" or ProcessCommandLine\
+  \ contains \"\U0001F590\" or ProcessCommandLine contains \"\u270B\" or ProcessCommandLine\
+  \ contains \"\U0001F596\" or ProcessCommandLine contains \"\U0001F44C\" or ProcessCommandLine\
+  \ contains \"\U0001F90C\" or ProcessCommandLine contains \"\U0001F90F\" or ProcessCommandLine\
+  \ contains \"\u270C\uFE0F\" or ProcessCommandLine contains \"\U0001F91E\" or ProcessCommandLine\
+  \ contains \"\U0001FAF0\" or ProcessCommandLine contains \"\U0001F91F\" or ProcessCommandLine\
+  \ contains \"\U0001F918\" or ProcessCommandLine contains \"\U0001F919\" or ProcessCommandLine\
+  \ contains \"\U0001FAF5\" or ProcessCommandLine contains \"\U0001FAF1\" or ProcessCommandLine\
+  \ contains \"\U0001FAF2\" or ProcessCommandLine contains \"\U0001FAF3\" or ProcessCommandLine\
+  \ contains \"\U0001FAF4\" or ProcessCommandLine contains \"\U0001F448\" or ProcessCommandLine\
+  \ contains \"\U0001F449\" or ProcessCommandLine contains \"\U0001F446\" or ProcessCommandLine\
+  \ contains \"\U0001F595\" or ProcessCommandLine contains \"\U0001F447\" or ProcessCommandLine\
+  \ contains \"\u261D\uFE0F\" or ProcessCommandLine contains \"\U0001F44D\" or ProcessCommandLine\
+  \ contains \"\U0001F44E\" or ProcessCommandLine contains \"\u270A\" or ProcessCommandLine\
+  \ contains \"\U0001F44A\" or ProcessCommandLine contains \"\U0001F91B\" or ProcessCommandLine\
+  \ contains \"\U0001F91C\" or ProcessCommandLine contains \"\U0001F44F\" or ProcessCommandLine\
+  \ contains \"\U0001FAF6\" or ProcessCommandLine contains \"\U0001F64C\" or ProcessCommandLine\
+  \ contains \"\U0001F450\" or ProcessCommandLine contains \"\U0001F932\" or ProcessCommandLine\
+  \ contains \"\U0001F91D\" or ProcessCommandLine contains \"\U0001F64F\" or ProcessCommandLine\
+  \ contains \"\u270D\uFE0F\" or ProcessCommandLine contains \"\U0001F4AA\" or ProcessCommandLine\
+  \ contains \"\U0001F9BE\" or ProcessCommandLine contains \"\U0001F9B5\" or ProcessCommandLine\
+  \ contains \"\U0001F9BF\" or ProcessCommandLine contains \"\U0001F9B6\" or ProcessCommandLine\
+  \ contains \"\U0001F463\" or ProcessCommandLine contains \"\U0001F442\" or ProcessCommandLine\
+  \ contains \"\U0001F9BB\" or ProcessCommandLine contains \"\U0001F443\" or ProcessCommandLine\
+  \ contains \"\U0001FAC0\" or ProcessCommandLine contains \"\U0001FAC1\" or ProcessCommandLine\
+  \ contains \"\U0001F9E0\" or ProcessCommandLine contains \"\U0001F9B7\" or ProcessCommandLine\
+  \ contains \"\U0001F9B4\" or ProcessCommandLine contains \"\U0001F440\" or ProcessCommandLine\
+  \ contains \"\U0001F441\" or ProcessCommandLine contains \"\U0001F445\" or ProcessCommandLine\
+  \ contains \"\U0001F444\" or ProcessCommandLine contains \"\U0001FAE6\" or ProcessCommandLine\
+  \ contains \"\U0001F48B\" or ProcessCommandLine contains \"\U0001FA78\" or ProcessCommandLine\
+  \ contains \"\U0001F476\" or ProcessCommandLine contains \"\U0001F467\" or ProcessCommandLine\
+  \ contains \"\U0001F9D2\" or ProcessCommandLine contains \"\U0001F466\" or ProcessCommandLine\
+  \ contains \"\U0001F469\" or ProcessCommandLine contains \"\U0001F9D1\" or ProcessCommandLine\
+  \ contains \"\U0001F468\" or ProcessCommandLine contains \"\U0001F469\u200D\U0001F9B1\
+  \" or ProcessCommandLine contains \"\U0001F9D1\u200D\U0001F9B1\" or ProcessCommandLine\
+  \ contains \"\U0001F468\u200D\U0001F9B1\" or ProcessCommandLine contains \"\U0001F469\
+  \u200D\U0001F9B0\" or ProcessCommandLine contains \"\U0001F9D1\u200D\U0001F9B0\"\
+  \ or ProcessCommandLine contains \"\U0001F468\u200D\U0001F9B0\" or ProcessCommandLine\
+  \ contains \"\U0001F471\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F471\
+  \" or ProcessCommandLine contains \"\U0001F471\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F469\u200D\U0001F9B3\" or ProcessCommandLine contains \"\U0001F9D1\
+  \u200D\U0001F9B3\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F9B3\"\
+  \ or ProcessCommandLine contains \"\U0001F469\u200D\U0001F9B2\" or ProcessCommandLine\
+  \ contains \"\U0001F9D1\u200D\U0001F9B2\" or ProcessCommandLine contains \"\U0001F468\
+  \u200D\U0001F9B2\" or ProcessCommandLine contains \"\U0001F9D4\u200D\u2640\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F9D4\" or ProcessCommandLine contains\
+  \ \"\U0001F9D4\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F475\"\
+  \ or ProcessCommandLine contains \"\U0001F9D3\" or ProcessCommandLine contains \"\
+  \U0001F474\" or ProcessCommandLine contains \"\U0001F472\" or ProcessCommandLine\
+  \ contains \"\U0001F473\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F473\
+  \" or ProcessCommandLine contains \"\U0001F473\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9D5\" or ProcessCommandLine contains \"\U0001F46E\u200D\u2640\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F46E\" or ProcessCommandLine contains\
+  \ \"\U0001F46E\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F477\u200D\
+  \u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F477\" or ProcessCommandLine\
+  \ contains \"\U0001F477\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F482\
+  \u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F482\" or ProcessCommandLine\
+  \ contains \"\U0001F482\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F575\
+  \uFE0F\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F575\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F575\uFE0F\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F469\u200D\u2695\uFE0F\" or ProcessCommandLine contains \"\U0001F9D1\
+  \u200D\u2695\uFE0F\" or ProcessCommandLine contains \"\U0001F468\u200D\u2695\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F469\u200D\U0001F33E\" or ProcessCommandLine\
+  \ contains \"\U0001F9D1\u200D\U0001F33E\" or ProcessCommandLine contains \"\U0001F468\
+  \u200D\U0001F33E\" or ProcessCommandLine contains \"\U0001F469\u200D\U0001F373\"\
+  \ or ProcessCommandLine contains \"\U0001F9D1\u200D\U0001F373\" or ProcessCommandLine\
+  \ contains \"\U0001F468\u200D\U0001F373\" or ProcessCommandLine contains \"\U0001F469\
+  \u200D\U0001F393\" or ProcessCommandLine contains \"\U0001F9D1\u200D\U0001F393\"\
+  \ or ProcessCommandLine contains \"\U0001F468\u200D\U0001F393\" or ProcessCommandLine\
+  \ contains \"\U0001F469\u200D\U0001F3A4\" or ProcessCommandLine contains \"\U0001F9D1\
+  \u200D\U0001F3A4\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F3A4\"\
+  \ or ProcessCommandLine contains \"\U0001F469\u200D\U0001F3EB\" or ProcessCommandLine\
+  \ contains \"\U0001F9D1\u200D\U0001F3EB\" or ProcessCommandLine contains \"\U0001F468\
+  \u200D\U0001F3EB\" or ProcessCommandLine contains \"\U0001F469\u200D\U0001F3ED\"\
+  \ or ProcessCommandLine contains \"\U0001F9D1\u200D\U0001F3ED\" or ProcessCommandLine\
+  \ contains \"\U0001F468\u200D\U0001F3ED\" or ProcessCommandLine contains \"\U0001F469\
+  \u200D\U0001F4BB\" or ProcessCommandLine contains \"\U0001F9D1\u200D\U0001F4BB\"\
+  \ or ProcessCommandLine contains \"\U0001F468\u200D\U0001F4BB\" or ProcessCommandLine\
+  \ contains \"\U0001F469\u200D\U0001F4BC\" or ProcessCommandLine contains \"\U0001F9D1\
+  \u200D\U0001F4BC\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F4BC\"\
+  \ or ProcessCommandLine contains \"\U0001F469\u200D\U0001F527\" or ProcessCommandLine\
+  \ contains \"\U0001F9D1\u200D\U0001F527\" or ProcessCommandLine contains \"\U0001F468\
+  \u200D\U0001F527\" or ProcessCommandLine contains \"\U0001F469\u200D\U0001F52C\"\
+  \ or ProcessCommandLine contains \"\U0001F9D1\u200D\U0001F52C\" or ProcessCommandLine\
+  \ contains \"\U0001F468\u200D\U0001F52C\" or ProcessCommandLine contains \"\U0001F469\
+  \u200D\U0001F3A8\" or ProcessCommandLine contains \"\U0001F9D1\u200D\U0001F3A8\"\
+  \ or ProcessCommandLine contains \"\U0001F468\u200D\U0001F3A8\" or ProcessCommandLine\
+  \ contains \"\U0001F469\u200D\U0001F692\" or ProcessCommandLine contains \"\U0001F9D1\
+  \u200D\U0001F692\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F692\"\
+  \ or ProcessCommandLine contains \"\U0001F469\u200D\u2708\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9D1\u200D\u2708\uFE0F\" or ProcessCommandLine contains \"\U0001F468\
+  \u200D\u2708\uFE0F\" or ProcessCommandLine contains \"\U0001F469\u200D\U0001F680\
+  \" or ProcessCommandLine contains \"\U0001F9D1\u200D\U0001F680\" or ProcessCommandLine\
+  \ contains \"\U0001F468\u200D\U0001F680\" or ProcessCommandLine contains \"\U0001F469\
+  \u200D\u2696\uFE0F\" or ProcessCommandLine contains \"\U0001F9D1\u200D\u2696\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F468\u200D\u2696\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F470\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F470\
+  \" or ProcessCommandLine contains \"\U0001F470\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F935\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F935\
+  \" or ProcessCommandLine contains \"\U0001F935\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F478\" or ProcessCommandLine contains \"\U0001FAC5\" or ProcessCommandLine\
+  \ contains \"\U0001F934\" or ProcessCommandLine contains \"\U0001F977\" or ProcessCommandLine\
+  \ contains \"\U0001F9B8\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9B8\
+  \" or ProcessCommandLine contains \"\U0001F9B8\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9B9\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9B9\
+  \" or ProcessCommandLine contains \"\U0001F9B9\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F936\" or ProcessCommandLine contains \"\U0001F9D1\u200D\U0001F384\
+  \" or ProcessCommandLine contains \"\U0001F385\" or ProcessCommandLine contains\
+  \ \"\U0001F9D9\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9D9\"\
+  \ or ProcessCommandLine contains \"\U0001F9D9\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9DD\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9DD\
+  \" or ProcessCommandLine contains \"\U0001F9DD\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9DB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9DB\
+  \" or ProcessCommandLine contains \"\U0001F9DB\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9DF\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9DF\
+  \" or ProcessCommandLine contains \"\U0001F9DF\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9DE\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9DE\
+  \" or ProcessCommandLine contains \"\U0001F9DE\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9DC\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9DC\
+  \" or ProcessCommandLine contains \"\U0001F9DC\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9DA\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9DA\
+  \" or ProcessCommandLine contains \"\U0001F9DA\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9CC\" or ProcessCommandLine contains \"\U0001F47C\" or ProcessCommandLine\
+  \ contains \"\U0001F930\" or ProcessCommandLine contains \"\U0001FAC4\" or ProcessCommandLine\
+  \ contains \"\U0001FAC3\" or ProcessCommandLine contains \"\U0001F931\" or ProcessCommandLine\
+  \ contains \"\U0001F469\u200D\U0001F37C\" or ProcessCommandLine contains \"\U0001F9D1\
+  \u200D\U0001F37C\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F37C\"\
+  \ or ProcessCommandLine contains \"\U0001F647\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F647\" or ProcessCommandLine contains \"\U0001F647\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F481\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F481\" or ProcessCommandLine contains \"\U0001F481\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F645\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F645\" or ProcessCommandLine contains \"\U0001F645\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F646\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F646\" or ProcessCommandLine contains \"\U0001F646\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F64B\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F64B\" or ProcessCommandLine contains \"\U0001F64B\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F9CF\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9CF\" or ProcessCommandLine contains \"\U0001F9CF\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F926\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F926\" or ProcessCommandLine contains \"\U0001F926\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F937\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F937\" or ProcessCommandLine contains \"\U0001F937\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F64E\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F64E\" or ProcessCommandLine contains \"\U0001F64E\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F64D\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F64D\" or ProcessCommandLine contains \"\U0001F64D\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F487\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F487\" or ProcessCommandLine contains \"\U0001F487\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F486\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F486\" or ProcessCommandLine contains \"\U0001F486\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F9D6\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9D6\" or ProcessCommandLine contains \"\U0001F9D6\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F485\" or ProcessCommandLine contains\
+  \ \"\U0001F483\" or ProcessCommandLine contains \"\U0001F57A\" or ProcessCommandLine\
+  \ contains \"\U0001F46F\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F46F\
+  \" or ProcessCommandLine contains \"\U0001F46F\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F574\" or ProcessCommandLine contains \"\U0001F469\u200D\U0001F9BD\
+  \" or ProcessCommandLine contains \"\U0001F9D1\u200D\U0001F9BD\" or ProcessCommandLine\
+  \ contains \"\U0001F468\u200D\U0001F9BD\" or ProcessCommandLine contains \"\U0001F469\
+  \u200D\U0001F9BC\" or ProcessCommandLine contains \"\U0001F9D1\u200D\U0001F9BC\"\
+  \ or ProcessCommandLine contains \"\U0001F468\u200D\U0001F9BC\" or ProcessCommandLine\
+  \ contains \"\U0001F6B6\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F6B6\
+  \" or ProcessCommandLine contains \"\U0001F6B6\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F469\u200D\U0001F9AF\" or ProcessCommandLine contains \"\U0001F9D1\
+  \u200D\U0001F9AF\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F9AF\"\
+  \ or ProcessCommandLine contains \"\U0001F9CE\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9CE\" or ProcessCommandLine contains \"\U0001F9CE\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F3C3\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F3C3\" or ProcessCommandLine contains \"\U0001F3C3\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F9CD\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9CD\" or ProcessCommandLine contains \"\U0001F9CD\u200D\u2642\
+  \uFE0F\" or ProcessCommandLine contains \"\U0001F46D\" or ProcessCommandLine contains\
+  \ \"\U0001F9D1\u200D\U0001F91D\u200D\U0001F9D1\" or ProcessCommandLine contains\
+  \ \"\U0001F46C\" or ProcessCommandLine contains \"\U0001F46B\" or ProcessCommandLine\
+  \ contains \"\U0001F469\u200D\u2764\uFE0F\u200D\U0001F469\" or ProcessCommandLine\
+  \ contains \"\U0001F491\" or ProcessCommandLine contains \"\U0001F468\u200D\u2764\
+  \uFE0F\u200D\U0001F468\" or ProcessCommandLine contains \"\U0001F469\u200D\u2764\
+  \uFE0F\u200D\U0001F468\" or ProcessCommandLine contains \"\U0001F469\u200D\u2764\
+  \uFE0F\u200D\U0001F48B\u200D\U0001F469\" or ProcessCommandLine contains \"\U0001F48F\
+  \" or ProcessCommandLine contains \"\U0001F468\u200D\u2764\uFE0F\u200D\U0001F48B\
+  \u200D\U0001F468\" or ProcessCommandLine contains \"\U0001F469\u200D\u2764\uFE0F\
+  \u200D\U0001F48B\u200D\U0001F468\" or ProcessCommandLine contains \"\U0001F46A\"\
+  \ or ProcessCommandLine contains \"\U0001F468\u200D\U0001F469\u200D\U0001F466\"\
+  \ or ProcessCommandLine contains \"\U0001F468\u200D\U0001F469\u200D\U0001F467\"\
+  \ or ProcessCommandLine contains \"\U0001F468\u200D\U0001F469\u200D\U0001F467\u200D\
+  \U0001F466\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F469\u200D\U0001F466\
+  \u200D\U0001F466\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F469\u200D\
+  \U0001F467\u200D\U0001F467\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F468\
+  \u200D\U0001F466\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F468\u200D\
+  \U0001F467\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F468\u200D\U0001F467\
+  \u200D\U0001F466\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F468\u200D\
+  \U0001F466\u200D\U0001F466\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F468\
+  \u200D\U0001F467\u200D\U0001F467\" or ProcessCommandLine contains \"\U0001F469\u200D\
+  \U0001F469\u200D\U0001F466\" or ProcessCommandLine contains \"\U0001F469\u200D\U0001F469\
+  \u200D\U0001F467\" or ProcessCommandLine contains \"\U0001F469\u200D\U0001F469\u200D\
+  \U0001F467\u200D\U0001F466\" or ProcessCommandLine contains \"\U0001F469\u200D\U0001F469\
+  \u200D\U0001F466\u200D\U0001F466\" or ProcessCommandLine contains \"\U0001F469\u200D\
+  \U0001F469\u200D\U0001F467\u200D\U0001F467\" or ProcessCommandLine contains \"\U0001F468\
+  \u200D\U0001F466\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F466\u200D\
+  \U0001F466\" or ProcessCommandLine contains \"\U0001F468\u200D\U0001F467\" or ProcessCommandLine\
+  \ contains \"\U0001F468\u200D\U0001F467\u200D\U0001F466\" or ProcessCommandLine\
+  \ contains \"\U0001F468\u200D\U0001F467\u200D\U0001F467\" or ProcessCommandLine\
+  \ contains \"\U0001F469\u200D\U0001F466\" or ProcessCommandLine contains \"\U0001F469\
+  \u200D\U0001F466\u200D\U0001F466\" or ProcessCommandLine contains \"\U0001F469\u200D\
+  \U0001F467\" or ProcessCommandLine contains \"\U0001F469\u200D\U0001F467\u200D\U0001F466\
+  \" or ProcessCommandLine contains \"\U0001F469\u200D\U0001F467\u200D\U0001F467\"\
+  \ or ProcessCommandLine contains \"\U0001F5E3\" or ProcessCommandLine contains \"\
+  \U0001F464\" or ProcessCommandLine contains \"\U0001F465\" or ProcessCommandLine\
+  \ contains \"\U0001FAC2\" or ProcessCommandLine contains \"\U0001F9F3\" or ProcessCommandLine\
+  \ contains \"\U0001F302\" or ProcessCommandLine contains \"\u2602\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9F5\" or ProcessCommandLine contains \"\U0001FAA1\" or ProcessCommandLine\
+  \ contains \"\U0001FAA2\" or ProcessCommandLine contains \"\U0001F9F6\" or ProcessCommandLine\
+  \ contains \"\U0001F453\" or ProcessCommandLine contains \"\U0001F576\" or ProcessCommandLine\
+  \ contains \"\U0001F97D\" or ProcessCommandLine contains \"\U0001F97C\" or ProcessCommandLine\
+  \ contains \"\U0001F9BA\" or ProcessCommandLine contains \"\U0001F454\" or ProcessCommandLine\
+  \ contains \"\U0001F455\" or ProcessCommandLine contains \"\U0001F456\" or ProcessCommandLine\
+  \ contains \"\U0001F9E3\" or ProcessCommandLine contains \"\U0001F9E4\" or ProcessCommandLine\
+  \ contains \"\U0001F9E5\" or ProcessCommandLine contains \"\U0001F9E6\" or ProcessCommandLine\
+  \ contains \"\U0001F457\" or ProcessCommandLine contains \"\U0001F458\" or ProcessCommandLine\
+  \ contains \"\U0001F97B\" or ProcessCommandLine contains \"\U0001FA74\" or ProcessCommandLine\
+  \ contains \"\U0001FA71\" or ProcessCommandLine contains \"\U0001FA72\" or ProcessCommandLine\
+  \ contains \"\U0001FA73\" or ProcessCommandLine contains \"\U0001F459\" or ProcessCommandLine\
+  \ contains \"\U0001F45A\" or ProcessCommandLine contains \"\U0001F45B\" or ProcessCommandLine\
+  \ contains \"\U0001F45C\" or ProcessCommandLine contains \"\U0001F45D\" or ProcessCommandLine\
+  \ contains \"\U0001F392\" or ProcessCommandLine contains \"\U0001F45E\" or ProcessCommandLine\
+  \ contains \"\U0001F45F\" or ProcessCommandLine contains \"\U0001F97E\" or ProcessCommandLine\
+  \ contains \"\U0001F97F\" or ProcessCommandLine contains \"\U0001F460\" or ProcessCommandLine\
+  \ contains \"\U0001F461\" or ProcessCommandLine contains \"\U0001FA70\" or ProcessCommandLine\
+  \ contains \"\U0001F462\" or ProcessCommandLine contains \"\U0001F451\" or ProcessCommandLine\
+  \ contains \"\U0001F452\" or ProcessCommandLine contains \"\U0001F3A9\" or ProcessCommandLine\
+  \ contains \"\U0001F393\" or ProcessCommandLine contains \"\U0001F9E2\" or ProcessCommandLine\
+  \ contains \"\u26D1\" or ProcessCommandLine contains \"\U0001FA96\" or ProcessCommandLine\
+  \ contains \"\U0001F484\" or ProcessCommandLine contains \"\U0001F48D\" or ProcessCommandLine\
+  \ contains \"\U0001F4BC\" or ProcessCommandLine contains \"\U0001F44B\U0001F3FB\"\
+  \ or ProcessCommandLine contains \"\U0001F91A\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F590\U0001F3FB\" or ProcessCommandLine contains \"\u270B\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F596\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F44C\U0001F3FB\" or ProcessCommandLine contains \"\U0001F90C\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F90F\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\u270C\U0001F3FB\" or ProcessCommandLine contains \"\U0001F91E\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001FAF0\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F91F\U0001F3FB\" or ProcessCommandLine contains \"\U0001F918\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F919\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001FAF5\U0001F3FB\" or ProcessCommandLine contains \"\U0001FAF1\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001FAF2\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001FAF3\U0001F3FB\" or ProcessCommandLine contains \"\U0001FAF4\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F448\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F449\U0001F3FB\" or ProcessCommandLine contains \"\U0001F446\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F595\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F447\U0001F3FB\" or ProcessCommandLine contains \"\u261D\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F44D\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F44E\U0001F3FB\" or ProcessCommandLine contains \"\u270A\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F44A\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F91B\U0001F3FB\" or ProcessCommandLine contains \"\U0001F91C\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F44F\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001FAF6\U0001F3FB\" or ProcessCommandLine contains \"\U0001F64C\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F450\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F932\U0001F3FB\" or ProcessCommandLine contains \"\U0001F64F\U0001F3FB\
+  \" or ProcessCommandLine contains \"\u270D\U0001F3FB\" or ProcessCommandLine contains\
+  \ \"\U0001F4AA\U0001F3FB\" or ProcessCommandLine contains \"\U0001F9B5\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F9B6\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F442\U0001F3FB\" or ProcessCommandLine contains \"\U0001F9BB\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F443\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F476\U0001F3FB\" or ProcessCommandLine contains \"\U0001F467\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F9D2\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F466\U0001F3FB\" or ProcessCommandLine contains \"\U0001F469\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F468\U0001F3FB\" or ProcessCommandLine contains \"\U0001F469\U0001F3FB\
+  \u200D\U0001F9B1\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\u200D\U0001F9B1\
+  \" or ProcessCommandLine contains \"\U0001F468\U0001F3FB\u200D\U0001F9B1\" or ProcessCommandLine\
+  \ contains \"\U0001F469\U0001F3FB\u200D\U0001F9B0\" or ProcessCommandLine contains\
+  \ \"\U0001F9D1\U0001F3FB\u200D\U0001F9B0\" or ProcessCommandLine contains \"\U0001F468\
+  \U0001F3FB\u200D\U0001F9B0\" or ProcessCommandLine contains \"\U0001F471\U0001F3FB\
+  \u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F471\U0001F3FB\" or\
+  \ ProcessCommandLine contains \"\U0001F471\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F469\U0001F3FB\u200D\U0001F9B3\" or ProcessCommandLine contains\
+  \ \"\U0001F9D1\U0001F3FB\u200D\U0001F9B3\" or ProcessCommandLine contains \"\U0001F468\
+  \U0001F3FB\u200D\U0001F9B3\" or ProcessCommandLine contains \"\U0001F469\U0001F3FB\
+  \u200D\U0001F9B2\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\u200D\U0001F9B2\
+  \" or ProcessCommandLine contains \"\U0001F468\U0001F3FB\u200D\U0001F9B2\" or ProcessCommandLine\
+  \ contains \"\U0001F9D4\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F9D4\U0001F3FB\" or ProcessCommandLine contains \"\U0001F9D4\U0001F3FB\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F475\U0001F3FB\" or\
+  \ ProcessCommandLine contains \"\U0001F9D3\U0001F3FB\" or ProcessCommandLine contains\
+  \ \"\U0001F474\U0001F3FB\" or ProcessCommandLine contains \"\U0001F472\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F473\U0001F3FB\u200D\u2640\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F473\U0001F3FB\" or ProcessCommandLine contains\
+  \ \"\U0001F473\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F9D5\
+  \U0001F3FB\" or ProcessCommandLine contains \"\U0001F46E\U0001F3FB\u200D\u2640\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F46E\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F46E\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F477\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F477\
+  \U0001F3FB\" or ProcessCommandLine contains \"\U0001F477\U0001F3FB\u200D\u2642\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F482\U0001F3FB\u200D\u2640\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F482\U0001F3FB\" or ProcessCommandLine contains\
+  \ \"\U0001F482\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F575\
+  \U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F575\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F575\U0001F3FB\u200D\u2642\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F469\U0001F3FB\u200D\u2695\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9D1\U0001F3FB\u200D\u2695\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F468\U0001F3FB\u200D\u2695\uFE0F\" or ProcessCommandLine contains \"\U0001F469\
+  \U0001F3FB\u200D\U0001F33E\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\
+  \u200D\U0001F33E\" or ProcessCommandLine contains \"\U0001F468\U0001F3FB\u200D\U0001F33E\
+  \" or ProcessCommandLine contains \"\U0001F469\U0001F3FB\u200D\U0001F373\" or ProcessCommandLine\
+  \ contains \"\U0001F9D1\U0001F3FB\u200D\U0001F373\" or ProcessCommandLine contains\
+  \ \"\U0001F468\U0001F3FB\u200D\U0001F373\" or ProcessCommandLine contains \"\U0001F469\
+  \U0001F3FB\u200D\U0001F393\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\
+  \u200D\U0001F393\" or ProcessCommandLine contains \"\U0001F468\U0001F3FB\u200D\U0001F393\
+  \" or ProcessCommandLine contains \"\U0001F469\U0001F3FB\u200D\U0001F3A4\" or ProcessCommandLine\
+  \ contains \"\U0001F9D1\U0001F3FB\u200D\U0001F3A4\" or ProcessCommandLine contains\
+  \ \"\U0001F468\U0001F3FB\u200D\U0001F3A4\" or ProcessCommandLine contains \"\U0001F469\
+  \U0001F3FB\u200D\U0001F3EB\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\
+  \u200D\U0001F3EB\" or ProcessCommandLine contains \"\U0001F468\U0001F3FB\u200D\U0001F3EB\
+  \" or ProcessCommandLine contains \"\U0001F469\U0001F3FB\u200D\U0001F3ED\" or ProcessCommandLine\
+  \ contains \"\U0001F9D1\U0001F3FB\u200D\U0001F3ED\" or ProcessCommandLine contains\
+  \ \"\U0001F468\U0001F3FB\u200D\U0001F3ED\" or ProcessCommandLine contains \"\U0001F469\
+  \U0001F3FB\u200D\U0001F4BB\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\
+  \u200D\U0001F4BB\" or ProcessCommandLine contains \"\U0001F468\U0001F3FB\u200D\U0001F4BB\
+  \" or ProcessCommandLine contains \"\U0001F469\U0001F3FB\u200D\U0001F4BC\" or ProcessCommandLine\
+  \ contains \"\U0001F9D1\U0001F3FB\u200D\U0001F4BC\" or ProcessCommandLine contains\
+  \ \"\U0001F468\U0001F3FB\u200D\U0001F4BC\" or ProcessCommandLine contains \"\U0001F469\
+  \U0001F3FB\u200D\U0001F527\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\
+  \u200D\U0001F527\" or ProcessCommandLine contains \"\U0001F468\U0001F3FB\u200D\U0001F527\
+  \" or ProcessCommandLine contains \"\U0001F469\U0001F3FB\u200D\U0001F52C\" or ProcessCommandLine\
+  \ contains \"\U0001F9D1\U0001F3FB\u200D\U0001F52C\" or ProcessCommandLine contains\
+  \ \"\U0001F468\U0001F3FB\u200D\U0001F52C\" or ProcessCommandLine contains \"\U0001F469\
+  \U0001F3FB\u200D\U0001F3A8\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\
+  \u200D\U0001F3A8\" or ProcessCommandLine contains \"\U0001F468\U0001F3FB\u200D\U0001F3A8\
+  \" or ProcessCommandLine contains \"\U0001F469\U0001F3FB\u200D\U0001F692\" or ProcessCommandLine\
+  \ contains \"\U0001F9D1\U0001F3FB\u200D\U0001F692\" or ProcessCommandLine contains\
+  \ \"\U0001F468\U0001F3FB\u200D\U0001F692\" or ProcessCommandLine contains \"\U0001F469\
+  \U0001F3FB\u200D\u2708\uFE0F\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\
+  \u200D\u2708\uFE0F\" or ProcessCommandLine contains \"\U0001F468\U0001F3FB\u200D\
+  \u2708\uFE0F\" or ProcessCommandLine contains \"\U0001F469\U0001F3FB\u200D\U0001F680\
+  \" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\u200D\U0001F680\" or ProcessCommandLine\
+  \ contains \"\U0001F468\U0001F3FB\u200D\U0001F680\" or ProcessCommandLine contains\
+  \ \"\U0001F469\U0001F3FB\u200D\u2696\uFE0F\" or ProcessCommandLine contains \"\U0001F9D1\
+  \U0001F3FB\u200D\u2696\uFE0F\" or ProcessCommandLine contains \"\U0001F468\U0001F3FB\
+  \u200D\u2696\uFE0F\" or ProcessCommandLine contains \"\U0001F470\U0001F3FB\u200D\
+  \u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F470\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F470\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F935\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F935\
+  \U0001F3FB\" or ProcessCommandLine contains \"\U0001F935\U0001F3FB\u200D\u2642\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F478\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001FAC5\U0001F3FB\" or ProcessCommandLine contains \"\U0001F934\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F977\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F9B8\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F9B8\U0001F3FB\" or ProcessCommandLine contains \"\U0001F9B8\U0001F3FB\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F9B9\U0001F3FB\u200D\
+  \u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9B9\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F9B9\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F936\U0001F3FB\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\
+  \u200D\U0001F384\" or ProcessCommandLine contains \"\U0001F385\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F9D9\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F9D9\U0001F3FB\" or ProcessCommandLine contains \"\U0001F9D9\U0001F3FB\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F9DD\U0001F3FB\u200D\
+  \u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9DD\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F9DD\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F9DB\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9DB\
+  \U0001F3FB\" or ProcessCommandLine contains \"\U0001F9DB\U0001F3FB\u200D\u2642\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F9DC\U0001F3FB\u200D\u2640\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F9DC\U0001F3FB\" or ProcessCommandLine contains\
+  \ \"\U0001F9DC\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F9DA\
+  \U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9DA\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F9DA\U0001F3FB\u200D\u2642\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F47C\U0001F3FB\" or ProcessCommandLine contains\
+  \ \"\U0001F930\U0001F3FB\" or ProcessCommandLine contains \"\U0001FAC4\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001FAC3\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F931\U0001F3FB\" or ProcessCommandLine contains \"\U0001F469\U0001F3FB\
+  \u200D\U0001F37C\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\u200D\U0001F37C\
+  \" or ProcessCommandLine contains \"\U0001F468\U0001F3FB\u200D\U0001F37C\" or ProcessCommandLine\
+  \ contains \"\U0001F647\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F647\U0001F3FB\" or ProcessCommandLine contains \"\U0001F647\U0001F3FB\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F481\U0001F3FB\u200D\
+  \u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F481\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F481\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F645\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F645\
+  \U0001F3FB\" or ProcessCommandLine contains \"\U0001F645\U0001F3FB\u200D\u2642\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F646\U0001F3FB\u200D\u2640\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F646\U0001F3FB\" or ProcessCommandLine contains\
+  \ \"\U0001F646\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F64B\
+  \U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F64B\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F64B\U0001F3FB\u200D\u2642\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F9CF\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9CF\U0001F3FB\" or ProcessCommandLine contains \"\U0001F9CF\U0001F3FB\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F926\U0001F3FB\u200D\
+  \u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F926\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F926\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F937\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F937\
+  \U0001F3FB\" or ProcessCommandLine contains \"\U0001F937\U0001F3FB\u200D\u2642\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F64E\U0001F3FB\u200D\u2640\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F64E\U0001F3FB\" or ProcessCommandLine contains\
+  \ \"\U0001F64E\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F64D\
+  \U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F64D\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F64D\U0001F3FB\u200D\u2642\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F487\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F487\U0001F3FB\" or ProcessCommandLine contains \"\U0001F487\U0001F3FB\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F486\U0001F3FB\u200D\
+  \u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F486\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F486\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F9D6\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9D6\
+  \U0001F3FB\" or ProcessCommandLine contains \"\U0001F9D6\U0001F3FB\u200D\u2642\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F483\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F57A\U0001F3FB\" or ProcessCommandLine contains \"\U0001F574\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F469\U0001F3FB\u200D\U0001F9BD\" or ProcessCommandLine\
+  \ contains \"\U0001F9D1\U0001F3FB\u200D\U0001F9BD\" or ProcessCommandLine contains\
+  \ \"\U0001F468\U0001F3FB\u200D\U0001F9BD\" or ProcessCommandLine contains \"\U0001F469\
+  \U0001F3FB\u200D\U0001F9BC\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\
+  \u200D\U0001F9BC\" or ProcessCommandLine contains \"\U0001F468\U0001F3FB\u200D\U0001F9BC\
+  \" or ProcessCommandLine contains \"\U0001F6B6\U0001F3FB\u200D\u2640\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F6B6\U0001F3FB\" or ProcessCommandLine contains\
+  \ \"\U0001F6B6\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F469\
+  \U0001F3FB\u200D\U0001F9AF\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\
+  \u200D\U0001F9AF\" or ProcessCommandLine contains \"\U0001F468\U0001F3FB\u200D\U0001F9AF\
+  \" or ProcessCommandLine contains \"\U0001F9CE\U0001F3FB\u200D\u2640\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F9CE\U0001F3FB\" or ProcessCommandLine contains\
+  \ \"\U0001F9CE\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F3C3\
+  \U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F3C3\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F3C3\U0001F3FB\u200D\u2642\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F9CD\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9CD\U0001F3FB\" or ProcessCommandLine contains \"\U0001F9CD\U0001F3FB\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F46D\U0001F3FB\" or\
+  \ ProcessCommandLine contains \"\U0001F9D1\U0001F3FB\u200D\U0001F91D\u200D\U0001F9D1\
+  \U0001F3FB\" or ProcessCommandLine contains \"\U0001F46C\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F46B\U0001F3FB\" or ProcessCommandLine contains \"\U0001F9D7\U0001F3FB\
+  \u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9D7\U0001F3FB\" or\
+  \ ProcessCommandLine contains \"\U0001F9D7\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F3C7\U0001F3FB\" or ProcessCommandLine contains \"\U0001F3C2\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F3CC\U0001F3FB\u200D\u2640\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F3CC\U0001F3FB\" or ProcessCommandLine contains\
+  \ \"\U0001F3CC\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F3C4\
+  \U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F3C4\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F3C4\U0001F3FB\u200D\u2642\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F6A3\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F6A3\U0001F3FB\" or ProcessCommandLine contains \"\U0001F6A3\U0001F3FB\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F3CA\U0001F3FB\u200D\
+  \u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F3CA\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F3CA\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains\
+  \ \"\u26F9\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\u26F9\
+  \U0001F3FB\" or ProcessCommandLine contains \"\u26F9\U0001F3FB\u200D\u2642\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F3CB\U0001F3FB\u200D\u2640\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F3CB\U0001F3FB\" or ProcessCommandLine contains\
+  \ \"\U0001F3CB\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F6B4\
+  \U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F6B4\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F6B4\U0001F3FB\u200D\u2642\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F6B5\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F6B5\U0001F3FB\" or ProcessCommandLine contains \"\U0001F6B5\U0001F3FB\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F938\U0001F3FB\u200D\
+  \u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F938\U0001F3FB\" or ProcessCommandLine\
+  \ contains \"\U0001F938\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F93D\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F93D\
+  \U0001F3FB\" or ProcessCommandLine contains \"\U0001F93D\U0001F3FB\u200D\u2642\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F93E\U0001F3FB\u200D\u2640\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F93E\U0001F3FB\" or ProcessCommandLine contains\
+  \ \"\U0001F93E\U0001F3FB\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F939\
+  \U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F939\U0001F3FB\
+  \" or ProcessCommandLine contains \"\U0001F939\U0001F3FB\u200D\u2642\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F9D8\U0001F3FB\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9D8\U0001F3FB\" or ProcessCommandLine contains \"\U0001F9D8\U0001F3FB\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F6C0\U0001F3FB\" or\
+  \ ProcessCommandLine contains \"\U0001F6CC\U0001F3FB\" or ProcessCommandLine contains\
+  \ \"\U0001F44B\U0001F3FC\" or ProcessCommandLine contains \"\U0001F91A\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F590\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\u270B\U0001F3FC\" or ProcessCommandLine contains \"\U0001F596\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F44C\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F90C\U0001F3FC\" or ProcessCommandLine contains \"\U0001F90F\U0001F3FC\
+  \" or ProcessCommandLine contains \"\u270C\U0001F3FC\" or ProcessCommandLine contains\
+  \ \"\U0001F91E\U0001F3FC\" or ProcessCommandLine contains \"\U0001FAF0\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F91F\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F918\U0001F3FC\" or ProcessCommandLine contains \"\U0001F919\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001FAF5\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001FAF1\U0001F3FC\" or ProcessCommandLine contains \"\U0001FAF2\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001FAF3\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001FAF4\U0001F3FC\" or ProcessCommandLine contains \"\U0001F448\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F449\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F446\U0001F3FC\" or ProcessCommandLine contains \"\U0001F595\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F447\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\u261D\U0001F3FC\" or ProcessCommandLine contains \"\U0001F44D\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F44E\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\u270A\U0001F3FC\" or ProcessCommandLine contains \"\U0001F44A\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F91B\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F91C\U0001F3FC\" or ProcessCommandLine contains \"\U0001F44F\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001FAF6\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F64C\U0001F3FC\" or ProcessCommandLine contains \"\U0001F450\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F932\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F64F\U0001F3FC\" or ProcessCommandLine contains \"\u270D\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F4AA\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F9B5\U0001F3FC\" or ProcessCommandLine contains \"\U0001F9B6\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F442\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F9BB\U0001F3FC\" or ProcessCommandLine contains \"\U0001F443\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F476\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F467\U0001F3FC\" or ProcessCommandLine contains \"\U0001F9D2\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F466\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F469\U0001F3FC\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F468\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F469\U0001F3FC\u200D\U0001F9B1\" or ProcessCommandLine contains\
+  \ \"\U0001F9D1\U0001F3FC\u200D\U0001F9B1\" or ProcessCommandLine contains \"\U0001F468\
+  \U0001F3FC\u200D\U0001F9B1\" or ProcessCommandLine contains \"\U0001F469\U0001F3FC\
+  \u200D\U0001F9B0\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FC\u200D\U0001F9B0\
+  \" or ProcessCommandLine contains \"\U0001F468\U0001F3FC\u200D\U0001F9B0\" or ProcessCommandLine\
+  \ contains \"\U0001F471\U0001F3FC\u200D\u2640\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F471\U0001F3FC\" or ProcessCommandLine contains \"\U0001F471\U0001F3FC\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F469\U0001F3FC\u200D\
+  \U0001F9B3\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FC\u200D\U0001F9B3\
+  \" or ProcessCommandLine contains \"\U0001F468\U0001F3FC\u200D\U0001F9B3\" or ProcessCommandLine\
+  \ contains \"\U0001F469\U0001F3FC\u200D\U0001F9B2\" or ProcessCommandLine contains\
+  \ \"\U0001F9D1\U0001F3FC\u200D\U0001F9B2\" or ProcessCommandLine contains \"\U0001F468\
+  \U0001F3FC\u200D\U0001F9B2\" or ProcessCommandLine contains \"\U0001F9D4\U0001F3FC\
+  \u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9D4\U0001F3FC\" or\
+  \ ProcessCommandLine contains \"\U0001F9D4\U0001F3FC\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F475\U0001F3FC\" or ProcessCommandLine contains \"\U0001F9D3\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F474\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F472\U0001F3FC\" or ProcessCommandLine contains \"\U0001F473\U0001F3FC\
+  \u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F473\U0001F3FC\" or\
+  \ ProcessCommandLine contains \"\U0001F473\U0001F3FC\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9D5\U0001F3FC\" or ProcessCommandLine contains \"\U0001F46E\U0001F3FC\
+  \u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F46E\U0001F3FC\" or\
+  \ ProcessCommandLine contains \"\U0001F46E\U0001F3FC\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F477\U0001F3FC\u200D\u2640\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F477\U0001F3FC\" or ProcessCommandLine contains \"\U0001F477\U0001F3FC\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F482\U0001F3FC\u200D\
+  \u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F482\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F482\U0001F3FC\u200D\u2642\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F575\U0001F3FC\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F575\
+  \U0001F3FC\" or ProcessCommandLine contains \"\U0001F575\U0001F3FC\u200D\u2642\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F469\U0001F3FC\u200D\u2695\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F9D1\U0001F3FC\u200D\u2695\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F468\U0001F3FC\u200D\u2695\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F469\U0001F3FC\u200D\U0001F33E\" or ProcessCommandLine contains \"\U0001F9D1\
+  \U0001F3FC\u200D\U0001F33E\" or ProcessCommandLine contains \"\U0001F468\U0001F3FC\
+  \u200D\U0001F33E\" or ProcessCommandLine contains \"\U0001F469\U0001F3FC\u200D\U0001F373\
+  \" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FC\u200D\U0001F373\" or ProcessCommandLine\
+  \ contains \"\U0001F468\U0001F3FC\u200D\U0001F373\" or ProcessCommandLine contains\
+  \ \"\U0001F469\U0001F3FC\u200D\U0001F393\" or ProcessCommandLine contains \"\U0001F9D1\
+  \U0001F3FC\u200D\U0001F393\" or ProcessCommandLine contains \"\U0001F468\U0001F3FC\
+  \u200D\U0001F393\" or ProcessCommandLine contains \"\U0001F469\U0001F3FC\u200D\U0001F3A4\
+  \" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FC\u200D\U0001F3A4\" or ProcessCommandLine\
+  \ contains \"\U0001F468\U0001F3FC\u200D\U0001F3A4\" or ProcessCommandLine contains\
+  \ \"\U0001F469\U0001F3FC\u200D\U0001F3EB\" or ProcessCommandLine contains \"\U0001F9D1\
+  \U0001F3FC\u200D\U0001F3EB\" or ProcessCommandLine contains \"\U0001F468\U0001F3FC\
+  \u200D\U0001F3EB\" or ProcessCommandLine contains \"\U0001F469\U0001F3FC\u200D\U0001F3ED\
+  \" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FC\u200D\U0001F3ED\" or ProcessCommandLine\
+  \ contains \"\U0001F468\U0001F3FC\u200D\U0001F3ED\" or ProcessCommandLine contains\
+  \ \"\U0001F469\U0001F3FC\u200D\U0001F4BB\" or ProcessCommandLine contains \"\U0001F9D1\
+  \U0001F3FC\u200D\U0001F4BB\" or ProcessCommandLine contains \"\U0001F468\U0001F3FC\
+  \u200D\U0001F4BB\" or ProcessCommandLine contains \"\U0001F469\U0001F3FC\u200D\U0001F4BC\
+  \" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FC\u200D\U0001F4BC\" or ProcessCommandLine\
+  \ contains \"\U0001F468\U0001F3FC\u200D\U0001F4BC\" or ProcessCommandLine contains\
+  \ \"\U0001F469\U0001F3FC\u200D\U0001F527\" or ProcessCommandLine contains \"\U0001F9D1\
+  \U0001F3FC\u200D\U0001F527\" or ProcessCommandLine contains \"\U0001F468\U0001F3FC\
+  \u200D\U0001F527\" or ProcessCommandLine contains \"\U0001F469\U0001F3FC\u200D\U0001F52C\
+  \" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FC\u200D\U0001F52C\" or ProcessCommandLine\
+  \ contains \"\U0001F468\U0001F3FC\u200D\U0001F52C\" or ProcessCommandLine contains\
+  \ \"\U0001F469\U0001F3FC\u200D\U0001F3A8\" or ProcessCommandLine contains \"\U0001F9D1\
+  \U0001F3FC\u200D\U0001F3A8\" or ProcessCommandLine contains \"\U0001F468\U0001F3FC\
+  \u200D\U0001F3A8\" or ProcessCommandLine contains \"\U0001F469\U0001F3FC\u200D\U0001F692\
+  \" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FC\u200D\U0001F692\" or ProcessCommandLine\
+  \ contains \"\U0001F468\U0001F3FC\u200D\U0001F692\" or ProcessCommandLine contains\
+  \ \"\U0001F469\U0001F3FC\u200D\u2708\uFE0F\" or ProcessCommandLine contains \"\U0001F9D1\
+  \U0001F3FC\u200D\u2708\uFE0F\" or ProcessCommandLine contains \"\U0001F468\U0001F3FC\
+  \u200D\u2708\uFE0F\" or ProcessCommandLine contains \"\U0001F469\U0001F3FC\u200D\
+  \U0001F680\" or ProcessCommandLine contains \"\U0001F9D1\U0001F3FC\u200D\U0001F680\
+  \" or ProcessCommandLine contains \"\U0001F468\U0001F3FC\u200D\U0001F680\" or ProcessCommandLine\
+  \ contains \"\U0001F469\U0001F3FC\u200D\u2696\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F9D1\U0001F3FC\u200D\u2696\uFE0F\" or ProcessCommandLine contains \"\U0001F468\
+  \U0001F3FC\u200D\u2696\uFE0F\" or ProcessCommandLine contains \"\U0001F470\U0001F3FC\
+  \u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F470\U0001F3FC\" or\
+  \ ProcessCommandLine contains \"\U0001F470\U0001F3FC\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F935\U0001F3FC\u200D\u2640\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F935\U0001F3FC\" or ProcessCommandLine contains \"\U0001F935\U0001F3FC\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F478\U0001F3FC\" or\
+  \ ProcessCommandLine contains \"\U0001FAC5\U0001F3FC\" or ProcessCommandLine contains\
+  \ \"\U0001F934\U0001F3FC\" or ProcessCommandLine contains \"\U0001F977\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F9B8\U0001F3FC\u200D\u2640\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F9B8\U0001F3FC\" or ProcessCommandLine contains\
+  \ \"\U0001F9B8\U0001F3FC\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F9B9\
+  \U0001F3FC\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9B9\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F9B9\U0001F3FC\u200D\u2642\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F936\U0001F3FC\" or ProcessCommandLine contains\
+  \ \"\U0001F9D1\U0001F3FC\u200D\U0001F384\" or ProcessCommandLine contains \"\U0001F385\
+  \U0001F3FC\" or ProcessCommandLine contains \"\U0001F9D9\U0001F3FC\u200D\u2640\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F9D9\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F9D9\U0001F3FC\u200D\u2642\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F9DD\U0001F3FC\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9DD\
+  \U0001F3FC\" or ProcessCommandLine contains \"\U0001F9DD\U0001F3FC\u200D\u2642\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F9DB\U0001F3FC\u200D\u2640\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F9DB\U0001F3FC\" or ProcessCommandLine contains\
+  \ \"\U0001F9DB\U0001F3FC\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F9DC\
+  \U0001F3FC\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9DC\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F9DC\U0001F3FC\u200D\u2642\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F9DA\U0001F3FC\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F9DA\U0001F3FC\" or ProcessCommandLine contains \"\U0001F9DA\U0001F3FC\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F47C\U0001F3FC\" or\
+  \ ProcessCommandLine contains \"\U0001F930\U0001F3FC\" or ProcessCommandLine contains\
+  \ \"\U0001FAC4\U0001F3FC\" or ProcessCommandLine contains \"\U0001FAC3\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F931\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F469\U0001F3FC\u200D\U0001F37C\" or ProcessCommandLine contains\
+  \ \"\U0001F9D1\U0001F3FC\u200D\U0001F37C\" or ProcessCommandLine contains \"\U0001F468\
+  \U0001F3FC\u200D\U0001F37C\" or ProcessCommandLine contains \"\U0001F647\U0001F3FC\
+  \u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F647\U0001F3FC\" or\
+  \ ProcessCommandLine contains \"\U0001F647\U0001F3FC\u200D\u2642\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F481\U0001F3FC\u200D\u2640\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F481\U0001F3FC\" or ProcessCommandLine contains \"\U0001F481\U0001F3FC\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F645\U0001F3FC\u200D\
+  \u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F645\U0001F3FC\" or ProcessCommandLine\
+  \ contains \"\U0001F645\U0001F3FC\u200D\u2642\uFE0F\" or ProcessCommandLine contains\
+  \ \"\U0001F646\U0001F3FC\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F646\
+  \U0001F3FC\" or ProcessCommandLine contains \"\U0001F646\U0001F3FC\u200D\u2642\uFE0F\
+  \" or ProcessCommandLine contains \"\U0001F64B\U0001F3FC\u200D\u2640\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F64B\U0001F3FC\" or ProcessCommandLine contains\
+  \ \"\U0001F64B\U0001F3FC\u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F9CF\
+  \U0001F3FC\u200D\u2640\uFE0F\" or ProcessCommandLine contains \"\U0001F9CF\U0001F3FC\
+  \" or ProcessCommandLine contains \"\U0001F9CF\U0001F3FC\u200D\u2642\uFE0F\" or\
+  \ ProcessCommandLine contains \"\U0001F926\U0001F3FC\u200D\u2640\uFE0F\" or ProcessCommandLine\
+  \ contains \"\U0001F926\U0001F3FC\" or ProcessCommandLine contains \"\U0001F926\U0001F3FC\
+  \u200D\u2642\uFE0F\" or ProcessCommandLine contains \"\U0001F937\U0001F3FC\u200D\
+  \u2640\uFE0F\""
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled

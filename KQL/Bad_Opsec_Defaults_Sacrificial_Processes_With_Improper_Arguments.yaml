@@ -15,7 +15,7 @@ description: 'Detects attackers using tooling with bad opsec defaults.
 
   '
 status: experimental
-modified: 2023-12-02
+modified: 2024-08-15
 logsource:
   category: process_creation
   product: windows
@@ -30,12 +30,13 @@ query: 'DeviceProcessEvents
   or (ProcessCommandLine endswith "regsvr32.exe" and FolderPath endswith "\\regsvr32.exe")
   or (ProcessCommandLine endswith "rundll32.exe" and FolderPath endswith "\\rundll32.exe")
   or (ProcessCommandLine endswith "WerFault.exe" and FolderPath endswith "\\WerFault.exe"))
-  and (not((InitiatingProcessFolderPath contains ":\\Users\\" and InitiatingProcessFolderPath
-  contains "\\AppData\\Local\\Microsoft\\EdgeUpdate\\Install\\{"))) and (not((ProcessCommandLine
-  endswith "rundll32.exe" and FolderPath endswith "\\rundll32.exe" and InitiatingProcessCommandLine
-  contains "--uninstall --channel=stable" and (InitiatingProcessFolderPath contains
-  ":\\Users\\" and InitiatingProcessFolderPath contains "\\AppData\\Local\\Google\\Chrome\\Application\\")
-  and InitiatingProcessFolderPath endswith "\\Installer\\setup.exe")))'
+  and (not(((ProcessCommandLine endswith "rundll32.exe" and FolderPath endswith "\\rundll32.exe"
+  and InitiatingProcessCommandLine contains "--uninstall " and (InitiatingProcessFolderPath
+  contains "\\AppData\\Local\\BraveSoftware\\Brave-Browser\\Application\\" or InitiatingProcessFolderPath
+  contains "\\AppData\\Local\\Google\\Chrome\\Application\\") and InitiatingProcessFolderPath
+  endswith "\\Installer\\setup.exe") or (ProcessCommandLine endswith "rundll32.exe"
+  and FolderPath endswith "\\rundll32.exe" and InitiatingProcessFolderPath contains
+  "\\AppData\\Local\\Microsoft\\EdgeUpdate\\Install\\{"))))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

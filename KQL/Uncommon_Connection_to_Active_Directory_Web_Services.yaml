@@ -1,0 +1,38 @@
+name: Uncommon Connection to Active Directory Web Services
+id: b3ad3c0f-c949-47a1-a30e-b0491ccae876
+author: '@kostastsale'
+date: 2024-01-26
+severity: medium
+description: 'Detects uncommon network connections to the Active Directory Web Services
+  (ADWS) from processes not typically associated with ADWS management.
+
+  '
+status: experimental
+modified: ''
+logsource:
+  category: network_connection
+  product: windows
+tactics:
+- Discovery
+relevantTechniques:
+- T1087
+query: 'DeviceNetworkEvents
+
+  | where RemotePort == 9389 and (not((InitiatingProcessFolderPath =~ "C:\\Windows\\system32\\dsac.exe"
+  or InitiatingProcessFolderPath =~ "C:\\Program Files\\Microsoft Monitoring Agent\\"
+  or (InitiatingProcessFolderPath startswith "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
+  or InitiatingProcessFolderPath startswith "C:\\Program Files\\PowerShell\\7-preview\\pwsh.ex"
+  or InitiatingProcessFolderPath startswith "C:\\Windows\\System32\\WindowsPowerShell\\"
+  or InitiatingProcessFolderPath startswith "C:\\Windows\\SysWOW64\\WindowsPowerShell\\"))))'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled
