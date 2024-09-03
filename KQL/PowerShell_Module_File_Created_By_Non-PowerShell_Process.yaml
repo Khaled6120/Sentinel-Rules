@@ -5,7 +5,7 @@ date: 2023-05-09
 severity: medium
 description: Detects the creation of a new PowerShell module ".psm1", ".psd1", ".dll",
   ".ps1", etc. by a non-PowerShell process
-status: experimental
+status: test
 modified: 2023-10-18
 logsource:
   category: file_event

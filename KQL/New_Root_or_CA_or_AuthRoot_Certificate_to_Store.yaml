@@ -16,15 +16,15 @@ relevantTechniques:
 - T1490
 query: 'DeviceRegistryEvents
 
-  | where RegistryValueData =~ "Binary Data" and (RegistryKey contains "\\SOFTWARE\\Microsoft\\SystemCertificates\\Root\\Certificates"
-  or RegistryKey contains "\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\Root\\Certificates"
-  or RegistryKey contains "\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\Root\\Certificates"
-  or RegistryKey contains "\\SOFTWARE\\Microsoft\\SystemCertificates\\CA\\Certificates"
-  or RegistryKey contains "\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\CA\\Certificates"
-  or RegistryKey contains "\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\CA\\Certificates"
-  or RegistryKey contains "\\SOFTWARE\\Microsoft\\SystemCertificates\\AuthRoot\\Certificates"
-  or RegistryKey contains "\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\AuthRoot\\Certificates"
-  or RegistryKey contains "\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\AuthRoot\\Certificates")
+  | where RegistryValueData =~ "Binary Data" and (RegistryKey contains "\\SOFTWARE\\Microsoft\\SystemCertificates\\Root\\Certificates\\"
+  or RegistryKey contains "\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\Root\\Certificates\\"
+  or RegistryKey contains "\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\Root\\Certificates\\"
+  or RegistryKey contains "\\SOFTWARE\\Microsoft\\SystemCertificates\\CA\\Certificates\\"
+  or RegistryKey contains "\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\CA\\Certificates\\"
+  or RegistryKey contains "\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\CA\\Certificates\\"
+  or RegistryKey contains "\\SOFTWARE\\Microsoft\\SystemCertificates\\AuthRoot\\Certificates\\"
+  or RegistryKey contains "\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\AuthRoot\\Certificates\\"
+  or RegistryKey contains "\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\AuthRoot\\Certificates\\")
   and RegistryKey endswith "\\Blob"'
 eventGroupingSettings:
   aggregationKind: SingleAlert

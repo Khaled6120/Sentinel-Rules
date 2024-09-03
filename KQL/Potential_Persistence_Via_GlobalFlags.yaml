@@ -18,11 +18,11 @@ relevantTechniques:
 - T1546
 query: 'DeviceRegistryEvents
 
-  | where (RegistryKey contains "\\Microsoft\\Windows NT\\CurrentVersion" and RegistryKey
-  contains "\\Image File Execution Options" and RegistryKey contains "\\GlobalFlag")
+  | where (RegistryKey contains "\\Microsoft\\Windows NT\\CurrentVersion\\" and RegistryKey
+  contains "\\Image File Execution Options\\" and RegistryKey contains "\\GlobalFlag")
   or ((RegistryKey contains "\\ReportingMode" or RegistryKey contains "\\MonitorProcess")
-  and (RegistryKey contains "\\Microsoft\\Windows NT\\CurrentVersion" and RegistryKey
-  contains "\\SilentProcessExit"))'
+  and (RegistryKey contains "\\Microsoft\\Windows NT\\CurrentVersion\\" and RegistryKey
+  contains "\\SilentProcessExit\\"))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

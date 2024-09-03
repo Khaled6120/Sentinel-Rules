@@ -16,7 +16,7 @@ relevantTechniques: []
 query: 'DeviceRegistryEvents
 
   | where RegistryValueData =~ "DWORD (0x00000001)" and (RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\AppModelUnlock"
-  or RegistryKey contains "\\Policies\\Microsoft\\Windows\\Appx") and (RegistryKey
+  or RegistryKey contains "\\Policies\\Microsoft\\Windows\\Appx\\") and (RegistryKey
   endswith "\\AllowAllTrustedApps" or RegistryKey endswith "\\AllowDevelopmentWithoutDevLicense")'
 eventGroupingSettings:
   aggregationKind: SingleAlert

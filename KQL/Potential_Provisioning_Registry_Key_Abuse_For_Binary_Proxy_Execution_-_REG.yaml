@@ -16,7 +16,7 @@ relevantTechniques:
 - T1218
 query: 'DeviceRegistryEvents
 
-  | where RegistryKey contains "\\SOFTWARE\\Microsoft\\Provisioning\\Commands"'
+  | where RegistryKey contains "\\SOFTWARE\\Microsoft\\Provisioning\\Commands\\"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

@@ -19,7 +19,7 @@ query: 'DeviceRegistryEvents
 
   | where (ActionType =~ "DeleteValue" and RegistryKey contains "\\Microsoft\\Terminal
   Server Client\\Default\\MRU") or ((ActionType in~ ("RegistryKeyDeleted", "RegistryValueDeleted"))
-  and RegistryKey contains "\\Microsoft\\Terminal Server Client\\Servers")'
+  and RegistryKey contains "\\Microsoft\\Terminal Server Client\\Servers\\")'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

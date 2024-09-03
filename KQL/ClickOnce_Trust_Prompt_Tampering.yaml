@@ -16,7 +16,7 @@ relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents
 
-  | where RegistryValueData =~ "Enabled" and RegistryKey contains "\\SOFTWARE\\MICROSOFT\\.NETFramework\\Security\\TrustManager\\PromptingLevel"
+  | where RegistryValueData =~ "Enabled" and RegistryKey contains "\\SOFTWARE\\MICROSOFT\\.NETFramework\\Security\\TrustManager\\PromptingLevel\\"
   and (RegistryKey endswith "\\Internet" or RegistryKey endswith "\\LocalIntranet"
   or RegistryKey endswith "\\MyComputer" or RegistryKey endswith "\\TrustedSites"
   or RegistryKey endswith "\\UntrustedSites")'

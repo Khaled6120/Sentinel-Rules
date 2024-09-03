@@ -17,7 +17,7 @@ relevantTechniques:
 - T1125
 query: 'DeviceRegistryEvents
 
-  | where (RegistryKey contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore"
+  | where (RegistryKey contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\"
   and RegistryKey contains "\\NonPackaged") and (RegistryKey contains "microphone"
   or RegistryKey contains "webcam") and (RegistryKey contains ":#Windows#Temp#" or
   RegistryKey contains ":#$Recycle.bin#" or RegistryKey contains ":#Temp#" or RegistryKey

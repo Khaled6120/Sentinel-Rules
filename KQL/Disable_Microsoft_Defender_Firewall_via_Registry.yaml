@@ -16,7 +16,7 @@ relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents
 
-  | where RegistryValueData =~ "DWORD (0x00000000)" and RegistryKey contains "\\Services\\SharedAccess\\Parameters\\FirewallPolicy"
+  | where RegistryValueData =~ "DWORD (0x00000000)" and RegistryKey contains "\\Services\\SharedAccess\\Parameters\\FirewallPolicy\\"
   and RegistryKey endswith "\\EnableFirewall"'
 eventGroupingSettings:
   aggregationKind: SingleAlert

@@ -16,14 +16,14 @@ relevantTechniques:
 - T1053
 query: 'DeviceRegistryEvents
 
-  | where RegistryKey contains "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\TaskCache"
+  | where RegistryKey contains "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\TaskCache\\"
   and (not(((RegistryKey contains "Microsoft\\Windows\\UpdateOrchestrator" or RegistryKey
   contains "Microsoft\\Windows\\SoftwareProtectionPlatform\\SvcRestartTask\\Index"
   or RegistryKey contains "Microsoft\\Windows\\Flighting\\OneSettings\\RefreshCache\\Index")
   or (InitiatingProcessFolderPath in~ ("C:\\Program Files (x86)\\Dropbox\\Update\\DropboxUpdate.exe",
   "C:\\Program Files\\Dropbox\\Update\\DropboxUpdate.exe")) or (InitiatingProcessFolderPath
   =~ "C:\\Windows\\explorer.exe" and RegistryKey contains "\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\TaskCache\\Tree\\Microsoft\\Windows\\PLA\\Server
-  Manager Performance Monitor") or InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\msiexec.exe"
+  Manager Performance Monitor\\") or InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\msiexec.exe"
   or (InitiatingProcessFolderPath endswith "\\ngen.exe" and InitiatingProcessFolderPath
   startswith "C:\\Windows\\Microsoft.NET\\Framework" and (RegistryKey contains "\\Microsoft\\Windows
   NT\\CurrentVersion\\Schedule\\TaskCache\\Tasks\\{B66B135D-DA06-4FC4-95F8-7458E1D10129}"

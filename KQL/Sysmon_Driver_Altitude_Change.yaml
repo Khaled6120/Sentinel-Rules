@@ -20,7 +20,7 @@ relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents
 
-  | where RegistryKey contains "\\Services" and RegistryKey endswith "\\Instances\\Sysmon
+  | where RegistryKey contains "\\Services\\" and RegistryKey endswith "\\Instances\\Sysmon
   Instance\\Altitude"'
 eventGroupingSettings:
   aggregationKind: SingleAlert

@@ -15,8 +15,8 @@ relevantTechniques:
 - T1137
 query: 'DeviceRegistryEvents
 
-  | where RegistryKey contains "\\SOFTWARE\\Microsoft\\Office" and RegistryKey contains
-  "\\Outlook\\Security"'
+  | where RegistryKey contains "\\SOFTWARE\\Microsoft\\Office\\" and RegistryKey contains
+  "\\Outlook\\Security\\"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

@@ -5,7 +5,7 @@ date: 2022-12-05
 severity: high
 description: Detects the usage of emojis in the command line, this could be a sign
   of potential defense evasion activity.
-status: experimental
+status: test
 modified: ''
 logsource:
   category: process_creation

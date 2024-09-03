@@ -23,7 +23,7 @@ tactics:
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 
-  | where RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches"
+  | where RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\"
   and ((RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey contains "\\Autorun")
   or ((RegistryValueData contains "cmd" or RegistryValueData contains "powershell"
   or RegistryValueData contains "rundll32" or RegistryValueData contains "mshta" or

@@ -22,8 +22,8 @@ relevantTechniques:
 - T1546
 query: 'DeviceRegistryEvents
 
-  | where (RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\InstalledSDB"
-  or RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Custom")
+  | where (RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\InstalledSDB\\"
+  or RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Custom\\")
   and (not(RegistryValueData =~ ""))'
 eventGroupingSettings:
   aggregationKind: SingleAlert

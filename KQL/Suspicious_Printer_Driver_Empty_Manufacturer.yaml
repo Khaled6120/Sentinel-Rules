@@ -18,9 +18,9 @@ query: 'DeviceRegistryEvents
 
   | where (RegistryValueData =~ "(Empty)" and (RegistryKey contains "\\Control\\Print\\Environments\\Windows
   x64\\Drivers" and RegistryKey contains "\\Manufacturer")) and (not((RegistryKey
-  contains "\\CutePDF Writer v4.0" or RegistryKey contains "\\Version-3\\PDF24" or
-  (RegistryKey contains "\\VNC Printer (PS)" or RegistryKey contains "\\VNC Printer
-  (UD)"))))'
+  contains "\\CutePDF Writer v4.0\\" or RegistryKey contains "\\Version-3\\PDF24\\"
+  or (RegistryKey contains "\\VNC Printer (PS)\\" or RegistryKey contains "\\VNC Printer
+  (UD)\\"))))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

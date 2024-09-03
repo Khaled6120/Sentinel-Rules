@@ -37,7 +37,7 @@ query: 'DeviceRegistryEvents
   contains "peazip" and RegistryKey contains "\\PeaZip.") or InitiatingProcessFolderPath
   =~ "C:\\Windows\\system32\\svchost.exe" or InitiatingProcessFolderPath startswith
   "C:\\Windows\\Installer\\MSI" or (InitiatingProcessFolderPath endswith "\\AppData\\Local\\Temp\\Wireshark_uninstaller.exe"
-  and RegistryKey contains "\\wireshark-capture-file"))))'
+  and RegistryKey contains "\\wireshark-capture-file\\"))))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

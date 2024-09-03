@@ -21,13 +21,13 @@ relevantTechniques:
 - T1547
 query: 'DeviceRegistryEvents
 
-  | where (RegistryValueData endswith ".dll" and RegistryKey contains "\\Control\\Print\\Monitors")
+  | where (RegistryValueData endswith ".dll" and RegistryKey contains "\\Control\\Print\\Monitors\\")
   and (not(((RegistryValueData =~ "cpwmon64_v40.dll" and InitiatingProcessFolderPath
   =~ "C:\\Windows\\System32\\spoolsv.exe" and RegistryKey contains "\\Control\\Print\\Monitors\\CutePDF
   Writer Monitor v4.0\\Driver" and (InitiatingProcessAccountName contains "AUTHORI"
   or InitiatingProcessAccountName contains "AUTORI")) or RegistryKey contains "\\Control\\Print\\Monitors\\MONVNC\\Driver"
-  or (RegistryKey contains "Control\\Print\\Environments" and RegistryKey contains
-  "\\Drivers" and RegistryKey contains "\\VNC Printer"))))'
+  or (RegistryKey contains "Control\\Print\\Environments\\" and RegistryKey contains
+  "\\Drivers\\" and RegistryKey contains "\\VNC Printer"))))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

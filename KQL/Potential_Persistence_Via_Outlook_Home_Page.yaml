@@ -21,8 +21,8 @@ relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents
 
-  | where (RegistryKey contains "\\Software\\Microsoft\\Office" and RegistryKey contains
-  "\\Outlook\\WebView") and RegistryKey endswith "\\URL"'
+  | where (RegistryKey contains "\\Software\\Microsoft\\Office\\" and RegistryKey
+  contains "\\Outlook\\WebView\\") and RegistryKey endswith "\\URL"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

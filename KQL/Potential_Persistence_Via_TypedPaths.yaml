@@ -16,7 +16,7 @@ tactics:
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 
-  | where RegistryKey contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\TypedPaths"
+  | where RegistryKey contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\TypedPaths\\"
   and (not((InitiatingProcessFolderPath in~ ("C:\\Windows\\explorer.exe", "C:\\Windows\\SysWOW64\\explorer.exe"))))'
 eventGroupingSettings:
   aggregationKind: SingleAlert

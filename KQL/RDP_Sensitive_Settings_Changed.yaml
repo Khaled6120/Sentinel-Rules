@@ -24,10 +24,10 @@ query: 'DeviceRegistryEvents
 
   | where ((RegistryValueData in~ ("DWORD (0x00000001)", "DWORD (0x00000002)", "DWORD
   (0x00000003)", "DWORD (0x00000004)")) and (RegistryKey contains "\\Control\\Terminal
-  Server" or RegistryKey contains "\\Windows NT\\Terminal Services") and RegistryKey
+  Server\\" or RegistryKey contains "\\Windows NT\\Terminal Services\\") and RegistryKey
   endswith "\\Shadow") or (RegistryValueData =~ "DWORD (0x00000001)" and (RegistryKey
-  contains "\\Control\\Terminal Server" or RegistryKey contains "\\Windows NT\\Terminal
-  Services") and (RegistryKey endswith "\\DisableRemoteDesktopAntiAlias" or RegistryKey
+  contains "\\Control\\Terminal Server\\" or RegistryKey contains "\\Windows NT\\Terminal
+  Services\\") and (RegistryKey endswith "\\DisableRemoteDesktopAntiAlias" or RegistryKey
   endswith "\\DisableSecuritySettings" or RegistryKey endswith "\\fAllowUnsolicited"
   or RegistryKey endswith "\\fAllowUnsolicitedFullControl")) or (RegistryKey contains
   "\\Control\\Terminal Server\\InitialProgram" or RegistryKey contains "\\Control\\Terminal

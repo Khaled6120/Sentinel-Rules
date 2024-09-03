@@ -15,8 +15,8 @@ tactics:
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 
-  | where (ActionType =~ "RegistryKeyCreated" and (RegistryKey contains "\\SOFTWARE\\Microsoft\\AMSI\\Providers"
-  or RegistryKey contains "\\SOFTWARE\\WOW6432Node\\Microsoft\\AMSI\\Providers"))
+  | where (ActionType =~ "RegistryKeyCreated" and (RegistryKey contains "\\SOFTWARE\\Microsoft\\AMSI\\Providers\\"
+  or RegistryKey contains "\\SOFTWARE\\WOW6432Node\\Microsoft\\AMSI\\Providers\\"))
   and (not((InitiatingProcessFolderPath startswith "C:\\Windows\\System32\\" or InitiatingProcessFolderPath
   startswith "C:\\Program Files\\" or InitiatingProcessFolderPath startswith "C:\\Program
   Files (x86)\\")))'

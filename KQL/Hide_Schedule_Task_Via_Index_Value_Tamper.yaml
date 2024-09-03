@@ -22,7 +22,7 @@ relevantTechniques:
 query: 'DeviceRegistryEvents
 
   | where RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows
-  NT\\CurrentVersion\\Schedule\\TaskCache\\Tree" and RegistryKey contains "Index")'
+  NT\\CurrentVersion\\Schedule\\TaskCache\\Tree\\" and RegistryKey contains "Index")'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

@@ -15,7 +15,7 @@ relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents
 
-  | where (RegistryKey contains "\\Software\\Microsoft\\Fax\\Device Providers" and
+  | where (RegistryKey contains "\\Software\\Microsoft\\Fax\\Device Providers\\" and
   RegistryKey contains "\\ImageName") and (not(RegistryValueData =~ "%systemroot%\\system32\\fxst30.dll"))'
 eventGroupingSettings:
   aggregationKind: SingleAlert

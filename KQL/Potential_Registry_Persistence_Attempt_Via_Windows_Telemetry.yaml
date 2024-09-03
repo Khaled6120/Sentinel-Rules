@@ -33,7 +33,7 @@ query: 'DeviceRegistryEvents
   ".hta" or RegistryValueData contains ".jar" or RegistryValueData contains ".js"
   or RegistryValueData contains ".msi" or RegistryValueData contains ".ps" or RegistryValueData
   contains ".sh" or RegistryValueData contains ".vb") and RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows
-  NT\\CurrentVersion\\AppCompatFlags\\TelemetryController" and RegistryKey endswith
+  NT\\CurrentVersion\\AppCompatFlags\\TelemetryController\\" and RegistryKey endswith
   "\\Command") and (not((RegistryValueData contains "\\system32\\CompatTelRunner.exe"
   or RegistryValueData contains "\\system32\\DeviceCensus.exe")))'
 eventGroupingSettings:

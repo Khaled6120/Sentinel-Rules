@@ -8,7 +8,7 @@ description: 'Detects the creation of a file with the name "code_tunnel.json" wh
   other than VsCode.
 
   '
-status: experimental
+status: test
 modified: ''
 logsource:
   category: file_event

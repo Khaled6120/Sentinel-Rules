@@ -15,7 +15,7 @@ tactics:
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 
-  | where RegistryKey contains "\\shell\\SentinelOneScan\\command" and (not(((InitiatingProcessFolderPath
+  | where RegistryKey contains "\\shell\\SentinelOneScan\\command\\" and (not(((InitiatingProcessFolderPath
   endswith "C:\\Program Files\\SentinelOne\\" or InitiatingProcessFolderPath endswith
   "C:\\Program Files (x86)\\SentinelOne\\") or (RegistryValueData contains "\\SentinelScanFromContextMenu.exe"
   and (RegistryValueData startswith "C:\\Program Files\\SentinelOne\\Sentinel Agent"

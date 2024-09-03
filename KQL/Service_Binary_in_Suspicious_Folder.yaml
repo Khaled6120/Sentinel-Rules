@@ -20,10 +20,10 @@ query: 'DeviceRegistryEvents
   (0x00000002)")) and (InitiatingProcessFolderPath contains "\\Users\\Public\\" or
   InitiatingProcessFolderPath contains "\\Perflogs\\" or InitiatingProcessFolderPath
   contains "\\ADMIN$\\" or InitiatingProcessFolderPath contains "\\Temp\\") and RegistryKey
-  endswith "\\Start" and RegistryKey startswith "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services")
+  endswith "\\Start" and RegistryKey startswith "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services\\")
   or ((RegistryValueData contains "\\Users\\Public\\" or RegistryValueData contains
   "\\Perflogs\\" or RegistryValueData contains "\\ADMIN$\\" or RegistryValueData contains
-  "\\Temp\\") and RegistryKey endswith "\\ImagePath" and RegistryKey startswith "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services"))
+  "\\Temp\\") and RegistryKey endswith "\\ImagePath" and RegistryKey startswith "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services\\"))
   and (not((InitiatingProcessFolderPath contains "\\Common Files\\" and InitiatingProcessFolderPath
   contains "\\Temp\\")))'
 eventGroupingSettings:

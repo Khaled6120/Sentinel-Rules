@@ -19,7 +19,7 @@ query: 'DeviceRegistryEvents
 
   | where (RegistryValueData contains "00000429" or RegistryValueData contains "00050429"
   or RegistryValueData contains "0000042a") and (RegistryKey contains "\\Keyboard
-  Layout\\Preload" or RegistryKey contains "\\Keyboard Layout\\Substitutes")'
+  Layout\\Preload\\" or RegistryKey contains "\\Keyboard Layout\\Substitutes\\")'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

@@ -30,7 +30,7 @@ query: 'DeviceRegistryEvents
   or RegistryKey contains "\\ShellEx\\ContextMenuHandlers")) and (not((InitiatingProcessFolderPath
   =~ "C:\\Windows\\System32\\drvinst.exe" or RegistryValueData =~ "(Empty)" or RegistryValueData
   =~ "{807583E5-5146-11D5-A672-00B0D022E945}" or (InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\svchost.exe"
-  and RegistryKey contains "\\lnkfile\\shellex\\ContextMenuHandlers"))))'
+  and RegistryKey contains "\\lnkfile\\shellex\\ContextMenuHandlers\\"))))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

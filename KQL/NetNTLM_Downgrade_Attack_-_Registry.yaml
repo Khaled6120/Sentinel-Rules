@@ -16,7 +16,7 @@ relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents
 
-  | where (RegistryKey contains "SYSTEM" and RegistryKey contains "ControlSet" and
+  | where (RegistryKey contains "SYSTEM\\" and RegistryKey contains "ControlSet" and
   RegistryKey contains "\\Control\\Lsa") and (RegistryKey endswith "\\lmcompatibilitylevel"
   or RegistryKey endswith "\\NtlmMinClientSec" or RegistryKey endswith "\\RestrictSendingNTLMTraffic")'
 eventGroupingSettings:

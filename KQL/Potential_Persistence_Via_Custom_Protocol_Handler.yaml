@@ -18,7 +18,7 @@ relevantTechniques:
 - T1112
 query: 'DeviceRegistryEvents
 
-  | where (RegistryValueData startswith "URL:" and RegistryKey startswith "HKEY_LOCAL_MACHINE\\CLASSES")
+  | where (RegistryValueData startswith "URL:" and RegistryKey startswith "HKEY_LOCAL_MACHINE\\CLASSES\\")
   and (not(((InitiatingProcessFolderPath startswith "C:\\Program Files (x86)" or InitiatingProcessFolderPath
   startswith "C:\\Program Files\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\System32\\"
   or InitiatingProcessFolderPath startswith "C:\\Windows\\SysWOW64\\") or RegistryValueData

@@ -17,7 +17,7 @@ relevantTechniques: []
 query: 'DeviceRegistryEvents
 
   | where InitiatingProcessFolderPath endswith "\\winget.exe" and RegistryKey endswith
-  "\\LocalState\\admin_settings" and RegistryKey startswith "\\REGISTRY\\A"'
+  "\\LocalState\\admin_settings" and RegistryKey startswith "\\REGISTRY\\A\\"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

@@ -31,7 +31,7 @@ query: 'DeviceRegistryEvents
   or RegistryValueData contains ":\\Windows\\Tasks\\" or RegistryValueData contains
   ":\\Windows\\Temp\\" or RegistryValueData contains ":\\Windows\\Tracing\\" or RegistryValueData
   contains "\\AppData\\Local\\Temp\\" or RegistryValueData contains "\\AppData\\Roaming\\")
-  and RegistryKey contains "\\SOFTWARE\\ODBC\\ODBCINST.INI" and (RegistryKey endswith
+  and RegistryKey contains "\\SOFTWARE\\ODBC\\ODBCINST.INI\\" and (RegistryKey endswith
   "\\Driver" or RegistryKey endswith "\\Setup")'
 eventGroupingSettings:
   aggregationKind: SingleAlert

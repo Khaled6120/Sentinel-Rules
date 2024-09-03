@@ -17,7 +17,7 @@ relevantTechniques:
 query: 'DeviceRegistryEvents
 
   | where (RegistryKey contains "\\Control\\Print\\Environments\\Windows x64\\Drivers\\Version-3\\QMS
-  810" or RegistryKey contains "\\Control\\Print\\Environments\\Windows x64\\Drivers\\Version-3\\mimikatz")
+  810\\" or RegistryKey contains "\\Control\\Print\\Environments\\Windows x64\\Drivers\\Version-3\\mimikatz")
   or (RegistryKey contains "legitprinter" and RegistryKey contains "\\Control\\Print\\Environments\\Windows")
   or ((RegistryKey contains "\\Control\\Print\\Environments" or RegistryKey contains
   "\\CurrentVersion\\Print\\Printers") and (RegistryKey contains "Gentil Kiwi" or

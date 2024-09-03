@@ -24,7 +24,7 @@ relevantTechniques:
 query: 'DeviceRegistryEvents
 
   | where RegistryValueData contains "REGISTERAPPRESTART" and RegistryKey contains
-  "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers"'
+  "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\\"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

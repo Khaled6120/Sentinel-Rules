@@ -16,7 +16,7 @@ relevantTechniques:
 query: 'DeviceRegistryEvents
 
   | where (RegistryValueData contains "powershell" or RegistryValueData contains "pwsh")
-  and RegistryKey contains "\\Services" and RegistryKey endswith "\\ImagePath"'
+  and RegistryKey contains "\\Services\\" and RegistryKey endswith "\\ImagePath"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

@@ -16,15 +16,15 @@ relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents
 
-  | where (RegistryValueData =~ "DWORD (0x00000000)" and RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels"
+  | where (RegistryValueData =~ "DWORD (0x00000000)" and RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\"
   and RegistryKey endswith "\\Enabled") and (not(((InitiatingProcessFolderPath endswith
   "\\TiWorker.exe" and InitiatingProcessFolderPath startswith "C:\\Windows\\winsxs\\")
   or (InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\svchost.exe" and (RegistryKey
   contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-FileInfoMinifilter"
-  or RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-ASN1"
-  or RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-Kernel-AppCompat"
-  or RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-Runtime\\Error"
-  or RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-CAPI2/Operational"))
+  or RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-ASN1\\"
+  or RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-Kernel-AppCompat\\"
+  or RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-Runtime\\Error\\"
+  or RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-CAPI2/Operational\\"))
   or (InitiatingProcessFolderPath =~ "C:\\Windows\\servicing\\TrustedInstaller.exe"
   and RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels\\Microsoft-Windows-Compat-Appraiser")
   or InitiatingProcessFolderPath =~ "C:\\Windows\\system32\\wevtutil.exe"))) and (not((InitiatingProcessFolderPath

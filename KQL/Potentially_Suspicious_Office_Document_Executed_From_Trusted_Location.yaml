@@ -6,7 +6,7 @@ severity: high
 description: Detects the execution of an Office application that points to a document
   that is located in a trusted location. Attackers often used this to avoid macro
   security and execute their malicious code.
-status: experimental
+status: test
 modified: 2023-10-18
 logsource:
   category: process_creation

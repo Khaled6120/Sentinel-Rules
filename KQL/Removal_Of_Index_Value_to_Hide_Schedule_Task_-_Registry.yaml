@@ -18,7 +18,7 @@ relevantTechniques:
 query: 'DeviceRegistryEvents
 
   | where (ActionType in~ ("RegistryKeyDeleted", "RegistryValueDeleted")) and (RegistryKey
-  contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\TaskCache\\Tree"
+  contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\TaskCache\\Tree\\"
   and RegistryKey contains "Index")'
 eventGroupingSettings:
   aggregationKind: SingleAlert

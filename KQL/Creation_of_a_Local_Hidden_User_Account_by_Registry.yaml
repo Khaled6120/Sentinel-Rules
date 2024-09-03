@@ -16,7 +16,7 @@ relevantTechniques:
 query: 'DeviceRegistryEvents
 
   | where InitiatingProcessFolderPath endswith "\\lsass.exe" and RegistryKey contains
-  "\\SAM\\SAM\\Domains\\Account\\Users\\Names" and RegistryKey endswith "$"'
+  "\\SAM\\SAM\\Domains\\Account\\Users\\Names\\" and RegistryKey endswith "$"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

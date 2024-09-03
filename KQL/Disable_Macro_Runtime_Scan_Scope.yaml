@@ -15,8 +15,8 @@ tactics:
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 
-  | where RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey contains "\\SOFTWARE"
-  and RegistryKey contains "\\Microsoft\\Office" and RegistryKey contains "\\Common\\Security")
+  | where RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey contains "\\SOFTWARE\\"
+  and RegistryKey contains "\\Microsoft\\Office\\" and RegistryKey contains "\\Common\\Security")
   and RegistryKey endswith "\\MacroRuntimeScanScope"'
 eventGroupingSettings:
   aggregationKind: SingleAlert

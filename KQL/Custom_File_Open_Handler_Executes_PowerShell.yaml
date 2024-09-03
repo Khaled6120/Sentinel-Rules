@@ -16,7 +16,7 @@ relevantTechniques:
 query: 'DeviceRegistryEvents
 
   | where (RegistryValueData contains "powershell" and RegistryValueData contains
-  "-command") and RegistryKey contains "shell\\open\\command"'
+  "-command") and RegistryKey contains "shell\\open\\command\\"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

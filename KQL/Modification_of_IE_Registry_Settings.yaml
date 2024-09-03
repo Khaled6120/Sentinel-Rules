@@ -19,7 +19,7 @@ relevantTechniques:
 query: 'DeviceRegistryEvents
 
   | where RegistryKey contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet
-  Settings" and (not((RegistryKey contains "\\Accepted Documents" or RegistryValueData
+  Settings" and (not((RegistryKey contains "\\Accepted Documents\\" or RegistryValueData
   =~ "Binary Data" or RegistryValueData startswith "DWORD" or (RegistryValueData in~
   ("Cookie:", "Visited:", "(Empty)")) or (RegistryKey contains "\\Cache" or RegistryKey
   contains "\\ZoneMap" or RegistryKey contains "\\WpadDecision"))))'

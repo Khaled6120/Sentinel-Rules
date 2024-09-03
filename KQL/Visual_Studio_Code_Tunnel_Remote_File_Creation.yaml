@@ -7,7 +7,7 @@ description: 'Detects the creation of file by the "node.exe" process in the ".vs
   directory. Could be a sign of remote file creation via VsCode tunnel feature
 
   '
-status: experimental
+status: test
 modified: ''
 logsource:
   category: file_event

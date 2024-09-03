@@ -22,7 +22,7 @@ relevantTechniques:
 - T1562
 query: 'DeviceRegistryEvents
 
-  | where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey contains "\\Microsoft\\Office"
+  | where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey contains "\\Microsoft\\Office\\"
   and RegistryKey endswith "\\Excel\\Security\\PythonFunctionWarnings"'
 eventGroupingSettings:
   aggregationKind: SingleAlert

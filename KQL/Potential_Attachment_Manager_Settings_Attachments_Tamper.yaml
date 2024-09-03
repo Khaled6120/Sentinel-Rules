@@ -15,7 +15,7 @@ tactics:
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 
-  | where RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments"
+  | where RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments\\"
   and ((RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "\\HideZoneInfoOnProperties")
   or (RegistryValueData =~ "DWORD (0x00000002)" and RegistryKey endswith "\\SaveZoneInformation")
   or (RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "\\ScanWithAntiVirus"))'

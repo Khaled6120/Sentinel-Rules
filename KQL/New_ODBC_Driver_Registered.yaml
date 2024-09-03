@@ -14,12 +14,12 @@ tactics:
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 
-  | where (RegistryKey contains "\\SOFTWARE\\ODBC\\ODBCINST.INI" and RegistryKey endswith
-  "\\Driver") and (not((RegistryValueData =~ "%WINDIR%\\System32\\SQLSRV32.dll" and
-  RegistryKey contains "\\SQL Server"))) and (not(((RegistryValueData endswith "\\ACEODBC.DLL"
-  and RegistryValueData startswith "C:\\Progra" and RegistryKey contains "\\Microsoft
-  Access ") or (RegistryValueData endswith "\\ACEODBC.DLL" and RegistryValueData startswith
-  "C:\\Progra" and RegistryKey contains "\\Microsoft Excel Driver"))))'
+  | where (RegistryKey contains "\\SOFTWARE\\ODBC\\ODBCINST.INI\\" and RegistryKey
+  endswith "\\Driver") and (not((RegistryValueData =~ "%WINDIR%\\System32\\SQLSRV32.dll"
+  and RegistryKey contains "\\SQL Server\\"))) and (not(((RegistryValueData endswith
+  "\\ACEODBC.DLL" and RegistryValueData startswith "C:\\Progra" and RegistryKey contains
+  "\\Microsoft Access ") or (RegistryValueData endswith "\\ACEODBC.DLL" and RegistryValueData
+  startswith "C:\\Progra" and RegistryKey contains "\\Microsoft Excel Driver"))))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

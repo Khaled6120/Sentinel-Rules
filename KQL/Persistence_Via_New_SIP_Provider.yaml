@@ -18,9 +18,9 @@ relevantTechniques:
 query: 'DeviceRegistryEvents
 
   | where ((RegistryKey contains "\\Dll" or RegistryKey contains "\\$DLL") and (RegistryKey
-  contains "\\SOFTWARE\\Microsoft\\Cryptography\\Providers" or RegistryKey contains
+  contains "\\SOFTWARE\\Microsoft\\Cryptography\\Providers\\" or RegistryKey contains
   "\\SOFTWARE\\Microsoft\\Cryptography\\OID\\EncodingType" or RegistryKey contains
-  "\\SOFTWARE\\WOW6432Node\\Microsoft\\Cryptography\\Providers" or RegistryKey contains
+  "\\SOFTWARE\\WOW6432Node\\Microsoft\\Cryptography\\Providers\\" or RegistryKey contains
   "\\SOFTWARE\\WOW6432Node\\Microsoft\\Cryptography\\OID\\EncodingType")) and (not(((RegistryValueData
   in~ ("WINTRUST.DLL", "mso.dll")) or (RegistryValueData =~ "C:\\Windows\\System32\\PsfSip.dll"
   and InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\poqexec.exe" and RegistryKey

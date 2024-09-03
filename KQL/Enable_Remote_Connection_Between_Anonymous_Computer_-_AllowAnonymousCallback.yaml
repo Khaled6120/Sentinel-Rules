@@ -5,7 +5,7 @@ date: 2023-11-03
 severity: medium
 description: Detects enabling of the "AllowAnonymousCallback" registry value, which
   allows a remote connection between computers that do not have a trust relationship.
-status: experimental
+status: test
 modified: ''
 logsource:
   category: registry_set

@@ -27,11 +27,11 @@ query: 'DeviceRegistryEvents
   or RegistryKey contains "\\Windows\\Load") and (not(((InitiatingProcessFolderPath
   endswith "\\MicrosoftEdgeUpdate.exe" and InitiatingProcessFolderPath startswith
   "C:\\Program Files (x86)\\Microsoft\\Temp\\") or RegistryValueData =~ "(Empty)"
-  or (RegistryKey contains "\\Image File Execution Options" and (RegistryKey endswith
+  or (RegistryKey contains "\\Image File Execution Options\\" and (RegistryKey endswith
   "\\DisableExceptionChainValidation" or RegistryKey endswith "\\MitigationOptions"))
   or ((RegistryKey contains "\\ClickToRunStore\\HKLM\\SOFTWARE\\Microsoft\\Windows
-  NT\\CurrentVersion" or RegistryKey contains "\\ClickToRun\\REGISTRY\\MACHINE\\Software\\Microsoft\\Windows
-  NT\\CurrentVersion") or (InitiatingProcessFolderPath in~ ("C:\\Program Files\\Microsoft
+  NT\\CurrentVersion\\" or RegistryKey contains "\\ClickToRun\\REGISTRY\\MACHINE\\Software\\Microsoft\\Windows
+  NT\\CurrentVersion\\") or (InitiatingProcessFolderPath in~ ("C:\\Program Files\\Microsoft
   Office\\root\\integration\\integrator.exe", "C:\\Program Files (x86)\\Microsoft
   Office\\root\\integration\\integrator.exe"))) or (InitiatingProcessFolderPath endswith
   "\\ngen.exe" and InitiatingProcessFolderPath startswith "C:\\Windows\\Microsoft.NET\\Framework")

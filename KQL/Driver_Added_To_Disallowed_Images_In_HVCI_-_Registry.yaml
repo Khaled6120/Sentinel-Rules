@@ -17,7 +17,7 @@ tactics:
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 
-  | where RegistryKey contains "\\Control\\CI" and RegistryKey contains "\\HVCIDisallowedImages"'
+  | where RegistryKey contains "\\Control\\CI\\" and RegistryKey contains "\\HVCIDisallowedImages"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

@@ -31,7 +31,7 @@ query: 'DeviceRegistryEvents
   or RegistryValueData startswith "dXNpbm" or RegistryValueData startswith "H4sIA"
   or RegistryValueData startswith "Y21k" or RegistryValueData startswith "cABhAH"
   or RegistryValueData startswith "Qzpc" or RegistryValueData startswith "Yzpc"))
-  and RegistryKey contains "\\Environment"'
+  and RegistryKey contains "\\Environment\\"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

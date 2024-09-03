@@ -23,12 +23,12 @@ query: 'DeviceRegistryEvents
   "\\AppData\\Local\\Temp\\" or RegistryValueData contains "%temp%\\" or RegistryValueData
   contains "%tmp%\\") or (RegistryValueData startswith "%Public%\\" or RegistryValueData
   startswith "wscript" or RegistryValueData startswith "cscript")) and (RegistryKey
-  contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run" or RegistryKey contains
-  "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunOnce")) and (not(((RegistryValueData
+  contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\" or RegistryKey
+  contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunOnce\\")) and (not(((RegistryValueData
   contains "\\AppData\\Local\\Temp\\" or RegistryValueData contains "C:\\Windows\\Temp\\")
   and (RegistryValueData contains "rundll32.exe " and RegistryValueData contains "C:\\WINDOWS\\system32\\advpack.dll,DelNodeRunDLL32")
   and InitiatingProcessFolderPath startswith "C:\\Windows\\SoftwareDistribution\\Download\\"
-  and RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\RunOnce")))'
+  and RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\RunOnce\\")))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

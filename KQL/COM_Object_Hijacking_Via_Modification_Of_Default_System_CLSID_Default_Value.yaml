@@ -16,17 +16,17 @@ relevantTechniques:
 - T1546
 query: 'DeviceRegistryEvents
 
-  | where (RegistryKey contains "\\{ddc05a5a-351a-4e06-8eaf-54ec1bc2dcea}" or RegistryKey
-  contains "\\{1f486a52-3cb1-48fd-8f50-b8dc300d9f9d}" or RegistryKey contains "\\{4590f811-1d3a-11d0-891f-00aa004b2e24}"
-  or RegistryKey contains "\\{4de225bf-cf59-4cfc-85f7-68b90f185355}" or RegistryKey
-  contains "\\{F56F6FDD-AA9D-4618-A949-C1B91AF43B1A}") and (RegistryValueData contains
+  | where (RegistryKey contains "\\{ddc05a5a-351a-4e06-8eaf-54ec1bc2dcea}\\" or RegistryKey
+  contains "\\{1f486a52-3cb1-48fd-8f50-b8dc300d9f9d}\\" or RegistryKey contains "\\{4590f811-1d3a-11d0-891f-00aa004b2e24}\\"
+  or RegistryKey contains "\\{4de225bf-cf59-4cfc-85f7-68b90f185355}\\" or RegistryKey
+  contains "\\{F56F6FDD-AA9D-4618-A949-C1B91AF43B1A}\\") and (RegistryValueData contains
   "\\AppData\\Local\\Temp\\" or RegistryValueData contains "\\Desktop\\" or RegistryValueData
   contains "\\Downloads\\" or RegistryValueData contains "\\Microsoft\\Windows\\Start
   Menu\\Programs\\Startup\\" or RegistryValueData contains "\\System32\\spool\\drivers\\color\\"
   or RegistryValueData contains "\\Users\\Public\\" or RegistryValueData contains
   "\\Windows\\Temp\\" or RegistryValueData contains "%appdata%" or RegistryValueData
   contains "%temp%" or RegistryValueData contains "%tmp%") and (RegistryKey contains
-  "\\CLSID" and (RegistryKey endswith "\\InprocServer32\\(Default)" or RegistryKey
+  "\\CLSID\\" and (RegistryKey endswith "\\InprocServer32\\(Default)" or RegistryKey
   endswith "\\LocalServer32\\(Default)"))'
 eventGroupingSettings:
   aggregationKind: SingleAlert

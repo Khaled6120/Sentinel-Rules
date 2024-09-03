@@ -16,7 +16,7 @@ tactics:
 relevantTechniques: []
 query: 'DeviceRegistryEvents
 
-  | where RegistryKey contains "\\SYSTEM\\CurrentControlSet\\Control\\ContentIndex\\Language"
+  | where RegistryKey contains "\\SYSTEM\\CurrentControlSet\\Control\\ContentIndex\\Language\\"
   and (RegistryKey contains "\\StemmerDLLPathOverride" or RegistryKey contains "\\WBDLLPathOverride"
   or RegistryKey contains "\\StemmerClass" or RegistryKey contains "\\WBreakerClass")'
 eventGroupingSettings:

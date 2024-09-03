@@ -16,7 +16,7 @@ relevantTechniques:
 - T1204
 query: 'DeviceRegistryEvents
 
-  | where RegistryKey contains "\\AppCompatFlags\\Compatibility Assistant\\Store"'
+  | where RegistryKey contains "\\AppCompatFlags\\Compatibility Assistant\\Store\\"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

@@ -19,7 +19,7 @@ query: 'DeviceRegistryEvents
   | where (InitiatingProcessFolderPath contains "\\Downloads\\" or InitiatingProcessFolderPath
   contains "\\Temporary Internet Files\\Content.Outlook\\" or InitiatingProcessFolderPath
   contains "\\Local Settings\\Temporary Internet Files\\") and RegistryKey contains
-  "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"'
+  "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

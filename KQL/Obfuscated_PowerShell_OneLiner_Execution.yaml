@@ -5,7 +5,7 @@ date: 2022-05-09
 severity: high
 description: Detects the execution of a specific OneLiner to download and execute
   powershell modules in memory.
-status: experimental
+status: test
 modified: ''
 logsource:
   category: process_creation

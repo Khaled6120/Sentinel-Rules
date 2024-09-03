@@ -4,7 +4,7 @@ author: Nasreddine Bencherchali (Nextron Systems)
 date: 2023-10-18
 severity: high
 description: Detects when a user downloads a file from an IP based URL using CertOC.exe
-status: experimental
+status: test
 modified: ''
 logsource:
   category: process_creation

@@ -25,7 +25,7 @@ query: 'DeviceRegistryEvents
   or RegistryValueData contains "<\\Microsoft.mshtml,fileVersion=" or RegistryValueData
   contains "_mshtml_dll_" or RegistryValueData contains "<\\Microsoft.mshtml,culture=")
   and InitiatingProcessFolderPath endswith "\\msiexec.exe" and RegistryKey contains
-  "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Installer\\UserData"))))'
+  "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Installer\\UserData\\"))))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

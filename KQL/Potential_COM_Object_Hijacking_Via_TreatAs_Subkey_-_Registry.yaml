@@ -15,9 +15,9 @@ relevantTechniques:
 - T1546
 query: 'DeviceRegistryEvents
 
-  | where (ActionType =~ "RegistryKeyCreated" and (RegistryKey contains "HKU" and
-  RegistryKey contains "Classes\\CLSID" and RegistryKey contains "\\TreatAs")) and
-  (not(InitiatingProcessFolderPath =~ "C:\\WINDOWS\\system32\\svchost.exe"))'
+  | where (ActionType =~ "RegistryKeyCreated" and (RegistryKey contains "HKEY_USERS\\"
+  and RegistryKey contains "Classes\\CLSID\\" and RegistryKey contains "\\TreatAs"))
+  and (not(InitiatingProcessFolderPath =~ "C:\\WINDOWS\\system32\\svchost.exe"))'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

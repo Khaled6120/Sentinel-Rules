@@ -17,7 +17,7 @@ relevantTechniques:
 query: 'DeviceRegistryEvents
 
   | where RegistryValueData startswith "6" and ActionType =~ "RegistryValueSet" and
-  RegistryKey contains "\\Software\\Winternals\\BGInfo\\UserFields"'
+  RegistryKey contains "\\Software\\Winternals\\BGInfo\\UserFields\\"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D

@@ -5,7 +5,7 @@ date: 2023-09-11
 severity: medium
 description: Detects the execution of a renamed "CURL.exe" binary based on the PE
   metadata fields
-status: experimental
+status: test
 modified: 2023-10-12
 logsource:
   category: process_creation

@@ -17,7 +17,7 @@ relevantTechniques:
 query: 'DeviceRegistryEvents
 
   | where RegistryValueData endswith ".xll" and RegistryValueData startswith "/R "
-  and RegistryKey contains "Software\\Microsoft\\Office" and RegistryKey endswith
+  and RegistryKey contains "Software\\Microsoft\\Office\\" and RegistryKey endswith
   "\\Excel\\Options"'
 eventGroupingSettings:
   aggregationKind: SingleAlert
