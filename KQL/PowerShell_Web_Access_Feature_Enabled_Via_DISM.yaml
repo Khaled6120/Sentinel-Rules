@@ -1,0 +1,33 @@
+name: PowerShell Web Access Feature Enabled Via DISM
+id: 7e8f2d3b-9c1a-4f67-b9e8-8d9006e0e51f
+author: Michael Haag
+date: 2024-09-03
+severity: high
+description: Detects the use of DISM to enable the PowerShell Web Access feature,
+  which could be used for remote access and potential abuse
+status: test
+modified: ''
+logsource:
+  category: process_creation
+  product: windows
+tactics:
+- Persistence
+relevantTechniques:
+- T1548
+query: 'DeviceProcessEvents
+
+  | where (ProcessCommandLine contains "WindowsPowerShellWebAccess" and ProcessCommandLine
+  contains "/online" and ProcessCommandLine contains "/enable-feature") and (FolderPath
+  endswith "\\dism.exe" or ProcessVersionInfoOriginalFileName =~ "DISM.EXE")'
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+queryFrequency: P1D
+queryPeriod: P1D
+enabled: true
+entityMappings: null
+sentinelEntitiesMappings: null
+triggerThreshold: 0
+suppressionDuration: PT5H
+suppressionEnabled: false
+triggerOperator: GreaterThan
+kind: Scheduled
