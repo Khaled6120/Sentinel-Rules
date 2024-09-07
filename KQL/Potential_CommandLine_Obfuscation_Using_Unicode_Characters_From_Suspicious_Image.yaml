@@ -11,7 +11,7 @@ description: 'Detects potential commandline obfuscation using unicode characters
 
   '
 status: test
-modified: ''
+modified: 2024-09-05
 logsource:
   category: process_creation
   product: windows
@@ -27,8 +27,9 @@ query: "DeviceProcessEvents\n| where ((FolderPath endswith \"\\\\cmd.exe\" or Fo
   \ \"\u02E3\" or ProcessCommandLine contains \"\u02EA\" or ProcessCommandLine contains\
   \ \"\u02E2\" or ProcessCommandLine contains \"\u2215\" or ProcessCommandLine contains\
   \ \"\u2044\" or ProcessCommandLine contains \"\u2015\" or ProcessCommandLine contains\
-  \ \"\u2014\" or ProcessCommandLine contains \"\xAF\" or ProcessCommandLine contains\
-  \ \"\xAE\" or ProcessCommandLine contains \"\xB6\")"
+  \ \"\u2014\" or ProcessCommandLine contains \"\_\" or ProcessCommandLine contains\
+  \ \"\xAF\" or ProcessCommandLine contains \"\xAE\" or ProcessCommandLine contains\
+  \ \"\xB6\")"
 eventGroupingSettings:
   aggregationKind: SingleAlert
 queryFrequency: P1D
